@@ -1,0 +1,15 @@
+{
+  "name": "HPE-Redfish-API-Ref-Docs-portal",
+  "private": true,
+  "version": "0.0.1",
+  "description": "HPE Redfish API Ref Docs portal repository",
+  "license": "MIT",
+  "scripts": {
+    "start": "redocly-portal develop -p 3000",
+    "build": "redocly-portal build",
+    "clean": "redocly-portal clean"
+  },
+  "dependencies": {
+    "@redocly/developer-portal": "1.0.0-beta.136"
+  }
+}
