@@ -1,0 +1,116 @@
+hpe:
+
+  - label: Home
+    href: '/'
+
+  - label: Overview
+    page: docs/index.md
+
+  - group: HPE Redfish
+    menuStyle: drilldown
+    expanded: true
+    pages:
+    - label: Overview
+      page: docs/index.md
+    - group: Guides
+      expanded: false
+      pages:
+      - label: Overview
+        page: docs/guides/index.md
+      - label: Developer Guide (external)
+        # page: docs/guides/developer-guide.md
+        href: 'https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/'
+      - label: Part 2 (external)
+        href: 'https://developer.hpe.com/blog/getting-started-with-the-redfish-api-part-2/'
+        external: true
+
+    - group: Concepts
+      expanded: false
+      pages:
+      - label: Overview
+        page: docs/concepts/index.md
+
+      - group: iLO based compute
+        expanded: false
+        pages: 
+        - label: Overview
+          page: docs/concepts/iLOBasedCompute/index.md
+
+      - group: iLO Amplifier Pack
+        expanded: false
+        pages: 
+        - label: Overview
+          page: docs/concepts/iLOAmplifierPack/index.md
+
+      - group: HPE Superdome Flex
+        expanded: false
+        pages: 
+        - label: Overview
+          page: docs/concepts/SuperdomeFlex/index.md
+
+      - group: HPE Power Distribution Units (PDUs)
+        expanded: false
+        pages:
+        - label: Overview
+          page: docs/concepts/PDUs/index.md
+
+    - group: Redfish API Reference Documents
+      expanded: false
+      pages:
+      - label: Overview
+        page: docs/RefDocs/index.md
+
+      - group: iLO
+        expanded: false
+        pages:
+          - group: iLO 5
+            #permission: 'hpe.internal.read'
+            menuStyle: drilldown
+            expanded: false
+            pages: 
+            - label: iLO 5
+              page: openapi/iLO5.page.yaml/*
+          - group: iLO 4
+            menuStyle: drilldown
+            expanded: false
+            pages: 
+            - label: iLO 4
+              page: openapi/iLO4.page.yaml/*
+
+      - group: iLO Amplifier Pack
+        expanded: false
+        pages: 
+        - group: REST API
+          #permission: 'hpe.internal.read'
+          menuStyle: drilldown
+          expanded: false
+          pages: 
+            - label: 
+              page: openapi/iLOAmpliferPack.page.yaml/*
+
+      - group: HPE Superdome Flex
+        expanded: false
+        pages: 
+        - group: HPE Superdome Flex
+          #permission: 'hpe.internal.read'
+          menuStyle: drilldown
+          expanded: false
+          pages: 
+            - label: 
+              page: openapi/SuperdomeFlex.page.yaml/*
+      
+      - group: HPE Power Distributin Units (PDUs)
+        expanded: false
+        pages:
+        -group: HPE PDUs
+         expanded: false
+         pages: 
+           - label: 
+             page: openapi/PDUs.page.yaml/*
+
+
+    - separatorLine: true
+
+    - label: HPEDev.io
+      href: 'https://developer.hpe.com/'
+      external: true

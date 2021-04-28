@@ -1,0 +1,7 @@
+type: reference-docs
+definitionId: iLO5
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
+      - lang: Python
