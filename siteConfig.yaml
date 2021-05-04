@@ -5,11 +5,9 @@ meta:
 headerIcon: ./images/hpe.svg
 enableToc: true
 oasDefinitions:
-  caas-latest: https://api.redoc.ly/registry/hpe/HPE%20GreenLake%20CaaS/v1/bundle/master/openapi.yaml
-  iam-scim-latest: https://api.redoc.ly/registry/hpe/HPE%20GreenLake%20IAM%20-%20SCIM/v2/bundle/master/openapi.yaml
-  iam-rbac-latest: https://api.redoc.ly/registry/hpe/HPE%20-%20GreenLake%20IAM%20-%20RBAC/v1alpha2/bundle/master/openapi.yaml
-  mlops-latest: https://api.redoc.ly/registry/hpe/MLOps/v1alpha1/bundle/master/openapi.yaml
   # add links to definitions in our API registry by using a fully qualified URL.
+  #mlops-latest: https://api.redoc.ly/registry/hpe/MLOps/v1alpha1/bundle/master/openapi.yaml
+  redfishiLO5RefDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1alpha1/bundle/master/api/openapi/ilo5-open.yaml
 
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700

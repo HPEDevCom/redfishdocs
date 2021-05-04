@@ -69,13 +69,13 @@ hpe:
             expanded: false
             pages: 
             - label: iLO 5
-              page: openapi/iLO5.page.yaml/*
+              page: openapi/redfishiLO5RefDoc.page.yaml/*
           - group: iLO 4
             menuStyle: drilldown
             expanded: false
             pages: 
             - label: iLO 4
-              page: openapi/iLO4.page.yaml/*
+              page: openapi/redfishiLO4RefDoc.page.yaml/*
 
       - group: iLO Amplifier Pack
         expanded: false
@@ -86,7 +86,7 @@ hpe:
           expanded: false
           pages: 
             - label: 
-              page: openapi/iLOAmpliferPack.page.yaml/*
+              page: openapi/iLOAmpliferPackRefDoc.page.yaml/*
 
       - group: HPE Superdome Flex
         expanded: false
@@ -97,7 +97,7 @@ hpe:
           expanded: false
           pages: 
             - label: 
-              page: openapi/SuperdomeFlex.page.yaml/*
+              page: openapi/SuperdomeFlexRefDoc.page.yaml/*
       
       - group: HPE Power Distributin Units (PDUs)
         expanded: false
@@ -106,7 +106,7 @@ hpe:
          expanded: false
          pages: 
            - label: 
-             page: openapi/PDUs.page.yaml/*
+             page: openapi/PDUsRefDoc.page.yaml/*
 
 
     - separatorLine: true
