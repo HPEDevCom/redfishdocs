@@ -7,7 +7,7 @@ enableToc: true
 oasDefinitions:
   # add links to definitions in our API registry by using a fully qualified URL.
   #mlops-latest: https://api.redoc.ly/registry/hpe/MLOps/v1alpha1/bundle/master/openapi.yaml
-  redfishiLO5RefDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1alpha1/bundle/master/api/openapi/ilo5-open.yaml
+  redfishiLO5RefDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1alpha1/bundle/master/api/openapi/ilo5-openapi.yaml
 
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
