@@ -105,7 +105,7 @@ hpe:
         - group: HPE PDUs
           menuStyle: drilldown
           expanded: false
-         pages: 
+          pages: 
            - label: 
              page: openapi/PDUsRefDoc.page.yaml/*
 
