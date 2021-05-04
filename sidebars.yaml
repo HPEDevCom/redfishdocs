@@ -102,8 +102,9 @@ hpe:
       - group: HPE Power Distributin Units (PDUs)
         expanded: false
         pages:
-        -group: HPE PDUs
-         expanded: false
+        - group: HPE PDUs
+          menuStyle: drilldown
+          expanded: false
          pages: 
            - label: 
              page: openapi/PDUsRefDoc.page.yaml/*
