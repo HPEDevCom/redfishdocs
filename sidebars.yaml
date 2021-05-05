@@ -1,8 +1,8 @@
 hpeRedfishMainSideBar:
 
   - label: Home
-    # The following href represents the root of the GitHub repo
-    # The content of this page is the index.mdx
+    # The following href represents the root of the GitHub Redfish Portal repo
+    # The content of this '/' page is the index.mdx
     href: '/'
 
     #- label: Introduction
@@ -55,14 +55,14 @@ hpeRedfishMainSideBar:
         pages:
         - label: Overview
           page: docs/iLOs/index.md
-          - group: iLO 5
+        - group: iLO 5
             menuStyle: drilldown
             expanded: false
             pages: 
-            - label: iLO 5
+            - label: HPE iLO 5
               page: openapi/redfishiLO5RefDoc.page.yaml/*
           
-          - group: iLO 4
+        - group: HPE iLO 4
             menuStyle: drilldown
             expanded: false
             pages: 
@@ -96,7 +96,7 @@ hpeRedfishMainSideBar:
             - label: 
               page: openapi/SuperdomeFlexRefDoc.page.yaml/*
       
-      - group: HPE Power Distributin Units (PDUs)
+      - group: HPE Power Distribution Units (PDUs)
         expanded: false
         pages:
         - label: Overview
