@@ -10,6 +10,7 @@ oasDefinitions:
   #redfishiLO5RefDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1alpha1/bundle/master/api/openapi/ilo5-openapi.yaml
   # The following URL comes from the redfishiLO5RefDoc API Registry --> Default branch --> Download in clipboard
   # See https://redoc.ly/docs/workflows/api-registry/snapshots/#finding-your-snapshot-links
+  # The key name (redfishiLO5RedfisDoc) corresponds to the definitionId key in "openapi/redfishiLO5RefDoc.page.yaml" file
   redfishiLO5RedfDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1Alpha1/bundle/main/openapi.yaml
 
 stylesheets:
