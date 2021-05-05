@@ -1,4 +1,4 @@
-hpeRedfishSideBars:
+hpeRedfishMainSideBar:
 
   - label: Home
     # The following href represents the root of the GitHub repo
@@ -50,16 +50,18 @@ hpeRedfishSideBars:
       - label: Overview
         page: docs/RefDocs/index.md
 
-      - group: iLO
+      - group: iLOs
         expanded: false
         pages:
+        - label: Overview
+          page: docs/iLOs/index.md
           - group: iLO 5
-            #permission: 'hpe.internal.read'
             menuStyle: drilldown
             expanded: false
             pages: 
             - label: iLO 5
               page: openapi/redfishiLO5RefDoc.page.yaml/*
+          
           - group: iLO 4
             menuStyle: drilldown
             expanded: false
@@ -69,9 +71,11 @@ hpeRedfishSideBars:
 
       - group: iLO Amplifier Pack
         expanded: false
-        pages: 
+        pages:
+        - label: Overview
+          page: docs/iLOAmplifierPack/index.md
+
         - group: REST API
-          #permission: 'hpe.internal.read'
           menuStyle: drilldown
           expanded: false
           pages: 
@@ -80,7 +84,10 @@ hpeRedfishSideBars:
 
       - group: HPE Superdome Flex
         expanded: false
-        pages: 
+        pages:
+        - label: Overview
+          page: docs/superdome/index.md
+
         - group: HPE Superdome Flex
           #permission: 'hpe.internal.read'
           menuStyle: drilldown
@@ -92,6 +99,8 @@ hpeRedfishSideBars:
       - group: HPE Power Distributin Units (PDUs)
         expanded: false
         pages:
+        - label: Overview
+          page: docs/PDUs/index.md
         - group: HPE PDUs
           menuStyle: drilldown
           expanded: false
