@@ -56,18 +56,18 @@ hpeRedfishMainSideBar:
         - label: Overview
           page: docs/iLOs/index.md
         - group: iLO 5
-            menuStyle: drilldown
-            expanded: false
-            pages: 
-            - label: HPE iLO 5
-              page: openapi/redfishiLO5RefDoc.page.yaml/*
+          menuStyle: drilldown
+          expanded: false
+          pages: 
+          - label: HPE iLO 5
+            page: openapi/redfishiLO5RefDoc.page.yaml/*
           
         - group: HPE iLO 4
-            menuStyle: drilldown
-            expanded: false
-            pages: 
-            - label: iLO 4
-              page: openapi/redfishiLO4RefDoc.page.yaml/*
+          menuStyle: drilldown
+          expanded: false
+          pages: 
+          - label: iLO 4
+            page: openapi/redfishiLO4RefDoc.page.yaml/*
 
       - group: iLO Amplifier Pack
         expanded: false
