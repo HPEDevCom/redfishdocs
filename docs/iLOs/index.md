@@ -1,5 +1,5 @@
 ---
-title: iLOs index page: Home | iLOs
+title: iLOs index page. Home | iLOs
 ---
 
 # HPE iLO 4 and iLO 5 Redfish services
