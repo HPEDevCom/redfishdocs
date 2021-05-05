@@ -1,5 +1,5 @@
 ---
-title: HPE Redfish API Reference documents Portal
+title: Home page for the HPE Redfish API Reference documents Portal
 ---
 
 import { LandingLayout } from '@redocly/ui';
@@ -31,7 +31,7 @@ export default LandingLayout;
 <Jumbotron>
   <NavBar location={props.location} standalone={false} />
   <H1>HPE Redfish API Reference Documents</H1>
-  <H2>Developer Guide</H2>
+  <H2>Developer Guides</H2>
   <Flex p={20} justifyContent="center">
     <Button inversed transparent large to="docs/index.md">
       Get started
@@ -43,17 +43,17 @@ export default LandingLayout;
     Manage your datacenter with <Emphasis>Redfish</Emphasis> today!
   </SectionHeader>
   <FlexSection justifyContent="space-around" flexWrap="wrap">
-    <ThinTile to="docs/iLO/index.md" icon={iloIcon} header="iLO">
-        TBD blah blah /TBD
+    <ThinTile to="docs/iLOs/index.md" icon={iloIcon} header="HPE Insight Lights Out (iLOs)">
+        HPE iLO 4 and iLO 5 Redfish API Reference Documents.
     </ThinTile>
     <ThinTile to="docs/iloAmpliferPack/index.md" icon={iloAmplifierPackIcon} header="iloAmplifierPack">
-        TBD Manage your iLO Amplifer Pack /TBD.
+        Use Redfish to manage the HPE iLO Amplifer Pack aggregator.
     </ThinTile>
-    <ThinTile to="docs/superdome/index.md" icon={superdomeIcon} header="HPE Superdome 280">
-        TBD HPE Superdome 280 /TBD.
+    <ThinTile to="docs/superdome/index.md" icon={superdomeIcon} header="HPE Superdome family">
+        HPE Superdome Flex and HPE Superdome 280.
     </ThinTile>
-    <ThinTile to="docs/pdu/index.md" icon={pduIcon} header="Power Distribution Units">
-        TBD Power Distribution Units (PDUs)/TBD.
+    <ThinTile to="docs/pdu/index.md" icon={pduIcon} header="HPE Power Distribution Units">
+        HPE Power Distribution Units (PDUs).
     </ThinTile>
   </FlexSection>
   <SectionHeader>

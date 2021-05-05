@@ -2,16 +2,18 @@ meta:
   title: HPE Redfish Developer Central 
   description:  HPE Redfish API implementations documentation.
   siteUrl: https://www.hpe.com
+
 headerIcon: ./images/hpe.svg
 enableToc: true
 oasDefinitions:
-  # add links to definitions in our API registry by using a fully qualified URL.
-  #mlops-latest: https://api.redoc.ly/registry/hpe/MLOps/v1alpha1/bundle/master/openapi.yaml
-  #redfishiLO5RefDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1alpha1/bundle/master/api/openapi/ilo5-openapi.yaml
-  # The following URL comes from the redfishiLO5RefDoc API Registry --> Default branch --> Download in clipboard
+  # add links to definitions in the Redocly API registry by using a fully qualified URL.
   # See https://redoc.ly/docs/workflows/api-registry/snapshots/#finding-your-snapshot-links
+  # The following URL comes from the redfishiLO5RefDoc API Registry --> Default branch --> Download in clipboard
   # The key name (redfishiLO5RedfisDoc) corresponds to the definitionId key in "openapi/redfishiLO5RefDoc.page.yaml" file
   redfishiLO5RedfDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1Alpha1/bundle/main/openapi.yaml
+  #redfishSuperdome280:  https://TBD
+  #redfishAmplifierPack: https://TBD
+  #
 
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
@@ -19,8 +21,8 @@ stylesheets:
 
 nav:
 
-  - label: HPE Redfish implementation
-    href: 'https://www.hpe.com/us/en/servers/restful-api.html'
+  - label: Redfish Standard
+    href: 'https://www.dmtf.org/standards/redfish'
     external: true
 
   - label: About

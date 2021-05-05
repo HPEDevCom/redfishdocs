@@ -1,36 +1,26 @@
-hpe:
+hpeRedfishSideBars:
 
   - label: Home
+    # The following href represents the root of the GitHub repo
+    # The content of this page is the index.mdx
     href: '/'
 
-  - label: Overview
-    page: docs/index.md
+    #- label: Introduction
+    #page: docs/index.md
 
   - group: HPE Redfish
     menuStyle: drilldown
     expanded: true
     pages:
-    - label: Overview
+    - label: Introduction
       page: docs/index.md
-    - group: Guides
-      expanded: false
-      pages:
-      - label: Overview
-        page: docs/guides/index.md
-      - label: Developer Guide (external)
-        # page: docs/guides/developer-guide.md
-        href: 'https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/'
-      - label: Part 2 (external)
-        href: 'https://developer.hpe.com/blog/getting-started-with-the-redfish-api-part-2/'
-        external: true
-
     - group: Concepts
       expanded: false
       pages:
       - label: Overview
         page: docs/concepts/index.md
 
-      - group: iLO based compute
+      - group: HPE iLO based compute
         expanded: false
         pages: 
         - label: Overview
@@ -112,6 +102,20 @@ hpe:
 
     - separatorLine: true
 
-    - label: HPEDev.io
+    - group: Developer Guides
+      expanded: false
+      pages:
+      - label: Overview
+        page: docs/guides/index.md
+      - label: Developer guide part 1 (external)
+        # page: docs/guides/developer-guide.md
+        href: 'https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/'
+      - label: Developer guide Part 2 (external)
+        href: 'https://developer.hpe.com/blog/getting-started-with-the-redfish-api-part-2/'
+        external: true
+
+    - separatorLine: true
+
+    - label: HPE developer 
       href: 'https://developer.hpe.com/'
       external: true

@@ -1,8 +1,8 @@
 ---
-title: Guides| HPE Redfish
+title: Guides and articles | HPE Redfish
 ---
 
-# Guides Overview
+# Guide Overview
 
 TBD
 
