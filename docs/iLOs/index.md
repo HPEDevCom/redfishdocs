@@ -2,7 +2,7 @@
 title: iLOs index page. docs | iLOs
 ---
 
-# Getting started
+# Introduction
 
 Redfish for HPE iLOs is available on the following HPE servers:
 

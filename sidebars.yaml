@@ -53,7 +53,7 @@ hpeRedfishMainSideBar:
       - group: HPE iLOs
         expanded: false
         pages:
-        - label: index
+        - label:
           page: docs/iLOs/index.md
         - label: Introduction
           page: docs/iLOs/_ilo5_introduction.md

@@ -1,9 +1,3 @@
-# Introduction
-
-The iLO RESTful API for HPE iLO 5 is a programming interface enabling state-of-the-art server management. This document contains helpful information about how to interact with the iLO RESTful API. The iLO RESTful API uses the basic HTTP operations (GET, PUT, POST, DELETE, and PATCH) to submit or return a JSON formatted resource to or from a URI on iLO 5.
-
-With modern scripting languages, you can easily write simple REST clients for RESTful APIs. Most languages, like Python, can transform JSON into internal-data structures, like dictionaries, allowing for easy access to data. This enables you to write custom code directly to the iLO RESTful API, instead of using intermediate tools such as HPE’s HPQLOCFG or CONREP.
-
 ## Redfish Conformance
 
 iLO 5's Redfish conformance details are available the "**[Managing Hewlett Packard Enterprise Servers Using the RESTful API](https://support.hpe.com/hpesc/public/docDisplay?docId=c04423967)**".
