@@ -1,5 +1,6 @@
 ---
 disableLastModified: true
+enableToc: false
 ---
 
 

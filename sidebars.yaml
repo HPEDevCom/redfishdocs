@@ -64,6 +64,8 @@ hpeRedfishMainSideBar:
         
         - label: Resource map
           page: docs/iLOs/_ilo5_resmap.md
+        - label: Resource definitions
+          page: docs/iLOs/_ilo5_resourcedefns.md
 
         - group: HPE iLO 5 Redfish reference document
           menuStyle: drilldown
