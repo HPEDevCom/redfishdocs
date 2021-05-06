@@ -1,5 +1,6 @@
 ---
 title: Reference documents | HPE Redfish
+disableLastModified: true
 ---
 
 # Redfish API Reference documents

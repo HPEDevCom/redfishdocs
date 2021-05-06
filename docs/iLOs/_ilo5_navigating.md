@@ -1,3 +1,7 @@
+---
+disableLastModified: true
+---
+
 # Navigating the Data Model
 
 The Redfish API is designed to be implemented on many different models of servers and other IT infrastructure devices for years to come.  These devices may be quite different from one another.  For this reason, the Redfish API does not specify the URIs to various resources. For example, a client cannot assume the BIOS version information is always at a particular URI.

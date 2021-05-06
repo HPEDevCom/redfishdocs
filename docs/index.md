@@ -1,5 +1,6 @@
 ---
 title: Main Overview pave. Home | Get Started
+disableLastModified: true
 ---
 
 # HPE Redfish documentation Portal

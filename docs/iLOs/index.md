@@ -1,5 +1,6 @@
 ---
 title: iLOs index page. docs | iLOs
+disableLastModified: true
 ---
 
 # Introduction

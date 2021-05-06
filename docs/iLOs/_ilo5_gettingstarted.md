@@ -1,6 +1,6 @@
 ---
-title: TBD
-enableToc: false
+enableToc: true
+disableLastModified: true
 ---
 
 

@@ -61,6 +61,9 @@ hpeRedfishMainSideBar:
           page: docs/iLOs/_ilo5_gettingstarted.md
         - label: Navigating the Data Model
           page: docs/iLOs/_ilo5_navigating.md
+        
+        - label: Resource map
+          page: docs/iLOs/_ilo5_resmap.md
 
         - group: HPE iLO 5 Redfish reference document
           menuStyle: drilldown
