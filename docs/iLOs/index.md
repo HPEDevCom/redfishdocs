@@ -2,8 +2,15 @@
 title: iLOs index page. Home | iLOs
 ---
 
-# HPE iLO 4 and iLO 5 Redfish services
+# Getting started
 
-TBD: This page should have a left side pane...
+The RESTful API for HPE iLO is available on the following HPE servers:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris in aliquam sem fringilla ut morbi tincidunt. Id nibh tortor id aliquet lectus. Mi tempus imperdiet nulla malesuada pellentesque elit eget gravida. Penatibus et magnis dis parturient. Sem nulla pharetra diam sit amet nisl. Viverra mauris in aliquam sem fringilla ut morbi tincidunt augue. Purus semper eget duis at tellus at urna condimentum. Tortor vitae purus faucibus ornare suspendisse sed. Dolor sit amet consectetur adipiscing elit duis tristique. Pellentesque adipiscing commodo elit at.
+  * ProLiant and Synergy Gen9 servers running iLO 4 2.00 or later
+  * ProLiant and Synergy Gen10 servers running iLO 5 1.10 or later with the iLO Standard license, 
+  * Moonshot running TBD
+  * Apollo ?
+
+> Note: Some features might not be available without an Advanced license on Gen9 and Gen10 servers.
+
+To access the RESTful API, you need an HTTPS-capable client, such as a web browser with the Postman REST Client plugin extension or cURL (a popular command line HTTP utility) or PowerShell.

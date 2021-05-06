@@ -53,46 +53,43 @@ hpeRedfishMainSideBar:
         page: openapi/redfishAuthentication.md
         #page: openapi/redfishAuthentication.page.yaml/*
 
-      - group: iLOs
+      - group: HPE iLOs
         expanded: false
         pages:
-        - label: Overview
+        - label: Getting started with Redfish on iLOs
           page: docs/iLOs/index.md
-        - group: iLO 5
+       
+        - group: HPE iLO 5 Redfish reference document
           menuStyle: drilldown
           expanded: false
           pages: 
-          - label: HPE iLO 5
+          - label:  
             page: openapi/redfishiLO5RefDoc.page.yaml/*
           
-        - group: HPE iLO 4
+        - group: HPE iLO 4 Redfish reference document
           menuStyle: drilldown
           expanded: false
           pages: 
-          - label: iLO 4
+          - label:
             page: openapi/redfishiLO4RefDoc.page.yaml/*
-
       - group: iLO Amplifier Pack
         expanded: false
         pages:
-        - label: Overview
+        - label: Getting started with Redfish on HPE iLO Amplifier Pack
           page: docs/iLOAmplifierPack/index.md
-
-        - group: REST API
+        - group: HPE iLO Amplifier Pack Redfish reference document
           menuStyle: drilldown
           expanded: false
           pages: 
             - label: 
               page: openapi/iLOAmpliferPackRefDoc.page.yaml/*
 
-      - group: HPE Superdome Flex
+      - group: HPE Superdome 280
         expanded: false
         pages:
-        - label: Overview
+        - label: Getting started with Redfish on HPE Superdome 280
           page: docs/superdome/index.md
-
-        - group: HPE Superdome Flex
-          #permission: 'hpe.internal.read'
+        - group: HPE Superdome 280 Redfish reference document
           menuStyle: drilldown
           expanded: false
           pages: 
@@ -102,9 +99,9 @@ hpeRedfishMainSideBar:
       - group: HPE Power Distribution Units (PDUs)
         expanded: false
         pages:
-        - label: Overview
+        - label: Getting started with Redfish on HPE PDUs
           page: docs/PDUs/index.md
-        - group: HPE PDUs
+        - group: HPE PDUs Redfish reference document
           menuStyle: drilldown
           expanded: false
           pages: 

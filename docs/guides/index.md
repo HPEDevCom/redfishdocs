@@ -1,15 +1,19 @@
 ---
-title: Guides and articles | HPE Redfish
+title: Articles, Blogs docs | guides
 ---
 
-# Guide Overview
+# Developer guides, blogs and videos
 
-TBD
+## Articles / blogs
 
-  * [Getting started with iLO restful API](https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/)
-  * [Part 2](https://developer.hpe.com/blog/getting-started-with-the-redfish-api-part-2/)
+* [Getting started with iLO restful API (Part 1)](https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/)
+* [Getting started with iLO restful API (Part 2)](https://developer.hpe.com/blog/getting-started-with-the-redfish-api-part-2/)
 
-  * Other reference ?
+* TBD
+
+## Videos
+
+* TBD
 
 
 
