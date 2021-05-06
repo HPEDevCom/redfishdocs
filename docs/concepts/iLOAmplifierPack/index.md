@@ -1,7 +1,7 @@
 ---
-title: iLO Amplifer Pack | Concepts | HPE Redfish
+title: iLO Amplifer Pack overview | docs | concepts | iLOAmplifierPack
 ---
 
 # Redfish implementation in HPE iLO Amplifer Pack
 
-Understand the basics of the HPE Redfish implementation in the iLO Amplifier Pack.
+This is a placeholder for presenting the Redfish implementation in the HPE iLO Amplifier Pack.

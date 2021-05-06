@@ -1,7 +1,7 @@
 ---
-title: Superdome Flex | Concepts | HPE Redfish
+title: Superdome Flex | docs | concepts | superdome
 ---
 
 # Redfish implementation in HPE Superdome Flex
 
-Understand the basics of the HPE Redfish implementation in the HPE Superdome Flex.
+This is a placeholder for the overview of the Redfish implementation in HPE Superdome computers.

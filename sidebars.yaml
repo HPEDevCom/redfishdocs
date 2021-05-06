@@ -23,25 +23,25 @@ hpeRedfishMainSideBar:
       - group: HPE iLO based compute
         expanded: false
         pages: 
-        - label: Overview
+        - label: Redfish in HPE iLO based compute nodes
           page: docs/concepts/iLOBasedCompute/index.md
 
       - group: iLO Amplifier Pack
         expanded: false
         pages: 
-        - label: Overview
+        - label: Redfish in HPE iLO Amplifier Pack
           page: docs/concepts/iLOAmplifierPack/index.md
 
       - group: HPE Superdome Flex
         expanded: false
         pages: 
-        - label: Overview
+        - label: Redfish in HPE Superdome
           page: docs/concepts/SuperdomeFlex/index.md
 
       - group: HPE Power Distribution Units (PDUs)
         expanded: false
         pages:
-        - label: Overview
+        - label: Redfish in HPE PDUs
           page: docs/concepts/PDUs/index.md
 
     - group: Redfish API Reference Documents
@@ -49,6 +49,9 @@ hpeRedfishMainSideBar:
       pages:
       - label: Overview
         page: docs/RefDocs/index.md
+      - label: Authentication
+        page: openapi/redfishAuthentication.md
+        #page: openapi/redfishAuthentication.page.yaml/*
 
       - group: iLOs
         expanded: false

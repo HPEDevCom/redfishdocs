@@ -1,7 +1,7 @@
 ---
-title: Power Distribution Units (PDUs) | Concepts | HPE Redfish
+title: Power Distribution Units (PDUs) | docs | concepts | PDUs
 ---
 
 # Redfish implementation in HPE PDUs
 
-Understand the basics of the HPE Redfish implementation in HPE PDUs.
+This is a placeholder for an overview of the Redfish implementation in HPE PDUs.
