@@ -53,18 +53,20 @@ hpeRedfishMainSideBar:
       - group: HPE iLOs
         expanded: false
         pages:
+        - label: index
+          page: docs/iLOs/index.md
         - label: Introduction
           page: docs/iLOs/_ilo5_introduction.md
-          #- label: Getting started
-          #page: docs/iLOs/_ilo5_gettingstarted.md
-       
+        - label: Getting started
+          page: docs/iLOs/_ilo5_gettingstarted.md
+
         - group: HPE iLO 5 Redfish reference document
           menuStyle: drilldown
           expanded: false
           pages: 
           - label:  
             page: openapi/redfishiLO5RefDoc.page.yaml/*
-          
+
         - group: HPE iLO 4 Redfish reference document
           menuStyle: drilldown
           expanded: false
@@ -94,7 +96,7 @@ hpeRedfishMainSideBar:
           pages: 
             - label: 
               page: openapi/SuperdomeFlexRefDoc.page.yaml/*
-      
+
       - group: HPE Power Distribution Units (PDUs)
         expanded: false
         pages:
@@ -106,7 +108,6 @@ hpeRedfishMainSideBar:
           pages: 
            - label: 
              page: openapi/PDUsRefDoc.page.yaml/*
-
 
     - separatorLine: true
 
