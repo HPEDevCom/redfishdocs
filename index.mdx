@@ -19,6 +19,7 @@ import {
 } from '@redocly/ui';
 
 import { NavBar } from '@redocly/ui';
+import Hyperlink from 'react-native-hyperlink';
 
 import iloIcon from './images/iloIcon.png';
 import iloAmplifierPackIcon from './images/iloAmplifierPackIcon.png';
@@ -57,8 +58,8 @@ export default LandingLayout;
     </ThinTile>
   </FlexSection>
   <SectionHeader>
-    <Emphasis>Need help? </Emphasis>
-    <a href="https://hackshack.hpedev.io/workshops" target="_blank> Try our Workshops-on-Demand.</a>
+    {/* ToDo: insert hyperlink toward Workshops-on-Demand.*/}
+    <Emphasis>Need help? </Emphasis>Try our Workshops-on-Demand.
   </SectionHeader>
 </Box>
 
