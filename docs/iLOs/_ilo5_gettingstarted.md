@@ -10,9 +10,9 @@ To access the RESTful API, you need an HTTPS-capable client, such as a web brows
 
 Although not a requirement, you can use the **RESTful Interface Tool** with the RESTful API. This command line tool provides a level of abstraction and convenience above direct access to the RESTful API. For details see: [http://www.hpe.com/info/restfulapi](http://www.hpe.com/info/restfulapi).
 
-
+<PullRight>
 > ***Python**: See ex1_functionname() in the Python example code. This means look for the specified function name in the python example code.*
-
+</PullRight>
 
 Also, Hewlett Packard Enterprise published example Python code that implements a number of common operations in a RESTful API client. This code can be downloaded at [https://github.com/HewlettPackard/python-ilorest-library](https://github.com/HewlettPackard/python-ilorest-library). In some cases the examples in this document may refer to examples in the Python code with this notation:
 
