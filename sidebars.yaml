@@ -59,7 +59,7 @@ hpeRedfishMainSideBar:
         - label: Introduction
           page: docs/iLOs/_ilo5_introduction.md
         -label: Getting started
-          page: docs/iLOs/_ilo5_gettingstarted.md
+         page: docs/iLOs/_ilo5_gettingstarted.md
        
         - group: HPE iLO 5 Redfish reference document
           menuStyle: drilldown
