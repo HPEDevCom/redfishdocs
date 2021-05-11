@@ -10,7 +10,8 @@ Test of wrapping inline code:
 
 |Foo|Bar|
 |:---|:---|
-|/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{item}|[Certificate](#certificate-v1_1_0-certificate)|
+|/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{item}|[Certificate](../ilo5_resourcedefns/#certificate-v1_1_0-certificate)|
+|/redfish/v1/Managers/{item}/SecurityService/CertificateAuthentication/CACertificates/{item}|[HpeCACertificate](../ilo5_resourcedefns/#hpecertificate-v0_9_0-hpecertificate)|
 
 Lorem Ipsum dolor!
 
