@@ -32,7 +32,7 @@ The destination of this link is a collection of user accounts (see ManagerAccoun
 |```Accounts```|Collection of [ManagerAccount](#manageraccountv113manageraccount)|
 
 ### AccountLockoutCounterResetAfter
-Member of [AccountService.v1_3_0.AccountService](#accountservicev130accountservice)
+Member of [AccountService.v1\_3\_0.AccountService](#accountservicev130accountservice)
 
 | | |
 |---|---|
