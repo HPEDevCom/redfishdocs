@@ -2,6 +2,7 @@ type: reference-docs
 # The following key is defined in the oasDefinitions section in the siteConfig.yaml
 definitionId: redfishiLO5RedfDoc
 settings:
+  hideInfoSection: true
   generateCodeSamples:
     languages:
       - lang: curl

@@ -1,6 +1,6 @@
 meta:
-  title: HPE Redfish Developer Central 
-  description:  HPE Redfish API implementations documentation.
+  title: HPE Redfish Developer Portal 
+  description:  HPE Redfish API implementation documentations.
   siteUrl: https://www.hpe.com
 
 headerIcon: ./images/hpe.svg
