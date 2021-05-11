@@ -19,6 +19,7 @@ export const theme = {
       // light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
       // dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
       // contrastText: ({ colors }) => readableColor(colors.primary.main),
+      legacy: '#0066ff',
     },
     // success: {
     //   main: '#00aa13',
@@ -153,7 +154,8 @@ export const theme = {
       wrap: false,
     },
     links: {
-      color: ({ colors }) => colors.primary.main,
+      //color: ({ colors }) => colors.primary.main,
+      color: ({ colors }) => colors.primary.legacy,
       visited: ({ typography }) => typography.links.color,
       hover: ({ typography }) => lighten(0.2, typography.links.color),
     },
