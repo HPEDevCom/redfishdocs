@@ -1,6 +1,6 @@
 type: reference-docs
-# The following key is defined in the oasDefinitions section in the siteConfig.yaml
-definitionId: redfishiLO5RedfDoc
+# The following key (definitionId) is defined in the oasDefinitions section in the siteConfig.yaml
+definitionId: redfishiLO5RefDoc
 settings:
   hideInfoSection: true
   generateCodeSamples:
