@@ -145,7 +145,6 @@ Member of [AccountService.v1_3_0.AccountService](#accountservicev130accountservi
 Member of [AccountService.v1_3_0.AccountService](#accountservicev130accountservice)
 ```ServiceAddresses``` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -30301,9 +30300,9 @@ Member of [Role.v1_2_1.Role](#rolev121role)
 |Read Only|True|
 
 ### OemPrivileges (array)
+
 Member of [Role.v1_2_1.Role](#rolev121role)
 ```OemPrivileges``` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -30429,7 +30428,6 @@ The following are the supported values:
 Member of [SecureBoot.v1_0_0.SecureBoot](#securebootv100secureboot)
 Action to perform reset of the Secure Boot Keys.
 
-
 **Parameters:**
 
 **ResetKeysType (string)**
@@ -30441,11 +30439,15 @@ This parameter specifies what type of reset action to perform.
 |ResetAllKeysToDefault|Reset to default Secure Boot keys on next boot.|
 |DeletePK|Delete Secure Boot platform keys on next boot.|
 |DeleteAllKeys|Delete all Secure Boot keys on next boot.|
+
 ## ServiceRoot.v1_5_1.ServiceRoot
-```@odata.type: "#ServiceRoot.v1_5_1.ServiceRoot"```
+
+`@odata.type: "#ServiceRoot.v1_5_1.ServiceRoot"`
 
 The ServiceRoot resource describes the Redfish API service root.
+
 ### Resource Instances
+
 |Uri|HTTP Allow|
 |---|---|
 |```/redfish/v1/```|GET |

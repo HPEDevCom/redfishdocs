@@ -3,12 +3,11 @@ disableLastModified: true
 enableToc: false
 ---
 
-
 # Resource Map
 
 |URI|Type|
 |:---|:---|
-|`/redfish/v1/`|[ServiceRoot](../resourcedefns/#servicerootv151serviceroot)|
+|`/redfish/v1/`|[ServiceRoot](../ilo5_resourcedefns/#servicerootv151serviceroot)|
 |`/redfish/v1/AccountService`|[AccountService](../ilo5_resourcedefns/#accountservicev130accountservice)|
 |`/redfish/v1/AccountService/Accounts`|Collection of [ManagerAccount](../resourcedefns/#manageraccountv113manageraccount)|
 |`/redfish/v1/AccountService/Accounts/{item}`|[ManagerAccount](../resourcedefns/#manageraccountv113manageraccount)|
