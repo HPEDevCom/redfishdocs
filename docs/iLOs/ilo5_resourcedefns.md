@@ -3,7 +3,8 @@ disableLastModified: true
 ---
 
 ## AccountService.v1_3_0.AccountService
-```@odata.type: "#AccountService.v1_3_0.AccountService"```
+
+`@odata.type: "#AccountService.v1_3_0.AccountService"`
 
 The AccountService resource describes the BMC user account management service. It represents the properties for this service and has links to the list of accounts.
 
