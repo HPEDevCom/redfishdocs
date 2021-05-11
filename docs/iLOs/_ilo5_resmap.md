@@ -8,17 +8,11 @@ enableToc: false
 
 Test of wrapping inline code:
 
-|URI|Type|
+|Foo|Bar|
 |:---|:---|
-|/redfish/v1/|[ServiceRoot](#serviceroot-v1_5_1-serviceroot)|
-|/redfish/v1/AccountService|[AccountService](#accountservice-v1_3_0-accountservice)|
-|/redfish/v1/AccountService/Accounts|Collection of [ManagerAccount](#manageraccount-v1_1_3-manageraccount)|
-|/redfish/v1/AccountService/Accounts/{item}|[ManagerAccount](#manageraccount-v1_1_3-manageraccount)|
-|/redfish/v1/AccountService/DirectoryTest|[HpeDirectoryTest](#hpedirectorytest-v1_0_0-hpedirectorytest)|
-|/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates|Collection of [Certificate](#certificate-v1_1_0-certificate)|
 |/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{item}|[Certificate](#certificate-v1_1_0-certificate)|
 
-
+Lorem Ipsum dolor!
 
 |URI|Type|
 |:---|:---|
