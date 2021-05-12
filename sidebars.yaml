@@ -102,12 +102,12 @@ hpeRedfishMainSideBar:
         pages:
         - label: Getting started with Redfish on HPE iLO Amplifier Pack
           page: docs/iLOAmplifierPack/index.md
-        - group: HPE iLO Amplifier Pack Redfish reference document
-          menuStyle: drilldown
-          expanded: false
-          pages: 
-          - label: TBD
-            page: openapi/iLOAmpliferPackRefDoc.page.yaml
+        #- group: HPE iLO Amplifier Pack Redfish reference document
+          #menuStyle: drilldown
+          #expanded: false
+          #pages: 
+          #- label: TBD
+            #page: openapi/iLOAmpliferPackRefDoc.page.yaml
 
       - group: HPE Superdome 280
         menuStyle: drilldown
@@ -115,12 +115,12 @@ hpeRedfishMainSideBar:
         pages:
         - label: Getting started with Redfish on HPE Superdome 280
           page: docs/superdome/index.md
-        - group: HPE Superdome 280 Redfish reference document
-          menuStyle: drilldown
-          expanded: false
-          pages: 
-          - label: TBD
-            page: openapi/SuperdomeFlexRefDoc.page.yaml/*
+        #- group: HPE Superdome 280 Redfish reference document
+          #menuStyle: drilldown
+          #expanded: false
+          #pages: 
+          #- label: TBD
+            #page: openapi/SuperdomeFlexRefDoc.page.yaml
 
       - group: HPE Power Distribution Units (PDUs)
         menuStyle: drilldown
@@ -128,12 +128,12 @@ hpeRedfishMainSideBar:
         pages:
         - label: Getting started with Redfish on HPE PDUs
           page: docs/PDUs/index.md
-        - group: HPE PDUs Redfish reference document
-          menuStyle: drilldown
-          expanded: false
-          pages: 
-          - label: 
-            page: openapi/PDUsRefDoc.page.yaml/*
+        #- group: HPE PDUs Redfish reference document
+          #menuStyle: drilldown
+          #expanded: false
+          #pages: 
+          #- label: 
+            #page: openapi/PDUsRefDoc.page.yaml/*
 
     - separatorLine: true
 
