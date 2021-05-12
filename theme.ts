@@ -149,8 +149,11 @@ export const theme = {
       fontSize: '14px',
       fontFamily: 'Courier, monospace',
       fontWeight: ({ typography }) => typography.fontWeightRegular,
-      color: '#e53935',
-      backgroundColor: 'rgba(38, 50, 56, 0.04)',
+      //color: '#e53935',
+      color: '#e00000',
+      //backgroundColor: 'rgba(38, 50, 56, 0.04)',
+      // Slate: rgba(222, 230, 234) ou #6C6C6C
+      backgroundColor: '#6C6C6C',
       wrap: false,
     },
     links: {
