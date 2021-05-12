@@ -63,9 +63,9 @@ hpeRedfishMainSideBar:
         - label: Introduction
           page: docs/iLOs/index.md
         - label: Getting started
-          page: docs/iLOs/ilo5_gettingstarted.md
+          page: docs/iLOs/iLO5/ilo5_gettingstarted.md
         - label: Navigating the Data Model
-          page: docs/iLOs/ilo5_navigating.md
+          page: docs/iLOs/iLO5/ilo5_navigating.md
        
         - group: iLO 5
           menuStyle: drilldown
@@ -75,7 +75,7 @@ hpeRedfishMainSideBar:
             page: docs/iLOs/iLO5/ilo5_introduction.md
         
           - label: Resource map
-            page: docs/iLOs/ilo5_resmap.md
+            page: docs/iLOs/iLO5/ilo5_resmap.md
           - label: Resource definitions
             page: docs/iLOs/iLO5/ilo5_resourcedefns.md
 
