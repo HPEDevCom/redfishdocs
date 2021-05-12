@@ -70,6 +70,7 @@ hpeRedfishMainSideBar:
         - group: iLO 5
           menuStyle: drilldown
           expanded: false
+          pages:
           - label: Introduction
             page: docs/iLOs/iLO5/ilo5_introduction.md
         
@@ -109,6 +110,7 @@ hpeRedfishMainSideBar:
             page: openapi/iLOAmpliferPackRefDoc.page.yaml
 
       - group: HPE Superdome 280
+        menuStyle: drilldown
         expanded: false
         pages:
         - label: Getting started with Redfish on HPE Superdome 280
@@ -136,6 +138,7 @@ hpeRedfishMainSideBar:
     - separatorLine: true
 
     - group: Developer Guides
+      menuStyle: drilldown
       expanded: false
       pages:
       - label: Overview
