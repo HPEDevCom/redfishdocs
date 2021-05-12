@@ -47,7 +47,7 @@ hpeRedfishMainSideBar:
           page: docs/concepts/PDUs/index.md
 
     - group: Redfish API Reference Documents
-      menuStyle: drilldown
+      #menuStyle: drilldown
       expanded: false
       pages:
       - label: Overview
@@ -68,7 +68,7 @@ hpeRedfishMainSideBar:
           page: docs/iLOs/iLO5/ilo5_navigating.md
        
         - group: iLO 5
-          menuStyle: drilldown
+          #menuStyle: drilldown
           expanded: false
           pages:
           - label: Introduction
@@ -80,14 +80,14 @@ hpeRedfishMainSideBar:
             page: docs/iLOs/iLO5/ilo5_resourcedefns.md
 
           - group: HPE iLO 5 Redfish reference document
-            menuStyle: drilldown
+            #menuStyle: drilldown
             expanded: false
             pages: 
             - label:  
               page: openapi/redfishiLO5RefDoc.page.yaml
 
         - group: iLO 4
-          menuStyle: drilldown
+          #menuStyle: drilldown
           expanded: false
           pages: 
           - label: Introduction
@@ -138,7 +138,7 @@ hpeRedfishMainSideBar:
     - separatorLine: true
 
     - group: Developer Guides
-      menuStyle: drilldown
+      #menuStyle: drilldown
       expanded: false
       pages:
       - label: Overview
