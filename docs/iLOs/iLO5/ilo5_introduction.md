@@ -1,4 +1,5 @@
 ---
+title: iLO 5 introduction
 disableLastModified: true
 ---
 
@@ -7,6 +8,7 @@ disableLastModified: true
 iLO 5's Redfish conformance details are available the "**[Managing Hewlett Packard Enterprise Servers Using the RESTful API](https://support.hpe.com/hpesc/public/docDisplay?docId=c04423967)**".
 
 ## iLO 5 2.30 New Features and Changes
+
 * `AccountService.json` (`/redfish/v1/AccountService`)
 	* `LDAP.Certificates`: Added a link to a collection of certificates used for the external account service.
 * `Chassis.json` (`/redfish/v1/Chassis/{@ChassisId}/`)

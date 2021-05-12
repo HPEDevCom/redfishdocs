@@ -150,10 +150,10 @@ export const theme = {
       fontFamily: 'Courier, monospace',
       fontWeight: ({ typography }) => typography.fontWeightRegular,
       //color: '#e53935',
-      color: '#e00000',
+      color:   '#000000',
       //backgroundColor: 'rgba(38, 50, 56, 0.04)',
       // Slate: rgba(222, 230, 234) ou #6C6C6C
-      backgroundColor: '#6C6C6C',
+      backgroundColor: '#cccccc',
       wrap: false,
     },
     links: {

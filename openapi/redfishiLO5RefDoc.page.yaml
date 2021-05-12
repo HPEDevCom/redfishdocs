@@ -1,3 +1,7 @@
+---
+title: HPE iLO 5 Redfish Reference Document
+---
+
 type: reference-docs
 # The following key (definitionId) is defined in the oasDefinitions section in the siteConfig.yaml
 definitionId: redfishiLO5RefDoc

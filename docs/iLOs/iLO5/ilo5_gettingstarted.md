@@ -16,9 +16,9 @@ To access the RESTful API, you need an HTTPS-capable client, such as a web brows
 
 Although not a requirement, you can use the **RESTful Interface Tool** with the RESTful API. This command line tool provides a level of abstraction and convenience above direct access to the RESTful API. For details see: [http://www.hpe.com/info/restfulapi](http://www.hpe.com/info/restfulapi).
 
-
-> ***Python**: See ex1_functionname() in the Python example code. This means look for the specified function name in the python example code.*
-
+:::success
+**Python**: See `ex1_functionname()` in the Python example code. This means that you should look for the specified function name in the python example code.
+:::
 
 Also, Hewlett Packard Enterprise published example Python code that implements a number of common operations in a RESTful API client. This code can be downloaded at [https://github.com/HewlettPackard/python-ilorest-library](https://github.com/HewlettPackard/python-ilorest-library). In some cases the examples in this document may refer to examples in the Python code with this notation:
 
@@ -39,7 +39,7 @@ If you prefer not to implement a client in Python, this serves as a good pseudoc
 	<p>The above command returns JSON like this:</p>
 </blockquote>
 
-```shell
+```json
 
 {
     "@odata.context": "/redfish/v1/$metadata#ServiceRoot",
@@ -168,7 +168,6 @@ It is best to perform this initial GET with a tool like the CURL or the Postman 
 CURL is a command line utility available for many Operating Systems that enables easy access to the RESTful API. CURL is available at [http://curl.haxx.se/](http://curl.haxx.se/). Note that all the CURL examples will use a flag –insecure. This causes CURL to bypass validation of the HTTPS certificate. In real use iLO should be configured to use a user-supplied certificate and this option is not necessary. Notice also that we use the –L option to force CURL to follow HTTP redirect responses. If iLO changes URI locations for various items, it can indicate to the client where the new location is and automatically follow the new link.
 
 In JSON, there is no strong ordering of property names, so iLO may return JSON properties in any order. Likewise, iLO cannot assume the order of properties in any submitted JSON. This is why the best scripting data structure for a RESTful client is a dictionary: a simple set of unordered key/value pairs. This lack of ordering is also the reason you see embedded structure within objects (objects within objects). This allows us to keep related data together that is more logically organized, aesthetically pleasing to view, and helps avoid property name conflicts or ridiculously long property names. It also allows us to use identical blocks of JSON in many places in the data model, like status.
-
 
 ## HTTP Resource Operations
 

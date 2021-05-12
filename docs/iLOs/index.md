@@ -12,6 +12,7 @@ Redfish for HPE iLOs is available on the following HPE servers:
 * Moonshot running TBD
 * Apollo ?
 
-> Note: Some features might not be available without an Advanced license on Gen9 and Gen10 servers.
-
+:::attention Note
+Some features might not be available without an Advanced license on Gen9 and Gen10 servers.
+:::
 To access the Redfish service on iLOs, you need an HTTPS-capable client, such as a web browser with a REST Client plugin extension or cURL (a popular command line HTTP utility).
