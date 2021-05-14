@@ -68,7 +68,7 @@ hpeRedfishMainSideBar:
           page: docs/iLOs/iLO5/ilo5_navigating.md
        
         - group: iLO 5
-          #menuStyle: drilldown
+          menuStyle: drilldown
           expanded: false
           pages:
           - label: Introduction
@@ -79,10 +79,10 @@ hpeRedfishMainSideBar:
           - label: Resource definitions
             page: docs/iLOs/iLO5/ilo5_resourcedefns.md
             
-          - page: openapi/redfishiLO5RefDoc.page.yaml
+          - label: iLO 5 API Reference Document
             menuStyle: drilldown
             expanded: false
-            label: iLO 5 API Reference Document
+            page: openapi/redfishiLO5RefDoc.page.yaml
 
         - group: iLO 4
           #menuStyle: drilldown
