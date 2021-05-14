@@ -80,8 +80,9 @@ hpeRedfishMainSideBar:
             page: docs/iLOs/iLO5/ilo5_resourcedefns.md
             
           - page: openapi/redfishiLO5RefDoc.page.yaml
-            label: iLO 5 API Reference Document
             menuStyle: drilldown
+            expanded: false
+            label: iLO 5 API Reference Document
 
         - group: iLO 4
           #menuStyle: drilldown
