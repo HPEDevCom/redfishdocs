@@ -79,10 +79,12 @@ hpeRedfishMainSideBar:
           - label: Resource definitions
             page: docs/iLOs/iLO5/ilo5_resourcedefns.md
             
-          - label: iLO 5 API Reference Document
+          # The following label/title comes from the Ref Document in the
+          # API registry (api/openapi/ilo5-openapi.yaml).
+          - page: openapi/redfishiLO5RefDoc.page.yaml
             menuStyle: drilldown
-            expanded: false
-            page: openapi/redfishiLO5RefDoc.page.yaml
+            expanded: true
+            
 
         - group: iLO 4
           #menuStyle: drilldown
