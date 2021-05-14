@@ -78,8 +78,10 @@ hpeRedfishMainSideBar:
             page: docs/iLOs/iLO5/ilo5_resmap.md
           - label: Resource definitions
             page: docs/iLOs/iLO5/ilo5_resourcedefns.md
-          - label: HPE iLO 5 Redfish API Reference Document
-            page: openapi/redfishiLO5RefDoc.page.yaml
+            
+          - page: openapi/redfishiLO5RefDoc.page.yaml
+            label: HPE iLO 5 Redfish API Reference Document
+            menuStyle: drilldown
 
         - group: iLO 4
           #menuStyle: drilldown
