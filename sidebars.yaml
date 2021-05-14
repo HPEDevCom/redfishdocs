@@ -68,7 +68,7 @@ hpeRedfishMainSideBar:
           page: docs/iLOs/iLO5/ilo5_navigating.md
        
         - group: iLO 5
-          menuStyle: drilldown
+          #menuStyle: drilldown
           expanded: false
           pages:
           - label: Introduction
@@ -79,13 +79,11 @@ hpeRedfishMainSideBar:
           - label: Resource definitions
             page: docs/iLOs/iLO5/ilo5_resourcedefns.md
             
-          # The following label/title comes from the Ref Document in the
-          # API registry (api/openapi/ilo5-openapi.yaml).
-          - page: openapi/redfishiLO5RefDoc.page.yaml
-            menuStyle: drilldown
-            expanded: true
+          # The following pages gets its label/title from the corresponding Ref Document in the
+          # API registry (api/openapi/ilo5-openapi.yaml), in the info: > title: key.
+        - page: openapi/redfishiLO5RefDoc.page.yaml
+          menuStyle: drilldown
             
-
         - group: iLO 4
           #menuStyle: drilldown
           expanded: false
