@@ -7,10 +7,10 @@ enableToc: false
 
 |URI|Type|
 |:---|:---|
-|`/redfish/v1/`|[ServiceRoot](../ilo5_resourcedefns/#servicerootv151serviceroot)|
+|`/redfish/v1/`|[ServiceRoot](../ilo5_resourcedefns/#servicerootv1_5_1serviceroot)|
 |`/redfish/v1/AccountService`|[AccountService](../ilo5_resourcedefns/#accountservicev130accountservice)|
 |`/redfish/v1/AccountService/Accounts`|Collection of [ManagerAccount](../ilo5_resourcedefns/#manageraccountv113manageraccount)|
-|`/redfish/v1/AccountService/Accounts/{item}`|[ManagerAccount](../ilo5_resourcedefns/#manageraccountv113manageraccount)|
+|`/redfish/v1/AccountService/Accounts/{item}`|[ManagerAccount](../ilo5_resourcedefns/#manageraccountv1_1_3manageraccount)|
 |`/redfish/v1/AccountService/DirectoryTest`|[HpeDirectoryTest](../ilo5_resourcedefns/#hpedirectorytestv100hpedirectorytest)|
 |`/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates`|Collection of [Certificate](../ilo5_resourcedefns/#certificatev110certificate)|
 |`/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{item}`|[Certificate](../ilo5_resourcedefns/#certificatev110certificate)|
