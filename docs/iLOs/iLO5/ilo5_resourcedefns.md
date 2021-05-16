@@ -10840,7 +10840,7 @@ A Collection of EventDestination resource instances.
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[EventDestination](#eventdestinationv100eventdestination)|
+|```Members[]```|[EventDestination](#eventdestinationv1\_0\_0eventdestination)|
 
 ### Members (array)
 Member of EventDestinationCollection.EventDestinationCollection
@@ -10876,7 +10876,7 @@ The EventService resource describes the Event Service.  It represents the proper
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Subscriptions```|Collection of [EventDestination](#eventdestinationv100eventdestination)|
+|```Subscriptions```|Collection of [EventDestination](#eventdestinationv1\_0\_0eventdestination)|
 |```Oem/Hpe/CACertificates```|Collection of [HpeCertificate](#hpecertificatev090hpecertificate)|
 
 ### DeliveryRetryAttempts
@@ -22406,7 +22406,7 @@ A Collection of JsonSchemaFile resource instances.
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|```Members[]```|[JsonSchemaFile](#jsonschemafilev104jsonschemafile)|
+|```Members[]```|[JsonSchemaFile](#jsonschemafilev1\_0\_4jsonschemafile)|
 
 ### Members (array)
 Member of JsonSchemaFileCollection.JsonSchemaFileCollection
@@ -22440,7 +22440,7 @@ This resource defines the record format for a log.  It is designed to be used fo
 |```/redfish/v1/systems/{item}/logservices/iml/entries/{item}```|GET PATCH |
 
 ### Created
-Member of [LogEntry.v1_1_0.LogEntry](#logentryv110logentry)
+Member of [LogEntry.v1\_1\_0.LogEntry](#logentryv1\_1\_0logentry)
 
 | | |
 |---|---|
