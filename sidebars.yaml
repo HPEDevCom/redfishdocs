@@ -89,7 +89,7 @@ hpeRedfishMainSideBar:
           expanded: false
           pages: 
           - label: Introduction
-            page: docs/iLOs/iLO5/ilo5_introduction.md
+            page: docs/iLOs/iLO4/ilo4_introduction.md
 
           - label: HPE iLO 4 Redfish reference document
             page: openapi/redfishiLO4RefDoc.page.yaml/*
