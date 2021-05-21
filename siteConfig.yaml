@@ -5,9 +5,11 @@ meta:
 
 headerIcon: ./images/hpe.svg
 enableToc: true
+tocMaxDepth: 1
 oasDefinitions:
   # add links to definitions in the Redocly API registry by using a fully qualified URL.
   # See https://redoc.ly/docs/workflows/api-registry/snapshots/#finding-your-snapshot-links
+  # 
   # The following URL comes from the redfishiLO5RefDoc API Registry --> Default branch --> Download in clipboard
   # The key name (redfishiLO5RefDoc) corresponds to the definitionId key in "openapi/redfishiLO5RefDoc.page.yaml" file
   redfishiLO5RefDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1Alpha1/bundle/main/openapi.yaml 
