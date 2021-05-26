@@ -3,7 +3,8 @@ meta:
   description:  HPE Redfish API implementation documentations.
   siteUrl: https://www.hpe.com
 
-headerIcon: ./images/hpe.svg
+#headerIcon: ./images/hpe.svg
+logo: ./images/hpe.svg
 enableToc: true
 tocMaxDepth: 2
 oasDefinitions:
