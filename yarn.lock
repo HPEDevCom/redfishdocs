@@ -1449,10 +1449,10 @@
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@^1.0.0-beta.144":
-  version "1.0.0-beta.144"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.144.tgz#cc9c7c1dc21f21fae151d2d6de375e3569d67cdc"
-  integrity sha512-uRizN2BcRABDSxk9ccDgchVIme1vc1Awwo06jTFxg8M1hsynfgA6MbE/L1TKbzXVx7wLCP4uZ2RRbqt04Cm/og==
+"@redocly/developer-portal@^1.0.0-beta.146":
+  version "1.0.0-beta.146"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.146.tgz#d3637b14eab865b5b8724b82be70bfda5ead77c2"
+  integrity sha512-H/s2Rudw+vkAWZIpUXKTO3NwTCoocRU+0WjK73+SvIFLO8GDtz9rfSQoUUh/OTU6B8hFCr00lcKO9AfsaDSMTQ==
   dependencies:
     "@mdx-js/mdx" "0.19.0"
     "@mdx-js/tag" "0.20.3"
