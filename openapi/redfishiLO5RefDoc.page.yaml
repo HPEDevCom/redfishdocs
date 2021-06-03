@@ -4,6 +4,9 @@ type: reference-docs
 definitionId: redfishiLO5RefDoc
 settings:
   hideInfoSection: true
+  pagination: section
+  showConsole: true
+  showRightPanelToggle: true
   generateCodeSamples:
     languages:
       - lang: curl

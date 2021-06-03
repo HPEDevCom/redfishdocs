@@ -6,6 +6,7 @@ settings:
   hideInfoSection: false
   pagination: section
   showConsole: true
+  showRightPanelToggle: true
   generateCodeSamples:
     languages:
       - lang: curl
