@@ -56,14 +56,14 @@ hpeRedfishMainSideBar:
         page: openapi/redfishAuthentication.md
         #page: openapi/redfishAuthentication.page.yaml/*
       
-        - group: DMTF
+      - group: DMTF
+        menuStyle: drilldown
+        expanded: false
+        pages:
+        - label: Introduction
+          page: docs/DMTF/index.md
+        - page: openapi/redfishDmtfDoc.page.yaml
           menuStyle: drilldown
-          expanded: false
-          pages:
-          - label: Introduction
-            page: docs/DMTF/index.md
-          - page: openapi/redfishDmtfDoc.page.yaml
-            menuStyle: drilldown
 
       - group: HPE iLOs
         menuStyle: drilldown
