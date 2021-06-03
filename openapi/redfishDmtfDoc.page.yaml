@@ -4,6 +4,8 @@ type: reference-docs
 definitionId: redfishDmtfRefDoc
 settings:
   hideInfoSection: false
+  pagination: section
+  showConsole: true
   generateCodeSamples:
     languages:
       - lang: curl
