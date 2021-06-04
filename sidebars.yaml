@@ -5,6 +5,21 @@ hpeRedfishMainSideBar:
     # The content of this '/' page is the index.mdx
     href: '/'
 
+  - group: DMTF Redfish
+    menuStyle: drilldown
+    expanded: true
+    pages:
+    - label: Introduction
+      page: docs/DMTF/index.md
+    
+    - group: DMTF Redfish Reference Document
+      menuStyle: drilldown
+      expanded: false
+      pages:
+      - page: openapi/redfishDmtfDoc.page.yaml
+        menuStyle: drilldown
+       
+  
   - group: HPE Redfish
     menuStyle: drilldown
     expanded: true
@@ -56,15 +71,6 @@ hpeRedfishMainSideBar:
         page: openapi/redfishAuthentication.md
         #page: openapi/redfishAuthentication.page.yaml/*
       
-      - group: DMTF
-        menuStyle: drilldown
-        expanded: false
-        pages:
-        - label: Introduction
-          page: docs/DMTF/index.md
-        - page: openapi/redfishDmtfDoc.page.yaml
-          menuStyle: drilldown
-
       - group: HPE iLOs
         menuStyle: drilldown
         expanded: false
