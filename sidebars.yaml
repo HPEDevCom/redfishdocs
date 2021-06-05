@@ -12,14 +12,11 @@ hpeRedfishMainSideBar:
     - label: Introduction
       page: docs/DMTF/index.md
     
-    - group: DMTF Redfish Reference Document
-      menuStyle: drilldown
-      expanded: false
-      pages:
-      - page: openapi/redfishDmtfDoc.page.yaml
-        menuStyle: drilldown
+    #- group: DMTF Redfish Reference Document
+     # menuStyle: drilldown
+      #expanded: false
+      #pages:
        
-  
   - group: HPE Redfish
     menuStyle: drilldown
     expanded: true
@@ -61,7 +58,7 @@ hpeRedfishMainSideBar:
         - label: Redfish in HPE PDUs
           page: docs/concepts/PDUs/index.md
 
-    - group: Redfish API Reference Documents
+    - group: HPE Redfish API Reference Documents
       #menuStyle: drilldown
       expanded: false
       pages:
@@ -97,6 +94,8 @@ hpeRedfishMainSideBar:
           # The following pages gets its label/title from the corresponding Ref Document in the
           # API registry (api/openapi/ilo5-openapi.yaml), in the info: > title: key.
           - page: openapi/redfishiLO5RefDoc.page.yaml
+            menuStyle: drilldown
+          - page: openapi/redfishDmtfDoc.page.yaml
             menuStyle: drilldown
             
         - group: iLO 4
