@@ -4,14 +4,20 @@ dmtfRedfishMainSideBar:
     # The content of this '/' page is the index.mdx.
     #href: '/'
 
+  - label: Home
+    # The following href represents the root of the GitHub Redfish Portal repo
+    # The content of this '/' page is the index.mdx.
+    href: '/'
+       
+
   - group: DMTF Redfish
     #menuStyle: drilldown
     #expanded: true
     pages:
     - label: Introduction
       page: docs/DMTF/index.md
-    - label: toto est content
-      page: openapi/redfishDmtfRefDoc.page.yaml
+
+    - page: openapi/redfishDmtfRefDoc.page.yaml
 
 
 hpeRedfishMainSideBar:
