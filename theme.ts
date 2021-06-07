@@ -95,7 +95,8 @@ export const theme = {
 
   sidebar: {
     backgroundColor: '#fafafa',
-    width: '260px',
+    #width: '260px',
+    width: '360px',
   },
   // tocPanel: {
   //   width: '240px',
