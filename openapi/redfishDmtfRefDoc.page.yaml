@@ -7,6 +7,7 @@ settings:
   pagination: section
   showConsole: true
   showRightPanelToggle: true
+  pathInMiddlePanel: true
   generateCodeSamples:
     languages:
       - lang: curl
