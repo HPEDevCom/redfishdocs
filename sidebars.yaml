@@ -81,11 +81,14 @@ hpeRedfishMainSideBar:
         page: docs/iLOrestUserGuide/changelog.md
       - label: Installation
         page: docs/iLOrestUserGuide/installation.md
-      - label: Using the RESTful Interface Tool
+      - label: Using the RESTful Interface Tool (original)
         page: docs/iLOrestUserGuide/usage.md
+      - label: Using the RESTful Interface Tool (modified)
+        page: docs/iLOrestUserGuide/usage-modified.md
       - label: Commands
         page: docs/iLOrestUserGuide/globalcommands.md
-        #page: docs/iLOrestUserGuide/bioscommands.md
+      
+        
     
 
 
