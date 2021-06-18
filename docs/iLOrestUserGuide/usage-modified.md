@@ -60,7 +60,7 @@ The following script retrieves information regarding the Bios type:
 </summary>
 <p>
 
-```bat
+```cmd
 :: This is a batch file that logs into a remote server,
 :: selects the Bios type, and gets the BootMode value
 
@@ -103,9 +103,13 @@ In this example, first the `Bios` type is selected, and then the `get` command i
 
 ### File-based mode
 
+<details>
+<summary>
 The following script allows you to save, edit, and load a file to the server.
+</summary>
+<p>
 
-```bat
+```cmd
 :: This a file-based edit mode helper for RESTful Interface Tool
 :: 1. Run to download selected type to a file called ilorest.json
 :: 2. Edit the ilorest.json file to make changes.
@@ -137,6 +141,9 @@ pause
 ilorest.exe load -f %2
 ```
 
+</p>
+</details>
+
 File-based mode allows you to save and load settings from a file. This is similar to the `conrep.dat` files used by CONREP. File-based mode supports the JSON format.
 
 When the example script is run, the following result is produced:
@@ -147,7 +154,11 @@ Here, the `Bios` type is saved to a file called `ilorest1.json`. Then, after you
 
 The properties of `Bios` can be edited here, and then loaded on the server. When the file is loaded on the server, changes to read-only values are not reflected. The full list in this example is truncated to save space.
 
+<details>
+<summary>
 After saving this configuration, the **ilorest1.json** file looks like this:
+</summary>
+<p>
 
 ```json
 {
@@ -172,6 +183,8 @@ After saving this configuration, the **ilorest1.json** file looks like this:
 	}
 }
 ```
+</p>
+</details>
 
 ## Executing commands in parallel
 
