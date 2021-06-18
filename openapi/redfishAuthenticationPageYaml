@@ -1,8 +1,0 @@
-type: reference-docs
-# The following key is defined in the oasDefinitions section in the siteConfig.yaml
-definitionId: redfishAuthentication
-settings:
-  generateCodeSamples:
-    languages:
-      - lang: curl
-      - lang: Python
