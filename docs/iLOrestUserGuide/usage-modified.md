@@ -174,13 +174,13 @@ Run the following command to start an iLOREST session in 10 different iLO server
 pdsh -R exec -w server[1-10] ilorest --cache-dir=%h login ilo-%h -u username -p password.
 ```
 
-| | |
-| --- | ---|
-|:::info
+:::info
 
 When you run the example command, PDSH issues the following 10 commands in batch and background mode. For each command, iLOREST saves the data in a different location. For example, for server1, the data is cached in directory server1, for server2, the data is cached in directory server2.
 
-:::|```Shell
+:::
+
+```Shell
 ilorest --cache-dir=server1 login ilo-server1 -u username -p password
 
 ilorest --cache-dir=server2 login ilo-server2 -u username -p password
@@ -200,7 +200,7 @@ ilorest --cache-dir=server8 login ilo-server8 -u username -p password
 ilorest --cache-dir=server9 login ilo-server9 -u username -p password
 
 ilorest --cache-dir=server10 login ilo-server10 -u username -p password
-```|
+```
 
 Now that an iLOREST session is created on each iLO, you can **select**, **set**, or **get** information from them.
 
