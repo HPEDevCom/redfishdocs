@@ -85,7 +85,7 @@ hpeRedfishMainSideBar:
         page: docs/iLOrestUserGuide/usage.md
       - label: Commands
         page: docs/iLOrestUserGuide/globalcommands.md
-        page: docs/iLOrestUserGuide/bioscommands.md
+        #page: docs/iLOrestUserGuide/bioscommands.md
     
 
 
