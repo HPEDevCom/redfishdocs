@@ -1,23 +1,23 @@
-dmtfRedfishMainSideBar:
-  #- label: Home
-    # The following href represents the root of the GitHub Redfish Portal repo
-    # The content of this '/' page is the index.mdx.
-    #href: '/'
-
-  - label: Home
-    # The following href represents the root of the GitHub Redfish Portal repo
-    # The content of this '/' page is the index.mdx.
-    href: '/'
-       
-
-  - group: DMTF Redfish
-    #menuStyle: drilldown
-    #expanded: true
-    pages:
-    - label: Introduction
-      page: docs/DMTF/index.md
-
-    - page: openapi/redfishDmtfRefDoc.page.yaml
+#dmtfRedfishMainSideBar:
+#  #- label: Home
+#    # The following href represents the root of the GitHub Redfish Portal repo
+#    # The content of this '/' page is the index.mdx.
+#    #href: '/'
+#
+#  - label: Home
+#    # The following href represents the root of the GitHub Redfish Portal repo
+#    # The content of this '/' page is the index.mdx.
+#    href: '/'
+#       
+#
+#  - group: DMTF Redfish
+#    #menuStyle: drilldown
+#    #expanded: true
+#    pages:
+#    - label: Introduction
+#      page: docs/DMTF/index.md
+#
+#    - page: openapi/redfishDmtfRefDoc.page.yaml
 
 
 hpeRedfishMainSideBar:
@@ -32,12 +32,16 @@ hpeRedfishMainSideBar:
     pages:
     - label: Introduction
       page: docs/index.md
-    - group: Concepts
-      menuStyle: drilldown
+
+    - group: Redfish concepts
+      #menuStyle: drilldown
       expanded: false
       pages:
       - label: Overview
         page:  docs/concepts/index.md
+
+      - label: Authentication
+        page: docs/concepts/redfishAuthentication.md
 
       - group: HPE iLO based compute
         menuStyle: drilldown
@@ -66,16 +70,34 @@ hpeRedfishMainSideBar:
         pages:
         - label: Redfish in HPE PDUs
           page: docs/concepts/PDUs/index.md
+    
+    - group: RESTful Interface Tool User Guide
+      menuStyle: drilldown
+      expanded: false
+      pages:
+      - label: Overview
+        page: docs/iLOrestUserGuide/index.md
+      - label: Change Log
+        page: docs/iLOrestUserGuide/changelog.md
+      - label: Installation
+        page: docs/iLOrestUserGuide/installation.md
+      - label: Using the RESTful Interface Tool
+        page: docs/iLOrestUserGuide/usage.md
+      - label: Commands
+        page: docs/iLOrestUserGuide/globalcommands.md
+        page: docs/iLOrestUserGuide/bioscommands.md
+    
+
+
+
+
 
     - group: HPE Redfish API Reference Documents
-      #menuStyle: drilldown
       expanded: false
       pages:
       - label: Overview
         page: docs/RefDocs/index.md
-      - label: Authentication
-        page: openapi/redfishAuthentication.md
-        #page: openapi/redfishAuthentication.page.yaml/*
+      
       
       - group: HPE iLOs
         menuStyle: drilldown
@@ -116,45 +138,45 @@ hpeRedfishMainSideBar:
           - label: HPE iLO 4 Redfish reference document
             page: openapi/redfishiLO4RefDoc.page.yaml/*
       
-      - group: iLO Amplifier Pack
-        menuStyle: drilldown
-        expanded: false
-        pages:
-        - label: Getting started with Redfish on HPE iLO Amplifier Pack
-          page: docs/iLOAmplifierPack/index.md
-        #- group: HPE iLO Amplifier Pack Redfish reference document
-          #menuStyle: drilldown
-          #expanded: false
-          #pages: 
-          #- label: TBD
-            #page: openapi/iLOAmpliferPackRefDoc.page.yaml
-
-      - group: HPE Superdome 280
-        menuStyle: drilldown
-        expanded: false
-        pages:
-        - label: Getting started with Redfish on HPE Superdome 280
-          page: docs/superdome/index.md
-        #- group: HPE Superdome 280 Redfish reference document
-          #menuStyle: drilldown
-          #expanded: false
-          #pages: 
-          #- label: TBD
-            #page: openapi/SuperdomeFlexRefDoc.page.yaml
-
-      - group: HPE Power Distribution Units (PDUs)
-        menuStyle: drilldown
-        expanded: false
-        pages:
-        - label: Getting started with Redfish on HPE PDUs
-          page: docs/PDUs/index.md
-        #- group: HPE PDUs Redfish reference document
-          #menuStyle: drilldown
-          #expanded: false
-          #pages: 
-          #- label: 
-            #page: openapi/PDUsRefDoc.page.yaml/*
-
+#      - group: iLO Amplifier Pack
+#        menuStyle: drilldown
+#        expanded: false
+#        pages:
+#        - label: Getting started with Redfish on HPE iLO Amplifier Pack
+#          page: docs/iLOAmplifierPack/index.md
+#        #- group: HPE iLO Amplifier Pack Redfish reference document
+#          #menuStyle: drilldown
+#          #expanded: false
+#          #pages: 
+#          #- label: TBD
+#            #page: openapi/iLOAmpliferPackRefDoc.page.yaml
+#
+#      - group: HPE Superdome 280
+#        menuStyle: drilldown
+#        expanded: false
+#        pages:
+#        - label: Getting started with Redfish on HPE Superdome 280
+#          page: docs/superdome/index.md
+#        #- group: HPE Superdome 280 Redfish reference document
+#          #menuStyle: drilldown
+#          #expanded: false
+#          #pages: 
+#          #- label: TBD
+#            #page: openapi/SuperdomeFlexRefDoc.page.yaml
+#
+#      - group: HPE Power Distribution Units (PDUs)
+#        menuStyle: drilldown
+#        expanded: false
+#        pages:
+#        - label: Getting started with Redfish on HPE PDUs
+#          page: docs/PDUs/index.md
+#        #- group: HPE PDUs Redfish reference document
+#          #menuStyle: drilldown
+#          #expanded: false
+#          #pages: 
+#          #- label: 
+#            #page: openapi/PDUsRefDoc.page.yaml/*
+#
     - separatorLine: true
 
     - group: Developer Guides

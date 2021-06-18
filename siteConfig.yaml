@@ -1,7 +1,7 @@
 meta:
   title: HPE Redfish Developer Portal 
   description:  HPE Redfish API implementation documentations.
-  siteUrl: https://www.hpe.com
+  siteUrl: https://developer.hpe.com
 
 #headerIcon: ./images/hpe.svg
 logo: ./images/hpe.svg
@@ -14,7 +14,7 @@ oasDefinitions:
   # The following URL comes from the redfishiLO5RefDoc API Registry --> Default branch --> Download in clipboard
   # The key name (redfishiLO5RefDoc) corresponds to the definitionId key in "openapi/redfishiLO5RefDoc.page.yaml" file
   redfishiLO5RefDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1Alpha1/bundle/main/openapi.yaml 
-  redfishDmtfRefDoc: https://api.redoc.ly/registry/hpe/RedfishDmtfRefDoc/internalv1/bundle/main/openapi.yaml
+  #redfishDmtfRefDoc: https://api.redoc.ly/registry/hpe/RedfishDmtfRefDoc/internalv1/bundle/main/openapi.yaml
   #redfishSuperdome280:  https://TBD
   #redfishAmplifierPack: https://TBD
   #
@@ -41,7 +41,7 @@ footer:
     - group:
       items:
         - label: Privacy Policy
-          href: 'https://client.greenlake.hpe.com/login#'
+          href: 'https://www.hpe.com/us/en/legal/privacy.html'
           external: true
     - group:
       items:
