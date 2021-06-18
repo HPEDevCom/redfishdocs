@@ -75,7 +75,7 @@ hpeRedfishMainSideBar:
       menuStyle: drilldown
       expanded: false
       pages:
-      - label: Overview
+      - label: Introduction
         page: docs/iLOrestUserGuide/index.md
       - label: Change Log
         page: docs/iLOrestUserGuide/changelog.md

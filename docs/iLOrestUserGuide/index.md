@@ -5,7 +5,7 @@ disableLastModified: false
 
 # Introduction
 
-This is rendering of the [iLOrest RESTful Interface Tool](http://hpe.com/info/resttool)
+This is the rendering of the [iLOrest RESTful Interface Tool](http://hpe.com/info/resttool)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec efficitur mauris, imperdiet condimentum sem. In vel justo condimentum urna posuere dignissim. Nam erat enim, volutpat accumsan gravida et, molestie vel nisl. Morbi in velit orci. Quisque pharetra, velit eget maximus bibendum, lorem nisi ultrices dui, vel bibendum urna velit laoreet mauris. Nam ligula augue, condimentum non lacinia sed, semper sit amet tellus. In vitae viverra nisl. Ut accumsan felis eu nulla rhoncus, et efficitur dolor bibendum. Duis malesuada nisi et pharetra tempor. Donec tincidunt porta leo, ac facilisis felis tristique ultrices. Duis ultrices mattis pulvinar.
 
