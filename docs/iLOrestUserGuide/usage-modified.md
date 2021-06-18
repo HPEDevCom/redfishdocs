@@ -202,23 +202,14 @@ When you run the example command, PDSH issues the following 10 commands in batch
 
 ```Shell
 ilorest --cache-dir=server1 login ilo-server1 -u username -p password
-
 ilorest --cache-dir=server2 login ilo-server2 -u username -p password
-
 ilorest --cache-dir=server3 login ilo-server3 -u username -p password
-
 ilorest --cache-dir=server4 login ilo-server4 -u username -p password
-
 ilorest --cache-dir=server5 login ilo-server5 -u username -p password
-
 ilorest --cache-dir=server6 login ilo-server6 -u username -p password
-
 ilorest --cache-dir=server7 login ilo-server7 -u username -p password
-
 ilorest --cache-dir=server8 login ilo-server8 -u username -p password
-
 ilorest --cache-dir=server9 login ilo-server9 -u username -p password
-
 ilorest --cache-dir=server10 login ilo-server10 -u username -p password
 ```
 
@@ -236,9 +227,13 @@ Running iLOREST on multiple systems locally can be done using automation tools s
 
 ## Configuration file (Redfish.conf)
 
+<details>
+<summary>
 Windows default configuration file
+</summary>
+<p>
 
-```Shell
+```ini
 [ilorest]
 #iLOrest reads the following environment variables, and applies them at runtime.  
 #Note that they can be overridden by command line switches.
@@ -294,9 +289,16 @@ Windows default configuration file
 # loadfile = ilorest.json
 ```
 
-Linux default configuration file
+</p>
+</details>
 
-```Shell
+<details>
+<summary>
+Linux default configuration file
+</summary>
+<p>
+
+```ini
 [iLOrest]
 #iLOrest reads the following environment variables, and applies them at runtime.  
 #Note that they can be overridden by command line switches.
@@ -351,6 +353,9 @@ Linux default configuration file
 # option to set default load input file
 # loadfile = ilorest.json
 ```
+
+</p>
+</details>
 
 The configuration file contains the default settings for the tool. You can use a text editor to change the behavior of the tool such as adding a server IP address, username, and password. The settings that you add or update in the configuration file are automatically loaded each time you start the tool.
 
