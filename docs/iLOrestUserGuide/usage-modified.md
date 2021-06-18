@@ -54,7 +54,11 @@ Tab complete can also show schema information for properties.
 
 ### Scriptable Mode
 
+<details>
+<summary>
 The following script retrieves information regarding the Bios type:
+</summary>
+<p>
 
 ```bat
 :: This is a batch file that logs into a remote server,
@@ -89,6 +93,9 @@ ilorest.exe select Bios.
 ilorest.exe get BootMode
 pause
 ```
+
+</p>
+</details>
 
 You can use the scriptable mode to script all the commands using an external input file. The script contains a list of the RESTful Interface Tool command lines that let users get and set properties of server objects.
 
