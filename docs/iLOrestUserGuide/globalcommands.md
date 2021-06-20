@@ -1,6 +1,6 @@
 ---
 title: Commands
-tocMaxDepth: 2
+tocMaxDepth: 3
 ---
 
 ## Global Optional Arguments

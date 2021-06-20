@@ -1,5 +1,6 @@
 ---
 title: BIOS Commands
+tocMaxDepth: 3
 ---
 ## BIOS commands
 
