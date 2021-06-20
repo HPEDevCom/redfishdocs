@@ -1,5 +1,6 @@
 ---
 title: Support and other resources
+tocMaxDepth: 3
 ---
 # Support and other resources
 

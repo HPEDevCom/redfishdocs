@@ -1,4 +1,8 @@
-## Smart Arrary Commands
+---
+title: Smart Array Commands
+tocMaxDepth: 3
+---
+## Smart Array Commands
 
 The Smart Array commands are designed for use with HPE Gen10 servers.
 

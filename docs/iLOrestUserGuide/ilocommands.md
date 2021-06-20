@@ -1,3 +1,7 @@
+---
+title: iLO Commands
+tocMaxDepth: 3
+---
 ## iLO Commands
 
 This section includes advanced functions for manipulating iLO using the RESTful Interface Tool. These commands include operations such as turning the server hardware on and off, resetting iLO, and updating firmware.

@@ -1,3 +1,7 @@
+---
+title: iLO Repository Commands
+tocMaxDepth: 3
+---
 ## iLO Repository Commands
 
 <aside class="notice">

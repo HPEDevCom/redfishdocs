@@ -1,3 +1,7 @@
+---
+title: Raw Commands
+tocMaxDepth: 3
+---
 ## Raw commands
 
 This section lists the raw HTTP RESTful operations that can be used through the RESTful Interface Tool. The commands in this section are the equivalents of HTTP RESTful **PATCH, GET, POST, PUT, DELETE**, and **HEAD**.
