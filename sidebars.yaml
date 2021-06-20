@@ -97,7 +97,7 @@ hpeRedfishMainSideBar:
         - label: iLO Repository Commands
           page: docs/iLOrestUserGuide/ilorepositorycommands.md
         - label: Smart Array Commands
-          page: docs/iLOrestUserGuide/smartarraycommands
+          page: docs/iLOrestUserGuide/smartarraycommands.md
         - label: Persistent Memory Commands
           page: docs/iLOrestUserGuide/persistentmemorycommands.md
         - label: Raw Commands
