@@ -1,3 +1,7 @@
+---
+title: Installation
+enableToc: false
+---
 # Installation
 
 ## Requirements

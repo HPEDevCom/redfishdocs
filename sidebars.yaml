@@ -7,8 +7,7 @@
 #  - label: Home
 #    # The following href represents the root of the GitHub Redfish Portal repo
 #    # The content of this '/' page is the index.mdx.
-#    href: '/'
-#       
+#    href: '/' 
 #
 #  - group: DMTF Redfish
 #    #menuStyle: drilldown
@@ -87,6 +86,21 @@ hpeRedfishMainSideBar:
         page: docs/iLOrestUserGuide/usage-modified.md
       - label: Commands
         page: docs/iLOrestUserGuide/globalcommands.md
+      - label: BIOS Commands
+        page: docs/iLOrestUserGuide/bioscommands.md
+
+      - label: Advanced Options
+        page: docs/iLOrestUserGuide/advancedusage.md
+      - label: Use Case Examples and Macro Commands
+        page: docs/iLOrestUserGuide/examplecommandsscripts.md
+      - label: Support and other resources
+        page: docs/iLOrestUserGuide/support.md
+      - label: Known Issues 
+        page: docs/iLOrestUserGuide/knownissues.md
+      - label: Error Codes
+        page: docs/iLOrestUserGuide/errors.md
+      - label: Glossary
+        page: docs/iLOrestUserGuide/glossaryterms.md
       
         
     

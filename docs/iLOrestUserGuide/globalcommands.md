@@ -1,4 +1,7 @@
-# Commands
+---
+title: Commands
+tocMaxDepth: 2
+---
 
 ## Global Optional Arguments
 

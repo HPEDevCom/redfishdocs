@@ -1,3 +1,6 @@
+---
+title: BIOS Commands
+---
 ## BIOS commands
 
 This section details usage and examples of RESTful Interface Tool commands related to configuring BIOS settings. These commands do things such as view and change the boot order, reset the BIOS configuration to the default settings, and configure iSCSI settings.
