@@ -60,7 +60,7 @@ The following script retrieves information regarding the Bios type:
 </summary>
 <p>
 
-```cmd
+```dos
 :: This is a batch file that logs into a remote server,
 :: selects the Bios type, and gets the BootMode value
 
@@ -109,7 +109,7 @@ The following script allows you to save, edit, and load a file to the server.
 </summary>
 <p>
 
-```cmd
+```dos
 :: This a file-based edit mode helper for RESTful Interface Tool
 :: 1. Run to download selected type to a file called ilorest.json
 :: 2. Edit the ilorest.json file to make changes.
