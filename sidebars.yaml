@@ -86,11 +86,22 @@ hpeRedfishMainSideBar:
         page: docs/iLOrestUserGuide/usage-modified.md
       
       - group: Commands
+        expanded: false
         pages:
         - label: Global optional arguments and commands
           page: docs/iLOrestUserGuide/globalcommands.md
         - label: BIOS Commands
           page: docs/iLOrestUserGuide/bioscommands.md
+        - label: iLO Commands
+          page: docs/iLOrestUserGuide/ilocommands.md
+        - label: iLO Repository Commands
+          page: docs/iLOrestUserGuide/ilorepositorycommands.md
+        - label: Smart Array Commands
+          page: docs/iLOrestUserGuide/smartarraycommands
+        - label: Persistent Memory Commands
+          page: docs/iLOrestUserGuide/persistentmemorycommands.md
+        - label: Raw Commands
+          page: docs/iLOrestUserGuide/rawcommands
 
       - label: Advanced Options
         page: docs/iLOrestUserGuide/advancedusage.md
