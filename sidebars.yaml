@@ -84,10 +84,13 @@ hpeRedfishMainSideBar:
         page: docs/iLOrestUserGuide/usage.md
       - label: Using the RESTful Interface Tool (modified)
         page: docs/iLOrestUserGuide/usage-modified.md
-      - label: Commands
-        page: docs/iLOrestUserGuide/globalcommands.md
-      - label: BIOS Commands
-        page: docs/iLOrestUserGuide/bioscommands.md
+      
+      - group: Commands
+        pages:
+        - label: Global optional arguments and commands
+          page: docs/iLOrestUserGuide/globalcommands.md
+        - label: BIOS Commands
+          page: docs/iLOrestUserGuide/bioscommands.md
 
       - label: Advanced Options
         page: docs/iLOrestUserGuide/advancedusage.md
