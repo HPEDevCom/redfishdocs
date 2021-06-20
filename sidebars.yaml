@@ -101,7 +101,7 @@ hpeRedfishMainSideBar:
         - label: Persistent Memory Commands
           page: docs/iLOrestUserGuide/persistentmemorycommands.md
         - label: Raw Commands
-          page: docs/iLOrestUserGuide/rawcommands
+          page: docs/iLOrestUserGuide/rawcommands.md
 
       - label: Advanced Options
         page: docs/iLOrestUserGuide/advancedusage.md
