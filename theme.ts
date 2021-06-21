@@ -87,10 +87,11 @@ export const theme = {
     //   gradient: ({ colors }) => darken(colors.tonalOffset / 2, colors.navbar.main),
     //   contrastText: 'white'
     // },
-    // footer: {
-      // main: ({ colors }) => colors.primary.main,
-      // contrastText: 'white'
-    // },
+    footer: {
+       main: ({ colors }) => colors.primary.main,
+       contrastText: 'white',
+       Height: '200px'
+    },
   },
 
   sidebar: {
