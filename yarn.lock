@@ -1449,7 +1449,7 @@
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-"@redocly/developer-portal@^1.0.0-beta.150":
+"@redocly/developer-portal@^1.0.0-beta.153":
   version "1.0.0-beta.153"
   resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.153.tgz#a1486a4b10b5e329394496c9ec5ac5837f7b99b0"
   integrity sha512-Wx5eN1jbCWXkmceLRogeRVfqN3QPgyTGi96VCM4k+zmIrYvgobvuEpk+5KyHXxAJswPA7xjD/YqP3l4n2UjCzA==
