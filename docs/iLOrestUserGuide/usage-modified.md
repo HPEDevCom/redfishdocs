@@ -229,11 +229,11 @@ Running iLOREST on multiple systems locally can be done using automation tools s
 
 <details>
 <summary>
-Windows default configuration file
+Configuration files
 </summary>
 <p>
 
-```ini
+```Windows
 [ilorest]
 #iLOrest reads the following environment variables, and applies them at runtime.  
 #Note that they can be overridden by command line switches.
@@ -288,17 +288,9 @@ Windows default configuration file
 # option to set default load input file
 # loadfile = ilorest.json
 ```
-
-</p>
-</details>
-
-<details>
-<summary>
-Linux default configuration file
-</summary>
 <p>
 
-```ini
+```Linux
 [iLOrest]
 #iLOrest reads the following environment variables, and applies them at runtime.  
 #Note that they can be overridden by command line switches.
@@ -353,7 +345,6 @@ Linux default configuration file
 # option to set default load input file
 # loadfile = ilorest.json
 ```
-
 </p>
 </details>
 
