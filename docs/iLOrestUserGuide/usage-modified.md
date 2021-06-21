@@ -233,7 +233,7 @@ Configuration files
 </summary>
 <p>
 
-```Windows
+```ini Windows
 [ilorest]
 #iLOrest reads the following environment variables, and applies them at runtime.  
 #Note that they can be overridden by command line switches.
@@ -290,7 +290,7 @@ Configuration files
 ```
 <p>
 
-```Linux
+```ini Linux
 [iLOrest]
 #iLOrest reads the following environment variables, and applies them at runtime.  
 #Note that they can be overridden by command line switches.
