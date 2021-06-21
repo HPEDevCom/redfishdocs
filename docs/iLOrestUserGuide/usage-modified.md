@@ -156,7 +156,7 @@ The properties of `Bios` can be edited here, and then loaded on the server. When
 
 <details>
 <summary>
-After saving this configuration, the **ilorest1.json** file looks like this:
+After saving this configuration, the <pre>ilorest1.json</pre> file looks like this:
 </summary>
 <p>
 
@@ -225,13 +225,14 @@ iLOREST uses a caching method to locally save servers' data. To send iLOREST com
 
 Running iLOREST on multiple systems locally can be done using automation tools such as Ansible, Chef, and Puppet.
 
-## Configuration file (Redfish.conf)
+## Configuration file (redfish.conf)
 
-<details>
-<summary>
-Configuration files
-</summary>
-<p>
+The configuration file contains the default settings for the tool. You can use a text editor to change the behavior of the tool such as adding a server IP address, username, and password. The settings that you add or update in the configuration file are automatically loaded each time you start the tool.
+
+Configuration file locations:
+
+- Windows OS: The same location as the executable file that starts the tool.
+- Linux OS: `/etc/ilorest/redfish.conf`
 
 ```ini Windows
 [ilorest]
@@ -288,7 +289,6 @@ Configuration files
 # option to set default load input file
 # loadfile = ilorest.json
 ```
-<p>
 
 ```ini Linux
 [iLOrest]
@@ -345,15 +345,6 @@ Configuration files
 # option to set default load input file
 # loadfile = ilorest.json
 ```
-</p>
-</details>
-
-The configuration file contains the default settings for the tool. You can use a text editor to change the behavior of the tool such as adding a server IP address, username, and password. The settings that you add or update in the configuration file are automatically loaded each time you start the tool.
-
-Configuration file locations:
-
-- Windows OS: The same location as the executable file that starts the tool.
-- Linux OS: `/etc/ilorest/Redfish.conf`
 
 ## Higher Security Modes
 
