@@ -15,11 +15,15 @@ export const theme = {
   colors: {
     // tonalOffset: 0.2,
     primary: {
-      main: '#000000',
+      main: '#227a88',
+      //main: '#000000',
       // light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
       // dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
       // contrastText: ({ colors }) => readableColor(colors.primary.main),
       legacy: '#0066ff',
+    footer: {
+      main: 'red',
+      }
     },
     // success: {
     //   main: '#00aa13',
@@ -90,8 +94,7 @@ export const theme = {
     footer: {
        main: ({ colors }) => colors.primary.main,
        contrastText: 'white',
-       //Height: '200px'
-       Height: '100px'
+       Height: '200px',
     },
   },
 
