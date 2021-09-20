@@ -90,7 +90,8 @@ export const theme = {
     footer: {
        main: ({ colors }) => colors.primary.main,
        contrastText: 'white',
-       Height: '200px'
+       //Height: '200px'
+       Height: '100px'
     },
   },
 
