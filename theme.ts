@@ -21,6 +21,7 @@ export const theme = {
       // dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
       // contrastText: ({ colors }) => readableColor(colors.primary.main),
       legacy: '#0066ff',
+    },
     footer: {
       main: '#0066ff',
       },
