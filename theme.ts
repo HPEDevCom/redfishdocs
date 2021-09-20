@@ -47,6 +47,7 @@ export const theme = {
     // },
     text: {
       primary: '#424242',
+      white: '#ffffff'
       // secondary: '#4e566d',
     },
     // border: {
@@ -129,14 +130,15 @@ export const theme = {
     //   lineHeight: ({ typography }) => typography.lineHeight,
     //   capitalize: false,
     // },
-    // heading3: {
-    //   fontSize: '1.27em',
-    //   fontWeight: '600',
-    //   color: ({ colors }) => colors.text.primary,
-    //   fontFamily: ({ typography }) => typography.headings.fontFamily,
-    //   lineHeight: ({ typography }) => typography.lineHeight,
-    //   capitalize: false,
-    // },
+    heading3: {
+      fontSize: '1.27em',
+      fontWeight: '600',
+      //color: ({ colors }) => colors.text.primary,
+      color: ({ colors }) => colors.text.white,
+      fontFamily: ({ typography }) => typography.headings.fontFamily,
+      lineHeight: ({ typography }) => typography.lineHeight,
+      capitalize: false,
+    },
     // heading4: {
     // // ...
     // },

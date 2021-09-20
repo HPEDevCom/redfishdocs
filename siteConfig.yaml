@@ -43,18 +43,12 @@ footer:
         - label: Privacy Policy
           href: 'https://www.hpe.com/us/en/legal/privacy.html'
           external: true
-    - group:
-      items:
         - label: Cookies
           href: 'https://www.hpe.com/us/en/legal/privacy.html#accordion-accordioncontainerco-4'
           external: true
-    - group:
-      items:
         - label: Terms of Use
           href: 'https://www.hpe.com/us/en/about/legal/terms-of-use.html'
           external: true
-    - group:
-      items:
         - label: Do Not Sell My Personal Information
           href: 'https://www.hpe.com/us/en/privacy/personal-information.html'
           external: true

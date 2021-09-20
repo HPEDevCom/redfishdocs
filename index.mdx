@@ -15,11 +15,13 @@ import {
   Emphasis,
   H1,
   H2,
+  H3,
   SectionHeader,
 } from '@redocly/ui';
 
 import { NavBar } from '@redocly/ui';
 
+import hpeElement from './images/HPE_ELEMENT_20210217015_16x9_1600_0_72_RGB.jpg'
 import iLOrestIcon from './images/iLOrestIcon.png';
 import iloIcon from './images/iloIcon.png';
 import RedfishIcon from './images/DMTF_Redfish_logo_R.jpg'
@@ -30,16 +32,29 @@ import pduIcon from './images/pduIcon.png';
 
 export default LandingLayout;
 
-<Jumbotron>
-  <NavBar location={props.location} standalone={false} />
-  <H1>HPE Redfish API Reference Documents</H1>
-  <H2>Developer Guides</H2>
+<Jumbotron bgImage={hpeElement}>
+  {/* <NavBar location={props.location} standalone={false} /> */}
+  <Flex width="40%" ml={150}  flexDirection="column" alignContent="flex-start" alignItems="flex-start">
+      <H1>HPE Redfish API</H1>
+      <H2>Reference Documents</H2>
+      <H3>A standard API designed to deliver simple
+        and secure management for converged,
+        hybridIT and the Software Defined Data
+        Center (SDDC).
+      </H3>
+  </Flex>
+
+  
+  
   <Flex p={20} justifyContent="center">
     <Button inversed transparent large to="docs/index.md">
       Get started
     </Button>
   </Flex>
 </Jumbotron>
+
+
+
 <Box my={25}>
   <SectionHeader>
     Manage your datacenter with <Emphasis>Redfish®</Emphasis> today!
