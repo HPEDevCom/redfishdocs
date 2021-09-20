@@ -92,9 +92,9 @@ export const theme = {
     //   contrastText: 'white'
     // },
     footer: {
-       main: ({ colors }) => colors.primary.main,
+       main: ({ colors }) => colors.footer.main,
        contrastText: 'white',
-       Height: '200px',
+       Height: '100px',
     },
   },
 
