@@ -22,9 +22,6 @@ export const theme = {
       // contrastText: ({ colors }) => readableColor(colors.primary.main),
       legacy: '#0066ff',
       },
-    footer: {
-      main: '#0066ff',
-      },
     },
     // success: {
     //   main: '#00aa13',
@@ -96,7 +93,7 @@ export const theme = {
        main: ({ colors }) => colors.primary.main,
        //main: ({ colors }) => colors.footer.main,
        contrastText: 'white',
-       Height: '100px',
+       Height: '200px'
     },
   },
 
