@@ -20,6 +20,8 @@ export const theme = {
       // dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
       // contrastText: ({ colors }) => readableColor(colors.primary.main),
       legacy: '#0066ff',
+      white: '#ffffff',
+      footer: '#e5e5e5',
     },
     // success: {
     //   main: '#00aa13',
@@ -47,7 +49,8 @@ export const theme = {
     // },
     text: {
       primary: '#424242',
-      white: '#ffffff'
+      white: '#ffffff',
+      footer: '#444444',
       // secondary: '#4e566d',
     },
     // border: {
@@ -89,9 +92,9 @@ export const theme = {
     //   contrastText: 'white'
     // },
     footer: {
-       main: ({ colors }) => colors.primary.main,
-       contrastText: 'white',
-       Height: '200px'
+       main: ({ colors }) => colors.primary.footer,
+       contrastText: ({ colors }) => colors.text.footer,
+       Height: '100px',
     },
   },
 
