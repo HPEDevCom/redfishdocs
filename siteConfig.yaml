@@ -3,7 +3,7 @@ meta:
   description:  HPE Redfish API implementation documentations.
   siteUrl: https://developer.hpe.com
 
-#headerIcon: ./images/hpe.svg
+headerIcon: ./images/hpe.svg
 logo: ./images/hpe.svg
 enableToc: true
 tocMaxDepth: 2
@@ -24,7 +24,6 @@ stylesheets:
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
 
 nav:
-
   - label: Redfish Standard
     href: 'https://www.dmtf.org/standards/redfish'
     external: true
@@ -37,26 +36,20 @@ nav:
 
 footer:
   copyrightText: © Copyright 2017-2021 Hewlett Packard Enterprise Development LP 
-  
   columns:
     - group:
       items:
-        - label: Privacy Policy
+        - label: Privacy 
           href: 'https://www.hpe.com/us/en/legal/privacy.html'
           external: true
-    - group:
-      items:    
-        - label: Cookies
-          href: 'https://www.hpe.com/us/en/legal/privacy.html#accordion-accordioncontainerco-4'
-          external: true    
-    - group:
-      items:      
         - label: Terms of Use
           href: 'https://www.hpe.com/us/en/about/legal/terms-of-use.html'
           external: true
-    - group:
-      items:      
+        - label: Add Choices & Cookies
+          href: 'https://www.hpe.com/us/en/legal/privacy.html#datacollection'
+          external: true
         - label: Do Not Sell My Personal Information
           href: 'https://www.hpe.com/us/en/privacy/personal-information.html'
           external: true
+
 

@@ -1,12 +1,11 @@
 ---
-title: Home page for the HPE Redfish API Reference documents Portal
+title: Home page for the HPE Redfish API Reference documents Portal.
 ---
 
-import { LandingLayout } from '@redocly/ui';
+import { LandingLayout } from '@redocly/developer-portal/ui';
 
 import {
   Button,
-  Box,
   FlexSection,
   Flex,
   Jumbotron,
@@ -17,9 +16,33 @@ import {
   H2,
   H3,
   SectionHeader,
-} from '@redocly/ui';
+  Typography
+} from '@redocly/developer-portal/ui';
 
-import { NavBar } from '@redocly/ui';
+import {
+  Grommet,
+  Section,
+  Box,
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter,
+  Heading,
+  RoutedButton,
+  Text,
+  Paragraph,
+  Grid,
+  ResponsiveContext,
+  Image,
+} from 'grommet';
+
+import { hpe } from 'grommet-theme-hpe';
+
+import { NavBar } from '@redocly/developer-portal/ui';
+
+import LandingCard from './components/LandingCard';
+import ResponsiveGrid from './components/ResponsiveGrid';
+import PlatformCard from './components/PlatformCard';
 
 import hpeElement from './images/HPE_ELEMENT_20210217015_16x9_1600_0_72_RGB.jpg'
 import iLOrestIcon from './images/iLOrestIcon.png';
@@ -29,61 +52,119 @@ import iloAmplifierPackIcon from './images/iloAmplifierPackIcon.png';
 import superdomeIcon from './images/superdomeIcon.png';
 import pduIcon from './images/pduIcon.png';
 
-
 export default LandingLayout;
 
-<Jumbotron bgImage={hpeElement}>
-  <NavBar location={props.location} standalone={false} />
-  <Flex width="40%" ml={150}  flexDirection="column" alignContent="flex-start" alignItems="flex-start">
-      <H1>HPE Redfish API</H1>
-      <H2>Reference Documents</H2>
-      <H3>A standard API designed to deliver simple
-        and secure management for converged,
-        hybridIT and the Software Defined Data
-        Center (SDDC).
-      </H3>
-  </Flex>
+<NavBar location={props.location} standalone={false} />
+<Grommet theme={hpe}>
+  <Box
+    align='start'
+    justify='start'
+    background={{
+      dark: true,
+      image: `url(${hpeElement})`,
+    }}
+    pad={{ vertical: 'xlarge', horizontal: 'small' }}
+    height='75vh'
+    style={{ minHeight: 550, maxHeight: 900 }}
+  >
+  <Box width="35%" margin={{left: '150px'}}>
+    <Heading level='2' margin={{bottom: 'none'}} weight='bold' size='large'>
+      HPE Redfish API
+    </Heading>
+      <Text size="xxlarge">
+        Reference Documents
+      </Text>
+      <Text size="large" margin={{vertical: '50px'}}>
+        A standard API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC).
+     </Text>
+     <Box 
+        width="140px"
+     >
+        <RoutedButton
+          primary={true}
+          path="developer-portal"
+          label={
+            <Box >
+              <Text size='large'>
+                Get started
+              </Text>
+            </Box>
+          }
+        />
+      </Box>
+    </Box>
+  </Box>
+</Grommet>
+<Grommet theme={hpe}>
 
-  
-  
-  <Flex p={20} justifyContent="center">
-    <Button inversed transparent large to="docs/index.md">
-      Get started
-    </Button>
-  </Flex>
-</Jumbotron>
-
-
-
-<Box my={25}>
-  <SectionHeader>
-    Manage your datacenter with <Emphasis>Redfish®</Emphasis> today!
-  </SectionHeader>
-  <FlexSection justifyContent="space-around" flexWrap="wrap">
-    {/*
-    <ThinTile to="docs/DMTF/index.md" icon={RedfishIcon} header="DMTF Redfish® service">
-        Redfish© schema definitions
-    </ThinTile>
-    */}
-    <ThinTile to="docs/iLOrestUserGuide/index.md" icon={iLOrestIcon} header="HPE RESTful Interface Tool">
-        User Guide
-    </ThinTile>
-    <ThinTile to="docs/iLOs/index.md" icon={iloIcon} header="HPE Insight Lights Out (iLOs)">
-        HPE iLO 4 and iLO 5 Redfish API Reference Documents.
-    </ThinTile>
-    <ThinTile to="docs/iLOAmplifierPack/index.md" icon={iloAmplifierPackIcon} header="iloAmplifierPack">
-        Use Redfish to manage the HPE iLO Amplifier Pack aggregator.
-    </ThinTile>
-    <ThinTile to="docs/superdome/index.md" icon={superdomeIcon} header="HPE Superdome family">
-        HPE Superdome Flex and HPE Superdome 280
-    </ThinTile>
-    <ThinTile to="docs/PDUs/index.md" icon={pduIcon} header="HPE Power Distribution Units">
-        HPE Power Distribution Units (PDUs)
-    </ThinTile>
-  </FlexSection>
-  <SectionHeader>
-    <Emphasis>Need more? </Emphasis>
-    <a href="https://developer.hpe.com/" target="_blank">Try our Workshops-on-Demand</a>
-  </SectionHeader>
-</Box>
+  <Box align='center' pad='medium'>
+    <Heading
+      textAlign='center'
+      style={{ fontWeight: '400' }}
+      level='2'
+      margin={{ vertical: 'large'}} 
+    >
+    Manage your datacenter with Redfish® today!
+    </Heading>
+    <Box
+        width='1115px'
+        margin={{ vertical: 'large' }}
+        direction='row' wrap={true}
+        justify='center'
+    >
+    <ResponsiveGrid
+        cardType='landing'
+        fill={true}
+        rows={{
+          small: ['auto', 'auto'],
+          medium: ['auto', 'auto'],
+          large: ['auto'],
+          xlarge: ['auto'],
+        }}
+                columns={{
+          small: ['auto'],
+          medium: ['auto', 'auto'],
+          large: ['auto', 'auto'],
+          xlarge: ['auto', 'auto'],
+        }}
+      >
+      <LandingCard
+        margin='medium'
+        path='docs/iLOrestUserGuide/index.md'
+        icon={iLOrestIcon}
+        titleText='HPE RESTful Interface Tool'
+        bodyText='User Guide'
+      />
+      <LandingCard
+        margin='medium'
+        path='docs/iLOs/index.md'
+        icon={iloIcon}
+        titleText='HPE Insight Lights Out (iLOs)'
+        bodyText=' HPE iLO 4 and iLO 5 Redfish API Reference Documents.'
+      />
+      <LandingCard
+        margin='medium'
+        path='docs/iLOs/index.md'
+        icon={iloAmplifierPackIcon}
+        titleText='iloAmplifierPack'
+        bodyText='Use Redfish to manage the HPE iLO Amplifier Pack aggregator'
+      />
+      <LandingCard
+        margin='medium'
+        path='docs/superdome/index.md'
+        icon={superdomeIcon}
+        titleText='HPE Superdome family'
+        bodyText='HPE Superdome Flex and HPE Superdome 280'
+      />
+      <LandingCard
+        margin='medium'
+        path='docs/PDUs/index.md'
+        icon={pduIcon}
+        titleText='HPE Power Distribution Units'
+        bodyText='HPE Power Distribution Units (PDUs)'
+      />
+      </ResponsiveGrid>
+    </Box>
+  </Box>
+</Grommet>
 
