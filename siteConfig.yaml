@@ -2,7 +2,6 @@ meta:
   title: HPE Redfish Developer Portal 
   description:  HPE Redfish API implementation documentations.
   siteUrl: https://developer.hpe.com
-
 headerIcon: ./images/hpe.svg
 logo: ./images/hpe.svg
 enableToc: true
@@ -22,6 +21,7 @@ oasDefinitions:
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
+  - './static/styleOverrides.css'
 
 nav:
   - label: Redfish Standard

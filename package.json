@@ -5,7 +5,7 @@
   "description": "HPE Redfish API Ref Docs portal repository",
   "license": "MIT",
   "scripts": {
-    "start": "redocly-portal develop -p 3000",
+    "start": "redocly-portal develop -p 3001",
     "build": "redocly-portal build",
     "clean": "redocly-portal clean"
   },
