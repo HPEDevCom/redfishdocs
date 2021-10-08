@@ -75,46 +75,46 @@ hpeRedfishMainSideBar:
       expanded: false
       pages:
       - label: Introduction
-        page: docs/iLOrestUserGuide/index.md
+        page: docs/ilorest-userguide/index.md
       - label: Change Log
-        page: docs/iLOrestUserGuide/changelog.md
+        page: docs/ilorest-userguide/changelog.md
       - label: Installation
-        page: docs/iLOrestUserGuide/installation.md
+        page: docs/ilorest-userguide/installation.md
       - label: Using the RESTful Interface Tool (original)
-        page: docs/iLOrestUserGuide/usage.md
+        page: docs/ilorest-userguide/usage.md
       - label: Using the RESTful Interface Tool (modified)
-        page: docs/iLOrestUserGuide/usage-modified.md
+        page: docs/ilorest-userguide/usage-modified.md
       
       - group: Commands
         expanded: false
         pages:
         - label: Global optional arguments and commands
-          page: docs/iLOrestUserGuide/globalcommands.md
+          page: docs/ilorest-userguide/globalcommands.md
         - label: BIOS Commands
-          page: docs/iLOrestUserGuide/bioscommands.md
+          page: docs/ilorest-userguide/bioscommands.md
         - label: iLO Commands
-          page: docs/iLOrestUserGuide/ilocommands.md
+          page: docs/ilorest-userguide/ilocommands.md
         - label: iLO Repository Commands
-          page: docs/iLOrestUserGuide/ilorepositorycommands.md
+          page: docs/ilorest-userguide/ilorepositorycommands.md
         - label: Smart Array Commands
-          page: docs/iLOrestUserGuide/smartarraycommands.md
+          page: docs/ilorest-userguide/smartarraycommands.md
         - label: Persistent Memory Commands
-          page: docs/iLOrestUserGuide/persistentmemorycommands.md
+          page: docs/ilorest-userguide/persistentmemorycommands.md
         - label: Raw Commands
-          page: docs/iLOrestUserGuide/rawcommands.md
+          page: docs/ilorest-userguide/rawcommands.md
 
       - label: Advanced Options
-        page: docs/iLOrestUserGuide/advancedusage.md
+        page: docs/ilorest-userguide/advancedusage.md
       - label: Use Case Examples and Macro Commands
-        page: docs/iLOrestUserGuide/examplecommandsscripts.md
+        page: docs/ilorest-userguide/examplecommandsscripts.md
       - label: Support and other resources
-        page: docs/iLOrestUserGuide/support.md
+        page: docs/ilorest-userguide/support.md
       - label: Known Issues 
-        page: docs/iLOrestUserGuide/knownissues.md
+        page: docs/ilorest-userguide/knownissues.md
       - label: Error Codes
-        page: docs/iLOrestUserGuide/errors.md
+        page: docs/ilorest-userguide/errors.md
       - label: Glossary
-        page: docs/iLOrestUserGuide/glossaryterms.md
+        page: docs/ilorest-userguide/glossaryterms.md
       
         
     
@@ -135,23 +135,23 @@ hpeRedfishMainSideBar:
         expanded: false
         pages:
         - label: Introduction
-          page: docs/iLOs/index.md
+          page: docs/ilos/index.md
         - label: Getting started
-          page: docs/iLOs/iLO5/ilo5_gettingstarted.md
+          page: docs/ilos/iLO5/ilo5_gettingstarted.md
         - label: Navigating the Data Model
-          page: docs/iLOs/iLO5/ilo5_navigating.md
+          page: docs/ilos/iLO5/ilo5_navigating.md
        
         - group: iLO 5
           menuStyle: drilldown
           expanded: false
           pages:
           - label: Introduction
-            page: docs/iLOs/iLO5/ilo5_introduction.md
+            page: docs/ilos/iLO5/ilo5_introduction.md
         
           - label: Resource map
-            page: docs/iLOs/iLO5/ilo5_resmap.md
+            page: docs/ilos/iLO5/ilo5_resmap.md
           - label: Resource definitions
-            page: docs/iLOs/iLO5/ilo5_resourcedefns.md
+            page: docs/ilos/iLO5/ilo5_resourcedefns.md
             
           # The following pages gets its label/title from the corresponding Ref Document in the
           # API registry (api/openapi/ilo5-openapi.yaml), in the info: > title: key.
@@ -164,7 +164,7 @@ hpeRedfishMainSideBar:
           expanded: false
           pages: 
           - label: Introduction
-            page: docs/iLOs/iLO4/ilo4_introduction.md
+            page: docs/ilos/iLO4/ilo4_introduction.md
 
           - label: HPE iLO 4 Redfish reference document
             page: openapi/redfishiLO4RefDoc.page.yaml/*

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Card, Text, Image, Paragraph } from 'grommet';
 import HoverCard from '../HoverCard';
-import { navigate } from '@redocly/ui';
+import { navigate } from '@redocly/developer-portal/ui';
 
 const PlatformCard = ({
   icon,

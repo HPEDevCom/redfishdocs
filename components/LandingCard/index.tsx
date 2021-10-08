@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ResponsiveContext } from 'grommet';
 import HoverCard from '../HoverCard';
 import { Box, CardBody, Text, Heading, Image, Button } from 'grommet';
-import { navigate } from '@redocly/ui';
+import { navigate } from '@redocly/developer-portal/ui';
 
 export default function LandingCard({
   titleText,
