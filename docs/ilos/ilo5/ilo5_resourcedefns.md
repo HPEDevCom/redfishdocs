@@ -1,5 +1,8 @@
 ---
 disableLastModified: false
+toc:
+  enable: true
+  maxDepth: 2
 ---
 
 # Resource Definitions

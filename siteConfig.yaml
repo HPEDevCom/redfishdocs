@@ -4,8 +4,9 @@ meta:
   siteUrl: https://developer.hpe.com
 headerIcon: ./images/hpe.svg
 logo: ./images/hpe.svg
-enableToc: true
-tocMaxDepth: 2
+toc:
+  enabled: true
+  maxDepth: 2
 oasDefinitions:
   # add links to definitions in the Redocly API registry by using a fully qualified URL.
   # See https://redoc.ly/docs/workflows/api-registry/snapshots/#finding-your-snapshot-links
