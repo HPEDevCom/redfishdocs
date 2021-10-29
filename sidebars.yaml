@@ -127,7 +127,7 @@ hpeRedfishMainSideBar:
       expanded: false
       pages:
       - label: Overview
-        page: docs/RefDocs/index.md
+        page: docs/refdocs/index.md
       
       
       - group: HPE iLOs
