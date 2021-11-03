@@ -152,6 +152,8 @@ hpeRedfishMainSideBar:
             page: docs/ilos/ilo5/ilo5_resmap.md
           - label: Resource definitions
             page: docs/ilos/ilo5/ilo5_resourcedefns.md
+          - label: Response message definitions
+            page: docs/ilos/ilo5/ilo5_msgregs.md
             
           # The following pages gets its label/title from the corresponding Ref Document in the
           # API registry (api/openapi/ilo5-openapi.yaml), in the info: > title: key.
