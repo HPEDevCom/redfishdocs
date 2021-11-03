@@ -33,7 +33,6 @@ hpeRedfishMainSideBar:
       page: docs/index.md
 
     - group: Redfish concepts
-      #menuStyle: drilldown
       expanded: false
       pages:
       - label: Overview
@@ -42,35 +41,44 @@ hpeRedfishMainSideBar:
       - label: Authentication
         page: docs/concepts/redfishAuthentication.md
 
-      - group: HPE iLO based compute
-        menuStyle: drilldown
-        expanded: false
-        pages: 
-        - label: Redfish in HPE iLO based compute nodes
-          page: docs/concepts/iLOBasedCompute/index.md
+    - group: Schema supplements and API reference documents
+      expanded: false
+      pages:
+      - label: Overview
+        page:  docs/refdocs/index.md
 
-      - group: iLO Amplifier Pack
-        menuStyle: drilldown
-        expanded: false
-        pages: 
-        - label: Redfish in HPE iLO Amplifier Pack
-          page: docs/concepts/iLOAmplifierPack/index.md
-
-      - group: HPE Superdome Flex
-        menuStyle: drilldown
-        expanded: false
-        pages: 
-        - label: Redfish in HPE Superdome
-          page: docs/concepts/SuperdomeFlex/index.md
-
-      - group: HPE Power Distribution Units (PDUs)
-        menuStyle: drilldown
+      - group: HPE iLO based compute nodes
         expanded: false
         pages:
-        - label: Redfish in HPE PDUs
-          page: docs/concepts/PDUs/index.md
+        - group: iLO 5
+          expanded: false
+          pages:
+          - label: Introduction
+            page: docs/ilos/ilo5/ilo5_introduction.md
+          - label: Resource map
+            page: docs/ilos/ilo5/ilo5_resmap.md
+          - label: Resource definitions
+            page: docs/ilos/ilo5/ilo5_resourcedefns.md 
+          - label: Response message definitions
+            page: docs/ilos/ilo5/ilo5_msgregs.md
+
+          # The following pages gets its label/title from the corresponding Ref Document in the
+          # API registry (api/openapi/ilo5-openapi.yaml), in the info: > title: key.
+          - label: iLO 5 API reference document
+            page: openapi/redfishiLO5RefDoc.page.yaml
+            menuStyle: drilldown
+            expanded: false
+
+        - group ilO 4
+          expanded: false
+          pages:
+          - label: Introduction
+            page: docs/ilos/ilo4/ilo4_introduction.md
+
+          - label: HPE iLO 4 Redfish reference document
+            page: openapi/redfishiLO4RefDoc.page.yaml/*
     
-    - group: RESTful Interface Tool User Guide
+    - group: RESTful Interface Tool (iLOrest) User Guide
       menuStyle: drilldown
       expanded: false
       pages:
@@ -115,61 +123,8 @@ hpeRedfishMainSideBar:
         page: docs/ilorest-userguide/errors.md
       - label: Glossary
         page: docs/ilorest-userguide/glossaryterms.md
-      
-        
-    
 
-
-
-
-
-    - group: HPE Redfish API Reference Documents
-      expanded: false
-      pages:
-      - label: Overview
-        page: docs/refdocs/index.md
-      
-      
-      - group: HPE iLOs
-        menuStyle: drilldown
-        expanded: false
-        pages:
-        - label: Introduction
-          page: docs/ilos/index.md
-        - label: Getting started
-          page: docs/ilos/ilo5/ilo5_gettingstarted.md
-        - label: Navigating the Data Model
-          page: docs/ilos/ilo5/ilo5_navigating.md
-       
-        - group: iLO 5
-          menuStyle: drilldown
-          expanded: false
-          pages:
-          - label: Introduction
-            page: docs/ilos/ilo5/ilo5_introduction.md
-        
-          - label: Resource map
-            page: docs/ilos/ilo5/ilo5_resmap.md
-          - label: Resource definitions
-            page: docs/ilos/ilo5/ilo5_resourcedefns.md
-          - label: Response message definitions
-            page: docs/ilos/ilo5/ilo5_msgregs.md
-            
-          # The following pages gets its label/title from the corresponding Ref Document in the
-          # API registry (api/openapi/ilo5-openapi.yaml), in the info: > title: key.
-          - page: openapi/redfishiLO5RefDoc.page.yaml
-            menuStyle: drilldown
-            expanded: false
-  
-        - group: iLO 4
-          menuStyle: drilldown
-          expanded: false
-          pages: 
-          - label: Introduction
-            page: docs/ilos/ilo4/ilo4_introduction.md
-
-          - label: HPE iLO 4 Redfish reference document
-            page: openapi/redfishiLO4RefDoc.page.yaml/*
+          
       
 #      - group: iLO Amplifier Pack
 #        menuStyle: drilldown
@@ -212,12 +167,12 @@ hpeRedfishMainSideBar:
 #
     - separatorLine: true
 
-    - group: Developer Guides
+    - group: More references and material
       #menuStyle: drilldown
       expanded: false
       pages:
       - label: Overview
-        page: docs/guides/index.md
+        page: docs/references_and_material/index.md
       - label: Developer guide part 1 (external)
         # page: docs/guides/developer-guide.md
         href: 'https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/'
@@ -227,7 +182,7 @@ hpeRedfishMainSideBar:
 
     - separatorLine: true
 
-    - label: HPE developer 
+    - label: HPE developer portal
       href: 'https://developer.hpe.com/'
       external: true
   
