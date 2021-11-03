@@ -69,7 +69,7 @@ hpeRedfishMainSideBar:
             menuStyle: drilldown
             expanded: false
 
-        - group ilO 4
+        - group: ilO 4
           expanded: false
           pages:
           - label: Introduction
