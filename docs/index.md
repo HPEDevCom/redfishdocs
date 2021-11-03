@@ -1,5 +1,5 @@
 ---
-title: Main Overview pave. Home | Get Started
+title: Main Overview pane. Home | Get Started
 disableLastModified: true
 ---
 

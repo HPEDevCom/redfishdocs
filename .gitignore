@@ -5,3 +5,5 @@ public/
 .git
 *-ori
 yarn.lock
+.yarn/
+.yarnrc

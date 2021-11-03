@@ -1,9 +1,9 @@
 ---
-title: iLOs index page. docs | iLOs
+title: Rebelotte
 disableLastModified: true
 ---
 
-# Overview
+# Introduction poil au menton
 
 Redfish for HPE iLOs is available on the following HPE servers:
 

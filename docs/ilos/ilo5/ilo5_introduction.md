@@ -1,6 +1,8 @@
 ---
 title: iLO 5 introduction
 disableLastModified: true
+toc:
+  enable: true
 ---
 
 ## Redfish Conformance

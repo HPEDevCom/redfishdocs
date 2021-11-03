@@ -26,8 +26,7 @@ hpeRedfishMainSideBar:
     href: '/'
        
   - group: HPE Redfish
-    #menuStyle: drilldown
-    #expanded: false
+    expanded: true
     pages:
     - label: Introduction
       page: docs/index.md
@@ -50,6 +49,8 @@ hpeRedfishMainSideBar:
       - group: HPE iLO based compute nodes
         expanded: false
         pages:
+        - label: Overview
+          page: docs/ilos/index.md
         - group: iLO 5
           expanded: false
           pages:
@@ -79,7 +80,6 @@ hpeRedfishMainSideBar:
             page: openapi/redfishiLO4RefDoc.page.yaml/*
     
     - group: RESTful Interface Tool (iLOrest) User Guide
-      menuStyle: drilldown
       expanded: false
       pages:
       - label: Introduction
