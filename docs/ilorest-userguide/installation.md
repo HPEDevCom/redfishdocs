@@ -1,6 +1,8 @@
 ---
 title: Installation
-enableToc: false
+toc:
+  enable: false
+  maxDepth: 2
 ---
 # Installation
 

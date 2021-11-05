@@ -1,6 +1,8 @@
 ---
 title: Support and other resources
-tocMaxDepth: 3
+toc:
+  enable: true
+  maxDepth: 3
 ---
 # Support and other resources
 

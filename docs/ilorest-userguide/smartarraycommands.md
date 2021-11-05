@@ -1,6 +1,8 @@
 ---
 title: Smart Array Commands
-tocMaxDepth: 3
+toc:
+  enable: true
+  maxDepth: 3
 ---
 ## Smart Array Commands
 

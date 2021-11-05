@@ -1,6 +1,8 @@
 ---
 title: Persistent Memory Commands
 tocMaxDepth: 3
+toc:
+  enable: true
 ---
 ## Persistent Memory Commands
 

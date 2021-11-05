@@ -1,6 +1,8 @@
 ---
 title: Raw Commands
-tocMaxDepth: 3
+toc:
+  enable: true
+  maxDepth: 3
 ---
 ## Raw commands
 

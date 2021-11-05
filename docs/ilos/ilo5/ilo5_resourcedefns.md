@@ -6237,21 +6237,6 @@ Member of CertificateCollection.CertificateCollection
 |Type|integer|
 |Read Only|True|
 
-## CertificateLocations.v1\_0\_2.CertificateLocations
-
-`@odata.type: "#CertificateLocations.v1_0_2.CertificateLocations"`
-
-The CertificateLocations schema describes a Resource that an administrator can use in order to locate all certificates installed on a given service.
-### Resource Instances
-|Uri|HTTP Allow|
-|---|---|
-`/redfish/v1/certificateservice/certificatelocations/`|GET |
-
-### Links to other Resources
-|Link Name|Destination type
-|---|---|
-|`Links/Certificates[]`|[Certificate](#certificatev1_1_0certificate)|
-
 ## CertificateService.v1\_0\_3.CertificateService
 
 `@odata.type: "#CertificateService.v1_0_3.CertificateService"`
@@ -28407,6 +28392,7 @@ The ServiceRoot resource describes the Redfish API service root.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
+`/redfish/v1`|GET |
 `/redfish/v1/`|GET |
 
 ### Links to other Resources

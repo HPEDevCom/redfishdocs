@@ -8,6 +8,7 @@ toc:
 
 |URI|Type|
 |:---|:---|
+|`/redfish/v1`|[ServiceRoot](../ilo5_resourcedefns/#servicerootv1_5_1serviceroot)|
 |`/redfish/v1/`|[ServiceRoot](../ilo5_resourcedefns/#servicerootv1_5_1serviceroot)|
 |`/redfish/v1/AccountService/`|[AccountService](../ilo5_resourcedefns/#accountservicev1_5_0accountservice)|
 |`/redfish/v1/AccountService/Accounts/`|Collection of [ManagerAccount](../ilo5_resourcedefns/#manageraccountv1_3_0manageraccount)|
@@ -104,7 +105,6 @@ toc:
 |`/redfish/v1/ResourceDirectory/`|[HpeiLOResourceDirectory](../ilo5_resourcedefns/#hpeiloresourcedirectoryv2_0_0hpeiloresourcedirectory)|
 |`/redfish/v1/SessionService/`|[SessionService](../ilo5_resourcedefns/#sessionservicev1_0_0sessionservice)|
 |`/redfish/v1/SessionService/Sessions/`|Collection of [Session](../ilo5_resourcedefns/#sessionv1_0_0session)|
-|`/redfish/v1/SessionService/Sessions/{item}/`|[Session](../ilo5_resourcedefns/#sessionv1_0_0session)|
 |`/redfish/v1/SessionService/Sessions/{item}/`|[Session](../ilo5_resourcedefns/#sessionv1_0_0session)|
 |`/redfish/v1/Systems/`|Collection of [ComputerSystem](../ilo5_resourcedefns/#computersystemv1_10_0computersystem)|
 |`/redfish/v1/Systems/{item}/`|[ComputerSystem](../ilo5_resourcedefns/#computersystemv1_10_0computersystem)|

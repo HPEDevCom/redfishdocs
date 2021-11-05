@@ -1,5 +1,7 @@
 ---
-enableToc: true
+toc:
+  enable: true
+  maxDepth: 2
 disableLastModified: true
 ---
 
