@@ -1,6 +1,8 @@
 ---
 title: Using the RESTful Interface Tool
-tocMaxDepth: 3
+toc:
+  enable: true
+  maxDepth: 3
 ---
 # Using the RESTful Interface Tool
 
