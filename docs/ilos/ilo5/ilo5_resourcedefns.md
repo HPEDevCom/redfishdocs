@@ -1,7 +1,7 @@
 ---
 disableLastModified: false
 toc:
-  enable: false
+  enable: true
 ---
 
 
