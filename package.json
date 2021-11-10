@@ -10,7 +10,7 @@
     "clean": "redocly-portal clean"
   },
   "dependencies": {
-    "@redocly/developer-portal": "^1.1.0-beta.68",
+    "@redocly/developer-portal": "^1.1.0-beta.67",
     "grommet": "^2.17.5",
     "grommet-icons": "^4.6.0",
     "grommet-theme-hpe": "^2.1.0",
