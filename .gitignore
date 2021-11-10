@@ -4,6 +4,6 @@ public/
 *.swp
 .git
 *-ori
-yarn.lock
-.yarn/
-.yarnrc
+#yarn.lock
+#.yarn/
+#.yarnrc
