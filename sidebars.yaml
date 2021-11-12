@@ -81,6 +81,7 @@ hpeRedfishMainSideBar:
     
     - group: RESTful Interface Tool (iLOrest) User Guide
       expanded: false
+      menuStyle: drilldown
       pages:
       - label: Introduction
         page: docs/ilorest-userguide/index.md
