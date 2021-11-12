@@ -40,6 +40,12 @@ hpeRedfishMainSideBar:
       - label: Authentication
         page: docs/concepts/redfishAuthentication.md
 
+      - label: Conformance
+        page: docs/concepts/redfishConformance.md
+
+      - label: Getting started
+        page: docs/concepts/gettingStarted.md
+
     - group: Schema supplements and API reference documents
       expanded: false
       pages:
@@ -55,8 +61,8 @@ hpeRedfishMainSideBar:
         - group: iLO 5
           expanded: false
           pages:
-          - label: Introduction
-            page: docs/ilos/ilo5/ilo5_introduction.md
+          - label: Changelog
+            page: docs/ilos/ilo5/ilo5_changelog.md
           - label: Resource map
             page: docs/ilos/ilo5/ilo5_resmap.md
           - label: Resource definitions

@@ -8,15 +8,13 @@ disableLastModified: true
 
 # Getting Started
 
-## Tips for Using the RESTful API
+## Tips for Using the Redfish RESTful API
 
-The RESTful API for HPE iLO is available on ProLiant Gen10 servers running iLO 5 1.10 or later with the iLO Standard license, although some features in the data might not be available without an Advanced license.
-
-To access the RESTful API, you need an HTTPS-capable client, such as a web browser with  the Postman REST Client plugin extension or cURL (a popular command line HTTP utility).
+To access the Redfish RESTful API, you need an HTTPS-capable client, such the [Postman](https://www.postman.com/) development platform, cURL (a popular command line HTTP utility), PowerShell or a web browser with a REST client extension. This [video](https://youtu.be/ur9UKRV_0S8) presents several Redfish clients tools, including script languages like Ansible.
 
 ## RESTful Interface Tool and Python Examples
 
-Although not a requirement, you can use the **RESTful Interface Tool** with the RESTful API. This command line tool provides a level of abstraction and convenience above direct access to the RESTful API. For details see: [http://www.hpe.com/info/restfulapi](http://www.hpe.com/info/restfulapi).
+Although not a requirement, you can use the **RESTful Interface Tool** with the RESTful API. This command line tool provides a level of abstraction and convenience above direct access to the RESTful API. For details see: [http://www.hpe.com/info/resttool](http://www.hpe.com/info/resttool).
 
 :::success Tip
 **Python**: See `ex1_functionname()` in the Python example code. This means that you should look for the specified function name in the python example code.
@@ -24,7 +22,7 @@ Although not a requirement, you can use the **RESTful Interface Tool** with the 
 
 Also, Hewlett Packard Enterprise published example Python code that implements a number of common operations in a RESTful API client. This code can be downloaded at [https://github.com/HewlettPackard/python-ilorest-library](https://github.com/HewlettPackard/python-ilorest-library). In some cases the examples in this document may refer to examples in the Python code with this notation:
 
-If you prefer not to implement a client in Python, this serves as a good pseudocode implementing the logic required to perform an operation.
+If you prefer not to implement a client in Python, this serves as a good pseudo-code implementing the logic required to perform an operation.
 
 ## Example REST API operation with cURL
 
