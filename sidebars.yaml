@@ -25,7 +25,7 @@ hpeRedfishMainSideBar:
     # The content of this '/' page is the index.mdx.
     href: '/'
        
-  - group: HPE Redfish
+  - group: HPE Redfish®
     expanded: true
     pages:
     - label: Introduction
@@ -48,6 +48,7 @@ hpeRedfishMainSideBar:
 
       - group: HPE iLO based compute nodes
         expanded: false
+        #menuStyle: drilldown
         pages:
         - label: Overview
           page: docs/ilos/index.md
