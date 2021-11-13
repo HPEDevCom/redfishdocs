@@ -5,10 +5,8 @@ disableLastModified: true
 
 # Redfish® at a glance
 
-As per the [DMTF](https://redfish.dmtf.org/education),  _Redfish® is a standard designed to deliver simple and secure management for converged,
+As per the [Distributed Management Task Force(DMTF)](https://redfish.dmtf.org/education),  _Redfish® is a standard designed to deliver simple and secure management for converged,
 hybrid IT and the Software Defined Data Center (SDDC)._
-
-TBD
 
 ## Key benefits of the Redfish RESTful API
 

@@ -34,7 +34,7 @@ hpeRedfishMainSideBar:
     - group: Redfish concepts
       expanded: false
       pages:
-      - label: Overview
+      - label: Redfish® at a glance
         page:  docs/concepts/index.md
 
       - label: Authentication
