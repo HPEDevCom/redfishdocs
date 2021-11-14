@@ -12,11 +12,11 @@ If you perform an HTTP operation on any other resource other than the root `/red
 
 The following shows the error displayed on `GET /redfish/v1/systems` when no authentication is attempted:
 
-```ResponseCode
+```Text Response code
 401 Forbidden
 ```
 
-```ResponseBody
+```json Response body
 {
     "error": {
         "code": "iLO.0.10.ExtendedInfo",
@@ -34,22 +34,30 @@ The following shows the error displayed on `GET /redfish/v1/systems` when no aut
 
 The Redfish API allows you to use HTTP Basic Authentication with a valid Baseboard Management Controller user name and password.
 
-```cURL
-curl https://{IP}/redfish/v1/systems/ --include --insecure -u username:password --location
+```Bash cURL
+curl --include --insecure -u username:password --location \
+    https://{IP}/redfish/v1/systems
 ```
 
 ```Python
+# The following example uses the HPE Redfish Python library that
+# you can install with:
+# pip install python-ilorest-library
+
+# The sources of the HPE Redfish Python library is on GitHub at
+# https://github.com/HewlettPackard/python-ilorest-library
+
 import sys
-import redfish
+from redfish import RedfishClient
 
 # When running remotely connect using the BMC IP address, BMC account name, 
 # and password to send https requests
-iLO_host = "https://{IP}"
+bmc_host = "https://{IP}"
 login_account = "admin"
 login_password = "password"
 
 ## Create a REDFISH object
-REDFISH_OBJ = redfish.RedfishClient(base_url=iLO_host,username=login_account, \
+REDFISH_OBJ = RedfishClient(base_url=bmc_host,username=login_account, \
                           password=login_password, default_prefix='/redfish/v1')
 
 # Login into the server and create a session
@@ -59,7 +67,7 @@ REDFISH_OBJ.login(auth="basic")
 REDFISH_OBJ.logout()
 ```
 
-## Creating and Using Sessions
+## Creating a session
 
 For more complex multi-resource operations, you should log in and establish a session. To log in, iLO has a session manager object at the documented URI `/redfish/v1/sessions`. To create a session, POST a JSON object to the Session manager.
 
@@ -67,42 +75,50 @@ For more complex multi-resource operations, you should log in and establish a se
  You must include the HTTP header `Content-Type: application/json` for all RESTful API operations that include a request body in JSON format.
 :::
 
-If the session is created successfully, you receive an HTTP 201 (Created) response from iLO. There will also be two important HTTP response headers.
+If the session is created successfully, you receive an HTTP 201 (Created) response from the BMC. There will also be two important HTTP response headers.
 
 * **X-Auth-Token** Your session token (string).	This is a unique string for your login session. It must be included as a header in all subsequent HTTP operations in the session.
 
-* **Location** The URI of the newly created session resource.	iLO allocates a new session resource describing your session. This is the URI that you must DELETE against in order to log out. If you lose this location URI, you can find it by crawling the HREF links in the Sessions collection. Store this URI to facilitate logging out.
+* **Location** The URI of the newly created session resource.	BMC allocates a new session resource describing your session. This is the URI that you must DELETE against in order to log out. If you lose this location URI, you can find it by crawling the HREF links in the Sessions collection. Store this URI to facilitate logging out.
 
-:::attention Note
+:::success Tip
 It is good practice to save the Location URI of the newly created session.  This is your unique session information and is needed to log out later.
 :::
 
-```shell
+```shell cURL
 curl --insecure \
     -H "Content-Type: application/json" \
     -H "OData-Version: 4.0" \
     -X POST --data "@data.json" \
     https://{IP}/redfish/v1/SessionService/Sessions/
 
+# content of the data.json data file:
 cat data.json
     {
-    	"UserName": "<your username>", 
-    	"Password": "<your password>"
+      "UserName": "<your username>", 
+      "Password": "<your password>"
     }
 
 ```
 
-```python
-import redfish
+```Python
+# The following example uses the HPE Redfish Python library that
+# you can install with:
+# pip install python-ilorest-library
+
+# The sources of the HPE Redfish Python library is on GitHub at
+# https://github.com/HewlettPackard/python-ilorest-library
+
+from redfish import RedfishClient
 
 # When running remotely connect using the iLO address, iLO account name, 
 # and password to send https requests
-iLO_host = "https://{iLO}"
+bmc_host = "https://{IP-BMC}"
 login_account = "admin"
 login_password = "password"
 
 ## Create a REDFISH object
-REDFISH_OBJ = redfish.RedfishClient(base_url=iLO_host,username=login_account, \
+REDFISH_OBJ = RedfishClient(base_url=bmc_host,username=login_account, \
                           password=login_password, default_prefix='/redfish/v1')
 
 # Login into the server and create a session
@@ -119,7 +135,7 @@ Content-type: application/json; charset=utf-8
 Date: Tue, 14 Jun 2016 22:23:39 GMT
 ETag: W/"C84E3EA9"
 Link: </redfish/v1/SessionService/Sessions/{item}/>; rel=self
-Location: https://{iLO}/redfish/v1/SessionService/Sessions/{item}/
+Location: https://{IP-BMC}/redfish/v1/SessionService/Sessions/{item}/
 OData-Version: 4.0
 Server: HPE-iLO-Server/1.30
 X-Auth-Token: c3c5f437f94bc24428fe930bbf50904f
@@ -141,7 +157,7 @@ X_HP-CHRP-Service-Version: 1.0.3
 }
 ```
 
-# Using a Session
+## Using a Session
 
 To use a session, simply include the `X-Auth-Token` header supplied by the login response in all REST requests.
 
@@ -158,20 +174,27 @@ If you cannot preserve the session URI on login, you may iterate the Sessions co
 ```shell cURL
 curl --insecure  -u admin:password \
     -X "DELETE" \
-    https://{IP}/redfish/v1/SessionServiceSessions/{item} 
+    https://{IP-BMC}/redfish/v1/SessionServiceSessions/{item} 
 ```
 
 ```Python
-import redfish
+# The following example uses the HPE Redfish Python library that
+# you can install with:
+# pip install python-ilorest-library
 
-# When running remotely connect using the iLO address, iLO account name, 
+# The sources of the HPE Redfish Python library is on GitHub at
+# https://github.com/HewlettPackard/python-ilorest-library
+
+from redfish import RedfishClient
+
+# When running remotely connect using the BMC address, BMC account name, 
 # and password to send https requests
-iLO_host = "https://{IP}"
+iLO_host = "https://{IP-BMC}"
 login_account = "admin"
 login_password = "password"
 
 ## Create a REDFISH object
-REDFISH_OBJ = redfish.RedfishClient(base_url=iLO_host,username=login_account, \
+REDFISH_OBJ = RedfishClient(base_url=bmc_host,username=login_account, \
                           password=login_password, default_prefix='/redfish/v1')
 
 # Login into the server and create a session
@@ -180,3 +203,7 @@ REDFISH_OBJ.login(auth="session")
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
+
+:::success Tip
+Several other Python examples, including certificate authentication are present on [GitHub](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/add_user_account.py).
+:::
