@@ -1,4 +1,5 @@
 ---
+title: Getting started
 toc:
   enable: true
   maxDepth: 2
@@ -6,7 +7,7 @@ disableLastModified: true
 ---
 
 
-# Getting Started
+# Getting started
 
 ## Tips for Using the Redfish RESTful API
 

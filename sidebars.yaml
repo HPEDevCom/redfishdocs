@@ -37,7 +37,7 @@ hpeRedfishMainSideBar:
       - label: Redfish® at a glance
         page:  docs/concepts/index.md
 
-      - label: Authentication
+      - label: Authentication and sessions
         page: docs/concepts/redfishAuthentication.md
 
       - label: Conformance

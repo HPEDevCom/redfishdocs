@@ -1,19 +1,22 @@
 ---
 title: Concepts | Redfish authentication
 disableLastModified: true
+toc:
+  enable: true
+  maxDepth: 2
 ---
 
-# Redfish Authentication and sessions
+# Redfish authentication and sessions
 
 If you perform an HTTP operation on any other resource other than the root `/redfish/v1` resource, you will receive an `HTTP 401 (Forbidden)` error indicating that you don’t have the authentication needed to access the resource.
 
-> The following shows the error displayed on `GET /redfish/v1/systems` when no authentication is attempted:
+The following shows the error displayed on `GET /redfish/v1/systems` when no authentication is attempted:
 
-```text
+```ResponseCode
 401 Forbidden
 ```
 
-```json
+```ResponseBody
 {
     "error": {
         "code": "iLO.0.10.ExtendedInfo",
@@ -26,21 +29,22 @@ If you perform an HTTP operation on any other resource other than the root `/red
     }
 }
 ```
+
 ## Basic Authentication
 
-The Redfish API allows you to use HTTP Basic Authentication using a valid user name and password.
+The Redfish API allows you to use HTTP Basic Authentication with a valid Baseboard Management Controller user name and password.
 
-```shell
-curl https://{iLO}/redfish/v1/systems/ -i --insecure -u username:password -L
+```cURL
+curl https://{IP}/redfish/v1/systems/ --include --insecure -u username:password --location
 ```
 
-```python
+```Python
 import sys
 import redfish
 
-# When running remotely connect using the iLO address, iLO account name, 
+# When running remotely connect using the BMC IP address, BMC account name, 
 # and password to send https requests
-iLO_host = "https://{iLO}"
+iLO_host = "https://{IP}"
 login_account = "admin"
 login_password = "password"
 
@@ -57,10 +61,11 @@ REDFISH_OBJ.logout()
 
 ## Creating and Using Sessions
 
-For more complex multi-resource operations, you should log in and establish a session. To log in, iLO has a session manager object at the documented URI `/redfish/v1/sessions/`. To create a session, POST a JSON object to the Session manager.
+For more complex multi-resource operations, you should log in and establish a session. To log in, iLO has a session manager object at the documented URI `/redfish/v1/sessions`. To create a session, POST a JSON object to the Session manager.
 
-> You must include the HTTP header `Content-Type: application/json`
-for all RESTful API operations that include a request body in JSON format.
+:::attention Note
+ You must include the HTTP header `Content-Type: application/json` for all RESTful API operations that include a request body in JSON format.
+:::
 
 If the session is created successfully, you receive an HTTP 201 (Created) response from iLO. There will also be two important HTTP response headers.
 
@@ -68,10 +73,23 @@ If the session is created successfully, you receive an HTTP 201 (Created) respon
 
 * **Location** The URI of the newly created session resource.	iLO allocates a new session resource describing your session. This is the URI that you must DELETE against in order to log out. If you lose this location URI, you can find it by crawling the HREF links in the Sessions collection. Store this URI to facilitate logging out.
 
-> It is good practice to save the Location URI of the newly created session.  This is your unique session information and is needed to log out later.
+:::attention Note
+It is good practice to save the Location URI of the newly created session.  This is your unique session information and is needed to log out later.
+:::
 
 ```shell
-curl -H "Content-Type: application/json" -H "OData-Version: 4.0" -X POST --data "@data.json" https://{iLO}/redfish/v1/SessionService/Sessions/ --insecure
+curl --insecure \
+    -H "Content-Type: application/json" \
+    -H "OData-Version: 4.0" \
+    -X POST --data "@data.json" \
+    https://{IP}/redfish/v1/SessionService/Sessions/
+
+cat data.json
+    {
+    	"UserName": "<your username>", 
+    	"Password": "<your password>"
+    }
+
 ```
 
 ```python
@@ -91,18 +109,9 @@ REDFISH_OBJ = redfish.RedfishClient(base_url=iLO_host,username=login_account, \
 REDFISH_OBJ.login(auth="session")
 ```
 
-> Contents of data.json
+Successful headers and body response:
 
-```json
-    {
-    	"UserName": "<your username>", 
-    	"Password": "<your password>"
-    }
-```
-
-> Successful headers from iLO:
-
-```
+```text Response Headers
 Cache-Control: no-cache
 Connection: keep-alive
 Content-length: 163
@@ -116,11 +125,9 @@ Server: HPE-iLO-Server/1.30
 X-Auth-Token: c3c5f437f94bc24428fe930bbf50904f
 X-Frame-Options: sameorigin
 X_HP-CHRP-Service-Version: 1.0.3
-``` 
+```
 
-> Successful response from iLO:
-
-```json
+```json Response Body
 {
   "error": {
     "@Message.ExtendedInfo": [
@@ -144,18 +151,22 @@ iLO supports a limited number of simultaneous sessions.  If you do not log out o
 
 To log out perform an `HTTP DELETE` to the URI that was returned in the "Location" header when you created the session.
 
-> If you cannot preserve the session URI on login, you may iterate the Sessions collection at /redfish/v1/sessions/.  Be sure to include the X-Auth-Token header.  For each session look for a JSON property called "MySession" that is true. You may then DELETE that URI.
+:::attention Note
+If you cannot preserve the session URI on login, you may iterate the Sessions collection at /redfish/v1/sessions.  Be sure to include the `X-Auth-Token` header.  For each session look for a JSON property called `MySession` that is `true`. You may then DELETE that URI.
+:::
 
-```shell
-curl -X "DELETE" https://{iLO}/redfish/v1/SessionService/Sessions/{item}/ -u admin:password --insecure
+```shell cURL
+curl --insecure  -u admin:password \
+    -X "DELETE" \
+    https://{IP}/redfish/v1/SessionServiceSessions/{item} 
 ```
 
-```python
+```Python
 import redfish
 
 # When running remotely connect using the iLO address, iLO account name, 
 # and password to send https requests
-iLO_host = "https://{iLO}"
+iLO_host = "https://{IP}"
 login_account = "admin"
 login_password = "password"
 
