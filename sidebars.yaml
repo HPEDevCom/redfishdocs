@@ -56,7 +56,7 @@ hpeRedfishMainSideBar:
         expanded: false
         #menuStyle: drilldown
         pages:
-        - label: Overview
+        - label: Redfish for HPE iLOs
           page: docs/ilos/index.md
         - group: iLO 5
           expanded: false

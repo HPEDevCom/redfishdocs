@@ -4,9 +4,10 @@ toc:
   enable: false
 ---
 
-# Resource Map
+# Resource map
 
-|URI|Type|
+The following table lists HPE iLO 5 Redfish resource types and their associated URIs.
+|URI|Resource type|
 |:---|:---|
 |`/redfish/v1`|[ServiceRoot](../ilo5_resourcedefns/#servicerootv1_5_1serviceroot)|
 |`/redfish/v1/`|[ServiceRoot](../ilo5_resourcedefns/#servicerootv1_5_1serviceroot)|
