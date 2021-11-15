@@ -96,10 +96,8 @@ hpeRedfishMainSideBar:
         page: docs/ilorest-userguide/changelog.md
       - label: Installation
         page: docs/ilorest-userguide/installation.md
-      - label: Using the RESTful Interface Tool (original)
+      - label: Using the RESTful Interface Tool
         page: docs/ilorest-userguide/usage.md
-      - label: Using the RESTful Interface Tool (modified)
-        page: docs/ilorest-userguide/usage-modified.md
       
       - group: Commands
         expanded: false
@@ -123,6 +121,8 @@ hpeRedfishMainSideBar:
         page: docs/ilorest-userguide/advancedusage.md
       - label: Use Case Examples and Macro Commands
         page: docs/ilorest-userguide/examplecommandsscripts.md
+      - label: When things go wrong
+        page: docs/ilorest-userguide/
       - label: Support and other resources
         page: docs/ilorest-userguide/support.md
       - label: Known Issues 

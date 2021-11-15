@@ -4,6 +4,7 @@ toc:
   enable: true
   maxDepth: 3
 ---
+# Commands for the RESTful Interface Tool
 
 ## Global Optional Arguments
 
