@@ -2,6 +2,7 @@
 title: BIOS Commands
 toc:
   enable: true
+  maxDepth: 3
 ---
 ## BIOS commands
 

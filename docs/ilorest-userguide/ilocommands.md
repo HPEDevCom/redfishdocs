@@ -839,13 +839,13 @@ None
 
 ### Ethernet command
 
-### syntax
+#### syntax
 
 ethernet [-h] [--url URL] [--sessionid SESSIONID] [-u USER] [-p PASSWORD] [--biospassword BIOSPASSWORD] [--includelogs] [--path PATH] [--logout] [--encryption ENCRYPTION] [-f ETHFILENAME] {default,save,load}
 
 Command for configuring Ethernet Management Controller Interfaces and associated properties.
 
-### Parameters
+#### Parameters
 
 - **default**
 
@@ -859,7 +859,7 @@ Save a network configuration.
 
 Load a network cofiguration.
 
-### Optional parameters
+#### Optional parameters
 
 - **h, help**
 

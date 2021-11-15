@@ -133,9 +133,9 @@ I am getting more data than what I would like.
 
 1. Use a selector that is exclusive to the type you want.
 
-2. Verify that the type you have selected, does not have more than one instance. In this case, the [filter option](#filter-option) can help you limit the results to the instance you want.
+2. Verify that the type you have selected, does not have more than one instance. In this case, the [filter option](../globalcommands/#filter-option) can help you limit the results to the instance you want.
 
-The example below selects only one resource type, but multiple resources are available for that resource type. We only want to modify or view one instance. We can use the [--filter](#filter-option) option to limit to one instance only.
+The example below selects only one resource type, but multiple resources are available for that resource type. We only want to modify or view one instance. We can use the [--filter](../globalcommands/#filter-option) option to limit to one instance of the resource only.
 
 ```shell One resource type, multiple resources
 iLOrest > select EthernetInterface.
@@ -175,9 +175,9 @@ This issue can happen for multiple reasons. The API tries  to catch issues with 
 
 ### Action
 
-1. Run the [status command](#status-command) to see what properties have failed to commit.
+1. Run the [status command](../globalcommands/#status-command) to see what properties have failed to commit.
 
-2. To ensure you are sending data that will be accepted by the server, obtain schema information for the property that failed to commit with the [info command](#info-command).
+2. To ensure you are sending data that will be accepted by the server, obtain schema information for the property that failed to commit with the [info command](../globalcommands/#info-command).
 
 3. Some properties require other properties to be set first. You can view the [iLO REST API Doc's resource definitions](https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/#resource-definitions) for the property you are trying to commit to see any additional information on modifying the property that is not in the schemas.
 
@@ -300,7 +300,7 @@ Array types must be set as a whole modified array inside brackets. `[ ]`
 
 Set array types as a whole modified array inside brackets. `[ ]`
 
-You can also modify lists using the [save](#save-command) and [load](#load-command) commands.
+You can also modify lists using the [save](../globalcommands/#save-command) and [load](../globalcommands/#load-command) commands.
 
 ## Will this command reboot/reset my system ?
 
