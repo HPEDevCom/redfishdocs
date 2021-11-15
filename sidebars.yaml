@@ -122,7 +122,7 @@ hpeRedfishMainSideBar:
       - label: Use Case Examples and Macro Commands
         page: docs/ilorest-userguide/examplecommandsscripts.md
       - label: When things go wrong
-        page: docs/ilorest-userguide/
+        page: docs/ilorest-userguide/gowrong.md
       - label: Support and other resources
         page: docs/ilorest-userguide/support.md
       - label: Known Issues 
