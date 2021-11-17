@@ -23,6 +23,7 @@ stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
   - https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
   - './static/styleOverrides.css'
+  - './scripts/footer-loader.js'
 
 nav:
   - label: Redfish Standard
