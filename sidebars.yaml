@@ -45,6 +45,9 @@ hpeRedfishMainSideBar:
 
       - label: Getting started
         page: docs/concepts/gettingStarted.md
+      
+      - label: Navigating the Data Model
+        page: docs/concepts/navigating.md
 
     - group: Schema supplements and API reference documents
       expanded: false
