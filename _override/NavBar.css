@@ -1,3 +1,12 @@
 .search-box-override span input {
   padding: 6px 10px;
 }
+
+.search-box-override ul {
+  background-color: #F8F8F8; /* Grommet light-1 color */
+}
+
+.search-box-override ul a > div:hover {
+  background-color: #EDEDED; /* Grommet light-3 color */
+}
+
