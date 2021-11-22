@@ -43,6 +43,9 @@ hpeRedfishMainSideBar:
       - label: Conformance
         page: docs/concepts/redfishConformance.md
 
+      - label: Performing actions
+        page: docs/concepts/ilo5_performingaction.md
+
       - label: Getting started
         page: docs/concepts/gettingStarted.md
       
