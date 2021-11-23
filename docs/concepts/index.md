@@ -1,5 +1,5 @@
 ---
-title: Redfish concepts| Redfish at a glance
+title: Redfish concepts
 disableLastModified: true
 ---
 

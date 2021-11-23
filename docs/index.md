@@ -1,5 +1,5 @@
 ---
-title: Main Overview pane. Home | Get Started
+title: HPE Redfish|Getting started
 disableLastModified: true
 ---
 

@@ -69,6 +69,12 @@ hpeRedfishMainSideBar:
           pages:
           - label: Changelog
             page: docs/ilos/ilo5/ilo5_changelog.md
+          - label: Adapting from iLO 4
+            page: docs/ilos/ilo5/ilo5_adaptation.md
+          - label: Managing iLO 5 users
+            page: docs/ilos/ilo5/ilo5_accountservice.md
+          - label: Managing time in iLO 5
+            page: docs/ilos/ilo5/ilo5_time.md
           - label: Resource map
             page: docs/ilos/ilo5/ilo5_resmap.md
           - label: Resource definitions

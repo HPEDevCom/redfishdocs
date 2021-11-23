@@ -1,5 +1,5 @@
 ---
-title: Schema supplements and Ref docs overview
+title: Redfish schema supplements/reference documents overview
 disableLastModified: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: More references and material
+title: HPE Redfish references and material
 ---
 
 # References and material

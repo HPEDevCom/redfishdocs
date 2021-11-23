@@ -1,9 +1,9 @@
 ---
-title: docs | ilos | Redfish service on HPE iLOs
+title: HPE Redfish service on iLOs
 disableLastModified: true
 ---
 
-# Redfish service for HPE iLOs
+# Redfish for HPE iLOs
 
 Redfish for HPE iLOs is available on iLO 4 and iLO 5 based servers:
 
