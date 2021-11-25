@@ -1,8 +1,9 @@
 ---
 title: Concepts | Performing actions
-disableLastModified: true
 toc:
   enable: false
+  maxDepth: 2
+disableLastModified: true
 ---
 
 # Performing actions

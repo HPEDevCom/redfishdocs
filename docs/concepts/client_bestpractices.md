@@ -1,8 +1,9 @@
 ---
 title: Client best practices
 toc:
-  enable
-enableLastUpdate: false
+  enable: true
+  maxDepth: 2
+disableLastModified: true
 ---
 
 # Client best practices

@@ -55,6 +55,16 @@ hpeRedfishMainSideBar:
       - label: Client best practices
         page: docs/concepts/client_bestpractices.md
 
+    - group: Example use cases
+      expanded: false
+      pages:
+      - label: BIOS examples
+        page:  docs/examples/biosexamples.md
+      - label: iSCSI configuration example
+        page: docs/examples/iscsiconfig.md
+      - label: More Redfish examples
+        page: docs/examples/otherexamples.md
+
     - group: Schema supplements and API reference documents
       expanded: false
       pages:
@@ -78,6 +88,8 @@ hpeRedfishMainSideBar:
             page: docs/ilos/ilo5/ilo5_accountservice.md
           - label: Managing time in iLO 5
             page: docs/ilos/ilo5/ilo5_time.md
+          - label: iLO 5 Software/Firmware update service
+            page: docs/ilos/ilo5/ilo5_updateservicedoc.md
           - label: Resource map
             page: docs/ilos/ilo5/ilo5_resmap.md
           - label: Resource definitions

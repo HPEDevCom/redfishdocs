@@ -1,7 +1,8 @@
 ---
 title: Managing time in iLO 5
 toc:
-  enable
+  enable: true
+  maxDepth: 2
 enableLastUpdate: false
 ---
 
