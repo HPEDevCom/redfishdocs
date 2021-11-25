@@ -44,13 +44,16 @@ hpeRedfishMainSideBar:
         page: docs/concepts/redfishConformance.md
 
       - label: Performing actions
-        page: docs/concepts/ilo5_performingaction.md
+        page: docs/concepts/performing_actions.md
 
       - label: Getting started
         page: docs/concepts/gettingStarted.md
       
       - label: Navigating the Data Model
         page: docs/concepts/navigating.md
+      
+      - label: Client best practices
+        page: docs/concepts/client_bestpractices.md
 
     - group: Schema supplements and API reference documents
       expanded: false
