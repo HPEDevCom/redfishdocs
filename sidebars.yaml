@@ -90,6 +90,8 @@ hpeRedfishMainSideBar:
             page: docs/ilos/ilo5/ilo5_time.md
           - label: iLO 5 Software/Firmware update service
             page: docs/ilos/ilo5/ilo5_updateservicedoc.md
+          - label: Managing the iLO Redfish Host Interface (Virtual NIC)
+            page: docs/ilos/ilo5/ilo5_vnic.md
           - label: Resource map
             page: docs/ilos/ilo5/ilo5_resmap.md
           - label: Resource definitions
