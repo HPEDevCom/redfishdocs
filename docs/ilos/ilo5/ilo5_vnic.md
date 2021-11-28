@@ -3,7 +3,7 @@ title: Managing the iLO Redfish Host Interface ("Virtual NIC")
 toc:
   enable: true
   maxDepth: 2
-enableLastUpdate: false
+disableLastModified: true
 ---
 
 # Managing the iLO Redfish Host Interface ("Virtual NIC")
