@@ -5,7 +5,7 @@ meta:
 headerIcon: ./images/hpe.svg
 logo: ./images/hpe.svg
 toc:
-  enabled: true
+  enable: true
   maxDepth: 2
 oasDefinitions:
   # add links to definitions in the Redocly API registry by using a fully qualified URL.
