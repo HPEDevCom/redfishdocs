@@ -92,6 +92,8 @@ hpeRedfishMainSideBar:
             page: docs/ilos/ilo5/ilo5_updateservicedoc.md
           - label: Managing the iLO Redfish Host Interface (Virtual NIC)
             page: docs/ilos/ilo5/ilo5_vnic.md
+          - label: One-button secure erase
+            page: docs/ilos/ilo5/ilo5_securesystemerase.md
           - label: Resource map
             page: docs/ilos/ilo5/ilo5_resmap.md
           - label: Resource definitions
