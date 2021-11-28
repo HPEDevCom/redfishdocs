@@ -2,8 +2,8 @@
 title: iLO 5 Software/Firmware update service
 toc:
   enable: true
-  maxDepth: 2
-enableLastUpdate: false
+  maxDepth: 3
+disableLastModified: true
 ---
 
 # iLO 5 Software/Firmware update service

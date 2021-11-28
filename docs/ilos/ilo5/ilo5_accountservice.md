@@ -2,7 +2,7 @@
 title: Managing iLO 5 users
 toc:
   enable: true
-enableLastUpdate: false
+disableLastModified: true
 ---
 
 # Managing iLO 5 Users

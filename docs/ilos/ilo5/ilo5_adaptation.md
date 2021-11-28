@@ -2,7 +2,7 @@
 title: Adapting from iLO 4
 toc:
   enable: true
-enableLastUpdate: false
+disableLastModified: true
 --- 
 
 # Adapting from iLO 4
