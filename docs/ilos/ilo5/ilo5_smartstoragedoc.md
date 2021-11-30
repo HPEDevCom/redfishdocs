@@ -207,7 +207,7 @@ GET /redfish/v1/Systems/{item}/smartstorageconfig/
 PUT /redfish/v1/Systems/{item}/smartstorageconfig/settings/
 ```
 
-```json Body `
+```json Body 1
 {
     "DataGuard": "Disabled",
     "LogicalDrives": [

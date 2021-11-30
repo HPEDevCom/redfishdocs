@@ -100,7 +100,13 @@ hpeRedfishMainSideBar:
           - label: One-button secure erase
             page: docs/ilos/ilo5/ilo5_secureerase.md
           - label: SmartStorage configuration
-            page: docs/ilos/ilo5/ilo5_smartstorage.md
+            page: docs/ilos/ilo5/ilo5_smartstoragedoc.md
+          - label: Persistent memory configuration
+            page: docs/ilos/ilo5/ilo5_configurepmm.md
+          - label: Managing Apollo Drive Bay mapping
+            page: docs/ilos/ilo5/ilo5_drivebaymapping.md
+          - label: Error messages and registries
+            page: docs/ilos/ilo5/ilo5_errorhandling.md
 
           - label: Resource map
             page: docs/ilos/ilo5/ilo5_resmap.md
