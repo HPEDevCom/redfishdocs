@@ -89,13 +89,18 @@ hpeRedfishMainSideBar:
           - label: Managing time in iLO 5
             page: docs/ilos/ilo5/ilo5_time.md
           - label: iLO 5 Software/Firmware update service
-            page: docs/ilos/ilo5/ilo5_updateservicedoc.md
+            page: docs/ilos/ilo5/ilo5_updateservice.md
+
+          - label: SSL certificates
+            page: docs/ilos/ilo5/ilo5_sslcertdoc.md
 
           - label: Managing the iLO Redfish Host Interface (Virtual NIC)
             page: docs/ilos/ilo5/ilo5_vnic.md
 
           - label: One-button secure erase
             page: docs/ilos/ilo5/ilo5_secureerase.md
+          - label: SmartStorage configuration
+            page: docs/ilos/ilo5/ilo5_smartstorage.md
 
           - label: Resource map
             page: docs/ilos/ilo5/ilo5_resmap.md
