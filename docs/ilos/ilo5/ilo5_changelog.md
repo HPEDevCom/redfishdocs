@@ -23,7 +23,7 @@ toc:
   * Added PATCH for `/redfish/v1/Systems/{@systemsId}/NetworkInterfaces/{@nicId}/NetworkPorts/{@portId}`
 
 * Deprecated URIs
-No URIs deprecated for this release.
+  * No URIs deprecated for this release.
 
 * Schema updates
   * `#Drive.v1_1_0.Drive` updated to `#Drive.v1_7_0.Drive`  
@@ -62,10 +62,10 @@ Added RDE support for the following URIs and HTTP methods:
   * `/redfish/v1/Managers/{@managerId}/SecurityService/iLOLDevID/Certificates/{@certId}` (DELETE, GET)
 
 * New HTTP methods
-No new methods added to existing URIs for this release.
+  * No new methods added to existing URIs for this release.
 
 * Deprecated URIs
-No URIs deprecated for this release.
+  * No URIs deprecated for this release.
 
 * Actions: Additions and deprecations
   * Added `/redfish/v1/CertificateService/Actions/CertificateService.GenerateCSR`
