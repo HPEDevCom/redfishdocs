@@ -108,6 +108,9 @@ hpeRedfishMainSideBar:
           - label: Error messages and registries
             page: docs/ilos/ilo5/ilo5_errorhandling.md
 
+          - label: RESTful Events and the Event Service
+            page: docs/ilos/ilo5/ilo5_subscribing.md
+
           - label: Resource map
             page: docs/ilos/ilo5/ilo5_resmap.md
           - label: Resource definitions
