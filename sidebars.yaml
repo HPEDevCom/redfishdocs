@@ -84,6 +84,12 @@ hpeRedfishMainSideBar:
             page: docs/ilos/ilo5/ilo5_changelog.md
           - label: Adapting from iLO 4
             page: docs/ilos/ilo5/ilo5_adaptation.md
+
+          - label: Resource map
+            page: docs/ilos/ilo5/ilo5_resmap.md
+          - label: Resource definitions
+            page: docs/ilos/ilo5/ilo5_resourcedefns.md
+
           - label: Managing iLO 5 users
             page: docs/ilos/ilo5/ilo5_accountservice.md
           - label: Managing time in iLO 5
@@ -105,16 +111,15 @@ hpeRedfishMainSideBar:
             page: docs/ilos/ilo5/ilo5_configurepmm.md
           - label: Managing Apollo Drive Bay mapping
             page: docs/ilos/ilo5/ilo5_drivebaymapping.md
+
           - label: Error messages and registries
-            page: docs/ilos/ilo5/ilo5_errorhandling.md
+            page: docs/ilos/ilo5/ilo5_errorhandling.md 
 
           - label: RESTful Events and the Event Service
             page: docs/ilos/ilo5/ilo5_subscribing.md
-
-          - label: Resource map
-            page: docs/ilos/ilo5/ilo5_resmap.md
-          - label: Resource definitions
-            page: docs/ilos/ilo5/ilo5_resourcedefns.md 
+          - label: Using iLOrest
+            page: docs/ilos/ilo5/ilo5_resttool.md
+ 
           - label: Response message definitions
             page: docs/ilos/ilo5/ilo5_msgregs.md
 
