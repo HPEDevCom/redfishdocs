@@ -1,6 +1,3 @@
----
-title: Glossary
----
 # Glossary
 
 |    **Term**                    |        **Description**                                                       |

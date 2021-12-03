@@ -1,20 +1,38 @@
 # Change Log
 
+## Version 3.3.0
+
+**Fixes:**
+
+* Added Virtual NIC login support.
+* Added Certificate login support.
+* Support for uniqueoverride option added for SerialNumber and ProductId in set and load commands
+* Fixed Multiple issues in save and load commands.
+* Fixed Json outputs for smartarray commands.  
+* Added Ethernet Enable_vnic and Disable_vnic commands.
+* Fixed Multiple uploadcomp issues w.r.t FWPKG files. 
+
+**Enhancements:**
+
+* Added new error codes RIS_ILO_CHIF_ACCESS_DENIED_ERROR(66), RIS_CREATE_AND_PREPARE_CHANNEL_ERROR(67), RIS_ILO_CHIF_PACKET_EXCHANGE_ERROR(71),
+  RIS_ILO_CHIF_NO_DRIVER_ERROR(69) to aid in accurate error diagnosis. 
+  
 ## Version 3.2.2
 
 **Fixes:**
 
-* Help command fixed.
-* Get/Set Multiple Attributes.
-* Key Error issue when saving Bios using save command.
-* Issue with select command output 
-* Multiple keys retrieval related issues w.r.t. FcPorts.
-* Console error when –logdir option used.
-* Multiple help related fixes
+* Help command missing issue.
+* Command outputs in Json format when used with -j or --json option.
+* Key Error issue when saving Bios using save command. 
+* Multiple keys get/set related issues w.r.t. FcPorts.
+* Console error issue when –logdir option used.
+* Multiple help text related issues.
   
 **Enhancements:**
 
-* Additional return codes and enhancements of existing return code messages.
+* New Error code 84 (ILO_RIS_CORRUPTION_ERROR) is returned if RIS is found to corrupted.
+* New Error code 46 (USERNAME_PASSWORD_REQUIRED_ERROR) is returned if username and password not passed when iLO is in High Security Mode  
+* Partition Mounting Error return text enhanced to reflect actual error.
 
 ## Version 3.2.1
 
@@ -37,13 +55,15 @@
 
 ## Version 3.1.1
 
-**What's New:**
+**What's New:**  
+
 * Provided an option to input session_key for the REDfishClient class.
 * The iloaccounts command now provides the output in JSON format.
 * The createlogicaldrive quickdrive command now successfully runs.
 * BIOS and the poweron passwords can now be set without any password.
 
-**Fixes:**
+**Fixes:**  
+
 * AHS data failing to download sometimes.
 * An issue with downloading AHS when iLOREST is running locally on a server.
 * The privilege modification of an iLO user account that was incorrectly applied on another user.

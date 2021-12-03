@@ -1,9 +1,3 @@
----
-title: iLO Repository Commands
-toc:
-  enable: true
-  maxDepth: 3
----
 ## iLO Repository Commands
 
 <aside class="notice">
@@ -39,11 +33,11 @@ iLOrest > <span style="color: #01a982; ">deletecomp --all</span>
 The operation completed successfully.
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 deletecomp *[ID/Name(s)] [Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Deletes firmware from the iLO repository.
 
@@ -51,7 +45,7 @@ Deletes firmware from the iLO repository.
 You cannot delete firmware that is part of a task from the task queue or an install set.
 </aside>
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **ID/Name(s)**
 
@@ -65,7 +59,7 @@ Including the help flag will display help for the command.
 
 Delete all firmware.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -85,10 +79,10 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Inputs
+<p class="fake_header">Input</p>
 None
 
-#### Outputs
+<p class="fake_header">Output</p>
 None
 
 ### Downloadcomp Command
@@ -108,15 +102,15 @@ Download complete
 <aside class="warning">The output directory and files in that directory must be set to writable.</aside>
 <aside class="warning">Any file in the output directory with the same name as the downloading firmware will be overwritten.</aside>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 downloadcomp *[File Path] [Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Downloads firmware from the iLO repository.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 -**File Path**
 
@@ -130,7 +124,7 @@ Including the help flag will display help for the command.
 
 output directory for saving the file.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 - **--url=URL**
 
@@ -156,10 +150,10 @@ Optionally include logs in the data retrieval process.
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Inputs
+<p class="fake_header">Input</p>
 None
 
-#### Outputs
+<p class="fake_header">Output</p>
 None
 
 ### Flashfwpkg Command
@@ -196,15 +190,15 @@ Logging session out.
 Some firmware can be flashed directly without a reboot, may require a reboot to take effect, or may only be staged for flash on reboot. The command will inform users when a firmware update will take place.
 </aside>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 flashfwpkg *[FWPKG PATH] [Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Run to upload and flash fwpkg components using the iLO repository.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **FWPKG PATH**
 
@@ -222,7 +216,7 @@ Include this flag to force upload firmware with the same name already on the rep
 
 Include this flag to ignore all checks to the taskqueue before attempting to process the .fwpkg file.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -242,10 +236,10 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Inputs
+<p class="fake_header">Input</p>
 None
 
-#### Outputs
+<p class="fake_header">Output</p>
 None
 
 ### Installset Command
@@ -362,15 +356,15 @@ The operation completed successfully.
 
 
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 installset *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Command to perform operations on install sets.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -408,7 +402,7 @@ If set then the components in the flash operations are used to replace matching 
 
 This option clears previous items in the task queue before the Install Set is invoked.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -428,10 +422,10 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Inputs
+<p class="fake_header">Input</p>
 None
 
-#### Outputs
+<p class="fake_header">Output</p>
 None
 
 ### Listcomp Command
@@ -459,15 +453,15 @@ File Path: ilo5_137.bin
 SizeBytes: 33556520
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 listcomp *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Command to list the firmware on the iLO repository of the currently logged in system.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -477,7 +471,7 @@ Including the help flag will display help for the command.
 
 Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -493,16 +487,16 @@ If you are not logged in yet, use this flag along with the password and URL flag
 
 If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
 
-- **-privatecert User CA Certificate, --privateusercert**
+- **--usercert User Certificate**
 
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Inputs
+<p class="fake_header">Input</p>
 None
 
-#### Outputs
+<p class="fake_header">Output</p>
 None
 
 ### Maintenancewindow Command
@@ -543,16 +537,16 @@ The operation completed successfully.
 
 
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 maintenancewindow *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Command to add, remove, or delete maintenance windows from the iLO repository.
 
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -574,7 +568,7 @@ Optionally include this flag to name the maintenance window created by you. If a
 
 Optionally include this flag to add the time a maintenance window expires.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -594,10 +588,10 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Inputs
+<p class="fake_header">Input</p>
 None
 
-#### Outputs
+<p class="fake_header">Output</p>
 None
 
 ### Makeinstallset Command
@@ -609,7 +603,7 @@ None
 <pre>
 iLOrest > <span style="color: #01a982; ">makeinstallset</span>
 Warning: This command will run in interactive mode.
-Entering new shell, type backout to leave!
+Entering new shell, type quit to leave!
 Running in basic guidance mode.
 Enter a name for this command: command1
 
@@ -625,7 +619,7 @@ Uefi: Updatable by Uefi
 RuntimeAgent: Updatable by runtime agent such as SUM/SUT
 Enter UpdatableBy for command1: Bmc
 
-Enter a name for this command: backout
+Enter a name for this command: quit
 Is this a recovery installset? no
 Enter installset name: basic_update
 Enter description for the installset:
@@ -652,7 +646,7 @@ installset saved to myinstallset.json
 <pre>
 iLOrest > <span style="color: #01a982; ">makeinstallset</span>
 Warning: This command will run in interactive mode.
-Entering new shell, type backout to leave!
+Entering new shell, type quit to leave!
 Running in logged in mode.
 Enter a name for this command: update iLO
 
@@ -677,7 +671,7 @@ Components currently in the repository that have not been added to the installse
 [2] System BIOS - U30
 Select the number of the component you want to add to the install set: 2
 
-Enter a name for this command: backout
+Enter a name for this command: quit
 Is this a recovery installset? no
 Enter installset name: update fw
 Enter description for the installset:
@@ -709,18 +703,18 @@ installset saved to myinstallset.json
 
 
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 makeinstallset *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Run to make installsets for iLO.
 If not logged into the server, the command will provide basic guidance on making an installset.
 If logged into the server, the command will provide guidance based on the current components on the system.
 <aside class="notice">When using this command on a logged in sever, for best results, upload the components before running this command.</aside>
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -730,7 +724,7 @@ Including the help flag on this command will display help.
 
 Include this flag to use a different filename than the default one. The default filename is myinstallset.json
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -750,10 +744,10 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Inputs
+<p class="fake_header">Input</p>
 None
 
-#### Outputs
+<p class="fake_header">Output</p>
 None
 
 ### Taskqueue Command
@@ -807,15 +801,15 @@ Deleting: Update-740856 iLO 5
 The operation completed successfully.
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 taskqueue *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Command to add or remove tasks from the task queue. Added tasks are appended to the end of the queue.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -837,7 +831,7 @@ Optionally include this flag if you wish to change the displayed output to JSON 
 
 Include this flag when updating firmware if you have a TPM installed.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -857,10 +851,10 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Inputs
+<p class="fake_header">Input</p>
 None
 
-#### Outputs
+<p class="fake_header">Output</p>
 None
 
 ### Uploadcomp Command
@@ -890,22 +884,21 @@ Waiting for iLO UpdateService to finish processing the component
 </pre>
 
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 uploadcomp *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Command to upload firmware on to iLO repository.
 <aside class="notice">
-The </b>uploadcomp</b> command requires iLO firmware version v1.48(a) or later. Earlier iLO Firmware versions will fail with a return code 103.  
+The uploadcomp command requires iLO firmware version v1.48(a) or later. Earlier iLO Firmware versions will fail with a return code 103.  
 iLO firmware version v1.48(a) or later is required because the <b>uploadcomp</b> command depends on the Bunny Hop feature found in that version of the iLO firmware.  
 Before updating the iLO firmware, see <a href="https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00068199en_us" target="_blank">the customer advisory regarding iLO firmware upgrades</a>.
 To download the latest iLO Firmware, see the <a href="https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX_912b35cf18cd4b7ea530732822" target="_blank">Drivers & Software page for the Online ROM Flash Firmware Package - HPE iLO 5</a>
 </aside>
 
-
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -941,9 +934,10 @@ If true, the uploaded component/binary will be flashed. The default is set to Fa
 
 - **--update_srs**
 
-The component uploaded will become a part of the system recovery set (srs).
+The component uploaded will become a part of the system recovery set (srs).   
+Note: --update_target also need to passed along with --update_srs for component to be valid for that server.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -959,14 +953,12 @@ If you are not logged in yet, use this flag along with the password and URL flag
 
 If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
 
-
-
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Inputs
+<p class="fake_header">Input</p>
 None
 
-#### Outputs
+<p class="fake_header">Output</p>
 None

@@ -1,10 +1,10 @@
 ---
-title: Commands
 toc:
   enable: true
   maxDepth: 3
 ---
-# Commands for the RESTful Interface Tool
+
+# Commands
 
 ## Global Optional Arguments
 
@@ -67,7 +67,7 @@ Code:200 OK
 Headers:
             Transfer-Encoding: chunked
             ETag: W/"16CA421D"
-            Link: </redfish/v1/SchemaStore/en/ServiceRoot.json/>; rel=describedby
+            Link: &lt;/redfish/v1/SchemaStore/en/ServiceRoot.json/&gt;; rel=describedby
             Allow: GET, HEAD
             Cache-Control: no-cache
             Date: Fri, 05 Jun 2020 19:21:15 GMT
@@ -108,7 +108,7 @@ Use this flag if you wish to enable Redfish only compliance. It is enabled by de
 
 **--latestschema**
 
-Optionally use the latest schema instead of the one requested by the file.
+Optionally use the latest schema files instead of the default present in iLO.
 
 <aside class="notice">
 Might cause errors in some data retrieval due to difference in schema versions.
@@ -125,270 +125,174 @@ This section includes commands as well as their usage and examples of general co
 
 <pre>
 iLOrest > <span style="color: #01a982; ">help</span>
-Usage: iLOrest [GLOBAL OPTIONS] [COMMAND] [ARGUMENTS] [COMMAND OPTIONS]
+usage: iLOrest [GLOBAL OPTIONS] [COMMAND] [COMMAND ARGUMENTS] [COMMAND OPTIONS]
 
-Options:
-  -h, --help            Show this help message and exit.
-  -c FILE, --config=FILE
-                        Use the provided configuration file instead of the
-                        default one.
-  --cache-dir=PATH      Use the provided directory as the location to cache
-                        data (default location:
-                        C:\Users\kocurema\AppData\Roaming\.iLOrest)
+iLOrest is a command-line or interactive interface that allows users to manage Hewlett Packard Enterprise products that take advantage of RESTful APIs.
 
-  GLOBAL OPTIONS:
-    -v, --verbose       Display verbose information.
-    -d, --debug         Display debug information.
-    --logdir=PATH       Use the provided directory as the location for log
-                        file.
-    --nocache           During execution the application will temporarily
-                        store data only in memory.
-    --nologo            Include to block copyright and logo.
-  --notoolbar         Include to block bottom status bar.
-    --redfish           Use this flag if you wish to to enable Redfish only
-                        compliance. It is enabled by default in systems with
-                        iLO5 and above.
-    --latestschema      Optionally use the latest schema instead of the one
-                        requested by the file. Note: May cause errors in some
-                        data retreval due to difference in schema versions.
-    --proxy=URL         Use the provided proxy for communication.
+In order to view or manage a system you must first login. You can login using the login command or during execution of any other command.
+From here you can run any other commands. To learn more about specific commands, run iLOrest COMMAND -h.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c FILE, --config FILE
+                        Use the provided configuration file instead of the default one.
+  --cache-dir PATH      Use the provided directory as the location to cache data (default location: C:\Users\kallur\AppData\Roaming\.iLOrest)
+  -v, --verbose         Display verbose information (with increasing level). '-v': Level 1, Logging, Stdout, Stderr. '-vv': Level 2, Extends Level 1 with slightly
+                        elaborated iLO and HTTP response message. '-vvv': Level3, Extends Level 2 with message id, validation class, message text with embedded args,
+                        and possible resolution/mitigation for iLO responses. High detailed HTTP responses. **NOTE 1**: Some responses may only contain limited
+                        information from the source.**NOTE 4**: Default level is 0.
+  -d, --debug           Display debug information.
+  --logdir PATH         Use the provided directory as the location for log file.
+  --nocache             During execution the application will temporarily store data only in memory.
+  --nologo              Include to block copyright and logo.
+  --toolbar             Show toolbar at the bottom.
+  --redfish             Use this flag if you wish to to enable Redfish only compliance. It is enabled by default in systems with iLO5 and above.
+  --latestschema        Optionally use the latest schema instead of the one requested by the file. Note: May cause errors in some data retrieval due to difference in
+                        schema versions.
+  --redirectconsole [REDIRECT CONSOLE]
+                        Optionally include this flag to redirect stdout/stderr console.
 
 BIOS COMMANDS
-  biosdefaults                 - Set the currently logged in server to default
-                                  BIOS settings.
-  bootorder                    - Displays and sets the current boot order.
-  iscsiconfig                  - Displays and configures the current iscsi
-                                  settings.
-  pending                      - Show the pending changes that will be applied
-                                  on reboot.
-  results                      - Show the results of changes which require a
-                                  server reboot.
-  setpassword                  - Sets the admin password and poweron password
+biosdefaults              - Set the currently logged in server to default BIOS settings.
+bootorder                 - Displays and sets the current boot order.
+iscsiconfig               - Displays and configures the current iscsi settings.
+setpassword               - Sets the admin password and power-on password
 
 COMMANDS
-  commit                       - Applies all the changes made during the
-                                  current session.
-  get                          - Displays the current value(s) of a
-                                  property(ies) within a selected type.
-  info                         - Displays detailed information about a
-                                  property within a selected type.
-  list                         - Displays the current value(s) of a
-                                  property(ies) within a selected type
-                                  including reserved properties.
-  load                         - Loads the server configuration settings from
-                                  a file.
-  login                        - Connects to a server, establishes a secure
-                                  session, and discovers data from iLO.
-  logout                       - Ends the current session and disconnects from
-                                  the server.
-  save                         - Saves the selected type's settings to a file.
-  select                       - Selects the object type to be used.
-  set                          - Changes the value of a property within the
-                                  currently selected type.
-  status                       - Displays all pending changes within a
-                                  selected type that need to be committed.
-  types                        - Displays all selectable types within the
-                                  currently logged in server.
-  exit                         - Exits from the interactive shell.
-  help                         - Displays command line syntax and help menus
-                                  for individual commands. Example: help login
+commit                    - Applies all the changes made during the current session.
+get                       - Displays the current value(s) of a property(ies) within a selected type.
+info                      - Displays detailed information about a property within a selected type.
+list                      - Displays the current value(s) of a property(ies) within a selected type including reserved properties.
+load                      - Loads the server configuration settings from a file.
+login                     - Connects to a server, establishes a secure session, and discovers data from iLO.
+logout                    - Ends the current session and disconnects from the server.
+pending                   - Show the pending changes that will be applied on reboot.
+results                   - Show the results of changes which require a server reboot.
+save                      - Saves the selected type's settings to a file.
+select                    - Selects the object type to be used.
+set                       - Changes the value of a property within the currently selected type.
+status                    - Displays all pending changes within a selected type that need to be committed.
+types                     - Displays all selectable types within the currently logged in server.
+exit                      - Exits from the interactive shell.
+help                      - Displays command line syntax and help menus for individual commands. Example: help login
+
+PERSISTENT MEMORY COMMANDS
+provisionpmm              - Applies specified configuration to PMM.
+applypmmconfig            - Applies a pre-defined configuration to PMM.
+clearpmmpendingconfig     - Clear pending config tasks
+pmmsecuritystate          - Displaying the Security state of dimms.
+showpmm                   - Display information about Persistent Memory modules.
+showpmmpendingconfig      - Shows the pending configuration for PMM.
+showrecommendedpmmconfig  - Show Recommended Configuration
 
 RAW COMMANDS
-  rawdelete                    - Raw form of the DELETE command.
-  rawget                       - Raw form of the GET command.
-  rawhead                      - Raw form of the HEAD command.
-  rawpatch                     - Raw form of the PATCH command.
-  rawpost                      - Raw form of the POST command.
-  rawput                       - Raw form of the PUT command.
+rawdelete                 - Raw form of the DELETE command.
+rawget                    - Raw form of the GET command.
+rawhead                   - Raw form of the HEAD command.
+rawpatch                  - Raw form of the PATCH command.
+rawpost                   - Raw form of the POST command.
+rawput                    - Raw form of the PUT command.
 
 SMART ARRAY COMMANDS
-  clearcontrollerconfig        - Clears smart array controller configuration.
-  createlogicaldrive           - Creates a new logical drive on the selected
-                                  controller.
-  deletelogicaldrive           - Deletes logical drives from the selected
-                                  controller.
-  drivesanitize                - Erase/Sanitizes physical drives
-  factoryresetcontroller       - Factory resets a controller by index or
-                                  location.
-  smartarray                   - Discovers all storage controllers installed
-                                  in the server and managed by the
-                                  SmartStorage.
+clearcontrollerconfig     - Clears smart array controller configuration.
+createlogicaldrive        - Creates a new logical drive on the selected controller.
+deletelogicaldrive        - Deletes logical drives from the selected controller.
+drivesanitize             - Erase/Sanitize physical drive(s)
+factoryresetcontroller    - Factory resets a controller by index or location.
+smartarray                - Discovers all storage controllers installed in the server and managed by the SmartStorage.
 
 iLO COMMANDS
-  certificate                  - Command for importing both iLO and login
-                                  authorization certificates as well as
-                                  generating iLO certificate signing requests
-  clearrestapistate            - Clears the persistent state of the REST API.
-                                  Some portions of the API may not be available
-                                  until after the server reboots.
-  directory                    - Update directory settings, add/delete
-                                  directory roles, and test directory settings.
-  disableilofunctionality      - disables iLO's accessibility via the network
-                                  and resets iLO. WARNING: This should be used
-                                  with caution as it will render iLO unable to
-                                  respond to further network operations
-                                  (including REST operations) until iLO is
-                                  re-enabled using the RBSU menu.
-  eskm                         - Command for all ESKM available actions.
-  factorydefaults              - Resets iLO to factory defaults. WARNING: user
-                                  data will be removed use with caution.
-  fwintegritycheck             - Perform a firmware integrity check on the
-                                  currently logged in server.
-  firmwareupdate               - Perform a firmware update on the currently
-                                  logged in server.
-  iloaccounts                  - Adds / deletes an iLO account on the
-                                  currently logged in server.
-  backuprestore                - Backup and restore iLO to a server using a
-                                  .bak file.
-  iloclone                     - Clone the iLO config of the currently logged
-                                  in server and copy it to the server in the
-                                  arguments.
-  ilofederation                - Adds / deletes an iLO federation group on the
-                                  currently logged in server.
-  ilolicense                   - Adds an iLO license key to the currently
-                                  logged in server.
-  iloreset                     - Reset iLO on the current logged in server.
-  ipprofiles                   - This is used to manage hpeipprofile data
-                                  store.
-  onebuttonerase               - Performs One Button Erase on a system .
-  reboot                       - Reboot operations for the current logged in
-                                  server.
-  sendtest                     - Command for sending various tests to iLO.
-  serverclone                  - Creates a JSON formated clone file of a
-                                  system's iLO, BIOS, and SSA configuration
-                                  which can be duplicated onto other systems.
-                                  User editable JSON file can be manipulated to
-                                  modify settings before being loaded onto
-                                  another machine.
-  serverinfo                   - Shows aggregate health status and details of
-                                  the currently logged in server.
-  serverlogs                   - Download and perform log operations.
-  serverstate                  - Returns the current state of the server.
-  sigrecompute                 - Command to recalculate the signature of the
-                                  computer's configuration.
-  singlesignon                 - Command for all single sign on available
-                                  actions.
-  virtualmedia                 - Command for inserting and removing virtual
-                                  media.
+certificate               - Command for importing both iLO and login authorization certificates as well as generating iLO certificate signing requests (CSR)
+clearrestapistate         - Clears the persistent state of the REST API. Some portions of the API may not be available until after the server reboots.
+directory                 - Update directory settings, add/delete directory roles, and test directory settings on the currently logged in server.
+disableilofunctionality   - disables iLO's accessibility via the network and resets iLO. WARNING: This should be used with caution as it will render iLO unable to respond to further network operations (including REST operations) until iLO is re-enabled using the RBSU menu.
+eskm                      - Command for all ESKM available actions.
+ethernet                  - Command for configuring Ethernet Management Controller Interfaces and associated properties
+factorydefaults           - Resets iLO to factory defaults. WARNING: user data will be removed use with caution.
+fwintegritycheck          - Perform a firmware integrity check on the currently logged in server.
+firmwareupdate            - Perform a firmware update on the currently logged in server.
+iloaccounts               - Views/Adds/deletes/modifies an iLO account on the currently logged in server.
+backuprestore             - Backup and restore iLO to a server using a .bak file.
+ilofederation             - Adds / deletes an iLO federation group on the currently logged in server.
+ilolicense                - Adds an iLO license key to the currently logged in server.
+iloreset                  - Reset iLO on the current logged in server.
+ipprofiles                - This is used to manage hpeipprofile data store.
+onebuttonerase            - Performs One Button Erase on a system.
+reboot                    - Reboot operations for the current logged in server.
+sendtest                  - Command for sending various tests to iLO.
+serverclone               - Creates a JSON formatted clone file of a system's iLO, Bios, and SSA configuration which can be duplicated onto other systems. User editable JSON file can be manipulated to modify settings before being loaded onto another machine.
+serverinfo                - Shows aggregate health status and details of the currently logged in server.
+serverlogs                - Download and perform log operations.
+serverstate               - Returns the current state of the server.
+sigrecompute              - Command to recalculate the signature of the computer's configuration.
+singlesignon              - Command for all single sign on available actions.
+virtualmedia              - Command for inserting and removing virtual media.
 
 iLO REPOSITORY COMMANDS
-  deletecomp                   - Deletes components/binaries from the iLO
-                                  Repository.
-  downloadcomp                 - Downloads components/binaries from the iLO
-                                  Repository.
-  flashfwpkg                   - Flashes fwpkg components using the iLO
-                                  repository.
-  installset                   - Manages install sets for iLO.
-  listcomp                     - Lists components/binaries from the iLO
-                                  Repository.
-  maintenancewindow            - Manages the maintenance windows for iLO.
-  makeinstallset               - Creates install sets for iLO.
-  taskqueue                    - Manages the update task queue for iLO.
-  uploadcomp                   - Upload components/binary to the iLO
-                                  Repository.
+deletecomp                - Deletes components/binaries from the iLO Repository.
+downloadcomp              - Downloads components/binaries from the iLO Repository.
+flashfwpkg                - Flashes fwpkg components using the iLO repository.
+installset                - Manages install sets for iLO.
+listcomp                  - Lists components/binaries from the iLO Repository.
+maintenancewindow         - Manages the maintenance windows for iLO.
+makeinstallset            - Creates install sets for iLO.
+taskqueue                 - Manages the update task queue for iLO.
+uploadcomp                - Upload components/binary to the iLO Repository.
 </pre>
 
-> Providing a specific command will list help regarding that specific command.
-
-<pre>
-iLOrest > <span style="color: #01a982; ">help login</span>
-Usage: login [URL] [OPTIONS]
-
-        To login remotely run using iLO url and iLO credentials
-        example: login <iLO url/hostname> -u <iLO username> -p <iLO password>
-
-        To login on a server with certificate based authentication (self-signed)
-        example: login <iLO url/hostname> -u <iLO username> --usercacert <root CA certificate>
-        --privateusercert <user certificate> --userrootcakey <user certificate private key>
-        (See Advanced Usage for further details)
-
-        To login on a local server run without arguments
-        example: login
-
-Options:
-  -h, --help            show this help message and exit
-  -u USER, --user=USER  If you are not logged in yet, including this flag
-                        along with the password and URL flags can be used to
-                        log into a server in the same command.
-  -p PASSWORD, --password=PASSWORD
-                        Use the provided iLO password to log in.
-  -cert, --usercacert   File containing the root certificate authority certificate.
-                        Only needed for self signing process (optional).
-  -privatecert, --privateusercert
-                        File containing the user certificate
-  -certkey, --userrootcakey
-                        File containting the private key of the user certificate.
-  -certpass, --userrootcapassword
-                        File containing the encryption key for the user root private key
-                        (if set). The user will be prompted for submission of the
-                        credential (if required).  (optional)
-  --includelogs         Optionally include logs in the data retrieval process.
-  --selector=SELECTOR   Optionally include this flag to select a type to run
-                        the current command on. Use this flag when you wish to
-                        select a type without entering another command, or if
-                        you wish to work with a type that is different from
-                        the one you currently have selected.
-  --path=PATH           Optionally set a starting point for data collection
-                        during login. If you do not specify a starting point,
-                        the default path will be /redfish/v1/. Note: The path
-                        flag can only be specified at the time of login.
-                        Warning: Only for advanced users, and generally not
-                        needed for normal operations.
-  --biospassword=BIOSPASSWORD
-                        Select this flag to input a BIOS password. Include
-                        this flag if second-level BIOS authentication is
-                        needed for the command to execute. This option is only
-                        used on Gen 9 systems.
-</pre>
-
-> The alternate syntax to list details regarding a command is **-h**.
+> The syntax to get help details for specific command is '&lt;command&gt; **-h** or **--help**'
 
 <pre>
 iLOrest > <span style="color: #01a982; ">login -h</span>
-Usage: login [URL] [OPTIONS]
+usage: login [-h] [--url URL] [--sessionid SESSIONID] [-u USER] [-p PASSWORD] [--biospassword BIOSPASSWORD] [--https HTTPS_CERT]
+             [--includelogs] [--path PATH] [--force-vnic] [--logout]
+             [--selector SELECTOR]
 
-        To login remotely run using iLO url and iLO credentials
-        example: login <iLO url/hostname> -u <iLO username> -p <iLO password>
+To login remotely run using iLO url and iLO credentials
+        example: login &lt;iLO url/hostname&gt; -u &lt;iLO username&gt; -p &lt;iLO password&gt;
 
         To login on a local server run without arguments
         example: login
 
-Options:
+        NOTE: A [URL] can be specified with an IPv4, IPv6, or hostname address.
+
+optional arguments:
   -h, --help            show this help message and exit
-  -u USER, --user=USER  If you are not logged in yet, including this flag
-                        along with the password and URL flags can be used to
-                        log into a server in the same command.
-  -p PASSWORD, --password=PASSWORD
+  --selector SELECTOR   Optionally include this flag to select a type to run the current command on. Use this flag when you wish to select a type without entering another command, or if you wish to work with a type that is different from the one you currently have selected.
+
+LOGIN OPTIONS:
+  Options for logging in to a system.
+
+  --url URL             Use the provided iLO URL to login.
+  --sessionid SESSIONID
+                        Use the provided sessionid to login.
+  -u USER, --user USER  If you are not logged in yet, including this flag along with the
+                        password and URL flags can be used to login to a server in the same command.
+  -p PASSWORD, --password PASSWORD
                         Use the provided iLO password to log in.
+  --biospassword BIOSPASSWORD
+                        Select this flag to input a BIOS password. Include this
+                        flag if second-level BIOS authentication is needed for the command to execute.
+                        This option is only used on Gen 9 systems.
+  --https HTTPS_CERT    Use the provided CA bundle or SSL certificate with your login to
+                        connect securely to the system in remote mode. This flag has no effect in local mode.
   --includelogs         Optionally include logs in the data retrieval process.
-  --selector=SELECTOR   Optionally include this flag to select a type to run
-                        the current command on. Use this flag when you wish to
-                        select a type without entering another command, or if
-                        you wish to work with a type that is different from
-                        the one you currently have selected.
-  --path=PATH           Optionally set a starting point for data collection
-                        during login. If you do not specify a starting point,
-                        the default path will be /redfish/v1/. Note: The path
-                        flag can only be specified at the time of login.
-                        Warning: Only for advanced users, and generally not
-                        needed for normal operations.
-  --biospassword=BIOSPASSWORD
-                        Select this flag to input a BIOS password. Include
-                        this flag if second-level BIOS authentication is
-                        needed for the command to execute. This option is only
-                        used on Gen 9 systems.
+  --path PATH           Optionally set a starting point for data collection during login.
+                        If you do not specify a starting point, the default path will be /redfish/v1/.
+                        Note: The path flag can only be specified at the time of login.
+                        Warning: Only for advanced users, and generally not needed for normal operations.  
+  --logout              Logout after the completion of the command.
 </pre>
 
-
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 help *[command] [optional parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Displays command-line syntax and help menus for individual commands. Use this command if you want to know more about a command or need help using a command. Alternatively, you can use the `help` command without specifying a particular command if you wish to see all the available commands and options.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - Command
 
@@ -408,11 +312,11 @@ Use the provided configuration file instead of the default one.
 
 Use the provided directory as the location to cache data (default location: `C:\Users\USERNAME\AppData\Roaming\.ilorest`).
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 None
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 None
 
@@ -425,16 +329,11 @@ iLOrest > <span style="color: #01a982; ">login xx.xx.xx.xx -u username -p passwo
 Discovering data...Done
 </pre>
 
-> To login remotely, with self-signed certificate based authentication, supply the URL, username, user CA certificate, root CA certificate and optionally the root CA private key password.
+> To login remotely, with Certificate, supply the URL, user certificate, user key and user passphrase to the server.
 
 <pre>
-iLOrest> <span style="color: #01a982; ">login xx.xx.xx.xx -u username -privatecert "user_ca_certificate" -certkey "private_root_ca_certificate" -certpass "private_root_ca_password" </span>
-</pre>
-
-> To login remotely, with trusted CA certificate based authentication, supply the URL, username, user CA certificate and certificate bundle location for trusted CAs.
-
-<pre>
-iLOrest> <span style="color: #01a982; ">login xx.xx.xx.xx -u username -privatecert "user_ca_certificate" -cert "ca_cert_bundle" </span>
+iLOrest > <span style="color: #01a982; ">login xx.xx.xx.xx --usercert cert.pem --userkey userkey.pem --userpassphrase password</span>
+Discovering data...Done
 </pre>
 
 > Here the selector option has been included so that the `Bios` type is selected once the user is logged in. You can prove that the `Bios` type has indeed been selected when we enter the select command.
@@ -467,11 +366,19 @@ iLOrest > <span style="color: #01a982; ">login</span>
 Discovering data...Done
 </pre>
 
-#### Syntax
+> For Virtual NIC local login, use --force_vnic and username and password options.
 
-login *[URL] [User] [Password] [Optional Parameters]*
+<pre>
+iLOrest > <span style="color: #01a982; ">login --force_vnic -u username -p password</span>
+Discovering data...Done
+</pre>
 
-#### Description
+
+<p class="fake_header">Syntax</p>
+
+login *[URL] [Optional Parameters]*
+
+<p class="fake_header">Description</p>
 
 Connects to a server, establishes a secure session, and discovers data from iLO. If you are logging in to a local server, run the command without arguments. If you are not logging in to a local server, supply the URL argument along with the user and password options.
 
@@ -479,42 +386,13 @@ Connects to a server, establishes a secure session, and discovers data from iLO.
 privileged user account. Higher security modes, if configured, require a valid iLO management username and password to connect.
 </aside>
 
-#### Usage in Other Commands
+<p class="fake_header">Usage in Other Commands</p>
 
-Login remotely with basic authentication as part of other commands by including the *--url*, *(-u, --user)*, and *(-p, --password)* flags. Alternatively, use certificate based authentication by including the *--url*, *(-u, --user)*, *(-privatecert, --privateusercert)*, *(-certkey, --userrootcakey)* or certificate bundle *(-cert, --usercacert)*. Optionally include the *--https* flag to validate the SSL certificate when logging in. Locally you will be logged in automatically unless running in higher security modes (see [Higher Security Modes](#higher-security-modes)).
+Login remotely with basic authentication as part of other commands by including the *--url*, *(-u, --user)*, and *(-p, --password)* flags.
+Optionally include the *--https* flag to validate the SSL certificate when logging in.
+Locally you will be logged in automatically unless running in higher security modes (see [Higher Security Modes](#higher-security-modes)).
 
-#### Special Notes for Certificate Based Authentication
-
-<aside class="notice">For certificate based authentication, iLO 5 version 2.40 is required, with the following configured:
-- A valid date and time synced with NTP.
-- An applicable "iLO Advanced Premium Security Edition" license.
-- Valid X509 SSL certificate.
-- Root CA certificate added to iLO.
-- CAC/Smartcard Authentication Enabled.
-- An iLO management account mapped to the relevant user certificate.
-</aside>
-
-Steps to configure iLO Certificate based Authentication:
-1. Generate root CA private key:
-- openssl genrsa -out testCA.key 4096
-2. Configure and set X509 SSL certificate by generating a CSR from iLO and signing with private root CA key.
-- openssl req -x509 -new –nodes -key testCA.key -sha256 -days 1024 -subj "/O=HPE/OU=R&D/CN=CA for testing iLO authentication" -out testCA.crt
-3. Add SSL certificate to iLO.
-- (Security | CAC/Smartcard | Import Trusted CA Certificates | Direct Import).
-4. Generate user rsa private key.
-- openssl genrsa -out user_root_CA.key 4096
-5. Generate user root CA
-- openssl req -x509 -new -nodes -key user_root_CA.key -sha256 -days 1825 -out user_root_CA.pem
-6. Generate user CA certificate
-- openssl x509 -req -in user.csr -CA user_root_CA.pem -CAkey user.key -CAcreateserial -sha256 -days 1024 -out userCA.pem
-7. Add root CA certificate
-- (Security | CAC/Smartcard | Import Trusted CA Certificates)
-8. Add user CA certificate mapping to specified user
-- (Security | Certificate Mappings | Authorized Certificates | <iLO username>)
-
-<aside class="notice">Suggest to always use ".pem" format for TLS certificates</aside>
-
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **URL**
 
@@ -666,19 +544,17 @@ Type options:
 ...
 </pre>
 
-
-
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 types *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
-The `types` command displays all selectable types available within the currently logged in server. Types include a name as well as version information. Types represent the schema used for the resource and indicate the version of the schema. Version information is `major.minor.errata` (for example: `SystemRoot.0.9.5`). Major versions are not backwards compatible, but everything else is.
+Each Redfish resource is associated to a data type. The `types` command displays all selectable types available within the currently logged in server. Types include a name as well as version information. Types represent the schema used for the resource and indicate the version of the schema. Version information is `major.minor.errata` (for example: `SystemRoot.0.9.5`). Major versions are not backwards compatible, but everything else is.
 
 <aside class="notice">See the iLO RESTful API Data Model Reference at <a href=" https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/#resource-definitions">https://hewlettpackard.github.io/ilo-rest-api-docs/</a> for a list and description of all the possible types.</aside>
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -688,7 +564,7 @@ Including the help flag will display help for the command.
 
 Optionally include this flag if you would prefer to return the full type name instead of the simplified versions.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -716,11 +592,11 @@ Optionally set a starting point for data collection. If you do not specify a sta
 
 <aside class="notice">The <b>path</b> flag can only be specified at the time of login, so if you are already logged into the server, the <b>path</b> flag will not change the path. If you are entering a command that isn&apos;t the <b>login</b> command, but includes your login information, you can still specify the path flag there.</aside>
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 None
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 None
 
@@ -782,21 +658,19 @@ Oem=
           PowerOnMinutes=814089
 </pre>
 
-
-
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 select *[Type] [Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Use `select` to choose a specific type to work with. Eligible types for selection are those listed by the types command. Because commands are entered individually in the RESTful Interface Tool, working with specific types requires that you highlight or select the particular type you are working with. Use the `select` command to highlight a type so that you can work with it.
 
-#### Usage in Other Commands
+<p class="fake_header">Usage in Other Commands</p>
 
 Select a type from another command by including the *(--select, --selector)* option flag followed by the type to select. Not all commands have the `select` flag, run help on the command to see available options.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **Type**
 
@@ -812,7 +686,7 @@ Select this flag to input a BIOS password. Include this flag if second-level BIO
 
 <aside class="notice">This option is only used on Gen 9 systems.</aside>
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -840,17 +714,13 @@ Optionally set a starting point for data collection. If you do not specify a sta
 
 <aside class="notice">The <b>path</b> flag can only be specified at the time of login, so if you are already logged into the server, the <b>path</b> flag will not change the path. If you are entering a command that isn&apos;t the <b>login</b> command, but includes your login information, you can still specify the path flag there.</aside>
 
-#### Inputs
-
+<p class="fake_header">Inputs</p>
 None
 
-#### Outputs
-
+<p class="fake_header">Outputs</p>
 None
 
 ### List Command
-
-<aside class="notice">arguments are not case-sensitive.</aside>
 
 > List command examples:
 
@@ -928,19 +798,17 @@ Boot=
       BootSourceOverrideMode=UEFI
 </pre>
 
-
-
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 list *[Property(s)] [Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Displays the current values of the properties of a selected type including reserved properties in human-readable and optionally JSON formats. Optionally include arguments to only return the values of those properties.
 
 <aside class="notice">The list command does display reserved properties for types, while the get command does not.</aside>
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **Property(s)**
 
@@ -960,7 +828,7 @@ Optionally set a filter value for a filter attribute. This uses the provided fil
 
 Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure can make the information easier to parse.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -975,10 +843,6 @@ If you are not logged in yet, use this flag along with the password and URL flag
 - **-p Password, --password=PASSWORD**
 
 If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
-
-- **-privatecert User CA Certificate, --privateusercert**
-
-Specify a user CA certificate file path for certificate based authentication with iLO.
 
 - **--includelogs**
 
@@ -996,13 +860,13 @@ Optionally set a starting point for data collection. If you do not specify a sta
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
 
-#### Inputs
-
+<p class="fake_header">Inputs</p>
 None
 
-#### Outputs
-
+<p class="fake_header">Outputs</p>
 None
+
+<aside class="notice">arguments are not case-sensitive.</aside>
 
 ### Info Command
 
@@ -1151,17 +1015,15 @@ READ-ONLY
     False
 </pre>
 
-
-
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 info *[Property(s)] [Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Displays detailed information about a property within a selected type. Information displayed includes the data type of the value, if the property is read-only or not, a brief description, possible values, and any sub-properties associated with the property.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -1169,7 +1031,7 @@ Including the help flag will display help for the command.
 
 - **--latestschema**
 
-Optionally use the latest schema instead of the one requested by the file.
+Optionally use the latest schema files instead of the default present in iLO.
 
 <aside class="warning">This might cause errors in some data retrieval due to differences in the schema&apos;s organizational structure between versions.</aside>
 
@@ -1177,7 +1039,7 @@ Optionally use the latest schema instead of the one requested by the file.
 
 Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to read.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -1192,30 +1054,6 @@ If you are not logged in yet, use this flag along with the password and URL flag
 - **-p Password, --password=PASSWORD**
 
 If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
-
-- **-privatecert User CA Certificate, --privateusercert**
-
-Specify a user CA certificate file path for certificate based authentication with iLO.
-
-<aside class="notice">A root user CA key is required.</aside>
-
-- **-certkey Private User Root CA, --userrootcakey**
-
-Specify a user root ca key file path for certificate based authentication with iLO
-
-<aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
-
-- **-certpass Private User Root CA Password, --userrootcapassword**
-
-Optionally specify a user root ca key file password for a password protected user root CA.
-
-<aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
-
-- **-cert CA Certificate Bundle, --usercacert**
-
-Optionally specify a file path for the certificate authority bundle location (local repository for trusted CA collection).
-
-<aside class="notice">Providing a private user certificate or user root CA key will override the use of certificate bundles.</aside>
 
 - **--includelogs**
 
@@ -1233,11 +1071,11 @@ Optionally set a starting point for data collection. If you do not specify a sta
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 None
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 None
 
@@ -1354,17 +1192,17 @@ Oem=
 </pre>
 
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 get *[Property(s)] [Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Displays the current value of a property of the currently selected type. Use this command only after a type has already been selected. If the value you are looking up is not available, it will return with no contents found for that property entry.
 
 <aside class="notice">The difference between the <b>get</b> command and the <b>list</b> command is that the <b>list</b> command displays details about the reserved properties, while the <b>get</b> command does not.</aside>
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **Property(s)**
 
@@ -1392,7 +1230,7 @@ Optionally include this flag to change the displayed output to JSON format. Pres
 
 Optionally include this flag to display properties that are not read-only. This is useful to see what is configurable with the selected type(s).
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -1407,30 +1245,6 @@ If you are not logged in yet, use this flag along with the password and URL flag
 - **-p Password, --password=PASSWORD**
 
 If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
-
-- **-privatecert User CA Certificate, --privateusercert**
-
-Specify a user CA certificate file path for certificate based authentication with iLO.
-
-<aside class="notice">A root user CA key is required.</aside>
-
-- **-certkey Private User Root CA, --userrootcakey**
-
-Specify a user root ca key file path for certificate based authentication with iLO
-
-<aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
-
-- **-certpass Private User Root CA Password, --userrootcapassword**
-
-Optionally specify a user root ca key file password for a password protected user root CA.
-
-<aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
-
-- **-cert CA Certificate Bundle, --usercacert**
-
-Optionally specify a file path for the certificate authority bundle location (local repository for trusted CA collection).
-
-<aside class="notice">Providing a private user certificate or user root CA key will override the use of certificate bundles.</aside>
 
 - **--includelogs**
 
@@ -1448,11 +1262,11 @@ Optionally set a starting point for data collection. If you do not specify a sta
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 None
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 None
 
@@ -1503,13 +1317,13 @@ AdminName=Jason E
 
 
 
-#### Description
+<p class="fake_header">Description</p>
 
 Changes the value of a property in a currently selected type. Multiple properties can be set simultaneously.
 
 <aside class="warning">The changes set will be reflected on the server only after committing them.</aside>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 set *[Property=Value] [Path] [Optional Parameters]*
 
@@ -1539,7 +1353,7 @@ set *[Property=Value] [Path] [Optional Parameters]*
 
 This is **incorrect** syntax, and will not be correctly reflected on the server.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **Property(s)**
 
@@ -1561,7 +1375,7 @@ Optionally set a filter value for a filter attribute. This uses the provided fil
 
 - **--latestschema**
 
-Optionally use the latest schema instead of the one requested by the file.
+Optionally use the latest schema files instead of the default present in iLO.
 
 <aside class="warning">This might cause errors in some data retrieval due to differences in the schema’s organizational structure between versions.</aside>
 
@@ -1579,11 +1393,11 @@ Select this flag to input a BIOS password. Include this flag if second-level BIO
 
 Use this flag to perform a reboot command function after completion of operations. For help with parameters and descriptions regarding the reboot flag, run `help reboot`.
 
-- **--uniqueitemoverride**
+- **--uniqueoverride**
 
 Override the measures stopping the tool from writing over items that are system unique.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -1599,29 +1413,26 @@ If you are not logged in yet, use this flag along with the password and URL flag
 
 If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
 
-- **-privatecert User CA Certificate, --privateusercert**
+- **--usercert UserCACertificate**
 
 Specify a user CA certificate file path for certificate based authentication with iLO.
 
 <aside class="notice">A root user CA key is required.</aside>
 
-- **-certkey Private User Root CA, --userrootcakey**
+- **--userkey UserCertKey**
 
 Specify a user root ca key file path for certificate based authentication with iLO
 
 <aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
 
-- **-certpass Private User Root CA Password, --userrootcapassword**
+- **--userpassphrase UserCAPassphrase**
 
 Optionally specify a user root ca key file password for a password protected user root CA.
 
-<aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
+<aside class="notice">If the root CA key is password protected, but not included with '--userpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
 
-- **-cert CA Certificate Bundle, --usercacert**
-
-Optionally specify a file path for the certificate authority bundle location (local repository for trusted CA collection).
-
-<aside class="notice">Providing a private user certificate or user root CA key will override the use of certificate bundles.</aside>
+- **--force_vnic**
+<aside class="notice"> Option to Force login through iLO Virtual NIC.  Virtual NIC to be enabled in iLO. NOTE: iLO 5 required.</aside>     
 
 - **--includelogs**
 
@@ -1639,11 +1450,11 @@ Optionally set a starting point for data collection. If you do not specify a sta
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 None
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 None
 
@@ -1693,7 +1504,7 @@ Configuration saved to: ilorest.json
           "UrlBootFile": "",
           "DcuStreamPrefetcher": "Enabled",
           "IntelNicDmaChannels": "Enabled",
-          ...
+          "...": "..."
         },
         "Id": "settings",
         "Name": "BIOS Pending Settings"
@@ -1722,15 +1533,15 @@ Configuration saved to: BiosInfo.json
 Logging session out.
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 save *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Saves the JSON information of a selected type to a local file. Use this command along with the `load` command when you want to modify properties of a selected type through file editing. Using this command saves a local copy of your selected type’s JSON information.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -1762,7 +1573,7 @@ Optionally include this flag if you wish to change the displayed output to JSON 
 
 Optionally include this flag to encrypt a file using the key provided.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -1777,30 +1588,6 @@ If you are not logged in yet, use this flag along with the password and URL flag
 - **-p Password, --password=PASSWORD**
 
 If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
-
-- **-privatecert User CA Certificate, --privateusercert**
-
-Specify a user CA certificate file path for certificate based authentication with iLO.
-
-<aside class="notice">A root user CA key is required.</aside>
-
-- **-certkey Private User Root CA, --userrootcakey**
-
-Specify a user root ca key file path for certificate based authentication with iLO
-
-<aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
-
-- **-certpass Private User Root CA Password, --userrootcapassword**
-
-Optionally specify a user root ca key file password for a password protected user root CA.
-
-<aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
-
-- **-cert CA Certificate Bundle, --usercacert**
-
-Optionally specify a file path for the certificate authority bundle location (local repository for trusted CA collection).
-
-<aside class="notice">Providing a private user certificate or user root CA key will override the use of certificate bundles.</aside>
 
 - **--includelogs**
 
@@ -1818,11 +1605,11 @@ Optionally set a starting point for data collection. If you do not specify a sta
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 None
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 JSON file
 
@@ -1875,18 +1662,17 @@ All servers have been successfully configured.
 </pre>
 
 
-
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 load *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Loads the server configuration from a file. Run this command without parameters to use the configuration found in the file called `ilorest.json`. Otherwise, you can point this command to use any file you specify. Use this function to change the properties of a type to new values. This command uploads the new values of the type’s properties to the server.
 
 <aside class="notice"><b>Read-only</b> properties are skipped, and non-read only properties continue to be set.</aside>
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -1898,7 +1684,7 @@ Use this flag if you wish to use a different filename than the default one. The 
 
 - **--latestschema**
 
-Optionally use the latest schema instead of the one requested by the file.
+Optionally use the latest schema files instead of the default present in iLO.
 
 <aside class="warning">This might cause errors in some data retrieval due to differences in the schema’s organizational structure between versions.</aside>
 
@@ -1908,7 +1694,7 @@ Select this flag to input a BIOS password. Include this flag if second-level BIO
 
 <aside class="notice">This option is only used on Gen 9 systems.</aside>
 
-- **--uniqueitemoverride**
+- **--uniqueoverride**
 
 Override the measures stopping the tool from writing over items that are system unique.
 
@@ -1924,7 +1710,7 @@ Use the provided directory to output data for a multiple server configuration.
 
 Optionally include this flag to decrypt a file using the key provided.
 
-#### Login Parameters
+<p class="fake_header">Login Parameters</p>
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -1940,41 +1726,17 @@ If you are not logged in yet, use this flag along with the password and URL flag
 
 If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
 
-- **-privatecert User CA Certificate, --privateusercert**
-
-Specify a user CA certificate file path for certificate based authentication with iLO.
-
-<aside class="notice">A root user CA key is required.</aside>
-
-- **-certkey Private User Root CA, --userrootcakey**
-
-Specify a user root ca key file path for certificate based authentication with iLO
-
-<aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
-
-- **-certpass Private User Root CA Password, --userrootcapassword**
-
-Optionally specify a user root ca key file password for a password protected user root CA.
-
-<aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
-
-- **-cert CA Certificate Bundle, --usercacert**
-
-Optionally specify a file path for the certificate authority bundle location (local repository for trusted CA collection).
-
-<aside class="notice">Providing a private user certificate or user root CA key will override the use of certificate bundles.</aside>
-
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 JSON Object
 
 Input a JSON object to load from a custom configuration file, otherwise the configuration will default to looking for a file called `ilorest.json`.
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 None
 
@@ -2012,25 +1774,25 @@ No changes found
 
 
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 status *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Displays all pending changes, regardless of which type is currently selected. All the changes that have not been committed yet will be shown.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 None
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 None
 
@@ -2084,19 +1846,19 @@ Logging session out.
 
 
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 commit *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Applies all changes made during the current session. After you have changed one or more values for the property of a type, you need to commit those changes in order for those changes to be reflected on the server.
 
-#### Usage in Other Commands
+<p class="fake_header">Usage in Other Commands</p>
 
 To commit at the end of a command, include the *--commit* option. Not all commands have the `commit` flag, run help on the command to see available options.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -2112,11 +1874,11 @@ Select this flag to input a BIOS password. Include this flag if second-level BIO
 
 Use this flag to perform a reboot command function after completion of operations. For help with parameters and descriptions regarding the reboot flag, run `help reboot`.
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 None
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 None
 
@@ -2142,29 +1904,29 @@ Logging session out.
 </pre>
 
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 logout *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Use the `logout` command to exit your session and to disconnect from the server.
 
-#### Usage in Other Commands
+<p class="fake_header">Usage in Other Commands</p>
 
 To log out at the end of a command, include the *--logout* option. Not all commands have the `logout` flag, run help on the command to see available options.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 None
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 None
 
@@ -2180,24 +1942,24 @@ Logging session out.
 Bye for now
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 exit *[Optional Parameters]*
 
-#### Description
+<p class="fake_header">Description</p>
 
 Use the `exit` command if you wish to exit from the interactive shell. Using exit will also log you out and disconnect you from the server.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Inputs
+<p class="fake_header">Inputs</p>
 
 None
 
-#### Outputs
+<p class="fake_header">Outputs</p>
 
 None

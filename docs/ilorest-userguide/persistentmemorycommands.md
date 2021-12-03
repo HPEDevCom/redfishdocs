@@ -1,9 +1,3 @@
----
-title: Persistent Memory Commands
-toc:
-  enable: true
-  maxDepth: 3
----
 ## Persistent Memory Commands
 
 This section covers commands related to the discovery and configuration of HPE Persistent Memory.
@@ -25,15 +19,15 @@ Deleted Task #1953
 
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 clearpmmpendingconfig
 
-#### Description
+<p class="fake_header">Description</p>
 
 Clears all pending persistent memory configuration tasks.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -72,19 +66,19 @@ CREATE       189.57 GB   63.19 GB        2@1, 2@12
 </pre>
 
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 
 provisionpmm [-h | --help] [-m | --memory-mode=(0|%)] [-i | --pmem-interleave=(On|Off)] [-pid | --proc=(processorID)] [-f | --force]
 
 
-#### Description
+<p class="fake_header">Description</p>
 
 
 Applies user specified configuration to persistent memory modules.
 
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 
 - **-h, --help**
@@ -160,7 +154,7 @@ TotalPmemSize:  0.0 GB
 
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 showpmm --device | -D [--dimm=(DIMM IDs) | -I] [--json | -j]
 
@@ -170,11 +164,11 @@ showpmm --logical | -L [--json | -j]
 
 showpmm --summary | -M [--json | -j]
 
-#### Description
+<p class="fake_header">Description</p>
 
 Displays information about the installed persistent memory modules.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -238,17 +232,17 @@ CREATE       0.0 GB      252.76 GB       2@1, 2@12
 
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 applypmmconfig -L | --list
 
 applypmmconfig -C | --pmmconfig [-f | --force]
 
-#### Description
+<p class="fake_header">Description</p>
 
 Apply a predefined configuration to installed persistent memory modules.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -283,15 +277,15 @@ CREATE       94.78 GB    31.59 GB        2@12
 
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 showpmmpendingconfig [-j | --json]
 
-#### Description
+<p class="fake_header">Description</p>
 
 Shows the queued tasks pending a reboot for configuring persistent memory modules.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -315,15 +309,15 @@ MemoryModeTotalSize    PmemTotalSize    CacheRatio
 
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 showrecommendedpmmconfig
 
-#### Description
+<p class="fake_header">Description</p>
 
 Shows the recommended persistent memory configurations.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 
@@ -351,15 +345,15 @@ iLOrest > <span style="color: #01a982; ">pmmsecuritystate</span>
 
 </pre>
 
-#### Syntax
+<p class="fake_header">Syntax</p>
 
 pmmsecuritystate
 
-#### Description
+<p class="fake_header">Description</p>
 
 Displaying the Security state of dimms.
 
-#### Parameters
+<p class="fake_header">Parameters</p>
 
 - **-h, --help**
 

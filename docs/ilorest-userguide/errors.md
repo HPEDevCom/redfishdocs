@@ -1,6 +1,3 @@
----
-title: Error Codes
----
 # Error Codes
 
 <aside class="notice">The error codes listed below are returned by the RESTful Interface Tool, not from iLO. Verbose (-v usage) will provide verbose output of HTTP, CHIF and iLO response messages. The error codes listed below are relegated to client side errors or specifically translated from errors received through iLO response messages.</aside>
@@ -51,36 +48,42 @@ Error Code | Error Name | Description | Resolution
 43| NIC_MISSING_OR_INVALID_ERROR | NIC missing or invalid error. | An invalid property or collection of properties has been provided to iLO which are not consistent with the defined schema. Check '-v or -vv' for details in the iLO error response codes.
 44| NO_CURRENT_SESSION_ESTABLISHED | No current session established. | Verify iLO system login and current valid session.
 45| FAILURE_DURING_COMMIT_OPERATION | A failure occurred during a commit operation. | Retry the commit, refresh cache and attempt to set/commit data again.
+46| USERNAME_PASSWORD_REQUIRED_ERROR | Login failure where username and password missing | Retry login by providing username and password. 
 51| MULTIPLE_SERVER_CONFIG_FAIL | Multiple server configuration failure. | Verify current session is only for a single targeted server. Separate cache directories must be used or '--no-cache' should be added to eliminate cache use.
 52| MULTIPLE_SERVER_INPUT_FILE_ERROR | Multiple server input file error. | Verify current session is only for a single targeted server. Separate cache directories must be used or '--no-cache' should be added to eliminate cache use.
 53| LOAD_SKIP_SETTING_ERROR | A load skip setting error occurred. | Certain properties are considered read-only or are not to be modified. Those properties should be removed during a save; however, this error may occur if referenced during a load. Report this issue for further review.
-54	| INCOMPATIBLE_ILO_VERSION_ERROR | Incompatible iLO version error. | Occurs when attempting to access or modify a system with incompatible settings. Generally iLO 4 2.00 and greater, all iLO 5 releases are compatible; however, some anomalies may occur on HPE Apollo and HPE Edgeline products. Report these issues for further review if the iLO version and platform is expected to be supported.
+54| INCOMPATIBLE_ILO_VERSION_ERROR | Incompatible iLO version error. | Occurs when attempting to access or modify a system with incompatible settings. Generally iLO 4 2.00 and greater, all iLO 5 releases are compatible; however, some anomalies may occur on HPE Apollo and HPE Edgeline products. Report these issues for further review if the iLO version and platform is expected to be supported.
 55| INVALID_CLIST_FILE_ERROR | Invalid command list file error. | Report this issue to the developers.
 56| UNABLE_TO_MOUNT_BB_ERROR | Unable to mount BB error. | Black box is unable to be mounted. Verify Absaroka storage space is available for mounting.
 57| BIRTHCERT_PARSE_ERROR | Birth certificate parse error. | Invalid server birth certificate.
 58| INCOMPATIBLE_SERVER_TYPE | Incompatible server type. | The command(s) may not be supported on the server type. Verify with developers if the command should be supported on the target system.
 59| ILO_LICENSE_ERROR | iLO license error. | Verify a valid iLO license has been provided. See details of the error including usage of '-v or -vv' to review detailed response information from iLO.
 60| RESOURCE_EXISTS_ERROR | Account exists error. | iLO Management account or iLO Federation Account already exists on the target platform.
-61	| RIS_VALUE_CHANGED_ERROR | Error occurred when trying to change a value. | A value has changed due to a dependency or an ETag has been otherwise updated, indicating a difference from the cached value.
-62	| RIS_REF_PATH_NOT_FOUND | Reference path not found error. | Verify the Redfish API endpoint for the resource is available.
-63	| RIS_iLO_RESPONSE_ERROR | An iLO response error occurred. | See details of the error including usage of '-v or -vv' to review detailed response information from iLO.
-64	| RIS_ILO_INIT_ERROR | Unable to open a channel with iLO. | Verify the location of chif.dll on Windows and chif.so on Linux (normally installed by iLOREST). The CHIF driver will need to be manually installed on Windows versions which did not include the HPE Service ProLiant Pack. While most common distributions of Linux will include the driver, some may need to be manually installed.
-65	| RIS_SCHEMA_PARSE_ERROR | An error occurred parsing the type schema. | Try running with the "--latestschema flag". Report this issue for further review.
-70	| REST_ILOREST_WRITE_BLOB_ERROR | An error occurred while trying to write BLOB data. | Blobstore may not be available or the size of the data may exceed 15KB. Attempt to reset iLO as well as cycle logout and login operations. Review the ilorest.debug log using '-d'. Report this issue for further investigation.
-71	| REST_ILOREST_BLOB_DELETE_ERROR | Error occurred while trying to delete BLOB data. | Blobstore is unavailable, blob can not be deleted or does not exist. Attempt to reset iLO as well as cycle logout and login operations. Review the ilorest.debug log using '-d'. Report this issue for further investigation.
-72	| REST_ILOREST_BLOB_FINALIZE_ERROR | Error occurred while trying to finalize BLOB. | Blobstore may not be available or the size of the data may exceed 15KB. Attempt to reset iLO as well as cycle logout and login operations. Review the ilorest.debug log using '-d'. Report this issue for further investigation.
-73	| REST_ILOREST_BLOB_NOT_FOUND_ERROR | BLOB could not be found. | Blobstore or Blob does not exist.
-74	| JSON_DECODE_ERROR | JSON decoder error. | JSON data could not be decoded. Review the ilorest.debug log using '-d'. Report this issue for further investigation.
-75	| V1_SECURITY_STATE_ERROR | Security state error. | Verify iLO security state.
-76	| REST_ILOREST_BLOB_OVERRIDE_ERROR (see REST_ILOREST_WRITE_BLOB_ERROR) | iLO RESTful API BLOB override error. | Blobstore may not be available or the size of the data may exceed 15KB. Attempt to reset iLO as well as cycle logout and login operations. Review ilorest.debug log using '-d'. Report this issue for further investigation.
-77	| REST_BLOB_RETRIES_EXHAUSTED_ERROR | Error occurred during the blob operation after maximum retries. | Blobstore may not be available or the size of the data may exceed 15KB if writing. Attempt to reset iLO as well as cycle logout and login operations. Review ilorest.debug log using '-d'. Report this issue for further investigation. Check Absaroka flash status.
-80	| RESOURCE_ALLOCATION_ISSUES_ERROR | An error occurred allocating resources for an object. | See ilorest.debug log using '-d'.
-81	| ENCRYPTION_ERROR | An error occured during encryption. | Check file encodings.
-82	| DRIVE_MISSING_ERROR | Drive missing error. | Drive referenced in smart storage controller is missing or unavailable. Check smart array controller, drive power drive status.
-83	| PATH_UNAVAILABLE_ERROR | The requested path is unavailable. | The requested Redfish API endpoint does not exist on the target server.
-100	| RIS_RIS_BIOS_UNREGISTERED_ERROR | BIOS provider is unregistered. | Verify the HP/HPE BIOS firmware is validated and authentic. Report this issue for further investigation.
-101	| FAILED_TO_DOWNLOAD_COMPONENT | Failed to download component error. | Verify desired component is available in Absaroka with 'List Component Command'. Retry operation. Verify network connectivity and sufficient bandwidth.
-102	| UPDATE_SERVICE_BUSY | Update service is busy. | Verify iLO update service status. Try the operation after the current update service job has been completed.
-103	| TASKQUEUE_ERROR | An error occurred executing one or more items of the current task queue. | Verify the task queue parameters are correct. Retry the job.
-104	| FAILED_TO_UPLOAD_COMPONENT | Failed to upload component. | Verify the iLO update service status. Verify the component is of the correct type and is authentic (as per the settings of your system). Verify sufficient space is available on Absaroka for the component.
-255	| GENERAL_ERROR | A general error occurred while manipulating server settings. See the error message for details. | Retry the operation. Report this issue for further investigation.
+61| RIS_VALUE_CHANGED_ERROR | Error occurred when trying to change a value. | A value has changed due to a dependency or an ETag has been otherwise updated, indicating a difference from the cached value.
+62| RIS_REF_PATH_NOT_FOUND | Reference path not found error. | Verify the Redfish API endpoint for the resource is available.
+63| RIS_iLO_RESPONSE_ERROR | An iLO response error occurred. | See details of the error including usage of '-v or -vv' to review detailed response information from iLO.
+64| RIS_ILO_INIT_ERROR | Unable to open a channel with iLO. | Verify the location of chif.dll on Windows and chif.so on Linux (normally installed by iLOREST). The CHIF driver will need to be manually installed on Windows versions which did not include the HPE Service ProLiant Pack. While most common distributions of Linux will include the driver, some may need to be manually installed.
+65| RIS_SCHEMA_PARSE_ERROR | An error occurred parsing the type schema. | Try running with the "--latestschema flag". Report this issue for further review.
+66| RIS_ILO_CHIF_ACCESS_DENIED_ERROR | An access denied error occurred during chif communication. | Try running with the "-d" option. Report this issue for further review.
+67| RIS_CREATE_AND_PREPARE_CHANNEL_ERROR | A create channel error occurred during chif communication. | Try running with the "-d" option. Report this issue for further review.
+68| REST_ILOREST_BLOB_DELETE_ERROR | Error occurred while trying to delete BLOB data. | Blobstore is unavailable, blob can not be deleted or does not exist. Attempt to reset iLO as well as cycle logout and login operations. Review the ilorest.debug log using '-d'. Report this issue for further investigation.
+69| RIS_ILO_CHIF_NO_DRIVER_ERROR | No chif driver error during chif communication. | Check that OS chif driver exist. Report this issue for further review.
+70| REST_ILOREST_WRITE_BLOB_ERROR | An error occurred while trying to write BLOB data. | Blobstore may not be available or the size of the data may exceed 15KB. Attempt to reset iLO as well as cycle logout and login operations. Review the ilorest.debug log using '-d'. Report this issue for further investigation.
+71| RIS_ILO_CHIF_PACKET_EXCHANGE_ERROR | A packet exchage error occurred during chif communication. | Try running with the "-d" option. Report this issue for further review.
+72| REST_ILOREST_BLOB_FINALIZE_ERROR | Error occurred while trying to finalize BLOB. | Blobstore may not be available or the size of the data may exceed 15KB. Attempt to reset iLO as well as cycle logout and login operations. Review the ilorest.debug log using '-d'. Report this issue for further investigation.
+73| REST_ILOREST_BLOB_NOT_FOUND_ERROR | BLOB could not be found. | Blobstore or Blob does not exist.
+74| JSON_DECODE_ERROR | JSON decoder error. | JSON data could not be decoded. Review the ilorest.debug log using '-d'. Report this issue for further investigation.
+75| V1_SECURITY_STATE_ERROR | Security state error. | Verify iLO security state.
+76| REST_ILOREST_BLOB_OVERRIDE_ERROR (see REST_ILOREST_WRITE_BLOB_ERROR) | iLO RESTful API BLOB override error. | Blobstore may not be available or the size of the data may exceed 15KB. Attempt to reset iLO as well as cycle logout and login operations. Review ilorest.debug log using '-d'. Report this issue for further investigation.
+77| REST_BLOB_RETRIES_EXHAUSTED_ERROR | Error occurred during the blob operation after maximum retries. | Blobstore may not be available or the size of the data may exceed 15KB if writing. Attempt to reset iLO as well as cycle logout and login operations. Review ilorest.debug log using '-d'. Report this issue for further investigation. Check Absaroka flash status.
+80| RESOURCE_ALLOCATION_ISSUES_ERROR | An error occurred allocating resources for an object. | See ilorest.debug log using '-d'.
+81| ENCRYPTION_ERROR | An error occured during encryption. | Check file encodings.
+82| DRIVE_MISSING_ERROR | Drive missing error. | Drive referenced in smart storage controller is missing or unavailable. Check smart array controller, drive power drive status.
+83| PATH_UNAVAILABLE_ERROR | The requested path is unavailable. | The requested Redfish API endpoint does not exist on the target server.
+84| ILO_RIS_CORRUPTION_ERROR | RIS database seems corrupted | The requested Redfish resource is corrupted and may need a reboot of the server.
+100| RIS_RIS_BIOS_UNREGISTERED_ERROR | BIOS provider is unregistered. | Verify the HP/HPE BIOS firmware is validated and authentic. Report this issue for further investigation.
+101| FAILED_TO_DOWNLOAD_COMPONENT | Failed to download component error. | Verify desired component is available in Absaroka with 'List Component Command'. Retry operation. Verify network connectivity and sufficient bandwidth.
+102| UPDATE_SERVICE_BUSY | Update service is busy. | Verify iLO update service status. Try the operation after the current update service job has been completed.
+103| TASKQUEUE_ERROR | An error occurred executing one or more items of the current task queue. | Verify the task queue parameters are correct. Retry the job.
+104| FAILED_TO_UPLOAD_COMPONENT | Failed to upload component. | Verify the iLO update service status. Verify the component is of the correct type and is authentic (as per the settings of your system). Verify sufficient space is available on Absaroka for the component.
+255| GENERAL_ERROR | A general error occurred while manipulating server settings. See the error message for details. | Retry the operation. Report this issue for further investigation.

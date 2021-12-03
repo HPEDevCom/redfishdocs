@@ -1,7 +1,4 @@
-﻿---
-title: Use Case Examples and Macro Commands
----
-# Use Case Examples and Macro Commands
+﻿# Use Case Examples and Macro Commands
 
 This section outlines ready to use example commands, as well as some general use scenarios for obtaining and configuring iLO 4 (iLO 4 2.00+) and iLO 5 systems through Redfish. Legacy modes are supported for older HPRest iLO 4 systems.
 
@@ -1261,7 +1258,7 @@ To delete an iLO license, use the `rawdelete` command. For more information, see
     "body": {
         "Action": "InsertVirtualMedia",
         "Target": "/OEM/Hp",
-        "Image": "http://xx.xxx.xxx.xxx:xx/spp.iso
+        "Image": "https://xx.xxx.xxx.xxx:xx/spp.iso"
     }
 }
 ```

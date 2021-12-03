@@ -97,6 +97,10 @@ hpeRedfishMainSideBar:
           - label: iLO 5 Software/Firmware update service
             page: docs/ilos/ilo5/ilo5_updateservice.md
 
+          - label: BIOS Defaults and Passwords
+            page: docs/ilos/ilo5/ilo5_biosdoc.md
+
+
           - label: SSL certificates
             page: docs/ilos/ilo5/ilo5_sslcertdoc.md
 
@@ -151,6 +155,9 @@ hpeRedfishMainSideBar:
         page: docs/ilorest-userguide/installation.md
       - label: Using the RESTful Interface Tool
         page: docs/ilorest-userguide/usage.md
+
+      - label: Higher security modes
+        page: docs/ilorest-userguide/highsecurity.md
       
       - group: Commands
         expanded: false

@@ -1,60 +1,41 @@
----
-title: When things go wrong
-toc:
-   enable: true
-   maxDepth: 2
----
+# When Things Go Wrong
 
-# When things go wrong
+This section provides debug information to help when things go wrong. If this section does not solve your issue please contact support or submit a github issue to our open source project <a href="https://github.com/HewlettPackard/python-redfish-utility/issues">here</a>.
 
-This section provides debug information to help when things go wrong. If this section does not solve your issue please contact support or submit a [GitHub issue](https://github.com/HewlettPackard/python-redfish-utility/issues) to our open source project.
+## I need return codes to script, but I'm not seeing any in the output.
 
-## I need return codes to script, but I'm not seeing any in the output
 
-:::success Tip
-You can see return codes and other information with the verbose flag ( `-v`, `--verbose`).
-:::
+> You can see return codes and other information with the verbose flag.
 
-```shell iLOrest
-ilorest --verbose
+<pre>
+ilorest <span style="color: #01a982; ">-v</span>
 iLOrest : RESTful Interface Tool version 3.0
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
 --------------------------------------------------------------------------------
 iLOrest > login
 Discovering data...Done
 Monolith build process time: 0.259999990463
-iLOrest return code: 0
-```
+<span style="color: #01a982; ">iLOrest return code: 0</span>
+</pre>
 
-### Symptom
+<p class="fake_header">Symptom</p>
 
 I am unable to see return codes in the output.
 
-### Cause
+<p class="fake_header">Cause</p>
 
-The verbose global flag ( `-v,--verbose` ) is not being used.
+The verbose global flag (-v,--verbose) is not being used.
 
-### Action
+<p class="fake_header">Action</p>
 
-Use the verbose global flag ( `-v,--verbose` ), which will output more information including return codes.
+Use the verbose global flag (-v,--verbose), which will output more information including return codes.
 
 ## How can I see exactly what iLOrest is sending to iLO?
 
-:::success Tip
-You can see full payloads with debug mode.
-:::
+> You can see full payloads with debug mode. The response is truncated for space.
 
-:::attention NOTE
-The debug output below is truncated for space.
-:::
-
-```shell No debug output
-ilorest login
-Discovering data...Done
-```
-
-```shell Debug output
-ilorest --debug login
+<pre>
+ilorest <span style="color: #01a982; ">-d</span> login
 iLOrest : RESTful Interface Tool version 3.0
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
 --------------------------------------------------------------------------------
@@ -81,114 +62,99 @@ Headers:
         Content-type: application/json; charset=utf-8
 
 Body Response of /redfish/v1/: {"@odata.con...
-```
+</pre>
 
-### Symptom
+<p class="fake_header">Symptom</p>
 
 I am unable to see what iLOrest is sending to iLO.
 
-### Cause
+<p class="fake_header">Cause</p>
 
-The debug global flag ( `-d, --debug` ) is not being used.
+The debug global flag (-d, --debug) is not being used.
 
-### Action
+<p class="fake_header">Action</p>
 
-Use the debug global flag ( `-d, --debug` ), which will provide the payloads that are sent and received from iLO. It is printed to console and to the `iLOrest.log` file in the current directory.
+Use the debug global flag (-d, --debug), which will provide the payloads that are sent and received from iLO. It is printed to console and to the iLOrest.log file. Debug mode will show information, such as X-Auth-Token headers. For this reason, it's highly encouraged to use only the debug flag for debugging issues and not for production scripts.
 
-:::warning Warning
-Debug mode shows sensitive information, such as the `X-Auth-Token` header. It is highly recommended to use this flag for debugging issues only. Not for production scripts.
-:::
 
 ## Why am I getting extra data?
 
-In the example below, the selector returns both the instance and the collection type.
+> In this example the selector returns both the instance and the collection type. Modifying the selector to limit the selection solves this problem. The easiest way to do that is to add a period to ensure you are only selecting one type.
 
-:::success Tip
-The easiest way to select only one resource type is to append a period ( `.` ) to the selected type
-:::
+<pre>
+iLOrest > select <span style="color: #01a982; ">ComputerSystem</span>
+Selected option(s): #ComputerSystemCollection.ComputerSystemCollection, #ComputerSystem.v1_4_0.ComputerSystem
+iLOrest return code: 0
+iLOrest > select <span style="color: #01a982; ">ComputerSystem.</span>
+Selected option(s): #ComputerSystem.v1_4_0.ComputerSystem
+iLOrest return code: 0
+</pre>
 
-```shell Instance and collection
-iLOrest > select ComputerSystem
-iLOrest > select
-Current selection: #ComputerSystemCollection.ComputerSystemCollection, #ComputerSystem.v1_10_0.ComputerSystem
-```
-
-```shell Instance only
-iLOrest > select ComputerSystem.
-iLOrest > select
-Current selection: #ComputerSystem.v1_10_0.ComputerSystem
-```
-
-### Symptom
+<p class="fake_header">Symptom</p>
 
 I am getting more data than what I would like.
 
-### Causes
+<p class="fake_header">Cause</p>
 
-1. You are not using a selector that is exclusive to the type you want.
+You are not using a selector that is exclusive to the type you want and/or the type that you have selected has more than one instance.
 
-2. The type that you have selected has more than one instance.
-
-### Actions
+<p class="fake_header">Action</p>
 
 1. Use a selector that is exclusive to the type you want.
 
-2. Verify that the type you have selected, does not have more than one instance. In this case, the [filter option](../globalcommands/#filter-option) can help you limit the results to the instance you want.
+2. Verify that the type you have selected, does not have more than one instance. In this case, the [filter option](#filter-option) can help you limit the results to the instance you want.
 
-The example below selects only one resource type, but multiple resources are available for that resource type. We only want to modify or view one instance. We can use the [--filter](../globalcommands/#filter-option) option to limit to one instance of the resource only.
+> This example shows that we are selecting only 1 type, but multiple instances are available for that type. We only want to modify or view 1 instance! We can use the [--filter](#filter-option) option to limit to 1 instance only.
 
-```shell One resource type, multiple resources
-iLOrest > select EthernetInterface.
+<pre>
+iLOrest > select <span style="color: #01a982; ">EthernetInterface.</span>
+Selected option(s): #EthernetInterface.v1_4_1.EthernetInterface
+iLOrest return code: 0
+iLOrest > list @odata.id
 
-iLOrest > get IPv4Addresses/Address
-IPv4Addresses=
-               Address=192.168.86.71
+@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/2/
 
-IPv4Addresses=
-               Address=0.0.0.0
+@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/1/
 
-IPv4Addresses=
-               Address=192.168.15.1
+@odata.id=/redfish/v1/Managers/1/EthernetInterfaces/1/
 
-IPv4Addresses=
-               Address=192.168.87.207
-```
+@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/3/
 
-```shell One resource type, one resource
-iLOrest > select EthernetInterface.
+@odata.id=/redfish/v1/Managers/1/EthernetInterfaces/2/
 
-iLOrest > get IPv4Addresses/Address --filter=Name="Manager Dedicated Network Interface"
-IPv4Addresses=
-               Address=192.168.87.207
+@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/4/
+iLOrest return code: 0
+iLOrest > list @odata.id <span style="color: #01a982; ">--filter=Id=3</span>
+Selected option(s): #EthernetInterface.v1_4_1.EthernetInterface
+@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/3/
+iLOrest return code: 0
+</pre>
 
-```
+## I can set a property, but the commit is failing.
 
-## I can set a property, but the commit fails
-
-### Symptom
+<p class="fake_header">Symptom</p>
 
 The commit is failing, even though I can set a property.
 
-### Cause
+<p class="fake_header">Cause</p>
 
 This issue can happen for multiple reasons. The API tries  to catch issues with commits when the property is initially set, but not all possible issues can be caught.
 
-### Action
+<p class="fake_header">Action</p>
 
-1. Run the [status command](../globalcommands/#status-command) to see what properties have failed to commit.
+1. Run the [status command](#status-command) to see what properties have failed to commit.
 
-2. To ensure you are sending data that will be accepted by the server, obtain schema information for the property that failed to commit with the [info command](../globalcommands/#info-command).
+2. To ensure you are sending data that will be accepted by the server, obtain schema information for the property that failed to commit with the [info command](#info-command).
 
-3. Some properties require other properties to be set first. You can view the [iLO REST API Doc's resource definitions](https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/#resource-definitions) for the property you are trying to commit to see any additional information on modifying the property that is not in the schemas.
+3. Some properties require other properties to be set first. You can view the <a href=" https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/#resource-definitions">iLO REST API Doc's resource definitions</a> for the property you are trying to commit to see any additional information on modifying the property that is not in the schemas.
 
-## I think this property is an array, but I can't tell by the get/list output
+## I think this property is an array, but I can't tell by the get/list output.
 
-:::success Tip
-Include the `--json` format attribute for an easy detection of arrays.
-:::
+> It's hard to tell where the array is in this output until you print the response in json format.
 
-```shell Array is invisible
+<pre>
 iLOrest > get Boot/BootOrder Boot/BootSourceOverrideTarget
+Selected option(s): #ComputerSystem.v1_4_0.ComputerSystem
 Boot=
       BootSourceOverrideTarget=None
       BootOrder=Boot0014
@@ -204,10 +170,9 @@ Boot=
                  Boot0012
                  Boot0013
                  Boot0011
-```
-
-```Json Array is visible
-iLOrest > get Boot/BootOrder Boot/BootSourceOverrideTarget --json
+iLOrest return code: 0
+iLOrest > get Boot/BootOrder Boot/BootSourceOverrideTarget <span style="color: #01a982; ">--json</span>
+Selected option(s): #ComputerSystem.v1_4_0.ComputerSystem
 {
   "Boot": {
     "BootOrder": [
@@ -228,125 +193,91 @@ iLOrest > get Boot/BootOrder Boot/BootSourceOverrideTarget --json
     "BootSourceOverrideTarget": "None"
   }
 }
-```
+iLOrest return code: 0
+</pre>
 
-### Symptom
+<p class="fake_header">Symptom</p>
 
 It is difficult to tell the difference between arrays and nested JSON objects from the get/list output.
 
-### Cause
+<p class="fake_header">Cause</p>
 
 The get/list output does not distinguish between nested JSON objects and arrays. They both look similar in the output.
 
-### Action
+<p class="fake_header">Action</p>
 
-Use the `-j`, `--json` flag to distinguish between arrays and nested JSON objects.
+Use the -j,--json flags to distinguish between arrays and nested JSON objects.
 
 ## I need to change a property, but it's an array... How can I modify that?
 
-In the example below, we are only flipping the first two boot order items in the array, but we need to send the whole array, not just the modified section.
+> In this example we are only flipping the first two boot order items in the array, but we need to send the whole array, not just the modified section. You can see with the status command that we are changing specific array values.
 
-:::success Tips
-Use the `status` command to view changed parameters. Then `commit`.
-
-If you want to change reset your changes, use the `--refresh` attribute to the `select <type>` command.
-:::
-
-```Shell View changed resources
-iLOrest > set Boot/BootOrder=[Boot0015,Boot0014,Boot0016,Boot000A,Boot000B,Boot000C,Boot000D,Boot000E,Boot000F,Boot0010,Boot0012,Boot0013,Boot0011]
-
+<pre>
+iLOrest > set Boot/BootOrder=<span style="color: #01a982; ">[Boot0015,Boot0014,Boot0016,Boot000A,Boot000B,Boot000C,Boot000D,Boot000E,Boot000F,Boot0010,Boot0012,Boot0013,Boot0011]</span>
 iLOrest > status
 Current changes found:
-ComputerSystem.v1_10_0(/redfish/v1/Systems/1/) (Currently selected)
+ComputerSystem.v1_4_0(/redfish/v1/Systems/1/) (Currently selected)
         Boot/BootOrder/0=Boot0015
         Boot/BootOrder/1=Boot0014
-
 iLOrest > commit
 Committing changes...
 The operation completed successfully.
-```
+</pre>
 
-```shell Reset changed items
-iLOrest > status
-Current changes found:
-ComputerSystem.v1_10_0(/redfish/v1/Systems/1/) (Currently selected)
-        Boot/BootOrder/0=Boot0015
-        Boot/BootOrder/1=Boot0014
-
-iLOrest > select ComputerSystem. --refresh
-
-set Boot/BootOrder=[Boot000A,Boot000B,Boot0016,Boot0014,Boot0015,Boot000C,Boot000D,Boot000E,Boot000F,Boot0010,Boot0012,Boot0013,Boot0011]
-
-iLOrest > status
-Current changes found:
-ComputerSystem.v1_10_0(/redfish/v1/Systems/1/) (Currently selected)
-        Boot/BootOrder/0=Boot000A
-        Boot/BootOrder/1=Boot000B
-
-iLOrest > commit
-Committing changes...
-The operation completed successfully.
-```
-
-### Symptom
+<p class="fake_header">Symptom</p>
 
 I am unable to change a property for an array.
 
-### Cause
+<p class="fake_header">Cause</p>
 
-Array types must be set as a whole modified array inside brackets. `[ ]`
+Array types must be set as a whole modified array inside brackets. ``[ ]``
 
-### Action
+<p class="fake_header">Action</p>
 
-Set array types as a whole modified array inside brackets. `[ ]`
+Set array types as a whole modified array inside brackets. ``[ ]``
 
-You can also modify lists using the [save](../globalcommands/#save-command) and [load](../globalcommands/#load-command) commands.
+You can also modify lists using the [save](#save-command) and [load](#load-command) commands.
 
-## Will this command reboot/reset my system ?
+## Will this command reboot/reset my system?
 
-### Symptom
+<p class="fake_header">Symptom</p>
 
 Some commands will reboot the system.
 
-### Cause
+<p class="fake_header">Cause</p>
 
-Some commands will reboot the system because the reboot is required to complete the process. Other commands will tell you to reboot the system using the `--reboot flag`.
+Some commands will reboot the system because the reboot is required to complete the process. Other commands will tell you to reboot the system using the --reboot flag.
 
-### Action
+<p class="fake_header">Action</p>
 
-:::success Tip
-Read the help for any warnings or notes specific to each command. Not all warnings are mentioned here and this list is only intended to describe some command behavior to be aware of.
-:::
+<aside class="warning">Please read the help for any warnings or notes specific to each command. Not all warnings are mentioned here and this list is only intended to describe some command behavior to be aware of.</aside>
 
 This list describes any reboot or reset behavior for commands:
 
 - The following commands will reboot your system:
-  - `Reboot`
-  - `OneButtonErase`
-  - `Serverclone`
-  - `iLOclone`
-
+  - Reboot
+  - OneButtonErase
+  - Serverclone
+  - iLOclone
 - The following commands can reboot your system if you specify the option:
-  - `BiosDefaults`
-  - `BootOrder`
-  - `IscsiConfig`
-  - `SetPassword`
-  - `Commit`
-  - `Load`
-  - `Set`
-  - `VirtualMedia`
-
+  - BiosDefaults
+  - BootOrder
+  - IscsiConfig
+  - SetPassword
+  - Commit
+  - Load
+  - Set
+  - VirtualMedia
 - The following commands will reset iLO:
-  - `OneButtonErase`
-  - `Serverclone`
-  - `iLOclone`
-  - `iLOreset`
-  - `Uploadcomp` - Can reset iLO if the firmware requires an iLO reset to finish flashing and you are directly flashing
-  - `flashfwpkg` - Can reset iLO if the firmware requires an iLO reset to finish flashing
-
+  - OneButtonErase
+  - Serverclone
+  - iLOclone
+  - iLOreset
+  - Uploadcomp - Can reset iLO if the firmware requires an iLO reset to finish flashing and you are directly flashing
+  - flashfwpkg - Can reset iLO if the firmware requires an iLO reset to finish flashing
 - The following commands will factory reset your iLO:
-  - `iloclone`
-  - `factoryreset`
+  - iLOclone
+  - factoryreset
 
 ## Firmware uploading/flash issues
 
@@ -354,15 +285,15 @@ This section describes known issues flashing certain versions or any intermediat
 
 ### Unable to flash or upload firmware
 
-### Symptom
+<p class="fake_header">Symptom</p>
 
 You are unable to flash or upload iLO 5 firmware v2.10 or later to a system running an iLO firmware version earlier than iLO 5 v1.40.
 
-### Cause
+<p class="fake_header">Cause</p>
 
 The target system must be running iLO 5 firmware v1.40 or later before you attempt to flash or upload iLO 5 firmware v2.10 or later to the system.
 
-### Action
+<p class="fake_header">Action</p>
 
 1. Flash or upload to iLO 5 firmware v1.40x.
 2. Flash or upload to iLO 5 firmware v2.10 or later on the system.
