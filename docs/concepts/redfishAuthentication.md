@@ -39,7 +39,7 @@ curl --include --insecure -u username:password --location \
     https://{IP}/redfish/v1/systems
 ```
 
-```Python
+```Python HPE Redfish Python Library
 # The following example uses the HPE Redfish Python library that
 # you can install with:
 # pip install python-ilorest-library
@@ -58,31 +58,65 @@ login_password = "password"
 
 ## Create a REDFISH object
 REDFISH_OBJ = RedfishClient(base_url=bmc_host,username=login_account, \
-                          password=login_password, default_prefix='/redfish/v1')
+                          password=login_password)
 
-# Login into the server and create a session
+# Login into the server and create a basic authenticated session
 REDFISH_OBJ.login(auth="basic")
 
-# Logout of the current session
-REDFISH_OBJ.logout()
+# Do a GET on a given path
+response = REDFISH_OBJ.get("/redfish/v1/systems")
+
+# Print out the response
+sys.stdout.write("%s\n" % response)
 ```
 
-## Creating a session
+```Python DMTF Redfish Python Library
+# The following example uses the DMTF Redfish Python library that
+# you can install with:
+# pip install redfish
+
+# The sources of the DMTF Redfish Python library is on GitHub at
+# https://github.com/DMTF/python-redfish-library
+
+import sys
+from redfish import redfish_client
+
+# When running remotely connect using the BMC IP address, BMC account name, 
+# and password to send https requests
+bmc_host = "https://{IP}"
+login_account = "admin"
+login_password = "password"
+
+## Create a REDFISH object
+REDFISH_OBJ = redfish_client(base_url=bmc_host,username=login_account, \
+                          password=login_password)
+
+# Login into the server and create a basic authenticated session
+REDFISH_OBJ.login(auth="basic")
+
+# Do a GET on a given path
+response = REDFISH_OBJ.get("/redfish/v1/systems")
+
+# Print out the response
+sys.stdout.write("%s\n" % response)
+```
+
+## Session authentication
 
 For more complex multi-resource operations, you should log in and establish a session. To log in, iLO has a session manager object at the documented URI `/redfish/v1/sessions`. To create a session, POST a JSON object to the Session manager.
 
 :::attention Note
- You must include the HTTP header `Content-Type: application/json` for all RESTful API operations that include a request body in JSON format.
+ You must include the HTTP header `Content-Type: application/json` for all Redfish operations that include a request body in JSON format.
 :::
 
 If the session is created successfully, you receive an HTTP 201 (Created) response from the BMC. There will also be two important HTTP response headers.
 
-* **X-Auth-Token** Your session token (string).	This is a unique string for your login session. It must be included as a header in all subsequent HTTP operations in the session.
+* **X-Auth-Token** Your session key (token). This is a unique string for your login session. It must be included as a header in all subsequent HTTP operations in the session.
 
 * **Location** The URI of the newly created session resource.	BMC allocates a new session resource describing your session. This is the URI that you must DELETE against in order to log out. If you lose this location URI, you can find it by crawling the HREF links in the Sessions collection. Store this URI to facilitate logging out.
 
 :::success Tip
-It is good practice to save the Location URI of the newly created session.  This is your unique session information and is needed to log out later.
+It is good practice to save the Location URI of the newly created session. This is your unique session information and is needed to log out later. High level Redfish libraries (i.e. HPE Python Redfish library) perform this task automatically in a Redfish object.
 :::
 
 ```shell cURL
@@ -101,7 +135,7 @@ cat data.json
 
 ```
 
-```Python
+```Python HPE Redfish Python Library
 # The following example uses the HPE Redfish Python library that
 # you can install with:
 # pip install python-ilorest-library
@@ -109,6 +143,7 @@ cat data.json
 # The sources of the HPE Redfish Python library is on GitHub at
 # https://github.com/HewlettPackard/python-ilorest-library
 
+import sys
 from redfish import RedfishClient
 
 # When running remotely connect using the iLO address, iLO account name, 
@@ -119,10 +154,61 @@ login_password = "password"
 
 ## Create a REDFISH object
 REDFISH_OBJ = RedfishClient(base_url=bmc_host,username=login_account, \
-                          password=login_password, default_prefix='/redfish/v1')
+                          password=login_password)
 
 # Login into the server and create a session
 REDFISH_OBJ.login(auth="session")
+
+# Session key and location are accessible from the Redfish object
+sessionKey = REDFISH_OBJ.session_key
+sessionLocation = REDFISH_OBJ.session_location
+
+print('Session Key: '+str(sessionKey))
+print('Session Location: '+str(sessionLocation))
+
+# Do a GET on a given path
+response = REDFISH_OBJ.get("/redfish/v1/systems")
+
+# Print out the response
+sys.stdout.write("%s\n" % response)
+```
+
+```Python DMTF Redfish Python Library
+# The following example uses the DMTF Redfish Python library that
+# you can install with:
+# pip install redfish
+
+# The sources of the DMTF Redfish Python library is on GitHub at
+# https://github.com/DMTF/python-redfish-library
+
+import sys
+from redfish import redfish_client
+
+# When running remotely connect using the iLO address, iLO account name, 
+# and password to send https requests
+bmc_host = "https://{IP-BMC}"
+login_account = "admin"
+login_password = "password"
+
+## Create a REDFISH object
+REDFISH_OBJ = redfish_client(base_url=bmc_host,username=login_account, \
+                          password=login_password)
+
+# Login into the server and create a session
+REDFISH_OBJ.login(auth="session")
+
+# Session key and location are accessible from the Redfish object
+sessionKey = REDFISH_OBJ.get_session_key()
+sessionLocation = REDFISH_OBJ.get_session_location()
+
+print('Session Key: '+str(sessionKey))
+print('Session Location: '+str(sessionLocation))
+
+# Do a GET on a given path
+response = REDFISH_OBJ.get("/redfish/v1/systems")
+
+# Print out the response
+sys.stdout.write("%s\n" % response)
 ```
 
 Successful headers and body response:
@@ -157,6 +243,10 @@ X_HP-CHRP-Service-Version: 1.0.3
 }
 ```
 
+:::warning Warning
+The <a href="https://github.com/DMTF/python-redfish-library" target="_blank"> DMTF</a> and the <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE </a> Python Redfish libraries cannot co-exist in the same Python environment. They contain identical classes names with different methods.
+:::
+
 ## Using a Session
 
 To use a session, simply include the `X-Auth-Token` header supplied by the login response in all REST requests.
@@ -177,7 +267,7 @@ curl --insecure  -u admin:password \
     https://{IP-BMC}/redfish/v1/SessionServiceSessions/{item} 
 ```
 
-```Python
+```Python HPE Redfish Python Library
 # The following example uses the HPE Redfish Python library that
 # you can install with:
 # pip install python-ilorest-library
@@ -195,10 +285,57 @@ login_password = "password"
 
 ## Create a REDFISH object
 REDFISH_OBJ = RedfishClient(base_url=bmc_host,username=login_account, \
-                          password=login_password, default_prefix='/redfish/v1')
+                          password=login_password)
 
 # Login into the server and create a session
 REDFISH_OBJ.login(auth="session")
+
+# Do a GET on a given path
+response = REDFISH_OBJ.get("/redfish/v1/systems")
+
+# Print out the response
+sys.stdout.write("%s\n" % response)
+
+# Logout of the current session
+REDFISH_OBJ.logout()
+```
+
+```Python DMTF Redfish Python Library
+# The following example uses the DMTF Redfish Python library that
+# you can install with:
+# pip install redfish
+
+# The sources of the DMTF Redfish Python library is on GitHub at
+# https://github.com/DMTF/python-redfish-library
+
+import sys
+from redfish import redfish_client
+
+# When running remotely connect using the iLO address, iLO account name, 
+# and password to send https requests
+bmc_host = "https://{IP-BMC}"
+login_account = "admin"
+login_password = "password"
+
+## Create a REDFISH object
+REDFISH_OBJ = redfish_client(base_url=bmc_host,username=login_account, \
+                          password=login_password)
+
+# Login into the server and create a session
+REDFISH_OBJ.login(auth="session")
+
+# Session key and location are accessible from the Redfish object
+sessionKey = REDFISH_OBJ.get_session_key()
+sessionLocation = REDFISH_OBJ.get_session_location()
+
+print('Session Key: '+str(sessionKey))
+print('Session Location: '+str(sessionLocation))
+
+# Do a GET on a given path
+response = REDFISH_OBJ.get("/redfish/v1/systems")
+
+# Print out the response
+sys.stdout.write("%s\n" % response)
 
 # Logout of the current session
 REDFISH_OBJ.logout()

@@ -11,7 +11,7 @@ disableLastModified: true
 
 ## Tips for Using the Redfish RESTful API
 
-To access the Redfish RESTful API, you need an HTTPS-capable client, such the [Postman](https://www.postman.com/) development platform, cURL (a popular command line HTTP utility), PowerShell or a web browser with a REST client extension. This [video](https://youtu.be/ur9UKRV_0S8) presents several Redfish clients tools, including script languages like Ansible.
+To access the Redfish RESTful API, you need an HTTPS-capable client, such the <a href="https://www.postman.com/" target="_blank"> Postman</a> development platform, cURL (a popular command line HTTP utility), PowerShell or a web browser with a REST client extension. This [video](https://youtu.be/ur9UKRV_0S8) presents several Redfish clients tools, including script languages like Ansible.
 
 ## RESTful Interface Tool and Python Examples
 

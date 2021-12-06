@@ -1,5 +1,7 @@
 ---
 title: Redfish concepts
+to:
+  enable: false
 disableLastModified: true
 ---
 
