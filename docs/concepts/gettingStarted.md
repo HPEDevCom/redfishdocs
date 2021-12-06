@@ -11,36 +11,28 @@ disableLastModified: true
 
 ## Tips for Using the Redfish RESTful API
 
-To access the Redfish RESTful API, you need an HTTPS-capable client, such the <a href="https://www.postman.com/" target="_blank"> Postman</a> development platform, cURL (a popular command line HTTP utility), PowerShell or a web browser with a REST client extension. This [video](https://youtu.be/ur9UKRV_0S8) presents several Redfish clients tools, including script languages like Ansible.
+To access the Redfish RESTful API, you need an HTTPS-capable client, such the <a href="https://www.postman.com/" target="_blank"> Postman</a> development platform, cURL (a popular command line HTTP utility), PowerShell or a web browser with a REST client extension. This <a href="https://youtu.be/ur9UKRV_0S8" target="_blank"> video </a> presents several Redfish clients tools, including script languages like Ansible.
 
 ## RESTful Interface Tool and Python Examples
 
-Although not a requirement, you can use the **RESTful Interface Tool** with the RESTful API. This command line tool provides a level of abstraction and convenience above direct access to the RESTful API. For details see: [http://www.hpe.com/info/resttool](http://www.hpe.com/info/resttool).
+Although not a requirement, you can use iLOrest, a **RESTful Interface Tool** with the RESTful API. This command line tool provides a level of abstraction and convenience above direct access to the RESTful API. For details see: <a href="http://www.hpe.com/info/resttool" target="_blank"> this link </a>.
 
-:::success Tip
-**Python**: See `ex1_functionname()` in the Python example code. This means that you should look for the specified function name in the python example code.
-:::
-
-Also, Hewlett Packard Enterprise published example Python code that implements a number of common operations in a RESTful API client. This code can be downloaded at [https://github.com/HewlettPackard/python-ilorest-library](https://github.com/HewlettPackard/python-ilorest-library). In some cases the examples in this document may refer to examples in the Python code with this notation:
-
-If you prefer not to implement a client in Python, this serves as a good pseudo-code implementing the logic required to perform an operation.
+Also, Hewlett Packard Enterprise published example Python code that implements a number of common operations in a RESTful API client. This code can be downloaded at <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> https://github.com/HewlettPackard/python-ilorest-library </a>.
 
 ## Example REST API operation with cURL
 
-```shell
-> curl https://{iLO}/redfish/v1/ -i --insecure -L
+```shell cURL
+curl --include --insecure --locaion \
+     https://{iLO}/redfish/v1/ 
+
+where
+
+    --include returns HTTP response headers
+    --insecure bypasses TLS/SSL certification verification
+    --location follows HTTP redirect
 ```
 
-<blockquote class="lang-specific shell">
-    <ul>
-        <li>-i returns HTTP response headers</li>
-		<li>--insecure bypasses TLS/SSL certification verification</li>
-		<li>-L follows HTTP redirect</li>
-    </ul>
-	<p>The above command returns JSON like this:</p>
-</blockquote>
-
-```json
+```json Response body (truncated)
 
 {
     "@odata.context": "/redfish/v1/$metadata#ServiceRoot",
@@ -93,55 +85,9 @@ If you prefer not to implement a client in Python, this serves as a good pseudo-
                     "ManagerType": "iLO 5"
                 }
             ],
-            "Moniker": {
-                "ADVLIC": "iLO Advanced",
-                "BMC": "iLO",
-                "BSYS": "BladeSystem",
-                "CLASS": "Baseboard Management Controller",
-                "IPROV": "Intelligent Provisioning",
-                "PRODABR": "iLO",
-                "PRODFAM": "Integrated Lights-Out",
-                "PRODGEN": "iLO 5",
-                "PRODNAM": "Integrated Lights-Out 5",
-                "PRODTAG": "HPE iLO 5",
-                "STDLIC": "iLO Standard",
-                "SUMGR": "Smart Update Manager",
-                "SYSFAM": "ProLiant",
-                "VENDABR": "HPE",
-                "VENDNAM": "Hewlett Packard Enterprise",
-                "WWW": "www.hpe.com",
-                "WWWAHSV": "www.hpe.com/servers/ahsv",
-                "WWWBMC": "www.hpe.com/info/ilo",
-                "WWWDOC": "www.hpe.com/support/ilo-docs",
-                "WWWERS": "www.hpe.com/services/getconnected",
-                "WWWGLIS": "reserved for liconf URI",
-                "WWWIOL": "www.hpe.com/info/insightonline",
-                "WWWLIC": "www.hpe.com/info/ilo/licensing",
-                "WWWPASS": "www.hpe.com/support/hpesc",
-                "WWWPRV": "www.hpe.com/info/privacy",
-                "WWWSUP": "www.hpe.com/support/ilo5",
-                "WWWSWLIC": "www.hpe.com/software/SWLicensing"
-            },
-            "Sessions": {
-                "CertCommonName": "edited",
-                "CertificateLoginEnabled": false,
-                "KerberosEnabled": false,
-                "LDAPAuthLicenced": true,
-                "LDAPEnabled": false,
-                "LocalLoginEnabled": true,
-                "LoginFailureDelay": 0,
-                "LoginHint": {
-                    "Hint": "POST to /Sessions to login using the following JSON object:",
-                    "HintPOSTData": {
-                        "Password": "password",
-                        "UserName": "username"
-                    }
-                },
-                "SecurityOverride": false,
-                "ServerName": "edited"
-            },
-            "Time": "2017-04-03T05:05:01Z"
-        }
+            ...
+            ...
+
     },
     "RedfishVersion": "1.0.0",
     "Registries": {
