@@ -27,7 +27,7 @@ curl --include --insecure --location   \
    https://{iLO}/redfish/v1/systems/ 
 ```
 
-```python
+```Python
 import sys
 import redfish
 
