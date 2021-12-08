@@ -1,5 +1,6 @@
 ---
-title: iscsi configuration example
+seo:
+  title: iscsi configuration example
 toc:
   enable: true
   maxDepth: 2

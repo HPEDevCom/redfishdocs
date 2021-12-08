@@ -1,5 +1,6 @@
 ---
-title: iLO Amplifer Pack overview | docs | concepts | iLOAmplifierPack
+seo:
+  title: iLO Amplifer Pack overview | docs | concepts | iLOAmplifierPack
 ---
 
 # Redfish implementation in HPE iLO Amplifer Pack

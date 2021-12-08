@@ -1,5 +1,6 @@
 ---
-title: HPE Redfish service on iLOs
+seo:
+  title: HPE Redfish service on iLOs
 disableLastModified: true
 ---
 

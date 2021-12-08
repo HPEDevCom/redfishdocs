@@ -1,5 +1,6 @@
 ---
-title: Client best practices
+seo:
+  title: Client best practices
 toc:
   enable: true
   maxDepth: 2

@@ -1,5 +1,6 @@
 ---
-title: Managing time in iLO 5
+seo:
+  title: Managing time in iLO 5
 toc:
   enable: true
   maxDepth: 2

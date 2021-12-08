@@ -1,5 +1,6 @@
 ---
-title: HPE Redfish references and material
+seo:
+  title: HPE Redfish references and material
 ---
 
 # References and material

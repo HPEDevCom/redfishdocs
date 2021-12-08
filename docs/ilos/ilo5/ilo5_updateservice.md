@@ -1,5 +1,6 @@
 ---
-title: iLO 5 Software/Firmware update service
+seo:
+  title: iLO 5 Software/Firmware update service
 toc:
   enable: true
   maxDepth: 3

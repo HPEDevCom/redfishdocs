@@ -1,5 +1,6 @@
 ---
-title: iLOrest userguide overview
+seo:
+  title: iLOrest userguide overview
 disableLastModified: true
 ---
 

@@ -1,5 +1,6 @@
 ---
-title: Concepts | Performing actions
+seo:
+  title: Concepts | Performing actions
 toc:
   enable: false
   maxDepth: 2

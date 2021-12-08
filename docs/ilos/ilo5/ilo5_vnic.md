@@ -1,5 +1,6 @@
 ---
-title: Managing the iLO Redfish Host Interface ("Virtual NIC")
+seo:
+  title: Managing the iLO Redfish Host Interface ("Virtual NIC")
 toc:
   enable: true
   maxDepth: 2

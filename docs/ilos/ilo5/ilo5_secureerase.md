@@ -1,5 +1,6 @@
 ---
-title: One-button secure erase
+seo:
+  title: One-button secure erase
 toc:
   enable: true
   maxDepth: 2

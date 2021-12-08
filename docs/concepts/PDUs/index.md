@@ -1,5 +1,6 @@
 ---
-title: Power Distribution Units (PDUs) | docs | concepts | PDUs
+seo:
+  title: Power Distribution Units (PDUs) | docs | concepts | PDUs
 ---
 
 # Redfish implementation in HPE PDUs

@@ -1,5 +1,6 @@
 ---
-title: Concepts | Redfish Conformance
+seo:
+  title: Concepts | Redfish Conformance
 toc:
   enable: false
 disableLastModified: true

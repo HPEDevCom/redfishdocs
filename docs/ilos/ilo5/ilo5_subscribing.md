@@ -1,5 +1,6 @@
 ---
-title: RESTful Events and the Event Service
+seo:
+  title: RESTful Events and the Event Service
 toc:
   enable: true
   maxDepth: 2

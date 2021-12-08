@@ -1,5 +1,6 @@
 ---
-title: SSL certificates
+seo:
+  title: SSL certificates
 toc:
   enable: true
   maxDepth: 3

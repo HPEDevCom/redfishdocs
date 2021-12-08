@@ -1,5 +1,6 @@
 ---
-title: More Redfish examples
+seo:
+  title: More Redfish examples
 toc:
   enable: true
   maxDepth: 3

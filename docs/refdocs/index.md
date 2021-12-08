@@ -1,5 +1,6 @@
 ---
-title: Redfish schema supplements/reference documents overview
+seo:
+  title: Redfish schema supplements/reference documents overview
 disableLastModified: true
 ---
 

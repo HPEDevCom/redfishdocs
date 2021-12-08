@@ -1,5 +1,6 @@
 ---
-title: BIOS Defaults and Passwords
+seo:
+  title: BIOS Defaults and Passwords
 toc:
   enable: true
   maxDepth: 2

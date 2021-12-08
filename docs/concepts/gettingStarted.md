@@ -1,5 +1,6 @@
 ---
-title: Getting started
+seo:
+  title: Getting started
 toc:
   enable: true
   maxDepth: 2

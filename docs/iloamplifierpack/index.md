@@ -1,5 +1,6 @@
 ---
-title: iLO Amplifier Pack index page. Home | HPE iLO Amplifier Pack
+seo:
+  title: iLO Amplifier Pack index page. Home | HPE iLO Amplifier Pack
 ---
 
 # Getting started

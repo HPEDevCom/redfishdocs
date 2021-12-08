@@ -1,5 +1,6 @@
 ---
-title: BIOS examples
+seo:
+  title: BIOS examples
 toc:
   enable: true
   maxDepth: 2

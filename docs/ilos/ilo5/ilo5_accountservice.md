@@ -1,5 +1,6 @@
 ---
-title: Managing iLO 5 users
+seo:
+  title: Managing iLO 5 users
 toc:
   enable: true
 disableLastModified: true

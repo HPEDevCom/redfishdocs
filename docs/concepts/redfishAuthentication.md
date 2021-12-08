@@ -1,5 +1,6 @@
 ---
-title: Concepts | Redfish authentication
+seo:
+  title: Concepts | Redfish authentication
 disableLastModified: true
 toc:
   enable: true

@@ -1,5 +1,6 @@
 ---
-title: HPE Redfish|Getting started
+seo:
+  title: HPE Redfish|Getting started
 disableLastModified: true
 ---
 

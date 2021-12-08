@@ -1,5 +1,6 @@
 ---
-title: DMTF index page
+seo:
+  title: DMTF index page
 disableLastModified: false
 ---
 

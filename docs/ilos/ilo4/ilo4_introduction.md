@@ -1,5 +1,6 @@
 ---
-title: iLO 4 Introduction
+seo:
+  title: iLO 4 Introduction
 disableLastModified: true
 ---
 

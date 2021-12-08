@@ -1,5 +1,6 @@
 ---
-title: Power Distribution Units index page. Home | PDUs
+seo:
+  title: Power Distribution Units index page. Home | PDUs
 ---
 
 # HPE Power Distribution Units Redfish service

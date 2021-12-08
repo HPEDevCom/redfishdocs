@@ -1,7 +1,11 @@
-meta:
+seo:
   title: HPE Redfish Developer Portal 
   description:  HPE Redfish API implementation documentations.
   siteUrl: https://developer.hpe.com
+  keywords: Redfish,RESTful API
+  lang: en-US
+  image: ./images/logo.png
+
 headerIcon: ./images/hpe.svg
 logo: ./images/hpe.svg
 toc:

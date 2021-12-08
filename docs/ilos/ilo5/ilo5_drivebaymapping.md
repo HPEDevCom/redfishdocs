@@ -1,5 +1,6 @@
 ---
-title: Managing Apollo Drive Bay mapping
+seo:
+  title: Managing Apollo Drive Bay mapping
 toc:
   enable: true
   maxDepth: 2

@@ -1,5 +1,6 @@
 ---
-title: iLO Based compute | docs | concepts | iLOBasedCompute
+seo:
+  title: iLO Based compute | docs | concepts | iLOBasedCompute
 ---
 
 # Redfish implementation in HPE iLO based compute nodes

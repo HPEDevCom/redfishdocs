@@ -1,5 +1,6 @@
 ---
-title: Adapting from iLO 4
+seo:
+  title: Adapting from iLO 4
 toc:
   enable: true
 disableLastModified: true

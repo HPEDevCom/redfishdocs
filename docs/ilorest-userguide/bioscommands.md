@@ -1,5 +1,6 @@
 ---
-title: BIOS Commands
+seo:
+  title: BIOS Commands
 toc:
   enable: true
   maxDepth: 3

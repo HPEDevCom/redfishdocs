@@ -1,5 +1,6 @@
 ---
-title: Error messages and registries
+seo:
+  title: Error messages and registries
 toc:
   enable: true
   maxDepth: 2

@@ -1,5 +1,6 @@
 ---
-title: Redfish concepts
+seo:
+  title: Redfish concepts
 to:
   enable: false
 disableLastModified: true

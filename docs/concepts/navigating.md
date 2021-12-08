@@ -1,5 +1,6 @@
 ---
-title: Concepts | Navigating the Data Model
+seo:
+  title: Concepts | Navigating the Data Model
 disableLastModified: true
 toc:
   enable: true

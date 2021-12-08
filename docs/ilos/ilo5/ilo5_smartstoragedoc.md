@@ -1,5 +1,6 @@
 ---
-title: SmartStorage configuration
+seo:
+  title: SmartStorage configuration
 toc:
   enable: true
   maxDepth: 2

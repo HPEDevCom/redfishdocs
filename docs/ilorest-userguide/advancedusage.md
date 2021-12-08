@@ -1,5 +1,6 @@
 ---
-title: Advancaead Options
+seo:
+  title: Advancaead Options
 ---
 # Advanced Options
 

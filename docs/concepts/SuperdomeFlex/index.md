@@ -1,5 +1,6 @@
 ---
-title: Superdome Flex | docs | concepts | superdome
+seo:
+  title: Superdome Flex | docs | concepts | superdome
 ---
 
 # Redfish implementation in HPE Superdome Flex

@@ -1,5 +1,6 @@
 ---
-title: Superdome index page. Home | HPE Superdome
+seo:
+  title: Superdome index page. Home | HPE Superdome
 ---
 
 # Superdome Redfish service

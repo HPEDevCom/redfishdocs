@@ -1,5 +1,6 @@
 ---
-title: Using iLOrest, the RESTful Interface tool
+seo:
+  title: Using iLOrest, the RESTful Interface tool
 toc:
   enable: true
   maxDepth: 2

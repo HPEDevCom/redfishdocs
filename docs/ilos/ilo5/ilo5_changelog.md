@@ -1,5 +1,6 @@
 ---
-title: iLO 5 Redfish Changelog
+seo:
+  title: iLO 5 Redfish Changelog
 disableLastModified: false
 toc:
   enable: true

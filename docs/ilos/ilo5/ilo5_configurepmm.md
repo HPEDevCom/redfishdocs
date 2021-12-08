@@ -1,5 +1,6 @@
 ---
-title: Persistent memory configuration
+seo:
+  title: Persistent memory configuration
 toc:
   enable: true
   maxDepth: 3
