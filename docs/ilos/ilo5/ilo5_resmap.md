@@ -1,4 +1,6 @@
 ---
+seo:
+  title: iLO 5 Resource map
 disableLastModified: true
 toc:
   enable: false
