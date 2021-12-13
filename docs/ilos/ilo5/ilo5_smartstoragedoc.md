@@ -204,7 +204,7 @@ GET /redfish/v1/Systems/{item}/smartstorageconfig/
 
 ## Create logical drives
 
-```text PUT request 1
+```text PUT request
 PUT /redfish/v1/Systems/{item}/smartstorageconfig/settings/
 ```
 
@@ -229,10 +229,6 @@ PUT /redfish/v1/Systems/{item}/smartstorageconfig/settings/
        }
     ]
 }
-```
-
-```text PUT request 2
-PUT /redfish/v1/Systems/{item}/smartstorageconfig/settings/
 ```
 
 ```json Body 2
