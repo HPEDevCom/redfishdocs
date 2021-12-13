@@ -99,7 +99,10 @@ hpeRedfishMainSideBar:
 
           - label: BIOS Defaults and Passwords
             page: docs/ilos/ilo5/ilo5_biosdoc.md
-
+          - label: iSCSI Software Initiator Configuration
+            page: docs/ilos/ilo5/ilo5_iscsiconf.md
+          - label: HTTPS Boot TLS configuration
+            page: docs/ilos/ilo5/ilo5_tlsconf.md
 
           - label: SSL certificates
             page: docs/ilos/ilo5/ilo5_sslcertdoc.md
