@@ -22,7 +22,7 @@ curl --include --insecure -u username:password --location \
       https://{iLO}/redfish/v1/systems/1/bios/BaseConfigs/ 
 ```
 
-```json >Response (truncated)
+```json Response (truncated)
 {
     "@odata.context": "/redfish/v1/$metadata#HpeBaseConfigs.HpeBaseConfigs",
     "@odata.etag": "W/\"1BAB2532EC201D1D1DFED6F112252823\"",
