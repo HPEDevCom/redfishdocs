@@ -1,3 +1,12 @@
+---
+seo:
+  title: Using the RESTful Interface tool
+toc:
+  enable: true
+  maxDepth: 3
+disableLastModified: true
+---
+
 # Using the RESTful Interface Tool
 
 ## RESTful Interface Tool Modes of Operation

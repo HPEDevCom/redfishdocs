@@ -1,21 +1,35 @@
+---
+seo:
+  title: Change Log
+toc:
+  emable: true
+  maxDepth: 2
+disableLastModified: true
+---
+
 # Change Log
 
 ## Version 3.3.0
 
 **Fixes:**
 
-* Added Virtual NIC login support.
-* Added Certificate login support.
-* Support for uniqueoverride option added for SerialNumber and ProductId in set and load commands
-* Fixed Multiple issues in save and load commands.
-* Fixed Json outputs for smartarray commands.  
-* Added Ethernet Enable_vnic and Disable_vnic commands.
-* Fixed Multiple uploadcomp issues w.r.t FWPKG files. 
+* Fixed issues in uniqueoverride option for SerialNumber and ProductId in set and load commands.
+* Fixed issues related to Save and Load commands.
+* Fixed incorrect json outputs for Smartarray commands to help in automation scripts.
+* Fixed issues with Uploadcomp w.r.t FWPKG files.
+* Fixed issues with showabsent option in serverinfo command.
+* Fixed issue with taskqueue command output as json format.
+* Fixed issue of rawget command involving session id param.
 
 **Enhancements:**
 
-* Added new error codes RIS_ILO_CHIF_ACCESS_DENIED_ERROR(66), RIS_CREATE_AND_PREPARE_CHANNEL_ERROR(67), RIS_ILO_CHIF_PACKET_EXCHANGE_ERROR(71),
-  RIS_ILO_CHIF_NO_DRIVER_ERROR(69) to aid in accurate error diagnosis. 
+* Added Virtual NIC login option along with Chif for local login.
+* Added Certificate login options using user-based certificates in iLO.
+* Added enable_vnic and disable_vnic options in ethernet command.
+* Added NVMe drive type for smartarray commands 
+* New error code RIS_ILO_CHIF_ACCESS_DENIED_ERROR(66) is returned if iLO denies Chif Access.
+* New error codes RIS_CREATE_AND_PREPARE_CHANNEL_ERROR(67) or RIS_ILO_CHIF_PACKET_EXCHANGE_ERROR(71) is returned if there is any Chif Channel errors.
+* New error code RIS_ILO_CHIF_NO_DRIVER_ERROR(69) is returned if Chif driver not found. 
   
 ## Version 3.2.2
 

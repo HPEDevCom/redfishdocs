@@ -1,7 +1,8 @@
 ---
 seo:
-  title: Advancaead Options
+  title: Advanced Options
 ---
+
 # Advanced Options
 
 ## Filtering Option

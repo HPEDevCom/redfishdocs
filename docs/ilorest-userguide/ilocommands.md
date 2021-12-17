@@ -1,3 +1,12 @@
+---
+seo:
+  title: iLO commands
+toc:
+  enable: true
+  maxDepth: 2
+disableLastModified: true
+---
+
 ## iLO Commands
 
 This section includes advanced functions for manipulating iLO using the RESTful Interface Tool. These commands include operations such as turning the server hardware on and off, resetting iLO, and updating firmware.
@@ -92,7 +101,7 @@ None
 <pre>
 iLOrest > login
 Discovering data...Done
-iLOrest > <span style="color: #01a982; ">certificate csr "Hewlett Packard Enterprise" "iLORest Group" CName "United States" Texas Houston </span>
+iLOrest > <span style="color: #01a982; ">certificate csr "Hewlet Packard Enterprice" "ILORestGroup" "iLORest" "US" "Texas" "Houston" </span>
 iLO is creating a new certificate signing request This process can take up to 10 minutes.
 X509 Certificate is being generated and the process might take up to 10 minutes.
 </pre>
@@ -2111,7 +2120,7 @@ Saving of clonefile to 'ilorest_clone.json' is complete.
 > To save an iLO and Bios config while providing a placeholder value for all user inputs run the command with the `save` argument and include the (`--auto`) option. This option can be used to problematically create a file without user input and then use a script to fill in the settings.
 
 <pre>
-iLOrest > serverclone save <span style="color: #01a982; ">--silent</span>
+iLOrest > serverclone save <span style="color: #01a982; ">--auto</span>
 Saving properties of type: AccountService, path: /redfish/v1/AccountService/
 Saving properties of type: Bios, path: /redfish/v1/systems/1/bios/settings/
 Saving properties of type: ComputerSystem, path: /redfish/v1/Systems/1/
@@ -2224,7 +2233,7 @@ Loading of clonefile 'ilorest_clone.json' to server is complete. Review the chan
 <pre>
 iLOrest > login
 Discovering data...Done
-iLOrest > serverclone load <span style="color: #01a982; "> --silent --tlscert sso_certificate.txt --ssocert certificate.txt</span>
+iLOrest > serverclone load <span style="color: #01a982; "> --auto --tlscert sso_certificate.txt --ssocert certificate.txt</span>
 This system has BIOS Version U32.
 BIOS Versions are different. Suggest to have 'U30' in place before upgrading.
 This system has has iLO 5 with firmware revision 1.40.
@@ -2445,6 +2454,146 @@ None
 
 <p class="fake_header">Output</p>
 None
+
+### Serverinfo Command
+
+> Serverinfo example commands:
+
+> Use option --firmware to list the FW and its versions.
+
+<pre>
+iLOrest > <span style="color: #01a982; ">serverinfo --firmware</span>
+
+------------------------------------------------
+Firmware Information
+------------------------------------------------
+iLO 5 : 2.55 Sep 12 2021
+System ROM : U32 v2.30 (02/11/2020)
+Intelligent Platform Abstraction Data : 11.0.0 Build 15
+System Programmable Logic Device : 0x2A
+Power Management Controller Firmware : 1.0.7
+Power Supply Firmware : 1.00
+Innovation Engine (IE) Firmware : 0.2.2.0
+Server Platform Services (SPS) Firmware : 4.1.4.339
+Server Platform Services (SPS) Descriptor : 1.2 0
+Redundant System ROM : U32 v2.30 (02/11/2020)
+Intelligent Provisioning : 3.40.147
+Power Management Controller FW Bootloader : 1.1
+HPE Smart Storage Energy Pack 1 Firmware : 0.60
+TPM Firmware : 73.0
+HPE Eth 10/25Gb 2p 621SFP28 Adptr : 08.50.22
+HPE Ethernet 1Gb 4-port 331i Adapter - NIC : 20.14.62
+HPE Smart Array P408i-a SR Gen10 : 2.59-18
+Embedded Video Controller : 2.5
+Drive : HPD1
+</pre>
+
+> Use option --proxy to view proxy settings. You can output the information to json file using --json or -j option.
+
+<pre>
+iLOrest > serverinfo <span style="color: #01a982; ">--proxy</span>
+
+------------------------------------------------
+Proxy Information
+------------------------------------------------
+ProxyPassword : None
+ProxyPort : 8080
+ProxyServer : proxy.exampe.net
+ProxyUserName :
+</pre>
+
+<p class="fake_header">Syntax</p>
+
+serverinfo *[Optional Parameters]*
+
+<p class="fake_header">Description</p>
+
+Command for viewing server information like firmware, software and other useful info.
+
+<p class="fake_header">Parameters</p>
+
+- **--firmware**
+
+Use this to view firware versions.
+
+- **--software**
+
+Use this view software/driver versions.
+
+- **--proxy**
+
+Use this to view proxy server settings.
+
+- **--thermals**
+
+Use this to view thermal settings.
+
+- **--fans**
+
+Use this to view Fan settings.
+
+- **--memory**
+
+Use this to view Memory or RAM settings.
+
+- **--processors**
+
+Use this to view Processor settings.
+
+- **--power**
+
+Use this to view Power settings.
+
+- **--system**
+
+Use this to view System settings.
+
+- **--all**
+
+Use this to view all the server settings (everything from above)
+
+- **-h, --help**
+
+Including the help flag will display help for the command.
+
+- **-f FILENAME, --filename=FILENAME**
+
+Use this flag if you wish to use a different filename than the default one. The default filename is ilorest.json.
+
+- **--filter=FILTER**
+
+Optionally set a filter value and a filter attribute to filter logs.
+
+- **-j, --json**
+
+Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+
+<p class="fake_header">Login Parameters</p>
+
+The following parameters can be included to login to a server in the same line as the command is run.
+
+- **--url=URL**
+
+If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+
+- **-u User, --user=USER**
+
+If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+
+- **-p Password, --password=PASSWORD**
+
+If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+
+- **--logout**
+
+Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+
+<p class="fake_header">Input</p>
+None
+
+<p class="fake_header">Output</p>
+None
+
 
 ### Serverlogs Command
 
@@ -2899,7 +3048,7 @@ None
 <pre>
 iLOrest > login
 Discovering data...Done
-iLOrest > <span style="color: #01a982; ">unifiedcertificate gen_csr "Hewlett Packard Enterprise" "iLORest Group" CName "United States" Texas Houston </span>
+iLOrest > <span style="color: #01a982; ">unifiedcertificate gen_csr "Hewlet Packard Enterprice" "ILORestGroup" "iLORest" "US" "Texas" "Houston" </span>
 iLO is creating a new certificate signing request This process can take up to 10 minutes.
 X509 Certificate is being generated and the process might take up to 10 minutes.
 </pre>

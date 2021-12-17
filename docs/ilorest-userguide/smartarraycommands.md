@@ -1,3 +1,12 @@
+---
+seo:
+  title: Smart Array commands
+toc:
+  enable: true
+  maxDepth: 2
+disableLastModified: true
+---
+
 ## Smart Array Commands
 
 The Smart Array commands are designed for use with HPE Gen10 servers.
