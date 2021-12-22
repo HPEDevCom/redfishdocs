@@ -18,8 +18,8 @@ The following table lists HPE iLO 5 Redfish resource types and their associated 
 |`/redfish/v1/AccountService/Accounts/`|Collection of [ManagerAccount](../ilo5_resourcedefns/#manageraccountv1_3_0manageraccount)|
 |`/redfish/v1/AccountService/Accounts/{item}/`|[ManagerAccount](../ilo5_resourcedefns/#manageraccountv1_3_0manageraccount)|
 |`/redfish/v1/AccountService/DirectoryTest/`|[HpeDirectoryTest](../ilo5_resourcedefns/#hpedirectorytestv1_0_0hpedirectorytest)|
-|`/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/`|CertificateCollection|
-|`/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{item}/`|[Certificate](../ilo5_resourcedefns/#certificatev1_1_0certificate)|
+|`/redfish/v1/AccountService/ExternalAccountProviders/{item}/Certificates/`|CertificateCollection|
+|`/redfish/v1/AccountService/ExternalAccountProviders/{item}/Certificates/{item}/`|[Certificate](../ilo5_resourcedefns/#certificatev1_1_0certificate)|
 |`/redfish/v1/AccountService/Roles/`|Collection of [Role](../ilo5_resourcedefns/#rolev1_2_1role)|
 |`/redfish/v1/AccountService/Roles/Administrator/`|[Role](../ilo5_resourcedefns/#rolev1_2_1role)|
 |`/redfish/v1/AccountService/UserCertificateMapping/`|Collection of [HpeiLOAccountCertificateMap](../ilo5_resourcedefns/#hpeiloaccountcertificatemapv1_0_1hpeiloaccountcertificatemap)|
@@ -37,13 +37,14 @@ The following table lists HPE iLO 5 Redfish resource types and their associated 
 |`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}/NetworkPorts/`|Collection of [NetworkPort](../ilo5_resourcedefns/#networkportv1_2_5networkport)|
 |`/redfish/v1/Chassis/{item}/NetworkAdapters/{item}/NetworkPorts/{item}/`|[NetworkPort](../ilo5_resourcedefns/#networkportv1_2_5networkport)|
 |`/redfish/v1/Chassis/{item}/PCIeDevices/`|Collection of [PCIeDevice](../ilo5_resourcedefns/#pciedevicev1_4_0pciedevice)|
-|`/redfish/v1/Chassis/{item}/PCIeDevices/{item}98/`|[PCIeDevice](../ilo5_resourcedefns/#pciedevicev1_4_0pciedevice)|
-|`/redfish/v1/Chassis/{item}/PCIeDevices/{item}98/PCIeFunctions/`|Collection of [PCIeFunction](../ilo5_resourcedefns/#pciefunctionv1_2_3pciefunction)|
-|`/redfish/v1/Chassis/{item}/PCIeDevices/{item}98/PCIeFunctions/{item}/`|[PCIeFunction](../ilo5_resourcedefns/#pciefunctionv1_2_3pciefunction)|
+|`/redfish/v1/Chassis/{item}/PCIeDevices/{item}08/`|[PCIeDevice](../ilo5_resourcedefns/#pciedevicev1_4_0pciedevice)|
+|`/redfish/v1/Chassis/{item}/PCIeDevices/{item}08/PCIeFunctions/`|Collection of [PCIeFunction](../ilo5_resourcedefns/#pciefunctionv1_2_3pciefunction)|
+|`/redfish/v1/Chassis/{item}/PCIeDevices/{item}08/PCIeFunctions/{item}/`|[PCIeFunction](../ilo5_resourcedefns/#pciefunctionv1_2_3pciefunction)|
 |`/redfish/v1/Chassis/{item}/PCIeSlots/`|[PCIeSlots](../ilo5_resourcedefns/#pcieslotsv1_3_0pcieslots)|
 |`/redfish/v1/Chassis/{item}/Power/`|[Power](../ilo5_resourcedefns/#powerv1_3_0power)|
 |`/redfish/v1/Chassis/{item}/Power/#PowerControl/{item}`|[Power](../ilo5_resourcedefns/#powerv1_3_0power)|
 |`/redfish/v1/Chassis/{item}/Power/#PowerSupplies/{item}`|[Power](../ilo5_resourcedefns/#powerv1_3_0power)|
+|`/redfish/v1/Chassis/{item}/Power/#Redundancy/{item}`|[Power](../ilo5_resourcedefns/#powerv1_3_0power)|
 |`/redfish/v1/Chassis/{item}/Power/FastPowerMeter/`|[HpePowerMeter](../ilo5_resourcedefns/#hpepowermeterv2_0_1hpepowermeter)|
 |`/redfish/v1/Chassis/{item}/Power/FederatedGroupCapping/`|[HpeiLOFederatedGroupCapping](../ilo5_resourcedefns/#hpeilofederatedgroupcappingv2_0_0hpeilofederatedgroupcapping)|
 |`/redfish/v1/Chassis/{item}/Power/PowerMeter/`|[HpePowerMeter](../ilo5_resourcedefns/#hpepowermeterv2_0_1hpepowermeter)|
@@ -53,7 +54,8 @@ The following table lists HPE iLO 5 Redfish resource types and their associated 
 |`/redfish/v1/Chassis/{item}/Thermal/#Temperatures/{item}`|[Thermal](../ilo5_resourcedefns/#thermalv1_6_2thermal)|
 |`/redfish/v1/EventService/`|[EventService](../ilo5_resourcedefns/#eventservicev1_0_8eventservice)|
 |`/redfish/v1/EventService/CACertificates/`|HpeCertificateCollection|
-|`/redfish/v1/EventService/Subscriptions/`|EventDestinationCollection|
+|`/redfish/v1/EventService/Subscriptions/`|Collection of [EventDestination](../ilo5_resourcedefns/#eventdestinationv1_0_0eventdestination)|
+|`/redfish/v1/EventService/Subscriptions/8/`|[EventDestination](../ilo5_resourcedefns/#eventdestinationv1_0_0eventdestination)|
 |`/redfish/v1/JsonSchemas/`|Collection of [JsonSchemaFile](../ilo5_resourcedefns/#jsonschemafilev1_0_4jsonschemafile)|
 |`/redfish/v1/JsonSchemas/{item}/`|[JsonSchemaFile](../ilo5_resourcedefns/#jsonschemafilev1_0_4jsonschemafile)|
 |`/redfish/v1/Managers/`|Collection of [Manager](../ilo5_resourcedefns/#managerv1_5_1manager)|
@@ -100,8 +102,10 @@ The following table lists HPE iLO 5 Redfish resource types and their associated 
 |`/redfish/v1/Managers/{item}/SerialInterface/`|Collection of [SerialInterface](../ilo5_resourcedefns/#serialinterfacev1_1_7serialinterface)|
 |`/redfish/v1/Managers/{item}/SerialInterface/{item}/`|[SerialInterface](../ilo5_resourcedefns/#serialinterfacev1_1_7serialinterface)|
 |`/redfish/v1/Managers/{item}/SnmpService/`|[HpeiLOSnmpService](../ilo5_resourcedefns/#hpeilosnmpservicev2_3_0hpeilosnmpservice)|
-|`/redfish/v1/Managers/{item}/SnmpService/SNMPAlertDestinations/`|HpeSNMPAlertDestinationCollection|
-|`/redfish/v1/Managers/{item}/SnmpService/SNMPUsers/`|HpeSNMPUsersCollection|
+|`/redfish/v1/Managers/{item}/SnmpService/SNMPAlertDestinations/`|Collection of [HpeSNMPAlertDestination](../ilo5_resourcedefns/#hpesnmpalertdestinationv2_0_0hpesnmpalertdestination)|
+|`/redfish/v1/Managers/{item}/SnmpService/SNMPAlertDestinations/{item}/`|[HpeSNMPAlertDestination](../ilo5_resourcedefns/#hpesnmpalertdestinationv2_0_0hpesnmpalertdestination)|
+|`/redfish/v1/Managers/{item}/SnmpService/SNMPUsers/`|Collection of [HpeSNMPUser](../ilo5_resourcedefns/#hpesnmpuserv2_1_0hpesnmpuser)|
+|`/redfish/v1/Managers/{item}/SnmpService/SNMPUsers/{item}/`|[HpeSNMPUser](../ilo5_resourcedefns/#hpesnmpuserv2_1_0hpesnmpuser)|
 |`/redfish/v1/Managers/{item}/VirtualMedia/`|Collection of [VirtualMedia](../ilo5_resourcedefns/#virtualmediav1_2_0virtualmedia)|
 |`/redfish/v1/Managers/{item}/VirtualMedia/{item}/`|[VirtualMedia](../ilo5_resourcedefns/#virtualmediav1_2_0virtualmedia)|
 |`/redfish/v1/Registries/`|Collection of [MessageRegistryFile](../ilo5_resourcedefns/#messageregistryfilev1_0_4messageregistryfile)|
@@ -109,6 +113,7 @@ The following table lists HPE iLO 5 Redfish resource types and their associated 
 |`/redfish/v1/ResourceDirectory/`|[HpeiLOResourceDirectory](../ilo5_resourcedefns/#hpeiloresourcedirectoryv2_0_0hpeiloresourcedirectory)|
 |`/redfish/v1/SessionService/`|[SessionService](../ilo5_resourcedefns/#sessionservicev1_0_0sessionservice)|
 |`/redfish/v1/SessionService/Sessions/`|Collection of [Session](../ilo5_resourcedefns/#sessionv1_0_0session)|
+|`/redfish/v1/SessionService/Sessions/{item}/`|[Session](../ilo5_resourcedefns/#sessionv1_0_0session)|
 |`/redfish/v1/SessionService/Sessions/{item}/`|[Session](../ilo5_resourcedefns/#sessionv1_0_0session)|
 |`/redfish/v1/Systems/`|Collection of [ComputerSystem](../ilo5_resourcedefns/#computersystemv1_10_0computersystem)|
 |`/redfish/v1/Systems/{item}/`|[ComputerSystem](../ilo5_resourcedefns/#computersystemv1_10_0computersystem)|
@@ -128,6 +133,7 @@ The following table lists HPE iLO 5 Redfish resource types and their associated 
 |`/redfish/v1/Systems/{item}/NetworkInterfaces/`|Collection of [NetworkInterface](../ilo5_resourcedefns/#networkinterfacev1_1_1networkinterface)|
 |`/redfish/v1/Systems/{item}/NetworkInterfaces/{interface}/`|[NetworkInterface](../ilo5_resourcedefns/#networkinterfacev1_1_1networkinterface)|
 |`/redfish/v1/Systems/{item}/PCIDevices/`|Collection of [HpeServerPciDevice](../ilo5_resourcedefns/#hpeserverpcidevicev2_0_0hpeserverpcidevice)|
+|`/redfish/v1/Systems/{item}/PCIDevices/9/`|[HpeServerPciDevice](../ilo5_resourcedefns/#hpeserverpcidevicev2_0_0hpeserverpcidevice)|
 |`/redfish/v1/Systems/{item}/PCIDevices/{item}/`|[HpeServerPciDevice](../ilo5_resourcedefns/#hpeserverpcidevicev2_0_0hpeserverpcidevice)|
 |`/redfish/v1/Systems/{item}/PCISlots/`|Collection of [HpeServerPCISlot](../ilo5_resourcedefns/#hpeserverpcislotv2_1_0hpeserverpcislot)|
 |`/redfish/v1/Systems/{item}/PCISlots/{item}/`|[HpeServerPCISlot](../ilo5_resourcedefns/#hpeserverpcislotv2_1_0hpeserverpcislot)|
@@ -139,18 +145,20 @@ The following table lists HPE iLO 5 Redfish resource types and their associated 
 |`/redfish/v1/Systems/{item}/SmartStorage/`|[HpeSmartStorage](../ilo5_resourcedefns/#hpesmartstoragev2_0_0hpesmartstorage)|
 |`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/`|Collection of [HpeSmartStorageArrayController](../ilo5_resourcedefns/#hpesmartstoragearraycontrollerv2_2_0hpesmartstoragearraycontroller)|
 |`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/`|[HpeSmartStorageArrayController](../ilo5_resourcedefns/#hpesmartstoragearraycontrollerv2_2_0hpesmartstoragearraycontroller)|
-|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/DiskDrives/`|Collection of [HpeSmartStorageDiskDrive](../ilo5_resourcedefns/#hpesmartstoragediskdrivev2_1_0hpesmartstoragediskdrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/DiskDrives/`|HpeSmartStorageDiskDriveCollection|
 |`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/DiskDrives/{item}/`|[HpeSmartStorageDiskDrive](../ilo5_resourcedefns/#hpesmartstoragediskdrivev2_1_0hpesmartstoragediskdrive)|
 |`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives/`|Collection of [HpeSmartStorageLogicalDrive](../ilo5_resourcedefns/#hpesmartstoragelogicaldrivev2_3_0hpesmartstoragelogicaldrive)|
 |`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives/{item}/`|[HpeSmartStorageLogicalDrive](../ilo5_resourcedefns/#hpesmartstoragelogicaldrivev2_3_0hpesmartstoragelogicaldrive)|
-|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives/{item}/DataDrives/`|Collection of [HpeSmartStorageDiskDrive](../ilo5_resourcedefns/#hpesmartstoragediskdrivev2_1_0hpesmartstoragediskdrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives/{item}/DataDrives/`|HpeSmartStorageDiskDriveCollection|
 |`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/StorageEnclosures/`|Collection of [HpeSmartStorageStorageEnclosure](../ilo5_resourcedefns/#hpesmartstoragestorageenclosurev2_0_0hpesmartstoragestorageenclosure)|
 |`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/StorageEnclosures/{item}/`|[HpeSmartStorageStorageEnclosure](../ilo5_resourcedefns/#hpesmartstoragestorageenclosurev2_0_0hpesmartstoragestorageenclosure)|
-|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/UnconfiguredDrives/`|Collection of [HpeSmartStorageDiskDrive](../ilo5_resourcedefns/#hpesmartstoragediskdrivev2_1_0hpesmartstoragediskdrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/UnconfiguredDrives/`|HpeSmartStorageDiskDriveCollection|
 |`/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters/`|HpeSmartStorageHostBusAdapterCollection|
-|`/redfish/v1/Systems/{item}/Storage/`|StorageCollection|
-|`/redfish/v1/Systems/{item}/USBDevices/`|Collection of [HpeUSBDevice](../ilo5_resourcedefns/#hpeusbdevicev2_0_0hpeusbdevice)|
-|`/redfish/v1/Systems/{item}/USBDevices/{item}/`|[HpeUSBDevice](../ilo5_resourcedefns/#hpeusbdevicev2_0_0hpeusbdevice)|
+|`/redfish/v1/Systems/{item}/Storage/`|Collection of [Storage](../ilo5_resourcedefns/#storagev1_7_1storage)|
+|`/redfish/v1/Systems/{item}/Storage/{interface}#/StorageControllers/{item}/`|[Storage](../ilo5_resourcedefns/#storagev1_7_1storage)|
+|`/redfish/v1/Systems/{item}/Storage/{interface}/`|[Storage](../ilo5_resourcedefns/#storagev1_7_1storage)|
+|`/redfish/v1/Systems/{item}/Storage/{interface}/Drives/{interface}/`|[Drive](../ilo5_resourcedefns/#drivev1_7_0drive)|
+|`/redfish/v1/Systems/{item}/USBDevices/`|HpeUSBDevicesCollection|
 |`/redfish/v1/Systems/{item}/USBPorts/`|Collection of [HpeUSBPort](../ilo5_resourcedefns/#hpeusbportv2_0_0hpeusbport)|
 |`/redfish/v1/Systems/{item}/USBPorts/{item}/`|[HpeUSBPort](../ilo5_resourcedefns/#hpeusbportv2_0_0hpeusbport)|
 |`/redfish/v1/Systems/{item}/WorkloadPerformanceAdvisor/`|Collection of [HpeWorkloadPerformanceAdvisor](../ilo5_resourcedefns/#hpeworkloadperformanceadvisorv1_0_0hpeworkloadperformanceadvisor)|
@@ -167,9 +175,6 @@ The following table lists HPE iLO 5 Redfish resource types and their associated 
 |`/redfish/v1/TelemetryService/Triggers/`|Collection of [Triggers](../ilo5_resourcedefns/#triggersv1_0_0triggers)|
 |`/redfish/v1/TelemetryService/Triggers/CPUUtilTriggers/`|[Triggers](../ilo5_resourcedefns/#triggersv1_0_0triggers)|
 |`/redfish/v1/UpdateService/`|[UpdateService](../ilo5_resourcedefns/#updateservicev1_1_1updateservice)|
-|`/redfish/v1/UpdateService/BundleUpdateReport/`|Collection of [HpeBundleUpdateReport](../ilo5_resourcedefns/#hpebundleupdatereportv1_0_0hpebundleupdatereport)|
-|`/redfish/v1/UpdateService/BundleUpdateReport/Current/`|[HpeBundleUpdateReport](../ilo5_resourcedefns/#hpebundleupdatereportv1_0_0hpebundleupdatereport)|
-|`/redfish/v1/UpdateService/BundleUpdateReport/Current/Entries/`|HpeComponentUpdateEntryCollection|
 |`/redfish/v1/UpdateService/ComponentRepository/`|Collection of [HpeComponent](../ilo5_resourcedefns/#hpecomponentv1_0_1hpecomponent)|
 |`/redfish/v1/UpdateService/ComponentRepository/{item}/`|[HpeComponent](../ilo5_resourcedefns/#hpecomponentv1_0_1hpecomponent)|
 |`/redfish/v1/UpdateService/FirmwareInventory/`|Collection of [SoftwareInventory](../ilo5_resourcedefns/#softwareinventoryv1_2_0softwareinventory)|
@@ -180,7 +185,8 @@ The following table lists HPE iLO 5 Redfish resource types and their associated 
 |`/redfish/v1/UpdateService/MaintenanceWindows/`|HpeMaintenanceWindowCollection|
 |`/redfish/v1/UpdateService/SoftwareInventory/`|Collection of [SoftwareInventory](../ilo5_resourcedefns/#softwareinventoryv1_2_0softwareinventory)|
 |`/redfish/v1/UpdateService/SoftwareInventory/{item}/`|[SoftwareInventory](../ilo5_resourcedefns/#softwareinventoryv1_2_0softwareinventory)|
-|`/redfish/v1/UpdateService/UpdateTaskQueue/`|HpeComponentUpdateTaskQueueCollection|
+|`/redfish/v1/UpdateService/UpdateTaskQueue/`|Collection of [HpeComponentUpdateTask](../ilo5_resourcedefns/#hpecomponentupdatetaskv1_2_0hpecomponentupdatetask)|
+|`/redfish/v1/UpdateService/UpdateTaskQueue/{item}/`|[HpeComponentUpdateTask](../ilo5_resourcedefns/#hpecomponentupdatetaskv1_2_0hpecomponentupdatetask)|
 |`/redfish/v1/systems/{item}/bios/`|[Bios](../ilo5_resourcedefns/#biosv1_0_0bios)|
 |`/redfish/v1/systems/{item}/bios/baseconfigs/`|[HpeBaseConfigs](../ilo5_resourcedefns/#hpebaseconfigsv2_0_0hpebaseconfigs)|
 |`/redfish/v1/systems/{item}/bios/boot/`|[HpeServerBootSettings](../ilo5_resourcedefns/#hpeserverbootsettingsv2_0_0hpeserverbootsettings)|
@@ -200,5 +206,8 @@ The following table lists HPE iLO 5 Redfish resource types and their associated 
 |`/redfish/v1/systems/{item}/bios/tlsconfig/`|[HpeTlsConfig](../ilo5_resourcedefns/#hpetlsconfigv1_0_0hpetlsconfig)|
 |`/redfish/v1/systems/{item}/bios/tlsconfig/baseconfigs/`|[HpeBaseConfigs](../ilo5_resourcedefns/#hpebaseconfigsv2_0_0hpebaseconfigs)|
 |`/redfish/v1/systems/{item}/bios/tlsconfig/settings/`|[HpeTlsConfig](../ilo5_resourcedefns/#hpetlsconfigv1_0_0hpetlsconfig)|
+|`/redfish/v1/systems/{item}/hpeip/`|[HpeIp](../ilo5_resourcedefns/#hpeipv1_0_0hpeip)|
+|`/redfish/v1/systems/{item}/hpserversettings/`|[HpServerSettings](../ilo5_resourcedefns/#hpserversettings2)|
+|`/redfish/v1/systems/{item}/hpsut/`|[SUT](../ilo5_resourcedefns/#sutv2_8_0sut)|
 |`/redfish/v1/systems/{item}/smartstorageconfig/`|[SmartStorageConfig](../ilo5_resourcedefns/#smartstorageconfigv2_0_2smartstorageconfig)|
 |`/redfish/v1/systems/{item}/smartstorageconfig/settings/`|[SmartStorageConfig](../ilo5_resourcedefns/#smartstorageconfigv2_0_2smartstorageconfig)|
