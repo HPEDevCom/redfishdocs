@@ -209,13 +209,24 @@ hpeRedfishMainSideBar:
         page: docs/iloamplifierpack/iloamp_gettingstarted.md
       - label: Authentication and sessions
         page: docs/iloamplifierpack/iloamp_authentication.md
-      
+      - label: Performing actions
+        page: docs/iloamplifierpack/iloamp_performingaction.md
+      - label: Event service
+        page: docs/iloamplifierpack/iloamp_subscribing.md
+      - label: Use cases
+        page: docs/iloamplifierpack/iloamp_usecases.md
+      - label: Error messages and registries
+        page: docs/iloamplifierpack/iloamp_errorhandling.md
+      - label: Response message definitions
+        page: docs/iloamplifierpack/iloamp_msgregs.md
+
       - label: Resource map
         page: docs/iloamplifierpack/iloamp_resmap.md
       - label: Resource definitions introduction
         page: docs/iloamplifierpack/iloamp_resourcedefnhrd.md
       - label: Resource definitions
         page: docs/iloamplifierpack/iloamp_resourcedefns.md
+      
       
       #- group: HPE iLO Amplifier Pack Redfish reference document
         #menuStyle: drilldown

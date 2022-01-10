@@ -6,7 +6,7 @@ toc:
   enable: true
 ---
 
-## AccountService 1.3.0
+## AccountService-1\-3\-0
 
 The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles.
 
@@ -132,7 +132,7 @@ Controls when this service will use the accounts defined withing this AccountSer
 | Fallback | Authentication via accounts defined in this AccountService is only used if there are external account providers that are currently unreachable. |
 
 
-## ActionInfo 1.0.3
+## ActionInfo-1\-0\-3
 
 The ActionInfo schema describes the parameters and other information necessary to perform a Redfish Action on a particular Action target. Parameter support can differ between vendors and even between instances of a resource. This data can be used to ensure Action requests from applications contain supported parameters.
 
@@ -166,7 +166,7 @@ The JSON property type used for this parameter.
 | String | A string. |
 | StringArray | An array of strings. |
 
-## Chassis 1.7.0
+## Chassis-1\-7\-0
 
 The Chassis schema represents the physical components of a system.  This resource represents the sheet-metal confined spaces and logical zones such as racks, enclosures, chassis and all other containers. Subsystems (like sensors) that operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource.
 
@@ -358,7 +358,7 @@ The type of reset to be performed.
 | PushPowerButton | Simulate the pressing of the physical power button on this unit. |
 
 
-## ComputerSystem 1.5.0
+## ComputerSystem-1\-5\-0
 
 This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.
 
@@ -690,7 +690,7 @@ This property indicates the action to perform when the Watchdog Timer is close (
 | SMI | Raise a Systems Management Interrupt (SMI). |
 
 
-## Drive 1.4.0
+## Drive-1\-4\-0
 
 The Drive schema represents a single physical disk drive for a system, including links to associated Volumes.
 
@@ -865,7 +865,7 @@ The state of the status indicator, used to communicate status information about 
 | Rebuild | The drive is being rebuilt. |
 
 
-## EthernetInterface 1.6.0
+## EthernetInterface-1\-6\-0
 
 The EthernetInterface schema represents a single, logical Ethernet interface or network interface controller (NIC).
 
@@ -959,7 +959,7 @@ Determines the DHCPv6 operating mode for this interface.
 | Stateless | DHCPv6 stateless mode. |
 
 
-## Event 1.2.1
+## Event-1\-2\-1
 
 The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information.
 
@@ -1003,7 +1003,7 @@ This indicates the type of event sent, according to the definitions in the Event
 | StatusChange | The status of this resource has changed. |
 
 
-## EventDestination 1.3.0
+## EventDestination-1\-3\-0
 
 An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload.
 
@@ -1061,7 +1061,7 @@ Indicates the subscription type for events.
 | SSE | The subscription follows the HTML5 Server-Sent Event definition for event notifications. |
 
 
-## EventService 1.1.0
+## EventService-1\-1\-0
 
 The Event Service resource contains properties for managing event subcriptions and generates the events sent to subscribers.  The resource has links to the actual collection of subscriptions (called Event Destinations).
 
@@ -4319,7 +4319,7 @@ The State of firmware update.
 | Error | 
 
 
-## Job 1.0.1
+## Job-1\-0\-1
 
 |     |
 | --- |
@@ -4394,7 +4394,7 @@ The status of the job.
 | Warning | A condition exists that requires attention. |
 
 
-## JobService 1.0.0
+## JobService-1\-0\-0
 
 This is the schema definition for the Job Service.  It represents the properties for the service itself and has links to the actual list of tasks.
 
@@ -4423,7 +4423,7 @@ This is the schema definition for the Job Service.  It represents the properties
 | **ServiceEnabled** | boolean<br><br>*read-write<br>(null)* | This indicates whether this service is enabled. |
 | **Status** {} | object | This property describes the status and health of the resource and its children. See the *Resource* schema for details on this property. |
 
-## JsonSchemaFile 1.1.0
+## JsonSchemaFile-1\-1\-0
 
 This is the schema definition for the Schema File locator resource.
 
@@ -4443,7 +4443,7 @@ This is the schema definition for the Schema File locator resource.
 | **Oem** {} | object | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the *Resource* schema for details on this property. |
 | **Schema** | string<br><br>*read-only required* | The @odata.type name this schema describes. |
 
-## LogEntry 1.3.0
+## LogEntry-1\-3\-0
 
 This resource defines the record format for a log.  It is designed to be used for SEL logs (from IPMI) as well as Event Logs and OEM-specific log formats.  The EntryType field indicates the type of log and the resource includes several additional properties dependent on the EntryType.
 
@@ -4633,7 +4633,7 @@ This is the severity of the log entry.
 | Warning | A condition requiring attention. |
 
 
-## LogService 1.1.0
+## LogService-1\-1\-0
 
 This resource represents the log service for the resource or service to which it is associated.
 
@@ -4693,7 +4693,7 @@ The overwrite policy for this service that takes place when the log is full.
 | WrapsWhenFull | When full, new entries to the Log will overwrite previous entries. |
 
 
-## Manager 1.4.0
+## Manager-1\-4\-0
 
 This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.
 
@@ -4878,7 +4878,7 @@ This is the type of reset to be performed.
 | PushPowerButton | Simulate the pressing of the physical power button on this unit. |
 
 
-## ManagerAccount 1.1.2
+## ManagerAccount-1\-1\-2
 
 The user accounts, owned by a Manager, are defined in this resource.  Changes to a Manager Account may affect the current Redfish service connection if this manager is responsible for the Redfish service.
 
@@ -4900,7 +4900,7 @@ The user accounts, owned by a Manager, are defined in this resource.  Changes to
 | **RoleId** | string<br><br>*read-write required on create* | This property contains the Role for this account. |
 | **UserName** | string<br><br>*read-write required on create* | This property contains the user name for the account. |
 
-## ManagerNetworkProtocol 1.2.0
+## ManagerNetworkProtocol-1\-2\-0
 
 This resource is used to obtain or modify the network services managed by a given manager.
 
@@ -4976,7 +4976,7 @@ Indicates the scope for the IPv6 Notify messages for SSDP.
 | Site | SSDP Notify messages are sent to addresses in the IPv6 Local Site scope. |
 
 
-## Memory 1.5.0
+## Memory-1\-5\-0
 
 This is the schema definition for definition of a Memory and its configuration.
 
@@ -5257,7 +5257,7 @@ Security states supported by the Memory.
 | Unlocked | Secure mode is enabled and access to the data is unlocked. |
 
 
-## MemoryDomain 1.2.0
+## MemoryDomain-1\-2\-0
 
 This is the schema definition of a Memory Domain and its configuration. Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together.
 
@@ -5280,7 +5280,7 @@ This is the schema definition of a Memory Domain and its configuration. Memory D
 | **Name** | string<br><br>*read-only required* | The name of the resource or array element. |
 | **Oem** {} | object | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the *Resource* schema for details on this property. |
 
-## MemoryMetrics 1.1.3
+## MemoryMetrics-1\-1\-3
 
 MemoryMetrics contains usage and health statistics for a single Memory module or device instance.
 
@@ -5327,7 +5327,7 @@ This sets the CurrentPeriod object values to zero.
 (This action takes no parameters.)
 
 
-## MessageRegistry 1.1.1
+## MessageRegistry-1\-1\-1
 
 This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageId is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry.
 
@@ -5367,7 +5367,7 @@ The MessageArg types, in order, for the message.
 | string | The parameter is a string. |
 
 
-## MessageRegistryFile 1.1.0
+## MessageRegistryFile-1\-1\-0
 
 This is the schema definition for the Schema File locator resource.
 
@@ -5387,7 +5387,7 @@ This is the schema definition for the Schema File locator resource.
 | **Oem** {} | object | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the *Resource* schema for details on this property. |
 | **Registry** | string<br><br>*read-only required* | The Registry Name, Major and Minor version used in MessageID construction. |
 
-## NetworkAdapter 1.1.0
+## NetworkAdapter-1\-1\-0
 
 A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters.
 
@@ -5461,7 +5461,7 @@ This action is to clear the settings back to factory defaults.
 (This action takes no parameters.)
 
 
-## NetworkDeviceFunction 1.2.1
+## NetworkDeviceFunction-1\-2\-1
 
 A Network Device Function represents a logical interface exposed by the network adapter.
 
@@ -5613,7 +5613,7 @@ The configuration source of the WWNs for this connection (WWPN and WWNN).
 | ProvidedByFabric | The set of FC/FCoE boot targets was applied by the Fibre Channel fabric. |
 
 
-## NetworkInterface 1.1.0
+## NetworkInterface-1\-1\-0
 
 A NetworkInterface contains references linking NetworkAdapter, NetworkPort, and NetworkDeviceFunction resources and represents the functionality available to the containing system.
 
@@ -5637,7 +5637,7 @@ A NetworkInterface contains references linking NetworkAdapter, NetworkPort, and 
 | **Oem** {} | object | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the *Resource* schema for details on this property. |
 | **Status** {} | object<br><br>*<br>(null)* | This type describes the status and health of a resource and its children. See the *Resource* schema for details on this property. |
 
-## NetworkPort 1.1.0
+## NetworkPort-1\-1\-0
 
 A Network Port represents a discrete physical port capable of connecting to a network.
 
@@ -5745,7 +5745,7 @@ The set of Ethernet capabilities that this port supports.
 | WakeOnLAN | Wake on LAN (WoL) is supported on this port. |
 
 
-## PCIeDevice 1.2.0
+## PCIeDevice-1\-2\-0
 
 This is the schema definition for the PCIeDevice resource.  It represents the properties of a PCIeDevice attached to a System.
 
@@ -5789,7 +5789,7 @@ The device type for this PCIe device.
 | SingleFunction | A single-function PCIe device. |
 
 
-## PCIeFunction 1.2.0
+## PCIeFunction-1\-2\-0
 
 This is the schema definition for the PCIeFunction resource.  It represents the properties of a PCIeFunction attached to a System.
 
@@ -5872,7 +5872,7 @@ The type of the PCIe Function.
 | Virtual | A virtual PCIe function. |
 
 
-## PCIeSlots 1.0.0
+## PCIeSlots-1\-0\-0
 
 This is the schema definition for the PCIe Slot properties.
 
@@ -5918,7 +5918,7 @@ This is the PCIe slot type for this slot.
 | OEM | And OEM-specific slot. |
 
 
-## Port 1.1.0
+## Port-1\-1\-0
 
 Port contains properties describing a port of a switch.
 
@@ -6029,7 +6029,7 @@ The type of reset to be performed.
 | PushPowerButton | Simulate the pressing of the physical power button on this unit. |
 
 
-## Power 1.5.0
+## Power-1\-5\-0
 
 This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.
 
@@ -6233,7 +6233,7 @@ The Power Supply type (AC or DC).
 | Unknown | The power supply type cannot be determined. |
 
 
-## PrivilegeRegistry 1.1.1
+## PrivilegeRegistry-1\-1\-1
 
 This is the schema definition for Operation to Privilege mapping.
 
@@ -6354,7 +6354,7 @@ Lists the set of Redfish standard priviliges used in building this mapping.
 | Login | Able to log into the service and read resources. |
 
 
-## Processor 1.3.0
+## Processor-1\-3\-0
 
 This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System.
 
@@ -6442,7 +6442,7 @@ The type of processor.
 | Thread | A Thread in a Processor. |
 
 
-## Role 1.2.1
+## Role-1\-2\-1
 
 This resource defines a user role to be used in conjunction with a Manager Account.
 
@@ -6472,7 +6472,7 @@ The redfish privileges that this role includes.
 | ConfigureUsers | Able to configure Users and their Accounts. |
 | Login | Able to log into the service and read resources. |
 
-## ServiceRoot 1.3.1
+## ServiceRoot-1\-3\-1
 
 This object represents the root Redfish service.
 
@@ -6539,7 +6539,7 @@ This object represents the root Redfish service.
 | } |   |   |
 | **UUID** | string<br><br>*read-only<br>(null)* | Unique identifier for a service instance. When SSDP is used, this value should be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery. |
 
-## Session 1.1.0
+## Session-1\-1\-0
 
 The Session resource describes a single connection (session) between a client and a Redfish service instance.
 
@@ -6552,7 +6552,7 @@ The Session resource describes a single connection (session) between a client an
 | **Password** | string<br><br>*read-only required on create<br>(null)* | This property is used in a POST to specify a password when creating a new session.  This property is null on a GET. |
 | **UserName** | string<br><br>*read-only required on create<br>(null)* | The UserName for the account for this session. |
 
-## SessionService 1.1.3
+## SessionService-1\-1\-3
 
 This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions.
 
@@ -6569,7 +6569,7 @@ This is the schema definition for the Session Service.  It represents the proper
 | **SessionTimeout** | number<br>(seconds)<br><br>*read-write* | This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity. |
 | **Status** {} | object | This type describes the status and health of a resource and its children. See the *Resource* schema for details on this property. |
 
-## SimpleStorage 1.2.0
+## SimpleStorage-1\-2\-0
 
 This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices.
 
@@ -6596,7 +6596,7 @@ This is the schema definition for the Simple Storage resource.  It represents th
 | **Status** {} | object | This type describes the status and health of a resource and its children. See the *Resource* schema for details on this property. |
 | **UefiDevicePath** | string<br><br>*read-only<br>(null)* | The UEFI device path used to access this storage controller. |
 
-## SoftwareInventory 1.2.0
+## SoftwareInventory-1\-2\-0
 
 This schema defines an inventory of software components.
 
@@ -6618,7 +6618,7 @@ This schema defines an inventory of software components.
 | **Updateable** | boolean<br><br>*read-only<br>(null)* | Indicates whether this software can be updated by the update service. |
 | **Version** | string<br><br>*read-only<br>(null)* | A string representing the version of this software. |
 
-## Storage 1.4.0
+## Storage-1\-4\-0
 
 This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem.
 
@@ -6757,7 +6757,7 @@ This represents the protocols which the storage controller can use to communicat
 | USB | Universal Serial Bus. |
 
 
-## Task 1.2.0
+## Task-1\-2\-0
 
 This resource contains information about a specific Task scheduled by or being executed by a Redfish service's Task Service.
 
@@ -6809,7 +6809,7 @@ This is the completion status of the task.
 | Warning | A condition exists that requires attention. |
 
 
-## TaskService 1.1.1
+## TaskService-1\-1\-1
 
 This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks.
 
@@ -6841,7 +6841,7 @@ Overwrite policy of completed tasks.
 | Oldest | Oldest completed tasks are overwritten. |
 
 
-## Thermal 1.4.0
+## Thermal-1\-4\-0
 
 This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling.
 
@@ -7011,7 +7011,7 @@ Units in which the reading and thresholds are measured.
 
 
 
-## UpdateService 1.2.1
+## UpdateService-1\-2\-1
 
 This is the schema definition for the Update Service. It represents the properties for the service itself and has links to collections of firmware and software inventory.
 
@@ -7073,7 +7073,7 @@ The network protocol used by the Update Service to retrieve the software image f
 | TFTP | Trivial File Transfer Protocol. |
 
 
-## VirtualMedia 1.2.0
+## VirtualMedia-1\-2\-0
 
 The VirtualMedia schema contains properties related to monitoring and control of an instance of virtual media such as a remote CD, DVD, or USB device. Virtual media functionality is provided by a Manager for a system or device.
 
@@ -7148,7 +7148,7 @@ This is the media types supported as virtual media.
 | USBStick | An emulation of a USB storage device. |
 
 
-## Volume 1.0.3
+## Volume-1\-0\-3
 
 Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system.
 
