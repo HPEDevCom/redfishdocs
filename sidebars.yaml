@@ -197,19 +197,33 @@ hpeRedfishMainSideBar:
 
           
       
-#      - group: iLO Amplifier Pack
-#        menuStyle: drilldown
-#        expanded: false
-#        pages:
-#        - label: Getting started with Redfish on HPE iLO Amplifier Pack
-#          page: docs/iLOAmplifierPack/index.md
-#        #- group: HPE iLO Amplifier Pack Redfish reference document
-#          #menuStyle: drilldown
-#          #expanded: false
-#          #pages: 
-#          #- label: TBD
-#            #page: openapi/iLOAmpliferPackRefDoc.page.yaml
-#
+    - group: iLO Amplifier Pack
+      menuStyle: drilldown
+      expanded: false
+      pages:
+      - label: Overview
+        page: docs/iloamplifierpack/index.md
+      - label: Introduction to the HPE iLO Amplifier Pack RESTful API
+        page: docs/iloamplifierpack/iloamp_introduction.md
+      - label: Getting started
+        page: docs/iloamplifierpack/iloamp_gettingstarted.md
+      - label: Authentication and sessions
+        page: docs/iloamplifierpack/iloamp_authentication.md
+      
+      - label: Resource map
+        page: docs/iloamplifierpack/iloamp_resmap.md
+      - label: Resource definitions introduction
+        page: docs/iloamplifierpack/iloamp_resourcedefnhrd.md
+      - label: Resource definitions
+        page: docs/iloamplifierpack/iloamp_resourcedefns.md
+      
+      #- group: HPE iLO Amplifier Pack Redfish reference document
+        #menuStyle: drilldown
+        #expanded: true
+        #pages: 
+        #- label: TBD
+          #page: openapi/iloampliferpackrefdoc.page.yaml
+
 #      - group: HPE Superdome 280
 #        menuStyle: drilldown
 #        expanded: false
