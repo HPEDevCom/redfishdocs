@@ -207,6 +207,8 @@ hpeRedfishMainSideBar:
         page: docs/iloamplifierpack/iloamp_introduction.md
       - label: Getting started
         page: docs/iloamplifierpack/iloamp_gettingstarted.md
+      - label: Navigating the data model
+        page: docs/iloamplifierpack/iloamp_navigating.md
       - label: Authentication and sessions
         page: docs/iloamplifierpack/iloamp_authentication.md
       - label: Performing actions
@@ -217,8 +219,6 @@ hpeRedfishMainSideBar:
         page: docs/iloamplifierpack/iloamp_usecases.md
       - label: Error messages and registries
         page: docs/iloamplifierpack/iloamp_errorhandling.md
-      - label: Response message definitions
-        page: docs/iloamplifierpack/iloamp_msgregs.md
 
       - label: Resource map
         page: docs/iloamplifierpack/iloamp_resmap.md
@@ -227,7 +227,9 @@ hpeRedfishMainSideBar:
       - label: Resource definitions
         page: docs/iloamplifierpack/iloamp_resourcedefns.md
       
-      
+      - label: Response message definitions
+        page: docs/iloamplifierpack/iloamp_msgregs.md
+        
       #- group: HPE iLO Amplifier Pack Redfish reference document
         #menuStyle: drilldown
         #expanded: true

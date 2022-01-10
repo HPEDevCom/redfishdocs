@@ -12,9 +12,9 @@ Unlike some simple REST services, this API is designed to be implemented on many
 
 This is more complex for the client, but is necessary to make sure the data model can change to accommodate various future server architectures without requiring specification changes. As an example, if the BIOS version is at `/redfish/v1/systems/1/`, and a client assumed it is always there, the client would then break when the interface is implemented on a different type of architecture with many compute nodes, each with its own BIOS version. 
 
-<aside class="warning">
+:::warning Important note
 A select few URIs are documented to be stable starting points. Your client code should not assume anything about the URIs that you find in the data model. You must treat them as opaque strings or your client will not interoperate with other implementations of the RESTful API.  
-</aside>
+:::
 
 The supported stable URIs are those referenced directly in this API reference and include:
 
@@ -25,6 +25,8 @@ The supported stable URIs are those referenced directly in this API reference an
 * /redfish/v1/sessions/
 
 ## Iterating Collections
+
+Many operations will require you to locate the resource you wish to use.  Most of these resources are members of "collections" (arrays of similar items).  The method to find collection members is consistent for compute nodes, chassis, management processors, and many other resources in the data model.
 
 ```shell cURL
 curl https://{iLOAmpServer}/redfish/v1/systems/ --insecure -u username:password -L
@@ -59,8 +61,6 @@ sys.stdout.write("%s\n" % response.text)
 REDFISH_OBJ.logout()
 ```
 
-> The above command (or program) returns the JSON response body as below:
-
 ```json JSON response
 {
 	"@odata.context" : "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",
@@ -82,9 +82,11 @@ REDFISH_OBJ.logout()
 }
 ```
 
-Many operations will require you to locate the resource you wish to use.  Most of these resources are members of "collections" (arrays of similar items).  The method to find collection members is consistent for compute nodes, chassis, management processors, and many other resources in the data model.
-
 ## Find a Compute Node
+
+A Compute node represents a logical computer system with attributes such as processors, memory, BIOS, power state, firmware version, etc.  To find a compute node `GET /redfish/v1/systems/` and iterate the "Members" array in the returned JSON.  Each member has a link to a compute node.
+
+Find a compute node by iterating the systems collection at `/redfish/v1/systems/`.
 
 ```shell cURL
 curl https://{iLOAmpServer}/redfish/v1/systems/{item}/ --insecure -u username:password -L
@@ -171,10 +173,6 @@ REDFISH_OBJ.logout()
 	"UUID" : "00000000-0000-4286-9d93-000000000000"
 }
 ```
-
-A Compute node represents a logical computer system with attributes such as processors, memory, BIOS, power state, firmware version, etc.  To find a compute node `GET /redfish/v1/systems/` and iterate the "Members" array in the returned JSON.  Each member has a link to a compute node.
-
-Find a compute node by iterating the systems collection at `/redfish/v1/systems/`.
 
 ## Find a Chassis
 
