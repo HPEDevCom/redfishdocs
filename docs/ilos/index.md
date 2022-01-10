@@ -17,4 +17,4 @@ Redfish for HPE iLOs is available on iLO 4 and iLO 5 based servers:
 Some features might not be available without an Advanced license on Gen9 and Gen10 servers.
 :::
 
-To access the Redfish service on iLOs, you need an HTTPS-capable client, such as a web browser with a REST Client plugin extension, Python or PowerShell scripts or a command line tool like cURL, a popular command line HTTP utility. An overview of several Redfish clients is published in this [video]( https://youtu.be/ur9UKRV_0S8).
+To access the Redfish service on iLOs, you need an HTTPS-capable client, such as a web browser with a REST Client plugin extension, Python or PowerShell scripts or a command line tool like cURL, a popular command line HTTP utility. An overview of several Redfish clients is published in this <a href="https://youtu.be/ur9UKRV_0S8" target="_blank">video</a>.
