@@ -1,6 +1,6 @@
 ---
 seo:
-  title:Higher security modes
+  title: Higher security modes
 toc:
   enable: true
   maxDepth: 3
