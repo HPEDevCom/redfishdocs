@@ -3,7 +3,7 @@ seo:
   title: Support and other resources
 toc:
   enable: true
-  maxDepth: 2
+  maxDepth: 3
 disableLastModified: true
 ---
 

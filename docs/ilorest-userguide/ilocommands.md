@@ -3,7 +3,7 @@ seo:
   title: iLO commands
 toc:
   enable: true
-  maxDepth: 2
+  maxDepth: 3
 disableLastModified: true
 ---
 
