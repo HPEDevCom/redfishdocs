@@ -1,31 +1,10 @@
-#dmtfRedfishMainSideBar:
-#  #- label: Home
-#    # The following href represents the root of the GitHub Redfish Portal repo
-#    # The content of this '/' page is the index.mdx.
-#    #href: '/'
-#
-#  - label: Home
-#    # The following href represents the root of the GitHub Redfish Portal repo
-#    # The content of this '/' page is the index.mdx.
-#    href: '/' 
-#
-#  - group: DMTF Redfish
-#    #menuStyle: drilldown
-#    #expanded: true
-#    pages:
-#    - label: Introduction
-#      page: docs/DMTF/index.md
-#
-#    - page: openapi/redfishDmtfRefDoc.page.yaml
-
-
 hpeRedfishMainSideBar:
   - label: Home
     # The following href represents the root of the GitHub Redfish Portal repo
     # The content of this '/' page is the index.mdx.
     href: '/'
        
-  - group: HPE Redfish®
+  - group: HPE Redfish® services
     expanded: true
     pages:
     - label: Introduction
@@ -65,104 +44,99 @@ hpeRedfishMainSideBar:
       - label: More Redfish examples
         page: docs/examples/otherexamples.md
 
-    - group: Schema supplements and API reference documents
+    - separatorLine: true
+    - group: REST API on HPE iLO based compute nodes
+      menuStyle: drilldown
       expanded: false
       pages:
       - label: Overview
-        page:  docs/refdocs/index.md
+        page:  docs/ilos/index.md
 
-      - group: HPE iLO based compute nodes
+      - group: iLO 5
         expanded: false
         pages:
-        - label: Redfish for HPE iLOs
-          page: docs/ilos/index.md
-        - group: iLO 5
+        - label: Adapting from iLO 4
+          page: docs/ilos/ilo5/ilo5_adaptation.md
+        - label: Changelog
+          page: docs/ilos/ilo5/ilo5_changelog.md
+
+        - group: Supplement documents
           expanded: false
           pages:
-          - label: Adapting from iLO 4
-            page: docs/ilos/ilo5/ilo5_adaptation.md
-          - label: Changelog
-            page: docs/ilos/ilo5/ilo5_changelog.md
+          - label: Managing iLO 5 users
+            page: docs/ilos/ilo5/ilo5_accountservice.md
+          - label: Managing time in iLO 5
+            page: docs/ilos/ilo5/ilo5_time.md
+          - label: iLO 5 Software/Firmware update service
+            page: docs/ilos/ilo5/ilo5_updateservice.md
 
-          - group: Supplement documents
-            expanded: false
-            pages:
-            - label: Managing iLO 5 users
-              page: docs/ilos/ilo5/ilo5_accountservice.md
-            - label: Managing time in iLO 5
-              page: docs/ilos/ilo5/ilo5_time.md
-            - label: iLO 5 Software/Firmware update service
-              page: docs/ilos/ilo5/ilo5_updateservice.md
+          - label: BIOS Defaults and Passwords
+            page: docs/ilos/ilo5/ilo5_biosdoc.md
+          - label: iSCSI Software Initiator Configuration
+            page: docs/ilos/ilo5/ilo5_iscsiconf.md
+          - label: HTTPS Boot TLS configuration
+            page: docs/ilos/ilo5/ilo5_tlsconf.md
 
-            - label: BIOS Defaults and Passwords
-              page: docs/ilos/ilo5/ilo5_biosdoc.md
-            - label: iSCSI Software Initiator Configuration
-              page: docs/ilos/ilo5/ilo5_iscsiconf.md
-            - label: HTTPS Boot TLS configuration
-              page: docs/ilos/ilo5/ilo5_tlsconf.md
+          - label: SSL certificates
+            page: docs/ilos/ilo5/ilo5_sslcertdoc.md
 
-            - label: SSL certificates
-              page: docs/ilos/ilo5/ilo5_sslcertdoc.md
+          - label: Managing the iLO Redfish Host Interface (Virtual NIC)
+            page: docs/ilos/ilo5/ilo5_vnic.md
 
-            - label: Managing the iLO Redfish Host Interface (Virtual NIC)
-              page: docs/ilos/ilo5/ilo5_vnic.md
+          - label: One-button secure erase
+            page: docs/ilos/ilo5/ilo5_secureerase.md
+          - label: SmartStorage configuration
+            page: docs/ilos/ilo5/ilo5_smartstoragedoc.md
+          - label: Persistent memory configuration
+            page: docs/ilos/ilo5/ilo5_configurepmm.md
+          - label: Managing Apollo Drive Bay mapping
+            page: docs/ilos/ilo5/ilo5_drivebaymapping.md
 
-            - label: One-button secure erase
-              page: docs/ilos/ilo5/ilo5_secureerase.md
-            - label: SmartStorage configuration
-              page: docs/ilos/ilo5/ilo5_smartstoragedoc.md
-            - label: Persistent memory configuration
-              page: docs/ilos/ilo5/ilo5_configurepmm.md
-            - label: Managing Apollo Drive Bay mapping
-              page: docs/ilos/ilo5/ilo5_drivebaymapping.md
+          - label: Error messages and registries
+            page: docs/ilos/ilo5/ilo5_errorhandling.md 
 
-            - label: Error messages and registries
-              page: docs/ilos/ilo5/ilo5_errorhandling.md 
-
-            - label: RESTful Events and the Event Service
-              page: docs/ilos/ilo5/ilo5_subscribing.md
-            - label: Using iLOrest
-              page: docs/ilos/ilo5/ilo5_resttool.md
-
-          - group: ilO 5 version 2.30
-            expanded: false
-            pages:
-            - label: Resource map (iLO 5 2.30)
-              page: docs/ilos/ilo5/ilo5_230/ilo5_resmap230.md
-            - label: Resource definitions (iLO 5 2.30)
-              page: docs/ilos/ilo5/ilo5_230/ilo5_resourcedefns230.md
-            - label: Error messages (iLO 5 2.30)
-              page: docs/ilos/ilo5/ilo5_230/ilo5_msgregs230.md
-            # The following page gets its label/title from the corresponding Ref Document in the
-            # OpenAPI file (openapi/<path>/ilo5xx-openapi.yaml), in the info: --> title: key.
-            - label: Reference Document (iLO 5 2.30)
-              page: openapi/ilo5_230/redfishiLO5230RefDoc.page.yaml
-              expanded: false
-            
-            
-          - group: iLO 5 version 2.55
-            expanded: false
-            pages:
-            - label: Resource map (iLO 5 2.55)
-              page: docs/ilos/ilo5/ilo5_255/ilo5_resmap255.md
-            - label: Resource definitions (iLO 5 2.55)
-              page: docs/ilos/ilo5/ilo5_255/ilo5_resourcedefns255.md 
-            - label: Error messages (iLO 5 2.55)
-              page: docs/ilos/ilo5/ilo5_255/ilo5_msgregs255.md
-            # The following page gets its label/title from the corresponding Ref Document in the
-            # OpenAPI file (openapi/<path>/ilo5xx-openapi.yaml), in the info: --> title: key.
-            - label: Reference Document (iLO 5 2.55)
-              page: openapi/ilo5_255/redfishiLO5255RefDoc.page.yaml
-              expanded: false
-
-        - group: ilO 4
+          - label: RESTful Events and the Event Service
+            page: docs/ilos/ilo5/ilo5_subscribing.md
+          - label: Using iLOrest
+            page: docs/ilos/ilo5/ilo5_resttool.md
+                
+        - group: iLO 5 version 2.55
           expanded: false
           pages:
-          - label: Introduction
-            page: docs/ilos/ilo4/ilo4_introduction.md
+          - label: Resource map (iLO 5 2.55)
+            page: docs/ilos/ilo5/ilo5_255/ilo5_resmap255.md
+          - label: Resource definitions (iLO 5 2.55)
+            page: docs/ilos/ilo5/ilo5_255/ilo5_resourcedefns255.md 
+          - label: Error messages (iLO 5 2.55)
+            page: docs/ilos/ilo5/ilo5_255/ilo5_msgregs255.md
+          # The following page gets its label/title from the corresponding Ref Document in the
+          # OpenAPI file (openapi/<path>/ilo5xx-openapi.yaml), in the info: --> title: key.
+          - label: Reference Document (iLO 5 2.55)
+            page: openapi/ilo5_255/redfishiLO5255RefDoc.page.yaml
+            expanded: false
+        - group: ilO 5 version 2.30
+          expanded: false
+          pages:
+          - label: Resource map (iLO 5 2.30)
+            page: docs/ilos/ilo5/ilo5_230/ilo5_resmap230.md
+          - label: Resource definitions (iLO 5 2.30)
+            page: docs/ilos/ilo5/ilo5_230/ilo5_resourcedefns230.md
+          - label: Error messages (iLO 5 2.30)
+            page: docs/ilos/ilo5/ilo5_230/ilo5_msgregs230.md
+          # The following page gets its label/title from the corresponding Ref Document in the
+          # OpenAPI file (openapi/<path>/ilo5xx-openapi.yaml), in the info: --> title: key.
+          - label: Reference Document (iLO 5 2.30)
+            page: openapi/ilo5_230/redfishiLO5230RefDoc.page.yaml
+            expanded: false
+        
+      - group: ilO 4
+        expanded: false
+        pages:
+        - label: Introduction
+          page: docs/ilos/ilo4/ilo4_introduction.md
 
-          - label: HPE iLO 4 Redfish reference document
-            page: openapi/redfishiLO4RefDoc.page.yaml/*
+        - label: HPE iLO 4 Redfish reference document
+          page: openapi/redfishiLO4RefDoc.page.yaml/*
     
     - separatorLine: true
     - group: RESTful Interface Tool (iLOrest) User Guide
