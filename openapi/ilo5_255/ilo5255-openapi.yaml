@@ -10141,6 +10141,110 @@ components:
           x-longDescription: This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*.
       type: object
       x-longDescription: This resource shall be used to represent BIOS Attribute Mappings.
+    HpeBundleUpdateReport:
+      description: This resource contains Bundle Update report
+      properties:
+        '@odata.context':
+          example: /redfish/v1/$metadata#HpeBundleUpdateReport.HpeBundleUpdateReport
+          format: uri-reference
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the SPMF specification.
+        '@odata.etag':
+          example: W/\7FD1F229\""
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property is the Etag of the resource.
+        '@odata.id':
+          example: /redfish/v1/UpdateService/BundleUpdateReport/Current/
+          format: uri
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.
+        '@odata.type':
+          example: '#HpeBundleUpdateReport.v1_0_0.HpeBundleUpdateReport'
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the SPMF specification.
+        Entries:
+          description: This lists Bundle Update report entries.
+          properties:
+            '@odata.id':
+              example: /redfish/v1/UpdateService/BundleUpdateReport/Current/Entries/
+              format: uri
+              readOnly: true
+              type: string
+              x-longDescription: The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.
+          readOnly: true
+          type: object
+        Id:
+          description: Uniquely identifies the resource within the collection of like resources.
+          example: Current
+          readOnly: true
+          type: string
+          x-longDescription: This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.
+        Name:
+          description: The name of the resource or array element.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    HpeBundleUpdateReportCollection:
+      description: A Collection of HpeComponentBundleUpdateReport resource instances.
+      properties:
+        '@odata.context':
+          example: /redfish/v1/$metadata#HpeBundleUpdateReportCollection.HpeBundleUpdateReportCollection
+          format: uri-reference
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the SPMF specification.
+        '@odata.etag':
+          example: W/\570254F2\""
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property is the Etag of the resource.
+        '@odata.id':
+          example: /redfish/v1/UpdateService/BundleUpdateReport/
+          format: uri
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.
+        '@odata.type':
+          example: '#HpeBundleUpdateReportCollection.HpeBundleUpdateReportCollection'
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the SPMF specification.
+        Description:
+          description: Provides a description of this resource and is used for commonality  in the schema definitions.
+          example: Bundle Update Reports View
+          nullable: true
+          readOnly: true
+          type: string
+          x-longDescription: This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.
+        Members:
+          description: Contains the members of this collection.
+          items:
+            properties:
+              '@odata.id':
+                example: /redfish/v1/UpdateService/BundleUpdateReport/Current/
+                format: uri
+                readOnly: true
+                type: string
+                x-longDescription: The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.
+            type: object
+          readOnly: true
+          type: array
+        Members@odata.count:
+          description: The total number of reports supported - Completed and Current
+          example: '2'
+          readOnly: true
+          type: integer
+        Name:
+          description: Bundle Update report collection.
+          example: Bundle Update Reports
+          readOnly: true
+          type: string
+      type: object
     HpeCertAuth:
       description: The HpeCertAuth resource describes the BMC certificate based authentication feature.
       properties:
@@ -11244,6 +11348,129 @@ components:
         Name:
           description: The name of the resource or array element.
           example: Component Install Set Collection
+          readOnly: true
+          type: string
+      type: object
+    HpeComponentUpdateEntryCollection:
+      description: A Collection of HpeComponentUpdateEntry resource instances.
+      properties:
+        '@odata.context':
+          example: /redfish/v1/$metadata#HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
+          format: uri-reference
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the SPMF specification.
+        '@odata.etag':
+          example: W/\75983E8D\""
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property is the Etag of the resource.
+        '@odata.id':
+          example: /redfish/v1/UpdateService/BundleUpdateReport/Current/Entries/
+          format: uri
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.
+        '@odata.type':
+          example: '#HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection'
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the SPMF specification.
+        Description:
+          description: Provides a description of this resource and is used for commonality  in the schema definitions.
+          example: Current Bundle Update report view
+          nullable: true
+          readOnly: true
+          type: string
+          x-longDescription: This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.
+        Members:
+          description: Contains the members of this collection.
+          items:
+            description: The HpeComponentUpdateEntry resource describes a software or firmware component information and update status.
+            properties:
+              '@odata.context':
+                format: uri-reference
+                readOnly: true
+                type: string
+                x-longDescription: The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the SPMF specification.
+              '@odata.etag':
+                readOnly: true
+                type: string
+                x-longDescription: The value of this property is the Etag of the resource.
+              '@odata.id':
+                format: uri
+                readOnly: true
+                type: string
+                x-longDescription: The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.
+              '@odata.type':
+                readOnly: true
+                type: string
+                x-longDescription: The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the SPMF specification.
+              ComponentStatus:
+                description: 'Status
+
+
+                  Defined values are:
+
+                  * `PENDING`: Update is pending and has not started.
+
+                  * `RUNNING`: Update Service in Progress.
+
+                  * `SUSPENDED`: Update has been suspended.
+
+                  * `COMPLETED`: Update completed successfully
+
+                  * `EXCEPTION`: Update has stopped due to an exception condition.
+
+                  * `KILLED`: Update was terminated.
+
+                  * `NEW`: A new update.
+
+                  * `INTERRUPTED`: Update has been interrupted.
+
+                  * `STOPPING`: Update is in the process of stopping.
+
+                  * `SERVICE`: Update has been suspended.
+
+'
+                enum:
+                  - PENDING
+                  - RUNNING
+                  - SUSPENDED
+                  - COMPLETED
+                  - EXCEPTION
+                  - KILLED
+                  - NEW
+                  - INTERRUPTED
+                  - STOPPING
+                  - SERVICE
+                nullable: true
+                readOnly: true
+                type: string
+              DependencyStatus:
+                description: DependencyStatus
+                readOnly: true
+                type: boolean
+              Name:
+                description: Name of the component.
+                readOnly: true
+                type: string
+              Version:
+                description: Version of the component.
+                readOnly: true
+                type: string
+            readOnly: true
+            type: object
+          readOnly: true
+          type: array
+        Members@odata.count:
+          description: The total number of components in the InstallSet
+          example: '0'
+          readOnly: true
+          type: integer
+        Name:
+          description: The name of the resource or array element.
+          example: Current Bundle Update report view
           readOnly: true
           type: string
       type: object
@@ -18244,6 +18471,117 @@ components:
             - PEER
           readOnly: false
           type: string
+      type: object
+    HpeUSBDevice:
+      description: The HpeUSBDevice resource describes the properties of USB devices.
+      properties:
+        '@odata.context':
+          example: /redfish/v1/$metadata#HpeUSBDevice.HpeUSBDevice
+          format: uri-reference
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the SPMF specification.
+        '@odata.etag':
+          example: W/\29F686DC\""
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property is the Etag of the resource.
+        '@odata.id':
+          example: /redfish/v1/Systems/1/USBDevices/1/
+          format: uri
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.
+        '@odata.type':
+          example: '#HpeUSBDevice.v2_0_0.HpeUSBDevice'
+          readOnly: true
+          type: string
+          x-longDescription: The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the SPMF specification.
+        Description:
+          description: Provides a description of this resource and is used for commonality  in the schema definitions.
+          example: USB Device view
+          nullable: true
+          readOnly: true
+          type: string
+          x-longDescription: This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.
+        DeviceCapacityMB:
+          description: USB device usable capacity (if applicable) in Mbytes
+          example: '0'
+          readOnly: true
+          type: integer
+          x-added: iLO 5 1.10
+        DeviceClass:
+          description: USB device Class code as defined by the USB HID device specification.
+          example: '9'
+          readOnly: true
+          type: integer
+          x-added: iLO 5 1.10
+        DeviceName:
+          description: USB device name in UTF-8 format.
+          example: General Purpose USB Hub
+          nullable: true
+          readOnly: true
+          type: string
+          x-added: iLO 5 1.10
+        DeviceProtocol:
+          description: Protocol code as defined by the USB HID specification.
+          example: '0'
+          readOnly: true
+          type: integer
+          x-added: iLO 5 1.10
+        DeviceSubClass:
+          description: USB device SubClass code as defined by the USB HID device specification.
+          example: '0'
+          readOnly: true
+          type: integer
+          x-added: iLO 5 1.10
+        Id:
+          description: Uniquely identifies the resource within the collection of like resources.
+          example: '1'
+          readOnly: true
+          type: string
+          x-added: iLO 5 1.10
+          x-longDescription: This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.
+        Location:
+          description: Location of the USB device on the server
+          example: Rear USB 2
+          nullable: true
+          readOnly: true
+          type: string
+          x-added: iLO 5 1.10
+        Name:
+          description: The name of the resource or array element.
+          example: USB Device
+          readOnly: true
+          type: string
+          x-added: iLO 5 1.10
+        ProductID:
+          description: USB product ID as defined by manufacturer.
+          example: '8246'
+          readOnly: true
+          type: integer
+          x-added: iLO 5 1.10
+        StructuredName:
+          description: USB device structured name in UTF-8 format.
+          example: Unknown.Unknown.1.2
+          nullable: true
+          readOnly: true
+          type: string
+          x-added: iLO 5 1.10
+        UEFIDevicePath:
+          description: UEFI device path of USB device. Standardized text representation of the UEFI device path, in UTF-8 format
+          example: PciRoot(0x0)/Pci(0x14,0x0)/USB(0xC,0x0)
+          nullable: true
+          readOnly: true
+          type: string
+          x-added: iLO 5 1.10
+        VendorID:
+          description: Vendor ID of detected USB device.
+          example: '1105'
+          readOnly: true
+          type: integer
+          x-added: iLO 5 1.10
+      readOnly: true
       type: object
     HpeUSBDevicesCollection:
       description: A Collection of HpeUSBDevices resource instances.
@@ -45110,7 +45448,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Reference Document (iLO 5 2.55)
+  title: HPE iLO 5 Redfish API
   version: '1.6'
   x-copyright: Copyright 2014-2018 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2016 Distributed Management Task Force. All rights reserved.
   x-logo:
@@ -45343,7 +45681,7 @@ paths:
       summary: accountservice/directorytest
       tags:
         - iLO5 User Account Management
-  /redfish/v1/AccountService/ExternalAccountProviders/{item}/Certificates:
+  /redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates:
     get:
       parameters:
         - description: The session authentication token provided by the Redfish session login API (or alternatively use Basic Authentication)
@@ -45368,7 +45706,7 @@ paths:
       summary: accountservice/externalaccountproviders/ldap/certificates
       tags:
         - iLO5 User Account Management
-  /redfish/v1/AccountService/ExternalAccountProviders/{item}/Certificates/{id}:
+  /redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{id}:
     get:
       parameters:
         - description: The value of the Id property of the resource
@@ -45762,12 +46100,6 @@ paths:
           required: true
           schema:
             type: string
-        - description: The value of the interface technology property of the resource
-          in: path
-          name: interface
-          required: true
-          schema:
-            type: string
         - description: The session authentication token provided by the Redfish session login API (or alternatively use Basic Authentication)
           in: header
           name: X-Auth-Token
@@ -45787,7 +46119,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/networkadapters/{interface}
+      summary: chassis/{id}/networkadapters/dc07b000
       tags: &id005
         - Server Network Management
     patch:
@@ -45795,12 +46127,6 @@ paths:
         - description: The value of the Id property of the resource
           in: path
           name: id
-          required: true
-          schema:
-            type: string
-        - description: The value of the interface technology property of the resource
-          in: path
-          name: interface
           required: true
           schema:
             type: string
@@ -45822,7 +46148,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/networkadapters/{interface}
+      summary: chassis/{id}/networkadapters/dc07b000
       tags: *id005
   /redfish/v1/Chassis/{id}/NetworkAdapters/DC07B000/Actions/NetworkAdapter.ResetSettingsToDefault:
     post:
@@ -45830,12 +46156,6 @@ paths:
         - description: The value of the Id property of the resource
           in: path
           name: id
-          required: true
-          schema:
-            type: string
-        - description: The value of the interface technology property of the resource
-          in: path
-          name: interface
           required: true
           schema:
             type: string
@@ -45857,7 +46177,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/networkadapters/{interface}
+      summary: chassis/{id}/networkadapters/dc07b000
       tags:
         - Server Network Management
   /redfish/v1/Chassis/{id}/NetworkAdapters/DC07B000/NetworkDeviceFunctions:
@@ -45866,12 +46186,6 @@ paths:
         - description: The value of the Id property of the resource
           in: path
           name: id
-          required: true
-          schema:
-            type: string
-        - description: The value of the interface technology property of the resource
-          in: path
-          name: interface
           required: true
           schema:
             type: string
@@ -45894,7 +46208,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/networkadapters/{interface}/networkdevicefunctions
+      summary: chassis/{id}/networkadapters/dc07b000/networkdevicefunctions
       tags:
         - Server Network Management
   /redfish/v1/Chassis/{id}/NetworkAdapters/DC07B000/NetworkDeviceFunctions/{id}:
@@ -45903,12 +46217,6 @@ paths:
         - description: The value of the Id property of the resource
           in: path
           name: id
-          required: true
-          schema:
-            type: string
-        - description: The value of the interface technology property of the resource
-          in: path
-          name: interface
           required: true
           schema:
             type: string
@@ -45931,7 +46239,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/networkadapters/{interface}/networkdevicefunctions/{id}
+      summary: chassis/{id}/networkadapters/dc07b000/networkdevicefunctions/{id}
       tags: &id006
         - Server Network Management
     patch:
@@ -45939,12 +46247,6 @@ paths:
         - description: The value of the Id property of the resource
           in: path
           name: id
-          required: true
-          schema:
-            type: string
-        - description: The value of the interface technology property of the resource
-          in: path
-          name: interface
           required: true
           schema:
             type: string
@@ -45966,7 +46268,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/networkadapters/{interface}/networkdevicefunctions/{id}
+      summary: chassis/{id}/networkadapters/dc07b000/networkdevicefunctions/{id}
       tags: *id006
   /redfish/v1/Chassis/{id}/NetworkAdapters/DC07B000/NetworkPorts:
     get:
@@ -45974,12 +46276,6 @@ paths:
         - description: The value of the Id property of the resource
           in: path
           name: id
-          required: true
-          schema:
-            type: string
-        - description: The value of the interface technology property of the resource
-          in: path
-          name: interface
           required: true
           schema:
             type: string
@@ -46002,7 +46298,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/networkadapters/{interface}/networkports
+      summary: chassis/{id}/networkadapters/dc07b000/networkports
       tags:
         - Server Network Management
   /redfish/v1/Chassis/{id}/NetworkAdapters/DC07B000/NetworkPorts/{id}:
@@ -46011,12 +46307,6 @@ paths:
         - description: The value of the Id property of the resource
           in: path
           name: id
-          required: true
-          schema:
-            type: string
-        - description: The value of the interface technology property of the resource
-          in: path
-          name: interface
           required: true
           schema:
             type: string
@@ -46039,7 +46329,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/networkadapters/{interface}/networkports/{id}
+      summary: chassis/{id}/networkadapters/dc07b000/networkports/{id}
       tags: &id007
         - Server Network Management
     patch:
@@ -46047,12 +46337,6 @@ paths:
         - description: The value of the Id property of the resource
           in: path
           name: id
-          required: true
-          schema:
-            type: string
-        - description: The value of the interface technology property of the resource
-          in: path
-          name: interface
           required: true
           schema:
             type: string
@@ -46074,7 +46358,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/networkadapters/{interface}/networkports/{id}
+      summary: chassis/{id}/networkadapters/dc07b000/networkports/{id}
       tags: *id007
   /redfish/v1/Chassis/{id}/PCIeDevices:
     get:
@@ -46107,7 +46391,7 @@ paths:
       summary: chassis/{id}/pciedevices
       tags:
         - Server Management
-  /redfish/v1/Chassis/{id}/PCIeDevices/208/PCIeFunctions:
+  /redfish/v1/Chassis/{id}/PCIeDevices/{id}98/PCIeFunctions:
     get:
       parameters:
         - description: The value of the Id property of the resource
@@ -46135,10 +46419,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/pciedevices/208/pciefunctions
+      summary: chassis/{id}/pciedevices/{id}98/pciefunctions
       tags:
         - Server Management
-  /redfish/v1/Chassis/{id}/PCIeDevices/208/PCIeFunctions/{id}:
+  /redfish/v1/Chassis/{id}/PCIeDevices/{id}98/PCIeFunctions/{id}:
     get:
       parameters:
         - description: The value of the Id property of the resource
@@ -46166,7 +46450,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/pciedevices/208/pciefunctions/{id}
+      summary: chassis/{id}/pciedevices/{id}98/pciefunctions/{id}
       tags:
         - Server Management
   /redfish/v1/Chassis/{id}/PCIeSlots:
@@ -46319,37 +46603,6 @@ paths:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
       summary: chassis/{id}/power/#powersupplies/
-      tags:
-        - Server Power Management
-  /redfish/v1/Chassis/{id}/Power/#Redundancy/{id}:
-    get:
-      parameters:
-        - description: The value of the Id property of the resource
-          in: path
-          name: id
-          required: true
-          schema:
-            type: string
-        - description: The session authentication token provided by the Redfish session login API (or alternatively use Basic Authentication)
-          in: header
-          name: X-Auth-Token
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Power'
-          description: The response contains a representation of the resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExtendedInfo'
-          description: Redfish ExtendedInfo Response
-      summary: chassis/{id}/power/#redundancy/
       tags:
         - Server Power Management
   /redfish/v1/Chassis/{id}/Power/FastPowerMeter:
@@ -48433,7 +48686,7 @@ paths:
       summary: managers/{id}/securityservice/certificateauthentication/cacertificates
       tags:
         - iLO 5 Management
-  /redfish/v1/Managers/{id}/SecurityService/CertificateAuthentication/CACertificates/{id}:
+  /redfish/v1/Managers/{id}/SecurityService/CertificateAuthentication/CACertificates/2:
     get:
       parameters:
         - description: The value of the Id property of the resource
@@ -48461,7 +48714,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
-      summary: managers/{id}/securityservice/certificateauthentication/cacertificates/{id}
+      summary: managers/{id}/securityservice/certificateauthentication/cacertificates/2
       tags:
         - iLO 5 Management
   /redfish/v1/Managers/{id}/SecurityService/ESKM:
@@ -50341,37 +50594,6 @@ paths:
       summary: systems/{id}/pcidevices
       tags:
         - Server Management
-  /redfish/v1/Systems/{id}/PCIDevices/9:
-    get:
-      parameters:
-        - description: The value of the Id property of the resource
-          in: path
-          name: id
-          required: true
-          schema:
-            type: string
-        - description: The session authentication token provided by the Redfish session login API (or alternatively use Basic Authentication)
-          in: header
-          name: X-Auth-Token
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HpeServerPciDevice'
-          description: The response contains a representation of the resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExtendedInfo'
-          description: Redfish ExtendedInfo Response
-      summary: systems/{id}/pcidevices/9
-      tags:
-        - Server Management
   /redfish/v1/Systems/{id}/PCIDevices/{id}:
     get:
       parameters:
@@ -50832,6 +51054,37 @@ paths:
       summary: systems/{id}/smartstorage/arraycontrollers/{id}/diskdrives
       tags:
         - SmartStorage Management
+  /redfish/v1/Systems/{id}/SmartStorage/ArrayControllers/{id}/DiskDrives/2:
+    get:
+      parameters:
+        - description: The value of the Id property of the resource
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        - description: The session authentication token provided by the Redfish session login API (or alternatively use Basic Authentication)
+          in: header
+          name: X-Auth-Token
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HpeSmartStorageDiskDrive'
+          description: The response contains a representation of the resource
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedInfo'
+          description: Redfish ExtendedInfo Response
+      summary: systems/{id}/smartstorage/arraycontrollers/{id}/diskdrives/2
+      tags:
+        - SmartStorage Management
   /redfish/v1/Systems/{id}/SmartStorage/ArrayControllers/{id}/DiskDrives/{id}:
     get:
       parameters:
@@ -51140,6 +51393,37 @@ paths:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
       summary: systems/{id}/usbdevices
+      tags:
+        - Server Management
+  /redfish/v1/Systems/{id}/USBDevices/{id}:
+    get:
+      parameters:
+        - description: The value of the Id property of the resource
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        - description: The session authentication token provided by the Redfish session login API (or alternatively use Basic Authentication)
+          in: header
+          name: X-Auth-Token
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HpeUSBDevice'
+          description: The response contains a representation of the resource
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedInfo'
+          description: Redfish ExtendedInfo Response
+      summary: systems/{id}/usbdevices/{id}
       tags:
         - Server Management
   /redfish/v1/Systems/{id}/USBPorts:
@@ -51632,6 +51916,81 @@ paths:
                 $ref: '#/components/schemas/ExtendedInfo'
           description: Redfish ExtendedInfo Response
       summary: updateservice
+      tags:
+        - Server Firmware Version Management
+  /redfish/v1/UpdateService/BundleUpdateReport:
+    get:
+      parameters:
+        - description: The session authentication token provided by the Redfish session login API (or alternatively use Basic Authentication)
+          in: header
+          name: X-Auth-Token
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HpeBundleUpdateReportCollection'
+          description: The response contains a representation of the resource
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedInfo'
+          description: Redfish ExtendedInfo Response
+      summary: updateservice/bundleupdatereport
+      tags:
+        - Server Firmware Version Management
+  /redfish/v1/UpdateService/BundleUpdateReport/Current:
+    get:
+      parameters:
+        - description: The session authentication token provided by the Redfish session login API (or alternatively use Basic Authentication)
+          in: header
+          name: X-Auth-Token
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HpeBundleUpdateReport'
+          description: The response contains a representation of the resource
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedInfo'
+          description: Redfish ExtendedInfo Response
+      summary: updateservice/bundleupdatereport/current
+      tags:
+        - Server Firmware Version Management
+  /redfish/v1/UpdateService/BundleUpdateReport/Current/Entries:
+    get:
+      parameters:
+        - description: The session authentication token provided by the Redfish session login API (or alternatively use Basic Authentication)
+          in: header
+          name: X-Auth-Token
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HpeComponentUpdateEntryCollection'
+          description: The response contains a representation of the resource
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedInfo'
+          description: Redfish ExtendedInfo Response
+      summary: updateservice/bundleupdatereport/current/entries
       tags:
         - Server Firmware Version Management
   /redfish/v1/UpdateService/ComponentRepository:

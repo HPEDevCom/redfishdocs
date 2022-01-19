@@ -1,12 +1,3 @@
----
-seo:
-  title: Error messages and registries (iLO 5 255)
-disableLastModified: false
-toc:
-  enable: true
----
-
-# Error messages and registries (iLO 5 255)
 
 ### Base.1.4.AccessDenied
 While attempting to access, connect to, or transfer to/from another resource, the service was denied access.
