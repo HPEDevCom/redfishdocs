@@ -5,3 +5,9 @@ public/
 .git
 *-ori
 *_Blog.txt
+*.pnp.cjs
+*.pnp.loader.mjs
+*.yarn/*
+*.yarnrc
+*.yarnrc.yml
+*.gitignore
