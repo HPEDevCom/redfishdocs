@@ -1,6 +1,6 @@
 ---
 seo:
-  title: iLO 5 Redfish resource definitions
+  title: iLO 5 2.30 Redfish resource definitions
 disableLastModified: false
 toc:
   enable: true
@@ -8,10 +8,10 @@ toc:
 ---
 
 
-# Resource Definitions
+# Resource Definitions (iLO 5 2.30)
 
 
-For each resource type provided by the HPE ilO 5Redfish service, find below the its description including the list of possible instances (endpoints), links to related other resources, described properties and many other details.
+For each resource type provided by the HPE ilO 5 Redfish service, find below the its description including the list of possible instances (endpoints), links to related other resources, described properties and many other details.
 
 ## AccountService.v1\_5\_0.AccountService
 
@@ -6357,6 +6357,7 @@ The Chassis resource describes the physical components for a system. This object
 |Link Name|Destination type
 |---|---|
 |`Links/ComputerSystems[]`|[ComputerSystem](#computersystemv1_10_0computersystem)|
+|`Links/Drives[]`|[Drive](#drivev1_7_0drive)|
 |`Links/ManagedBy[]`|[Manager](#managerv1_5_1manager)|
 |`NetworkAdapters`|Collection of [NetworkAdapter](#networkadapterv1_4_0networkadapter)|
 |`Oem/Hpe/Links/Devices`|Collection of [HpeServerDevice](#hpeserverdevicev2_0_0hpeserverdevice)|
@@ -7370,24 +7371,27 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 |`Boot/BootOptions`|Collection of [BootOption](#bootoptionv1_0_1bootoption)|
 |`EthernetInterfaces`|Collection of [EthernetInterface](#ethernetinterfacev1_4_1ethernetinterface)|
 |`Links/Chassis[]`|[Chassis](#chassisv1_10_2chassis)|
+|`Links/HpServerSettings`|[HpServerSettings](#hpserversettings2)|
 |`Links/ManagedBy[]`|[Manager](#managerv1_5_1manager)|
 |`LogServices`|Collection of [LogService](#logservicev1_0_0logservice)|
 |`Memory`|Collection of [Memory](#memoryv1_7_1memory)|
 |`MemoryDomains`|MemoryDomainCollection|
 |`NetworkInterfaces`|Collection of [NetworkInterface](#networkinterfacev1_1_1networkinterface)|
 |`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](#ethernetinterfacev1_4_1ethernetinterface)|
+|`Oem/Hpe/Links/HpeIpProvider`|[HpeIp](#hpeipv1_0_0hpeip)|
 |`Oem/Hpe/Links/NetworkAdapters`|Collection of [HpeBaseNetworkAdapter](#hpebasenetworkadapterv2_0_0hpebasenetworkadapter)|
 |`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](#hpeserverpcidevicev2_0_0hpeserverpcidevice)|
 |`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](#hpeserverpcislotv2_1_0hpeserverpcislot)|
+|`Oem/Hpe/Links/SUT`|[SUT](#sutv2_8_0sut)|
 |`Oem/Hpe/Links/SecureEraseReportService`|[HpeSecureEraseReportService](#hpesecureerasereportservicev1_0_0hpesecureerasereportservice)|
 |`Oem/Hpe/Links/SmartStorage`|[HpeSmartStorage](#hpesmartstoragev2_0_0hpesmartstorage)|
-|`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevicev2_0_0hpeusbdevice)|
+|`Oem/Hpe/Links/USBDevices`|HpeUSBDevicesCollection|
 |`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](#hpeusbportv2_0_0hpeusbport)|
 |`Oem/Hpe/Links/WorkloadPerformanceAdvisor`|Collection of [HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisorv1_0_0hpeworkloadperformanceadvisor)|
 |`Oem/Hpe/SmartStorageConfig[]`|[SmartStorageConfig](#smartstorageconfigv2_0_2smartstorageconfig)|
 |`Processors`|Collection of [Processor](#processorv1_7_2processor)|
 |`SecureBoot`|[SecureBoot](#securebootv1_0_0secureboot)|
-|`Storage`|StorageCollection|
+|`Storage`|Collection of [Storage](#storagev1_7_1storage)|
 
 ### AssetTag
 Member of [ComputerSystem.v1\_10\_0.ComputerSystem](#computersystemv1\_10\_0computersystem)
@@ -10165,6 +10169,11 @@ A Collection of EventDestination resource instances.
 |---|---|
 `/redfish/v1/eventservice/subscriptions/`|GET POST |
 
+### Links to other Resources
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[EventDestination](#eventdestinationv1_0_0eventdestination)|
+
 ### Members (array)
 Member of EventDestinationCollection.EventDestinationCollection
 `Members` is an array containing elements of: 
@@ -10202,7 +10211,7 @@ The EventService resource describes the Event Service.  It represents the proper
 |---|---|
 |`Oem/Hpe`|[EventService](#eventservicev1_0_8eventservice)|
 |`Oem/Hpe/CACertificates`|HpeCertificateCollection|
-|`Subscriptions`|EventDestinationCollection|
+|`Subscriptions`|Collection of [EventDestination](#eventdestinationv1_0_0eventdestination)|
 
 ### DeliveryRetryAttempts
 Member of [EventService.v1\_0\_8.EventService](#eventservicev1\_0\_8eventservice)
@@ -10929,59 +10938,25 @@ Member of [HpeBiosMapping.v2\_0\_0.HpeBiosMapping](#hpebiosmappingv2\_0\_0hpebio
 ## HpeBundleUpdateReport.v1\_0\_0.HpeBundleUpdateReport
 
 `@odata.type: "#HpeBundleUpdateReport.v1_0_0.HpeBundleUpdateReport"`
+ERROR: No instances found for resource type #HpeBundleUpdateReport.v1_0_0.HpeBundleUpdateReport in the resource map.
 
 This resource contains Bundle Update report
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
-`/redfish/v1/updateservice/bundleupdatereport/current/`|GET |
 
-### Links to other Resources
-|Link Name|Destination type
-|---|---|
-|`Entries`|HpeComponentUpdateEntryCollection|
-
-### Entries
-This lists Bundle Update report entries.
-Entries is a link (`"@odata.id": URI`) to another resource.
-
+ERROR: No instances found for resource type #HpeBundleUpdateReport.v1_0_0.HpeBundleUpdateReport in the resource map.
 ## HpeBundleUpdateReportCollection.HpeBundleUpdateReportCollection
 
 `@odata.type: "#HpeBundleUpdateReportCollection.HpeBundleUpdateReportCollection"`
+ERROR: No instances found for resource type #HpeBundleUpdateReportCollection.HpeBundleUpdateReportCollection in the resource map.
 
 A Collection of HpeComponentBundleUpdateReport resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
-`/redfish/v1/updateservice/bundleupdatereport/`|GET |
 
-### Links to other Resources
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeBundleUpdateReport](#hpebundleupdatereportv1_0_0hpebundleupdatereport)|
-
-### Members (array)
-Member of HpeBundleUpdateReportCollection.HpeBundleUpdateReportCollection
-`Members` is an array containing elements of: 
-
-**Members[{item}].@odata.id**
-Member of HpeBundleUpdateReportCollection.HpeBundleUpdateReportCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-Member of HpeBundleUpdateReportCollection.HpeBundleUpdateReportCollection
-
-| | |
-|---|---|
-|Description|The total number of reports supported - Completed and Current|
-|Type|integer|
-|Read Only|True|
-
+ERROR: No instances found for resource type #HpeBundleUpdateReportCollection.HpeBundleUpdateReportCollection in the resource map.
 ## HpeCertAuth.v1\_1\_0.HpeCertAuth
 
 `@odata.type: "#HpeCertAuth.v1_1_0.HpeCertAuth"`
@@ -11108,7 +11083,7 @@ This resource type was added in iLO 5 1.20
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
-`/redfish/v1/managers/{item}/securityservice/certificateauthentication/cacertificates/2/`|GET DELETE |
+`/redfish/v1/managers/{item}/securityservice/certificateauthentication/cacertificates/{item}/`|GET DELETE |
 
 ### Issuer
 Member of [HpeCertificate.v1\_0\_0.HpeCertificate](#hpecertificatev1\_0\_0hpecertificate)
@@ -11617,92 +11592,14 @@ Member of HpeComponentInstallSetCollection.HpeComponentInstallSetCollection
 ## HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
 
 `@odata.type: "#HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection"`
+ERROR: No instances found for resource type #HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection in the resource map.
 
 A Collection of HpeComponentUpdateEntry resource instances.
 ### Resource Instances
 |Uri|HTTP Allow|
 |---|---|
-`/redfish/v1/updateservice/bundleupdatereport/current/entries/`|GET |
 
-### Members (array)
-Member of HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
-`Members` is an array containing elements of: 
-
-**Members[{item}].@odata.context**
-Member of HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-**Members[{item}].@odata.etag**
-Member of HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-
-**Members[{item}].@odata.id**
-Member of HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-**Members[{item}].@odata.type**
-Member of HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-
-**Members[{item}].ComponentStatus**
-Member of HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
-
-| | |
-|---|---|
-|Description|Status|
-|Type|string|
-|Read Only|True|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`PENDING`|Update is pending and has not started.|n|`RUNNING`|Update Service in Progress.|n|`SUSPENDED`|Update has been suspended.|n|`COMPLETED`|Update completed successfully|n|`EXCEPTION`|Update has stopped due to an exception condition.|n|`KILLED`|Update was terminated.|n|`NEW`|A new update.|n|`INTERRUPTED`|Update has been interrupted.|n|`STOPPING`|Update is in the process of stopping.|n|`SERVICE`|Update has been suspended.|n
-**Members[{item}].DependencyStatus**
-Member of HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
-
-| | |
-|---|---|
-|Description|DependencyStatus|
-|Type|boolean|
-|Read Only|True|
-
-**Members[{item}].Version**
-Member of HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
-
-| | |
-|---|---|
-|Description|Version of the component.|
-|Type|string|
-|Read Only|True|
-
-### Members@odata.count
-Member of HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection
-
-| | |
-|---|---|
-|Description|The total number of components in the InstallSet|
-|Type|integer|
-|Read Only|True|
-
+ERROR: No instances found for resource type #HpeComponentUpdateEntryCollection.HpeComponentUpdateEntryCollection in the resource map.
 ## HpeComponentUpdateTaskQueueCollection.HpeComponentUpdateTaskQueueCollection
 
 `@odata.type: "#HpeComponentUpdateTaskQueueCollection.HpeComponentUpdateTaskQueueCollection"`
@@ -11712,6 +11609,11 @@ A Collection of HpeComponentUpdateTaskQueue resource instances.
 |Uri|HTTP Allow|
 |---|---|
 `/redfish/v1/updateservice/updatetaskqueue/`|GET POST |
+
+### Links to other Resources
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeComponentUpdateTask](#hpecomponentupdatetaskv1_2_0hpecomponentupdatetask)|
 
 ### Members (array)
 Member of HpeComponentUpdateTaskQueueCollection.HpeComponentUpdateTaskQueueCollection
@@ -14185,8 +14087,8 @@ The HpeiLOSnmpService resource describes the properties for managing the SNMP co
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
-|`SNMPAlertDestinations`|HpeSNMPAlertDestinationCollection|
-|`SNMPUsers`|HpeSNMPUsersCollection|
+|`SNMPAlertDestinations`|Collection of [HpeSNMPAlertDestination](#hpesnmpalertdestinationv2_0_0hpesnmpalertdestination)|
+|`SNMPUsers`|Collection of [HpeSNMPUser](#hpesnmpuserv2_1_0hpesnmpuser)|
 
 ### AlertDestinationAssociations (array)
 Member of [HpeiLOSnmpService.v2\_3\_0.HpeiLOSnmpService](#hpeilosnmpservicev2\_3\_0hpeilosnmpservice)
@@ -14492,6 +14394,11 @@ The HpeiLOSSO resource describes the configuration of the HPE BMC single-sign-on
 |Uri|HTTP Allow|
 |---|---|
 `/redfish/v1/managers/{item}/securityservice/sso/`|GET POST PATCH |
+
+### Links to other Resources
+|Link Name|Destination type
+|---|---|
+|`ManagerTrustedCertificates[]`|[ERROR_UNKNOWN](#error_unknownv0_0_0error_unknown)|
 
 ### ManagerTrustedCertificates (array)
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilossov2\_0\_0hpeilosso)
@@ -14998,3 +14905,90 @@ Member of HpeInvalidImageCollection.HpeInvalidImageCollection
 |Format|uri-reference|
 
 ### Members@odata.count
+Member of HpeInvalidImageCollection.HpeInvalidImageCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator
+
+`@odata.type: "#HpeiSCSISoftwareInitiator.v2_0_0.HpeiSCSISoftwareInitiator"`
+### Resource Instances
+|Uri|HTTP Allow|
+|---|---|
+`/redfish/v1/systems/{item}/bios/iscsi/`|GET |
+`/redfish/v1/systems/{item}/bios/iscsi/settings/`|GET PATCH |
+
+### Links to other Resources
+|Link Name|Destination type
+|---|---|
+|`@Redfish.Settings/SettingsObject`|[HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiatorv2_0_0hpeiscsisoftwareinitiator)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](#hpebaseconfigsv2_0_0hpebaseconfigs)|
+
+### @Redfish.Settings
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiatorv2\_0\_0hpeiscsisoftwareinitiator)
+See the Redfish standard schema and specification for information on common @Redfish properties.
+
+### iSCSIInitiatorName
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiatorv2\_0\_0hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The worldwide unique iSCSI Qualified Name (IQN) of this iSCSI Initiator. Only IQN format is accepted. EUI format is not supported (for example, 'iqn.1986-03.com.hp:init.sn-123456').|
+|Type|string|
+|Read Only|True|
+
+### iSCSINicSources (array)
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiatorv2\_0\_0hpeiscsisoftwareinitiator)
+`iSCSINicSources` is an array containing elements of: 
+
+
+| | |
+|---|---|
+|Description|The BIOS Attribute that describes a NIC instance that can be used as a target for iSCSI configuration.|
+|Type|string|
+|Read Only|True|
+
+### iSCSISources (array)
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiatorv2\_0\_0hpeiscsisoftwareinitiator)
+`iSCSISources` is an array containing elements of: 
+
+**iSCSISources[{item}].StructuredBootString**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiatorv2\_0\_0hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|Identifies this iSCSI option within the server.|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].UEFIDevicePath**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiatorv2\_0\_0hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|Standardized text representation of the UEFI device path for this option, in UTF-8 format.|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIAttemptInstance**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiatorv2\_0\_0hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|Uniquely identifies this iSCSI attempt within iSCSISources array. If set to zero, all other properties in the boot option object are ignored (which will delete an existing boot attempt).|
+|Type|integer|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIAttemptName**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiatorv2\_0\_0hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|Human readable descriptive name for this iSCSI attempt configuration|
+|Type|string or null|
+|Read Only|True|
+

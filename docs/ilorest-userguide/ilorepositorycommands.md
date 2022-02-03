@@ -1,3 +1,12 @@
+---
+seo:
+  title: iLO Reposiory commands
+toc:
+  enable: true
+  maxDepth: 3
+disableLastModified: true
+---
+
 ## iLO Repository Commands
 
 <aside class="notice">
@@ -520,14 +529,14 @@ iLOrest > <span style="color: #01a982; ">maintenancewindow add 2018-11-21T00:00:
 [201] The operation completed successfully.
 </pre>
 
-> To optionally specify an expire time (`-e, --expire`), maintenance window name (`-n, --name`), and/or description (`--description`) include their respective options.
+> To optionally specify an expire time (`--expire`), maintenance window name (`--name`), and/or description (`--description`) include their respective options.
 
 <pre>
 iLOrest > maintenancewindow add 2019-11-21T00:00:00 <span style="color: #01a982; ">--expire=2019-11-22T00:00:00 --name=MyMaintenanceWindow --description "My maintenance window description."</span>
 [201] The operation completed successfully.
 </pre>
 
-> To delete a maintenance window run the command with the `delete` keyword followed by the name of the maintenance window you wish to delete.
+> To delete a maintenance window run the command with the `delete` keyword followed by the name or id of the maintenance window you wish to delete.
 
 <pre>
 iLOrest > <span style="color: #01a982; ">maintenancewindow delete MyMaintenanceWindow</span>
@@ -560,11 +569,11 @@ Optionally include this flag to change the displayed output to JSON format. Pres
 
 Optionally include this flag to add a description to the maintenance window created by you.
 
-- **-n NAME, --name=NAME**
+- **--name=NAME**
 
 Optionally include this flag to name the maintenance window created by you. If a name is not specified, system will add a unique name.
 
-- **-e EXPIRE, --expire=EXPIRE**
+- **--expire=EXPIRE**
 
 Optionally include this flag to add the time a maintenance window expires.
 

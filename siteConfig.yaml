@@ -17,7 +17,13 @@ oasDefinitions:
   # 
   # The following URL comes from the redfishiLO5RefDoc API Registry --> Default branch --> Download in clipboard
   # The key name (redfishiLO5RefDoc) corresponds to the definitionId key in "openapi/redfishiLO5RefDoc.page.yaml" file
-  redfishiLO5RefDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1Alpha1/bundle/main/openapi.yaml 
+  #redfishiLO5230RefDoc: https://api.redoc.ly/registry/hpe/redfishiLO5RefDoc/v1Alpha1/bundle/main/openapi.yaml 
+    
+  # OR
+  #
+  # Add links to local swagger/openapi file
+  redfishiLO5230RefDoc: openapi/ilo5_230/ilo5230-openapi.yaml
+  redfishiLO5255RefDoc: openapi/ilo5_255/ilo5255-openapi.yaml
   #redfishDmtfRefDoc: https://api.redoc.ly/registry/hpe/RedfishDmtfRefDoc/internalv1/bundle/main/openapi.yaml
   #redfishSuperdome280:  https://TBD
   #redfishAmplifierPack: https://TBD
@@ -41,7 +47,7 @@ nav:
   - search: true
 
 footer:
-  copyrightText: © Copyright 2017-2021 Hewlett Packard Enterprise Development LP 
+  copyrightText: © Copyright 2022 Hewlett Packard Enterprise Development LP 
   columns:
     - group:
       items:

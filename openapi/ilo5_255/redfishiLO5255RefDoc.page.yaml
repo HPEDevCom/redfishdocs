@@ -1,7 +1,7 @@
 type: reference-docs
-# The following key (definitionId) is defined in the oasDefinitions section 
+# The following key (definitionId:) is defined in the oasDefinitions section 
 # in the siteConfig.yaml of this portal repo.
-definitionId: redfishiLO5RefDoc
+definitionId: redfishiLO5255RefDoc
 settings:
   hideInfoSection: true
   pagination: section

@@ -4,6 +4,7 @@ seo:
 disableLastModified: false
 toc:
   enable: true
+  maxDepth: 3
 ---
 
 # Changelog

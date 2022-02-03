@@ -1,3 +1,12 @@
+---
+seo:
+  title: Support and other resources
+toc:
+  enable: true
+  maxDepth: 3
+disableLastModified: true
+---
+
 # Support and other resources
 
 ## Accessing Hewlett Packard Enterprise Support

@@ -382,9 +382,19 @@ login *[URL] [Optional Parameters]*
 
 Connects to a server, establishes a secure session, and discovers data from iLO. If you are logging in to a local server, run the command without arguments. If you are not logging in to a local server, supply the URL argument along with the user and password options.
 
-<aside class="notice"> Authentication is not performed in production (default) mode. If a username and password are included then the configuration will default to an internal, unauthenticated administrative level
+<aside class="notice">Authentication is not performed in production (default) mode. If a username and password are included then the configuration will default to an internal, unauthenticated administrative level
 privileged user account. Higher security modes, if configured, require a valid iLO management username and password to connect.
 </aside>
+
+Login using certificate authentication has following requirements:  
+
+- iLO 5 v2.40  
+- Set NTP Server on iLO and verify accurate time  
+- "iLO Advanced Premium Security Edition" license  
+- X509 SSL certificate signed with root CA key   
+- CAC/Smartcard Authentication Enabled           
+- Add root CA certificate to iLO                 
+- Map user CA certificate to target iLO management user.     
 
 <p class="fake_header">Usage in Other Commands</p>
 
@@ -409,6 +419,26 @@ Connect to the server as the provided user.
 - **-p Password**
 
 Connect to the server with the password corresponding to the given user.
+
+- **--usercert UserCertificate**
+
+Specify a user certificate file path for certificate based authentication with iLO.
+
+<aside class="notice">The user private key is required.</aside>
+
+- **--userkey UserCertKey**
+
+Specify a user private key file path for certificate based authentication with iLO
+
+<aside class="notice">If the user private key is password protected, but not included with '--userpassphrase', then Urllib3 will automatically request the password on the command line.</aside>
+
+- **--userpassphrase UserPassphrase**
+
+Optionally specify a user key file password for a password protected user key.
+
+- **--force_vnic**
+
+<aside class="notice">Option to Force login through iLO Virtual NIC. <b>Virtual NIC to be enabled in iLO.</b> NOTE: iLO 5 required.</aside>  
 
 - **--includelogs**
 
@@ -824,7 +854,7 @@ Optionally set a filter value for a filter attribute. This uses the provided fil
 
 <aside class="notice"> Use this flag to narrow down your results. For example, selecting a common type might return multiple objects that are all of that type. If you want to modify the properties of only one of those objects, use the filter flag to narrow down results based on properties.</aside>
 
-- **---j, --json**
+- **-j, --json**
 
 Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure can make the information easier to parse.
 
@@ -1321,6 +1351,8 @@ AdminName=Jason E
 
 Changes the value of a property in a currently selected type. Multiple properties can be set simultaneously.
 
+<aside class="notice"><b>Read-only</b> and <b>System-unique</b> properties like Serial Numbers and ProductId are skipped, and remaining continue to be set.</aside>
+<aside class="notice">If <b>System-unique</b> properties need to be set, use --uniqueoverride option.</aside>
 <aside class="warning">The changes set will be reflected on the server only after committing them.</aside>
 
 <p class="fake_header">Syntax</p>
@@ -1395,7 +1427,7 @@ Use this flag to perform a reboot command function after completion of operation
 
 - **--uniqueoverride**
 
-Override the measures stopping the tool from writing over items that are system unique.
+Override the measures stopping the tool from writing over items that are System-unique.
 
 <p class="fake_header">Login Parameters</p>
 
@@ -1412,27 +1444,6 @@ If you are not logged in yet, use this flag along with the password and URL flag
 - **-p Password, --password=PASSWORD**
 
 If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
-
-- **--usercert UserCACertificate**
-
-Specify a user CA certificate file path for certificate based authentication with iLO.
-
-<aside class="notice">A root user CA key is required.</aside>
-
-- **--userkey UserCertKey**
-
-Specify a user root ca key file path for certificate based authentication with iLO
-
-<aside class="notice">If the root CA key is password protected, but not included with '-certpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
-
-- **--userpassphrase UserCAPassphrase**
-
-Optionally specify a user root ca key file password for a password protected user root CA.
-
-<aside class="notice">If the root CA key is password protected, but not included with '--userpass/--userrootcapassword', then Urllib3 will automatically request the password on the command line.</aside>
-
-- **--force_vnic**
-<aside class="notice"> Option to Force login through iLO Virtual NIC.  Virtual NIC to be enabled in iLO. NOTE: iLO 5 required.</aside>     
 
 - **--includelogs**
 
@@ -1670,7 +1681,8 @@ load *[Optional Parameters]*
 
 Loads the server configuration from a file. Run this command without parameters to use the configuration found in the file called `ilorest.json`. Otherwise, you can point this command to use any file you specify. Use this function to change the properties of a type to new values. This command uploads the new values of the type’s properties to the server.
 
-<aside class="notice"><b>Read-only</b> properties are skipped, and non-read only properties continue to be set.</aside>
+<aside class="notice"><b>Read-only</b> and <b>System-unique</b> properties like Serial Numbers and ProductId are skipped, and remaining continue to be set.</aside>
+<aside class="notice">If <b>System-unique</b> properties need to be set, use --uniqueoverride option.</aside>
 
 <p class="fake_header">Parameters</p>
 
@@ -1696,7 +1708,7 @@ Select this flag to input a BIOS password. Include this flag if second-level BIO
 
 - **--uniqueoverride**
 
-Override the measures stopping the tool from writing over items that are system unique.
+Override the measures stopping the tool from writing over items that are System-unique.
 
 - **-m MPFILENAME, --multiprocessing=MPFILENAME**
 

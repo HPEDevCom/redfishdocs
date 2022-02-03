@@ -1,3 +1,12 @@
+---
+seo:
+  title: Persistent Memory commands
+toc:
+  enable: true
+  maxDepth: 3
+disableLastModified: true
+---
+
 ## Persistent Memory Commands
 
 This section covers commands related to the discovery and configuration of HPE Persistent Memory.

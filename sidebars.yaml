@@ -1,31 +1,10 @@
-#dmtfRedfishMainSideBar:
-#  #- label: Home
-#    # The following href represents the root of the GitHub Redfish Portal repo
-#    # The content of this '/' page is the index.mdx.
-#    #href: '/'
-#
-#  - label: Home
-#    # The following href represents the root of the GitHub Redfish Portal repo
-#    # The content of this '/' page is the index.mdx.
-#    href: '/' 
-#
-#  - group: DMTF Redfish
-#    #menuStyle: drilldown
-#    #expanded: true
-#    pages:
-#    - label: Introduction
-#      page: docs/DMTF/index.md
-#
-#    - page: openapi/redfishDmtfRefDoc.page.yaml
-
-
 hpeRedfishMainSideBar:
   - label: Home
     # The following href represents the root of the GitHub Redfish Portal repo
     # The content of this '/' page is the index.mdx.
     href: '/'
        
-  - group: HPE Redfish®
+  - group: HPE Redfish® services
     expanded: true
     pages:
     - label: Introduction
@@ -65,31 +44,25 @@ hpeRedfishMainSideBar:
       - label: More Redfish examples
         page: docs/examples/otherexamples.md
 
-    - group: Schema supplements and API reference documents
+    - separatorLine: true
+    - group: REST API on HPE iLO based compute nodes
+      menuStyle: drilldown
       expanded: false
       pages:
       - label: Overview
-        page:  docs/refdocs/index.md
+        page:  docs/ilos/index.md
 
-      - group: HPE iLO based compute nodes
+      - group: iLO 5
         expanded: false
-        #menuStyle: drilldown
         pages:
-        - label: Redfish for HPE iLOs
-          page: docs/ilos/index.md
-        - group: iLO 5
+        - label: Adapting from iLO 4
+          page: docs/ilos/ilo5/ilo5_adaptation.md
+        - label: Changelog
+          page: docs/ilos/ilo5/ilo5_changelog.md
+
+        - group: Supplement documents
           expanded: false
           pages:
-          - label: Changelog
-            page: docs/ilos/ilo5/ilo5_changelog.md
-          - label: Adapting from iLO 4
-            page: docs/ilos/ilo5/ilo5_adaptation.md
-
-          - label: Resource map
-            page: docs/ilos/ilo5/ilo5_resmap.md
-          - label: Resource definitions
-            page: docs/ilos/ilo5/ilo5_resourcedefns.md
-
           - label: Managing iLO 5 users
             page: docs/ilos/ilo5/ilo5_accountservice.md
           - label: Managing time in iLO 5
@@ -126,26 +99,46 @@ hpeRedfishMainSideBar:
             page: docs/ilos/ilo5/ilo5_subscribing.md
           - label: Using iLOrest
             page: docs/ilos/ilo5/ilo5_resttool.md
- 
-          - label: Response message definitions
-            page: docs/ilos/ilo5/ilo5_msgregs.md
-
-          # The following pages gets its label/title from the corresponding Ref Document in the
-          # API registry (api/openapi/ilo5-openapi.yaml), in the info: > title: key.
-          - label: iLO 5 API reference document
-            page: openapi/redfishiLO5RefDoc.page.yaml
-            menuStyle: drilldown
-            expanded: false
-
-        - group: ilO 4
+                
+        - group: iLO 5 version 2.55
           expanded: false
           pages:
-          - label: Introduction
-            page: docs/ilos/ilo4/ilo4_introduction.md
+          - label: Resource map (iLO 5 2.55)
+            page: docs/ilos/ilo5/ilo5_255/ilo5_resmap255.md
+          - label: Resource definitions (iLO 5 2.55)
+            page: docs/ilos/ilo5/ilo5_255/ilo5_resourcedefns255.md 
+          - label: Error messages (iLO 5 2.55)
+            page: docs/ilos/ilo5/ilo5_255/ilo5_msgregs255.md
+          # The following page gets its label/title from the corresponding Ref Document in the
+          # OpenAPI file (openapi/<path>/ilo5xx-openapi.yaml), in the info: --> title: key.
+          - label: Reference Document (iLO 5 2.55)
+            page: openapi/ilo5_255/redfishiLO5255RefDoc.page.yaml
+            expanded: false
+        - group: ilO 5 version 2.30
+          expanded: false
+          pages:
+          - label: Resource map (iLO 5 2.30)
+            page: docs/ilos/ilo5/ilo5_230/ilo5_resmap230.md
+          - label: Resource definitions (iLO 5 2.30)
+            page: docs/ilos/ilo5/ilo5_230/ilo5_resourcedefns230.md
+          - label: Error messages (iLO 5 2.30)
+            page: docs/ilos/ilo5/ilo5_230/ilo5_msgregs230.md
+          # The following page gets its label/title from the corresponding Ref Document in the
+          # OpenAPI file (openapi/<path>/ilo5xx-openapi.yaml), in the info: --> title: key.
+          - label: Reference Document (iLO 5 2.30)
+            page: openapi/ilo5_230/redfishiLO5230RefDoc.page.yaml
+            expanded: false
+        
+      - group: ilO 4
+        expanded: false
+        pages:
+        - label: Introduction
+          page: docs/ilos/ilo4/ilo4_introduction.md
 
-          - label: HPE iLO 4 Redfish reference document
-            page: openapi/redfishiLO4RefDoc.page.yaml/*
+        - label: HPE iLO 4 Redfish reference document
+          page: openapi/redfishiLO4RefDoc.page.yaml/*
     
+    - separatorLine: true
     - group: RESTful Interface Tool (iLOrest) User Guide
       expanded: false
       menuStyle: drilldown
@@ -196,20 +189,47 @@ hpeRedfishMainSideBar:
         page: docs/ilorest-userguide/glossaryterms.md
 
           
+    - separatorLine: true  
+    - group: iLO Amplifier Pack
+      menuStyle: drilldown
+      expanded: false
+      pages:
+      - label: Overview
+        page: docs/iloamplifierpack/index.md
+      - label: Introduction to the HPE iLO Amplifier Pack RESTful API
+        page: docs/iloamplifierpack/iloamp_introduction.md
+      - label: Getting started
+        page: docs/iloamplifierpack/iloamp_gettingstarted.md
+      - label: Navigating the data model
+        page: docs/iloamplifierpack/iloamp_navigating.md
+      - label: Authentication and sessions
+        page: docs/iloamplifierpack/iloamp_authentication.md
+      - label: Performing actions
+        page: docs/iloamplifierpack/iloamp_performingaction.md
+      - label: Event service
+        page: docs/iloamplifierpack/iloamp_subscribing.md
+      - label: Use cases
+        page: docs/iloamplifierpack/iloamp_usecases.md
+      - label: Error messages and registries
+        page: docs/iloamplifierpack/iloamp_errorhandling.md
+
+      - label: Resource map
+        page: docs/iloamplifierpack/iloamp_resmap.md
+      - label: Resource definitions introduction
+        page: docs/iloamplifierpack/iloamp_resourcedefnhrd.md
+      - label: Resource definitions
+        page: docs/iloamplifierpack/iloamp_resourcedefns.md
       
-#      - group: iLO Amplifier Pack
-#        menuStyle: drilldown
-#        expanded: false
-#        pages:
-#        - label: Getting started with Redfish on HPE iLO Amplifier Pack
-#          page: docs/iLOAmplifierPack/index.md
-#        #- group: HPE iLO Amplifier Pack Redfish reference document
-#          #menuStyle: drilldown
-#          #expanded: false
-#          #pages: 
-#          #- label: TBD
-#            #page: openapi/iLOAmpliferPackRefDoc.page.yaml
-#
+      - label: Response message definitions
+        page: docs/iloamplifierpack/iloamp_msgregs.md
+        
+      #- group: HPE iLO Amplifier Pack Redfish reference document
+        #menuStyle: drilldown
+        #expanded: true
+        #pages: 
+        #- label: TBD
+          #page: openapi/iloampliferpackrefdoc.page.yaml
+
 #      - group: HPE Superdome 280
 #        menuStyle: drilldown
 #        expanded: false

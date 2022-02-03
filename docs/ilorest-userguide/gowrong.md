@@ -1,3 +1,12 @@
+---
+seo:
+  title: When things go wrong
+toc:
+  enable: true
+  maxDepth: 2
+disableLastModified: true
+---
+
 # When Things Go Wrong
 
 This section provides debug information to help when things go wrong. If this section does not solve your issue please contact support or submit a github issue to our open source project <a href="https://github.com/HewlettPackard/python-redfish-utility/issues">here</a>.

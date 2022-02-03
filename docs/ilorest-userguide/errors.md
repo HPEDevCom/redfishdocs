@@ -1,3 +1,11 @@
+---
+seo:
+  title: Error Codes
+toc:
+  enable: false
+disableLastModified: true
+---
+
 # Error Codes
 
 <aside class="notice">The error codes listed below are returned by the RESTful Interface Tool, not from iLO. Verbose (-v usage) will provide verbose output of HTTP, CHIF and iLO response messages. The error codes listed below are relegated to client side errors or specifically translated from errors received through iLO response messages.</aside>

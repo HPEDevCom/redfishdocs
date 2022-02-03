@@ -1,3 +1,11 @@
+---
+seo:
+  title: Glossary
+toc:
+  enable: false
+disableLastModified: true
+---
+
 # Glossary
 
 |    **Term**                    |        **Description**                                                       |
