@@ -31,6 +31,11 @@ curl --insecure -u username:password --location \
 ```
 
 ```python HPE python-ilorest-library
+# Make sure the DMTF redfish library is not loaded before loading
+# the HPE python-ilorest-library:
+# pip uninstall redfish
+# pip install python-ilorest-library
+
 import sys
 import json
 from redfish import RedfishClient
@@ -55,6 +60,11 @@ print('Response: '+json.dumps(response.dict, indent=4, sort_keys=True))
 ```
 
 ```python DMTF redfish library
+# Make sure the HPE python-ilorest-library library is not loaded before loading
+# the DMTF library:
+# pip uninstall python-ilorest-library
+# pip install redfish
+
 import sys
 import json
 from redfish import redfish_client
