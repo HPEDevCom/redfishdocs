@@ -2198,7 +2198,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redocly/developer-portal@npm:^1.1.0-beta.76":
+"@redocly/developer-portal@npm:^1.1.0-beta.101":
   version: 1.1.0-beta.101
   resolution: "@redocly/developer-portal@npm:1.1.0-beta.101"
   dependencies:
@@ -3482,7 +3482,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "HPE-Redfish-API-Ref-Docs-portal@workspace:."
   dependencies:
-    "@redocly/developer-portal": ^1.1.0-beta.76
+    "@redocly/developer-portal": ^1.1.0-beta.101
     grommet: ^2.17.5
     grommet-icons: ^4.6.0
     grommet-theme-hpe: ^2.1.0
