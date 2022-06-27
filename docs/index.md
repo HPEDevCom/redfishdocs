@@ -1,7 +1,7 @@
 ---
 seo:
   title: HPE Redfish|Getting started
-disableLastModified: true
+  disableLastModified: true
 ---
 
 # HPE Redfish® documentation Portal

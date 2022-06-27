@@ -1,6 +1,7 @@
 ---
 seo:
   title: DMTF index page
+  description: TBD
 disableLastModified: false
 ---
 

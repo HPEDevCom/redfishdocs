@@ -1,6 +1,7 @@
 ---
 seo:
   title: Client best practices
+  description: TBD
 toc:
   enable: true
   maxDepth: 2

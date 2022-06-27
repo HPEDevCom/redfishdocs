@@ -1,4 +1,6 @@
 ---
+seo:
+  title: README to be excluded
 exclude: true
 ---
 
