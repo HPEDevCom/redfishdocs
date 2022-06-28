@@ -11,3 +11,4 @@ public/
 *.yarnrc
 *.yarnrc.yml
 *.gitignore
+*.editorconfig
