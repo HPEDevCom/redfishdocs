@@ -6,6 +6,9 @@ seo:
   lang: en-US
   image: ./images/logo.png
 
+linkChecker:
+  severity: warning
+
 headerIcon: ./images/hpe.svg
 logo: ./images/hpe.svg
 toc:
