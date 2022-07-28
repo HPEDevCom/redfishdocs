@@ -54,7 +54,7 @@ disableLastModified: true
 PUT /redfish/v1/Systems/{item}/bios/tlsconfig/settings/
 ```
 
-```Shell
+```Shell iLOrest
 ilorest rawput body.json
 ```
 
