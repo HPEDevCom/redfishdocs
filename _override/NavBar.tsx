@@ -117,7 +117,9 @@ export default function NavBar(props) {
       <Grommet theme={{
         ...hpe,
         ...theme,
-      }}>
+      }}
+      className="nav-bar-sticky"
+      >
         <Menu links={links} search={search} logo={props.logo} />
       </Grommet>
     </>
