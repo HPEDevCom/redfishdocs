@@ -10,3 +10,10 @@
   background-color: #EDEDED; /* Grommet light-3 color */
 }
 
+.nav-bar-sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}

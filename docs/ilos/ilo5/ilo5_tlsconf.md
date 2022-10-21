@@ -51,7 +51,11 @@ disableLastModified: true
   Finally, the certificate needs to be PUT (only a PUT would work) through the API (Postman,..), as many as needed to be installed. See the examples in the right pane for more information:
 
 ```text PUT request
-/redfish/v1/Systems/{item}/bios/tlsconfig/settings/
+PUT /redfish/v1/Systems/{item}/bios/tlsconfig/settings/
+```
+
+```Shell iLOrest
+ilorest rawput body.json
 ```
 
 ```json Body
