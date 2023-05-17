@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Managing iLO 5 users
 toc:
