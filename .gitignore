@@ -12,5 +12,4 @@
 *.yarnrc.yml
 *.gitignore
 *.editorconfig
-*yarn.lock
 *node_modules/
