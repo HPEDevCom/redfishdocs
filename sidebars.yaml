@@ -111,9 +111,9 @@ hpeRedfishMainSideBar:
             page: docs/ilos/ilo5/ilo5_255/ilo5_msgregs255.md
           # The following page gets its label/title from the corresponding Ref Document in the
           # OpenAPI file (openapi/<path>/ilo5xx-openapi.yaml), in the info: --> title: key.
-          - label: Reference Document (iLO 5 2.55)
-            page: openapi/ilo5_255/redfishiLO5255RefDoc.page.yaml
-            expanded: false
+          #- label: Reference Document (iLO 5 2.55)
+          #  page: openapi/ilo5_255/redfishiLO5255RefDoc.page.yaml
+          #  expanded: false
         - group: ilO 5 version 2.30
           expanded: false
           pages:
