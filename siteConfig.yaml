@@ -25,8 +25,8 @@ oasDefinitions:
   # OR
   #
   # Add links to local swagger/openapi file
-  redfishiLO5230RefDoc: openapi/ilo5_230/ilo5230-openapi.yaml
-  redfishiLO5255RefDoc: openapi/ilo5_255/ilo5255-openapi.yaml
+  #redfishiLO5230RefDoc: openapi/ilo5_230/ilo5230-openapi.yaml
+  #redfishiLO5255RefDoc: openapi/ilo5_255/ilo5255-openapi.yaml
   #redfishDmtfRefDoc: https://api.redoc.ly/registry/hpe/RedfishDmtfRefDoc/internalv1/bundle/main/openapi.yaml
   #redfishSuperdome280:  https://TBD
   #redfishAmplifierPack: https://TBD
