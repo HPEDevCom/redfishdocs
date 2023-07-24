@@ -1,12 +1,13 @@
 ---
 seo:
-  title: HPE Redfish|Getting started
-  disableLastModified: true
+  title: HPE server management with Redfish®
+disableLastModified: true
+toc:
+   enable: false
 ---
 
-# HPE Redfish® documentation Portal
+# HPE server management with Redfish®
 
-Welcome to the HPE Redfish Documentation Portal. This portal contains helpful information about how to interact with the various <a href="https://www.dmtf.org/standards/redfish" target="_blank">Redfish</a> implementations in HPE computes and appliances.
+Welcome to the HPE server management with Redfish® portal. This portal contains helpful information about how to interact with the <a href="https://www.dmtf.org/standards/redfish" target="_blank">Redfish®</a> RESTful APIs implemented in HPE hardware.
 
 Choose your path from the left navigation menus or continue to browse to the next page using the link located in bottom right corner of this page.
-

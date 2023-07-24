@@ -1,5 +1,7 @@
 .search-box-override span input {
-  padding: 6px 10px;
+  padding: 6px 60px;
+  border-style: groove;
+  background-color: #EDEDED;
 }
 
 .search-box-override ul {
@@ -10,6 +12,97 @@
   background-color: #EDEDED; /* Grommet light-3 color */
 }
 
+.table {
+  border-spacing: 1.2em 0.7em;
+  border-collapse: separate;
+}
+
+.requiredCol {
+  width: 10px;
+  height: 15px;
+}
+
+.para {
+  margin: 10px 0;
+  padding: 5px;
+  display: inline;
+  margin-bottom: 2em;
+}
+
+.descTiles {
+  margin: 1px;
+  padding: 0;
+}
+
+.grid {
+  display: grid;
+
+  /* auto minimum width, causing problem */
+  grid-template-columns: 1fr 300px;
+
+  /* fix: minimum width of 0 */
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+
+a[href*="/idp-login"] > span {
+  color: black;
+  font-weight: bold;
+  font-size: large;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+}
+/* 
+body {
+  margin: 0 auto;
+} */
+
+.box{
+  width: 30%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 100px;
+  padding-right: 100px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #ffffff;
+  text-align: center;
+}
+
+@media only screen and (min-width: 375px) and (max-width: 812px) {
+  .box{    
+      padding-top: 60px;
+      padding-bottom: 60px;
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*
 .nav-bar-sticky {
   position: sticky;
   top: 0;
@@ -17,3 +110,4 @@
   right: 0;
   z-index: 999;
 }
+*/

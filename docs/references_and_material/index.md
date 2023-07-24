@@ -15,7 +15,3 @@ A lot more Redfish references and material are available on the [HPE Developer](
 ## Videos
 
 * Videos on [YouTube](https://www.youtube.com/results?search_query=redfish+dmtf)
-
-
-
-

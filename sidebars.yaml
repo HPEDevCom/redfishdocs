@@ -4,260 +4,447 @@ hpeRedfishMainSideBar:
     # The content of this '/' page is the index.mdx.
     href: '/'
        
-  - group: HPE Redfish® services
+  - group: HPE Redfish® services and eco-system
     expanded: true
     pages:
     - label: Introduction
       page: docs/index.md
-
     - group: Redfish concepts
       expanded: false
       pages:
       - label: Redfish® at a glance
         page:  docs/concepts/index.md
 
-      - label: Authentication and sessions
-        page: docs/concepts/redfishAuthentication.md
-
       - label: Conformance
         page: docs/concepts/redfishConformance.md
 
-      - label: Performing actions
-        page: docs/concepts/performing_actions.md
-
       - label: Getting started
         page: docs/concepts/gettingStarted.md
-      
-      - label: Navigating the Data Model
-        page: docs/concepts/navigating.md
-      
-      - label: Client best practices
-        page: docs/concepts/client_bestpractices.md
 
-    - group: Example use cases
-      expanded: false
-      pages:
-      - label: BIOS examples
-        page:  docs/examples/biosexamples.md
-      - label: iSCSI configuration example
-        page: docs/examples/iscsiconfig.md
-      - label: More Redfish examples
-        page: docs/examples/otherexamples.md
+      - label: Authentication and sessions
+        page: docs/concepts/redfishAuthentication.md
+
+      - label: Data types and collections
+        page: docs/concepts/dataTypesAndCollections.md
+
+      - label: Error responses
+        page: docs/concepts/errorresponses.md
+
+      - label: Performing actions
+        page: docs/concepts/performing_actions.md
+        
+      - label: BIOS data model
+        page: docs/concepts/biosdatamodel.md
+      
+      #- label: Navigating the Data Model
+      #  page: docs/concepts/navigating.md
+      
+      #- label: Client best practices
+      #  page: docs/concepts/client_bestpractices.md
+
+      - label: Secureboot Databases
+        page:  docs/concepts/securebootdatabases.md
+      
+      - label: Event Service
+        page: docs/concepts/redfishEvents.md
+    - label: Examples
+      page: docs/examples/redfishExamples.md
 
     - separatorLine: true
-    - group: REST API on HPE iLO based compute nodes
+    - group: HPE Redfish® services
       menuStyle: drilldown
       expanded: false
       pages:
       - label: Overview
-        page:  docs/ilos/index.md
+        page:  docs/redfishServices/index.md
 
-      - group: iLO 5
+      - group: Supplement documents
         expanded: false
         pages:
-        - label: Adapting from iLO 4
-          page: docs/ilos/ilo5/ilo5_adaptation.md
-        - label: Changelog
-          page: docs/ilos/ilo5/ilo5_changelog.md
-
-        - group: Supplement documents
+        - label: Redfish supplement documents overview
+          page: docs/redfishServices/ilos/supplementDocuments/index.md        
+        - group: Security
           expanded: false
           pages:
-          - label: Managing iLO 5 users
-            page: docs/ilos/ilo5/ilo5_accountservice.md
-          - label: Managing time in iLO 5
-            page: docs/ilos/ilo5/ilo5_time.md
-          - label: iLO 5 Software/Firmware update service
-            page: docs/ilos/ilo5/ilo5_updateservice.md
-
-          - label: BIOS Defaults and Passwords
-            page: docs/ilos/ilo5/ilo5_biosdoc.md
-          - label: iSCSI Software Initiator Configuration
-            page: docs/ilos/ilo5/ilo5_iscsiconf.md
-          - label: HTTPS Boot TLS configuration
-            page: docs/ilos/ilo5/ilo5_tlsconf.md
-
-          - label: SSL certificates
-            page: docs/ilos/ilo5/ilo5_sslcertdoc.md
-
-          - label: Managing the iLO Redfish Host Interface (Virtual NIC)
-            page: docs/ilos/ilo5/ilo5_vnic.md
-
-          - label: One-button secure erase
-            page: docs/ilos/ilo5/ilo5_secureerase.md
-          - label: SmartStorage configuration
-            page: docs/ilos/ilo5/ilo5_smartstoragedoc.md
-          - label: Persistent memory configuration
-            page: docs/ilos/ilo5/ilo5_configurepmm.md
-          - label: Managing Apollo Drive Bay mapping
-            page: docs/ilos/ilo5/ilo5_drivebaymapping.md
-
-          - label: Error messages and registries
-            page: docs/ilos/ilo5/ilo5_errorhandling.md 
-
-          - label: RESTful Events and the Event Service
-            page: docs/ilos/ilo5/ilo5_subscribing.md
-          - label: Using iLOrest
-            page: docs/ilos/ilo5/ilo5_resttool.md
-                
-        - group: iLO 5 version 2.55
-          expanded: false
-          pages:
-          - label: Resource map (iLO 5 2.55)
-            page: docs/ilos/ilo5/ilo5_255/ilo5_resmap255.md
-          - label: Resource definitions (iLO 5 2.55)
-            page: docs/ilos/ilo5/ilo5_255/ilo5_resourcedefns255.md 
-          - label: Error messages (iLO 5 2.55)
-            page: docs/ilos/ilo5/ilo5_255/ilo5_msgregs255.md
-          # The following page gets its label/title from the corresponding Ref Document in the
-          # OpenAPI file (openapi/<path>/ilo5xx-openapi.yaml), in the info: --> title: key.
-          #- label: Reference Document (iLO 5 2.55)
-          #  page: openapi/ilo5_255/redfishiLO5255RefDoc.page.yaml
-          #  expanded: false
-        - group: ilO 5 version 2.30
-          expanded: false
-          pages:
-          - label: Resource map (iLO 5 2.30)
-            page: docs/ilos/ilo5/ilo5_230/ilo5_resmap230.md
-          - label: Resource definitions (iLO 5 2.30)
-            page: docs/ilos/ilo5/ilo5_230/ilo5_resourcedefns230.md
-          - label: Error messages (iLO 5 2.30)
-            page: docs/ilos/ilo5/ilo5_230/ilo5_msgregs230.md
-          # The following page gets its label/title from the corresponding Ref Document in the
-          # OpenAPI file (openapi/<path>/ilo5xx-openapi.yaml), in the info: --> title: key.
-          #- label: Reference Document (iLO 5 2.30)
-          #  page: openapi/ilo5_230/redfishiLO5230RefDoc.page.yaml
-          #  expanded: false
+          - label: HPE iLO Security service
+            page: docs/redfishServices/ilos/supplementDocuments/securityService.md
+          - label: iLO and the SPDM
+            page: docs/redfishServices/ilos/supplementDocuments/spdm.md
+          - label: HTTPS boot TLS configuration
+            page: docs/redfishServices/ilos/supplementDocuments/biosTlsConf.md
+          - label: Secure erase
+            page: docs/redfishServices/ilos/supplementDocuments/secureSystemErase.md          
+        - label: OData query options
+          page: docs/redfishServices/ilos/supplementDocuments/odataqueryoptions.md
+        - label: HPE BIOS
+          page: docs/redfishServices/ilos/supplementDocuments/biosDoc.md
+        - label: Log services
+          page: docs/redfishServices/ilos/supplementDocuments/logServices.md
+        - label: iLO License service
+          page: docs/redfishServices/ilos/supplementDocuments/licenseService.md
+        - label: Managing users
+          page: docs/redfishServices/ilos/supplementDocuments/managingUsers.md
+        - label: Managing time in iLO
+          page: docs/redfishServices/ilos/supplementDocuments/managingTime.md
+        - label: iLO Software/firmware service
+          page: docs/redfishServices/ilos/supplementDocuments/updateService.md
+        - label: iLO Redfish host interface (vnic)
+          page: docs/redfishServices/ilos/supplementDocuments/vnic.md
+        - label: iLO backup and restore
+          page: docs/redfishServices/ilos/supplementDocuments/backupAndRestore.md
+        - label: Storage data models
+          page: docs/redfishServices/ilos/supplementDocuments/storage.md
+        - label: Redfish Device Enablement (RDE) support
+          page: docs/redfishServices/ilos/supplementDocuments/rdeSupport.md
+        - label: Serial interface
+          page: docs/redfishServices/ilos/supplementDocuments/serialInterface.md
+        - label: Simple Network Management Protocol
+          page: docs/redfishServices/ilos/supplementDocuments/snmp.md
         
-      - group: ilO 4
+        - group: Miscellaneous supplement documents
+          expanded: false
+          pages:
+          - label: ICSI Software Initiator Configuration
+            page: docs/redfishServices/ilos/supplementDocuments/iscsiConf.md
+          - label: Managing Apollo drive bay mapping
+            page: docs/redfishServices/ilos/supplementDocuments/apolloDriveBayMapping.md
+          - label: Persistent memory configuration
+            page: docs/redfishServices/ilos/supplementDocuments/pmmConfig.md
+          - label: Field Replaceable Units (FRUs)
+            page: docs/redfishServices/ilos/supplementDocuments/frus.md
+          - label: Using HPE iLOrest
+            page: docs/redfishServices/ilos/supplementDocuments/usingHpeiLOrest.md
+  
+      - group: HPE iLO 5 Redfish service
+        menuStyle: drilldown
+        expanded: false
+        pages:
+        - label: HPE iLO 5 Redfish documentation overview
+          page: docs/redfishServices/ilos/ilo5/index.md
+        - label: Adapting from iLO 4
+          page: docs/redfishServices/ilos/ilo5/ilo5_adaptation.md
+        - label: Changelog
+          page: docs/redfishServices/ilos/ilo5/ilo5_changelog.md           
+        - group: iLO 5 v2.90 Reference documents
+          expanded: false
+          pages:
+          - label: Reference documents overview
+            page: docs/redfishServices/ilos/ilo5/ilo5_290/index.md
+          - label: Resource map
+            page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_resmap290.md        
+          - group: Resource definitions
+            expanded: false
+            pages:
+            - label: ServiceRoot
+              page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_serviceroot_resourcedefns290.md
+            - label: Bios
+              page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_bios_resourcedefns290.md
+            - label: Manager
+              page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_manager_resourcedefns290.md
+            - label: ComputerSystem
+              page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_computersystem_resourcedefns290.md
+            - label: Chassis
+              page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_chassis_resourcedefns290.md
+            - label: Network
+              page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_network_resourcedefns290.md
+            - label: Storage
+              page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_storage_resourcedefns290.md
+            - label: HPE Oem extensions
+              page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_hpe_resourcedefns290.md
+            - label: Other resource definitions 
+              page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_other_resourcedefns290.md        
+          - label: Error messages
+            page: docs/redfishServices/ilos/ilo5/ilo5_290/ilo5_msgregs290.md
+          #- label: OpenAPI reference documentation
+          #  page: openapi/ilo5_290/ilo5290-openapi.yaml
+        - group: iLO 5 v2.81 Reference documents
+          expanded: false
+          pages:
+          - label: Reference documents overview
+            page: docs/redfishServices/ilos/ilo5/ilo5_281/index.md
+          - label: Resource map
+            page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_resmap281.md        
+          - group: Resource definitions
+            expanded: false
+            pages:
+            - label: ServiceRoot
+              page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_serviceroot_resourcedefns281.md
+            - label: Bios
+              page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_bios_resourcedefns281.md
+            - label: Manager
+              page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_manager_resourcedefns281.md
+            - label: ComputerSystem
+              page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_computersystem_resourcedefns281.md
+            - label: Chassis
+              page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_chassis_resourcedefns281.md
+            - label: Network
+              page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_network_resourcedefns281.md
+            - label: Storage
+              page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_storage_resourcedefns281.md
+            - label: HPE Oem extensions
+              page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_hpe_resourcedefns281.md
+            - label: Other resource definitions 
+              page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_other_resourcedefns281.md        
+          - label: Error messages
+            page: docs/redfishServices/ilos/ilo5/ilo5_281/ilo5_msgregs281.md
+          #- label: OpenAPI reference documentation
+          #  page: openapi/ilo5_281/ilo5281-openapi.yaml
+        - group: iLO 5 v2.78 Reference documents
+          expanded: false
+          pages:
+          - label: Reference documents overview
+            page: docs/redfishServices/ilos/ilo5/ilo5_278/index.md
+          - label: Resource map
+            page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_resmap278.md        
+          - group: Resource definitions
+            expanded: false
+            pages:
+            - label: ServiceRoot
+              page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_serviceroot_resourcedefns278.md
+            - label: Bios
+              page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_bios_resourcedefns278.md
+            - label: Manager
+              page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_manager_resourcedefns278.md
+            - label: ComputerSystem
+              page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_computersystem_resourcedefns278.md
+            - label: Chassis
+              page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_chassis_resourcedefns278.md
+            - label: Network
+              page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_network_resourcedefns278.md
+            - label: Storage
+              page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_storage_resourcedefns278.md
+            - label: HPE Oem extensions
+              page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_hpe_resourcedefns278.md
+            - label: Other resource definitions 
+              page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_other_resourcedefns278.md        
+          - label: Error messages
+            page: docs/redfishServices/ilos/ilo5/ilo5_278/ilo5_msgregs278.md
+          #- label: OpenAPI reference documentation
+          #  page: openapi/ilo5_278/ilo5278-openapi.yaml
+
+      - group: HPE iLO 6 Redfish service
+        menuStyle: drilldown
+        expanded: false
+        pages:
+        - label: HPE iLO 6 Redfish documentation overview
+          page: docs/redfishServices/ilos/ilo6/index.md
+        - label: Adapting from iLO 5
+          page: docs/redfishServices/ilos/ilo6/ilo6_adaptation.md
+        - label: Changelog
+          page: docs/redfishServices/ilos/ilo6/ilo6_changelog.md   
+
+        - group: iLO 6 v1.45 Reference documents
+          expanded: false
+          pages:
+          - label: Reference documents overview
+            page: docs/redfishServices/ilos/ilo6/ilo6_145/index.md
+          - label: Resource map
+            page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_resmap145.md        
+          - group: Resource definitions
+            expanded: false
+            pages:
+            - label: ServiceRoot
+              page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_serviceroot_resourcedefns145.md
+            - label: Bios
+              page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_bios_resourcedefns145.md
+            - label: Manager
+              page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_manager_resourcedefns145.md
+            - label: ComputerSystem
+              page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_computersystem_resourcedefns145.md
+            - label: Chassis
+              page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_chassis_resourcedefns145.md
+            - label: Network
+              page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_network_resourcedefns145.md
+            - label: Storage
+              page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_storage_resourcedefns145.md
+            - label: HPE Oem extensions
+              page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_hpe_resourcedefns145.md
+            - label: Other resource definitions 
+              page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_other_resourcedefns145.md        
+          #- label: Event definitions
+          #  page: docs/ilos/ilo6145/ilo6_events145.md
+          - label: Error messages
+            page: docs/redfishServices/ilos/ilo6/ilo6_145/ilo6_msgregs145.md
+          # The following page gets its label/title from the corresponding Ref Document in the
+          # OpenAPI file (openapi/<path>/ilo6xxx-openapi.yaml), in the info: --> title: key.
+          # - label: OpenAPI Reference Document
+          #  page: openapi/ilo6_145/ilo6145-openapi.yaml 
+        - group: iLO 6 v1.40 Reference documents
+          expanded: false
+          pages:
+          - label: Reference documents overview
+            page: docs/redfishServices/ilos/ilo6/ilo6_140/index.md
+          - label: Resource map
+            page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_resmap140.md        
+          - group: Resource definitions
+            expanded: false
+            pages:
+            - label: ServiceRoot
+              page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_serviceroot_resourcedefns140.md
+            - label: Bios
+              page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_bios_resourcedefns140.md
+            - label: Manager
+              page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_manager_resourcedefns140.md
+            - label: ComputerSystem
+              page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_computersystem_resourcedefns140.md
+            - label: Chassis
+              page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_chassis_resourcedefns140.md
+            - label: Network
+              page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_network_resourcedefns140.md
+            - label: Storage
+              page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_storage_resourcedefns140.md
+            - label: HPE Oem extensions
+              page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_hpe_resourcedefns140.md
+            - label: Other resource definitions 
+              page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_other_resourcedefns140.md        
+          #- label: Event definitions
+          #  page: docs/ilos/ilo6140/ilo6_events140.md
+          - label: Error messages
+            page: docs/redfishServices/ilos/ilo6/ilo6_140/ilo6_msgregs140.md
+          # The following page gets its label/title from the corresponding Ref Document in the
+          # OpenAPI file (openapi/<path>/ilo6xxx-openapi.yaml), in the info: --> title: key.
+          # - label: OpenAPI Reference Document
+          #  page: openapi/ilo6_140/ilo6140-openapi.yaml 
+        - group: iLO 6 v1.35 Reference documents
+          expanded: false
+          pages:
+          - label: Reference documents overview
+            page: docs/redfishServices/ilos/ilo6/ilo6_135/index.md
+          - label: Resource map
+            page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_resmap135.md        
+          - group: Resource definitions
+            expanded: false
+            pages:
+            - label: ServiceRoot
+              page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_serviceroot_resourcedefns135.md
+            - label: Bios
+              page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_bios_resourcedefns135.md
+            - label: Manager
+              page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_manager_resourcedefns135.md
+            - label: ComputerSystem
+              page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_computersystem_resourcedefns135.md
+            - label: Chassis
+              page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_chassis_resourcedefns135.md
+            - label: Network
+              page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_network_resourcedefns135.md
+            - label: Storage
+              page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_storage_resourcedefns135.md
+            - label: HPE Oem extensions
+              page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_hpe_resourcedefns135.md
+            - label: Other resource definitions 
+              page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_other_resourcedefns135.md        
+          #- label: Event definitions
+          #  page: docs/ilos/ilo6/ilo6_135/ilo6_events135.md
+          - label: Error messages
+            page: docs/redfishServices/ilos/ilo6/ilo6_135/ilo6_msgregs135.md
+          # The following page gets its label/title from the corresponding Ref Document in the
+          # OpenAPI file (openapi/<path>/ilo6xxx-openapi.yaml), in the info: --> title: key.
+          # - label: OpenAPI Reference Document
+          #  page: openapi/ilo6_135/ilo6135-openapi.yaml 
+
+    - separatorLine: true
+    - group: HPE Redfish® clients
+      menuStyle: drilldown
+      expanded: false
+      pages:
+      - label: Overview
+        page:  docs/redfishClients/index.md
+      - group: HPE iLOrest user guide
+        expanded: false
+        pages:
+        - label: iLOrest overview
+          page: docs/redfishClients/ilorest-userguide/index.md
+        - label: Changelog
+          page: docs/redfishClients/ilorest-userguide/changelog.md
+        - label: Installation
+          page: docs/redfishClients/ilorest-userguide/installation.md
+        - label: Using HPE iLOrest
+          page: docs/redfishClients/ilorest-userguide/usage.md
+        - label: Managing high security modes
+          page: docs/redfishClients/ilorest-userguide/highsecurity.md
+      
+        - group: Commands
+          expanded: false
+          pages:
+          - label: Global commands and optional arguments
+            page: docs/redfishClients/ilorest-userguide/globalcommands.md
+          - label: BIOS Commands
+            page: docs/redfishClients/ilorest-userguide/bioscommands.md
+          - label: iLO Commands
+            page: docs/redfishClients/ilorest-userguide/ilocommands.md
+          - label: iLO Repository Commands
+            page: docs/redfishClients/ilorest-userguide/ilorepositorycommands.md
+          - label: Storage controller Commands
+            page: docs/redfishClients/ilorest-userguide/smartarraycommands.md
+          - label: Persistent Memory Commands
+            page: docs/redfishClients/ilorest-userguide/persistentmemorycommands.md
+          - label: Raw Commands
+            page: docs/redfishClients/ilorest-userguide/rawcommands.md
+
+        - label: Advanced Options
+          page: docs/redfishClients/ilorest-userguide/advancedusage.md
+        - label: Use Case Examples and Macro Commands
+          page: docs/redfishClients/ilorest-userguide/examplecommandsscripts.md
+        - label: When things go wrong
+          page: docs/redfishClients/ilorest-userguide/gowrong.md
+        - label: Support and other resources
+          page: docs/redfishClients/ilorest-userguide/support.md
+        - label: Known Issues 
+          page: docs/redfishClients/ilorest-userguide/knownissues.md
+        - label: Error Codes
+          page: docs/redfishClients/ilorest-userguide/errors.md
+        - label: Glossary
+          page: docs/redfishClients/ilorest-userguide/glossaryterms.md
+      - group: HPE Python Redfish library
+        expanded: false
+        pages:
+        - label: Overview
+          page: docs/redfishClients/python-redfish-library/index.md
+        - label: Changelog
+          page: docs/redfishClients/python-redfish-library/changelog.md
+        - label: Installation
+          page: docs/redfishClients/python-redfish-library/installationGuide.md
+        - label: Client quick start  
+          page: docs/redfishClients/python-redfish-library/clientQuickStart.md
+        - label: Advanced usage
+          page: docs/redfishClients/python-redfish-library/advancedUsage.md
+        - label: The monolith
+          page: docs/redfishClients/python-redfish-library/monolith.md
+        - label: System compatibility
+          page: docs/redfishClients/python-redfish-library/systemCompatibility.md
+        - label: Examples
+          page: docs/redfishClients/python-redfish-library/examples.md
+        - label: Frequently asked questions
+          page: docs/redfishClients/python-redfish-library/frequentlyAskedQuestions.md
+        - group: Version 3.2
+          expanded: false
+          pages:
+          - label: Reference documentation
+            page: docs/redfishClients/python-redfish-library/3.2/python-library-reference3200.md
+
+      - group: Scripting Tools for Windows PowerShell User Guide
         expanded: false
         pages:
         - label: Introduction
-          page: docs/ilos/ilo4/ilo4_introduction.md
+          page: docs/redfishClients/powershellCmdlets/index.md
+#        - label: Changelog
+#          page: docs/redfishClients/powershellCmdlets/changelog.md
+#        - label: Installation
+#          page: docs/redfishClients/powershellCmdlets/installation.md        
+#        - group: v4.0.0.0
+#          expanded: false
+#          pages:
+#          - label: Introduction
+#            page: docs/redfishClients/powershellCmdlets/v4.0.0.0/index.md
+#          - label: iLO Cmdlets list
+#            page: docs/redfishClients/powershellCmdlets/v4.0.0.0/cmdlet-list-4.0.0.0.md
 
-        - label: HPE iLO 4 Redfish reference document
-          page: openapi/redfishiLO4RefDoc.page.yaml/*
-    
+#        - label: Examples
+#          page: docs/redfishClients/powershellCmdlets/cmdlets-examples.md        
+#        - label: Troubleshooting
+#          page: docs/redfishClients/powershellCmdlets/troubleshooting.md     
+            
     - separatorLine: true
-    - group: RESTful Interface Tool (iLOrest) User Guide
-      expanded: false
-      menuStyle: drilldown
-      pages:
-      - label: Introduction
-        page: docs/ilorest-userguide/index.md
-      - label: Change Log
-        page: docs/ilorest-userguide/changelog.md
-      - label: Installation
-        page: docs/ilorest-userguide/installation.md
-      - label: Using the RESTful Interface Tool
-        page: docs/ilorest-userguide/usage.md
-
-      - label: Higher security modes
-        page: docs/ilorest-userguide/highsecurity.md
-      
-      - group: Commands
-        expanded: false
-        pages:
-        - label: Global optional arguments and commands
-          page: docs/ilorest-userguide/globalcommands.md
-        - label: BIOS Commands
-          page: docs/ilorest-userguide/bioscommands.md
-        - label: iLO Commands
-          page: docs/ilorest-userguide/ilocommands.md
-        - label: iLO Repository Commands
-          page: docs/ilorest-userguide/ilorepositorycommands.md
-        - label: Smart Array Commands
-          page: docs/ilorest-userguide/smartarraycommands.md
-        - label: Persistent Memory Commands
-          page: docs/ilorest-userguide/persistentmemorycommands.md
-        - label: Raw Commands
-          page: docs/ilorest-userguide/rawcommands.md
-
-      - label: Advanced Options
-        page: docs/ilorest-userguide/advancedusage.md
-      - label: Use Case Examples and Macro Commands
-        page: docs/ilorest-userguide/examplecommandsscripts.md
-      - label: When things go wrong
-        page: docs/ilorest-userguide/gowrong.md
-      - label: Support and other resources
-        page: docs/ilorest-userguide/support.md
-      - label: Known Issues 
-        page: docs/ilorest-userguide/knownissues.md
-      - label: Error Codes
-        page: docs/ilorest-userguide/errors.md
-      - label: Glossary
-        page: docs/ilorest-userguide/glossaryterms.md
-
-          
-    - separatorLine: true  
-    - group: iLO Amplifier Pack
-      menuStyle: drilldown
-      expanded: false
-      pages:
-      - label: Overview
-        page: docs/iloamplifierpack/index.md
-      - label: Introduction to the HPE iLO Amplifier Pack RESTful API
-        page: docs/iloamplifierpack/iloamp_introduction.md
-      - label: Getting started
-        page: docs/iloamplifierpack/iloamp_gettingstarted.md
-      - label: Navigating the data model
-        page: docs/iloamplifierpack/iloamp_navigating.md
-      - label: Authentication and sessions
-        page: docs/iloamplifierpack/iloamp_authentication.md
-      - label: Performing actions
-        page: docs/iloamplifierpack/iloamp_performingaction.md
-      - label: Event service
-        page: docs/iloamplifierpack/iloamp_subscribing.md
-      - label: Use cases
-        page: docs/iloamplifierpack/iloamp_usecases.md
-      - label: Error messages and registries
-        page: docs/iloamplifierpack/iloamp_errorhandling.md
-
-      - label: Resource map
-        page: docs/iloamplifierpack/iloamp_resmap.md
-      - label: Resource definitions introduction
-        page: docs/iloamplifierpack/iloamp_resourcedefnhrd.md
-      - label: Resource definitions
-        page: docs/iloamplifierpack/iloamp_resourcedefns.md
-      
-      - label: Response message definitions
-        page: docs/iloamplifierpack/iloamp_msgregs.md
-        
-      #- group: HPE iLO Amplifier Pack Redfish reference document
-        #menuStyle: drilldown
-        #expanded: true
-        #pages: 
-        #- label: TBD
-          #page: openapi/iloampliferpackrefdoc.page.yaml
-
-#      - group: HPE Superdome 280
-#        menuStyle: drilldown
-#        expanded: false
-#        pages:
-#        - label: Getting started with Redfish on HPE Superdome 280
-#          page: docs/superdome/index.md
-#        #- group: HPE Superdome 280 Redfish reference document
-#          #menuStyle: drilldown
-#          #expanded: false
-#          #pages: 
-#          #- label: TBD
-#            #page: openapi/SuperdomeFlexRefDoc.page.yaml
-#
-#      - group: HPE Power Distribution Units (PDUs)
-#        menuStyle: drilldown
-#        expanded: false
-#        pages:
-#        - label: Getting started with Redfish on HPE PDUs
-#          page: docs/PDUs/index.md
-#        #- group: HPE PDUs Redfish reference document
-#          #menuStyle: drilldown
-#          #expanded: false
-#          #pages: 
-#          #- label: 
-#            #page: openapi/PDUsRefDoc.page.yaml/*
-#
-    - separatorLine: true
-
     - group: More references and material
       #menuStyle: drilldown
       expanded: false
@@ -272,7 +459,6 @@ hpeRedfishMainSideBar:
         external: true
 
     - separatorLine: true
-
     - label: HPE developer portal
       href: 'https://developer.hpe.com/'
       external: true
