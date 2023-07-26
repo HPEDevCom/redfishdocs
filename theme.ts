@@ -84,7 +84,7 @@ export const theme = {
     backgroundColor: '#fafafa',
     width: '320px',
     spacing: {
-	    paddingVertical: 12,
+	    paddingVertical: 8,
 	    offsetNesting: 6,
     }
   },

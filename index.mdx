@@ -1,258 +1,129 @@
 ---
 seo:
-  title: HPE Redfish documentation portal
+  title: HPE server management with Redfish®
 ---
 
-import { LandingLayout } from '@redocly/developer-portal/ui';
+import { LandingLayout } from "@redocly/ui";
+import { FlexSection, Flex, navigate } from "@redocly/ui";
 
+import { NavBar } from "@redocly/ui";
 import {
-  Button,
-  FlexSection,
-  Flex,
-  Jumbotron,
-  ThinTile,
-  WideTile,
-  Emphasis,
-  H1,
-  H2,
-  H3,
-  SectionHeader,
-  Typography
-} from '@redocly/developer-portal/ui';
-
-import {
+  Grid,
+  Page,
+  PageContent,
+  ResponsiveContext,
   Grommet,
   Section,
   Box,
   Card,
   CardBody,
   CardHeader,
-  CardFooter,
   Heading,
-  RoutedButton,
   Text,
+  Button,
   Paragraph,
-  Grid,
-  ResponsiveContext,
-  Image,
-} from 'grommet';
+  Anchor
+} from "grommet";
+import { hpe } from "grommet-theme-hpe";
 
-import { hpe } from 'grommet-theme-hpe';
+import { Directions, Services, Group, Tools } from "grommet-icons";
 
-import { NavBar } from '@redocly/developer-portal/ui';
+import bannerBg from "./images/banner.jpg";
 
-import LandingCard from './components/LandingCard';
-import ResponsiveGrid from './components/ResponsiveGrid';
-import PlatformCard from './components/PlatformCard';
 
-import hpeElement from './images/HPE_ELEMENT_20210217015_16x9_1600_0_72_RGB.jpg'
-import iLOrestIcon from './images/iLOrestIcon.png';
-import iloIcon from './images/iloIcon.png';
-import RedfishIcon from './images/DMTF_Redfish_logo_R.jpg'
-import iloAmplifierPackIcon from './images/iloAmplifierPackIcon.png';
-import superdomeIcon from './images/superdomeIcon.png';
-import pduIcon from './images/pduIcon.png';
+export default LandingLayout;
 
-import hpeLogo from './images/platforms/hpe.svg';
-import hpeDevLogo from './images/platforms/hpe-dev.svg';
-import grommetLogo from './images/platforms/grommet.svg';
-import hackShackLogo from './images/platforms/hackshack.svg';
-import slackLogo from './images/platforms/slack.svg';
-import gitHubLogo from './images/platforms/github.svg';
+<Grommet theme={hpe} />
 
 export default LandingLayout;
 
 <NavBar location={props.location} standalone={false} />
-<Grommet theme={hpe}>
-  <Box
-    align='start'
-    justify='start'
+
+<Page>
+  <PageContent
     background={{
+      fill: "horizontal",
+      image: `url(${bannerBg})`,
+      size: "cover",
       dark: true,
-      image: `url(${hpeElement})`,
     }}
-    pad={{ vertical: 'xlarge', horizontal: 'small' }}
-    height='75vh'
-    style={{ minHeight: 550, maxHeight: 900 }}
   >
-  <Box width="35%" margin={{left: '150px'}}>
-    <Heading level='2' margin={{bottom: 'none'}} weight='bold' size='large'>
-      HPE Redfish API
-    </Heading>
-      <Text size="xxlarge">
-        Reference Documents
-      </Text>
-      <Text size="large" margin={{vertical: '50px'}}>
-        A standard API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC).
-     </Text>
-     <Box 
-        width="140px"
-     >
-        <RoutedButton
-          primary={true}
-          path="docs"
-          label={
-            <Box >
-              <Text size='large'>
-                Get started
-              </Text>
-            </Box>
-          }
-        />
+    <Box gap="large" pad={{ top: "large", bottom: 'xlarge' }}>
+      <Box>
+        <Heading level={1} size='small' margin='none'>  
+          HPE server management with Redfish®
+        </Heading> 
+        <Box width='large'>
+          <Paragraph 
+            margin="none" 
+            color='text-strong'
+            fill={true}
+          > 
+            Redfish® is a standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC).
+          </Paragraph> 
+        </Box>
       </Box>
-    </Box>
-  </Box>
-</Grommet>
-
-<Grommet theme={hpe}>
-  <Box align='center' pad='medium'>
-    <Heading
-      textAlign='center'
-      style={{ fontWeight: '400' }}
-      level='2'
-      margin={{ vertical: 'large'}} 
-    >
-    Manage your datacenter with <strong>Redfish®</strong> today!
-    </Heading>
-    <Box
-        width='1115px'
-        margin={{ vertical: 'large' }}
-        direction='row' wrap={true}
-        justify='center'
-    >
-    <ResponsiveGrid
-        cardType='landing'
-        fill={true}
-        rows={{
-          small: ['auto', 'auto'],
-          medium: ['auto', 'auto'],
-          large: ['auto'],
-          xlarge: ['auto'],
-        }}
-                columns={{
-          small: ['auto'],
-          medium: ['auto', 'auto'],
-          large: ['auto', 'auto'],
-          xlarge: ['auto', 'auto'],
-        }}
+      <Grid
+        columns='340px'
+        gap='medium'
+        responsive={true}
+        pad={{ bottom: 'xlarge' }}
       >
-      <LandingCard
-        margin='medium'
-        path='docs/ilos'
-        icon={iloIcon}
-        titleText='HPE Insight Lights Out (iLO)'
-        bodyText=' HPE iLO 4 and iLO 5 Redfish API Reference Documents.'
-      />
-      <LandingCard
-        margin='medium'
-        path='docs/ilorest-userguide'
-        icon={iLOrestIcon}
-        titleText='HPE RESTful Interface Tool'
-        bodyText='User Guide'
-      />
-      <LandingCard
-        margin='medium'
-        path='docs/iloamplifierpack'
-        icon={iloAmplifierPackIcon}
-        titleText='iLO Amplifier Pack'
-        bodyText='Use Redfish to manage the HPE iLO Amplifier Pack aggregator'
-      />
-      <LandingCard
-        margin='medium'
-        path='docs/superdome/'
-        icon={superdomeIcon}
-        titleText='HPE Superdome family'
-        bodyText='HPE Superdome Flex and HPE Superdome 280'
-      />
-      <LandingCard
-        margin='medium'
-        path='docs/pdus/'
-        icon={pduIcon}
-        titleText='HPE Power Distribution Units'
-        bodyText='HPE Power Distribution Units (PDUs)'
-      />
-      </ResponsiveGrid>
-    </Box>
-  </Box>
-</Grommet>
+        <Button
+          onClick={() => navigate('/docs/')}
+        >
+          <Card className='card' background="light-1" pad={{ vertical: 'medium', horizontal: 'medium' }} fill={true}>
+            <CardHeader pad="xxmedium">
+              <Directions color='plain' size='medium' aligh='left'/>
+            </CardHeader>
+            <CardBody pad={{ vertical: 'small', horizontal: 'xxmedium' }}>
+              <Text color="text-strong" size="large" weight="bold" align="left" textAlign='start'>Guides</Text>
+              <Paragraph className='descTiles' color="text-strong" size="small" textAlign='start'>Access learning material and best practices for working with HPE Redfish® APIs</Paragraph>
+            </CardBody>
+          </Card>
+        </Button>
+        <Button
+          onClick={() => navigate('/docs/redfishservices/')}
+        >
+          <Card className='card' background="light-1" pad={{ vertical: 'medium', horizontal: 'medium' }} fill={true}>
+            <CardHeader pad="xmedium">
+              <Services color='plain' size='medium' aligh='left'/>
+            </CardHeader>
+            <CardBody pad={{ vertical: 'small', horizontal: 'xxmedium' }}>
+              <Text color="text-strong" size="large" weight="bold" align="left" textAlign='left'>Services</Text>
+              <Paragraph className='descTiles' color="text-strong" size="small" textAlign='left'>Explore and integrate with HPE Redfish® services</Paragraph>
+            </CardBody>
+          </Card>
+        </Button>
+        <Button
+          onClick={() => navigate('/docs/redfishclients/')}
+        >
+          <Card className='card' background="light-1" pad={{ vertical: 'medium', horizontal: 'medium' }} fill={true}>
+            <CardHeader pad="xmedium">
+              <Tools color='plain' size='medium' aligh='left'/>
+            </CardHeader>
+            <CardBody pad={{ vertical: 'small', horizontal: 'xxmedium' }}>
+              <Text color="text-strong" size="large" weight="bold" align="left" textAlign='start'>Clients</Text>
+              <Paragraph className='descTiles' color="text-strong" size="small" textAlign='start'>Find Redfish® clients that assist in compliance to API standards</Paragraph>
+            </CardBody>
+          </Card>
+        </Button>
+        
+        <Button href="https://developer.hpe.com/" target="_blank">
+          <Card className='card' background="light-1" pad={{ vertical: 'medium', horizontal: 'medium' }} fill={true}>
+            <CardHeader pad="xmedium">
+              <Group color='plain' size='medium' aligh='left'/>
+            </CardHeader>
+            <CardBody pad={{ vertical: 'small', horizontal: 'xxmedium' }}>
+              <Text color="text-strong" size="large" weight="bold" align="left" textAlign='start'>HPE Developer Community</Text>
+              <Paragraph className='descTiles' color="text-strong" size="small" textAlign='start'>Find more resources to collaborate and build applications and integrations with HPE</Paragraph>
+            </CardBody>
+          </Card>
+        </Button>
+      </Grid>
+    </Box>      
+  </PageContent>
+</Page>
 
-<Grommet theme={hpe}>
-  <Box align='center' pad='medium' background="#EFEFEF">
-    <Heading
-      textAlign='center'
-      style={{ fontWeight: '600' }}
-      level='2'
-      margin={{ vertical: 'large'}}
-    >
-      Explore our platforms
-    </Heading>
-    <Box
-      width='1115px'
-      margin={{ bottom: 'large' }}
-      direction='row'
-      wrap={true}
-      justify='center'
-    >
-      <ResponsiveGrid
-        cardType='platform'
-        rows={{
-          small: ['auto', 'auto'],
-          medium: ['auto', 'auto'],
-          large: ['auto'],
-          xlarge: ['auto'],
-        }}
-        columns={{
-          small: ['auto'],
-          medium: ['auto', 'auto'],
-          large: ['auto', 'auto', 'auto'],
-          xlarge: ['auto', 'auto', 'auto'],
-        }}
-      >
-        <PlatformCard
-          icon={hpeLogo}
-          title='HPE'
-          description='HPE is a global, edge-to-cloud Platform-as-a-Servicec ompany built to transform your business'
-          backgroundColor='brand'
-          path='https://www.hpe.com/us/en/home.html'
-        />
-        <PlatformCard
-          icon={hpeDevLogo}
-          title='HPE Dev'
-          description='Find the resources you need to design and build the best possible software experiences that harness the most value from your data.'
-          backgroundColor='#17EBA0'
-          path="https://developer.hpe.com/"
-        />
-        <PlatformCard
-          icon={grommetLogo}
-          title='Grommet'
-          description='Build responsive and accessible mobile-first projects for the web with an easy to use component library'
-          backgroundColor='#7630EA'
-          path="https://v2.grommet.io/"
-        />
-        <PlatformCard
-          icon={hackShackLogo}
-          title='Hack Shack'
-          description='Collaborate and expand your skills.Try our technology Workshops-on-Demand, for a unique, hands-on learning experience.'
-          backgroundColor='#F740FF'
-          path="https://hackshack.hpedev.io/"
-        />
-        <PlatformCard
-          icon={slackLogo}
-          title='Slack'
-          description='Our Slack channel to brings people together to work as one unified team.'
-          backgroundColor='#FC6161'
-          path="https://slack.hpedev.io/"
-        />
-        <PlatformCard
-          icon={gitHubLogo}
-          title='GitHub'
-          description='GitHub is a Git repository hosting service, but it adds many of its own features. '
-          backgroundColor='#444444'
-          path="https://github.com/hpe-dev-incubator/hpe-dev-portal"
-        />
-      </ResponsiveGrid>
-    </Box>
-  </Box>
-</Grommet>
 
 

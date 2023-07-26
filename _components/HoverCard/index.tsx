@@ -1,7 +1,16 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Card } from 'grommet';
+
+type HoverCardProps = {
+  children: any,
+  height: string,
+  margin: Object | string
+  basis: string,
+  pad: string,
+  background?: string,
+  onClick: Function,
+}
 
 const StyledCard = styled(Card)`
   transition: all 0.3s ease-in-out;
@@ -10,7 +19,7 @@ const StyledCard = styled(Card)`
 export default function HoverCard({
   children,
   ...rest
-}) {
+}: HoverCardProps) {
   const [isFocused, setIsFocused] = React.useState(false);
 
   return (
