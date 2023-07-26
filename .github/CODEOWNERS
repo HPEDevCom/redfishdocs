@@ -1,0 +1,15 @@
+# Code owners list.
+# Each line is a file pattern followed by one or more owners.
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence.
+
+# If a sub directory has additional owners than the root directory, then that rule should
+# come after the rule for the root directory. Because the latter takes precedence.
+# Be careful to add the owner of the root directory to the latter rule.
+
+# Default owners.
+# If a file doesn't match any of the below rules, then this rule will apply.
+*                                                      @donzef
+
+# Owners for git settings.
+/.github/                                              @donzef
