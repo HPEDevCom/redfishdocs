@@ -1,7 +1,7 @@
 hpeRedfishMainSideBar:
   - label: Home
     # The following href represents the root of the GitHub Redfish Portal repo
-    # The content of this '/' page is the index.mdx.
+    # The content of this '/' page is the index.mdx. 
     href: '/'
        
   - group: HPE Redfish® services and eco-system
