@@ -78,3 +78,9 @@ nav:
     href: 'https://www.dmtf.org/standards/redfish'
     external: true
 
+analytics:
+  ga:
+    # This option places the tracking script into the ”<head>” of your website
+    # If set to false (default), the script is placed into the "<body>"
+    head: true
+    trackingId: G-6W60Y8D0V7
