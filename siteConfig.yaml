@@ -79,8 +79,27 @@ nav:
     external: true
 
 analytics:
-  ga:
-    # This option places the tracking script into the ”<head>” of your website
-    # If set to false (default), the script is placed into the "<body>"
-    head: true
-    trackingId: G-6W60Y8D0V7
+#  ga:
+#    # This option places the tracking script into the ”<head>” of your website
+#    # If set to false (default), the script is placed into the "<body>"
+#    head: true
+#    trackingId: G-6W60Y8D0V7
+  gtag:
+    trackingIds:
+      - "G-6W60Y8D0V7" #Google Analytics / GA
+#      - "AW-CONVERSION_ID" #Google Ads / Adwords / AW
+#      - "DC-FLOODIGHT_ID" # Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+    # This object gets passed directly to the gtag config command
+    # This config will be shared across all trackingIds
+    gtagConfig:
+      optimize_id: "OPT_CONTAINER_ID"
+      anonymize_ip: true
+      cookie_expires: 0
+    # This object is used for configuration specific to this plugin
+    pluginConfig:
+      # Puts tracking script in the head instead of the body
+      head: true
+      # Setting this parameter is also optional
+      respectDNT: true
+      # Avoids sending pageview hits from custom paths
+      exclude: ["/preview/**", "/do-not-track/me/too/"]
