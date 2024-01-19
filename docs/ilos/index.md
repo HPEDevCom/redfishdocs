@@ -1,7 +1,7 @@
 ---
 seo:
   title: HPE Redfish service on iLOs
-disableLastModified: true
+disableLastModified: false
 toc:
   enable: false
 ---
