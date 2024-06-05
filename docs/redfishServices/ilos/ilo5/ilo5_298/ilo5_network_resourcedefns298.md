@@ -10,10 +10,9 @@ disableLastModified: false
 
 # Network resource definitions of iLO 5 v2.98
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## NetworkAdapterCollection
 `@odata.type: "#NetworkAdapterCollection.NetworkAdapterCollection"`
@@ -83,7 +82,6 @@ The following are the supported values:
 A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters.
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
-
 
 ### Resource Instances
 
@@ -614,7 +612,6 @@ Member of [NetworkAdapter.v1\_5\_0.NetworkAdapter](#networkadapter)
 
 `FunctionTypes` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -660,7 +657,6 @@ The following are the supported values:
 Member of [NetworkAdapter.v1\_5\_0.NetworkAdapter](#networkadapter)
 
 `RDMASupport` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -798,7 +794,6 @@ See the Redfish standard schema and specification for information on common Stat
 
 ### Actions
 
-
 **NetworkAdapter.ResetSettingsToDefault**
 Member of [NetworkAdapter.v1\_5\_0.NetworkAdapter](#networkadapter)
 There are no parameters for this action.
@@ -862,7 +857,6 @@ Member of NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection
 A Network Device Function represents a logical interface exposed by the network adapter.
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
-
 
 ### Resource Instances
 
@@ -1117,7 +1111,6 @@ Member of [NetworkDeviceFunction.v1\_5\_0.NetworkDeviceFunction](#networkdevicef
 
 `NetDevFuncCapabilities` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -1192,7 +1185,6 @@ Member of [NetworkDeviceFunction.v1\_5\_0.NetworkDeviceFunction](#networkdevicef
 Member of [NetworkDeviceFunction.v1\_5\_0.NetworkDeviceFunction](#networkdevicefunction)
 
 `NetDevFuncCapabilities` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -2277,7 +2269,6 @@ Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 
 `NameServers` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -2504,7 +2495,6 @@ Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 
 `DNSServers` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -2561,7 +2551,6 @@ Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 
 `WINSServers` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -2584,7 +2573,6 @@ Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 
 `DNSServers` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -2804,7 +2792,6 @@ Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 
 `StaticNameServers` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -2904,7 +2891,6 @@ A Network Port represents a discrete physical port capable of connecting to a ne
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -2950,7 +2936,6 @@ The following are the supported values:
 Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `AssociatedNetworkAddresses` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -3617,7 +3602,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `BandwidthAssignmentTable` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|One entry in the DCB ETS Traffic Class (TC) Bandwidth Assignment Table.|
@@ -3647,7 +3631,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `PriorityAssignmentTable` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|One entry in the DCB ETS Priority Assignment Table indicating this priority's Traffic Class assignment.|
@@ -3667,7 +3650,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `TrafficSelectionAlgorithmTable` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -4178,7 +4160,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `SupportedEthernetCapabilities` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -4202,7 +4183,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `CapableLinkSpeedMbps` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -4250,7 +4230,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 |Added|iLO 5 1.20|
 
 ### Actions
-
 
 **HpeNetworkPort.DiagnosticsReset**
 Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)

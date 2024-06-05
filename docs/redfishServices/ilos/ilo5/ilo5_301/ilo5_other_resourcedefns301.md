@@ -10,10 +10,9 @@ disableLastModified: false
 
 # Other resource definitions of iLO 5 v3.01
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## AccountService
 
@@ -22,7 +21,6 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 The AccountService resource describes the BMC user account management service. It represents the properties for this service and has links to the list of accounts.
 
 ### Managing User Accounts with the Accounts Collection
-
 
 **JSONPath**: `/Accounts/@odata.id`
 
@@ -34,7 +32,6 @@ The destination of this link is a collection of user accounts (see ManagerAccoun
 > e.g. `PATCH https://{iLO}/redfish/v1/accountservice/accounts/{item} with different properties`
 * You may remove a user account by DELETEing the resources representing the user
 > e.g. `DELETE https://{iLO}/redfish/v1/accountservice/accounts/{item}`
-
 
 ### Resource Instances
 
@@ -179,7 +176,6 @@ Member of [AccountService.v1\_5\_0.AccountService](#accountservice)
 
 `ServiceAddresses` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -272,7 +268,6 @@ Member of [AccountService.v1\_5\_0.AccountService](#accountservice)
 
 `BaseDistinguishedNames` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -305,7 +300,6 @@ Member of [AccountService.v1\_5\_0.AccountService](#accountservice)
 Member of [AccountService.v1\_5\_0.AccountService](#accountservice)
 
 `ServiceAddresses` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -561,18 +555,15 @@ Roles is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **HpeiLOAccountService.ImportKerberosKeytab**
 Member of [AccountService.v1\_5\_0.AccountService](#accountservice)
 Import the Kerberos keytab file.
-
 
 **Parameters:**
 
 **ImportUri (string)**
 
 URI of the kerberos keytab file.
-
 
 ## BootOption
 
@@ -636,7 +627,6 @@ Member of [BootOption.v1\_0\_1.BootOption](#bootoption)
 |Type|string or null|
 |Read Only|True|
 
-
 ## BootOptionCollection
 `@odata.type: "#BootOptionCollection.BootOptionCollection"`
 
@@ -678,7 +668,6 @@ Member of BootOptionCollection.BootOptionCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## Certificate
 
@@ -908,7 +897,6 @@ Member of [Certificate.v1\_6\_0.Certificate](#certificate)
 |Added|iLO 5 1.40|
 |Format|date-time|
 
-
 ## CertificateCollection
 `@odata.type: "#CertificateCollection.CertificateCollection"`
 
@@ -956,7 +944,6 @@ Member of CertificateCollection.CertificateCollection
 |Type|integer|
 |Read Only|True|
 
-
 ## CertificateLocations
 
 `@odata.type: "#CertificateLocations.v1_0_2.CertificateLocations"`
@@ -968,7 +955,6 @@ The CertificateLocations schema describes a Resource that an administrator can u
 |Uri|HTTP Allow|
 |---|---|
 |`/redfish/v1/certificateservice/certificatelocations`|GET |
-
 
 ## CertificateService
 
@@ -994,7 +980,6 @@ The information about the location of certificates.
 CertificateLocations is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
-
 
 **CertificateService.GenerateCSR**
 Member of [CertificateService.v1\_0\_3.CertificateService](#certificateservice)
@@ -1117,7 +1102,6 @@ Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
 Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
 
 `EventTypes` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1244,7 +1228,6 @@ The following are the supported values:
 |---|
 |`RedfishEvent`|
 
-
 ## EventDestinationCollection
 `@odata.type: "#EventDestinationCollection.EventDestinationCollection"`
 
@@ -1286,7 +1269,6 @@ Member of EventDestinationCollection.EventDestinationCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## EventService
 
@@ -1334,7 +1316,6 @@ Member of [EventService.v1\_2\_7.EventService](#eventservice)
 Member of [EventService.v1\_2\_7.EventService](#eventservice)
 
 `EventTypesForSubscription` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1431,7 +1412,6 @@ Subscriptions is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **EventService.SubmitTestEvent**
 Member of [EventService.v1\_2\_7.EventService](#eventservice)
 
@@ -1470,7 +1450,6 @@ Member of [EventService.v1\_2\_7.EventService](#eventservice)
 **HpeEventService.ImportCACertificate**
 Member of [EventService.v1\_2\_7.EventService](#eventservice)
 Imports a Trusted CA Certificate
-
 
 **Parameters:**
 
@@ -1553,7 +1532,6 @@ The following are the supported values:
 The collection of links to the switches that this fabric contains.
 Switches is a link (`"@odata.id": URI`) to another resource.
 
-
 ## FabricCollection
 `@odata.type: "#FabricCollection.FabricCollection"`
 
@@ -1596,15 +1574,11 @@ Member of FabricCollection.FabricCollection
 |Type|integer|
 |Read Only|True|
 
-
 ## HostInterface
 
 `@odata.type: "#HostInterface.v1_1_1.HostInterface"`
 
 The HostInterface resource describes a Redfish Host Interface, which is a method of accessing the Redfish API from the host computer system.
-
-
-
 
 ### Resource Instances
 
@@ -1674,7 +1648,6 @@ Member of [HostInterface.v1\_1\_1.HostInterface](#hostinterface)
 This is a reference to a collection of NICs that Computer Systems use for network communication with this Host Interface.
 HostEthernetInterfaces is a link (`"@odata.id": URI`) to another resource.
 
-
 `HostEthernetInterfaces` property is not supported in iLO5.
 ### HostInterfaceType
 
@@ -1741,7 +1714,6 @@ NetworkProtocol is a link (`"@odata.id": URI`) to another resource.
 Member of [HostInterface.v1\_1\_1.HostInterface](#hostinterface)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## HostInterfaceCollection
 `@odata.type: "#HostInterfaceCollection.HostInterfaceCollection"`
 
@@ -1784,7 +1756,6 @@ Member of HostInterfaceCollection.HostInterfaceCollection
 |Type|integer|
 |Read Only|True|
 
-
 ## JsonSchemaFile
 
 `@odata.type: "#JsonSchemaFile.v1_0_4.JsonSchemaFile"`
@@ -1802,7 +1773,6 @@ The JSON Schema File resource describes the location (URI) of a particular Redfi
 Member of [JsonSchemaFile.v1\_0\_4.JsonSchemaFile](#jsonschemafile)
 
 `Languages` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1847,7 +1817,6 @@ Member of [JsonSchemaFile.v1\_0\_4.JsonSchemaFile](#jsonschemafile)
 |Read Only|True|
 |Added|iLO 5 1.10|
 
-
 ## JsonSchemaFileCollection
 `@odata.type: "#JsonSchemaFileCollection.JsonSchemaFileCollection"`
 
@@ -1889,7 +1858,6 @@ Member of JsonSchemaFileCollection.JsonSchemaFileCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## LogEntry
 
@@ -1975,7 +1943,6 @@ Member of [LogEntry.v1\_11\_0.LogEntry](#logentry)
 
 `MessageArgs` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -1996,7 +1963,6 @@ Member of [LogEntry.v1\_11\_0.LogEntry](#logentry)
 Member of [LogEntry.v1\_11\_0.LogEntry](#logentry)
 
 `Categories` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -2248,7 +2214,6 @@ The following are the supported values:
 |`Warning`|
 |`Critical`|
 
-
 ## LogEntryCollection
 `@odata.type: "#LogEntryCollection.LogEntryCollection"`
 
@@ -2374,7 +2339,6 @@ Member of LogEntryCollection.LogEntryCollection
 
 `MessageArgs` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -2393,7 +2357,6 @@ Member of LogEntryCollection.LogEntryCollection
 Member of LogEntryCollection.LogEntryCollection
 
 `Categories` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -2635,7 +2598,6 @@ Member of LogEntryCollection.LogEntryCollection
 |Type|integer|
 |Read Only|True|
 
-
 ## LogService
 
 `@odata.type: "#LogService.v1_1_0.LogService"`
@@ -2731,7 +2693,6 @@ See the Redfish standard schema and specification for information on common Stat
 
 ### Actions
 
-
 **LogService.ClearLog**
 Member of [LogService.v1\_1\_0.LogService](#logservice)
 There are no parameters for this action.
@@ -2778,7 +2739,6 @@ Member of LogServiceCollection.LogServiceCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## Memory
 
@@ -3064,7 +3024,6 @@ Member of [Memory.v1\_7\_1.Memory](#memory)
 
 `MemoryMedia` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -3166,7 +3125,6 @@ Member of [Memory.v1\_7\_1.Memory](#memory)
 Member of [Memory.v1\_7\_1.Memory](#memory)
 
 `Attributes` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -3364,7 +3322,6 @@ Member of [Memory.v1\_7\_1.Memory](#memory)
 
 `RelatedPowerBackupUnitBays` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|Battery backup unit bay number.|
@@ -3376,7 +3333,6 @@ Member of [Memory.v1\_7\_1.Memory](#memory)
 Member of [Memory.v1\_7\_1.Memory](#memory)
 
 `SPDBytes` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -3410,7 +3366,6 @@ Member of [Memory.v1\_7\_1.Memory](#memory)
 Member of [Memory.v1\_7\_1.Memory](#memory)
 
 `OperatingMemoryModes` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -3700,7 +3655,6 @@ Member of [Memory.v1\_7\_1.Memory](#memory)
 |Read Only|True|
 |Added|iLO 5 1.40|
 
-
 ## MemoryChunks
 
 `@odata.type: "#MemoryChunks.v1_2_3.MemoryChunks"`
@@ -3737,7 +3691,7 @@ Member of [MemoryChunks.v1\_2\_3.MemoryChunks](#memorychunks)
 `InterleaveSets` is an array containing elements of:
 
 **InterleaveSets[{item}].Memory**
-Describes a memory device of the interleave set. 
+Describes a memory device of the interleave set.
 Memory is a link (`"@odata.id": URI`) to another resource.
 
 **InterleaveSets[{item}].MemoryLevel**
@@ -3829,7 +3783,6 @@ Member of [MemoryChunks.v1\_2\_3.MemoryChunks](#memorychunks)
 Member of [MemoryChunks.v1\_2\_3.MemoryChunks](#memorychunks)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## MemoryChunksCollection
 `@odata.type: "#MemoryChunksCollection.MemoryChunksCollection"`
 
@@ -3871,7 +3824,6 @@ Member of MemoryChunksCollection.MemoryChunksCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## MemoryCollection
 `@odata.type: "#MemoryCollection.MemoryCollection"`
@@ -3979,7 +3931,6 @@ Member of MemoryCollection.MemoryCollection
 
 `AmpModeSupported` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -4053,7 +4004,6 @@ Member of MemoryCollection.MemoryCollection
 |Description|The total size of the memory populated on the board in MB.|
 |Type|integer or null|
 |Read Only|True|
-
 
 ## MemoryDomain
 
@@ -4145,7 +4095,6 @@ Member of [MemoryDomain.v1\_2\_1.MemoryDomain](#memorydomain)
 A reference to the collection of Memory Chunks associated with this Memory Domain.
 MemoryChunks is a link (`"@odata.id": URI`) to another resource.
 
-
 ## MemoryDomainCollection
 `@odata.type: "#MemoryDomainCollection.MemoryDomainCollection"`
 
@@ -4188,7 +4137,6 @@ Member of MemoryDomainCollection.MemoryDomainCollection
 |Type|integer|
 |Read Only|True|
 
-
 ## MessageRegistryFile
 
 `@odata.type: "#MessageRegistryFile.v1_0_4.MessageRegistryFile"`
@@ -4206,7 +4154,6 @@ The MessageRegistryFile resource describes the Schema File locator resource.
 Member of [MessageRegistryFile.v1\_0\_4.MessageRegistryFile](#messageregistryfile)
 
 `Languages` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -4251,7 +4198,6 @@ Member of [MessageRegistryFile.v1\_0\_4.MessageRegistryFile](#messageregistryfil
 |Read Only|True|
 |Added|iLO 5 1.15|
 
-
 ## MessageRegistryFileCollection
 `@odata.type: "#MessageRegistryFileCollection.MessageRegistryFileCollection"`
 
@@ -4293,7 +4239,6 @@ Member of MessageRegistryFileCollection.MessageRegistryFileCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## MetricDefinition
 
@@ -4415,7 +4360,6 @@ Member of [MetricDefinition.v1\_0\_0.MetricDefinition](#metricdefinition)
 
 `MetricProperties` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -4464,7 +4408,6 @@ Member of [MetricDefinition.v1\_0\_0.MetricDefinition](#metricdefinition)
 |Read Only|False|
 |Added|iLO 5 1.40|
 
-
 ## MetricDefinitionCollection
 `@odata.type: "#MetricDefinitionCollection.MetricDefinitionCollection"`
 
@@ -4506,7 +4449,6 @@ Member of MetricDefinitionCollection.MetricDefinitionCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## MetricReport
 
@@ -4566,7 +4508,6 @@ Member of [MetricReport.v1\_0\_0.MetricReport](#metricreport)
 |Added|iLO 5 1.40|
 |Format|date-time|
 
-
 ## MetricReportCollection
 `@odata.type: "#MetricReportCollection.MetricReportCollection"`
 
@@ -4609,7 +4550,6 @@ Member of MetricReportCollection.MetricReportCollection
 |Type|integer|
 |Read Only|True|
 
-
 ## MetricReportDefinition
 
 `@odata.type: "#MetricReportDefinition.v1_4_2.MetricReportDefinition"`
@@ -4627,7 +4567,6 @@ A set of metrics that are collected into a metric report.
 Member of [MetricReportDefinition.v1\_4\_2.MetricReportDefinition](#metricreportdefinition)
 
 `MetricProperties` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -4726,7 +4665,6 @@ Member of [MetricReportDefinition.v1\_4\_2.MetricReportDefinition](#metricreport
 
 `MetricProperties` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -4738,7 +4676,6 @@ Member of [MetricReportDefinition.v1\_4\_2.MetricReportDefinition](#metricreport
 Member of [MetricReportDefinition.v1\_4\_2.MetricReportDefinition](#metricreportdefinition)
 
 `EnabledDaysOfMonth` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -4768,7 +4705,6 @@ Member of [MetricReportDefinition.v1\_4\_2.MetricReportDefinition](#metricreport
 
 Member of [MetricReportDefinition.v1\_4\_2.MetricReportDefinition](#metricreportdefinition)
 See the Redfish standard schema and specification for information on common Status object.
-
 
 ## MetricReportDefinitionCollection
 `@odata.type: "#MetricReportDefinitionCollection.MetricReportDefinitionCollection"`
@@ -4811,7 +4747,6 @@ Member of MetricReportDefinitionCollection.MetricReportDefinitionCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## PCIeDevice
 
@@ -5011,7 +4946,6 @@ Member of [PCIeDevice.v1\_5\_0.PCIeDevice](#pciedevice)
 Member of [PCIeDevice.v1\_5\_0.PCIeDevice](#pciedevice)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## PCIeDeviceCollection
 `@odata.type: "#PCIeDeviceCollection.PCIeDeviceCollection"`
 
@@ -5053,7 +4987,6 @@ Member of PCIeDeviceCollection.PCIeDeviceCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## PCIeFunction
 
@@ -5197,7 +5130,6 @@ Member of [PCIeFunction.v1\_2\_3.PCIeFunction](#pciefunction)
 |Type|string or null|
 |Read Only|True|
 
-
 ## PCIeFunctionCollection
 `@odata.type: "#PCIeFunctionCollection.PCIeFunctionCollection"`
 
@@ -5239,7 +5171,6 @@ Member of PCIeFunctionCollection.PCIeFunctionCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## PCIeSlots
 
@@ -5459,7 +5390,6 @@ The following are the supported values:
 Member of [PCIeSlots.v1\_3\_0.PCIeSlots](#pcieslots)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## Port
 
 `@odata.type: "#Port.v1_9_0.Port"`
@@ -5467,7 +5397,6 @@ See the Redfish standard schema and specification for information on common Stat
 A  Port represents a discrete physical port capable of connecting to a network.
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
-
 
 ### Resource Instances
 
@@ -5507,7 +5436,6 @@ Member of [Port.v1\_9\_0.Port](#port)
 Member of [Port.v1\_9\_0.Port](#port)
 
 `CapableProtocolVersions` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -5550,7 +5478,6 @@ Member of [Port.v1\_9\_0.Port](#port)
 Member of [Port.v1\_9\_0.Port](#port)
 
 `AssociatedMACAddresses` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -5949,7 +5876,6 @@ Member of [Port.v1\_9\_0.Port](#port)
 Member of [Port.v1\_9\_0.Port](#port)
 
 `CapableLinkSpeedGbps` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -6739,7 +6665,6 @@ Member of [Port.v1\_9\_0.Port](#port)
 
 `BandwidthAssignmentTable` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|One entry in the DCB ETS Traffic Class (TC) Bandwidth Assignment Table.|
@@ -6769,7 +6694,6 @@ Member of [Port.v1\_9\_0.Port](#port)
 
 `PriorityAssignmentTable` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|One entry in the DCB ETS Priority Assignment Table indicating this priority's Traffic Class assignment.|
@@ -6789,7 +6713,6 @@ Member of [Port.v1\_9\_0.Port](#port)
 Member of [Port.v1\_9\_0.Port](#port)
 
 `TrafficSelectionAlgorithmTable` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -7351,7 +7274,6 @@ Member of [Port.v1\_9\_0.Port](#port)
 
 ### Actions
 
-
 **Port.Reset**
 Member of [Port.v1\_9\_0.Port](#port)
 
@@ -7430,7 +7352,6 @@ Member of PortCollection.PortCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## Power
 
@@ -8442,7 +8363,6 @@ See the Redfish standard schema and specification for information on common Redu
 Member of [Power.v1\_3\_0.Power](#power)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## Processor
 
 `@odata.type: "#Processor.v1_7_2.Processor"`
@@ -8570,7 +8490,6 @@ Member of [Processor.v1\_7\_2.Processor](#processor)
 
 `CurrentSRAMType` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|The array of supported SRAM attributes currently used by the cache.|
@@ -8674,7 +8593,6 @@ Member of [Processor.v1\_7\_2.Processor](#processor)
 
 `SupportedSRAMType` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -8712,7 +8630,6 @@ The following are the supported values:
 Member of [Processor.v1\_7\_2.Processor](#processor)
 
 `Characteristics` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -9024,7 +8941,6 @@ Member of [Processor.v1\_7\_2.Processor](#processor)
 |Read Only|True|
 |Added|iLO 5 1.10|
 
-
 ## ProcessorCollection
 `@odata.type: "#ProcessorCollection.ProcessorCollection"`
 
@@ -9067,7 +8983,6 @@ Member of ProcessorCollection.ProcessorCollection
 |Type|integer|
 |Read Only|True|
 
-
 ## Role
 
 `@odata.type: "#Role.v1_2_1.Role"`
@@ -9085,7 +9000,6 @@ This resource defines a user role to be used in conjunction with a Manager Accou
 Member of [Role.v1\_2\_1.Role](#role)
 
 `AssignedPrivileges` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -9140,7 +9054,6 @@ Member of [Role.v1\_2\_1.Role](#role)
 
 `OemPrivileges` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -9168,7 +9081,6 @@ Member of [Role.v1\_2\_1.Role](#role)
 |Type|string|
 |Read Only|True|
 |Added|iLO 5 1.40|
-
 
 ## RoleCollection
 `@odata.type: "#RoleCollection.RoleCollection"`
@@ -9211,7 +9123,6 @@ Member of RoleCollection.RoleCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## SecureBoot
 
@@ -9276,11 +9187,9 @@ The following are the supported values:
 
 ### Actions
 
-
 **SecureBoot.ResetKeys**
 Member of [SecureBoot.v1\_0\_0.SecureBoot](#secureboot)
 Action to perform reset of the Secure Boot Keys.
-
 
 **Parameters:**
 
@@ -9336,7 +9245,6 @@ Member of [SerialInterface.v1\_1\_7.SerialInterface](#serialinterface)
 |Type|boolean or null|
 |Read Only|False|
 
-
 ## SerialInterfaceCollection
 `@odata.type: "#SerialInterfaceCollection.SerialInterfaceCollection"`
 
@@ -9378,7 +9286,6 @@ Member of SerialInterfaceCollection.SerialInterfaceCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## Session
 
@@ -9640,7 +9547,6 @@ Member of [Session.v1\_0\_0.Session](#session)
 |Read Only|True|
 |Added|iLO 5 1.10|
 
-
 ## SessionCollection
 `@odata.type: "#SessionCollection.SessionCollection"`
 
@@ -9683,7 +9589,6 @@ Member of SessionCollection.SessionCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## SessionService
 
@@ -9796,7 +9701,6 @@ The following are the supported values:
 Member of [SmartStorageConfig.v2\_0\_0.SmartStorageConfig](#smartstorageconfig)
 
 `PhysicalDriveList` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -10086,7 +9990,6 @@ Member of [SmartStorageConfig.v2\_0\_0.SmartStorageConfig](#smartstorageconfig)
 
 `DataDrives` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|Physical drive in the format specified in DriveLocationFormat|
@@ -10250,7 +10153,6 @@ Member of [SmartStorageConfig.v2\_0\_0.SmartStorageConfig](#smartstorageconfig)
 Member of [SmartStorageConfig.v2\_0\_0.SmartStorageConfig](#smartstorageconfig)
 
 `SpareDrives` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -10547,7 +10449,6 @@ Member of [SmartStorageConfig.v2\_0\_0.SmartStorageConfig](#smartstorageconfig)
 |Type|integer or null|
 |Read Only|False|
 
-
 ## SoftwareInventory
 
 `@odata.type: "#SoftwareInventory.v1_2_0.SoftwareInventory"`
@@ -10609,7 +10510,6 @@ Member of [SoftwareInventory.v1\_2\_0.SoftwareInventory](#softwareinventory)
 Member of [SoftwareInventory.v1\_2\_0.SoftwareInventory](#softwareinventory)
 
 `Targets` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -10689,7 +10589,6 @@ Member of [SoftwareInventory.v1\_2\_0.SoftwareInventory](#softwareinventory)
 |Read Only|True|
 |Added|iLO 5 1.10|
 
-
 ## SoftwareInventoryCollection
 `@odata.type: "#SoftwareInventoryCollection.SoftwareInventoryCollection"`
 
@@ -10732,7 +10631,6 @@ Member of SoftwareInventoryCollection.SoftwareInventoryCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## Switch
 
@@ -10813,7 +10711,6 @@ Member of [Switch.v1\_9\_1.Switch](#switch)
 
 `SupportedProtocols` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -10872,7 +10769,6 @@ Member of [Switch.v1\_9\_1.Switch](#switch)
 |Type|string or null|
 |Read Only|True|
 
-
 ## SwitchCollection
 `@odata.type: "#SwitchCollection.SwitchCollection"`
 
@@ -10914,7 +10810,6 @@ Member of SwitchCollection.SwitchCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## Task
 
@@ -10961,7 +10856,6 @@ Member of [Task.v1\_3\_0.Task](#task)
 
 `MessageArgs` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -10981,7 +10875,6 @@ Member of [Task.v1\_3\_0.Task](#task)
 Member of [Task.v1\_3\_0.Task](#task)
 
 `RelatedProperties` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -11022,7 +10915,6 @@ The following are the supported values:
 Member of [Task.v1\_3\_0.Task](#task)
 
 `HttpHeaders` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -11130,7 +11022,6 @@ The following are the supported values:
 |`Warning`|A condition exists that requires attention.|
 |`Critical`|A critical condition exists that requires immediate attention.|
 
-
 ## TaskCollection
 `@odata.type: "#TaskCollection.TaskCollection"`
 
@@ -11172,7 +11063,6 @@ Member of TaskCollection.TaskCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## TaskService
 
@@ -11253,7 +11143,6 @@ See the Redfish standard schema and specification for information on common Stat
 This property references a resource of type Collection with a MemberType of TaskCollection.
 Tasks is a link (`"@odata.id": URI`) to another resource.
 
-
 ## TelemetryService
 
 `@odata.type: "#TelemetryService.v1_0_0.TelemetryService"`
@@ -11262,9 +11151,7 @@ The TelemetryService resource describes the Metrics Service.
 
 ### Telemetry not supported on AMD platforms
 
-
 Telemetry Service is supported only on Intel platform. On AMD systems, performing `GET` on `/redfish/v1/TelemetryService` will return 400 Error Operation not supported.
-
 
 ### Resource Instances
 
@@ -11328,7 +11215,6 @@ Member of [TelemetryService.v1\_0\_0.TelemetryService](#telemetryservice)
 
 `SupportedCollectionFunctions` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|An operation to perform over the sample.|
@@ -11348,7 +11234,6 @@ The following are the supported values:
 
 A link to the collection of Triggers, which apply to metrics.
 Triggers is a link (`"@odata.id": URI`) to another resource.
-
 
 ## Thermal
 
@@ -11907,11 +11792,9 @@ Member of [Thermal.v1\_7\_1.Thermal](#thermal)
 
 ### Actions
 
-
 **HpeThermalExt.SetUserTempThreshold**
 Member of [Thermal.v1\_7\_1.Thermal](#thermal)
 The action to set a user defined threshold for a PCIe slot temperature sensor.
-
 
 **Parameters:**
 
@@ -11949,7 +11832,6 @@ The Triggers resource describes the a metric trigger, which apply to metrics.
 Member of [Triggers.v1\_0\_0.Triggers](#triggers)
 
 `MetricProperties` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -12143,7 +12025,6 @@ Member of [Triggers.v1\_0\_0.Triggers](#triggers)
 
 `TriggerActions` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -12155,7 +12036,6 @@ The following are the supported values:
 |---|---|
 |`LogToLogService`|Upon a trigger, record in a log.|
 |`RedfishEvent`|Upon a trigger, send a Redfish Event message of type MetricReport.|
-
 
 ## TriggersCollection
 `@odata.type: "#TriggersCollection.TriggersCollection"`
@@ -12198,7 +12078,6 @@ Member of TriggersCollection.TriggersCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 
 ## UpdateService
 
@@ -12476,7 +12355,6 @@ Member of [UpdateService.v1\_2\_1.UpdateService](#updateservice)
 
 `MessageArgs` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -12548,7 +12426,6 @@ SoftwareInventory is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **UpdateService.SimpleUpdate**
 Member of [UpdateService.v1\_2\_1.UpdateService](#updateservice)
 
@@ -12562,7 +12439,7 @@ The password credential required for authentication to fetch image.
 
 **Targets (array)**
 
-Target Redfish URI 
+Target Redfish URI
 
 **TransferProtocol (string)**
 
@@ -12660,7 +12537,6 @@ Member of [VirtualMedia.v1\_3\_0.VirtualMedia](#virtualmedia)
 
 `MediaTypes` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|The array of supported media types for this connection.|
@@ -12723,7 +12599,6 @@ Member of [VirtualMedia.v1\_3\_0.VirtualMedia](#virtualmedia)
 |Added|iLO 5 1.10|
 
 ### Actions
-
 
 **VirtualMedia.EjectMedia**
 Member of [VirtualMedia.v1\_3\_0.VirtualMedia](#virtualmedia)
@@ -12841,5 +12716,4 @@ Member of VirtualMediaCollection.VirtualMediaCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
-
 

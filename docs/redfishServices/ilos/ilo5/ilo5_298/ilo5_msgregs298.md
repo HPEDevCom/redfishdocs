@@ -11,7 +11,6 @@ disableLastModified: false
 
 This section is a reference for the defined message registry entries in HPE iLO 5 version 2.98. Redfish responses are discussed in the [error responses](/docs/concepts/errorresponses.md) section.
 
-
 ### Base.1.17.AccessDenied
 While attempting to access, connect to, or transfer to/from another resource, the service was denied access.
 
@@ -532,7 +531,7 @@ While attempting to access, connect to, or transfer from another location, the o
 |:---|:---|
 |Message Format|"The other end of the connection at %1 does not support the specified protocol %2."
 |Severity|Critical
-|Resolution|Change protocols or URIs. 
+|Resolution|Change protocols or URIs.
 
 ### Base.1.17.StringValueTooLong
 Indicates that a string value passed to the given resource exceeded its length limit. An example is when a shorter limit is imposed by an implementation than that allowed by the specification.

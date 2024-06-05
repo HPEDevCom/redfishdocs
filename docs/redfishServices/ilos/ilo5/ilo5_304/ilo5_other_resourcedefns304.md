@@ -12577,6 +12577,21 @@ Target Redfish URI
 
 The username credential required for authentication to fetch image.
 
+**HpeiLOUpdateServiceExt.DeleteInstallSets**
+Member of [UpdateService.v1\_2\_1.UpdateService](#updateservice)
+
+**Parameters:**
+
+**IncludeRecoverySet (boolean)**
+
+**HpeiLOUpdateServiceExt.DeleteUnlockedComponents**
+Member of [UpdateService.v1\_2\_1.UpdateService](#updateservice)
+There are no parameters for this action.
+
+**HpeiLOUpdateServiceExt.DeleteMaintenanceWindows**
+Member of [UpdateService.v1\_2\_1.UpdateService](#updateservice)
+There are no parameters for this action.
+
 **HpeiLOUpdateServiceExt.AddFromUri**
 Member of [UpdateService.v1\_2\_1.UpdateService](#updateservice)
 

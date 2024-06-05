@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: iLO 5 version 3.04 Resource map
 toc:
@@ -11,7 +12,6 @@ disableLastModified: false
 The following table lists HPE iLO Redfish resource types and their associated URIs.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 # Resource Map
 |URI|Type|

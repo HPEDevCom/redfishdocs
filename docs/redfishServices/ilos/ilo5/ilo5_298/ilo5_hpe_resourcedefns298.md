@@ -10,10 +10,9 @@ disableLastModified: false
 
 # Hpe resource definitions of iLO 5 v2.98
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## HpeAutomaticCertEnrollment
 
@@ -152,11 +151,9 @@ Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpea
 
 ### Actions
 
-
 **HpeAutomaticCertEnrollment.ImportCACertificate**
 Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
 Imports a CA Certificate.
-
 
 **Parameters:**
 
@@ -583,7 +580,6 @@ Member of [HpeBiosMapping.v2\_0\_0.HpeBiosMapping](#hpebiosmapping)
 
 `Associations` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -709,7 +705,6 @@ Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 
 ### Actions
 
-
 **HpeCertAuth.DeleteCRL**
 Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 Remove an installed Certificate Revocation List (CRL).
@@ -720,7 +715,6 @@ There are no parameters for this action.
 Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 Imports a Trusted Certificate
 
-
 **Parameters:**
 
 **Certificate (string)**
@@ -730,7 +724,6 @@ Contains PEM formatted X509 certificate or PKCS7 certificate chain (Base64 encod
 **HpeCertAuth.ImportCRL**
 Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 Imports a Certificate Revocation List (CRL).
-
 
 **Parameters:**
 
@@ -744,7 +737,6 @@ Contains URI of PEM formatted certificate revocation list (CRL) (Base64 encoded)
 The HpeCertificate resource describes an X509 certificate.
 
 This resource type was added in iLO 5 1.20
-
 
 ### Resource Instances
 
@@ -1027,7 +1019,6 @@ Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
 
 `Targets` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|Target GUIDs from secure flash header or sidecar file.|
@@ -1039,7 +1030,6 @@ Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
 Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
 
 `UpdatableBy` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1249,7 +1239,6 @@ Member of [HpeComponentInstallSet.v1\_3\_0.HpeComponentInstallSet](#hpecomponent
 
 `Targets` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -1259,7 +1248,6 @@ Member of [HpeComponentInstallSet.v1\_3\_0.HpeComponentInstallSet](#hpecomponent
 Member of [HpeComponentInstallSet.v1\_3\_0.HpeComponentInstallSet](#hpecomponentinstallset)
 
 `UpdatableBy` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1285,7 +1273,6 @@ Member of [HpeComponentInstallSet.v1\_3\_0.HpeComponentInstallSet](#hpecomponent
 |Added|iLO 5 1.10|
 
 ### Actions
-
 
 **HpeComponentInstallSet.Invoke**
 Member of [HpeComponentInstallSet.v1\_3\_0.HpeComponentInstallSet](#hpecomponentinstallset)
@@ -1467,7 +1454,6 @@ Member of [HpeComponentUpdateTask.v1\_4\_0.HpeComponentUpdateTask](#hpecomponent
 
 `MessageArgs` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -1545,7 +1531,6 @@ Member of [HpeComponentUpdateTask.v1\_4\_0.HpeComponentUpdateTask](#hpecomponent
 
 `Targets` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -1556,7 +1541,6 @@ Member of [HpeComponentUpdateTask.v1\_4\_0.HpeComponentUpdateTask](#hpecomponent
 Member of [HpeComponentUpdateTask.v1\_4\_0.HpeComponentUpdateTask](#hpecomponentupdatetask)
 
 `UpdatableBy` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1701,11 +1685,9 @@ Member of [HpeDirectoryTest.v1\_0\_0.HpeDirectoryTest](#hpedirectorytest)
 
 ### Actions
 
-
 **HpeDirectoryTest.StartTest**
 Member of [HpeDirectoryTest.v1\_0\_0.HpeDirectoryTest](#hpedirectorytest)
 Start the directory test.
-
 
 **Parameters:**
 ## HpeESKM
@@ -1876,7 +1858,6 @@ Member of [HpeESKM.v2\_0\_0.HpeESKM](#hpeeskm)
 
 ### Actions
 
-
 **HpeESKM.ClearESKMLog**
 Member of [HpeESKM.v2\_0\_0.HpeESKM](#hpeeskm)
 Clears ESKM log.
@@ -1967,7 +1948,6 @@ Member of [HpeHttpsCert.v2\_0\_0.HpeHttpsCert](#hpehttpscert)
 
 ### Actions
 
-
 **HpeHttpsCert.GenerateCSR**
 Member of [HpeHttpsCert.v2\_0\_0.HpeHttpsCert](#hpehttpscert)
 
@@ -2004,7 +1984,6 @@ The state where the company or organization that owns this iLO subsystem is loca
 **HpeHttpsCert.ImportCertificate**
 Member of [HpeHttpsCert.v2\_0\_0.HpeHttpsCert](#hpehttpscert)
 Imports a Trusted Certificate and iLO is reset.
-
 
 **Parameters:**
 
@@ -2921,7 +2900,6 @@ Member of [HpeNetworkPortLLDP.v1\_2\_0.HpeNetworkPortLLDP](#hpenetworkportlldp)
 
 `BandwidthAssignmentTable` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|One entry in the DCB ETS Traffic Class (TC) Bandwidth Assignment Table.|
@@ -2953,7 +2931,6 @@ Member of [HpeNetworkPortLLDP.v1\_2\_0.HpeNetworkPortLLDP](#hpenetworkportlldp)
 
 `PriorityAssignmentTable` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|One entry in the DCB ETS Priority Assignment Table indicating this priority's Traffic Class assignment.|
@@ -2974,7 +2951,6 @@ Member of [HpeNetworkPortLLDP.v1\_2\_0.HpeNetworkPortLLDP](#hpenetworkportlldp)
 Member of [HpeNetworkPortLLDP.v1\_2\_0.HpeNetworkPortLLDP](#hpenetworkportlldp)
 
 `TrafficSelectionAlgorithmTable` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -3640,7 +3616,6 @@ This resource type was added in iLO 5 1.20
 
 HpeRemoteSupport enables management of HPE Remote Support configuration on iLO 5.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -3874,7 +3849,6 @@ ServiceEventLogs is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **HpeRemoteSupport.ClearServiceEventLog**
 Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
 There are no parameters for this action.
@@ -3916,7 +3890,6 @@ The host name or IP address of the Remote Support server. This is applicable for
 The HpeSNMPAlertDestination resource describes the properties for SNMP Alert Destinations.  The alert destination configuration up to 8 remote management systems that receive SNMP alerts from the BMC.
 
 This resource type was added in iLO 5 1.20
-
 
 ### Resource Instances
 
@@ -4031,7 +4004,6 @@ Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
 The HpeSNMPUser resource describes the properties for SNMP support.  SNMPv3 supports the User-based Security Model (USM). With this model,security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.
 
 This resource type was added in iLO 5 1.20
-
 
 ### Resource Instances
 
@@ -4359,7 +4331,6 @@ Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hp
 
 ### Actions
 
-
 **HpeSecureEraseReportService.DeleteSecureEraseReport**
 Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hpesecureerasereportservice)
 There are no parameters for this action.
@@ -4471,7 +4442,6 @@ The following are the supported values:
 Member of [HpeSecurityService.v2\_3\_1.HpeSecurityService](#hpesecurityservice)
 
 `SecurityState@Redfish.AllowableValues` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -4655,7 +4625,6 @@ The HpeServerAccHddService resource describes the properties for management of s
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -4784,7 +4753,6 @@ The HpeServerAccHddZone resource describes the properties for management of shar
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -4802,7 +4770,6 @@ Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzon
 Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzone)
 
 `BayNumber` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -4830,7 +4797,6 @@ Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzon
 
 `BayNumber` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|integer|
@@ -4856,7 +4822,6 @@ Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzon
 Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzone)
 
 `BayNumber` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -4896,7 +4861,6 @@ Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzon
 
 ### Actions
 
-
 **HpeServerAccHddZone.BackupConfigurationToBmc**
 Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzone)
 Backup Apollo Chassis Controller Hdd zone configuration to BMC.
@@ -4906,7 +4870,6 @@ There are no parameters for this action.
 **HpeServerAccHddZone.ConfigureZone**
 Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzone)
 Execute Apollo Chassis Controller Hdd zone configuration.
-
 
 **Parameters:**
 
@@ -4924,7 +4887,6 @@ There are no parameters for this action.
 The HpeServerAccPowerCalibration resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -5198,11 +5160,9 @@ Member of [HpeServerAccPowerCalibration.v1\_0\_0.HpeServerAccPowerCalibration](#
 
 ### Actions
 
-
 **HpeServerAccPowerCalibration.Calibrate**
 Member of [HpeServerAccPowerCalibration.v1\_0\_0.HpeServerAccPowerCalibration](#hpeserveraccpowercalibration)
 Execute the Apollo Chassis Controller power calibration configuration.
-
 
 **Parameters:**
 
@@ -5227,7 +5187,6 @@ Execute the Apollo Chassis Controller power calibration configuration.
 The HpeServerAccPowerLimit resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -5325,11 +5284,9 @@ Member of [HpeServerAccPowerLimit.v1\_0\_0.HpeServerAccPowerLimit](#hpeserveracc
 
 ### Actions
 
-
 **HpeServerAccPowerLimit.ConfigurePowerLimit**
 Member of [HpeServerAccPowerLimit.v1\_0\_0.HpeServerAccPowerLimit](#hpeserveraccpowerlimit)
 Deploy the Apollo Chassis Controller power limit configuration.
-
 
 **Parameters:**
 
@@ -5341,7 +5298,6 @@ Deploy the Apollo Chassis Controller power limit configuration.
 The HpeServerAccPowerNodesInfo resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -5404,7 +5360,6 @@ The HpeServerAccPowerService resource describes the properties for management of
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -5459,7 +5414,6 @@ The following are the supported values:
 The HpeServerAccPowerZone resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -5517,11 +5471,9 @@ Member of [HpeServerAccPowerZone.v1\_0\_0.HpeServerAccPowerZone](#hpeserveraccpo
 
 ### Actions
 
-
 **HpeServerAccPowerZone.ConfigureZone**
 Member of [HpeServerAccPowerZone.v1\_0\_0.HpeServerAccPowerZone](#hpeserveraccpowerzone)
 Execute the Apollo Chassis Controller power regulation zone configuration.
-
 
 **Parameters:**
 
@@ -5599,7 +5551,6 @@ Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverboots
 
 `DefaultBootOrder` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|Default UEFI boot order device type. This is used to define the order in which UEFI boot order is reset to when a default configuration is requested.|
@@ -5666,7 +5617,6 @@ Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverboots
 Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
 
 `PersistentBootConfigOrder` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -5942,7 +5892,6 @@ The HpeServerDevice resource describes the properties of FRU devices.
 This resource type was added in iLO 5 1.20
 
 HpeServerDevice represents physical server devices including part information.  This is especially useful for system inventory.
-
 
 ### Resource Instances
 
@@ -7758,7 +7707,6 @@ Member of [HpeSmartStorageArrayController.v2\_2\_0.HpeSmartStorageArrayControlle
 
 `SupportedOperatingModes` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -7778,7 +7726,6 @@ Member of [HpeSmartStorageArrayController.v2\_2\_0.HpeSmartStorageArrayControlle
 
 `SupportedPowerModes` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -7797,7 +7744,6 @@ The following are the supported values:
 Member of [HpeSmartStorageArrayController.v2\_2\_0.HpeSmartStorageArrayController](#hpesmartstoragearraycontroller)
 
 `SupportedRaidLevels` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -8019,7 +7965,6 @@ Member of [HpeSmartStorageDiskDrive.v2\_1\_0.HpeSmartStorageDiskDrive](#hpesmart
 Member of [HpeSmartStorageDiskDrive.v2\_1\_0.HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive)
 
 `DiskDriveStatusReasons` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -8849,7 +8794,6 @@ Member of [HpeSmartStorageLogicalDrive.v2\_3\_0.HpeSmartStorageLogicalDrive](#hp
 Member of [HpeSmartStorageLogicalDrive.v2\_3\_0.HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive)
 
 `LogicalDriveStatusReasons` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -10043,7 +9987,6 @@ The HpeiLOAccountCertificateMap resource describes mapping X509 certificates to 
 
 This resource type was added in iLO 5 1.20
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -10298,7 +10241,6 @@ Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloac
 
 ### Actions
 
-
 **HpeiLOActiveHealthSystem.CaptureSystemLog**
 Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
 There are no parameters for this action.
@@ -10379,7 +10321,6 @@ Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
 |Added|iLO 5 1.40|
 
 ### Actions
-
 
 **HpeiLOBackupFile.Restore**
 Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
@@ -10553,7 +10494,6 @@ Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
 
 `NTPServers` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|The current NTP server's IPv4 address, IPv6 address, or FQDN. The value either comes from DHCP or is static depending on the DHCP settings.|
@@ -10576,7 +10516,6 @@ Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
 Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
 
 `StaticNTPServers` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -11160,7 +11099,6 @@ Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
 Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
 
 `UEFIDevicePaths` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -11815,7 +11753,6 @@ Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloreso
 
 `HttpMethods` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -12297,7 +12234,6 @@ Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 
 ### Actions
 
-
 **HpeiLOSSO.DeleteAllSSORecords**
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Delete all the SSO records.
@@ -12308,7 +12244,6 @@ There are no parameters for this action.
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Delete SSO record by record number.
 
-
 **Parameters:**
 
 **RecordNumber (integer)**
@@ -12318,7 +12253,6 @@ Index of the SSO record to be deleted.
 **HpeiLOSSO.ImportCertificate**
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Import the HPE SSO Certificate.
-
 
 **Parameters:**
 
@@ -12338,7 +12272,6 @@ Specifies the type of certificate imported.
 **HpeiLOSSO.ImportDNSName**
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Add DNS Name to the record list.
-
 
 **Parameters:**
 
@@ -12605,7 +12538,6 @@ Member of [HpeiLOSnmpService.v2\_4\_0.HpeiLOSnmpService](#hpeilosnmpservice)
 
 `AlertDestinations` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -12680,7 +12612,6 @@ The following are the supported values:
 Member of [HpeiLOSnmpService.v2\_4\_0.HpeiLOSnmpService](#hpeilosnmpservice)
 
 `ReadCommunities` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -12824,7 +12755,6 @@ Member of [HpeiLOSnmpService.v2\_4\_0.HpeiLOSnmpService](#hpeilosnmpservice)
 
 `TrapCommunities` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -12933,7 +12863,6 @@ Member of [HpeiLOSnmpService.v2\_4\_0.HpeiLOSnmpService](#hpeilosnmpservice)
 
 ### Actions
 
-
 **HpeiLOSnmpService.SendSNMPTestAlert**
 Member of [HpeiLOSnmpService.v2\_4\_0.HpeiLOSnmpService](#hpeilosnmpservice)
 There are no parameters for this action.
@@ -12975,7 +12904,6 @@ Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeisc
 Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
 
 `iSCSINicSources` is an array containing elements of:
-
 
 | | |
 |---|---|

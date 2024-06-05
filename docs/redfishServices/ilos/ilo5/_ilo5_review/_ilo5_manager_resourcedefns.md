@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Manager resource definitions
 toc:
@@ -9,10 +10,9 @@ disableLastModified: false
 
 # Manager resource definitions of iLO 5 v3.04
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## ManagerCollection
 `@odata.type: "#ManagerCollection.ManagerCollection"`
@@ -64,7 +64,6 @@ The Manager resource describes a manager.  Examples of managers are BMCs, Enclos
 
 ### Manager.Reset
 
-
 There are two possible ways for Manager Reset. These are defined as `ForceRestart` and `GracefulRestart`.
 
 `text POST request
@@ -80,7 +79,6 @@ POST /redfish/v1/Managers/1/Actions/Manager.Reset/
 :::info NOTE
 iLO `GracefulRestart` works in the same way as `ForceRestart`.
 :::
-
 
 ### Resource Instances
 
@@ -117,7 +115,6 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `ConnectTypesSupported` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -196,7 +193,6 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `ConnectTypesSupported` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -910,7 +906,6 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `KeySequence` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -1011,7 +1006,6 @@ The following are the supported values:
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `CustomKeySequence` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1508,7 +1502,6 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `ConnectTypesSupported` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -1571,7 +1564,6 @@ VirtualMedia is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **Manager.Reset**
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
@@ -1600,7 +1592,6 @@ There are no parameters for this action.
 Member of [Manager.v1\_5\_1.Manager](#manager)
 Action to disable cloud connect service.
 
-
 **Parameters:**
 
 **FailReason (string)**
@@ -1627,7 +1618,6 @@ There are no parameters for this action.
 Member of [Manager.v1\_5\_1.Manager](#manager)
 Action to enable cloud connect service.
 
-
 **Parameters:**
 
 **ActivationKey (string)**
@@ -1647,7 +1637,6 @@ There are no parameters for this action.
 **HpeiLO.ResetToFactoryDefaults**
 Member of [Manager.v1\_5\_1.Manager](#manager)
 Resets the iLO to Factory Defaults.
-
 
 **Parameters:**
 
@@ -1905,7 +1894,6 @@ This resource is used to obtain or modify the network services managed by this m
 
 ### Granularity to enable/disable HTTP(S) ports
 
-
 iLO 5 v2.72 onwards supports enabling/disabling the HTTP/HTTPS ports.
 
 **Disable/Enable HTTP(S) Port**:
@@ -1914,7 +1902,7 @@ iLO 5 v2.72 onwards supports enabling/disabling the HTTP/HTTPS ports.
 
 * This has been decoupled from the HTTPS port enable/disable status.
 
-**NOTE**: 
+**NOTE**:
 
 `HTTP.ProtocolEnabled` property applies to both HTTP and HTTPS. To disable iLO's HTTP & HTTPS ports, PATCH the `ProtocolEnabled` property to `false`. Note that this will affect the iLO Web and Redfish API interfaces which use these ports. For either HTTP or HTTPS ports to be enabled, the `ProtocolEnabled` property must be set to `true`.
 
@@ -1936,7 +1924,6 @@ For example, to disable HTTP port:
 **NOTE**:
 
 iLO reset is required after the PATCH for the change to come into effect.
-
 
 ### Resource Instances
 
@@ -2477,7 +2464,6 @@ Member of [ManagerNetworkProtocol.v1\_0\_0.ManagerNetworkProtocol](#managernetwo
 |Added|iLO 5 1.10|
 
 ### Actions
-
 
 **HpeiLOManagerNetworkService.SendTestAlertMail**
 Member of [ManagerNetworkProtocol.v1\_0\_0.ManagerNetworkProtocol](#managernetworkprotocol)

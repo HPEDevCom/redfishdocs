@@ -10,10 +10,9 @@ disableLastModified: false
 
 # Chassis resource definitions of iLO 5 v3.03
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## ChassisCollection
 `@odata.type: "#ChassisCollection.ChassisCollection"`
@@ -735,7 +734,6 @@ Member of [Chassis.v1\_23\_0.Chassis](#chassis)
 
 `DHCPv6Address` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -747,7 +745,6 @@ Member of [Chassis.v1\_23\_0.Chassis](#chassis)
 
 `SLAACAddress` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -758,7 +755,6 @@ Member of [Chassis.v1\_23\_0.Chassis](#chassis)
 Member of [Chassis.v1\_23\_0.Chassis](#chassis)
 
 `StaticAddress` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1317,7 +1313,6 @@ Thermal is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **HpeServerChassis.DisableMCTPOnServer**
 Member of [Chassis.v1\_23\_0.Chassis](#chassis)
 There are no parameters for this action.
@@ -1329,7 +1324,6 @@ There are no parameters for this action.
 **HpeServerChassis.ModifyEnclosureChassisFru**
 Member of [Chassis.v1\_23\_0.Chassis](#chassis)
 The action to modify field of enclosure chassis FRU.
-
 
 **Parameters:**
 

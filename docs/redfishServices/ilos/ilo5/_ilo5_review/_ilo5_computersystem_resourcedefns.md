@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Computersystem resource definitions
 toc:
@@ -9,10 +10,9 @@ disableLastModified: false
 
 # Computersystem resource definitions of iLO 5 v3.04
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## ComputerSystemCollection
 `@odata.type: "#ComputerSystemCollection.ComputerSystemCollection"`
@@ -130,7 +130,6 @@ Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 
 `BootOrder` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -186,7 +185,6 @@ Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 
 `BootSourceOverrideTarget@Redfish.AllowableValues` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is not Disabled.|
@@ -226,7 +224,6 @@ Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 
 `UefiTargetBootSourceOverride@Redfish.AllowableValues` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -566,7 +563,6 @@ See the Redfish standard schema and specification for information on common Stat
 Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 
 `AvailableSystemCapabilities` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1019,7 +1015,6 @@ Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 
 `EnabledSystemCapabilities` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|Indicates SmartNIC DPU supports OS-triggered DPC|
@@ -1381,7 +1376,6 @@ The following are the supported values:
 Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 
 `PowerRegulatorModesSupported` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -2100,11 +2094,9 @@ Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 
 ### Actions
 
-
 **ComputerSystem.Reset**
 Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 This action resets the system.
-
 
 **Parameters:**
 

@@ -10,10 +10,9 @@ disableLastModified: false
 
 # Manager resource definitions of iLO 5 v2.78
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## ManagerCollection
 `@odata.type: "#ManagerCollection.ManagerCollection"`
@@ -98,7 +97,6 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `ConnectTypesSupported` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -176,7 +174,6 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `ConnectTypesSupported` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -850,7 +847,6 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `KeySequence` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -951,7 +947,6 @@ The following are the supported values:
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `CustomKeySequence` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1448,7 +1443,6 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `ConnectTypesSupported` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -1511,7 +1505,6 @@ VirtualMedia is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **Manager.Reset**
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
@@ -1552,7 +1545,6 @@ There are no parameters for this action.
 Member of [Manager.v1\_5\_1.Manager](#manager)
 Action to enable cloud connect service.
 
-
 **Parameters:**
 
 **ActivationKey (string)**
@@ -1572,7 +1564,6 @@ There are no parameters for this action.
 **HpeiLO.ResetToFactoryDefaults**
 Member of [Manager.v1\_5\_1.Manager](#manager)
 Resets the iLO to Factory Defaults.
-
 
 **Parameters:**
 
@@ -1810,7 +1801,6 @@ This resource is used to obtain or modify the network services managed by this m
 
 ### Granularity to enable/disable HTTP(S) ports
 
-
 iLO 5 v2.72 onwards supports enabling/disabling the HTTP/HTTPS ports.
 
 **Disable/Enable HTTP(S) Port**:
@@ -1818,7 +1808,7 @@ iLO 5 v2.72 onwards supports enabling/disabling the HTTP/HTTPS ports.
 * The HTTP port can be disabled by setting the `"Port"` property to value 0. Similarly, it can be enabled by setting it to a valid port value like 80.
 * This has been decoupled from the HTTPS port enable/disable status.
 
-**NOTE**: 
+**NOTE**:
 
 `ProtocolEnabled` property under HTTP object is not related to HTTP alone. It is related to the whole webserver. Hence the `ProtocolEnabled` property will remain `true` unless the whole webserver is disabled.
 
@@ -1840,7 +1830,6 @@ PATCH `/redfish/v1/Managers/1/NetworkProtocol`
 **NOTE**:
 
 iLO reset is required after the PATCH for the change to come into effect.
-
 
 ### Resource Instances
 
@@ -2371,7 +2360,6 @@ Member of [ManagerNetworkProtocol.v1\_0\_0.ManagerNetworkProtocol](#managernetwo
 |Added|iLO 5 1.10|
 
 ### Actions
-
 
 **HpeiLOManagerNetworkService.SendTestAlertMail**
 Member of [ManagerNetworkProtocol.v1\_0\_0.ManagerNetworkProtocol](#managernetworkprotocol)

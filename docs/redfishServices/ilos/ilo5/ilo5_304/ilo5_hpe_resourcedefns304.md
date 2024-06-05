@@ -2020,6 +2020,2907 @@ Imports a Trusted Certificate and iLO is reset.
 **Certificate (string)**
 
 Contains PEM formatted X509 certificate (Base64 encoded).
+## HpeiLOAccountCertificateMap
+
+`@odata.type: "#HpeiLOAccountCertificateMap.v1_0_1.HpeiLOAccountCertificateMap"`
+
+The HpeiLOAccountCertificateMap resource describes mapping X509 certificates to user accounts.
+
+This resource type was added in iLO 5 1.20
+
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/accountservice/usercertificatemapping/{item}`|GET POST DELETE |
+
+### Fingerprint
+
+Member of [HpeiLOAccountCertificateMap.v1\_0\_1.HpeiLOAccountCertificateMap](#hpeiloaccountcertificatemap)
+
+| | |
+|---|---|
+|Description|The fingerprint which uniquely identifies the mapped certificate.|
+|Type|string|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### FingerprintDigestAlgorithm
+
+Member of [HpeiLOAccountCertificateMap.v1\_0\_1.HpeiLOAccountCertificateMap](#hpeiloaccountcertificatemap)
+
+| | |
+|---|---|
+|Description|The algorithm used to calculate the fingerprint.|
+|Type|string|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### UserName
+
+Member of [HpeiLOAccountCertificateMap.v1\_0\_1.HpeiLOAccountCertificateMap](#hpeiloaccountcertificatemap)
+
+| | |
+|---|---|
+|Description|The name used to log in to the management processor.|
+|Type|string|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+## HpeiLOAccountCertificateMapCollection
+`@odata.type: "#HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection"`
+
+A Collection of HpeiLOAccountCertificateMap resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/accountservice/usercertificatemapping`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeiLOAccountCertificateMap](../ilo5_hpe_resourcedefns304/#hpeiloaccountcertificatemap)|
+
+### Members (array)
+
+Member of HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## HpeiLOActiveHealthSystem
+
+`@odata.type: "#HpeiLOActiveHealthSystem.v2_5_0.HpeiLOActiveHealthSystem"`
+
+The HpeiLOActiveHealthSystem resource describes the properties for managing the Active Health System.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/activehealthsystem`|GET POST PATCH |
+
+### AHSEnabled
+
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|Determines whether HPE Active Health System logging is enabled or disabled.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### AHSFileEnd
+
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|The end of the AHS log.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO 5 1.10|
+|Format|date-time|
+
+### AHSFileStart
+
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|The start of the AHS log.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO 5 1.10|
+|Format|date-time|
+
+### AHSStatus
+
+**AHSStatus.HardwareEnabled**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|Determines whether HPE Active Health System logging in hardware is enabled or not.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**AHSStatus.SoftwareEnabled**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|Determines whether HPE Active Health System logging in software is enabled or not.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**AHSStatus.TemporaryHoldEnabled**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|Determines whether HPE Active Health System logging access is temporarily disabled.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+### LocationParameters
+
+**LocationParameters.case_no**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|This query parameter may be added to the AHS location URI to insert the case number into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&case_no=abc123.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LocationParameters.co_name**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|This query parameter may be added to the AHS location URI to insert the company name into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&co_name=myCompany.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LocationParameters.contact_name**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|This query parameter may be added to the AHS location URI to insert the contact name into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&contact_name=JohnDoe.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LocationParameters.days**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|This query parameter should be used to download the most recent N days of the AHS log. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?days=7. Will retrive logs made within the last 7 days.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.15|
+
+**LocationParameters.downloadAll**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|This query parameter should be used to download entire AHS log. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LocationParameters.email**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|This query parameter may be added to the AHS location URI to insert the contacts email address into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&email=abc@xyz.com.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LocationParameters.from**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|This query parameter must be added with the 'to' query parameter to the AHS location URI to limit the range of data returned. 'downloadAll' parameter should not be used with this query parameter. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?from=2014-03-01&&to=2014-03-30.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LocationParameters.phone**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|This query parameter may be added to the AHS location URI to insert the contacts phone number into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&contact_name=JohnDoe&&phone=555-555-5555.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LocationParameters.to**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+| | |
+|---|---|
+|Description|This query parameter must be added with the 'from' query parameter to the AHS location URI to limit the range of data returned.'downloadAll' parameter should not be used with this query parameter. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?from=2014-03-01&&to=2014-03-30.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### Actions
+
+
+**HpeiLOActiveHealthSystem.CaptureSystemLog**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+There are no parameters for this action.
+
+**HpeiLOActiveHealthSystem.ClearLog**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+There are no parameters for this action.
+
+**HpeiLOActiveHealthSystem.LogAmplifierData**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+**Parameters:**
+
+**iLOAmplifierManagesCount (integer)**
+
+Number of iLOs that this Amplifier instance manages.
+
+**iLOAmplifierName (string)**
+
+Name of the iLO Amplifier instance that manages this iLO.
+
+**HpeiLOActiveHealthSystem.LogMilestone**
+Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
+
+**Parameters:**
+
+**MilestoneDescription (string)**
+
+Description of milestone.
+
+**MilestoneOrigin (string)**
+
+Origin of milestone.
+## HpeiLOBackupFile
+
+`@odata.type: "#HpeiLOBackupFile.v1_0_0.HpeiLOBackupFile"`
+
+The HpeiLOBackupFile resource describes the properties for managing BMC backup files.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/backuprestoreservice/backupfiles/{item}`|GET POST DELETE |
+
+### Created
+
+Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
+
+| | |
+|---|---|
+|Description|ISO-time of backup file creation (by whomever created this thing)|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.40|
+|Format|date-time|
+
+### FileSize
+
+Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
+
+| | |
+|---|---|
+|Description|Size of backup file.|
+|Type|integer or null|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+### FirmwareVersion
+
+Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
+
+| | |
+|---|---|
+|Description|iLO firmware version running when this backup file was created.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+### Actions
+
+
+**HpeiLOBackupFile.Restore**
+Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
+There are no parameters for this action.
+## HpeiLOBackupFileCollection
+`@odata.type: "#HpeiLOBackupFileCollection.HpeiLOBackupFileCollection"`
+
+A Collection of HpeiLOBackupFile resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/backuprestoreservice/backupfiles`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeiLOBackupFile](../ilo5_hpe_resourcedefns304/#hpeilobackupfile)|
+
+### Members (array)
+
+Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+### Oem.Hpe.BackupFileCount
+
+Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+
+| | |
+|---|---|
+|Description|The number of backup files reported.|
+|Type|integer or null|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+### Oem.Hpe.BackupFilesAllowed
+
+Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
+
+| | |
+|---|---|
+|Description|The number of backup files supported.|
+|Type|integer or null|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+## HpeiLOBackupRestoreService
+
+`@odata.type: "#HpeiLOBackupRestoreService.v2_2_0.HpeiLOBackupRestoreService"`
+
+The HpeiLOBackupRestoreService resource describes the properties for using the BMC backup and restore features.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/backuprestoreservice`|GET PATCH |
+
+### BackupFileLocation
+
+Member of [HpeiLOBackupRestoreService.v2\_2\_0.HpeiLOBackupRestoreService](#hpeilobackuprestoreservice)
+
+| | |
+|---|---|
+|Description|The URI to which a client may POST to create and download a file for a subsequent restore operation.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.15|
+|Format|uri-reference|
+
+### BackupFiles
+
+Link to backup files.
+BackupFiles is a link (`"@odata.id": URI`) to another resource.
+
+### CustomBackupandRestore
+
+Member of [HpeiLOBackupRestoreService.v2\_2\_0.HpeiLOBackupRestoreService](#hpeilobackuprestoreservice)
+
+| | |
+|---|---|
+|Description|This property indicates whether a custom backup and restore is enabled.|
+|Type|boolean|
+|Read Only|False|
+
+### HttpPushUri
+
+Member of [HpeiLOBackupRestoreService.v2\_2\_0.HpeiLOBackupRestoreService](#hpeilobackuprestoreservice)
+
+| | |
+|---|---|
+|Description|The URI to which a client may POST a file for a subsequent restore operation.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.15|
+|Format|uri-reference|
+
+## HpeiLODateTime
+
+`@odata.type: "#HpeiLODateTime.v2_0_0.HpeiLODateTime"`
+
+The HpeiLODateTime resource describes the properties for managing the BMC data and time.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/datetime`|GET PATCH |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Links/EthernetNICs`|Collection of [EthernetInterface](../ilo5_network_resourcedefns304/#ethernetinterfacecollection)|
+
+### ConfigurationSettings
+
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+| | |
+|---|---|
+|Description|The state of the currently displayed configuration settings.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Current`|
+|`SomePendingReset`|
+
+### DateTime
+
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+| | |
+|---|---|
+|Description|The date and time used by management processor.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+|Format|date-time|
+
+### NTPServers (array)
+
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+`NTPServers` is an array containing elements of:
+
+
+| | |
+|---|---|
+|Description|The current NTP server's IPv4 address, IPv6 address, or FQDN. The value either comes from DHCP or is static depending on the DHCP settings.|
+|Type|string or null|
+|Read Only|True|
+
+### PropagateTimeToHost
+
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+| | |
+|---|---|
+|Description|Determines whether the server time is synchronized with the management processor time during the first POST after AC power is applied.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### StaticNTPServers (array)
+
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+`StaticNTPServers` is an array containing elements of:
+
+
+| | |
+|---|---|
+|Description|The static NTP server's IPv4 address, IPv6 address, or FQDN. To set this property, management processor must not be configured to use NTP servers provided by DHCPv4 or DHCPv6.|
+|Type|string|
+|Read Only|True|
+
+### TimeZone
+
+**TimeZone.Index**
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+| | |
+|---|---|
+|Description|The index of the current time zone. To set a new time zone, specify a different time zone index. This property can be set only when DHCPv4 or DHCPv6 supplied time settings are disabled. Since the time zone list might vary from one firmware version to another (which often leads to differences in time zone indices), setting the time zone by name is recommended over setting by index, for better compatibility.|
+|Type|number|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**TimeZone.UtcOffset**
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+| | |
+|---|---|
+|Description|The UTC offset of the current time zone, in the format {+/-}hh:mm|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**TimeZone.Value**
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+| | |
+|---|---|
+|Description|The environment variable value.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### TimeZoneList (array)
+
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+`TimeZoneList` is an array containing elements of:
+
+**TimeZoneList[{item}].Index**
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+| | |
+|---|---|
+|Description|The time zone index.|
+|Type|number|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**TimeZoneList[{item}].UtcOffset**
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+| | |
+|---|---|
+|Description|The UTC offset of the time zone, in the format {+/-}hh:mm|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**TimeZoneList[{item}].Value**
+Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
+
+| | |
+|---|---|
+|Description|The environment variable value.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+## HpeiLOEmbeddedMedia
+
+`@odata.type: "#HpeiLOEmbeddedMedia.v2_0_0.HpeiLOEmbeddedMedia"`
+
+The HpeiLOEmbeddedMedia resource describes the properties for the embedded media.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/embeddedmedia`|GET |
+
+### Controller
+
+**Controller.Firmware**
+**Controller.Firmware.Current**
+**Controller.Firmware.Current.VersionString**
+Member of [HpeiLOEmbeddedMedia.v2\_0\_0.HpeiLOEmbeddedMedia](#hpeiloembeddedmedia)
+
+| | |
+|---|---|
+|Description|The current version of the embedded media controller.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**Controller.Status**
+Member of [HpeiLOEmbeddedMedia.v2\_0\_0.HpeiLOEmbeddedMedia](#hpeiloembeddedmedia)
+See the Redfish standard schema and specification for information on common Status object.
+
+### SDCard
+
+**SDCard.SizeMB**
+Member of [HpeiLOEmbeddedMedia.v2\_0\_0.HpeiLOEmbeddedMedia](#hpeiloembeddedmedia)
+
+| | |
+|---|---|
+|Description|The size of the SD card present in the server, in MB.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**SDCard.Status**
+Member of [HpeiLOEmbeddedMedia.v2\_0\_0.HpeiLOEmbeddedMedia](#hpeiloembeddedmedia)
+See the Redfish standard schema and specification for information on common Status object.
+
+## HpeiLOFederatedGroupCapping
+
+`@odata.type: "#HpeiLOFederatedGroupCapping.v2_0_0.HpeiLOFederatedGroupCapping"`
+
+The HpeiLOFederatedGroupCapping resource describes the properties for managing Federated Group Capping.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/chassis/{item}/power/federatedgroupcapping`|GET PATCH |
+
+### CapWatts
+
+Member of [HpeiLOFederatedGroupCapping.v2\_0\_0.HpeiLOFederatedGroupCapping](#hpeilofederatedgroupcapping)
+
+| | |
+|---|---|
+|Description|The configured power cap for all servers in a group. This value is 0 if the power cap is not configured.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### CapacityWatts
+
+Member of [HpeiLOFederatedGroupCapping.v2\_0\_0.HpeiLOFederatedGroupCapping](#hpeilofederatedgroupcapping)
+
+| | |
+|---|---|
+|Description|The total power supply capacity for all servers in a group.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### Groups
+
+### Throttle
+
+Member of [HpeiLOFederatedGroupCapping.v2\_0\_0.HpeiLOFederatedGroupCapping](#hpeilofederatedgroupcapping)
+
+| | |
+|---|---|
+|Description|High, Med, or Low based on the percentage of power usage.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+## HpeiLOFederationGroup
+
+`@odata.type: "#HpeiLOFederationGroup.v2_0_0.HpeiLOFederationGroup"`
+
+The HpeiLOFederationGroup resource describes the properties for managing Federation groups.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/federationgroups/{item}`|GET PATCH DELETE |
+
+### Key
+
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|The password used by the Federation Group.|
+|Type|string or null|
+|Read Only|False|
+
+### Privileges
+
+**Privileges.HostBIOSConfigPriv**
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|Host BIOS configuration privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Privileges.HostNICConfigPriv**
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|Host NIC configuration privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Privileges.HostStorageConfigPriv**
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|Host Storage configuration privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Privileges.LoginPriv**
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|Login privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Privileges.RemoteConsolePriv**
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|Remote console privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Privileges.SystemRecoveryConfigPriv**
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|System Recovery configuration privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Privileges.UserConfigPriv**
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|User configuration privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Privileges.VirtualMediaPriv**
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|Virtual media privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Privileges.VirtualPowerAndResetPriv**
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|Virtual power and reset privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Privileges.iLOConfigPriv**
+Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
+
+| | |
+|---|---|
+|Description|The management processor configuration privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+## HpeiLOFederationGroupCollection
+`@odata.type: "#HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection"`
+
+A Collection of HpeiLOFederationGroup resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/federationgroups`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeiLOFederationGroup](../ilo5_hpe_resourcedefns304/#hpeilofederationgroup)|
+
+### Members (array)
+
+Member of HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## HpeiLOFederationPeers
+
+`@odata.type: "#HpeiLOFederationPeers.v2_0_0.HpeiLOFederationPeers"`
+
+The HpeiLOFederationPeers resource describes the properties for viewing Federation peers.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/federationpeers/{item}`|GET |
+
+### Peers (array)
+
+Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
+
+`Peers` is an array containing elements of:
+
+**Peers[{item}].HttpErrorCode**
+Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
+
+| | |
+|---|---|
+|Description|Error code for success or failure.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**Peers[{item}].ManagerIPAddress**
+Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
+
+| | |
+|---|---|
+|Description|Manager IP address of the federation peer.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**Peers[{item}].Time**
+Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
+
+| | |
+|---|---|
+|Description|Time when the federation peer was added.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+|Format|date-time|
+
+**Peers[{item}].URL**
+Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
+
+| | |
+|---|---|
+|Description|URL of the federation peer.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+|Format|url|
+
+**Peers[{item}].UUID**
+Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
+
+| | |
+|---|---|
+|Description|UUID peers that are part of the federation group.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+## HpeiLOFederationPeersCollection
+`@odata.type: "#HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection"`
+
+A Collection of HpeiLOFederationPeers resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/federationpeers`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeiLOFederationPeers](../ilo5_hpe_resourcedefns304/#hpeilofederationpeers)|
+
+### Members (array)
+
+Member of HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## HpeiLOFrus
+
+`@odata.type: "#HpeiLOFrus.v2_0_0.HpeiLOFrus"`
+
+The HpeiLOFrus resource describes features of add-in adapters.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/chassis/{item}/basefrus/{item}`|GET |
+|`/redfish/v1/chassis/{item}/basefrus/{item}/details`|GET |
+|`/redfish/v1/chassis/{item}/mezzfrus/{item}`|GET |
+|`/redfish/v1/chassis/{item}/mezzfrus/{item}/details`|GET |
+
+### FRU
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+| | |
+|---|---|
+|Description|The typename this FRU describes.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### FRULink
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+| | |
+|---|---|
+|Description|The aggregation of the Link signals for all ports on the FRU card.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### FRUType
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+| | |
+|---|---|
+|Description|The type of FRU that is installed, i.e. Base or Mezzanine FRU.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Base`|
+|`Mezzanine`|
+
+### Interlocked
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+| | |
+|---|---|
+|Description|Indicates if a PCIe card is installed in slot.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### Location
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+| | |
+|---|---|
+|Description|The location where the FRU resides.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### PGood
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+| | |
+|---|---|
+|Description|The Power Good status.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### PhysicalSlot
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+| | |
+|---|---|
+|Description|The physical slot in which this FRU resides. 0 is for Base FRU, 1-N is for Mezzanine FRUs|
+|Type|integer|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### Seated
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+| | |
+|---|---|
+|Description|Indicates if the Base FRU is properly seated in the slot.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### SerialNumber
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+| | |
+|---|---|
+|Description|The system's serial number.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### UEFIDeviceName
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+| | |
+|---|---|
+|Description|The Device Name in UTF-8 format.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### UEFIDevicePaths (array)
+
+Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
+
+`UEFIDevicePaths` is an array containing elements of:
+
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+
+## HpeiLOFrusCollection
+`@odata.type: "#HpeiLOFrusCollection.HpeiLOFrusCollection"`
+
+A Collection of HpeiLOFrus resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/chassis/{item}/basefrus`|GET |
+|`/redfish/v1/chassis/{item}/mezzfrus`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeiLOFrus](../ilo5_hpe_resourcedefns304/#hpeilofrus)|
+
+### Members (array)
+
+Member of HpeiLOFrusCollection.HpeiLOFrusCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeiLOFrusCollection.HpeiLOFrusCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeiLOFrusCollection.HpeiLOFrusCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## HpeiLOLicense
+
+`@odata.type: "#HpeiLOLicense.v2_3_0.HpeiLOLicense"`
+
+The HpeiLOLicense resource describes the properties for managing BMC licenses.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/licenseservice/{item}`|GET DELETE |
+
+### Confirmation
+
+**Confirmation.Code**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Confirmation service response code.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**Confirmation.Message**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|User-friendly confirmation information for the current managment processor license.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**Confirmation.Service**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Confirmation service URI.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**Confirmation.Status**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+See the Redfish standard schema and specification for information on common Status object.
+
+### ConfirmationRequest
+
+**ConfirmationRequest.EON**
+**ConfirmationRequest.EON.License**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|The current license of this management processor.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ConfirmationRequest.EON.LicenseKey**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|The license key installed on this management processor.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ConfirmationRequest.EON.Quantity**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|The number of entitlements licensed.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ConfirmationRequest.EON.State**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|The current licensing state and behavior of the management processor.  This is affected by license installation, activation and confirmation.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`unlicensed`|standard baseline functionality|
+|`evaluation`|evaluation / demonstration temporary licensed functionality|
+|`nfr`|not for resale experimental functionality|
+|`expired`|standard baseline functionality and evaluation licenses no longer accepted|
+|`unconfirmed`|licensed functionality that has not been confirmed|
+|`timeout`|licensed functionality is disabled until the license is confirmed|
+|`confirmed`|licensed functionality has been confirmed for use|
+|`static`|system has active built-in licensed functionality that does not require confirmation|
+|`err`|error|
+
+**ConfirmationRequest.Signer**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Source of confirmation request.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ConfirmationRequest.System**
+**ConfirmationRequest.System.ChipId**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Management processor unique chip identifier.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ConfirmationRequest.System.Product**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|System housing management processor.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ConfirmationRequest.System.SerialNumber**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|System serial number.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### License
+
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|The current license of this management processor.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### LicenseClass
+
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|The class of current license on this management processor.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`FQL`|
+|`BETA`|
+|`EVALUATION`|
+|`AKA`|
+|`DL`|
+|`FFQL`|
+|`SL`|
+|`SITE`|
+|`EVAL`|
+|`MLA`|
+
+### LicenseErr
+
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Error information from the most recent attempt to alter the installed management processor license.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### LicenseExpire
+
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|User-friendly expiration information of the installed management processor license. For example, for demo license, Evaluation period 2 months 5 days 6 hours remain.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### LicenseFeatures
+
+**LicenseFeatures.AutoCertEnroll**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Automatic Certificate Enrollment.|
+|Type|boolean|
+|Read Only|True|
+
+**LicenseFeatures.DirectoryAuth**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Directory integrated authentication.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.DowngradePolicy**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Firmware downgrade policy setting.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+**LicenseFeatures.EmailAlert**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Email based alerting.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.FWScan**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Runtime FW Integrity check.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.Federation**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Distributed peer to peer management.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.Jitter**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Jitter Control.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.KD**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Kernel Debugging (VSP raw mode).|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.KeyMgr**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Store and retrieve keys from an external key manager.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.MURC**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Shared Multi-User Remote Console.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.ODIM**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Open Distributed Infrastructure Management.|
+|Type|boolean|
+|Read Only|True|
+
+**LicenseFeatures.PowerReg**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Power Regulator.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.RC**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Graphical Remote Console.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.Recovery**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|OS Recovery Event.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.17|
+
+**LicenseFeatures.RemoteSyslog**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Remote Syslog.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.Scrncap**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Video Capture.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.SecureErase**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Secure Erase of embedded media.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.SmartCard**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|2-Factor Authentication (Smart Card).|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.SuiteB**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|SuiteB/CNSA mode support.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.TextCons**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Text Console.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.VM**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Remote Console based Virtual Media.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.VMScript**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Scripted Virtual Media.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**LicenseFeatures.VSPLogging**
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|Virtual Serial Port Logging and Playback.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### LicenseInstallDate
+
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|User-friendly installation date information of the installed management processor license. For example, 19 May 2017|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+### LicenseKey
+
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|User-visible license key installed on this management processor. License keys are 25 or 29 characters and contain letters, numbers and hypens. Use POST method to collection of membertype HpeiLOLicense to install / update the license.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### LicenseSeats
+
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|The number of systems authorized to use this activation key.|
+|Type|integer|
+|Read Only|True|
+
+### LicenseTier
+
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|The licensed feature-set of the management processor.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`STD`|
+|`BLSTD`|
+|`ADV`|
+|`BLADV`|
+|`ESS`|
+|`SCALEOUT`|
+|`APSE`|
+
+### LicenseType
+
+Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
+
+| | |
+|---|---|
+|Description|The type of current license activation on this management processor.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Unlicensed`|
+|`Evaluation`|
+|`Perpetual`|
+|`Subscription`|
+|`Internal`|
+|`Duration`|
+|`Expired`|
+
+## HpeiLOLicenseCollection
+`@odata.type: "#HpeiLOLicenseCollection.HpeiLOLicenseCollection"`
+
+A Collection of HpeiLOLicense resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/licenseservice`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeiLOLicense](../ilo5_hpe_resourcedefns304/#hpeilolicense)|
+
+### Members (array)
+
+Member of HpeiLOLicenseCollection.HpeiLOLicenseCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeiLOLicenseCollection.HpeiLOLicenseCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeiLOLicenseCollection.HpeiLOLicenseCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## HpeiLOResourceDirectory
+
+`@odata.type: "#HpeiLOResourceDirectory.v2_0_0.HpeiLOResourceDirectory"`
+
+The HpeiLOResourceDirectory resource describes the resource directory.  The resource directory is a selected set of resources and resource types for faster access to resources.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/resourcedirectory`|GET |
+
+### Instances (array)
+
+Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
+
+`Instances` is an array containing elements of:
+
+**Instances[{item}].@odata.id**
+Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+**Instances[{item}].@odata.type**
+Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+
+**Instances[{item}].ETag**
+Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
+
+| | |
+|---|---|
+|Description|This is the last known etag of the resource. The property is omitted if not known.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**Instances[{item}].HttpMethods (array)**
+Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
+
+`HttpMethods` is an array containing elements of:
+
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`GET`|
+|`HEAD`|
+|`POST`|
+|`PUT`|
+|`PATCH`|
+|`DELETE`|
+
+**Instances[{item}].MemberType**
+Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
+
+| | |
+|---|---|
+|Description|This property has the type of members for collection resources.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+## HpeiLOSecurityDashboard
+
+`@odata.type: "#HpeiLOSecurityDashboard.v1_0_0.HpeiLOSecurityDashboard"`
+
+The HpeiLOSecurityDashboard resource describes the BMC security dashboard.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/securityservice/securitydashboard`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`SecurityParameters`|[HpeiLOSecurityParam](../ilo5_hpe_resourcedefns304/#hpeilosecurityparam)|
+
+### OverallSecurityStatus
+
+Member of [HpeiLOSecurityDashboard.v1\_0\_0.HpeiLOSecurityDashboard](#hpeilosecuritydashboard)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Ok`|The Overall security state of the system is OK.|
+|`Risk`|The Overall security state of the system is Risk.|
+|`Ignored`|The user has ignored (or suppressed) the risk on all the security parameters (whose Status value is Risk).|
+
+### SecurityParameters
+
+This property references a resource of type Collection with a MemberType of HpeiLOSecurityParam.
+SecurityParameters is a link (`"@odata.id": URI`) to another resource.
+
+### ServerConfigurationLockStatus
+
+Member of [HpeiLOSecurityDashboard.v1\_0\_0.HpeiLOSecurityDashboard](#hpeilosecuritydashboard)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Enabled`|Server Configuration Lock is Enabled.|
+|`Disabled`|Server Configuration Lock is Disabled.|
+
+## HpeiLOSecurityParam
+
+`@odata.type: "#HpeiLOSecurityParam.v1_1_0.HpeiLOSecurityParam"`
+
+The HpeiLOSecurityParam resource describes the properties for BMC security dashboard parameters.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/securityservice/securitydashboard/securityparams/{item}`|GET PATCH |
+
+### Ignore
+
+Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
+
+| | |
+|---|---|
+|Description|This indicates if the security status of the security parameter is set to ignored or not.|
+|Type|boolean or null|
+|Read Only|False|
+|Added|iLO 5 1.40|
+
+### IgnoredBy
+
+Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
+
+| | |
+|---|---|
+|Description|This represents the user who changed the value of Ignore.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+### IgnoredTime
+
+Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
+
+| | |
+|---|---|
+|Description|This represents the time when the risk configuration was suppressed.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+### RecommendedAction
+
+Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
+
+| | |
+|---|---|
+|Description|This represents the recommended action.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+### SecurityStatus
+
+Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
+
+| | |
+|---|---|
+|Description|This represents if the status of the security parameter.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Risk`|This indicates a security issue associated with the security parameter.|
+|`Ok`|This indicates no security issue associated with the security parameter.|
+
+### State
+
+Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
+
+| | |
+|---|---|
+|Description|This represents the state or value of the security parameter.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.40|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`On`|The state of the Security Parameter is On.|
+|`Off`|The state of the Security Parameter is Off.|
+|`Enabled`|The state of the Security Parameter is Enabled.|
+|`Disabled`|The state of the Security Parameter is Disabled.|
+|`Failed`|The status of the Security Parameter or the result of an operation represented by the Security Parameter is Failed.|
+|`Ok`|The status of the Security Parameter or the result of an operation represented by the Security Parameter is Ok.|
+|`Insufficient`|The value of the Security Parameter is Insufficient or less than the default value.|
+|`Repaired`|The state of the Security Parameter is Repaired.|
+|`True`|The state of the Security Parameter is True.|
+|`False`|The state of the Security Parameter is False.|
+
+## HpeiLOSecurityParamCollection
+`@odata.type: "#HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection"`
+
+A Collection of HpeiLOSecurityParam resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/securityservice/securitydashboard/securityparams`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeiLOSecurityParam](../ilo5_hpe_resourcedefns304/#hpeilosecurityparam)|
+
+### Members (array)
+
+Member of HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## HpeiLOSnmpService
+
+`@odata.type: "#HpeiLOSnmpService.v2_4_1.HpeiLOSnmpService"`
+
+The HpeiLOSnmpService resource describes the properties for managing the SNMP configuration of the BMC.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/snmpservice`|GET POST PATCH |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`SNMPAlertDestinations`|Collection of [HpeSNMPAlertDestination](../ilo5_hpe_resourcedefns304/#hpesnmpalertdestinationcollection)|
+|`SNMPUsers`|Collection of [HpeSNMPUser](#hpesnmpuser)|
+
+### AlertDestinationAssociations (array)
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+`AlertDestinationAssociations` is an array containing elements of:
+
+**AlertDestinationAssociations[{item}].SNMPAlertProtocol**
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Indicate the SNMP protocol associated with the AlertDestination.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`SNMPv1Trap`|Indicate SNMPv1 trap is enabled for the destination.|
+|`SNMPv3Trap`|Indicate SNMPv3 trap is enabled for the destination. Needs to fill the SecurityName as well.|
+|`SNMPv3Inform`|Indicate SNMPv3 Inform is enabled for the destination. Needs to fill the SecurityName as well.|
+|`Null`|A value is temporarily unavailable|
+
+**AlertDestinationAssociations[{item}].SecurityName**
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Provides the SNMPv3 security name associated with the destination when SNMP alert protocol is SNMPv3 trap or inform.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+### AlertDestinations (array)
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+`AlertDestinations` is an array containing elements of:
+
+
+| | |
+|---|---|
+|Type|string or null|
+|Read Only|True|
+
+### AlertsEnabled
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|The alert conditions that the management processor detects independently of the host operating system can be sent to specified SNMP alert destinations. Indicates if the SNMPv1 Trap or SNMPv3 Trap is enabled.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### Contact
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|The string of up to 49 characters that specifies the system administrator or server owner. The string can include a name, email address, or phone number.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### Location
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|The string of up to 49 characters that specifies the physical location of the server.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### Oem.Hpe.SNMPColdStartTrapBroadcast
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|If set to true, the Cold Start Trap will be enabled. The Cold Start Trap is broadcast to a subnet broadcast address if there are no trap destinations configured in the SNMP Alert Destination(s) boxes.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### PeriodicHSATrapConfig
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|If there are any component in health status array(HSA) Trap are in degraded or failed condition then HSA trap will be sent periodically till the component status becomes ok or fine condition. This setting is disabled by default.|
+|Type|string|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Disabled`|
+|`Daily`|
+|`Weekly`|
+|`Monthly`|
+
+### ReadCommunities (array)
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+`ReadCommunities` is an array containing elements of:
+
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+
+### Role
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|The string of up to 64 characters that describes the server role or function.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### RoleDetail
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|The string of up to 512 characters that describes specific tasks that the server might perform.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### SNMPAlertDestinations
+
+SNMP Alert Destination details.
+SNMPAlertDestinations is a link (`"@odata.id": URI`) to another resource.
+
+### SNMPUsers
+
+SNMPv3 User details.
+SNMPUsers is a link (`"@odata.id": URI`) to another resource.
+
+### SNMPv1Enabled
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Indicates if the SNMPv1 Query or SNMPv1 Trap is enabled.|
+|Type|boolean|
+|Read Only|False|
+
+### SNMPv1RequestsEnabled
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Indicates if the SNMPv1 Query is enabled.|
+|Type|boolean|
+|Read Only|False|
+
+### SNMPv1TrapEnabled
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Indicates if the SNMPv1 Trap is enabled.|
+|Type|boolean|
+|Read Only|False|
+
+### SNMPv1Traps
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|When enabled, SNMPv1 traps are sent to the remote management systems configured in the SNMP Alert Destination(s) boxes.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### SNMPv3EngineID
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|The SNMPv3 Engine ID is the unique identifier of an SNMP engine that belongs to an SNMP agent entity. This value must be a hexadecimal string with an even number of 6 to 32 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### SNMPv3InformRetryAttempt
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Specifies the number of retries to be used in SNMPv3 inform.|
+|Type|integer|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+### SNMPv3InformRetryIntervalSeconds
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Specifies the interval in seconds between SNMPv3 inform retries.|
+|Type|integer|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+### SNMPv3RequestsEnabled
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Indicates if the SNMPv3 Query is enabled.|
+|Type|boolean|
+|Read Only|False|
+
+### SNMPv3TrapEnabled
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Indicates if the SNMPv3 Trap is enabled.|
+|Type|boolean|
+|Read Only|False|
+
+### Status
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+See the Redfish standard schema and specification for information on common Status object.
+
+### TrapCommunities (array)
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+`TrapCommunities` is an array containing elements of:
+
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+
+### TrapSourceHostname
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Determines the host name that is used in the SNMP-defined sysName variable when the management processor generates SNMP traps.|
+|Type|string|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Manager`|
+|`System`|
+
+### Users (array)
+
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+`Users` is an array containing elements of:
+
+**Users[{item}].AuthPassphrase**
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Sets the passphrase to use for sign operations. Enter a value of 8 to 49 characters.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Users[{item}].AuthProtocol**
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Sets the message digest algorithm to use for encoding the authorization passphrase. The message digest is calculated over an appropriate portion of an SNMP message, and is included as part of the message sent to the recipient. Select MD5 (Message Digest) or SHA (Secure Hash Algorithm).|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`MD5`|Indicate Message Digest Algorithm.|
+|`SHA`|Indicate Secure Hash Algorithm.|
+|`SHA256`|Indicate SHA256 Algorithm.|
+|`Null`|A value is temporarily unavailable|
+
+**Users[{item}].PrivacyPassphrase**
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Sets the passphrase to use for encrypt operations. Enter a value of 8 to 49 characters.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Users[{item}].PrivacyProtocol**
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|Sets the encryption algorithm to use for encoding the privacy passphrase. A portion of an SNMP message is encrypted before transmission. Select AES (Advanced Encryption Standard) or DES (Data Encryption Standard).|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`AES`|Indicate Advanced Encryption Standard Algorithm.|
+|`Null`|A value is temporarily unavailable|
+
+**Users[{item}].SecurityName**
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|The user profile name. Enter an alphanumeric string of 1 to 32 characters.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**Users[{item}].UserEngineID**
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+
+| | |
+|---|---|
+|Description|The UserEngineID is combined with the SecurityName to create a SNMPv3 user for each manager. It is only used for creating remote accounts used with INFORM messages. If this property is not set then INFORM message will be sent with default or iLO configured engine ID. This value must be a hexadecimal string with an even number of 10 to 64 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+### Actions
+
+
+**HpeiLOSnmpService.SendSNMPTestAlert**
+Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
+There are no parameters for this action.
+## HpeiLOSSO
+
+`@odata.type: "#HpeiLOSSO.v2_0_0.HpeiLOSSO"`
+
+The HpeiLOSSO resource describes the configuration of the HPE BMC single-sign-on trusted server feature.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/securityservice/sso`|GET POST PATCH |
+
+### ManagerTrustedCertificates (array)
+
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+`ManagerTrustedCertificates` is an array containing elements of:
+
+**ManagerTrustedCertificates[{item}].@odata.id**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+**ManagerTrustedCertificates[{item}].@odata.type**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+
+**ManagerTrustedCertificates[{item}].Certificate**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Contains PEM formatted X509 certificate (Base64 encoded).|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ManagerTrustedCertificates[{item}].CertificateDetails**
+**ManagerTrustedCertificates[{item}].CertificateDetails.Issuer**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|The Certificate Authority that issued the certificate.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ManagerTrustedCertificates[{item}].CertificateDetails.Subject**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|The entity to which the certificate was issued.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ManagerTrustedCertificates[{item}].CertificateDetails.ValidNotAfter**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|The date on which the certificate validity period ends.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+|Format|date-time|
+
+**ManagerTrustedCertificates[{item}].CertificateDetails.ValidNotBefore**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|The date on which the certificate validity period begins.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+|Format|date-time|
+
+**ManagerTrustedCertificates[{item}].RecordType**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Specifies the type of SSO record imported.|
+|Type|string|
+|Read Only|true|
+|Added|iLO 5 1.15|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Certificate`|It is a PEM formatted X509 certificate (Base64 encoded).|
+|`DNSName`|It is a DNS name or an IP address of the HPE SSO-compliant application.|
+
+**ManagerTrustedCertificates[{item}].SerialNumber**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Contains the Serial number for the SSO records.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ManagerTrustedCertificates[{item}].ServerName**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|The Server name (or certificate subject).|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+**ManagerTrustedCertificates[{item}].Status**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+See the Redfish standard schema and specification for information on common Status object.
+
+### SSOsettings
+
+**SSOsettings.AdminPrivilege**
+**SSOsettings.AdminPrivilege.HostBIOSConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host BIOS Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.AdminPrivilege.HostNICConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host NIC Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.AdminPrivilege.HostStorageConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host Storage Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.AdminPrivilege.LoginPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Login Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.AdminPrivilege.RemoteConsolePriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Remote Console Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.AdminPrivilege.SystemRecoveryConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|System Recovery Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.AdminPrivilege.UserConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|User Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.AdminPrivilege.VirtualMediaPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Virtual Media Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.AdminPrivilege.VirtualPowerAndResetPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Power and Reset Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.AdminPrivilege.iLOConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|iLO Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.OperatorPrivilege**
+**SSOsettings.OperatorPrivilege.HostBIOSConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host BIOS Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.OperatorPrivilege.HostNICConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host NIC Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.OperatorPrivilege.HostStorageConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host Storage Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.OperatorPrivilege.LoginPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Login Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.OperatorPrivilege.RemoteConsolePriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Remote Console Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.OperatorPrivilege.SystemRecoveryConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|System Recovery Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.OperatorPrivilege.UserConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|User Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.OperatorPrivilege.VirtualMediaPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Virtual Media Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.OperatorPrivilege.VirtualPowerAndResetPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Power and Reset Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.OperatorPrivilege.iLOConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|iLO Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.SSOTrustMode**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Represents the SSO Trust Mode.|
+|Type|string|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`TrustNone`|Rejects all SSO connection request.|
+|`TrustAll`|Accepts any SSO connection initiated from any HPE SSO compliant application.|
+|`TrustbyName`|Enables SSO connections from an HPE SSO compliant application by matching a directly imported IP address or DNS name.|
+|`TrustbyCert`|Enables SSO connections from an HPE SSO compliant application by matching a certificate previously imported to iLO.|
+
+**SSOsettings.UserPrivilege**
+**SSOsettings.UserPrivilege.HostBIOSConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host BIOS Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.UserPrivilege.HostNICConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host NIC Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.UserPrivilege.HostStorageConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host Storage Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.UserPrivilege.LoginPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Login Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.UserPrivilege.RemoteConsolePriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Remote Console Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.UserPrivilege.SystemRecoveryConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|System Recovery Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.UserPrivilege.UserConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|User Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.UserPrivilege.VirtualMediaPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Virtual Media Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.UserPrivilege.VirtualPowerAndResetPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Power and Reset Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+**SSOsettings.UserPrivilege.iLOConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|iLO Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO 5 1.10|
+
+### Actions
+
+
+**HpeiLOSSO.DeleteAllSSORecords**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+Delete all the SSO records.
+
+There are no parameters for this action.
+
+**HpeiLOSSO.DeleteSSORecordbyNumber**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+Delete SSO record by record number.
+
+
+**Parameters:**
+
+**RecordNumber (integer)**
+
+Index of the SSO record to be deleted.
+
+**HpeiLOSSO.ImportCertificate**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+Import the HPE SSO Certificate.
+
+
+**Parameters:**
+
+**CertInput (string)**
+
+PEM formatted X509 certificate (Base64 encoded)/DNS name or IP address to import the certificate.
+
+**CertType (string)**
+
+Specifies the type of certificate imported.
+
+|Value|Description|
+|---|---|
+|DirectImportCert|iLO directly imports the Certificate.|
+|ImportCertUri|iLO imports the certificate from the HPE SSO compliant application over the network.|
+
+**HpeiLOSSO.ImportDNSName**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+Add DNS Name to the record list.
+
+
+**Parameters:**
+
+**DNSName (string)**
+
+DNS Name of the HPE SSO Trusted Server.
 ## HpeInvalidImage
 
 `@odata.type: "#HpeInvalidImage.v1_0_0.HpeInvalidImage"`
@@ -2139,6 +5040,304 @@ Member of HpeInvalidImageCollection.HpeInvalidImageCollection
 | | |
 |---|---|
 |Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## HpeiSCSISoftwareInitiator
+
+`@odata.type: "#HpeiSCSISoftwareInitiator.v2_0_0.HpeiSCSISoftwareInitiator"`
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/bios/iscsi`|GET |
+|`/redfish/v1/systems/{item}/bios/iscsi/settings`|GET PATCH |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`@Redfish.Settings/SettingsObject`|[HpeiSCSISoftwareInitiator](../ilo5_hpe_resourcedefns304/#hpeiscsisoftwareinitiator)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo5_hpe_resourcedefns304/#hpebaseconfigs)|
+
+### @Redfish.Settings
+
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+See the Redfish standard schema and specification for information on common @Redfish properties.
+
+### iSCSIInitiatorName
+
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The worldwide unique iSCSI Qualified Name (IQN) of this iSCSI Initiator. Only IQN format is accepted. EUI format is not supported (for example, 'iqn.1986-03.com.hp:init.sn-123456').|
+|Type|string|
+|Read Only|True|
+
+### iSCSINicSources (array)
+
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+`iSCSINicSources` is an array containing elements of:
+
+
+| | |
+|---|---|
+|Description|The BIOS Attribute that describes a NIC instance that can be used as a target for iSCSI configuration.|
+|Type|string|
+|Read Only|True|
+
+### iSCSISources (array)
+
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+`iSCSISources` is an array containing elements of:
+
+**iSCSISources[{item}].StructuredBootString**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|Identifies this iSCSI option within the server.|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].UEFIDevicePath**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|Standardized text representation of the UEFI device path for this option, in UTF-8 format.|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIAttemptInstance**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|Uniquely identifies this iSCSI attempt within iSCSISources array. If set to zero, all other properties in the boot option object are ignored (which will delete an existing boot attempt).|
+|Type|integer|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIAttemptName**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|Human readable descriptive name for this iSCSI attempt configuration|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIAuthenticationMethod**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The iSCSI connection authentication method.|
+|Type|string|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`None`|No iSCSI connection security.|
+|`CHAP`|iSCSI connection is secured using Challenge Handshake Authentication Protocol (CHAP).|
+
+**iSCSISources[{item}].iSCSIChapSecret**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The password needed for CHAP authentication. This is applicable only when the Authentication Method is set to CHAP, and the CHAP Type is set to Mutual.|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIChapType**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The CHAP authentication type. This is applicable only when the Authentication Method is set to CHAP.|
+|Type|string|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`OneWay`|The target will authenticate the initiator. .|
+|`Mutual`|both the initiator and target will authenticate each other.|
+
+**iSCSISources[{item}].iSCSIChapUsername**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The user name needed for CHAP authentication. This is applicable only when the Authentication Method is set to CHAP.|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIConnectRetry**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The number of times to retry the iSCSI connection. Zero means no retries.|
+|Type|integer|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIConnectTimeoutMS**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The iSCSI connection timeout value in milliseconds.|
+|Type|integer|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIConnection**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|Enables or Disables iSCSI mode for a selected iSCSI attempt.|
+|Type|string|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Disabled`|Connecting to this iSCSI attempt is disabled.|
+|`Enabled`|Connecting to this iSCSI attempt is enabled.|
+|`EnabledMpio`|Connecting to this iSCSI attempt is enabled with MPIO (Multi Path I/O).|
+
+**iSCSISources[{item}].iSCSIInitiatorGateway**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The gateway address of the iSCSI Initiator, if not configured via DHCP. The address must be an IPv4 or IPv6 address, depending on the IP Address Type.|
+|Type|string|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIInitiatorInfoViaDHCP**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|If enabled, the iSCSI Initiator information is configured from DHCP. Otherwise, the iSCSI initiator information must be statically configured. When providing static values for the Initiator, ensure Target settings are also configured with static values.|
+|Type|boolean|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIInitiatorIpAddress**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The IP Address of the iSCSI Initiator, if not configured via DHCP. The Initiator IP Address is always auto-assigned if IP address type is IPv6. The address must be an IPv4 or IPv6 address, depending on the IP Address Type.|
+|Type|string|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIInitiatorNetmask**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The subnet mask of the iSCSI Initiator, if not configured via DHCP. The address must be an IPv4.|
+|Type|string|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIIpAddressType**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The iSCSI IP Address type. If set to Auto, IPv4 will be attempted first, followed by IPv6.|
+|Type|string|
+|Read Only|True|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`IPv4`|The iSCSI IP address is configured in IPv4 format.|
+|`IPv6`|The iSCSI IP address is configured in IPv6 format.|
+|`Auto`|The iSCSI IP address is configured in IPv4. If an issue occurs with IPv4, then the IPv6 configuration is used.|
+
+**iSCSISources[{item}].iSCSILUN**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The iSCSI target Logical Unit Number (LUN), if not obtained from DHCP. This value must follow the SAM-2 spec. E.g. 0001-1234-5678-9ABC. If the digit number is less then 5 characters, a dash character is not required. E.g. 0001. If the lun number is 12345, input 1234-5|
+|Type|string|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSINicSource**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|A BIOS Attribute that describes this selected NIC instance. This must match one of the possible values listed in the iSCSINicSources array.|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIReverseChapSecret**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The password needed for reverse CHAP authentication (from the target to the initiator). This is applicable only when the Authentication Method is set to CHAP, and the CHAP Type is set to Mutual.|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSIReverseChapUsername**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|User Name for reverse CHAP authentication (from the target to the initiator). This is applicable only when the Authentication Method is set to CHAP, and the CHAP Type is set to Mutual.|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSITargetInfoViaDHCP**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|If enabled, the iSCSI target information are configured from DHCP. Otherwise, the iSCSI target information must be statically configured.|
+|Type|boolean|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSITargetIpAddress**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The IP Address of the iSCSI Target, if not obtained from DHCP. The address must be an IPv4 or IPv6 address, depending on the IP Address Type.|
+|Type|string|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSITargetName**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The worldwide unique iSCSI Qualified Name (IQN) of this iSCSI target. Only the IQN format is accepted. EUI format is not supported (for example, 'iqn.1991-05.com.microsoft:iscsitarget-iscsidisk-target').|
+|Type|string or null|
+|Read Only|True|
+
+**iSCSISources[{item}].iSCSITargetTcpPort**
+Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
+
+| | |
+|---|---|
+|Description|The iSCSI Target TCP Port number, if not obtained from DHCP.|
 |Type|integer|
 |Read Only|True|
 
@@ -3896,259 +7095,6 @@ Web proxy server host name or IP address when connecting using Direct Connect.
 **DestinationUrl (string)**
 
 The host name or IP address of the Remote Support server. This is applicable for Central Connect only.
-## HpeSNMPAlertDestination
-
-`@odata.type: "#HpeSNMPAlertDestination.v2_0_0.HpeSNMPAlertDestination"`
-
-The HpeSNMPAlertDestination resource describes the properties for SNMP Alert Destinations.  The alert destination configuration up to 8 remote management systems that receive SNMP alerts from the BMC.
-
-This resource type was added in iLO 5 1.20
-
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/snmpservice/snmpalertdestinations/{item}`|GET PATCH DELETE |
-
-### AlertDestination
-
-Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
-
-| | |
-|---|---|
-|Description|The IP address or FQDN of remote management system that receive SNMP alerts.|
-|Type|string|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-### SNMPAlertProtocol
-
-Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
-
-| | |
-|---|---|
-|Description|Indicate the SNMP protocol associated with the AlertDestination.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`SNMPv1Trap`|Indicate SNMPv1 trap is enabled for the destination.|
-|`SNMPv3Trap`|Indicate SNMPv3 trap is enabled for the destination. Needs to fill the SecurityName as well.|
-|`SNMPv3Inform`|Indicate SNMPv3 Inform is enabled for the destination. Needs to fill the SecurityName as well.|
-|`Null`|A value is temporarily unavailable|
-
-### SNMPv3User
-
-SNMPv3 User associated with the destination when SNMP alert protocol is SNMPv3trap.
-SNMPv3User is a link (`"@odata.id": URI`) to another resource.
-
-### SecurityName
-
-Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
-
-| | |
-|---|---|
-|Description|Provides the SNMPv3 security name associated with SNMPv3trap or SNMPv3Inform set on SNMPAlertProtocol.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-### TrapCommunity
-
-Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
-
-| | |
-|---|---|
-|Description|The configured SNMPv1 trap community string.|
-|Type|string|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-## HpeSNMPAlertDestinationCollection
-`@odata.type: "#HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection"`
-
-A Collection of HpeSNMPAlertDestination resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/snmpservice/snmpalertdestinations`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeSNMPAlertDestination](../ilo5_hpe_resourcedefns304/#hpesnmpalertdestination)|
-
-### Members (array)
-
-Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
-## HpeSNMPUser
-
-`@odata.type: "#HpeSNMPUser.v2_1_1.HpeSNMPUser"`
-
-The HpeSNMPUser resource describes the properties for SNMP support.  SNMPv3 supports the User-based Security Model (USM). With this model,security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.
-
-This resource type was added in iLO 5 1.20
-
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/snmpservice/snmpusers/{item}`|GET PATCH DELETE |
-
-### AuthPassphrase
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|Sets the passphrase to use for sign operations. Enter a value of 8 to 49 characters.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-### AuthProtocol
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|Sets the message digest algorithm to use for encoding the authorization passphrase. The message digest is calculated over an appropriate portion of an SNMP message, and is included as part of the message sent to the recipient.|
-|Type|string|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`MD5`|Indicate Message Digest Algorithm.|
-|`SHA`|Indicate Secure Hash Algorithm.|
-|`SHA256`|Indicate SHA256 Algorithm.|
-
-### PrivacyPassphrase
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|Sets the passphrase to use for encrypt operations. Enter a value of 8 to 49 characters.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-### PrivacyProtocol
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|Sets the encryption algorithm to use for encoding the privacy passphrase. A portion of an SNMP message is encrypted before transmission.|
-|Type|string|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`DES`|Indicate Data Encryption Standard Algorithm.|
-|`AES`|Indicate Advanced Encryption Standard Algorithm.|
-
-### SecurityName
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|The user profile name. Enter an alphanumeric string of 1 to 32 characters.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-### UserEngineID
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|The UserEngineID is combined with the SecurityName to create a SNMPv3 user for each manager. It is only used for creating remote accounts used with INFORM messages. If this property is not set then INFORM message will be sent with default or iLO configured engine ID. This value must be a hexadecimal string with an even number of 10 to 64 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-## HpeSNMPUsersCollection
-`@odata.type: "#HpeSNMPUsersCollection.HpeSNMPUsersCollection"`
-
-A Collection of HpeSNMPUsers resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/snmpservice/snmpusers`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeSNMPUser](../ilo5_hpe_resourcedefns304/#hpesnmpuser)|
-
-### Members (array)
-
-Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
 ## HpeSecureEraseReport
 
 `@odata.type: "#HpeSecureEraseReport.v1_0_0.HpeSecureEraseReport"`
@@ -6153,292 +9099,6 @@ Member of HpeServerDeviceCollection.HpeServerDeviceCollection
 |Type|integer|
 |Read Only|True|
 
-## HpeServerPCISlot
-
-`@odata.type: "#HpeServerPCISlot.v2_1_1.HpeServerPCISlot"`
-
-The HpeServerPCISlot resource describes the properties of PCI slots.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/pcislots/{item}`|GET |
-
-### BusNumber
-
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot bus number.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-### Characteristics
-
-**Characteristics.Provides3_3Volts**
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Provides 3.3 volts.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**Characteristics.Provides5Volts**
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Provides 5.0 volts.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**Characteristics.SlotIsShared**
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|The slot shares its opening with another slot.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**Characteristics.SupportsCardBus**
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PC Card slot supports Card Bus.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**Characteristics.SupportsHotPlugDevices**
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Slot supports hot-plug devices.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**Characteristics.SupportsModemRingResume**
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PC Card slot supports Modem Ring Resume.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**Characteristics.SupportsPCCard16**
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PC Card slot supports PC Card-16.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**Characteristics.SupportsPowerManagementEventSignal**
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot supports Power Management Event signal.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**Characteristics.SupportsSMBusSignal**
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot supports SMBUS signal.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**Characteristics.SupportsZoomVideo**
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PC Card slot supports Zoom Video.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-### DeviceNumber
-
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot device number.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-### FunctionNumber
-
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot function number.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-### Length
-
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot length|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`Short`|
-|`Long`|
-|`Other`|
-
-### LinkLanes
-
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Bandwidth capacity of the slot, measured by the number of PCI Express Lanes present. Also known as the slot width.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`8 bit`|
-|`16 bit`|
-|`32 bit`|
-|`64 bit`|
-|`128 bit`|
-|`x1`|
-|`x2`|
-|`x4`|
-|`x8`|
-|`x16`|
-|`x32`|
-|`Other`|
-
-### Status
-
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-See the Redfish standard schema and specification for information on common Status object.
-
-### SupportsHotPlug
-
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Specifies whether the slot supports hot-plug devices.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### Technology
-
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI technology|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`Proprietary`|
-|`OCP NIC 3.0`|
-|`PCIExpressGen5`|
-|`PCIExpressGen4`|
-|`PCIExpressGen3`|
-|`PCIExpressGen2`|
-|`PCIExpress`|
-
-### UEFIDevicePath
-
-Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Standardized text representation of the UEFI device path, in UTF-8 format|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-## HpeServerPCISlotCollection
-`@odata.type: "#HpeServerPCISlotCollection.HpeServerPCISlotCollection"`
-
-A Collection of HpeServerPCISlot resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/pcislots`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeServerPCISlot](../ilo5_hpe_resourcedefns304/#hpeserverpcislot)|
-
-### Members (array)
-
-Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
 ## HpeServerPciDevice
 
 `@odata.type: "#HpeServerPciDevice.v2_0_0.HpeServerPciDevice"`
@@ -6749,6 +9409,292 @@ Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
 ### Members@odata.count
 
 Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## HpeServerPCISlot
+
+`@odata.type: "#HpeServerPCISlot.v2_1_1.HpeServerPCISlot"`
+
+The HpeServerPCISlot resource describes the properties of PCI slots.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/pcislots/{item}`|GET |
+
+### BusNumber
+
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot bus number.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+### Characteristics
+
+**Characteristics.Provides3_3Volts**
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Provides 3.3 volts.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**Characteristics.Provides5Volts**
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Provides 5.0 volts.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**Characteristics.SlotIsShared**
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|The slot shares its opening with another slot.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**Characteristics.SupportsCardBus**
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PC Card slot supports Card Bus.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**Characteristics.SupportsHotPlugDevices**
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Slot supports hot-plug devices.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**Characteristics.SupportsModemRingResume**
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PC Card slot supports Modem Ring Resume.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**Characteristics.SupportsPCCard16**
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PC Card slot supports PC Card-16.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**Characteristics.SupportsPowerManagementEventSignal**
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot supports Power Management Event signal.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**Characteristics.SupportsSMBusSignal**
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot supports SMBUS signal.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+**Characteristics.SupportsZoomVideo**
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PC Card slot supports Zoom Video.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+### DeviceNumber
+
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot device number.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+### FunctionNumber
+
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot function number.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO 5 1.20|
+
+### Length
+
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot length|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Short`|
+|`Long`|
+|`Other`|
+
+### LinkLanes
+
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Bandwidth capacity of the slot, measured by the number of PCI Express Lanes present. Also known as the slot width.|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`8 bit`|
+|`16 bit`|
+|`32 bit`|
+|`64 bit`|
+|`128 bit`|
+|`x1`|
+|`x2`|
+|`x4`|
+|`x8`|
+|`x16`|
+|`x32`|
+|`Other`|
+
+### Status
+
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+See the Redfish standard schema and specification for information on common Status object.
+
+### SupportsHotPlug
+
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Specifies whether the slot supports hot-plug devices.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+### Technology
+
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI technology|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Proprietary`|
+|`OCP NIC 3.0`|
+|`PCIExpressGen5`|
+|`PCIExpressGen4`|
+|`PCIExpressGen3`|
+|`PCIExpressGen2`|
+|`PCIExpress`|
+
+### UEFIDevicePath
+
+Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Standardized text representation of the UEFI device path, in UTF-8 format|
+|Type|string|
+|Read Only|True|
+|Added|iLO 5 1.10|
+
+## HpeServerPCISlotCollection
+`@odata.type: "#HpeServerPCISlotCollection.HpeServerPCISlotCollection"`
+
+A Collection of HpeServerPCISlot resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/pcislots`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeServerPCISlot](../ilo5_hpe_resourcedefns304/#hpeserverpcislot)|
+
+### Members (array)
+
+Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
 
 | | |
 |---|---|
@@ -9372,6 +12318,259 @@ Member of HpeSmartStorageStorageEnclosureCollection.HpeSmartStorageStorageEnclos
 |Type|integer|
 |Read Only|True|
 
+## HpeSNMPAlertDestination
+
+`@odata.type: "#HpeSNMPAlertDestination.v2_0_0.HpeSNMPAlertDestination"`
+
+The HpeSNMPAlertDestination resource describes the properties for SNMP Alert Destinations.  The alert destination configuration up to 8 remote management systems that receive SNMP alerts from the BMC.
+
+This resource type was added in iLO 5 1.20
+
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/snmpservice/snmpalertdestinations/{item}`|GET PATCH DELETE |
+
+### AlertDestination
+
+Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
+
+| | |
+|---|---|
+|Description|The IP address or FQDN of remote management system that receive SNMP alerts.|
+|Type|string|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+### SNMPAlertProtocol
+
+Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
+
+| | |
+|---|---|
+|Description|Indicate the SNMP protocol associated with the AlertDestination.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`SNMPv1Trap`|Indicate SNMPv1 trap is enabled for the destination.|
+|`SNMPv3Trap`|Indicate SNMPv3 trap is enabled for the destination. Needs to fill the SecurityName as well.|
+|`SNMPv3Inform`|Indicate SNMPv3 Inform is enabled for the destination. Needs to fill the SecurityName as well.|
+|`Null`|A value is temporarily unavailable|
+
+### SNMPv3User
+
+SNMPv3 User associated with the destination when SNMP alert protocol is SNMPv3trap.
+SNMPv3User is a link (`"@odata.id": URI`) to another resource.
+
+### SecurityName
+
+Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
+
+| | |
+|---|---|
+|Description|Provides the SNMPv3 security name associated with SNMPv3trap or SNMPv3Inform set on SNMPAlertProtocol.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+### TrapCommunity
+
+Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
+
+| | |
+|---|---|
+|Description|The configured SNMPv1 trap community string.|
+|Type|string|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+## HpeSNMPAlertDestinationCollection
+`@odata.type: "#HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection"`
+
+A Collection of HpeSNMPAlertDestination resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/snmpservice/snmpalertdestinations`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeSNMPAlertDestination](../ilo5_hpe_resourcedefns304/#hpesnmpalertdestination)|
+
+### Members (array)
+
+Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
+## HpeSNMPUser
+
+`@odata.type: "#HpeSNMPUser.v2_1_1.HpeSNMPUser"`
+
+The HpeSNMPUser resource describes the properties for SNMP support.  SNMPv3 supports the User-based Security Model (USM). With this model,security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.
+
+This resource type was added in iLO 5 1.20
+
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/snmpservice/snmpusers/{item}`|GET PATCH DELETE |
+
+### AuthPassphrase
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|Sets the passphrase to use for sign operations. Enter a value of 8 to 49 characters.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+### AuthProtocol
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|Sets the message digest algorithm to use for encoding the authorization passphrase. The message digest is calculated over an appropriate portion of an SNMP message, and is included as part of the message sent to the recipient.|
+|Type|string|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`MD5`|Indicate Message Digest Algorithm.|
+|`SHA`|Indicate Secure Hash Algorithm.|
+|`SHA256`|Indicate SHA256 Algorithm.|
+
+### PrivacyPassphrase
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|Sets the passphrase to use for encrypt operations. Enter a value of 8 to 49 characters.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+### PrivacyProtocol
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|Sets the encryption algorithm to use for encoding the privacy passphrase. A portion of an SNMP message is encrypted before transmission.|
+|Type|string|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`DES`|Indicate Data Encryption Standard Algorithm.|
+|`AES`|Indicate Advanced Encryption Standard Algorithm.|
+
+### SecurityName
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|The user profile name. Enter an alphanumeric string of 1 to 32 characters.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+### UserEngineID
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|The UserEngineID is combined with the SecurityName to create a SNMPv3 user for each manager. It is only used for creating remote accounts used with INFORM messages. If this property is not set then INFORM message will be sent with default or iLO configured engine ID. This value must be a hexadecimal string with an even number of 10 to 64 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO 5 1.20|
+
+## HpeSNMPUsersCollection
+`@odata.type: "#HpeSNMPUsersCollection.HpeSNMPUsersCollection"`
+
+A Collection of HpeSNMPUsers resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/snmpservice/snmpusers`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeSNMPUser](../ilo5_hpe_resourcedefns304/#hpesnmpuser)|
+
+### Members (array)
+
+Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+
 ## HpeTlsConfig
 
 `@odata.type: "#HpeTlsConfig.v1_0_0.HpeTlsConfig"`
@@ -10029,3205 +13228,6 @@ Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorC
 | | |
 |---|---|
 |Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
-## HpeiLOAccountCertificateMap
-
-`@odata.type: "#HpeiLOAccountCertificateMap.v1_0_1.HpeiLOAccountCertificateMap"`
-
-The HpeiLOAccountCertificateMap resource describes mapping X509 certificates to user accounts.
-
-This resource type was added in iLO 5 1.20
-
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/accountservice/usercertificatemapping/{item}`|GET POST DELETE |
-
-### Fingerprint
-
-Member of [HpeiLOAccountCertificateMap.v1\_0\_1.HpeiLOAccountCertificateMap](#hpeiloaccountcertificatemap)
-
-| | |
-|---|---|
-|Description|The fingerprint which uniquely identifies the mapped certificate.|
-|Type|string|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### FingerprintDigestAlgorithm
-
-Member of [HpeiLOAccountCertificateMap.v1\_0\_1.HpeiLOAccountCertificateMap](#hpeiloaccountcertificatemap)
-
-| | |
-|---|---|
-|Description|The algorithm used to calculate the fingerprint.|
-|Type|string|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### UserName
-
-Member of [HpeiLOAccountCertificateMap.v1\_0\_1.HpeiLOAccountCertificateMap](#hpeiloaccountcertificatemap)
-
-| | |
-|---|---|
-|Description|The name used to log in to the management processor.|
-|Type|string|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-## HpeiLOAccountCertificateMapCollection
-`@odata.type: "#HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection"`
-
-A Collection of HpeiLOAccountCertificateMap resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/accountservice/usercertificatemapping`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeiLOAccountCertificateMap](../ilo5_hpe_resourcedefns304/#hpeiloaccountcertificatemap)|
-
-### Members (array)
-
-Member of HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
-## HpeiLOActiveHealthSystem
-
-`@odata.type: "#HpeiLOActiveHealthSystem.v2_5_0.HpeiLOActiveHealthSystem"`
-
-The HpeiLOActiveHealthSystem resource describes the properties for managing the Active Health System.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/activehealthsystem`|GET POST PATCH |
-
-### AHSEnabled
-
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|Determines whether HPE Active Health System logging is enabled or disabled.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### AHSFileEnd
-
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|The end of the AHS log.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO 5 1.10|
-|Format|date-time|
-
-### AHSFileStart
-
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|The start of the AHS log.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO 5 1.10|
-|Format|date-time|
-
-### AHSStatus
-
-**AHSStatus.HardwareEnabled**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|Determines whether HPE Active Health System logging in hardware is enabled or not.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**AHSStatus.SoftwareEnabled**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|Determines whether HPE Active Health System logging in software is enabled or not.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-**AHSStatus.TemporaryHoldEnabled**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|Determines whether HPE Active Health System logging access is temporarily disabled.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-### LocationParameters
-
-**LocationParameters.case_no**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|This query parameter may be added to the AHS location URI to insert the case number into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&case_no=abc123.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LocationParameters.co_name**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|This query parameter may be added to the AHS location URI to insert the company name into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&co_name=myCompany.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LocationParameters.contact_name**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|This query parameter may be added to the AHS location URI to insert the contact name into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&contact_name=JohnDoe.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LocationParameters.days**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|This query parameter should be used to download the most recent N days of the AHS log. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?days=7. Will retrive logs made within the last 7 days.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.15|
-
-**LocationParameters.downloadAll**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|This query parameter should be used to download entire AHS log. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LocationParameters.email**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|This query parameter may be added to the AHS location URI to insert the contacts email address into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&email=abc@xyz.com.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LocationParameters.from**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|This query parameter must be added with the 'to' query parameter to the AHS location URI to limit the range of data returned. 'downloadAll' parameter should not be used with this query parameter. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?from=2014-03-01&&to=2014-03-30.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LocationParameters.phone**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|This query parameter may be added to the AHS location URI to insert the contacts phone number into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&contact_name=JohnDoe&&phone=555-555-5555.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LocationParameters.to**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-| | |
-|---|---|
-|Description|This query parameter must be added with the 'from' query parameter to the AHS location URI to limit the range of data returned.'downloadAll' parameter should not be used with this query parameter. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?from=2014-03-01&&to=2014-03-30.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### Actions
-
-
-**HpeiLOActiveHealthSystem.CaptureSystemLog**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-There are no parameters for this action.
-
-**HpeiLOActiveHealthSystem.ClearLog**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-There are no parameters for this action.
-
-**HpeiLOActiveHealthSystem.LogAmplifierData**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-**Parameters:**
-
-**iLOAmplifierManagesCount (integer)**
-
-Number of iLOs that this Amplifier instance manages.
-
-**iLOAmplifierName (string)**
-
-Name of the iLO Amplifier instance that manages this iLO.
-
-**HpeiLOActiveHealthSystem.LogMilestone**
-Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
-
-**Parameters:**
-
-**MilestoneDescription (string)**
-
-Description of milestone.
-
-**MilestoneOrigin (string)**
-
-Origin of milestone.
-## HpeiLOBackupFile
-
-`@odata.type: "#HpeiLOBackupFile.v1_0_0.HpeiLOBackupFile"`
-
-The HpeiLOBackupFile resource describes the properties for managing BMC backup files.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/backuprestoreservice/backupfiles/{item}`|GET POST DELETE |
-
-### Created
-
-Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
-
-| | |
-|---|---|
-|Description|ISO-time of backup file creation (by whomever created this thing)|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.40|
-|Format|date-time|
-
-### FileSize
-
-Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
-
-| | |
-|---|---|
-|Description|Size of backup file.|
-|Type|integer or null|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-### FirmwareVersion
-
-Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
-
-| | |
-|---|---|
-|Description|iLO firmware version running when this backup file was created.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-### Actions
-
-
-**HpeiLOBackupFile.Restore**
-Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
-There are no parameters for this action.
-## HpeiLOBackupFileCollection
-`@odata.type: "#HpeiLOBackupFileCollection.HpeiLOBackupFileCollection"`
-
-A Collection of HpeiLOBackupFile resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/backuprestoreservice/backupfiles`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeiLOBackupFile](../ilo5_hpe_resourcedefns304/#hpeilobackupfile)|
-
-### Members (array)
-
-Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
-### Oem.Hpe.BackupFileCount
-
-Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
-
-| | |
-|---|---|
-|Description|The number of backup files reported.|
-|Type|integer or null|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-### Oem.Hpe.BackupFilesAllowed
-
-Member of HpeiLOBackupFileCollection.HpeiLOBackupFileCollection
-
-| | |
-|---|---|
-|Description|The number of backup files supported.|
-|Type|integer or null|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-## HpeiLOBackupRestoreService
-
-`@odata.type: "#HpeiLOBackupRestoreService.v2_2_0.HpeiLOBackupRestoreService"`
-
-The HpeiLOBackupRestoreService resource describes the properties for using the BMC backup and restore features.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/backuprestoreservice`|GET PATCH |
-
-### BackupFileLocation
-
-Member of [HpeiLOBackupRestoreService.v2\_2\_0.HpeiLOBackupRestoreService](#hpeilobackuprestoreservice)
-
-| | |
-|---|---|
-|Description|The URI to which a client may POST to create and download a file for a subsequent restore operation.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.15|
-|Format|uri-reference|
-
-### BackupFiles
-
-Link to backup files.
-BackupFiles is a link (`"@odata.id": URI`) to another resource.
-
-### CustomBackupandRestore
-
-Member of [HpeiLOBackupRestoreService.v2\_2\_0.HpeiLOBackupRestoreService](#hpeilobackuprestoreservice)
-
-| | |
-|---|---|
-|Description|This property indicates whether a custom backup and restore is enabled.|
-|Type|boolean|
-|Read Only|False|
-
-### HttpPushUri
-
-Member of [HpeiLOBackupRestoreService.v2\_2\_0.HpeiLOBackupRestoreService](#hpeilobackuprestoreservice)
-
-| | |
-|---|---|
-|Description|The URI to which a client may POST a file for a subsequent restore operation.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.15|
-|Format|uri-reference|
-
-## HpeiLODateTime
-
-`@odata.type: "#HpeiLODateTime.v2_0_0.HpeiLODateTime"`
-
-The HpeiLODateTime resource describes the properties for managing the BMC data and time.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/datetime`|GET PATCH |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Links/EthernetNICs`|Collection of [EthernetInterface](../ilo5_network_resourcedefns304/#ethernetinterfacecollection)|
-
-### ConfigurationSettings
-
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-| | |
-|---|---|
-|Description|The state of the currently displayed configuration settings.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`Current`|
-|`SomePendingReset`|
-
-### DateTime
-
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-| | |
-|---|---|
-|Description|The date and time used by management processor.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-|Format|date-time|
-
-### NTPServers (array)
-
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-`NTPServers` is an array containing elements of:
-
-
-| | |
-|---|---|
-|Description|The current NTP server's IPv4 address, IPv6 address, or FQDN. The value either comes from DHCP or is static depending on the DHCP settings.|
-|Type|string or null|
-|Read Only|True|
-
-### PropagateTimeToHost
-
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-| | |
-|---|---|
-|Description|Determines whether the server time is synchronized with the management processor time during the first POST after AC power is applied.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### StaticNTPServers (array)
-
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-`StaticNTPServers` is an array containing elements of:
-
-
-| | |
-|---|---|
-|Description|The static NTP server's IPv4 address, IPv6 address, or FQDN. To set this property, management processor must not be configured to use NTP servers provided by DHCPv4 or DHCPv6.|
-|Type|string|
-|Read Only|True|
-
-### TimeZone
-
-**TimeZone.Index**
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-| | |
-|---|---|
-|Description|The index of the current time zone. To set a new time zone, specify a different time zone index. This property can be set only when DHCPv4 or DHCPv6 supplied time settings are disabled. Since the time zone list might vary from one firmware version to another (which often leads to differences in time zone indices), setting the time zone by name is recommended over setting by index, for better compatibility.|
-|Type|number|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**TimeZone.UtcOffset**
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-| | |
-|---|---|
-|Description|The UTC offset of the current time zone, in the format {+/-}hh:mm|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**TimeZone.Value**
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-| | |
-|---|---|
-|Description|The environment variable value.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### TimeZoneList (array)
-
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-`TimeZoneList` is an array containing elements of:
-
-**TimeZoneList[{item}].Index**
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-| | |
-|---|---|
-|Description|The time zone index.|
-|Type|number|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**TimeZoneList[{item}].UtcOffset**
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-| | |
-|---|---|
-|Description|The UTC offset of the time zone, in the format {+/-}hh:mm|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**TimeZoneList[{item}].Value**
-Member of [HpeiLODateTime.v2\_0\_0.HpeiLODateTime](#hpeilodatetime)
-
-| | |
-|---|---|
-|Description|The environment variable value.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-## HpeiLOEmbeddedMedia
-
-`@odata.type: "#HpeiLOEmbeddedMedia.v2_0_0.HpeiLOEmbeddedMedia"`
-
-The HpeiLOEmbeddedMedia resource describes the properties for the embedded media.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/embeddedmedia`|GET |
-
-### Controller
-
-**Controller.Firmware**
-**Controller.Firmware.Current**
-**Controller.Firmware.Current.VersionString**
-Member of [HpeiLOEmbeddedMedia.v2\_0\_0.HpeiLOEmbeddedMedia](#hpeiloembeddedmedia)
-
-| | |
-|---|---|
-|Description|The current version of the embedded media controller.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**Controller.Status**
-Member of [HpeiLOEmbeddedMedia.v2\_0\_0.HpeiLOEmbeddedMedia](#hpeiloembeddedmedia)
-See the Redfish standard schema and specification for information on common Status object.
-
-### SDCard
-
-**SDCard.SizeMB**
-Member of [HpeiLOEmbeddedMedia.v2\_0\_0.HpeiLOEmbeddedMedia](#hpeiloembeddedmedia)
-
-| | |
-|---|---|
-|Description|The size of the SD card present in the server, in MB.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**SDCard.Status**
-Member of [HpeiLOEmbeddedMedia.v2\_0\_0.HpeiLOEmbeddedMedia](#hpeiloembeddedmedia)
-See the Redfish standard schema and specification for information on common Status object.
-
-## HpeiLOFederatedGroupCapping
-
-`@odata.type: "#HpeiLOFederatedGroupCapping.v2_0_0.HpeiLOFederatedGroupCapping"`
-
-The HpeiLOFederatedGroupCapping resource describes the properties for managing Federated Group Capping.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/chassis/{item}/power/federatedgroupcapping`|GET PATCH |
-
-### CapWatts
-
-Member of [HpeiLOFederatedGroupCapping.v2\_0\_0.HpeiLOFederatedGroupCapping](#hpeilofederatedgroupcapping)
-
-| | |
-|---|---|
-|Description|The configured power cap for all servers in a group. This value is 0 if the power cap is not configured.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### CapacityWatts
-
-Member of [HpeiLOFederatedGroupCapping.v2\_0\_0.HpeiLOFederatedGroupCapping](#hpeilofederatedgroupcapping)
-
-| | |
-|---|---|
-|Description|The total power supply capacity for all servers in a group.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### Groups
-
-### Throttle
-
-Member of [HpeiLOFederatedGroupCapping.v2\_0\_0.HpeiLOFederatedGroupCapping](#hpeilofederatedgroupcapping)
-
-| | |
-|---|---|
-|Description|High, Med, or Low based on the percentage of power usage.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-## HpeiLOFederationGroup
-
-`@odata.type: "#HpeiLOFederationGroup.v2_0_0.HpeiLOFederationGroup"`
-
-The HpeiLOFederationGroup resource describes the properties for managing Federation groups.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/federationgroups/{item}`|GET PATCH DELETE |
-
-### Key
-
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|The password used by the Federation Group.|
-|Type|string or null|
-|Read Only|False|
-
-### Privileges
-
-**Privileges.HostBIOSConfigPriv**
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|Host BIOS configuration privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Privileges.HostNICConfigPriv**
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|Host NIC configuration privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Privileges.HostStorageConfigPriv**
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|Host Storage configuration privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Privileges.LoginPriv**
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|Login privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Privileges.RemoteConsolePriv**
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|Remote console privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Privileges.SystemRecoveryConfigPriv**
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|System Recovery configuration privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Privileges.UserConfigPriv**
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|User configuration privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Privileges.VirtualMediaPriv**
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|Virtual media privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Privileges.VirtualPowerAndResetPriv**
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|Virtual power and reset privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Privileges.iLOConfigPriv**
-Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederationgroup)
-
-| | |
-|---|---|
-|Description|The management processor configuration privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-## HpeiLOFederationGroupCollection
-`@odata.type: "#HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection"`
-
-A Collection of HpeiLOFederationGroup resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/federationgroups`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeiLOFederationGroup](../ilo5_hpe_resourcedefns304/#hpeilofederationgroup)|
-
-### Members (array)
-
-Member of HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
-## HpeiLOFederationPeers
-
-`@odata.type: "#HpeiLOFederationPeers.v2_0_0.HpeiLOFederationPeers"`
-
-The HpeiLOFederationPeers resource describes the properties for viewing Federation peers.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/federationpeers/{item}`|GET |
-
-### Peers (array)
-
-Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
-
-`Peers` is an array containing elements of:
-
-**Peers[{item}].HttpErrorCode**
-Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
-
-| | |
-|---|---|
-|Description|Error code for success or failure.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**Peers[{item}].ManagerIPAddress**
-Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
-
-| | |
-|---|---|
-|Description|Manager IP address of the federation peer.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**Peers[{item}].Time**
-Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
-
-| | |
-|---|---|
-|Description|Time when the federation peer was added.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-|Format|date-time|
-
-**Peers[{item}].URL**
-Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
-
-| | |
-|---|---|
-|Description|URL of the federation peer.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-|Format|url|
-
-**Peers[{item}].UUID**
-Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederationpeers)
-
-| | |
-|---|---|
-|Description|UUID peers that are part of the federation group.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-## HpeiLOFederationPeersCollection
-`@odata.type: "#HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection"`
-
-A Collection of HpeiLOFederationPeers resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/federationpeers`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeiLOFederationPeers](../ilo5_hpe_resourcedefns304/#hpeilofederationpeers)|
-
-### Members (array)
-
-Member of HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
-## HpeiLOFrus
-
-`@odata.type: "#HpeiLOFrus.v2_0_0.HpeiLOFrus"`
-
-The HpeiLOFrus resource describes features of add-in adapters.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/chassis/{item}/basefrus/{item}`|GET |
-|`/redfish/v1/chassis/{item}/basefrus/{item}/details`|GET |
-|`/redfish/v1/chassis/{item}/mezzfrus/{item}`|GET |
-|`/redfish/v1/chassis/{item}/mezzfrus/{item}/details`|GET |
-
-### FRU
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-| | |
-|---|---|
-|Description|The typename this FRU describes.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### FRULink
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-| | |
-|---|---|
-|Description|The aggregation of the Link signals for all ports on the FRU card.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### FRUType
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-| | |
-|---|---|
-|Description|The type of FRU that is installed, i.e. Base or Mezzanine FRU.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`Base`|
-|`Mezzanine`|
-
-### Interlocked
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-| | |
-|---|---|
-|Description|Indicates if a PCIe card is installed in slot.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### Location
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-| | |
-|---|---|
-|Description|The location where the FRU resides.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### PGood
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-| | |
-|---|---|
-|Description|The Power Good status.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### PhysicalSlot
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-| | |
-|---|---|
-|Description|The physical slot in which this FRU resides. 0 is for Base FRU, 1-N is for Mezzanine FRUs|
-|Type|integer|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### Seated
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-| | |
-|---|---|
-|Description|Indicates if the Base FRU is properly seated in the slot.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### SerialNumber
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-| | |
-|---|---|
-|Description|The system's serial number.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### UEFIDeviceName
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-| | |
-|---|---|
-|Description|The Device Name in UTF-8 format.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### UEFIDevicePaths (array)
-
-Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
-
-`UEFIDevicePaths` is an array containing elements of:
-
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-
-## HpeiLOFrusCollection
-`@odata.type: "#HpeiLOFrusCollection.HpeiLOFrusCollection"`
-
-A Collection of HpeiLOFrus resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/chassis/{item}/basefrus`|GET |
-|`/redfish/v1/chassis/{item}/mezzfrus`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeiLOFrus](../ilo5_hpe_resourcedefns304/#hpeilofrus)|
-
-### Members (array)
-
-Member of HpeiLOFrusCollection.HpeiLOFrusCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeiLOFrusCollection.HpeiLOFrusCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeiLOFrusCollection.HpeiLOFrusCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
-## HpeiLOLicense
-
-`@odata.type: "#HpeiLOLicense.v2_3_0.HpeiLOLicense"`
-
-The HpeiLOLicense resource describes the properties for managing BMC licenses.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/licenseservice/{item}`|GET DELETE |
-
-### Confirmation
-
-**Confirmation.Code**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Confirmation service response code.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**Confirmation.Message**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|User-friendly confirmation information for the current managment processor license.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**Confirmation.Service**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Confirmation service URI.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**Confirmation.Status**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-See the Redfish standard schema and specification for information on common Status object.
-
-### ConfirmationRequest
-
-**ConfirmationRequest.EON**
-**ConfirmationRequest.EON.License**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|The current license of this management processor.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ConfirmationRequest.EON.LicenseKey**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|The license key installed on this management processor.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ConfirmationRequest.EON.Quantity**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|The number of entitlements licensed.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ConfirmationRequest.EON.State**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|The current licensing state and behavior of the management processor.  This is affected by license installation, activation and confirmation.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`unlicensed`|standard baseline functionality|
-|`evaluation`|evaluation / demonstration temporary licensed functionality|
-|`nfr`|not for resale experimental functionality|
-|`expired`|standard baseline functionality and evaluation licenses no longer accepted|
-|`unconfirmed`|licensed functionality that has not been confirmed|
-|`timeout`|licensed functionality is disabled until the license is confirmed|
-|`confirmed`|licensed functionality has been confirmed for use|
-|`static`|system has active built-in licensed functionality that does not require confirmation|
-|`err`|error|
-
-**ConfirmationRequest.Signer**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Source of confirmation request.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ConfirmationRequest.System**
-**ConfirmationRequest.System.ChipId**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Management processor unique chip identifier.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ConfirmationRequest.System.Product**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|System housing management processor.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ConfirmationRequest.System.SerialNumber**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|System serial number.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### License
-
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|The current license of this management processor.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### LicenseClass
-
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|The class of current license on this management processor.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`FQL`|
-|`BETA`|
-|`EVALUATION`|
-|`AKA`|
-|`DL`|
-|`FFQL`|
-|`SL`|
-|`SITE`|
-|`EVAL`|
-|`MLA`|
-
-### LicenseErr
-
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Error information from the most recent attempt to alter the installed management processor license.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### LicenseExpire
-
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|User-friendly expiration information of the installed management processor license. For example, for demo license, Evaluation period 2 months 5 days 6 hours remain.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### LicenseFeatures
-
-**LicenseFeatures.AutoCertEnroll**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Automatic Certificate Enrollment.|
-|Type|boolean|
-|Read Only|True|
-
-**LicenseFeatures.DirectoryAuth**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Directory integrated authentication.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.DowngradePolicy**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Firmware downgrade policy setting.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-**LicenseFeatures.EmailAlert**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Email based alerting.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.FWScan**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Runtime FW Integrity check.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.Federation**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Distributed peer to peer management.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.Jitter**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Jitter Control.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.KD**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Kernel Debugging (VSP raw mode).|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.KeyMgr**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Store and retrieve keys from an external key manager.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.MURC**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Shared Multi-User Remote Console.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.ODIM**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Open Distributed Infrastructure Management.|
-|Type|boolean|
-|Read Only|True|
-
-**LicenseFeatures.PowerReg**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Power Regulator.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.RC**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Graphical Remote Console.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.Recovery**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|OS Recovery Event.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.17|
-
-**LicenseFeatures.RemoteSyslog**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Remote Syslog.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.Scrncap**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Video Capture.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.SecureErase**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Secure Erase of embedded media.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.SmartCard**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|2-Factor Authentication (Smart Card).|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.SuiteB**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|SuiteB/CNSA mode support.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.TextCons**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Text Console.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.VM**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Remote Console based Virtual Media.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.VMScript**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Scripted Virtual Media.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**LicenseFeatures.VSPLogging**
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|Virtual Serial Port Logging and Playback.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### LicenseInstallDate
-
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|User-friendly installation date information of the installed management processor license. For example, 19 May 2017|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.20|
-
-### LicenseKey
-
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|User-visible license key installed on this management processor. License keys are 25 or 29 characters and contain letters, numbers and hypens. Use POST method to collection of membertype HpeiLOLicense to install / update the license.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-### LicenseSeats
-
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|The number of systems authorized to use this activation key.|
-|Type|integer|
-|Read Only|True|
-
-### LicenseTier
-
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|The licensed feature-set of the management processor.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`STD`|
-|`BLSTD`|
-|`ADV`|
-|`BLADV`|
-|`ESS`|
-|`SCALEOUT`|
-|`APSE`|
-
-### LicenseType
-
-Member of [HpeiLOLicense.v2\_3\_0.HpeiLOLicense](#hpeilolicense)
-
-| | |
-|---|---|
-|Description|The type of current license activation on this management processor.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`Unlicensed`|
-|`Evaluation`|
-|`Perpetual`|
-|`Subscription`|
-|`Internal`|
-|`Duration`|
-|`Expired`|
-
-## HpeiLOLicenseCollection
-`@odata.type: "#HpeiLOLicenseCollection.HpeiLOLicenseCollection"`
-
-A Collection of HpeiLOLicense resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/licenseservice`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeiLOLicense](../ilo5_hpe_resourcedefns304/#hpeilolicense)|
-
-### Members (array)
-
-Member of HpeiLOLicenseCollection.HpeiLOLicenseCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeiLOLicenseCollection.HpeiLOLicenseCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeiLOLicenseCollection.HpeiLOLicenseCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
-## HpeiLOResourceDirectory
-
-`@odata.type: "#HpeiLOResourceDirectory.v2_0_0.HpeiLOResourceDirectory"`
-
-The HpeiLOResourceDirectory resource describes the resource directory.  The resource directory is a selected set of resources and resource types for faster access to resources.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/resourcedirectory`|GET |
-
-### Instances (array)
-
-Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
-
-`Instances` is an array containing elements of:
-
-**Instances[{item}].@odata.id**
-Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-**Instances[{item}].@odata.type**
-Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-
-**Instances[{item}].ETag**
-Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
-
-| | |
-|---|---|
-|Description|This is the last known etag of the resource. The property is omitted if not known.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**Instances[{item}].HttpMethods (array)**
-Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
-
-`HttpMethods` is an array containing elements of:
-
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`GET`|
-|`HEAD`|
-|`POST`|
-|`PUT`|
-|`PATCH`|
-|`DELETE`|
-
-**Instances[{item}].MemberType**
-Member of [HpeiLOResourceDirectory.v2\_0\_0.HpeiLOResourceDirectory](#hpeiloresourcedirectory)
-
-| | |
-|---|---|
-|Description|This property has the type of members for collection resources.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-## HpeiLOSSO
-
-`@odata.type: "#HpeiLOSSO.v2_0_0.HpeiLOSSO"`
-
-The HpeiLOSSO resource describes the configuration of the HPE BMC single-sign-on trusted server feature.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/securityservice/sso`|GET POST PATCH |
-
-### ManagerTrustedCertificates (array)
-
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-`ManagerTrustedCertificates` is an array containing elements of:
-
-**ManagerTrustedCertificates[{item}].@odata.id**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-**ManagerTrustedCertificates[{item}].@odata.type**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-
-**ManagerTrustedCertificates[{item}].Certificate**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Contains PEM formatted X509 certificate (Base64 encoded).|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ManagerTrustedCertificates[{item}].CertificateDetails**
-**ManagerTrustedCertificates[{item}].CertificateDetails.Issuer**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|The Certificate Authority that issued the certificate.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ManagerTrustedCertificates[{item}].CertificateDetails.Subject**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|The entity to which the certificate was issued.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ManagerTrustedCertificates[{item}].CertificateDetails.ValidNotAfter**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|The date on which the certificate validity period ends.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-|Format|date-time|
-
-**ManagerTrustedCertificates[{item}].CertificateDetails.ValidNotBefore**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|The date on which the certificate validity period begins.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.10|
-|Format|date-time|
-
-**ManagerTrustedCertificates[{item}].RecordType**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Specifies the type of SSO record imported.|
-|Type|string|
-|Read Only|true|
-|Added|iLO 5 1.15|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Certificate`|It is a PEM formatted X509 certificate (Base64 encoded).|
-|`DNSName`|It is a DNS name or an IP address of the HPE SSO-compliant application.|
-
-**ManagerTrustedCertificates[{item}].SerialNumber**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Contains the Serial number for the SSO records.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ManagerTrustedCertificates[{item}].ServerName**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|The Server name (or certificate subject).|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO 5 1.10|
-
-**ManagerTrustedCertificates[{item}].Status**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-See the Redfish standard schema and specification for information on common Status object.
-
-### SSOsettings
-
-**SSOsettings.AdminPrivilege**
-**SSOsettings.AdminPrivilege.HostBIOSConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host BIOS Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.AdminPrivilege.HostNICConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host NIC Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.AdminPrivilege.HostStorageConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host Storage Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.AdminPrivilege.LoginPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Login Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.AdminPrivilege.RemoteConsolePriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Remote Console Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.AdminPrivilege.SystemRecoveryConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|System Recovery Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.AdminPrivilege.UserConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|User Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.AdminPrivilege.VirtualMediaPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Virtual Media Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.AdminPrivilege.VirtualPowerAndResetPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Power and Reset Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.AdminPrivilege.iLOConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|iLO Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.OperatorPrivilege**
-**SSOsettings.OperatorPrivilege.HostBIOSConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host BIOS Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.OperatorPrivilege.HostNICConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host NIC Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.OperatorPrivilege.HostStorageConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host Storage Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.OperatorPrivilege.LoginPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Login Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.OperatorPrivilege.RemoteConsolePriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Remote Console Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.OperatorPrivilege.SystemRecoveryConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|System Recovery Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.OperatorPrivilege.UserConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|User Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.OperatorPrivilege.VirtualMediaPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Virtual Media Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.OperatorPrivilege.VirtualPowerAndResetPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Power and Reset Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.OperatorPrivilege.iLOConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|iLO Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.SSOTrustMode**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Represents the SSO Trust Mode.|
-|Type|string|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`TrustNone`|Rejects all SSO connection request.|
-|`TrustAll`|Accepts any SSO connection initiated from any HPE SSO compliant application.|
-|`TrustbyName`|Enables SSO connections from an HPE SSO compliant application by matching a directly imported IP address or DNS name.|
-|`TrustbyCert`|Enables SSO connections from an HPE SSO compliant application by matching a certificate previously imported to iLO.|
-
-**SSOsettings.UserPrivilege**
-**SSOsettings.UserPrivilege.HostBIOSConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host BIOS Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.UserPrivilege.HostNICConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host NIC Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.UserPrivilege.HostStorageConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host Storage Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.UserPrivilege.LoginPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Login Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.UserPrivilege.RemoteConsolePriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Remote Console Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.UserPrivilege.SystemRecoveryConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|System Recovery Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.UserPrivilege.UserConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|User Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.UserPrivilege.VirtualMediaPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Virtual Media Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.UserPrivilege.VirtualPowerAndResetPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Power and Reset Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**SSOsettings.UserPrivilege.iLOConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|iLO Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### Actions
-
-
-**HpeiLOSSO.DeleteAllSSORecords**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-Delete all the SSO records.
-
-There are no parameters for this action.
-
-**HpeiLOSSO.DeleteSSORecordbyNumber**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-Delete SSO record by record number.
-
-
-**Parameters:**
-
-**RecordNumber (integer)**
-
-Index of the SSO record to be deleted.
-
-**HpeiLOSSO.ImportCertificate**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-Import the HPE SSO Certificate.
-
-
-**Parameters:**
-
-**CertInput (string)**
-
-PEM formatted X509 certificate (Base64 encoded)/DNS name or IP address to import the certificate.
-
-**CertType (string)**
-
-Specifies the type of certificate imported.
-
-|Value|Description|
-|---|---|
-|DirectImportCert|iLO directly imports the Certificate.|
-|ImportCertUri|iLO imports the certificate from the HPE SSO compliant application over the network.|
-
-**HpeiLOSSO.ImportDNSName**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-Add DNS Name to the record list.
-
-
-**Parameters:**
-
-**DNSName (string)**
-
-DNS Name of the HPE SSO Trusted Server.
-## HpeiLOSecurityDashboard
-
-`@odata.type: "#HpeiLOSecurityDashboard.v1_0_0.HpeiLOSecurityDashboard"`
-
-The HpeiLOSecurityDashboard resource describes the BMC security dashboard.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/securityservice/securitydashboard`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`SecurityParameters`|[HpeiLOSecurityParam](../ilo5_hpe_resourcedefns304/#hpeilosecurityparam)|
-
-### OverallSecurityStatus
-
-Member of [HpeiLOSecurityDashboard.v1\_0\_0.HpeiLOSecurityDashboard](#hpeilosecuritydashboard)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Ok`|The Overall security state of the system is OK.|
-|`Risk`|The Overall security state of the system is Risk.|
-|`Ignored`|The user has ignored (or suppressed) the risk on all the security parameters (whose Status value is Risk).|
-
-### SecurityParameters
-
-This property references a resource of type Collection with a MemberType of HpeiLOSecurityParam.
-SecurityParameters is a link (`"@odata.id": URI`) to another resource.
-
-### ServerConfigurationLockStatus
-
-Member of [HpeiLOSecurityDashboard.v1\_0\_0.HpeiLOSecurityDashboard](#hpeilosecuritydashboard)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Enabled`|Server Configuration Lock is Enabled.|
-|`Disabled`|Server Configuration Lock is Disabled.|
-
-## HpeiLOSecurityParam
-
-`@odata.type: "#HpeiLOSecurityParam.v1_1_0.HpeiLOSecurityParam"`
-
-The HpeiLOSecurityParam resource describes the properties for BMC security dashboard parameters.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/securityservice/securitydashboard/securityparams/{item}`|GET PATCH |
-
-### Ignore
-
-Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
-
-| | |
-|---|---|
-|Description|This indicates if the security status of the security parameter is set to ignored or not.|
-|Type|boolean or null|
-|Read Only|False|
-|Added|iLO 5 1.40|
-
-### IgnoredBy
-
-Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
-
-| | |
-|---|---|
-|Description|This represents the user who changed the value of Ignore.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-### IgnoredTime
-
-Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
-
-| | |
-|---|---|
-|Description|This represents the time when the risk configuration was suppressed.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-### RecommendedAction
-
-Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
-
-| | |
-|---|---|
-|Description|This represents the recommended action.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-### SecurityStatus
-
-Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
-
-| | |
-|---|---|
-|Description|This represents if the status of the security parameter.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Risk`|This indicates a security issue associated with the security parameter.|
-|`Ok`|This indicates no security issue associated with the security parameter.|
-
-### State
-
-Member of [HpeiLOSecurityParam.v1\_1\_0.HpeiLOSecurityParam](#hpeilosecurityparam)
-
-| | |
-|---|---|
-|Description|This represents the state or value of the security parameter.|
-|Type|string|
-|Read Only|True|
-|Added|iLO 5 1.40|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`On`|The state of the Security Parameter is On.|
-|`Off`|The state of the Security Parameter is Off.|
-|`Enabled`|The state of the Security Parameter is Enabled.|
-|`Disabled`|The state of the Security Parameter is Disabled.|
-|`Failed`|The status of the Security Parameter or the result of an operation represented by the Security Parameter is Failed.|
-|`Ok`|The status of the Security Parameter or the result of an operation represented by the Security Parameter is Ok.|
-|`Insufficient`|The value of the Security Parameter is Insufficient or less than the default value.|
-|`Repaired`|The state of the Security Parameter is Repaired.|
-|`True`|The state of the Security Parameter is True.|
-|`False`|The state of the Security Parameter is False.|
-
-## HpeiLOSecurityParamCollection
-`@odata.type: "#HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection"`
-
-A Collection of HpeiLOSecurityParam resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/securityservice/securitydashboard/securityparams`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeiLOSecurityParam](../ilo5_hpe_resourcedefns304/#hpeilosecurityparam)|
-
-### Members (array)
-
-Member of HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
-## HpeiLOSnmpService
-
-`@odata.type: "#HpeiLOSnmpService.v2_4_1.HpeiLOSnmpService"`
-
-The HpeiLOSnmpService resource describes the properties for managing the SNMP configuration of the BMC.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/snmpservice`|GET POST PATCH |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`SNMPAlertDestinations`|Collection of [HpeSNMPAlertDestination](../ilo5_hpe_resourcedefns304/#hpesnmpalertdestinationcollection)|
-|`SNMPUsers`|Collection of [HpeSNMPUser](#hpesnmpuser)|
-
-### AlertDestinationAssociations (array)
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-`AlertDestinationAssociations` is an array containing elements of:
-
-**AlertDestinationAssociations[{item}].SNMPAlertProtocol**
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Indicate the SNMP protocol associated with the AlertDestination.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`SNMPv1Trap`|Indicate SNMPv1 trap is enabled for the destination.|
-|`SNMPv3Trap`|Indicate SNMPv3 trap is enabled for the destination. Needs to fill the SecurityName as well.|
-|`SNMPv3Inform`|Indicate SNMPv3 Inform is enabled for the destination. Needs to fill the SecurityName as well.|
-|`Null`|A value is temporarily unavailable|
-
-**AlertDestinationAssociations[{item}].SecurityName**
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Provides the SNMPv3 security name associated with the destination when SNMP alert protocol is SNMPv3 trap or inform.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-### AlertDestinations (array)
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-`AlertDestinations` is an array containing elements of:
-
-
-| | |
-|---|---|
-|Type|string or null|
-|Read Only|True|
-
-### AlertsEnabled
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|The alert conditions that the management processor detects independently of the host operating system can be sent to specified SNMP alert destinations. Indicates if the SNMPv1 Trap or SNMPv3 Trap is enabled.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### Contact
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|The string of up to 49 characters that specifies the system administrator or server owner. The string can include a name, email address, or phone number.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### Location
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|The string of up to 49 characters that specifies the physical location of the server.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### Oem.Hpe.SNMPColdStartTrapBroadcast
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|If set to true, the Cold Start Trap will be enabled. The Cold Start Trap is broadcast to a subnet broadcast address if there are no trap destinations configured in the SNMP Alert Destination(s) boxes.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### PeriodicHSATrapConfig
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|If there are any component in health status array(HSA) Trap are in degraded or failed condition then HSA trap will be sent periodically till the component status becomes ok or fine condition. This setting is disabled by default.|
-|Type|string|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`Disabled`|
-|`Daily`|
-|`Weekly`|
-|`Monthly`|
-
-### ReadCommunities (array)
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-`ReadCommunities` is an array containing elements of:
-
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-
-### Role
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|The string of up to 64 characters that describes the server role or function.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### RoleDetail
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|The string of up to 512 characters that describes specific tasks that the server might perform.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### SNMPAlertDestinations
-
-SNMP Alert Destination details.
-SNMPAlertDestinations is a link (`"@odata.id": URI`) to another resource.
-
-### SNMPUsers
-
-SNMPv3 User details.
-SNMPUsers is a link (`"@odata.id": URI`) to another resource.
-
-### SNMPv1Enabled
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Indicates if the SNMPv1 Query or SNMPv1 Trap is enabled.|
-|Type|boolean|
-|Read Only|False|
-
-### SNMPv1RequestsEnabled
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Indicates if the SNMPv1 Query is enabled.|
-|Type|boolean|
-|Read Only|False|
-
-### SNMPv1TrapEnabled
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Indicates if the SNMPv1 Trap is enabled.|
-|Type|boolean|
-|Read Only|False|
-
-### SNMPv1Traps
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|When enabled, SNMPv1 traps are sent to the remote management systems configured in the SNMP Alert Destination(s) boxes.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### SNMPv3EngineID
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|The SNMPv3 Engine ID is the unique identifier of an SNMP engine that belongs to an SNMP agent entity. This value must be a hexadecimal string with an even number of 6 to 32 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-### SNMPv3InformRetryAttempt
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Specifies the number of retries to be used in SNMPv3 inform.|
-|Type|integer|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-### SNMPv3InformRetryIntervalSeconds
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Specifies the interval in seconds between SNMPv3 inform retries.|
-|Type|integer|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-### SNMPv3RequestsEnabled
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Indicates if the SNMPv3 Query is enabled.|
-|Type|boolean|
-|Read Only|False|
-
-### SNMPv3TrapEnabled
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Indicates if the SNMPv3 Trap is enabled.|
-|Type|boolean|
-|Read Only|False|
-
-### Status
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-See the Redfish standard schema and specification for information on common Status object.
-
-### TrapCommunities (array)
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-`TrapCommunities` is an array containing elements of:
-
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-
-### TrapSourceHostname
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Determines the host name that is used in the SNMP-defined sysName variable when the management processor generates SNMP traps.|
-|Type|string|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`Manager`|
-|`System`|
-
-### Users (array)
-
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-`Users` is an array containing elements of:
-
-**Users[{item}].AuthPassphrase**
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Sets the passphrase to use for sign operations. Enter a value of 8 to 49 characters.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Users[{item}].AuthProtocol**
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Sets the message digest algorithm to use for encoding the authorization passphrase. The message digest is calculated over an appropriate portion of an SNMP message, and is included as part of the message sent to the recipient. Select MD5 (Message Digest) or SHA (Secure Hash Algorithm).|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`MD5`|Indicate Message Digest Algorithm.|
-|`SHA`|Indicate Secure Hash Algorithm.|
-|`SHA256`|Indicate SHA256 Algorithm.|
-|`Null`|A value is temporarily unavailable|
-
-**Users[{item}].PrivacyPassphrase**
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Sets the passphrase to use for encrypt operations. Enter a value of 8 to 49 characters.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Users[{item}].PrivacyProtocol**
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|Sets the encryption algorithm to use for encoding the privacy passphrase. A portion of an SNMP message is encrypted before transmission. Select AES (Advanced Encryption Standard) or DES (Data Encryption Standard).|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`AES`|Indicate Advanced Encryption Standard Algorithm.|
-|`Null`|A value is temporarily unavailable|
-
-**Users[{item}].SecurityName**
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|The user profile name. Enter an alphanumeric string of 1 to 32 characters.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.10|
-
-**Users[{item}].UserEngineID**
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-
-| | |
-|---|---|
-|Description|The UserEngineID is combined with the SecurityName to create a SNMPv3 user for each manager. It is only used for creating remote accounts used with INFORM messages. If this property is not set then INFORM message will be sent with default or iLO configured engine ID. This value must be a hexadecimal string with an even number of 10 to 64 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO 5 1.20|
-
-### Actions
-
-
-**HpeiLOSnmpService.SendSNMPTestAlert**
-Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
-There are no parameters for this action.
-## HpeiSCSISoftwareInitiator
-
-`@odata.type: "#HpeiSCSISoftwareInitiator.v2_0_0.HpeiSCSISoftwareInitiator"`
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/bios/iscsi`|GET |
-|`/redfish/v1/systems/{item}/bios/iscsi/settings`|GET PATCH |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeiSCSISoftwareInitiator](../ilo5_hpe_resourcedefns304/#hpeiscsisoftwareinitiator)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo5_hpe_resourcedefns304/#hpebaseconfigs)|
-
-### @Redfish.Settings
-
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-See the Redfish standard schema and specification for information on common @Redfish properties.
-
-### iSCSIInitiatorName
-
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The worldwide unique iSCSI Qualified Name (IQN) of this iSCSI Initiator. Only IQN format is accepted. EUI format is not supported (for example, 'iqn.1986-03.com.hp:init.sn-123456').|
-|Type|string|
-|Read Only|True|
-
-### iSCSINicSources (array)
-
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-`iSCSINicSources` is an array containing elements of:
-
-
-| | |
-|---|---|
-|Description|The BIOS Attribute that describes a NIC instance that can be used as a target for iSCSI configuration.|
-|Type|string|
-|Read Only|True|
-
-### iSCSISources (array)
-
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-`iSCSISources` is an array containing elements of:
-
-**iSCSISources[{item}].StructuredBootString**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|Identifies this iSCSI option within the server.|
-|Type|string or null|
-|Read Only|True|
-
-**iSCSISources[{item}].UEFIDevicePath**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|Standardized text representation of the UEFI device path for this option, in UTF-8 format.|
-|Type|string or null|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIAttemptInstance**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|Uniquely identifies this iSCSI attempt within iSCSISources array. If set to zero, all other properties in the boot option object are ignored (which will delete an existing boot attempt).|
-|Type|integer|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIAttemptName**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|Human readable descriptive name for this iSCSI attempt configuration|
-|Type|string or null|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIAuthenticationMethod**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The iSCSI connection authentication method.|
-|Type|string|
-|Read Only|True|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`None`|No iSCSI connection security.|
-|`CHAP`|iSCSI connection is secured using Challenge Handshake Authentication Protocol (CHAP).|
-
-**iSCSISources[{item}].iSCSIChapSecret**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The password needed for CHAP authentication. This is applicable only when the Authentication Method is set to CHAP, and the CHAP Type is set to Mutual.|
-|Type|string or null|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIChapType**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The CHAP authentication type. This is applicable only when the Authentication Method is set to CHAP.|
-|Type|string|
-|Read Only|True|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`OneWay`|The target will authenticate the initiator. .|
-|`Mutual`|both the initiator and target will authenticate each other.|
-
-**iSCSISources[{item}].iSCSIChapUsername**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The user name needed for CHAP authentication. This is applicable only when the Authentication Method is set to CHAP.|
-|Type|string or null|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIConnectRetry**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The number of times to retry the iSCSI connection. Zero means no retries.|
-|Type|integer|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIConnectTimeoutMS**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The iSCSI connection timeout value in milliseconds.|
-|Type|integer|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIConnection**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|Enables or Disables iSCSI mode for a selected iSCSI attempt.|
-|Type|string|
-|Read Only|True|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Disabled`|Connecting to this iSCSI attempt is disabled.|
-|`Enabled`|Connecting to this iSCSI attempt is enabled.|
-|`EnabledMpio`|Connecting to this iSCSI attempt is enabled with MPIO (Multi Path I/O).|
-
-**iSCSISources[{item}].iSCSIInitiatorGateway**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The gateway address of the iSCSI Initiator, if not configured via DHCP. The address must be an IPv4 or IPv6 address, depending on the IP Address Type.|
-|Type|string|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIInitiatorInfoViaDHCP**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|If enabled, the iSCSI Initiator information is configured from DHCP. Otherwise, the iSCSI initiator information must be statically configured. When providing static values for the Initiator, ensure Target settings are also configured with static values.|
-|Type|boolean|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIInitiatorIpAddress**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The IP Address of the iSCSI Initiator, if not configured via DHCP. The Initiator IP Address is always auto-assigned if IP address type is IPv6. The address must be an IPv4 or IPv6 address, depending on the IP Address Type.|
-|Type|string|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIInitiatorNetmask**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The subnet mask of the iSCSI Initiator, if not configured via DHCP. The address must be an IPv4.|
-|Type|string|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIIpAddressType**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The iSCSI IP Address type. If set to Auto, IPv4 will be attempted first, followed by IPv6.|
-|Type|string|
-|Read Only|True|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`IPv4`|The iSCSI IP address is configured in IPv4 format.|
-|`IPv6`|The iSCSI IP address is configured in IPv6 format.|
-|`Auto`|The iSCSI IP address is configured in IPv4. If an issue occurs with IPv4, then the IPv6 configuration is used.|
-
-**iSCSISources[{item}].iSCSILUN**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The iSCSI target Logical Unit Number (LUN), if not obtained from DHCP. This value must follow the SAM-2 spec. E.g. 0001-1234-5678-9ABC. If the digit number is less then 5 characters, a dash character is not required. E.g. 0001. If the lun number is 12345, input 1234-5|
-|Type|string|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSINicSource**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|A BIOS Attribute that describes this selected NIC instance. This must match one of the possible values listed in the iSCSINicSources array.|
-|Type|string or null|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIReverseChapSecret**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The password needed for reverse CHAP authentication (from the target to the initiator). This is applicable only when the Authentication Method is set to CHAP, and the CHAP Type is set to Mutual.|
-|Type|string or null|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSIReverseChapUsername**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|User Name for reverse CHAP authentication (from the target to the initiator). This is applicable only when the Authentication Method is set to CHAP, and the CHAP Type is set to Mutual.|
-|Type|string or null|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSITargetInfoViaDHCP**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|If enabled, the iSCSI target information are configured from DHCP. Otherwise, the iSCSI target information must be statically configured.|
-|Type|boolean|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSITargetIpAddress**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The IP Address of the iSCSI Target, if not obtained from DHCP. The address must be an IPv4 or IPv6 address, depending on the IP Address Type.|
-|Type|string|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSITargetName**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The worldwide unique iSCSI Qualified Name (IQN) of this iSCSI target. Only the IQN format is accepted. EUI format is not supported (for example, 'iqn.1991-05.com.microsoft:iscsitarget-iscsidisk-target').|
-|Type|string or null|
-|Read Only|True|
-
-**iSCSISources[{item}].iSCSITargetTcpPort**
-Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator)
-
-| | |
-|---|---|
-|Description|The iSCSI Target TCP Port number, if not obtained from DHCP.|
 |Type|integer|
 |Read Only|True|
 
