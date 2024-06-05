@@ -8,16 +8,32 @@ disableLastModified: false
 
 # Error Codes
 
-The error codes listed below are returned by the HPE iLOrest tool. They are coming from the Redfish(r) service implemented in the iLO firmware. The verbose (`-v`) flag provides verbose output of HTTP, CHIF (CHannel InterFace) and iLO response messages. The error codes listed below are related to the Redfish client side errors or specifically translated from errors received through iLO response messages.
+The error codes listed below are returned by the HPE iLOrest tool.
+They are coming from the Redfish(r) service implemented in the iLO firmware.
+The verbose (`-v`) flag provides verbose output of HTTP, CHIF
+(CHannel InterFace) and iLO response messages.
+The error codes listed below are related to the Redfish client
+side errors or specifically translated from errors received
+through iLO response messages.
 
 :::info NOTE
-The Channel Interface (CHIF) driver is an HPE proprietary driver allowing in-band communication between applications and the Insight Lights Out (iLO) within HPE iLO based servers. It is stored as a dynamic loadable library file (`ilorest_chif.dll`) on Microsoft Windows and a shared object (`ilorest_chif.so`) on Linux.
+The Channel Interface (CHIF) driver is an HPE proprietary driver
+allowing in-band communication between applications and the Insight
+Lights Out (iLO) within HPE iLO based servers. It is stored as a dynamic
+loadable library file (`ilorest_chif.dll`) on Microsoft Windows and a
+shared object (`ilorest_chif.so`) on Linux.
 :::
 
 :::success TIPS
 
-- For troubleshooting purposes and errors and anomalies evaluation, use the included optional argument flag `-v` or `-vv` for verbose command console output and the `-d`/`--debug` flag to produce an `iLOrest.log` log file in the current directory. For further details, refer to the Global Options section.
-- To solve a `Missing token required for operation. Please add the proper token` error, add the BIOS password when executing the commands.
+- For troubleshooting purposes and errors and anomalies evaluation,
+  use the included optional argument flag `-v` or `-vv` for verbose
+  command console output and the `-d`/`--debug` flag to produce
+  an `iLOrest.log` log file in the current directory.
+  For further details, refer to the Global Options section.
+- To solve a
+  `Missing token required for operation. Please add the proper token`
+  error, add the BIOS password when executing the commands.
 
 :::
 

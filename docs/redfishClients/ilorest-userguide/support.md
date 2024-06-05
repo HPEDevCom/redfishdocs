@@ -11,8 +11,11 @@ disableLastModified: true
 
 ## Accessing HPE Support
 
-- For assistance, contact <a href="https://www.hpe.com/assistance" target="_blank">HPE</a>.
-- Documentation and support services is available from the <a href="https://www.hpe.com/support/hpesc" target="_blank">HPE Support Center</a>.
+- For assistance, contact
+  <a href="https://www.hpe.com/assistance" target="_blank">HPE</a>.
+- Documentation and support services is available from the
+  <a href="https://www.hpe.com/support/hpesc"
+  target="_blank">HPE Support Center</a>.
 
 ### Information to collect
 
@@ -29,21 +32,32 @@ Prior to ask for assistance, collect the following information
 
 ## Accessing updates
 
-- Some software products provide a mechanism for accessing software updates through the product interface. Review your product documentation to identify the recommended software update method.
+- Some software products provide a mechanism for accessing software updates
+  through the product interface. Review your product documentation to identify
+  the recommended software update method.
 - To download product updates, refer to the following links:
 
-  - HPE Support Center <a href="https://www.hpe.com/support/e-updates" target="_blank">Get connected with updates from HPE</a>
-  - <a href="https://myenterpriselicense.hpe.com/cwp-ui/software" target="_blank">HPE Software center</a>
+  - HPE Support Center
+    <a href="https://www.hpe.com/support/e-updates"
+    target="_blank">Get connected with updates from HPE</a>
+  - <a href="https://myenterpriselicense.hpe.com/cwp-ui/software"
+    target="_blank">HPE Software center</a>
 
-- You can view and update your entitlements and link your contracts and warranties with your profile from the <a href="https://www.hpe.com/support/AccessToSupportMaterials" target="_blank">HPE Support Center</a>.
+- You can view and update your entitlements and link your contracts
+  and warranties with your profile from the
+  <a href="https://www.hpe.com/support/AccessToSupportMaterials"
+  target="_blank">HPE Support Center</a>.
 
 ## Websites and documents
 
 ### Tutorial Videos
 
-- <a href="https://www.youtube.com/watch?v=CGl8DsYTdQo" target="_blank">Creating iLOrest extensions</a>
-- <a href="https://www.youtube.com/watch?v=xfEN95pNNfY" target="_blank">An Introduction to iLOrest, the HPE RESTful Interface Tool</a>
-- <a href="https://www.youtube.com/watch?v=WPz2FP8bXYU" target="_blank">Benefits of RESTful Interface Tool vs. CONREP</a>
+- <a href="https://www.youtube.com/watch?v=CGl8DsYTdQo"
+  target="_blank">Creating iLOrest extensions</a>
+- <a href="https://www.youtube.com/watch?v=xfEN95pNNfY"
+  target="_blank">An Introduction to iLOrest, the HPE RESTful Interface Tool</a>
+- <a href="https://www.youtube.com/watch?v=WPz2FP8bXYU"
+  target="_blank">Benefits of RESTful Interface Tool vs. CONREP</a>
 
 ### Websites
 
@@ -87,9 +101,15 @@ Prior to ask for assistance, collect the following information
 
 ## Customer self-repair
 
-**Hewlett Packard Enterprise customer self repair** (CSR) programs allow you to repair your product. If a CSR part needs to be replaced, it will be shipped directly to you so that you can install it at your convenience. Some parts do not qualify for CSR. Your Hewlett Packard Enterprise authorized service provider will determine whether a repair can be accomplished by CSR.
+**Hewlett Packard Enterprise customer self repair** (CSR) programs allow you to
+repair your product. If a CSR part needs to be replaced, it will be shipped
+directly to you so that you can install it at your convenience.
+Some parts do not qualify for CSR. Your Hewlett Packard Enterprise
+authorized service provider will determine whether a repair
+can be accomplished by CSR.
 
-For more information about CSR, contact your local service provider or go to the CSR website.
+For more information about CSR, contact your local service provider
+or go to the CSR website.
 
 [www.hpe.com/support/selfrepair](https://www.hpe.com/support/selfrepair)
 
@@ -97,10 +117,26 @@ For more information about CSR, contact your local service provider or go to the
 
 ## Remote Support
 
-Remote support is available with supported devices as part of your warranty or contractual support agreement. It provides intelligent event diagnosis, and automatic, secure submission of hardware event notifications to Hewlett Packard Enterprise, which will initiate a fast and accurate resolution based on your product's service level. Hewlett Packard Enterprise strongly recommends that you register your device for remote support.
+Remote support is available with supported devices as part of your
+warranty or contractual support agreement. It provides intelligent
+event diagnosis, and automatic, secure submission of hardware event
+notifications to Hewlett Packard Enterprise, which will initiate a
+fast and accurate resolution based on your product's service level.
+Hewlett Packard Enterprise strongly recommends that you register your
+device for remote support.
 
-For more information and device support details, connect to the <a href="https://www.hpe.com/info/insightremotesupport/docs" target="_blank">Insight Remote Support</a> website.
+For more information and device support details, connect to the
+<a href="https://www.hpe.com/info/insightremotesupport/docs"
+target="_blank">Insight Remote Support</a> website.
 
 ## Documentation feedback
 
-Hewlett Packard Enterprise is committed to providing documentation that meets your needs. To help us improve the documentation, send any errors, suggestions, or comments to <a href="mailto:docsfeedback@hpe.com" target="_blank">docsfeedback@hpe.com</a>. When submitting your feedback, include the document title, part number, edition, and publication date located on the front cover of the document. For online help content, include the product name, product version, help edition, and publication date located on the legal notices page.
+Hewlett Packard Enterprise is committed to providing documentation
+that meets your needs. To help us improve the documentation, send any errors,
+suggestions, or comments to
+<a href="mailto:docsfeedback@hpe.com"
+target="_blank">docsfeedback@hpe.com</a>.
+When submitting your feedback, include the document title, part number,
+edition, and publication date located on the front cover of the document.
+For online help content, include the product name, product version,
+help edition, and publication date located on the legal notices page.

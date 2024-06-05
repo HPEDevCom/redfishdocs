@@ -960,67 +960,6 @@ ilorest > drivesanitize 1I:1:1 --controller=1 --storageid=DE00900 --mediatype="H
 DriveReset path and payload: /redfish/v1/Systems/1/Storage/DE00A000/Drives/8/Actions/Drive.Reset, {"ResetType": "ForceOn"}
 ```
 
-### Factoryresetcontroller Command
-
-<!-- 
-     The Factoryresetcontroller command needs
-     a complete review/re-test.
--->
-
-#### Syntax
-
-factoryresetcontroller _[Optional Parameters]_
-
-#### Description
-
-Restores a controller to factory defaults.
-
-#### Parameters
-
-- **-h, --help**
-
-Including the help flag will display help for the command.
-
-- **--controller=CONTROLLER**
-
-Use this flag to select the corresponding controller.
-
-#### Login Parameters
-
-The following parameters can be included to login to a server in the same line as the command is run.
-
-- **--url=URL**
-
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
-
-- **-u User, --user=USER**
-
-If you are not logged in yet, including this flag along with the password and URL flags can be used to login to a server in the same command.
-
-- **-p Password, --password=PASSWORD**
-
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
-
-- **--logout**
-
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Examples
-
-To factory reset a controller run this command and specify it's index with the `--controller` option.
-
-```shell
-ilorest > factoryresetcontroller --controller=1
-One or more properties were changed and will not take effect until system is reset.
-```
-
-To factory reset all controllers run this command and include the `--all` option.
-
-```shell
-ilorest > factoryresetcontroller --all
-One or more properties were changed and will not take effect until system is reset.
-```
-
 ### Clearcontrollerconfig Command
 
 <!-- 
@@ -1030,25 +969,30 @@ One or more properties were changed and will not take effect until system is res
 
 #### Syntax
 
-clearcontrollerconfig _[Optional Parameters]_
+clearcontrollerconfig _[Parameters]_
 
 #### Description
 
-Clears controller configuration.
+<!-- 
+Need to explain how to select 
+a specific device when several are present 
+in the system.
+-->
+
+Clears specific controller configuration in iLO 5 based
+systems. This command does not reset
+the entire device to factory settings. It can be used for
+reconfiguring or troubleshooting.
 
 #### Parameters
 
 - **-h, --help**
 
-Including the help flag will display help for the command.
+Including the `--help` parameter displays help for the command.
 
 - **--controller=CONTROLLER**
 
-Use this flag to select the corresponding controller.
-
-- **--all**
-
-Use this flag to sanitize all physical drives on a controller.
+Use this parameter to select the corresponding controller.
 
 #### Login Parameters
 
@@ -1072,9 +1016,78 @@ Optionally include the logout flag to log out of the server after this command i
 
 #### Examples
 
-To clear a controller configuration run the command including the `--controller` option specifying the controller to clear.
+To clear a controller configuration run the command including the `--controller` parameter specifying the controller to clear.
 
 ```shell
-ilorest > clearcontrollerconfig --controller=1
-One or more properties were changed an will not take effect until system is reset.
+ilorest clearcontrollerconfig --controller=1
+The operation completed successfully.
+```
+
+### Factoryresetcontroller Command
+
+<!-- 
+     The Factoryresetcontroller command needs
+     a complete review/re-test.
+-->
+
+#### Syntax
+
+factoryresetcontroller _[Parameters]_
+
+#### Description
+
+Restores a controller to factory defaults and
+remove user data and customizations.
+
+#### Parameters
+
+- **-h, --help**
+
+Including the `--help` parameter displays help for the command.
+
+- **--controller=CONTROLLER**
+
+Use this parameter to select the corresponding controller.
+
+- **--reset_type RESET_TYPE**
+
+Against iLO 6 only, this parameter provides the reset type.
+Possible values are: `resetall` and `preservevolumes`.
+
+- **--storageid STORAGEID**
+
+Against iLO 6 only, this parameter selects a specific storage device.
+
+#### Login Parameters
+
+The following parameters can be included to login to a server in the same line as the command is run.
+
+- **--url=URL**
+
+If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+
+- **-u User, --user=USER**
+
+If you are not logged in yet, including this flag along with the password and URL flags can be used to login to a server in the same command.
+
+- **-p Password, --password=PASSWORD**
+
+If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+
+- **--logout**
+
+Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+
+#### Examples
+
+```shell iLO 5
+ilorest factoryresetcontroller --controller=0
+FactoryReset path and payload: /redfish/v1/systems/1/smartstorageconfig/settings/, {'Actions': [{'Action': 'FactoryReset'}], 'DataGuard': 'Disabled'}
+The operation completed successfully.
+[0]: Slot 0
+```
+
+```shell iLO 6
+ilorest factoryresetcontroller --storageid DE040000 --reset_type preservevolumes
+The operation completed successfully.
 ```
