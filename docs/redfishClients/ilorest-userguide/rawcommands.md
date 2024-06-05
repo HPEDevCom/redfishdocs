@@ -9,7 +9,10 @@ disableLastModified: false
 
 ## Raw commands
 
-This section lists the raw HTTP RESTful operations that can be used through the RESTful Interface Tool. The commands in this section are the equivalents of HTTP RESTful **PATCH, GET, POST, PUT, DELETE**, and **HEAD**.
+This section lists the raw HTTP RESTful operations
+that can be used through the RESTful Interface Tool.
+The commands in this section are the equivalents of HTTP
+RESTful **PATCH, GET, POST, PUT, DELETE**, and **HEAD**.
 
 ### RawDelete Command
 
@@ -19,7 +22,8 @@ rawdelete *[Path] [Optional Parameters]*
 
 #### Description
 
-Use this command to perform an HTTP RESTful DELETE command. Run to delete data from the passed in path.
+Use this command to perform an HTTP RESTful DELETE command.
+Run to delete data from the passed in path.
 
 #### Parameters
 
@@ -37,23 +41,30 @@ Use this flag to enable service mode and increase the function speed.
 
 #### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in the same
+line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the server
+in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password
+and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and
+URL flags to login. Use the provided iLO password corresponding to
+the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after this
+command is completed. Using this flag when not logged in will have no effect.
 
 #### Examples
 
@@ -68,13 +79,12 @@ The account was removed successfully.
 
 #### Syntax
 
-
 rawget *[Path] [Optional Parameters]*
 
 #### Description
 
-
-Use this command to perform an HTTP RESTful GET command. Run to retrieve data from the passed in path.
+Use this command to perform an HTTP RESTful GET command.
+Run to retrieve data from the passed in path.
 
 #### Parameters
 
@@ -119,28 +129,35 @@ Use this flag to enable service mode and increase the function speed.
 
 - **--expand**
 
-Use this flag to expand the path specified using the expand notation '?$expand=.'
+Use this flag to expand the path specified using the
+expand notation '?$expand=.'
 
 #### Login Parameters
 
-
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a
+server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the server
+in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password
+and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and
+URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in will
+have no effect.
 
 #### Input
 
@@ -148,11 +165,13 @@ None
 
 #### Output
 
-With the `--filename` flag, this command returns an output file containing the result of the `rawget` command.
+With the `--filename` flag, this command returns an output file
+containing the result of the `rawget` command.
 
 #### Examples
 
-To get the complete JSON response directly from the URI requested run the command specifying a URI to retrieve.
+To get the complete JSON response directly from the URI requested
+run the command specifying a URI to retrieve.
 
 ```shell
 iLOrest > rawget /redfish/v1/systems/1
@@ -183,7 +202,8 @@ iLOrest > rawget /redfish/v1/systems/1
     ],
 ```
 
-Specify a file to save the response to by including the `-f, --filename` option.
+Specify a file to save the response to by including
+the `-f, --filename` option.
 
 ```shell
 iLOrest > rawget /redfish/v1/systems/1 -f system.json
@@ -191,7 +211,9 @@ iLOrest > rawget /redfish/v1/systems/1 -f system.json
 Results written out to 'system.json'.
 ```
 
-Use the `--expand` flag to expand collection URIs to include the response of collection members. The full response has been truncated for space.
+Use the `--expand` flag to expand collection URIs to include
+the response of collection members. The full response has been
+truncated for space.
 
 ```shell
 iLOrest > rawget /redfish/v1/systems/1 -f system.json
@@ -252,16 +274,14 @@ iLOrest > rawget /redfish/v1/systems/ --expand
 
 #### Syntax
 
-
 rawhead [Path] [Optional Parameters]
 
 #### Description
 
-
-Use this command to perform an HTTP RESTful HEAD command. Run to retrieve header data from the passed in path.
+Use this command to perform an HTTP RESTful HEAD command. Run to retrieve
+header data from the passed in path.
 
 #### Syntax
-
 
 - **Path**
 
@@ -289,37 +309,43 @@ Use this flag to enable service mode and increase the function speed.
 
 #### Login Parameters
 
-
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server
+in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with the
+user and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password
+and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and
+URL flags to login. Use the provided iLO password corresponding to the
+username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after this
+command is completed. Using this flag when not logged in will have no effect.
 
 #### Input
-
 
 None
 
 #### Output
 
-With the `--filename` flag, this command returns an output file containing the result of the `rawhead` command.
+With the `--filename` flag, this command returns an output file
+containing the result of the `rawhead` command.
 
 #### Examples
 
-To directly read the head values of a URI run the command specifying a URI query.
+To directly read the head values of a URI run the command specifying
+a URI query.
 
 ```shell
 iLOrest > rawhead /redfish/v1/Systems/1/
@@ -345,17 +371,16 @@ rawpatch *[Filename] [Optional Parameters]*
 
 #### Description
 
-
-Use this command to perform an HTTP RESTful Patch command. Run to send a patch from the data in the input file.
+Use this command to perform an HTTP RESTful Patch command. Run to send a
+patch from the data in the input file.
 
 #### Parameters
-
 
 Filename parameter example:
 
 ```json
 {
-	"path":{"json":"body"},
+  "path":{"json":"body"},
     "path2": {"json": "body2"},
     "...": "..."
 }
@@ -363,8 +388,9 @@ Filename parameter example:
 
 - **Filename**
 
-Include the filename to use the data in the input file to send the patch(es). One or more patches can be passed in one input file.
-An JSON file template is shown on the side.
+Include the filename to use the data in the input file to send the patch(es).
+One or more patches can be passed in one input file.
+A JSON file template is shown on the side.
 
 - **-h, --help**
 
@@ -390,7 +416,8 @@ Usage: --headers=HEADER:VALUE,HEADER:VALUE
 
 - **--biospassword=BIOSPASSWORD**
 
-Select this flag to input a BIOS password. Include this flag if second-level BIOS authentication is needed for the command to execute.
+Select this flag to input a BIOS password. Include this flag if
+second-level BIOS authentication is needed for the command to execute.
 
 :::info NOTE
 This flag is used only on iLO 4 systems and not required on iLO 5 systems.
@@ -402,32 +429,40 @@ Use this flag to enable service mode and increase the function speed.
 
 #### Login Parameters
 
-
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in the
+same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with the
+user and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password and
+URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and URL
+flags to login. Use the provided iLO password corresponding to the
+username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in will
+have no effect.
 
 #### Input
 
-Input the file containing the JSON information you wish to use for the HTTP RESTful PATCH command.
+Input the file containing the JSON information you wish to use
+for the HTTP RESTful PATCH command.
 
 #### Examples
 
-To directly patch to a URI with JSON data run the command supplying a filename with a json payload.
+To directly patch to a URI with JSON data run the command
+supplying a filename with a json payload.
 
 ```shell Command
 ilorest rawpatch rawpatch.json
@@ -443,7 +478,8 @@ The operation completed successfully.
 }
 ```
 
-The following example disables some IPv6 configuration settings and performs an iLO reset to take the modification into account.
+The following example disables some IPv6 configuration
+settings and performs an iLO reset to take the modification into account.
 
 ```shell Command
 ilorest rawpatch rawpatch.json
@@ -473,22 +509,20 @@ A management processor reset is in progress.
 
 #### Syntax
 
-
 rawpost *[Filename] [Optional Parameters]*
 
 #### Description
 
-
-Use this command to perform an HTTP RESTful POST command. Run to post the data from the passed in path.
+Use this command to perform an HTTP RESTful POST command.
+Run to post the data from the passed in path.
 
 #### Parameters
-
 
 Example Filename parameter JSON file below:
 
 ```json
 {
-	"path":{"json":"body"},
+  "path":{"json":"body"},
     "path2": {"json": "body2"},
     "...": "..."
 }
@@ -496,8 +530,9 @@ Example Filename parameter JSON file below:
 
 - **Filename**
 
-Include the filename to send a post from the data included in this input file. One or more posts can be passed in one input file.
-An JSON file template is shown on the side.
+Include the filename to send a post from the data included in this input file.
+One or more posts can be passed in one input file.
+A JSON file template is shown on the side.
 
 - **-h, --help**
 
@@ -528,27 +563,35 @@ Use this flag to enable service mode and increase the function speed.
 #### Login Parameters
 
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server
+in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with
+the user and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password
+and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with
+the user and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
 #### Input
 
-Input the file containing the JSON information you wish to use for the HTTP RESTful PUT command.
+Input the file containing the JSON information you wish to use for
+the HTTP RESTful PUT command.
 
 #### Output
 
@@ -557,11 +600,13 @@ None
 
 #### Examples
 
-To directly post to a URI with JSON data run the command supplying a filename with a json payload.
+To directly post to a URI with JSON data run the command
+supplying a filename with a json payload.
 
 :::info NOTE
 
-If a full path is not given, the tool searches for the file where the RESTful Interface Tool is initiated.
+If a full path is not given, the tool searches for the file where the
+RESTful Interface Tool is initiated.
 :::
 
 ```shell
@@ -573,10 +618,10 @@ The following **rawpost.json** file is used in the example above:
 
 ```json
 {
-	"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/":
-	{
-		"ResetType": "ForceRestart"
-	}
+  "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/":
+  {
+    "ResetType": "ForceRestart"
+  }
 }
 
 ```
@@ -585,22 +630,21 @@ The following **rawpost.json** file is used in the example above:
 
 #### Syntax
 
-
 rawput *[Filename] [Optional Parameters]*
 
 #### Description
 
 
-Use this command to perform an HTTP RESTful PUT command. Run to retrieve data from the passed in path.
+Use this command to perform an HTTP RESTful PUT command.
+Run to retrieve data from the passed in path.
 
 #### Parameters
-
 
 Example input file below:
 
 ```json
 {
-	"path":{"json":"body"},
+  "path":{"json":"body"},
     "path2": {"json": "body2"},
     "...": "..."
 }
@@ -608,8 +652,10 @@ Example input file below:
 
 - **Filename**
 
-Include the filename to send a PUT from the data included in this input file. One or more puts can be passed in one input file.
-An JSON file template is shown on the side.
+Include the filename to send a PUT from the data
+included in this input file. One or more puts
+can be passed in one input file.
+A JSON file template is shown on the side.
 
 - **-h, --help**
 
@@ -635,10 +681,12 @@ Use this flag to silence responses.
 
 - **--biospassword=BIOSPASSWORD**
 
-Select this flag to input a BIOS password. Include this flag if second-level BIOS authentication is needed for the command to execute.
+Select this flag to input a BIOS password. Include this flag if
+second-level BIOS authentication is needed for the command to execute.
 
 :::info NOTE
-This flag is used only on iLO 4 systems. It is not required on iLO 5 and later systems.
+This flag is used only on iLO 4 systems. It is not required
+on iLO 5 and later systems.
 :::
 
 - **--service**
@@ -648,36 +696,44 @@ Use this flag to enable service mode and increase the function speed.
 #### Login Parameters
 
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in
+the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with
+the user and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and
+URL flags to login. Use the provided iLO password corresponding
+to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged
+in will have no effect.
 
 #### Input
 
-Input the file containing the JSON information you wish to use for the HTTP RESTful PUT command.
+Input the file containing the JSON information you wish to use
+for the HTTP RESTful PUT command.
 
 #### Output
-
 
 None
 
 #### Examples
 
-To directly put to a URI with JSON data run the command supplying a filename with a json payload.
+To directly put to a URI with JSON data run the command
+supplying a filename with a json payload.
 
 ```shell
 iLOrest > rawput put.json
@@ -688,12 +744,11 @@ This example uses the following **put.json** file:
 
 ```json
 {
-	"/redfish/v1/systems/1/bios/Settings/":
-	{
-		"Attributes": {
-			"BaseConfig": "default"
-		}
-	}
+  "/redfish/v1/systems/1/bios/Settings/":
+  {
+    "Attributes": {
+      "BaseConfig": "default"
+    }
+  }
 }
-
 ```

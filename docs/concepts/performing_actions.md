@@ -7,11 +7,15 @@ toc:
 disableLastModified: false
 ---
 
-# Performing actions
+## Performing actions
 
-Redfish resources usually support HTTP GET requests to retrieve the current state. Modifications and deletions can be performed against eligible resources with HTTP POST, PUT, PATCH, or DELETE.
+Redfish resources usually support HTTP GET requests to retrieve the
+current state. Modifications and deletions can be performed against
+eligible resources with HTTP POST, PUT, PATCH, or DELETE.
 
-The exhaustive list of permitted requests on a given resource is in the `Allow` header of the GET response. The following example retrieves the possible actions on the BIOS **current** attributes.
+The exhaustive list of permitted requests on a given resource is in the
+`Allow` header of the GET response. The following example retrieves the
+possible actions on the BIOS **current** attributes.
 
 ```shell cURL
 curl --insecure --silent --head --user ilo-user:password \
@@ -29,7 +33,8 @@ ilorest logout
 Allow: GET, HEAD
 ```
 
-The following example retrieves the possible actions on the BIOS **pending** attributes URI.
+The following example retrieves the possible actions on the
+BIOS **pending** attributes URI.
 
 ```shell cURL
 curl --insecure --silent --head --user ilo-user:password \
@@ -47,15 +52,30 @@ ilorest logout
 Allow: GET, HEAD, POST, PUT, PATCH
 ```
 
-However, there are some resources that support other types of operations not easily mapped to HTTP operations. For example, a power button is not readable, so you cannot `GET` its status. In this case, pressing the power button is an action.
+However, there are some resources that support other types of operations not
+easily mapped to HTTP operations. For example, a power button is not readable
+so you cannot `GET` its status. In this case, pressing the power button
+is an action.
 
-For this reason the <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.13.0.pdf" target="_blank">Redfish specification</a> defines `Actions`. `Actions` are HTTP POST operations with a specifically formatted JSON request including the operation to perform and potentially parameters.  For instance, it is not enough to simply tell a server to reset, but it is also necessary to specify the type of reset: cold boot, warm boot, PCI reset, etc. Actions are often used when the operation causes Management Controllers not just to update a value, but to change system state.
+For this reason the
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.13.0.pdf" target="_blank">Redfish specification</a>
+defines `Actions`. `Actions` are HTTP `POST` operations with a specifically
+formatted JSON request including the operation to perform and potentially
+parameters.  For instance, it is not enough to simply tell a server to reset,
+but it is also necessary to specify the type of `reset`:
+cold boot, warm boot, PCI reset, etc. Actions are often used when the
+operation causes Management Controllers not just to update a value,
+but to change system state.
 
-In Redfish, the available actions that can be invoked are identified by a `target` property in the resource's `Actions` object definitions. Potential parameters with possible supported values are listed with the annotation `Parameter@Redfish.AllowableValues`.
+In Redfish, the available actions that can be invoked are identified by a
+`target` property in the resource's `Actions` object definitions.
+Potential parameters with possible supported values are listed
+with the annotation `Parameter@Redfish.AllowableValues`.
 
 ## Redfish standard action examples
 
-The following example retrieves the list of possible actions from the PK Secure Boot Database resource of an HPE iLO 6 based server.
+The following example retrieves the list of possible actions from the PK
+Secure Boot Database resource of an HPE iLO 6 based server.
 
 ```text Generic GET request
 GET /redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/PK/?$select=Actions
@@ -86,7 +106,9 @@ curl --insecure -u iloUser:password \
 }
 ```
 
-The following example retrieves the possible actions of a [PLDM for RDE](/docs/redfishservices/ilos/supplementdocuments/rdesupport/) storage controller.
+The following example retrieves the possible actions of a
+[PLDM for RDE](/docs/redfishservices/ilos/supplementdocuments/rdesupport/)
+storage controller.
 
 ```text cURL
 curl --insecure --silent --location \
@@ -113,11 +135,17 @@ curl --insecure --silent --location \
 
 ## OEM Action extensions
 
-The <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.13.0.pdf" target="_blank">Redfish specification</a> allows OEMs to specify `Actions` objects under their respective `Oem` sections. Those actions are invoked the same way as standard actions with a POST request to the `target` URI with allowable parameter values.
+The
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.13.0.pdf" target="_blank">Redfish specification</a>
+allows OEMs to specify `Actions` objects under
+their respective `Oem` sections. Those actions are invoked the same
+way as standard actions with a POST request to the `target` URI
+with allowable parameter values.
 
 ### Computer system standard and HPE OEM actions
 
-The following example retrieves the list of standard and HPE specific actions available in the `ComputerSystem` resource of an iLO based server.
+The following example retrieves the list of standard and HPE specific actions
+available in the `ComputerSystem` resource of an iLO based server.
 
 ```text Generic GET request
 /redfish/v1/Systems/1/?$select=Actions, Oem/Hpe/Actions/
@@ -192,7 +220,8 @@ ilorest logout
 
 ### All HPE OEM actions
 
-The following example retrieves all the HPE specific actions available in an HPE iLO based server using the iLOrest Redfish client.
+The following example retrieves all the HPE specific actions available
+in an HPE iLO based server using the iLOrest Redfish client.
 
 ```Bash iLOrest script
 #!/usr/bin/bash
@@ -268,7 +297,8 @@ Logging session out.
 
 ### Manager HPE OEM actions
 
-The following example lists the possible HPE OEM actions against an HPE iLO 5 (or later) management controller.
+The following example lists the possible HPE OEM actions against an HPE iLO 5
+(or later) management controller.
 
 ```text Generic request
 GET /redfish/v1/Managers/{{ManagerId}}/?$select=Oem/Hpe/Actions
@@ -330,10 +360,14 @@ ilorest logout
 
 ### HPE iLO ClearRestApiState action
 
-The following example clears the Redfish state of an HPE iLO 5 (or later) management controller using its OEM specific action. An iLO reset is required.
+The following example clears the Redfish state of an HPE iLO 5 (or later)
+management controller using its OEM specific action. An iLO reset is required.
 
 :::info NOTE
-Refer to the [Session authentication paragraph](/docs/concepts/redfishauthentication/#session-authentication) to learn how to create a session token with cURL as used for the reset action in the following example.
+Refer to the
+[Session authentication paragraph](/docs/concepts/redfishauthentication/#session-authentication)
+to learn how to create a session token with cURL as used for the reset
+action in the following example.
 :::
 
 ```text Generic ClearRestApiState request
@@ -379,11 +413,14 @@ ilorest logout
 
 ### PressAndHold HPE specific action
 
-The following example performs a **PressAndHold** HPE specific action on an HPE iLO based system using cURL and then iLOrest.
+The following example performs a **PressAndHold** HPE specific action
+on an HPE iLO based system using cURL and then iLOrest.
 
 :::info NOTE
 
-As explained in the [Redfish error responses and messages](/docs/concepts/errorresponses/) section, successful responses are part of an `error` JSON object.
+As explained in the
+[Redfish error responses and messages](/docs/concepts/errorresponses/)
+section, successful responses are part of an `error` JSON object.
 
 :::
 
@@ -417,11 +454,16 @@ ilorest logout
 
 ### Auxiliary Power Cycle HPE specific action
 
-The following example performs an HPE specific action that simulates the removal of the physical power cables of an HPE ProLiant or Synergy server. This action is sometime called **efuse**, **e-fuse** or [Auxiliary Power Cycle](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_computersystem_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions).
+The following example performs an HPE specific action that simulates
+the removal of the physical power cables of an HPE ProLiant or Synergy server.
+This action is sometime called **efuse**, **e-fuse** or
+[Auxiliary Power Cycle](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_computersystem_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions).
 
 :::info NOTE
 
-If the e-fuse action is sent while the server is off, iLO starts immediately a reset. Otherwise, a server power off is needed to trigger the e-fuse action.
+If the e-fuse action is sent while the server is off, iLO starts
+immediately a reset. Otherwise, a server power off is needed to
+trigger the e-fuse action.
 
 :::
 
@@ -469,13 +511,20 @@ POST: /redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SystemReset/
 
 :::info NOTE
 
-A standard computer reset example is presented in the [Redfish examples](/docs/examples/redfishexamples/#server-reset) section of this document.
+A standard computer reset example is presented in the
+[Redfish examples](/docs/examples/redfishexamples/#server-reset)
+section of this document.
 
 :::
 
 ### User defined temperature threshold creation
 
-The following example creates a user defined [temperature threshold](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions-7) in the inlet ambient sensor object part of the `Chassis/Thermal/Oem/Hpe` subtree. It is also present in the [Examples](/docs/examples/redfishexamples/#configuring-user-defined-temperature-threshold) section.
+The following example creates a user defined
+[temperature threshold](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions-7)
+in the inlet ambient sensor object part of the `Chassis/Thermal/Oem/Hpe`
+subtree. It is also present in the
+[Examples](/docs/examples/redfishexamples/#configuring-user-defined-temperature-threshold)
+section.
 
 ```text Generic POST request
 POST: /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThreshold/
@@ -505,8 +554,10 @@ POST: /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThr
 
 :::info NOTES
 
-1. An iLO reset is required to take this action into account
-2. A `WarningUsertTempThreshold=40` property is created under `/redfish/v1/Chassis/1/Thermal/Oem/Hpe`. If `AlerType` is `Critical`, the created property is `CriticalUsertTempThreshold`.
+1. An iLO reset is required to take this action into account.
+2. A `WarningUsertTempThreshold=40` property is created under
+`/redfish/v1/Chassis/1/Thermal/Oem/Hpe`. If `AlerType` is `Critical`,
+the created property is `CriticalUsertTempThreshold`.
 3. An IML log record is created when the threshold is exceeded.
 
 :::

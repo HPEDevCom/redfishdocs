@@ -7,33 +7,36 @@ toc:
 disableLastModified: false
 ---
 
-# Redfish data types and collections
+## Redfish data types and collections
 
 The Redfish RESTful API introduces, among other things two important concept
- discussed in this section: **Data types** and **Collections**.  
+ discussed in this section: **Data types** and **Collections**.
 
 ## Data types
 
 Each Resource resource and property of the Redfish API belong to a
 **data type** also called **resource type** or just **type**, that is
 mentioned in the mandatory `@odata.type` property returned in HTTP responses.
-Refer to the <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.6.0.pdf" target="_blank">
+Refer to the
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.6.0.pdf" target="_blank">
 Redfish specification</a> for `@odata.type` detail.
 
 Each data type is associated to a set of URIs sometimes referred as
 **instances**. As an example the exhaustive list of the possible URIs of
 the `EthernetInterface` standard data type is listed in
-<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.3.pdf" target="_blank">paragraph 6.31</a>
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.3.pdf" target="_blank">
+paragraph 6.31</a>
 of the DSP0268_2021.3 document. See first tabulation of the example below.
 
 The use of the standard URI listings by Redfish clients, is explained
-in paragraph 2.1 of the <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.3.pdf" target="_blank">DSP268_2021.3</a>
+in paragraph 2.1 of the
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.3.pdf" target="_blank">DSP268_2021.3</a>
 document.
 
 The first tabulation of the following example shows the exhaustive list
 of the `EthernetInterface` URIs as they appear in the DSP0268\_2021.3 document.
-The second tabulation lists the same URIs, implemented in an HPE iLO 6 as documented
-in the
+The second tabulation lists the same URIs, implemented in an HPE iLO 6
+as documented in the
 [Resource Definitions](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#ethernetinterface)
 section.
 
@@ -228,14 +231,16 @@ Allow: GET, HEAD
 ```
 
 The exhaustive list of standard resource collections is present in the
-<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.3.pdf" target="_blank"> Redfish data Model specification</a>.
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.3.pdf" target="_blank">
+Redfish data Model specification</a>.
 
 The Redfish specification allows Redfish services to complement the
 data model with Oem specific extensions. HPE prefixes its OEM
 collection extensions with the "Hpe" string.
 
 The following example retrieves HPE Oem extensions of an iLO 6 based
-server using the <a href="https://www.hpe.com/info/resttool" target="_blank">iLOrest tool</a>.
+server using the
+<a href="https://www.hpe.com/info/resttool" target="_blank">iLOrest tool</a>.
 
 ```bash iLOrest request
 ilorest login $ilo_ip -u $ilo-user -p $password

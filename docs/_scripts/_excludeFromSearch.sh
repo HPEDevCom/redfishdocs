@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# Version 0.1
+
 # This script must be called/launched by _script_wrapper.sh
 
 # This script excludes from the Redocly search engine all
@@ -12,8 +14,6 @@
 # As an example, if $ilogen=6 and $iLOFwVersion=1.40, then,
 # all iLO 6 auto-generated files with a version less than 1.40
 # and only those files will be excluded of the Redocly search engine.
-
-# Version 0.01
 
 # Variables
 excludeKeyword="excludeFromSearch"
@@ -29,7 +29,6 @@ for d in $allDirs ; do
         fileList="$fileList ${d}${iLOGen}*md" 
     fi
 done
-# echo $fileList
 
 # Remove lines containing "excludeFromSearch" if any
 sed -i -e "/${excludeKeyword}/d" $fileList

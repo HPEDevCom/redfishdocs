@@ -177,7 +177,8 @@ Some firmware can be flashed directly without a reboot, may require a reboot to 
 
 - **FWPKG PATH**
 
-The path to the `.fwpkg` file for flashing or the `.fwpkg` file itself if it is in the current working directory.
+The path to the `.fwpkg` file for flashing or the `.fwpkg` file itself if it
+is in the current working directory.
 
 - **-h, --help**
 
@@ -185,26 +186,34 @@ Including the help flag will display help for the command.
 
 - **--forceupload**
 
-Include this flag to force upload firmware with the same name already on the repository.
+Include this flag to force upload firmware with the same name already on
+the repository.
 
 - **--ignorechecks**
 
-Include this flag to ignore all checks to the Repository [Task Queue](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#taskqueue-command) before attempting to process the `.fwpkg` file.
+Include this flag to ignore all checks to the Repository
+[Task Queue](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#taskqueue-command)
+before attempting to process the `.fwpkg` file.
 
 - **--targets target_list**
 
-Specify a comma separated list of similar firmware inventory IDs to be updated with supplied firmware package.
+Specify a comma separated list of similar firmware inventory IDs to be updated
+with supplied firmware package.
 
 - **--tpmover**
 
-Include this parameter to set the `TPMOverride` [property](/docs/redfishservices/ilos/ilo6/ilo6_157/ilo6_hpe_resourcedefns157/#tpmoverride) to `true` and pass the `TPMOverrideFlag` in on the associated flash operations.
+Include this parameter to set the
+`TPMOverride` [property](/docs/redfishservices/ilos/ilo6/ilo6_157/ilo6_hpe_resourcedefns157/#tpmoverride)
+to `true` and pass the `TPMOverrideFlag` in on the associated flash operations.
 
 - **--update_srs**
 
-Add this parameter to update the System Recovery Set with the uploaded firmware.
+Add this parameter to update the System Recovery Set with the uploaded
+firmware.
 
 :::info NOTE
-This requires an account login with the system recovery set [privilege](https://servermanagementportal.ext.hpe.com/docs/redfishservices/ilos/ilo6/ilo6_156/ilo6_hpe_resourcedefns156/#recoveryprivilege).
+This requires an account login with the system recovery set
+[privilege](https://servermanagementportal.ext.hpe.com/docs/redfishservices/ilos/ilo6/ilo6_156/ilo6_hpe_resourcedefns156/#recoveryprivilege).
 :::
 
 #### Examples
@@ -240,27 +249,34 @@ The operation completed successfully.
 
 #### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in the same line
+as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with the user and
+password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password and
+URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and URL
+flags to login. Use the provided iLO password corresponding to the username you
+gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after this command
+is completed. Using this flag when not logged in will have no effect.
 
 #### Examples
 
-To upload firmware and flash (or stage for a flash) run the command with the `.fwpkg` file.
+To upload firmware and flash (or stage for a flash) run the command with
+the `.fwpkg` file.
 
 ```shell
 iLOrest > flashfwpkg U32_1.46_10_02_2018.fwpkg
@@ -272,7 +288,8 @@ Waiting for iLO UpdateService to finish processing the component
 Firmware has successfully been flashed and a reboot is required for this firmware to take effect.
 ```
 
-To skip checks for something blocking firmware updates also include the `--ignorechecks` option.
+To skip checks for something blocking firmware updates also include
+the `--ignorechecks` option.
 
 ```shell
 iLOrest > fwpkg ilo5_137.fwpkg --ignorechecks
@@ -294,7 +311,10 @@ installset *[Optional Parameters]*
 
 #### Description
 
-Command to perform operations on [install sets](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#hpecomponentinstallset). Among other objects, install sets contain a `Name`, an `Id` and an ordered list of installation instructions `sequence[]` that may be invoked/deployed.
+Command to perform operations on
+[install sets](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#hpecomponentinstallset).
+Among other objects, install sets contain a `Name`, an `Id` and an ordered
+list of installation instructions `sequence[]` that may be invoked/deployed.
 
 To list current install sets run the command without arguments.
 
@@ -314,21 +334,32 @@ Remove all install sets.
 
 :::info NOTE
 
-To remove recovery install sets during a local in-band session, you have to supply the `--user` and `--password` parameters. This security enhancement is needed because the local in-band management mode does not perform any authentication, as mentioned in the `login` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#login-command) description.
+To remove recovery install sets during a local in-band session, you have to supply
+the `--user` and `--password` parameters. This security enhancement is needed
+because the local in-band management mode does not perform any authentication,
+as mentioned in the `login` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#login-command)
+description.
 
 :::
 
 - **-j, --json**
 
-Optionally include this flag to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Optionally include this flag to change the displayed output to JSON format.
+Preserving the JSON data structure makes the information easier to parse.
 
 - **--expire=EXAFTER**
 
-Optionally include this flag to set the expiry time for installset. ISO 8601 Redfish-style time string to be written after which iLO will automatically change state to Expired (i.e. YYYY-MM-DDThh:mm:ss, YYYY-MM-DDThh:mm:ssZ).
+Optionally include this flag to set the expiry time for installset.
+ISO 8601 Redfish-style time string to be written after which iLO will
+automatically change state to Expired
+(i.e. YYYY-MM-DDThh:mm:ss, YYYY-MM-DDThh:mm:ssZ).
 
 - **--startafter=SAFTER**
 
-Optionally include this flag to set the earliest execution time for installset. ISO 8601 Redfish-style time string to be used (i.e. YYYY-MM-DDThh:mm:ss, YYYY-MM-DDThh:mm:ssZ).
+Optionally include this flag to set the earliest execution time for
+installset.
+ISO 8601 Redfish-style time string to be used
+(i.e. YYYY-MM-DDThh:mm:ss, YYYY-MM-DDThh:mm:ssZ).
 
 - **--tpmover**
 
@@ -336,7 +367,8 @@ Use this flag if the server you are currently logged into has a TPM chip install
 
 - **--updaterecoveryset**
 
-If set then the components in the flash operations are used to replace matching contents in the Recovery Set.
+If set then the components in the flash operations are used to replace
+matching contents in the Recovery Set.
 
 - **--cleartaskqueue**
 
@@ -344,23 +376,29 @@ This option clears previous items in the task queue before the Install Set is in
 
 #### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in the same
+line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with the user and
+password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password and
+URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and URL
+flags to login. Use the provided iLO password corresponding to the username
+you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after this command
+is completed. Using this flag when not logged in will have no effect.
 
 #### Examples
 
@@ -379,10 +417,12 @@ basic_update:
         SequenceName2: Action Filemane2
 ```
 
-Install sets can be added with their complete JSON structure or a subset containing only the members of the `sequence[]` array. 
+Install sets can be added with their complete JSON structure or a subset
+containing only the members of the `sequence[]` array.
 
 :::success TIP
-Refer to the [Makeinstallset command](#makeinstallset-command) to learn how to create an install set file.
+Refer to the [Makeinstallset command](#makeinstallset-command)
+to learn how to create an install set file.
 :::
 
 ```json Complete JSON structure
@@ -447,7 +487,10 @@ Refer to the [Makeinstallset command](#makeinstallset-command) to learn how to c
 ]
 ```
 
-To add an install set, run the command with the `add` argument followed by an install set json file. When using sequence type json file, it is not necessary to include the `-n, --name` flag. In this scenario the iLO provides default install set name (time stamp).
+To add an install set, run the command with the `add` argument followed by
+an install set json file. When using sequence type json file, it is not
+necessary to include the `-n, --name` flag.
+In this scenario the iLO provides default install set name (time stamp).
 
 ```shell iLOrest command
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -459,7 +502,10 @@ ilorest logout
 [201] The operation completed successfully.
 ```
 
-In case of problem during the addition of an install set, use the `-d, --debug` mode to troubleshoot. The following example fails to add an install set because it contains two identical sequence member names (`NonUnique`). The last lines of the iLOrest.log file explains this problem. 
+In case of problem during the addition of an install set, use the `-d, --debug`
+mode to troubleshoot. The following example fails to add an install
+set because it contains two identical sequence member names (`NonUnique`).
+The last lines of the iLOrest.log file explains this problem.
 
 ```shell
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -515,7 +561,10 @@ iLOrest return code: 63
 }
 ```
 
-To invoke (deploy) an install set, run the command with the `invoke` command followed by the `-n, --name` option specifying the name of the install set to invoke. Add the `--tpmover` if a Trusted Platform Module (TPM) is installed in the system.
+To invoke (deploy) an install set, run the command with the `invoke` command
+followed by the `-n, --name` option specifying the name of the install set to
+invoke. Add the `--tpmover` if a Trusted Platform Module (TPM) is installed in
+the system.
 
 ```shell
 iLOrest > installset invoke --name basic_update
@@ -524,10 +573,12 @@ The operation completed successfully.
 ```
 
 :::success TIP
-Use the `taskqueue` [command](#taskqueue-command) without any argument to monitor the install set deployment.
+Use the `taskqueue` [command](#taskqueue-command) without any
+argument to monitor the install set deployment.
 :::
 
-To delete an install set run the command with the `delete` argument followed by the `--name` specifying the name of the install set to delete.
+To delete an install set run the command with the `delete` argument
+followed by the `--name` specifying the name of the install set to delete.
 
 ```shell
 iLOrest > installset delete --name basic_update
@@ -551,7 +602,8 @@ listcomp *[Optional Parameters]*
 
 #### Description
 
-Command to list the firmware on the iLO repository of the currently logged in system.
+Command to list the firmware on the iLO repository of the currently
+logged in system.
 
 #### Parameters
 
@@ -561,23 +613,30 @@ Including the help flag will display help for the command.
 
 - **-j, --json**
 
-Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Optionally include this flag if you wish to change the displayed output to
+JSON format. Preserving the JSON data structure makes the information easier
+to parse.
 
 #### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in the
+same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with the user
+and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password and URL
+flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and URL flags
+to login. Use the provided iLO password corresponding to the username you gave
+to login.
 
 - **--usercert**
 
@@ -585,11 +644,13 @@ User Certificate for certificate login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after this
+command is completed. Using this flag when not logged in will have no effect.
 
 #### Examples
 
-To list the firmware on the iLO repository of the currently logged in system run the command without arguments.
+To list the firmware on the iLO repository of the currently logged in system
+run the command without arguments.
 
 ```shell
 iLOrest > listcomp
@@ -624,7 +685,10 @@ Command to add or delete maintenance windows from the iLO repository.
 
 **add TIME**
 
-Add a maintenance window with a given start time. The time format of the current time zone is: YYYY-MM-DDThh:mm:ss. The time format in the GMT time zone is: YYYY-MM-DDThh:mm:ssZ. Refer to the examples below for more detail.
+Add a maintenance window with a given start time. The time format of
+the current time zone is: YYYY-MM-DDThh:mm:ss. The time format in the GMT
+time zone is: YYYY-MM-DDThh:mm:ssZ.
+Refer to the examples below for more detail.
 
 **delete NAME**
 
@@ -636,15 +700,18 @@ Including the help flag will display help for the command.
 
 - **-j, --json**
 
-Optionally include this flag to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Optionally include this flag to change the displayed output to JSON format.
+Preserving the JSON data structure makes the information easier to parse.
 
 - **-description=DESCRIPTION**
 
-Optionally include this flag to add a description to the maintenance window created by you.
+Optionally include this flag to add a description to the maintenance window
+created by you.
 
 - **--name=NAME**
 
-Optionally include this flag to name the maintenance window created by you. If a name is not specified, system will add a unique name.
+Optionally include this flag to name the maintenance window created by you.
+If a name is not specified, system will add a unique name.
 
 - **--expire=EXPIRE**
 
@@ -652,27 +719,34 @@ Optionally include this flag to add the time a maintenance window expires.
 
 #### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in the same line
+as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with the user
+and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password and URL
+flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and URL flags
+to login. Use the provided iLO password corresponding to the username you
+gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after this command
+is completed. Using this flag when not logged in will have no effect.
 
 #### Examples
 
-To list the current maintenancewindows on the system run the command without arguments.
+To list the current maintenancewindows on the system run the command
+without arguments.
 
 ```shell
 iLOrest > maintenancewindow
@@ -682,21 +756,28 @@ MW-147746:
         Expires at: No expire time set.
 ```
 
-To Create a new maintenance window run the command with the `add` keyword followed by the time the maintenance window should start. If you do not supply a name for your maintenance window one will be randomly generated for you.
+To Create a new maintenance window run the command with the `add` keyword
+followed by the time the maintenance window should start.
+If you do not supply a name for your maintenance window one will be
+randomly generated for you.
 
 ```shell
 iLOrest > maintenancewindow add 2018-11-21T00:00:00
 [201] The operation completed successfully.
 ```
 
-To optionally specify an expire time (`--expire`), maintenance window name (`--name`), and/or description (`--description`) include their respective options.
+To optionally specify an expire time (`--expire`), maintenance window name
+(`--name`), and/or description (`--description`)
+include their respective options.
 
 ```shell
 iLOrest > maintenancewindow add 2019-11-21T00:00:00 --expire=2019-11-22T00:00:00 --name=MyMaintenanceWindow --description "My maintenance window description."
 [201] The operation completed successfully.
 ```
 
-To delete a maintenance window run the command with the `delete` keyword followed by the name or id of the maintenance window you wish to delete.
+To delete a maintenance window run the command with the `delete`
+keyword followed by the name or id of the maintenance window you wish to
+delete.
 
 ```shell
 iLOrest > maintenancewindow delete MyMaintenanceWindow
@@ -714,11 +795,14 @@ makeinstallset *[Optional Parameters]*
 #### Description
 
 Run to make installsets for iLO.
-If not logged into the server, the command will provide basic guidance on making an installset.
-If logged into the server, the command will provide guidance based on the current components on the system.
+If not logged into the server, the command will provide basic guidance on
+making an installset.
+If logged into the server, the command will provide guidance based
+on the current components on the system.
 
 :::info NOTE
-When using this command on a logged in sever, for best results, upload the components before running this command.
+When using this command on a logged in sever, for best results, upload the
+components before running this command.
 :::
 
 #### Parameters
@@ -729,28 +813,35 @@ Including the help flag on this command will display help.
 
 - **-f FILENAME, --filename=FILENAME**
 
-Include this flag to use a different filename than the default one. The default filename is myinstallset.json
+Include this flag to use a different filename than the default one.
+The default filename is myinstallset.json
 
 #### Login Parameters
 
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in the same
+line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with the user
+and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password and URL
+flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and URL flags
+to login. Use the provided iLO password corresponding to the username you
+gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after this
+command is completed. Using this flag when not logged in will have no effect.
 
 #### Examples
 
@@ -865,7 +956,9 @@ taskqueue *[Optional Parameters]*
 
 #### Description
 
-Command to manage (view, add and remove tasks) from the task queue. Added tasks are appended to the end of the queue. Don't specify any argument to list the tasks and their status.
+Command to manage (view, add and remove tasks) from the task queue.
+Added tasks are appended to the end of the queue. Don't specify any
+argument to list the tasks and their status.
 
 #### Parameters
 
@@ -883,7 +976,9 @@ Clean up all finished or errored tasks - leave pending.
 
 - **-j, --json**
 
-Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Optionally include this flag if you wish to change the displayed output
+to JSON format. Preserving the JSON data structure makes the information
+easier to parse.
 
 - **--tpmover**
 
@@ -891,27 +986,34 @@ Include this flag when updating firmware if you have a TPM installed.
 
 #### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in the same
+line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with the user
+and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password and URL
+flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and URL
+flags to login. Use the provided iLO password corresponding to the
+username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after this
+command is completed. Using this flag when not logged in will have no effect.
 
 #### Examples
 
-To create new wait task queue task, include the `create` keyword followed by the amount of time to wait.
+To create new wait task queue task, include the `create` keyword
+followed by the amount of time to wait.
 
 ```shell
 iLOrest > taskqueue create 60
@@ -920,7 +1022,8 @@ Creating task: "Wait-703879 60 seconds"
 [201] The operation completed successfully.
 ```
 
-To create a new firmware task queue task, include the `create` keyword followed by the name of a firmware file that is already in the iLO repository.
+To create a new firmware task queue task, include the `create` keyword
+followed by the name of a firmware file that is already in the iLO repository.
 
 ```shell
 iLOrest > taskqueue create ilo5_137.bin
@@ -929,7 +1032,8 @@ Creating task: "Update-740856 iLO 5"
 [201] The operation completed successfully.
 ```
 
-To list the tasks present in the task queue and their status, run the command with no arguments.
+To list the tasks present in the task queue and their status, run
+the command with no arguments.
 
 ```shell
 iLOrest > taskqueue
@@ -947,7 +1051,8 @@ Task Update-740856 iLO 5:
 
 ```
 
-To delete all tasks from the update task queue, run the command with the `--resetqueue` option.
+To delete all tasks from the update task queue, run the command with
+the `--resetqueue` option.
 
 ```shell
 iLOrest > taskqueue --resetqueue
@@ -970,9 +1075,13 @@ Command to upload a firmware in the iLO repository.
 
 :::info NOTES
 
-- The `uploadcomp` command requires iLO 5 firmware version v1.48(a) or later. Earlier iLO 5 Firmware versions fails with a return code 103.  
-- iLO firmware version v1.48(a) or later is required because the <b>uploadcomp</b> command depends on the Bunny Hop feature found in that version of the iLO firmware.  
-- Before updating the iLO firmware, read <a href="https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00068199en_us" target="_blank">the customer advisory regarding iLO firmware upgrades</a>.
+- The `uploadcomp` command requires iLO 5 firmware version v1.48(a) or later.
+  Earlier iLO 5 Firmware versions fails with a return code 103.  
+- iLO firmware version v1.48(a) or later is required because the
+  <b>uploadcomp</b> command depends on the Bunny Hop feature found
+  in that version of the iLO firmware.  
+- Before updating the iLO firmware, read
+  <a href="https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00068199en_us" target="_blank">the customer advisory regarding iLO firmware upgrades</a>.
 
 :::
 
@@ -988,7 +1097,9 @@ Optionally include logs in the data retrieval process.
 
 - **-j, --json**
 
-Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Optionally include this flag if you wish to change the displayed output to
+JSON format. Preserving the JSON data structure makes the
+information easier to parse.
 
 - **--component=COMPONENT**
 
@@ -996,7 +1107,9 @@ Component or binary file path to upload to the update service.
 
 - **--compsig=COMPONENTSIG**
 
-Component signature file path needed by iLO to authenticate the component file. If not provided, the command will try to find the signature file from component file path.
+Component signature file path needed by iLO to authenticate the component file.
+If not provided, the command will try to find the signature file from
+component file path.
 
 - **--forceupload**
 
@@ -1004,7 +1117,10 @@ Add this flag to force upload components with the same name already on the repos
 
 - **--update_repository**
 
-Add this flag to skip uploading component/binary to the iLO Repository. If this flag is included with `--update_srs`, it is ignored. Adding component to the repository is required to update the system recovery set.
+Add this flag to skip uploading component/binary to the iLO Repository.
+If this flag is included with `--update_srs`, it is ignored.
+Adding component to the repository is required to update the system
+recovery set.
 
 - **--update_target**
 
@@ -1016,32 +1132,40 @@ The uploaded component becomes a part of the system recovery set (srs).
 
 :::info NOTE
 
-`--update_target` also need to passed along with `--update_srs` for component to be valid for that server.
+`--update_target` also need to passed along with `--update_srs` for
+component to be valid for that server.
 :::
 
 #### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in the same
+line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along with the user
+and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password and
+URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and URL flags
+to login. Use the provided iLO password corresponding to the username
+you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in will have no effect.
 
 #### Examples
 
-To upload firmware to the iLO repository run the command with the `--component` option specifying the firmware file to upload.
+To upload firmware to the iLO repository run the command with
+the `--component` option specifying the firmware file to upload.
 
 ```shell
 iLOrest > uploadcomp --component ilo5_137.bin
@@ -1051,8 +1175,11 @@ Waiting for iLO UpdateService to finish processing the component
 0 hour(s) 1 minute(s) 43 second(s)
 ```
 
-By default the firmware is uploaded to the iLO Repository. For firmware iLO is capable of flashing you can instead directly flash it.
-To do this you need to include the `--update_repository`  flag to not include the firmware in the iLO repository and the `--update_target`
+By default the firmware is uploaded to the iLO Repository. For firmware iLO is
+capable of flashing you can instead directly flash it.
+To do this you need to include the `--update_repository`
+flag to not include the firmware in the iLO repository and
+the `--update_target`
 flag to trigger iLO to flash.
 
 ```shell
