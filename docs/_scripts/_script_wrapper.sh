@@ -1,20 +1,23 @@
 #!/usr/bin/bash
 
-# Version 0.94
+# Version 0.95
 
 # Script name: _script_wrapper.sh 
 # This script is a wrapper to the other scripts contained in this folder, except
-# the standalone `_python_library.sh` script.
+# to the standalone `_python_library.sh` script.
 
-# It create configuratin variables and calls the other scripts in the right order in 
+# It creates configuratin variables and calls the other scripts in the right order in 
 # order to convert raw and automaticaly generated files into Redocly MD files.
 
 # This script must be executed when new versions of the automatically generated 
 # files are posted, and before the Redocly rendering process (GitHub PR merge).
 
+# NOTE: Automatically generated files are created in the internal GitHub:
+#     https://github.hpe.com/HPE-iLO-Redfish-API/tools/tree/master/RedfishRefDoc
+
 # Requirements (if G is the iLO generation and VVV its firmware version (i.e. 110)):
 #        
-#        * The original Slate automatically generated _iloG_resourcedefns.md, 
+#        * The automatically generated _iloG_resourcedefns.md, 
 #          _iloG_resmap.md and _iloG_msgregs.md files MUST be stored respectively as:
 # 
 #          docs/redfishServices/ilos/iloG/iloG_VVV/_raw_iloG_resourcedefnsVVV.md-bck and
@@ -33,7 +36,8 @@
 #
 
 # Note: The following $scriptList variable is ordered. Don't modify this order!
-scriptList="_split_resourcedefns.sh _resourcedefns.sh _resmap.sh _msgregs.sh _excludeFromSearch.sh"
+#scriptList="_split_resourcedefns.sh _resourcedefns.sh _resmap.sh _msgregs.sh _excludeFromSearch.sh _lintFiles.sh"
+scriptList="_lintFiles.sh"
 required_executables="dos2unix sed awk"
 
 # Don't forget to update the following variables to process the right iLO version !
@@ -43,7 +47,8 @@ export iLOGen=$(echo ${ilogen,,} | tr -d ' ')
 export iLOVersion=$(echo $iLOFwVersion | tr -d '.')
 
 #export RepoLocation="/Git-Repo/CloneOfPrivate-hpe-ilo-redocly"
-export RepoLocation="C:/api_redocly/hpe-ilo-redocly"
+#export RepoLocation="C:/api_redocly/hpe-ilo-redocly"
+export RepoLocation="/Git-Repo/ProtoRedfishDocs"
 export WorkingDirectory="$RepoLocation/docs/redfishServices/ilos/${iLOGen}/${iLOGen}_${iLOVersion}"
 
 export ResourcesFile_bck="${WorkingDirectory}/_raw_${iLOGen}_resourcedefns${iLOVersion}.md-bck"
@@ -153,15 +158,15 @@ done
 #
 ### Cleanup
 #
-echo -e "\n\nCleanup"
-echo -e "\t$ResourcesFile \n\t$OtherResourcesFile"
-echo -e "\t$ResmapFile \n\t$MsgRegistryFile"
-echo -e "\t$WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md"
-echo -e "\t$WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*"
+#echo -e "\n\nCleanup"
+#echo -e "\t$ResourcesFile \n\t$OtherResourcesFile"
+#echo -e "\t$ResmapFile \n\t$MsgRegistryFile"
+#echo -e "\t$WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md"
+#echo -e "\t$WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*"
 
-rm $ResourcesFile $OtherResourcesFile                                              &> /dev/null
-rm $ResmapFile $MsgRegistryFile                                                    &> /dev/null
-rm $WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md  &> /dev/null
-rm $WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*     &> /dev/null
+#rm $ResourcesFile $OtherResourcesFile                                              &> /dev/null
+#rm $ResmapFile $MsgRegistryFile                                                    &> /dev/null
+#rm $WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md  &> /dev/null
+#rm $WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*     &> /dev/null
 
 exit 0
