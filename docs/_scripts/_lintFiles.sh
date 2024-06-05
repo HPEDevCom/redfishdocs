@@ -25,14 +25,22 @@
 # Get list of files to process
 cd ${RepoLocation}/docs/redfishServices/ilos/${iLOGen}/
 
-allDirs=$(ls -d */)
+allDirs=$(ls -d [^_]*/) # exclude _iloX_review
 unset fileList
 for d in $allDirs ; do
+    # if $d is not (less than <) the processed firmware version
+    # then add files in the file list
     if [ "$d" \< "$(basename $WorkingDirectory)" ] ; then
         fileList="$fileList ${d}${iLOGen}*md" 
     fi
 done
 
+# Process _ilo_r* special dirs like _iloX_review
+allDirs=$(ls -d _ilo_r*/)
+
+for d in $allDirs ; do
+    fileList="$fileList ${d}_${iLOGen}*md"
+done
 
 # Remove trailing spaces if any (MD009/no-trailing-spaces)
 sed -i -e 's/ \{1,\}$//' $fileList

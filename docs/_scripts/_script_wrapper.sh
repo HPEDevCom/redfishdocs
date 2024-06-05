@@ -158,15 +158,15 @@ done
 #
 ### Cleanup
 #
-#echo -e "\n\nCleanup"
-#echo -e "\t$ResourcesFile \n\t$OtherResourcesFile"
-#echo -e "\t$ResmapFile \n\t$MsgRegistryFile"
-#echo -e "\t$WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md"
-#echo -e "\t$WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*"
+echo -e "\n\nCleanup"
+echo -e "\t$ResourcesFile \n\t$OtherResourcesFile"
+echo -e "\t$ResmapFile \n\t$MsgRegistryFile"
+echo -e "\t$WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md"
+echo -e "\t$WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*"
 
-#rm $ResourcesFile $OtherResourcesFile                                              &> /dev/null
-#rm $ResmapFile $MsgRegistryFile                                                    &> /dev/null
-#rm $WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md  &> /dev/null
-#rm $WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*     &> /dev/null
+rm $ResourcesFile $OtherResourcesFile                                              &> /dev/null
+rm $ResmapFile $MsgRegistryFile                                                    &> /dev/null
+rm $WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md  &> /dev/null
+rm $WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*     &> /dev/null
 
 exit 0
