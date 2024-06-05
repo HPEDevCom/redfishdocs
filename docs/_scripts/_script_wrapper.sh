@@ -36,8 +36,8 @@
 #
 
 # Note: The following $scriptList variable is ordered. Don't modify this order!
-#scriptList="_split_resourcedefns.sh _resourcedefns.sh _resmap.sh _msgregs.sh _excludeFromSearch.sh _lintFiles.sh"
-scriptList="_lintFiles.sh"
+#scriptList="_lintFiles.sh"
+scriptList="_split_resourcedefns.sh _resourcedefns.sh _resmap.sh _msgregs.sh _excludeFromSearch.sh _lintFiles.sh"
 required_executables="dos2unix sed awk"
 
 # Don't forget to update the following variables to process the right iLO version !

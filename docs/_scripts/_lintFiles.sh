@@ -35,8 +35,8 @@ for d in $allDirs ; do
     fi
 done
 
-# Process _ilo_r* special dirs like _iloX_review
-allDirs=$(ls -d _ilo_r*/)
+# Process _iloX_r* special dirs like _iloX_review
+allDirs=$(ls -d _ilo?_r*/)
 
 for d in $allDirs ; do
     fileList="$fileList ${d}_${iLOGen}*md"
