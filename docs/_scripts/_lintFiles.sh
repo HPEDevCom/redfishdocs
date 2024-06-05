@@ -42,13 +42,21 @@ for d in $allDirs ; do
     fileList="$fileList ${d}_${iLOGen}*md"
 done
 
+# Make sure there is one blank line above headings (MD022/blanks-around-headings)
+sed -i -e '/^#* /i\
+
+' $fileList
+
+# Make sure there is one blank line below headings (MD022/blanks-around-headings)
+for f in $fileList  ; do
+    tac $f | sed -e '/^#* /i\
+
+' | tac > ${f}.tmp
+    mv ${f}.tmp $f
+done
+
 # Remove trailing spaces if any (MD009/no-trailing-spaces)
 sed -i -e 's/ \{1,\}$//' $fileList
 
 # Remove multiple consecutive blank lines (MD012/no-multiple-blanks)
 sed -i -e '/^$/N;/^\n$/D' $fileList
-
-# Make sure there is one blank line below headings (MD022/blanks-around-headings)
-# sed -e '/^#\+/{N;/\n$/!s/$/\n/;}' $fileList 
-
-# Make sure there is one blank line above headings (MD022/blanks-around-headings)
