@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: iLO 5 version 2.90 Resource map
 toc:

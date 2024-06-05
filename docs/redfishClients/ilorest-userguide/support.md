@@ -47,27 +47,27 @@ Prior to ask for assistance, collect the following information
 
 ### Websites
 
-Website | Link
---------|-------
-Hewlett Packard Enterprise Support Center | [www.hpe.com/support/hpesc](https://www.hpe.com/support/hpesc)
-Contact Hewlett Packard Enterprise Worldwide | [www.hpe.com/assistance](https://www.hpe.com/assistance)
-Subscription Service/Support Alerts | [www.hpe.com/support/e-updates](https://www.hpe.com/support/e-updates)
-Software Depot | [www.hpe.com/support/softwaredepot](https://www.hpe.com/support/softwaredepot)
-Customer Self Repair | [www.hpe.com/support/selfrepair](https://www.hpe.com/support/selfrepair)
-Insight Remote Support | [www.hpe.com/info/insightremotesupport/docs](https://www.hpe.com/info/insightremotesupport/docs)
-Serviceguard Solutions for HP-UX | [www.hpe.com/info/hpux-serviceguard-docs](https://www.hpe.com/info/hpux-serviceguard-docs)
-Single Point of Connectivity Knowledge (SPOCK) Storage compatibility matrix	| [www.hpe.com/storage/spock](https://www.hpe.com/storage/spock)
-Storage white papers and analyst reports | [www.hpe.com/storage/whitepapers](https://www.hpe.com/storage/whitepapers)
-iLO RESTful API | [www.hpe.com/info/restfulapi](https://www.hpe.com/info/restfulapi)
-HPE ProLiant Gen9 Server Management | [www.hpe.com/servers/proliantgen9/docs](https://www.hpe.com/servers/proliantgen9/docs)
-HPE Intelligent Provisioning | [www.hpe.com/info/intelligentprovisioning/docs](https://www.hpe.com/info/intelligentprovisioning/docs)
-UEFI System Utilities | [www.hpe.com/info/ProLiantUEFI/docs](https://www.hpe.com/info/ProLiantUEFI/docs)
-SUM | [www.hpe.com/info/hpsum](https://www.hpe.com/info/hpsum)
-Service Pack for ProLiant (SPP) | [www.hpe.com/servers/spp](https://www.hpe.com/servers/spp)
-HPE iLO 4 | [www.hpe.com/info/ilo/docs](https://www.hpe.com/info/ilo/docs)
-HPE iLO University videos | [www.hpe.com/info/ilo/videos](https://www.hpe.com/info/ilo/videos)
-HPE Systems Insight Manager | [www.hpe.com/info/hpsim](https://www.hpe.com/info/hpsim)
-U.S. Authorized Resellers | [www.hpe.com/support/service_locator](https://www.hpe.com/support/service_locator)
+| Website                                                                      | Link                                                                                                   |
+|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| Hewlett Packard Enterprise Support Center                                    | [www.hpe.com/support/hpesc](https://www.hpe.com/support/hpesc)                                         |
+| Contact Hewlett Packard Enterprise Worldwide                                 | [www.hpe.com/assistance](https://www.hpe.com/assistance)                                               |
+| Subscription Service/Support Alerts                                          | [www.hpe.com/support/e-updates](https://www.hpe.com/support/e-updates)                                 |
+| Software Depot                                                               | [www.hpe.com/support/softwaredepot](https://www.hpe.com/support/softwaredepot)                         |
+| Customer Self Repair                                                         | [www.hpe.com/support/selfrepair](https://www.hpe.com/support/selfrepair)                               |
+| Insight Remote Support                                                       | [www.hpe.com/info/insightremotesupport/docs](https://www.hpe.com/info/insightremotesupport/docs)       |
+| Serviceguard Solutions for HP-UX                                             | [www.hpe.com/info/hpux-serviceguard-docs](https://www.hpe.com/info/hpux-serviceguard-docs)             |
+| Single Point of Connectivity Knowledge (SPOCK) Storage compatibility matrix	 | [www.hpe.com/storage/spock](https://www.hpe.com/storage/spock)                                         |
+| Storage white papers and analyst reports                                     | [www.hpe.com/storage/whitepapers](https://www.hpe.com/storage/whitepapers)                             |
+| iLO RESTful API                                                              | [www.hpe.com/info/restfulapi](https://www.hpe.com/info/restfulapi)                                     |
+| HPE ProLiant Gen9 Server Management                                          | [www.hpe.com/servers/proliantgen9/docs](https://www.hpe.com/servers/proliantgen9/docs)                 |
+| HPE Intelligent Provisioning                                                 | [www.hpe.com/info/intelligentprovisioning/docs](https://www.hpe.com/info/intelligentprovisioning/docs) |
+| UEFI System Utilities                                                        | [www.hpe.com/info/ProLiantUEFI/docs](https://www.hpe.com/info/ProLiantUEFI/docs)                       |
+| SUM                                                                          | [www.hpe.com/info/hpsum](https://www.hpe.com/info/hpsum)                                               |
+| Service Pack for ProLiant (SPP)                                              | [www.hpe.com/servers/spp](https://www.hpe.com/servers/spp)                                             |
+| HPE iLO 4                                                                    | [www.hpe.com/info/ilo/docs](https://www.hpe.com/info/ilo/docs)                                         |
+| HPE iLO University videos                                                    | [www.hpe.com/info/ilo/videos](https://www.hpe.com/info/ilo/videos)                                     |
+| HPE Systems Insight Manager                                                  | [www.hpe.com/info/hpsim](https://www.hpe.com/info/hpsim)                                               |
+| U.S. Authorized Resellers                                                    | [www.hpe.com/support/service_locator](https://www.hpe.com/support/service_locator)                     |
 
 ### Documents
 

@@ -29,9 +29,9 @@ iLO commands that are supported for a specific HPE server generation:
 Backup and restore iLO to a server using a **.bak** file.
 
 :::info NOTE
-Use this command to only restore the machine from which the backup file was created. 
-To apply one configuration in multiple systems, refer to the <!--suppress HtmlUnknownAnchorTarget -->
-<a href="#serverclone-command">Serverclone command</a>.
+Use this command to only restore the machine from which the backup file was created.
+
+To apply one configuration in multiple systems, refer to the `serverclone` [command](#serverclone-command).
 
 This command is available only in remote mode.
 :::
@@ -69,14 +69,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 
@@ -237,11 +229,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-None
-
-#### Output
-
 #### Examples
 
 To Generate an HTTP TLS/SSL certificate signing request use the `gen_csr` argument along with the following information `Organization Name`, `Organization Unit`, `Common Name`, `Country`, `State`, `City`, `Include IP`. Use quotes to include parameters which containing whitespaces. The `Include IP` argument is a Boolean (`True`, `False`)
@@ -249,7 +236,7 @@ To Generate an HTTP TLS/SSL certificate signing request use the `gen_csr` argume
 ```shell
 iLOrest > login
 Discovering data...Done
-iLOrest > certificate csr "Hewlett Packard Enterprise" "ILORestGroup" "iLORest" "US" "Texas" "Houston" False 
+iLOrest > certificate csr "Hewlett Packard Enterprise" "ILORestGroup" "iLOrest" "US" "Texas" "Houston" False 
 The operation completed successfully.
 ```
 
@@ -258,12 +245,12 @@ The operation completed successfully.
 - Please make sure the order of arguments is correct. The parameters are extracted based on their position in the arguments list.
 - Some certificate types (i.e. SCEP) are not available on Gen9.
 - Use the `singlesignon` command to import single sign on certificates.
-- Use quotes to include parameters with whitespaces, when generating a CSR. For example: certificate gen_csr "Hewlett Packard Enterprise" "iLORest Group" "CName" "United States" "Texas" "Houston" False
+- Use quotes to include parameters with whitespaces, when generating a CSR. For example: certificate gen_csr "Hewlett Packard Enterprise" "iLOrest Group" "CName" "United States" "Texas" "Houston" False
 - Platform certificates are specific to diagnostic usage purposes.
 
 :::
 
-To retrieve an HTTP TLS/SSL certificate signing request use the `getcsr --TLS_CERT` argument. The default filename is `certificate.txt`, saved to the current working directory. Including the *(-f, --filename)* option will change the default name.
+To retrieve an HTTP TLS/SSL certificate signing request use the `getcsr --TLS_CERT` argument. The default filename is `certificate.txt`, saved to the current working directory. Including the _(-f, --filename)_ option will change the default name.
 
 ```shell
 iLOrest > certificate getcsr --TLS_CERT
@@ -382,7 +369,7 @@ The certificate was saved to: mySystemIAK.cer
 To auto enroll, use certificate command with `auto_enroll` subcommand followed by required arguments
 
 ```shell
-iLOrest certificate auto_enroll "Hewlett Packard Enterprise" "ILORestGroup" "iLORest" "US" "Americas" "Houston" "https://10.10.10.10/certsrv/mscep/mscep.dll" "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" "True" "False"
+iLOrest certificate auto_enroll "Hewlett Packard Enterprise" "ILORestGroup" "iLOrest" "US" "Americas" "Houston" "https://10.10.10.10/certsrv/mscep/mscep.dll" "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" "True" "False"
 ```
 
 ### Clearrestapistate Command
@@ -424,12 +411,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-None
-
-#### Output
-None
 
 #### Examples
 
@@ -505,14 +486,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-
-None
-
-#### Output
-
-None
-
 #### Examples
 
 To enable your servers to be discovered, monitored and managed through Compute Ops Management.
@@ -571,39 +544,39 @@ Including the help flag will display help for the command.
 
 - **--enable, --disable**
 
-Use this command to enable or disable the LDAP or Kerberos services.
+Use this option to enable or disable the LDAP or Kerberos services.
 
 - **--serviceaddress=SERVICEADDRESS**
 
-Use this command to set the service address of the LDAP or Kerberos Services.
+Use this option to set the service address of the LDAP or Kerberos Services.
 
 - **--port=PORT**
 
-Use this command to set the port of the LDAP or Kerberos services.
+Use this option to set the port of the LDAP or Kerberos services.
 
 - **--realm=REALM**
 
-Use this command to set the Kerberos realm.
+Use this option to set the Kerberos realm.
 
 - **--keytab=KEYTAB**
 
-Use this command to import a Kerberos Keytab by its URI location.
+Use this option to import a Kerberos Keytab by its URI location.
 
 - **--enablelocalauth, --disablelocalauth**
 
-Use this command to enable or disable the authentication for local accounts.
+Use this option to enable or disable the authentication for local accounts.
 
 - **--authentication=AUTHMODE**
 
-Use this command to choose a LDAP authentication mode. The available modes are DefaultSchema (Directory Default Schema or Schema-   free) and ExtendedSchema (HPE Extended Schema).
+Use this option to choose a LDAP authentication mode. The available modes are DefaultSchema (Directory Default Schema or Schema-   free) and ExtendedSchema (HPE Extended Schema).
 
 - **--addsearch=SEARCH, --removesearch=SEARCH**
 
-Use this command to add or remove search strings for generic LDAP services.
+Use this option to add or remove search strings for generic LDAP services.
 
 - **--addrolemap=ROLES, --removerolemap=ROLES**
 
-Use this command to add or remove Role Mapping(s) for the LDAP and Kerberos services.
+Use this option to add or remove Role Mapping(s) for the LDAP services.
 
 :::info NOTE
 
@@ -634,12 +607,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-None
-
-#### Output
-None
 
 #### Examples
 
@@ -687,8 +654,13 @@ The operation completed successfully.
 
 To specify the service address (`--serviceaddress`), port (`--port`), authentication schema (`--authentication`), and/or search strings (`--addsearch/--removesearch`) specify their respective options. Authentication schema and search strings can only be used with the LDAP directory.
 
+:::info NOTE
+
+The `--addsearch` value needs to be double quoted in order to escape the semicolon character (;) from its potential shell command separator meaning.
+:::
+
 ```shell
-iLOrest > directory ldap --serviceaddress x.x.y.z --addsearch string3,string4 --authentication=ExtendedSchema --port 199
+iLOrest > directory ldap --serviceaddress x.x.y.z --addsearch "string3;string4" --authentication=ExtendedSchema --port 199
 Changing settings...
 The operation completed successfully.
 iLOrest > directory ldap
@@ -720,10 +692,10 @@ Adding keytab...
 The operation completed successfully.
 ```
 
-To add directory role maps include the `ldap` argument with the `--addrolemap` option with the form `LocalRole:RemoteRoleGroup:OptionalSID`. Available roles can be found in the help text.
+To add directory role maps include the `ldap` argument with the `--addrolemap` option with the form `LocalRole:RemoteRoleGroup:OptionalSID`. Multiple rolemaps can be added with '#' as seperator. Available roles can be found in the help text.
 
 ```shell
-iLOrest > directory ldap --addrolemap "Administrator:Owners,ReadOnly:Reading Users:S-1-7-23"
+iLOrest > directory ldap --addrolemap "Administrator:Owners#ReadOnly:Reading Users:S-1-7-23"
 Changing settings...
 The operation completed successfully.
 iLOrest > directory ldap
@@ -749,7 +721,8 @@ Remote Role Mapping(s):
         Remote Group: Reading Users:S-1-7-23
 ```
 
-To add custom local role maps include the `ldap` argument with the `--addrolemap` option with the form `PrivNum1;PrivNum2;...:RemoteRoleGroup:OptionalSID`. Numbers of privileges can be found in the help text.
+To add custom local role maps include the `ldap` argument with the `--addrolemap` option with the form `PrivNum1;PrivNum2;...:RemoteRoleGroup:OptionalSID`. Multiple rolemaps can be added with '#' as seperator. Numbers of privileges can be found in the help text.
+
 
 ```shell
 iLOrest > directory ldap --addrolemap "10;2;3:Another remote role:S-1-7-23"
@@ -762,10 +735,10 @@ The operation completed successfully.
 Updated privileges for A TESTTT:S-1-7-23
 ```
 
-To remove directory role maps include the `ldap` argument with the `--removerolemap` option specifying the `LocalRole` of the role map to remove. Multiple role maps can be removed by separating them with commas.
+To remove directory role maps include the `ldap` argument with the `--removerolemap` option specifying the `LocalRole` of the role map to remove. Multiple role maps can be removed by separating them with '#'.
 
 ```shell
-iLOrest > directory ldap --removerole dirgroupb3b74668da9b6b0bc6864223,dirgroup8e167f4006abce0ae22977d4
+iLOrest > directory ldap --removerolemap "dirgroupb3b74668da9b6b0bc6864223#dirgroup8e167f4006abce0ae22977d4"
 Changing settings...
 The operation completed successfully.
 iLOrest > directory ldap
@@ -887,6 +860,7 @@ LOCAL ROLES:
 Disable iLO functionality on the current logged in server.
 
 :::info NOTE
+
 Add the --force flag to ignore critical task checking before disabling iLO.
 :::
 
@@ -923,12 +897,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-None
-
-#### Output
-None
 
 #### Examples
 
@@ -975,13 +943,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-None
-
-#### Output
-None
-
 
 #### Examples
 
@@ -1055,7 +1016,6 @@ Configure Domain Name Servers (DNS) in a list: <DNS1> <DNS2>
 
 - **--network_ipv4 <ipv4 address>, <ipv4 gateway>, <ipv4 network mask>.**  
 Configure Static IPv4 Settings. Provide a list of network settings
- 
 
 #### Examples
 
@@ -1129,13 +1089,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-None
-
-#### Output
-
-None
-
 #### Examples
 
 To reset iLO to factory defaults in the current logged in server run the command without arguments.
@@ -1162,14 +1115,15 @@ This command will erase all iLO user setting data and reset iLO. Default credent
 Use this command to update the firmware via URI. iLO must be able to access the URI for update to complete successfully. This command only supports firmware with a `.bin` extension.
 
 :::info NOTE
-The firmware update command is only supported in <b>iLO 4 2.20</b> or higher.
+
+The firmware update command is only supported in <b>iLO 4 2.20</b> or higher. And only iLO firmware and UEFI firmware are supported. Smart Components are not supported.
 :::
 
 #### Parameters
 
 - **URI**
 
-Point the **firmwareupdate** command towards the .bin file that holds the file for the firmware update.
+Point the **firmwareupdate** command towards the firmware package file that holds the file for the firmware update.
 
 - **-h, --help**
 
@@ -1201,13 +1155,7 @@ Optionally include the logout flag to log out of the server after this command i
 
 #### Input
 
-File
-
-Input a URI pointing to a `.bin` file to perform the `firmwareupdate` command. The .bin file should hold the file needed to perform the firmware update.
-
-#### Output
-
-None
+URI pointing to a firmware package as shown in the first example below.
 
 #### Examples
 
@@ -1219,7 +1167,7 @@ iLO does not always reset after a firmware update.
 :::
 
 ```shell
-iLOrest > firmwareupdate https://firmwarehost/path/to/firmware/file.bin
+iLOrest > firmwareupdate https://firmwarehost/path/to/firmware/file.fwpkg
 
 Starting upgrading process...
 
@@ -1272,14 +1220,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 
@@ -1398,13 +1338,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-None
-
-
-#### Output
-None
 
 #### Examples
 
@@ -1583,6 +1516,7 @@ iLO 5 added privileges:
 10. System Recovery Config
 
 :::info NOTE
+
 This command has been recently changed. Please review the new method to specify privileges and querying accounts.
 :::
 
@@ -1652,16 +1586,10 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-None
-
-
-#### Output
-None
-
 #### Examples
 
 :::info NOTE
+
 The federation key must be 8 characters or greater.
 :::
 
@@ -1922,14 +1850,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-
-None
-
-#### Output
-
-None
-
 #### Examples
 
 The following example illustrate the different options of the `ilolicese` macro command.
@@ -2007,7 +1927,7 @@ iLOrest > ilolicense --check_confirm
 "State: unconfirmed"
 ```
 
-### iLOReset Command
+### Iloreset Command
 
 #### Syntax
 
@@ -2042,14 +1962,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 
@@ -2117,14 +2029,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-
-None
-
-#### Output
-
-None
-
 #### Examples
 
 To list the current profiles on the server, run the command without arguments..
@@ -2162,7 +2066,7 @@ iLOrest > ipprofiles
 }
 ```
 
-### One Button Erase Command
+### Onebuttonerase Command
 
 #### Syntax
 
@@ -2210,12 +2114,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-None
-
-#### Output
-None
-
 #### Examples
 
 To initiate One Button Erase and erase all iLO settings, BIOS settings, User Data, and iLO Repository data run the command without arguments.
@@ -2257,7 +2155,7 @@ User Data Erase: Initiated \
 
 #### Description
 
-Run this command to turn the system on, perform an immediate non-graceful shutdown, perform an immediate non-graceful shutdown followed by a restart of the system, generate a non-maskable interrupt and cause an immediate system halt, or simulate the pressing of the physical power button on the system.
+Run this command to turn the system on, perform an immediate non-graceful shutdown followed by a restart of the system, generate a non-maskable interrupt and cause an immediate system halt, or simulate the pressing of the physical power button on the system.
 
 #### Parameters
 
@@ -2322,20 +2220,13 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 You can optionally choose to set the **includelogs** flag. Doing so will include logs in the data retrieval process.
 
 :::info NOTE
+
 This option can be used to limit long login times.
 :::
 
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 
@@ -2417,14 +2308,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-
-None
-
-#### Output
-
-None
-
 ### Sendtest Command
 
 #### Syntax
@@ -2461,13 +2344,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-None
-
-
-#### Output
-None
-
 #### Examples
 
 Send syslog test to the current logged in server.
@@ -2500,28 +2376,17 @@ The operation completed successfully.
 #### Description
 
 Creates a JSON formatted clone file (named ilorest_clone.json) of a system's iLO and bios configuration by default. You have the option to include Smart Storage Array configurations, as well as Single Sign-On and TLS certificates.
-:::info NOTE
-The JSON file might require some editing.
-:::
 
-:::info NOTE
-The default values are set for the iLO Management Account password and Federation Group key when the auto (automated mode) is used. 
-:::
+:::info NOTES
 
-:::info NOTE
-When loading a clone file, login using an iLO account with full administrative privileges (such as the Administrator account) to ensure all system parameters are cloned successfully.
-:::
+- The JSON file might require some editing.
+- The default values are set for the iLO Management Account password and Federation Group key when the auto (automated mode) is used.
+- When loading a clone file, login using an iLO account with full administrative privileges (such as the Administrator account) to ensure all system parameters are cloned successfully.
+- When working with iLO Management Accounts or iLO Federation Groups, remove entries from the JSON clone file (within the relevant dictionary) in order to perform deletion. In order to create new accounts on the server, simply add relevant nested dictionaries to the JSON file.
+-The Administrator account cannot be deleted using `serverclone`.
+-If settings for a particular type should not be changed, it is suggested to completely omit this dictionary from the JSON clone file.
+-When adding or modifying the user inlocal mode, recovery privileges might not get updated in production mode. This is because in-band production mode does not have priviledge to add it.
 
-:::info NOTE
-When working with iLO Management Accounts or iLO Federation Groups, remove entries from the JSON clone file (within the relevant dictionary) in order to perform deletion. In order to create new accounts on the server, simply add relevant nested dictionaries to the JSON file.
-:::
-
-:::info NOTE
-The Administrator account cannot be deleted using serverclone.
-:::
-
-:::info NOTE
-If settings for a particular type should not be changed, it is suggested to completely omit this dictionary from the JSON clone file.
 :::
 
 #### Parameters
@@ -2530,9 +2395,20 @@ If settings for a particular type should not be changed, it is suggested to comp
 
 Used to save a clone file.
 
+:::info NOTE
+
+`serverclone save` command **does not** save ethernet interfaces (manager or system) configuration. Use the `save` [iLO global command](/docs/redfishclients/ilorest-userguide/globalcommands/#save-command) to save network related configuration.
+
+:::
+
 - **load**
 
 Used to load a clone file.
+
+:::info NOTE
+
+In order to avoid unwanted communication interruptions with the iLO, the `serverclone load` command ignores modifications performed to the Manager Dedicated Network port URI (`/redfish/v1/Managers/1/EthernetInterfaces/1`). Use a `rawpatch` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#examples-3) to modify the settings of this port.
+:::
 
 - **-h, --help**
 
@@ -2543,6 +2419,7 @@ Including the help flag will display help for the command.
 Select this flag to input a BIOS password. Include this flag if second-level BIOS authentication is needed for the command to execute.
 
 :::info NOTE
+
 This option is only used on Gen 9 systems.
 :::
 
@@ -2605,12 +2482,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-None
-
-#### Output
-None
 
 #### Examples
 
@@ -2989,13 +2860,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-None
-
-#### Output
-None
-
-
 #### Examples
 
 Use option --firmware to list the FW and its versions.
@@ -3149,13 +3013,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-None
-
-
-#### Output
-None
 
 #### Examples
 
@@ -3334,15 +3191,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-
-None
-
-#### Output
-
-None
-
-
 #### Examples
 
 To return the serverstate run the command without arguments. Possible values include: None, Unknown, Reset, PowerOff, InPost, InPostDiscoveryComplete, FinishedPost.
@@ -3350,6 +3198,109 @@ To return the serverstate run the command without arguments. Possible values inc
 ```shell
 iLOrest > serverstate
 The server is currently in state: FinishedPost
+```
+
+### SetTwoFactorAuthentication Command
+
+#### Syntax
+
+`settwofactorauthentication [enable/disable/status/smtp] [OPTIONS]`
+
+#### Description
+
+Manage the HPE iLO Two Factor Authentication (TFA). The following actions can be performed: Configure the iLO SMTP settings, get and set (enable/disable) TFA. Refer to the [TFA section](/docs/redfishservices/ilos/supplementdocuments/tfa/) for more information.
+
+#### Parameters
+
+- **enable**
+
+Use this command to enable TFA (Two Factor Authentication).
+
+- **disable**
+
+Use this to disable the TFA.
+
+- **status**
+
+Use this to check the status of TFA enablement.
+
+- **smtp**
+
+Use this to manage the SMTP settings on the server.
+
+- **-h, --help**
+
+Including the help flag will display help for the command.
+
+- **--smtpfortfaenabled true**
+
+Use this for setting SMTP for TFA, value can be either true or false.
+
+- **--alertmailsenderdomain test@test.com**
+
+Use this to provide valid domain value for SMTP settings
+
+- **--alertmailsmtpserver  smtp.test.com**
+
+Use this to provide valid SMTP server value for SMTP settings
+
+- **--alertmailsmtpport  587**
+
+Use this to provide valid smtp port value for smtp settings
+
+- **-j, --json**
+
+Use this command to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+
+#### Login Parameters
+
+The following parameters can be included to login to a server in the same line as the command is run.
+
+- **--url=URL**
+
+If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+
+- **-u User, --user=USER**
+
+If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+
+- **-p Password, --password=PASSWORD**
+
+If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+
+- **--logout**
+
+Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+
+#### Examples
+
+To set the SMTP settings on the server
+
+```Shell
+iLOrest > settwofactorauthentication smtp --smtpfortfaenabled true --alertmailsenderdomain test@test.com --alertmailsmtpserver smtp.test.com --alertmailsmtpport 587
+The operation completed successfully.
+```
+
+To enable TFA (Two Factor Authentication)
+
+```Shell
+iLOrest > settwofactorauthentication enable 
+The operation completed successfully.
+```
+
+To check the status of TFA enablement
+
+```Shell
+iLOrest > settwofactorauthentication status 
+TFA Status : Enabled
+SMTP for TFA Status : True
+```
+
+To disable TFA (Two Factor Authentication)
+
+```Shell
+iLOrest > settwofactorauthentication disable
+The operation completed successfully.
 ```
 
 ### Sigrecompute Command
@@ -3393,12 +3344,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-None
-
-#### Output
-None
-
 #### Examples
 
 To Recalculate the signature on the systems configuration run the command without arguments.
@@ -3417,8 +3362,6 @@ The operation completed successfully.
 #### Description
 
 Command for all single sign on available actions.
-
-
 
 #### Parameters
 
@@ -3445,12 +3388,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-None
-
-#### Output
-None
 
 #### Examples
 
@@ -3481,7 +3418,6 @@ To import a SSO certificate from a file run the command with the `importcert` ar
 iLOrest > singlesignon importcert certfile.txt
 The operation completed successfully.
 ```
-
 
 ### Virtualmedia Command
 
@@ -3535,12 +3471,6 @@ The image will be ejected automatically on the second server reboot so that the 
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-None
-
-#### Output
-None
 
 #### Examples
 

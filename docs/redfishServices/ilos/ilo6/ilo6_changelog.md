@@ -9,9 +9,352 @@ disableLastModified: false
 
 # Changelog
 
-The HPE iLO 6 Redfish service implements the DMTF Redfish specification <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.6.0.pdf" target="_blank">version 1.6.0</a> and the schemas implemented by iLO 6 adhere to the DMTF Redfish schema bundle <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP8010_2021.4.zip" target="_blank">8010_2021.4</a>.
+The HPE iLO 6 Redfish service implements the DMTF Redfish specification
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.6.0.pdf" target="_blank">version 1.6.0</a>
+and the schemas implemented by iLO 6 adhere to the DMTF Redfish schema bundle
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP8010_2021.4.zip" target="_blank">8010_2021.4</a>.
 
-For a better understanding of the conformance to the DMTF Redfish, read the _Redfish versioning_ paragraph of this <a href="https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/" target="_blank">article</a>.
+For a better understanding of the conformance to the DMTF Redfish,
+read the _Redfish versioning_ paragraph of this
+<a href="https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/" target="_blank">article</a>.
+
+## iLO 6 v1.58 new features and changes
+
+### New URIs
+
+- Consistent `EthernetInterface` naming schema across device types.
+
+:::info Note
+
+The URI of the members of the computer system `EthernetInterface` collection
+can be represented with this notation:
+`/redfish/v1/Systems/{@SystemId}/EthernetInterfaces/{@nicId}`.
+
+Starting with iLO 5 firmware version 3.03, the `{@nicId}` naming schema is
+consistent across device types for supported devices.
+It is a string containing one or more characters in the
+range [0-9], with the following specification:
+
+- Lan On Motherboard (LOM) card range: 1-4
+- Open Compute Project (OCP) card range: 5-12
+  - OCP card 1 range: 5-8
+  - OCP card 2 range: 9-12
+- OCP card with a `{@nicId}` of 13 or greater are allocated for:
+  - PCIe cards in HPE Gen10 servers or HPE Gen11 servers
+  - Mezzanine cards in HPE Synergy servers
+
+Potentially, PCIe and Mezzanine cards can have 64 ports.
+Their corresponding `{@nicId}` is represented:
+
+- at slot 1 in the range: 13-76
+- at slot 2 in the range: 77-140
+
+:::
+
+### HTTP methods - additions and deprecations
+
+- No HTTP methods changed across these releases.
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to supported Redfish Actions for this release.
+
+### Schema updates
+
+- `NetworkAdapter.v1_9_0.NetworkAdapter`
+  - Added `Oem.Hpe.FlashBankCSControl`: Represents the selected boot bank using chip select.
+  - Added `Oem.Hpe.FlashBankMuxControl`: Represents the selected flash bank using Mux.
+  - Added `Oem.Hpe.NextBootFlashBank`: Provides information about the next boot flash bank.
+  - Added `Oem.Hpe.PowerSensors (array)`: The total amount of power consumed by the device. The following values have been supported `PowerCapacityWatts`, `SensorId`, and `Status`.
+  - Added `Oem.Hpe.BootStageSensors (array)`: Information about Boot stage and health.
+
+- `Manager.v1_5_1.Manager`
+  Added `Oem.Hpe.ForceOnDriveLED`: Forceful enablement of the drive LED to permanently ON (Blue) for Samsung PM9A3 drive.
+
+## iLO 6 v1.57 new features and changes
+
+### New URIs
+
+- No new URIs added for this release.
+
+### HTTP methods - additions and deprecations
+
+- No HTTP methods changed across these releases.
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to supported Redfish Actions for this release.
+
+### Schema updates
+  
+- `HpeSNMPUser.v2_1_0.HpeSNMPUser` updated to `HpeSNMPUser.v2_1_1.HpeSNMPUser`
+
+- `#HpeiLOSnmpService.v2_4_0.HpeiLOSnmpService` updated to `HpeiLOSnmpService.v2_4_1.HpeiLOSnmpService`
+
+- `Power.v1_3_0.Power` updated to `Power.v1_7_1.Power`
+  - Added `Voltages`: Added an array containing elements of:
+    - `LowerThresholdCritical`: Below normal range but not yet fatal.
+    - `LowerThresholdFatal`: Below normal range and is fatal.
+    - `LowerThresholdNonCritical`: Below normal range.
+    - `MaxReadingRange`: Maximum value for CurrentReading.
+    - `MinReadingRange`: Minimum value for CurrentReading.
+    - `PhysicalContext`: Describes the area or device to which this voltage measurement applies.
+    - `ReadingVolts`: The current value of the voltage sensor.
+    - `UpperThresholdCritical`: Above normal range but not yet fatal.
+    - `UpperThresholdFatal`: Above normal range and is fatal.
+    - `UpperThresholdNonCritical`: Above normal range
+
+## iLO 6 v1.56 new features and changes
+
+### New URIs
+
+- No new URIs added for this release.
+
+### HTTP methods - additions and deprecations
+
+- Added PATCH for `redfish/v1/Fabrics/{@fabricId}`
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to supported Redfish Actions for this release.
+
+### Schema updates
+
+- `Chassis.v1_23_0.Chassis`:
+  - Link to `Drives`(`redfish/v1/Systems/1/Storage/{StorageId}/Drives`)  under `Chassis/1/` is removed.
+  - `ChassisType`: Added value `StorageEnclosure` (a chassis that enclose storage)
+  
+- `HpeSecurityService.v2_4_0.HpeSecurityService` updated to `HpeSecurityService.v2_5_0.HpeSecurityService`
+  - Added `DisableWeakCiphers`: Disable weak ciphers in Production mode.
+
+- `NetworkAdapter.v1_9_0.NetworkAdapter`
+  - Added `Oem.Hpe.BootBankSelected`: Represents the selected boot bank, from which the network adapter will boot. The supported values include `Bank1` and `Bank2`.
+  - Added `Oem.Hpe.FlashBankSelected`: Represents the selected flash bank. The supported values include `Bank1` and `Bank2`.
+  - Added `PhysicalPorts[{item}].PortNumber`: Port Number of physical adapter.
+  - `HpeNetworkAdapter.WarmReset` and `HpeNetworkAdapter.ColdReset` are added as supported actions. 
+
+- `UpdateService.v1_2_1.UpdateService`
+  - `Oem.Hpe.Capabilities.COMHostPoweroffSupport` updated to `Oem.Hpe.Capabilities.HostPoweroffSupport`
+
+## iLO 6 v1.55 new features and changes
+
+### New URIs
+
+- `redfish/v1/Fabrics` (GET) - `#FabricCollection.FabricCollection`
+
+- `redfish/v1/Fabrics/{@fabricId}` (GET,POST) - `#Fabric.v1_3_0.Fabric`
+
+- `redfish/v1/Fabrics/{@fabricId}/Switches`(GET) - `#SwitchCollection.SwitchCollection`
+
+- `redfish/v1/Fabrics/{@fabricId}/Switches/{@switchId}`(GET,POST) - `#Switch.v1_9_1.Switch`
+
+- `redfish/v1/Fabrics/{@fabricId}/Switches/{@switchId}/Ports`(GET) - `#PortCollection.PortCollection`
+
+- `redfish/v1/Fabrics/{@fabricId}/Switches/{@switchId}/Ports/{@PortId}` (GET,POST) - `#Port.v1_9_0.Port`
+
+:::info NOTE
+`Fabrics` resource contains properties describing a simple fabric consisting of one or more switches with zero or more endpoints, and zero or more zones. Each `Fabrics` is involved in routing a data packet from routers from one end to other end.
+:::
+
+The following new URIs are subjective to Storage Enclosures being present on the server.
+
+- `redfish/v1/Chassis/{@ChassisId}`
+
+:::info NOTE
+- `@ChassisId` can be of the format `DE******` or a number ranging from 2-10 depending on if the Enclosure supports Redfish-Device-Enablement or Direct Attached respectively.
+- `Chassis/1` represents RackMount chassis.
+:::
+
+- `redfish/v1/Chassis/{@ChassisId}/Drives` (GET) - `#DriveCollection.DriveCollection`
+
+- `redfish/v1/Chassis/{@ChassisId}/Drives/{@DrivesId}` (GET,PATCH,POST) - `#Drive.v1_14_0.Drive`
+
+:::info NOTE
+`Drives` is present only for `Chassis` resource that represent a Storage Enclosure.
+:::
+
+### HTTP methods - additions and deprecations
+
+- No changes have been made to HTTP methods in this release.
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to supported Redfish Actions for this release.
+
+### Schema updates
+
+- `Manager.v1_5_1.Manager` 
+  - `Oem.Hpe.CloudConnect.FailReason`: Added `RDAConnectError` to the supported values.
+ 
+- `#Chassis.v1_23_0.Chassis`
+  - Added `SparePartNumber`: The spare part number of the chassis.
+
+- `#Drive.v1_14_0.Drive` updated to `#Drive.v1_16_0.Drive`
+  - Added `DriveFormFactor`: The form factor of the drive inserted in this slot. The following values are supported `Drive3_5`, `Drive2_5`, `EDSFF_1U_Long`, `EDSFF_1U_Short`, `EDSFF_E3_Short`, `EDSFF_E3_Long`, `M2_2230`, `M2_2242`, `M2_2260`, `M2_2280`, `M2_22110`, `U2`, `PCIeSlotFullLength`, `PCIeSlotLowProfile`, `PCIeHalfLength` and `OEM`. 
+  - Added `Multipath`: An indication of whether the drive is accessible from multiple paths.
+
+- `#HpeComponentInstallSet.v1_3_0.HpeComponentInstallSet` updated to `#HpeComponentInstallSet.v1_4_0.HpeComponentInstallSet`
+
+- `Switch.v1_9_1.Switch`
+  - Added `Manufacturer`: The manufacturer of this switch.
+  - Added `SerialNumber`: The serial number for this switch.
+  - Added `SwitchType`: The protocol being sent over this switch.
+ 
+- `#UpdateService.v1_2_1.UpdateService`
+  - Added `Oem.Hpe.Capabilities.COMHostPoweroffSupport`: Indicates whether iLO supports HOST power off.
+
+## iLO 6 v1.53 new features and changes
+
+### New URIs
+
+- No new URIs added in this release.
+
+### HTTP methods - additions and deprecations
+
+- No changes have been made to HTTP methods in this release.
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to supported Redfish Actions for this release.
+
+### Schema updates
+
+- `#HpeComponentUpdateTask.v1_3_0.HpeComponentUpdateTask` updated to `#HpeComponentUpdateTask.v1_4_0.HpeComponentUpdateTask`
+  - Added `Targets`: Contains firmware inventory targets on which firmware updates can be applied.
+
+- `#ManagerAccount.v1_3_0.ManagerAccount`
+  - Added `Enabled`: An indication of whether an account is enabled.  An administrator can disable it without deleting the user information.  If `true`, the account is enabled and the user can log in.  If `false`, the account is disabled and, in the future, the user cannot log in.
+
+
+## iLO 6 v1.52 new features and changes
+
+### New URIs
+
+- No new URIs added in this release.
+
+### HTTP methods - additions and deprecations
+
+- No changes have been made to HTTP methods in this release.
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to supported Redfish Actions for this release.
+
+### Schema updates
+
+- `#HpeComponentInstallSet.v1_2_0.HpeComponentInstallSet` updated to `#HpeComponentInstallSet.v1_3_0.HpeComponentInstallSet`
+  - Added `Targets`: Contains firmware inventory targets on which firmware updates can be applied.
+
+## iLO 6 v1.51 new features and changes
+
+### New URIs
+
+- `redfish/v1/TelemetryService/MetricReports/`: `PowerMetrics` is added as a supported collection member.
+
+- `redfish/v1/TelemetryService/MetricReportDefinitions/`: The following collection members are added `CPUUtil`, `MemoryBusUtil`, `IOBusUtil`, `CPUICUtil`, `JitterCount`, `PowerMetrics`, `AvgCPUXFreq` and `CPUXPower`. 
+
+:::info NOTE
+X depends on number of sockets. Range of X lies between 0 to 3.
+:::
+
+- `redfish/v1/TelemetryService/MetricDefinitions/`: The following collection members are added `AverageConsumedWatts`, `MinConsumedWatts`, `MaxConsumedWatts`, `AmbTemp`, `Cap`, `CpuCapLim`,`CpuMax`, `CpuPwrSavLim`, `CpuWatts`, `DimmWatts`, `GpuWatts`, `PrMode`, `PunCap` and `UnachCap`.
+
+### HTTP methods - additions and deprecations
+
+- Added PATCH for `redfish/v1/Systems/{@systemId}/WorkloadPerformanceAdvisor/{@WorkloadPerformanceAdvisorId}`
+- Added PATCH for `redfish/v1/TelemetryService`
+- Added PATCH for `redfish/v1/TelemetryService/MetricDefinitions/{@MetricDefinitionId}`
+- Added PATCH for `redfish/v1/TelemetryService/MetricReportDefinitions/{@MetricReportDefinitionId}`
+- Added PATCH for `redfish/v1/TelemetryService/MetricReports/{@MetricReportId}`
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to supported Redfish Actions for this release.
+
+### Schema updates
+
+- `#Chassis.v1_19_0.Chassis` updated to `#Chassis.v1_23_0.Chassis`
+
+- `#EventDestination.v1_4_5.EventDestination` updated to `#EventDestination.v1_13_0.EventDestination`
+  - Added `EventFormatType`: The content types of the message that are sent to the EventDestination. The following values are supported `Event` and `MetricReport`. 
+  - Added `MetricReportDefinitions`
+
+- `#MetricReportDefinition.v1_0_0.MetricReportDefinition` updated to `#MetricReportDefinition.v1_4_2.MetricReportDefinition`
+  - `MetricReportDefinitionType`: `Read-Only` changed to `False`
+  - Added `Schedule`:
+    - `EnabledDaysOfMonth`: is an array containing elements of:
+      - `InitialStartTime`: The date and time when the initial occurrence is scheduled to occur.
+      - `RecurrenceInterval`: The duration between consecutive occurrences.
+
+- `#Port.v1_6_1.Port` updated to `#Port.v1_9_0.Port`
+
+- `#Power.v1_3_0.Power`
+  - Added `Oem.Hpe.PowerMetric`:
+    - `AmbTemp`: Ambient temperature, in degrees Celsius.
+    - `Cap`: The applicable power cap in Watts at the time of this power sample.
+    - `CpuCapLim`: Measures the effect of the power cap on performance in percent.
+    - `CpuMax`: The percentage of time the CPU spent in its maximum power mode.
+    - `CpuPwrSavLim`: Measures the effect of CPU Power Regulator state switching on performance in percent.
+    - `CpuWatts`: The power consumed by the system CPUs in Watts.
+    - `DimmWatts`: The power consumed by the system memory DIMMs in Watts.
+    - `GpuWatts`: The power consumed by the GPU(s) in Watts.  This will be 0 if no GPUs are installed or if the drivers are not loaded.
+    - `PrMode`: Power Regulator mode, which can be OS Control, Static High, Static Low or Dynamic. The following values are supported `Null`, `dyn`, `min`, `max` and `osc`. 
+    - `PunCap`: If true, CPU performance is being penalized by the current power cap.
+    - `UnachCap`: If true, the configured power cap could not be achieved due to system power requirements.
+
+## iLO 6 v1.50 new features and changes
+
+### New URIs
+
+- No new URIs added in this release.
+
+### HTTP methods - additions and deprecations
+
+- No changes have been made to HTTP methods in this release.
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to supported Redfish Actions for this release.
+
+### Schema updates
+
+- `AccountService.v1_5_0.AccountService`
+  - Added `Oem.Hpe.TwoFactorAuth`: This property indicates whether [Two Factor Authentication](/docs/redfishServices/ilos/supplementDocuments/tfa.md) is enabled or not.
+
+- `ManagerNetworkProtocol.v1_0_0.ManagerNetworkProtocol`
+  - Added `Oem.Hpe.SMTPForTFAEnabled`: Indicates whether SMTP for [Two Factor Authentication](/docs/redfishServices/ilos/supplementDocuments/tfa.md) is enabled.
 
 ## iLO 6 v1.45 new features and changes
 

@@ -43,7 +43,7 @@ Install the following before installing Scripting Tools for Windows PowerShell: 
 
 ## Installing from HPE Website
 
-1. Download the Scripting Tools for Windows PowerShell: iLO Cmdlets installer from the <a href="http:// www.hpe.com/servers/powershell" target="_blank">HPE website</a>.
+1. Download the Scripting Tools for Windows PowerShell: iLO Cmdlets installer from the <a href="https://www.hpe.com/servers/powershell" target="_blank">HPE website</a>.
 2. Close all PowerShell windows before the installation.
 3. Run the installer from an account with administrative privileges, by using any standard method of execution (command line or double-click).
 

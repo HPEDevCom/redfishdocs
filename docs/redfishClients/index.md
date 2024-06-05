@@ -6,7 +6,7 @@ toc:
    enable: false
 ---
 
-# HPE Redfish® clients
+# HPE Redfish® clients overview
 
 This section contains helpful information about different Redfish® clients provided by HPE to better interact with Redfish® services.
 

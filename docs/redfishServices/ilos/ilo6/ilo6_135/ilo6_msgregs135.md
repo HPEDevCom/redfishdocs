@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: iLO 6 v135 Error messages
 toc:

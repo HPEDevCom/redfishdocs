@@ -57,6 +57,10 @@ HTTP/1.1 401 Unauthorized
 }
 ```
 
+:::success TIP
+HPE implements a [Two Factor Authentication](/docs/redfishservices/ilos/supplementdocuments/tfa/) OEM extension in iLO firmware.
+:::
+
 ## Basic authentication
 
 The Redfish API allows you to use HTTP Basic Authentication with a valid Management Controller user name and password. The following example retrieves the `/redfish/v1/Systems/` URI using cURL (with response headers), the HPE Redfish <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> Python library</a> and the <a href="https://github.com/DMTF/python-redfish-library" target="_blank">DMTF Redfish Python library</a>.
@@ -155,7 +159,7 @@ cURL does not need a specific logout operation to delete the session opened in t
 
 ## Session authentication
 
-For complex multi-resource operations, you should log in and establish a session in the Redfish service session manager object at the [documented URI](/docs/redfishservices/ilos/ilo6/ilo6_105/ilo6_other_resourcedefns105/#sessioncollection) `/redfish/v1/SessionService/Sessions`. To create such a session, POST a JSON object to the session manager.
+For complex multi-resource operations, you should log in and establish a session in the Redfish service session manager object at the [documented URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#sessioncollection) `/redfish/v1/SessionService/Sessions`. To create such a session, POST a JSON object to the session manager.
 
 If the session is created successfully, you receive an HTTP 201 (Created) response from the Management Controller. There will be also two important HTTP response headers.
 

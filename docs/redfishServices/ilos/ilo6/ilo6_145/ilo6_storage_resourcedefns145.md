@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Storage resource definitions
 toc:

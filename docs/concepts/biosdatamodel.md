@@ -9,23 +9,42 @@ disableLastModified: false
 
 # The standard Redfish BIOS data model
 
-This section presents the standard Redfish UEFI/BIOS data model. Refer to the [HPE BIOS](/docs/redfishservices/ilos/supplementdocuments/biosdoc/) section for detail on HPE specific BIOS/UEFI resources.
+This section presents the standard Redfish UEFI/BIOS data model.
+Refer to the [HPE Bios](/docs/redfishservices/ilos/supplementdocuments/biosdoc/)
+section for detail on BIOS/UEFI resources in HPE iLO based servers.
 
-UEFI/BIOS resources are formatted differently than most other resources. BIOS resources do conform to a schema type as all Redfish objects do (<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">Redfish data model specification</a>).
+UEFI/BIOS resources are formatted differently than most other resources.
+BIOS resources do conform to a schema type as all Redfish objects do (<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">Redfish data model specification</a>).
 
-However, BIOS settings vary widely across server types and BIOS revisions, so it is extremely difficult to publish a standard schema defining all the possible BIOS setting properties. Furthermore, it is not possible to communicate some of the advanced settings such as inter-setting dependencies, and menu structure in json-schema. Therefore, BIOS uses a **Registry**.
+However, BIOS settings vary widely across server types and BIOS revisions,
+so it is extremely difficult to publish a standard schema defining all the
+possible BIOS setting properties. Furthermore, it is not possible to
+communicate some advanced settings such as inter-setting dependencies,
+and menu structure in json-schema. Therefore, BIOS resources are defined
+in specific schemas called **Registries**.
 
 ## BIOS attribute registry overview
 
 ### Attribute registry
 
-The BIOS URI entry point (`/redfish/v1/Systems/{ComputerSystemId}/`) has a property called `AttributeRegistry`. This property indicates the name and version of a registry file that defines the properties in the BIOS configuration. It also includes information about interdependencies between settings.
+The BIOS URI entry point (`/redfish/v1/Systems/{ComputerSystemId}/`)
+has a property called `AttributeRegistry`. This property indicates the name
+and version of a registry file that defines the properties in the BIOS
+configuration. It also includes information about interdependencies between settings.
 
-Registry file links are listed in the `MessageRegistryFileCollection` which standard [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#messageregistryfilecollection) is `/redfish/v1/registries/`. In order to provide an easy reading to human beings, registry files can be localized in several languages. Links contained in the `MessageRegistryFileCollection` point to a location holding pointers to the localized registry files. See example below.
+Registry file links are listed in the `MessageRegistryFileCollection` which
+standard [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#messageregistryfilecollection)
+is `/redfish/v1/registries/`. In order to provide an easy reading to human beings,
+registry files can be localized in several languages. Links contained in
+the `MessageRegistryFileCollection` point to a location holding pointers
+to the localized registry files. See example below.
 
-Due to their size, BIOS Attribute Registries are compressed JSON resources (gzip), so the returned HTTP headers indicate a `Content-Encoding` of `gzip`. Redfish clients need to decompress the resource. This is done automatically in many clients, like the <a href="https://www.postman.com/downloads/" target="_blank">Postman API platform</a>.
+Due to their size, BIOS Attribute Registries are compressed JSON resources(gzip), so the returned HTTP headers indicate a `Content-Encoding` of `gzip`. Redfish clients need to decompress the resource. This is done automatically in many clients, like
+the <a href="https://www.postman.com/downloads/" target="_blank">Postman API platform</a>.
 
-The following example follows the different steps to retrieve the BIOS Attribute Registry of an HPE Gen11 server. The first step retrieves the value of the `AttributeRegistry` filename property.
+The following example follows the different steps to retrieve the
+BIOS Attribute Registry of an HPE Gen11 server. The first step
+retrieves the value of the `AttributeRegistry` filename property.
 
 ```text GET AttributeRegistry
 GET /redfish/v1/systems/1/bios/?$select=AttributeRegistry
@@ -37,7 +56,9 @@ GET /redfish/v1/systems/1/bios/?$select=AttributeRegistry
 }
 ```
 
-The second step retrieves the corresponding link provided by the  `MessageRegistryFileCollection`. The response body provides the list of available languages for this file as well as their location.
+The second step retrieves the corresponding link provided by the
+`MessageRegistryFileCollection`. The response body provides the list
+of available languages for this file as well as their location.
 
 ```text GET request
 GET /redfish/v1/Registries/BiosAttributeRegistryA56.v1_1_10
@@ -75,7 +96,10 @@ GET /redfish/v1/Registries/BiosAttributeRegistryA56.v1_1_10
 }
 ```
 
-The last step consists of following the link to the desired language. The following example retrieves the English version of the Bios Attribute registry and prints the response headers including the `Content-Encoding` header. The response body of this example is in the next paragraph.
+The last step consists of following the link to the desired language.
+The following example retrieves the English version of the Bios Attribute
+registry and prints the response headers including the `Content-Encoding`
+header. The response body of this example is in the next paragraph.
 
 ```text GET english attribute registry
 GET /redfish/v1/registrystore/registries/en/biosattributeregistrya56.v1_1_10
@@ -98,13 +122,18 @@ X-XSS-Protection: 1; mode=block
 
 ### BIOS attribute registry structure
 
-The BIOS attribute registry contains four top-level arrays (see example below):
+The BIOS attribute registry contains four top-level arrays
+(see example below):
 
-- **Menus:** Array containing the BIOS attributes menus and their hierarchy. This can be used to build a user interface that resembles the local BIOS Setup, or to group
+- **Menus:** Array containing the BIOS attributes menus and their hierarchy.
+- This can be used to build a user interface that resembles the local BIOS
+- Setup, or to group
 properties that are related (i.e. `ProcessorOptions` and `UsbOptions`).
-- **Attributes:** Array containing BIOS attributes and information about the attributes such as type, values, etc.
+- **Attributes:** Array containing BIOS attributes and information about the
+- attributes such as type, values, etc.
 - **Dependencies:** Array containing a list of dependencies of BIOS attributes.
-This includes inter-setting dependencies that might cause one BIOS setting to change its value or its `ReadOnly` property based on the value of another BIOS setting.
+  This includes inter-setting dependencies that might cause one BIOS setting to
+  change its value or its `ReadOnly` property based on the value of another BIOS setting.
 - **SupportedSystems** array containing a list of systems that this
 attribute registry supports.
 <!-- Need to move the following item elsewhere!
@@ -115,10 +144,14 @@ Each BIOS attribute in the attribute registry includes:
 
 - a type (enum, string, numeric, or Boolean).
 - possible values for enum type attributes.
-- display strings (localized to the registry language) for the attributes and their possible values.
+- display strings (localized to the registry
+  language) for the attributes and their possible values.
 - help and warning text (localized).
-- a location and a display order information, including menu hierarchy for an attribute.
-- value limits, including maximum, minimum, and step values for numeric attributes, and minimum and maximum character lengths, as well as regular expressions for string attributes.
+- a location and a display order information,
+  including menu hierarchy for an attribute.
+- value limits, including maximum, minimum, and step values
+  for numeric attributes, and minimum and maximum character
+  lengths, as well as regular expressions for string attributes.
 - other meta-data.
 
 :::info NOTE
@@ -133,7 +166,8 @@ Attribute names/enum values cannot start with digits, per OData requirements.
 
 :::
 
-The following example retrieves the English version of the BIOS registry of an HPE ProLiant Gen11 system (response body truncated).
+The following example retrieves the English version of the BIOS
+registry of an HPE ProLiant Gen11 system (response body truncated).
 
 ```text Generic request
 GET /redfish/v1/registrystore/registries/en/biosattributeregistrya56.v1_1_20
@@ -218,9 +252,12 @@ GET /redfish/v1/registrystore/registries/en/biosattributeregistrya56.v1_1_20
 
 ## BIOS current and pending areas
 
-BIOS properties are located under the [BIOS entry point](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_bios_resourcedefns{{process.env.LATEST_FW_VERSION}}/), part of the `ComputerSystem` data type as per the <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">DMTF specification</a>.
+BIOS resources are located under the
+[BIOS entry point](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_bios_resourcedefns{{process.env.LATEST_FW_VERSION}}/),
+part of the `ComputerSystem` data type as per the
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">DMTF specification</a>.
 
-The following example retrieves the BIOS entry using cURL and iLOrest from an HPE iLO 6 management controller.
+The following example retrieves the BIOS end point using cURL and iLOrest from an HPE iLO 6 management controller.
 
 ```text cURL request
 curl --insecure --location --silent \
@@ -247,9 +284,14 @@ ilorest logout
 }
 ```
 
-This BIOS entry point is also called the _current settings area_ or just the _current area_ because it contains the BIOS attribute values in the running system. All BIOS attributes name/value pairs that are referenced in the [Attribute Registry](#attribute-registry) are grouped under an `Attributes` Redfish object under the BIOS end point.
+This BIOS entry point is also called the _current settings area_ or just
+the _current area_ because it contains the BIOS attribute values in the
+running system. All BIOS attributes name/value pairs that are referenced
+in the [Attribute Registry](#attribute-registry) are grouped under
+an `Attributes` Redfish object under the BIOS end point.
 
-The next example retrieves the current `AdminName` BIOS attribute of an HPE Gen11 server.
+The next example retrieves the current `AdminName` BIOS attribute
+of an HPE Gen11 server.
 
 ```text Generic request
 GET /redfish/v1/systems/1/bios/?$select=Attributes/AdminName
@@ -267,22 +309,42 @@ GET /redfish/v1/systems/1/bios/?$select=Attributes/AdminName
 }
 ```
 
+The BIOS entry point contains a `SettingsObject}{}` resource containing a
+link to a location called the BIOS _Pending settings area_ or
+just _pending area_. In an HPE Gen11 server, this link points
+to `/redfish/v1/Systems/1/Bios/Settings`. In an HPE CrayXD 255v
+it points toward `/redfish/v1/Systems/Self/Bios/SD`.
+This _pending area_ is used to change BIOS attributes
+and described in the next paragraph.
+
 ### Changing BIOS attributes and understanding "@Redfish.Settings"
 
-The [current settings](/docs/examples/redfishexamples/#reading-bios-current-settings) area for BIOS is read-only. However, in addition to the `Attributes` list, it contains a link to a `SettingsObject` resource. This link is sometimes called the BIOS _Pending settings area_ or the just _pending area_. In an HPE Gen11 server, this link points to `/redfish/v1/Systems/1/Bios/Settings`.
+The BIOS [current settings](/docs/examples/redfishexamples/#reading-bios-current-settings)
+area is read-only. However, the BIOS _pending area_ described
+in the previous paragraph is read-write. The `Allow` response
+header of a GET request to the the BIOS pending settings area
+mentions that PATCH requests are valid against this link. PATCHes
+to pending settings do not take effect until the server is reset.
+Before the server is reset, the current and pending settings
+are independently available.
 
-The `Allow` response header of a GET request to the the BIOS pending settings area mentions that PATCH requests are valid against this link. PATCHes to pending settings do not take effect until the server is reset. Before the server is reset, the current and pending settings are independently available.
+During the server reset process, pending BIOS attributes are
+verified and applied to the current settings only if they are valid.
 
-During the server reset process, pending BIOS attributes are verified and applied to the current settings only if they are valid.
+After the server is reset, you can view any errors in
+the `@Redfish.Settings` property of the current BIOS configuration object.
 
-After the server is reset, you can view any errors in the `@Redfish.Settings` property of the current BIOS configuration object.
-
-The following example retrieves the `@Redfish.Settings` object after a **successful** transfer of the BIOS settings area to the current area.
+The following example retrieves the `@Redfish.Settings` object after a
+**successful** transfer of the BIOS settings area to the current area.
 
 :::attention Attention
-After system reset, a **successful** transfer of BIOS settings from the pending area to the current area results in a **single** element in the `Messages` array of the `@Redfish.Settings` containing the "Success" string.
+After system reset, a **successful** transfer of BIOS
+settings from the pending area to the current area results in a
+**single** element in the `Messages` array of the `@Redfish.Settings`
+containing the "Success" string.
 
-This single `MessageId` element means that the global transfer process succeeded.
+This single `MessageId` element means that the global transfer process
+succeeded.
 :::
 
 ```text Generic GET request
@@ -305,12 +367,18 @@ GET /redfish/v1/systems/1/bios/?$select=@Redfish.Settings/Messages
 }
 ```
 
-The following example retrieves the `@Redfish.Settings` object after an **unsuccessful** transfer of the BIOS settings area to the current area.
+The following example retrieves the `@Redfish.Settings` object after an
+**unsuccessful** transfer of the BIOS settings area to the current area.
 
 :::attention Attention
-After a server reset, an **unsuccessful** transfer of BIOS setting returns **several** elements in the `Messages` array of the `@Redfish.Settings` object, containing the faulty attributes and the reason why they generated an error.
+After a server reset, an **unsuccessful** transfer of BIOS setting
+returns **several** elements in the `Messages` array of the `@Redfish.Settings`
+object, containing the faulty attributes and the reason why they
+generated an error.
 
-You should note a "Success" `MessageId` element mentioning that the global transfer went through although errors occurred for some attributes.
+You should note a "Success" `MessageId` element mentioning
+that the global transfer went through although errors
+occurred for some attributes.
 :::
 
 ```text Generic request
@@ -344,27 +412,39 @@ GET /redfish/v1/systems/1/bios/?$select=@Redfish.Settings/Messages
 
 There are benefits to handling BIOS settings in this way:
 
-- Enables offline components (for example, BIOS) to process changes to settings in a deferred manner.
-- Allows current and pending values to remain available for review until the offline component processes the pending settings.
+- Enables offline components (for example, BIOS) to process
+  changes to settings in a deferred manner.
+- Allows current and pending values to remain available
+  for review until the offline component processes the pending settings.
 - Avoids the need for complex job queues.
 
-Refer to the [BIOS Redfish examples](/docs/examples/redfishexamples/#bios-redfish-examples) section for more examples.
+Refer to the [BIOS Redfish examples](/docs/examples/redfishexamples/#bios-redfish-examples)
+section for more examples.
 
 ## BIOS defaults and password
 
-In addition to providing a method for modifying individual BIOS attributes, the <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">Redfish specification</a> allows a quick return to a default and well known BIOS configuration (i.e. factory defaults). This operation cannot be performed with the above method.
+In addition to providing a method for modifying individual BIOS
+attributes, the <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">Redfish specification</a>
+allows a quick return to a default and well known BIOS
+configuration (i.e. factory defaults). This operation
+cannot be performed with the above method.
 
-Moreover, for security reasons, the BIOS password is an attribute that requires as well, a specific method to be modified.
+Moreover, for security reasons, the BIOS password is an
+attribute that requires as well, a specific method to be modified.
 
-Both the return to a default BIOS configuration and the change of the BIOS password use special POST operations called _Redfish actions_.
+Both the return to a default BIOS configuration and the change of the
+BIOS password use special POST operations called _Redfish actions_.
 
 :::info NOTE
-Redfish services may implement both BIOS Redfish actions or only one or zero. HPE Gen11 servers implement both.
+Redfish services may implement both BIOS Redfish actions or only one or
+zero. HPE Gen11 servers implement both.
 :::
 
 ### Reset Bios settings action
 
-The following example resets BIOS attributes to their defaults on an HPE Superdome Flex 280 and an HPE iLO based server using the `Bios.ResetBios` standard [Redfish action](/docs/concepts/performing_actions.md).
+The following example resets BIOS attributes to their defaults on an
+HPE Superdome Flex 280 and an HPE iLO based server using the
+`Bios.ResetBios` standard [Redfish action](/docs/concepts/performing_actions.md).
 
 ```text HPE Superdome Flex 280 BIOS reset
 POST /redfish/v1/Systems/Partition0/Bios/Actions/Bios.ResetBios
@@ -380,12 +460,16 @@ POST /redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios/
 ```
 
 :::info NOTE
-The above example does not reset attributes and properties of HPE OEM BIOS related resources (i.e. `TlsConfig`, `iScsi`, `Boot`, etc.). Refer to the [HPE BIOS](/docs/redfishservices/ilos/supplementdocuments/biosdoc/#reset-all-bios-and-hpe-bios-related-resource-settings) section for a method to reset all BIOS related properties, including HPE OEM BIOS properties.
+The above example does not reset attributes and properties of
+HPE OEM BIOS related resources (i.e. `TlsConfig`, `iScsi`, `Boot`, etc.).
+Refer to the [HPE BIOS](/docs/redfishservices/ilos/supplementdocuments/biosdoc/#reset-bios-attributes-and-hpe-bios-resources)
+section for a method to reset all BIOS related properties, including HPE OEM BIOS properties.
 :::
 
 ### Change BIOS password  
 
-The following example shows how to modify the UEFI/BIOS password on systems implementing this action.
+The following example shows how to modify the UEFI/BIOS password on
+systems implementing this action.
 
 ```text Generic BIOS password change
 POST {Base URI of Bios resource}/Actions/Bios.ChangePassword
@@ -405,23 +489,40 @@ POST /redfish/v1/Systems/1/Bios/Actions/Bios.ChangePassword
 
 ## UEFI / BIOS Boot Settings
 
-<!-- Need an introduction to Boot Settings to better understand why it is important and how it related to legacy BIOS boot, which is not supported anymore in Gen11 -->
+<!-- Need an introduction to Boot Settings to better
+understand why it is important and how it related to
+legacy BIOS boot, which is not supported anymore in Gen11 -->
 
 ### UEFI boot structured name string
 
-<!-- Need an introduction with a reliable reference pointer  to the source of this "Structured Name String" in order to understand why it is important -->
+<!-- Need an introduction with a reliable reference pointer
+to the source of this "Structured Name String" in order to
+understand why it is important -->
 
-This UEFI boot structured name string is unique and represents each UEFI boot option in the system. Software can identify and manipulate devices using the string’s fixed format as defined in this specification. Software can assume that the string unique for each boot device in the UEFI BootOrder.
+This UEFI boot structured name string is unique and represents
+each UEFI boot option in the system. Software can identify and
+manipulate devices using the string’s fixed format as defined
+in this specification. Software can assume that the string unique
+for each boot device in the UEFI BootOrder.
 
-The UEFI boot structured name string is divided into sections separated by ‘.’ characters, using the following format:
+The UEFI boot structured name string is divided into sections
+separated by ‘.’ characters, using the following format:
 
 `<DeviceType>.<Location>.<Instance>.<Sub-instance>.<Qualifier>`
 
-- **DeviceType**: The first section describes the device type (For example, `HD,` `CD,` `NIC,` and `PCI.`).
-- **Location:** The second and the third section together describes the location of the device (For example, `Slot.7` or `Emb.4`).
-- **Instance:** The third section is used with the `Location` section to describe the device location (for example, the slot number or embedded instance number).
-- **Sub-instance:** The fourth section is optional, and is used as a sub-instance number in case of multiple boot options using the same instance. For example, this can be the port number for a multi-port NIC.
-- **Qualifier:** The fifth section is optional, and describes the logical protocol (for example, IPv4, IPv6, and iSCSI).
+- **DeviceType**: The first section describes the device type
+  (For example, `HD,` `CD,` `NIC,` and `PCI.`).
+- **Location:** The second and the third section together
+  describes the location of the device (For example, `Slot.7` or `Emb.4`).
+- **Instance:** The third section is used with the `Location`
+  section to describe the device location (for example, the slot
+  number or embedded instance number).
+- **Sub-instance:** The fourth section is optional,
+  and is used as a sub-instance number in case of multiple
+  boot options using the same instance. For example, this can
+  be the port number for a multi-port NIC.
+- **Qualifier:** The fifth section is optional,
+  and describes the logical protocol (for example, IPv4, IPv6, and iSCSI).
 
 ### UEFI boot structured name string examples
 

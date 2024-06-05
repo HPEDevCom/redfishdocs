@@ -9,7 +9,9 @@ disableLastModified: false
 
 # Use Case Examples and Macro Commands
 
-This section outlines ready to use example commands, as well as some general use scenarios for obtaining and configuring iLO 4 (iLO 4 2.00+) and later systems through Redfish. Legacy modes are supported for older HPRest iLO 4 systems.
+This section outlines ready to use example commands, as well as some general
+use scenarios for obtaining and configuring iLO 4 (iLO 4 2.00+) and later
+systems through Redfish. Legacy modes are supported for older HPRest iLO 4 systems.
 
 ## Quick Reference Table: Available scripts for Linux and Windows
 
@@ -412,97 +414,6 @@ Then, using this information along with the specified boot order provided in the
 After making all the changes to the boot order, the changes are finally committed with the commit command.
 
 All of the commands shown here are executed the same way in the actual `bootorder` command, and are called in the same order to execute the `bootorder` command. You can write your own scripts to combine commands just like bootorder did, to use the provided commands in the RESTful Interface Tool for higher-level functionality.
-
-## Miscellaneous
-
-Configure iLO licensing, set unit identification lamp, hotkey configuration, obtaining system power metrics, and configuring the iLO's time zone.
-
-### iLO Licensing
-
-|    **Linux**                   | **Windows**                                                                  |
-|--------------------------------|------------------------------------------------------------------------------|
-| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/License.sh" target="_blank">License.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/License.bat" target="_blank">License.bat</a>|
-
-```shell
-.\License.bat 100.100.100.101 administrator password
-iLOrest : RESTful Interface Tool version 3.1
-Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
-Discovering data...Done
-
-Logging session out.
-```
-
-### UID Control
-
-iLO based systems utilize a unit identification led which can be controlled to easily and uniquely identify a physical device. This script
-modifies the UID light state of HPE iLO 4 and iLO 5 only. Refer to the iLO 6 [Changelog](/docs/redfishservices/ilos/ilo6/ilo6_changelog/) for details.
-
-|    **Linux**                   | **Windows**                                                                  |
-|--------------------------------|------------------------------------------------------------------------------|
-| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/UID_Control.sh" target="_blank">UID\_Control.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/UID_Control.bat" target="_blank">UID\_Control.bat</a>|
-
-```shell
-.\UID_Control.bat 100.100.100.101 administrator password
-iLOrest : RESTful Interface Tool version 3.1
-Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
-Discovering data...Done
-
-
-Logging session out.
-
-ilorest get IndicatorLED --selector=ComputerSystem.
-iLOrest : RESTful Interface Tool version 3.1
-Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
-
-```
-
-### Hotkey Configuration
-
-|    **Linux**                   | **Windows**                                                                  |
-|--------------------------------|------------------------------------------------------------------------------|
-| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Hotkey_Config.sh" target="_blank">Hotkey\_Config.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Hotkey_Config.bat" target="_blank">Hotkey\_Config.bat</a>|
-
-```shell
-./Hotkey_Config.bat 100.100.100.101 administrator password
-iLOrest : RESTful Interface Tool version 3.1
-Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
-The operation completed successfully.
-Logging session out.
-```
-
-### Setting iLO time zone
-
-![Timezone Example 1](images/timezone1.png "Time zone example 1")
-
-First we login and select the `HpeiLODateTime.` type. If using Gen9, select the `HpiLODateTime` type instead. We then `list` the `TimeZoneList`.
-
-Now scroll around looking for the time zone that is wanted. In the case of the example, we will be using US/Hawaii. Take note of the index associated with the Name.(2 in the case of US/Hawaii)
-
-![Time zone Example 2](images/timezone2.png "Time zone example 2")
-
-Finally, we `set` the Index to 2. Check the status to make sure the change is queued and finally make sure to `commit` to finalize the changes.
-
-### Getting Powermetric average
-
-First login to the server.
-
-![Power Example 1](images/power.png "Powermetric example 1")
-
-Next `select` the Power. type. Finally `list powercontrol`. The power metric average is represented by the `AverageConsumedWatts` value.
-
-### Getting Encryption Settings
-
-To get the encryption settings, first login to the server
-
-![Encryption Setting Example 1](images/encryptionsettings.png "Encryption Setting example 1")
-
-Then `select` the `HpeSmartStorageArrayControllerCollection` type. If on a `Gen9` server select `HpSmartStorageArrayControllerCollection` instead.
-
-In the provided example, many of the resources for the encryption setting are not available. If available there will be values of `Name`, `Model`, `SerialNumber`, `EncryptionBootPasswordSet`, `EncryptionCryptoOfficerPasswordSet`, `EncrpytionLocalKeyCacheEnabled`, `EncryptionMixedVolumesEnabled`,`EncryptionPhyiscalDriveCount`,`EncryptionRecoveryParamsSet`,`EncryptionStandaloneModeEnabled`, and/or `EncryptionUserPasswordSet`.
 
 ## Resetting iLO
 
@@ -1349,4 +1260,221 @@ ilorest.exe save --selector=%1 --json -f %2
 @echo Edit the file, then:
 pause
 ilorest.exe load -f %2
+```
+
+## Miscellaneous
+
+Configure iLO licensing, set unit identification lamp, hotkey configuration, obtaining system power metrics, and configuring the iLO's time zone.
+
+### iLO Licensing
+
+|    **Linux**                   | **Windows**                                                                  |
+|--------------------------------|------------------------------------------------------------------------------|
+| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/License.sh" target="_blank">License.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/License.bat" target="_blank">License.bat</a>|
+
+```shell
+.\License.bat 100.100.100.101 administrator password
+iLOrest : RESTful Interface Tool version 3.1
+Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
+--------------------------------------------------------------------------------
+Discovering data...Done
+
+Logging session out.
+```
+
+### UID Control
+
+iLO based systems utilize a unit identification led which can be controlled to easily and uniquely identify a physical device. This script
+modifies the UID light state of HPE iLO 4 and iLO 5 only. Refer to the iLO 6 [Changelog](/docs/redfishservices/ilos/ilo6/ilo6_changelog/) for details.
+
+|    **Linux**                   | **Windows**                                                                  |
+|--------------------------------|------------------------------------------------------------------------------|
+| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/UID_Control.sh" target="_blank">UID\_Control.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/UID_Control.bat" target="_blank">UID\_Control.bat</a>|
+
+```shell
+.\UID_Control.bat 100.100.100.101 administrator password
+iLOrest : RESTful Interface Tool version 3.1
+Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
+--------------------------------------------------------------------------------
+Discovering data...Done
+
+
+Logging session out.
+
+ilorest get IndicatorLED --selector=ComputerSystem.
+iLOrest : RESTful Interface Tool version 3.1
+Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
+--------------------------------------------------------------------------------
+
+```
+
+### Hotkey Configuration
+
+|    **Linux**                   | **Windows**                                                                  |
+|--------------------------------|------------------------------------------------------------------------------|
+| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Hotkey_Config.sh" target="_blank">Hotkey\_Config.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Hotkey_Config.bat" target="_blank">Hotkey\_Config.bat</a>|
+
+```shell
+./Hotkey_Config.bat 100.100.100.101 administrator password
+iLOrest : RESTful Interface Tool version 3.1
+Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
+--------------------------------------------------------------------------------
+The operation completed successfully.
+Logging session out.
+```
+
+### Setting iLO time zone
+
+![Timezone Example 1](images/timezone1.png "Time zone example 1")
+
+First we login and select the `HpeiLODateTime.` type. If using Gen9, select the `HpiLODateTime` type instead. We then `list` the `TimeZoneList`.
+
+Now scroll around looking for the time zone that is wanted. In the case of the example, we will be using US/Hawaii. Take note of the index associated with the Name.(2 in the case of US/Hawaii)
+
+![Time zone Example 2](images/timezone2.png "Time zone example 2")
+
+Finally, we `set` the Index to 2. Check the status to make sure the change is queued and finally make sure to `commit` to finalize the changes.
+
+### Getting Powermetric average
+
+First login to the server.
+
+![Power Example 1](images/power.png "Powermetric example 1")
+
+Next `select` the Power. type. Finally `list powercontrol`. The power metric average is represented by the `AverageConsumedWatts` value.
+
+### Getting Encryption Settings
+
+To get the encryption settings, first login to the server
+
+![Encryption Setting Example 1](images/encryptionsettings.png "Encryption Setting example 1")
+
+Then `select` the `HpeSmartStorageArrayControllerCollection` type. If on a `Gen9` server select `HpSmartStorageArrayControllerCollection` instead.
+
+In the provided example, many of the resources for the encryption setting are not available. If available there will be values of `Name`, `Model`, `SerialNumber`, `EncryptionBootPasswordSet`, `EncryptionCryptoOfficerPasswordSet`, `EncrpytionLocalKeyCacheEnabled`, `EncryptionMixedVolumesEnabled`,`EncryptionPhyiscalDriveCount`,`EncryptionRecoveryParamsSet`,`EncryptionStandaloneModeEnabled`, and/or `EncryptionUserPasswordSet`.
+
+### Retrieve SSD WearOut/WearStatus
+
+Depending on the context, the life time status of SSD devices is called WearOut
+or WearStatus. Redfish has standardized this property as
+`PredictedMediaLifeLeftPercent` in the [Drive schema](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#drive).
+
+For each drive in a server, the following example retrieves its URI,
+predicted media life left percent, physical locations and the HPE legacy WearStatus, from an HPE iLO6 based server with firmware 1.55 and latest UBMx firmware.
+
+```shell Retrieval of PredictedMediaLifeLeftPercent
+
+ilorest list "@odata.id" PredictedMediaLifeLeftPercent   \
+             PhysicalLocation/PartLocation/ServiceLabel  \
+             Oem/Hpe/WearStatus                          \
+             --json --select Drive.
+```
+
+```json Output (truncated)
+[
+  {
+    "@odata.id": "/redfish/v1/Chassis/3/Drives/3/",
+    "Oem": {
+      "Hpe": {
+        "WearStatus": "OK"
+      }
+    },
+    "PhysicalLocation": {
+      "PartLocation": {
+        "ServiceLabel": "Embedded:Port=2:Box=2:Bay=3"
+      }
+    },
+    "PredictedMediaLifeLeftPercent": 100
+  },
+  {
+    "@odata.id": "/redfish/v1/Chassis/DE00D000/Drives/1",
+    "PhysicalLocation": {
+      "PartLocation": {
+        "ServiceLabel": "Slot=1:Port=1:Box=3:Bay=7"
+      }
+    },
+    "PredictedMediaLifeLeftPercent": 100.0
+  },
+  {
+    "@odata.id": "/redfish/v1/Chassis/DE00E000/Drives/5",
+    "PhysicalLocation": {
+      "PartLocation": {
+        "ServiceLabel": "Slot=14:Port=1:Box=1:Bay=2"
+      }
+    },
+    "PredictedMediaLifeLeftPercent": 100.0
+  },
+  {
+    "@odata.id": "/redfish/v1/Chassis/1/Drives/6/",
+    "Oem": {
+      "Hpe": {
+        "WearStatus": "Unknown"
+      }
+    },
+    "PhysicalLocation": {
+      "PartLocation": {
+        "ServiceLabel": "Embedded:Port=2:Box=2"
+      }
+    }
+  },
+  {
+    "@odata.id": "/redfish/v1/Chassis/1/Drives/1/",
+    "Oem": {
+      "Hpe": {
+        "WearStatus": "OK"
+      }
+    },
+    "PhysicalLocation": {
+      "PartLocation": {
+        "ServiceLabel": "Embedded:Port=4A:Box=3:Bay=5"
+      }
+    },
+    "PredictedMediaLifeLeftPercent": 100
+  },
+  {
+    "@odata.id": "/redfish/v1/Chassis/DE00E000/Drives/64518",
+    "PhysicalLocation": {
+      "PartLocation": {
+        "ServiceLabel": "Slot=14:Port=1:Box=1:Bay=6"
+      }
+    }
+  },
+  {
+    "@odata.id": "/redfish/v1/Chassis/2/Drives/1/",
+    "Oem": {
+      "Hpe": {
+        "WearStatus": "OK"
+      }
+    },
+    "PhysicalLocation": {
+      "PartLocation": {
+        "ServiceLabel": "Embedded:Port=4A:Box=3:Bay=5"
+      }
+    },
+    "PredictedMediaLifeLeftPercent": 100
+  },
+  {
+    "@odata.id": "/redfish/v1/Chassis/3/Drives/4/",
+    "Oem": {
+      "Hpe": {
+        "WearStatus": "Unknown"
+      }
+    },
+    "PhysicalLocation": {
+      "PartLocation": {
+        "ServiceLabel": "Embedded:Port=2:Box=2"
+      }
+    }
+  },
+  {
+    "@odata.id": "/redfish/v1/Systems/1/Storage/DE00F000/Drives/0",
+    "PhysicalLocation": {
+      "PartLocation": {
+        "ServiceLabel": "Slot=5:Port=1:Box=3:Bay=1"
+      }
+    },
+    "PredictedMediaLifeLeftPercent": 100.0
+  },
+  ...
+]
 ```

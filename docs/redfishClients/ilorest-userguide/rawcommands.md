@@ -37,7 +37,6 @@ Use this flag to enable service mode and increase the function speed.
 
 #### Login Parameters
 
-
 The following parameters can be included to login to a server in the same line as the command is run.
 
 - **--url=URL**
@@ -55,16 +54,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-
-None
-
-#### Output
-
-
-None
 
 #### Examples
 
@@ -155,15 +144,11 @@ Optionally include the logout flag to log out of the server after this command i
 
 #### Input
 
-
 None
 
 #### Output
 
-
-File
-
-If you include the `filename` flag, this command will return an output file of the information retrieved when the `rawget` command was executed.
+With the `--filename` flag, this command returns an output file containing the result of the `rawget` command.
 
 #### Examples
 
@@ -330,10 +315,7 @@ None
 
 #### Output
 
-
-File
-
-If you specify the `filename` flag, the `rawhead` command will output a file containing the information retrieved when performing the `rawhead` command.
+With the `--filename` flag, this command returns an output file containing the result of the `rawhead` command.
 
 #### Examples
 
@@ -441,36 +423,50 @@ Optionally include the logout flag to log out of the server after this command i
 
 #### Input
 
-
-File
-
 Input the file containing the JSON information you wish to use for the HTTP RESTful PATCH command.
-
-#### Output
-
-
-None
-
 
 #### Examples
 
 To directly patch to a URI with JSON data run the command supplying a filename with a json payload.
 
-```shell
-iLOrest > rawpatch rawpatch.json
+```shell Command
+ilorest rawpatch rawpatch.json
 The operation completed successfully.
 ```
 
-The following **rawpatch.json** file was used in the above example:
-
-```json
+```json Companion file
 {
-	"/redfish/v1/systems/1":
-	{
-		"AssetTag": "NewAssetTag"
-	}
+  "/redfish/v1/systems/1":
+    {
+        "AssetTag": "NewAssetTag"
+    }
 }
+```
 
+The following example disables some IPv6 configuration settings and performs an iLO reset to take the modification into account.
+
+```shell Command
+ilorest rawpatch rawpatch.json
+The operation completed successfully
+ilorest iloreset
+A management processor reset is in progress.
+```
+
+```json Companion file
+{
+    "/redfish/v1/Managers/1/EthernetInterfaces/1": {
+        "DHCPv6": {
+            "OperatingMode": "Disabled"
+        },
+        "Oem": {
+            "Hpe": {
+                "IPv6": {
+                    "DDNSRegistration": false
+                }
+            }
+        }
+    }
+}
 ```
 
 ### RawPost Command
@@ -551,9 +547,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
 #### Input
-
-
-File
 
 Input the file containing the JSON information you wish to use for the HTTP RESTful PUT command.
 
@@ -674,9 +667,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
 #### Input
-
-
-File
 
 Input the file containing the JSON information you wish to use for the HTTP RESTful PUT command.
 

@@ -154,14 +154,6 @@ Use the provided configuration file instead of the default one.
 
 Use the provided directory as the location to cache data (default location: `C:\Users\USERNAME\AppData\Roaming\.ilorest`).
 
-#### Inputs
-
-None
-
-#### Outputs
-
-None
-
 #### Examples
 
 ```text
@@ -374,6 +366,14 @@ Connect to the server as the provided user.
 
 Connect to the server with the password corresponding to the given user.
 
+- **-o, --otp**
+
+To enter the One Time Password (OTP) received in the configured Directory Service (i.e. Microsoft Active Directory) email address. Refer to the [TFA section](/docs/redfishservices/ilos/supplementdocuments/tfa/) for more detail.
+
+- **--wait\_for\_otp**
+
+To prompt and wait for the One Time Password (OTP) received in the configured Directory Service (i.e. Microsoft Active Directory) email address to be entered during implicit login. Refer to the [TFA section](/docs/redfishservices/ilos/supplementdocuments/tfa/) for more detail.
+
 :::info NOTE
 
 In Linux, if password contains '!' (exclamation), then enclose the password with single quotation ('). Also, if the password includes special characters, then escape these characters with '\' (backslash). Eg: if the password is `test#123`, then type the password as `test\\#123`.
@@ -491,6 +491,20 @@ iLOrest > login --force_vnic -u username -p password
 Discovering data...Done
 ```
 
+#### To login using OTP
+
+```shell Explicit OTP login
+iLOrest > login -u ilo-username -p password -o 987654
+Discovering data...Done
+```
+```shell Implicit OTP login
+iLOrest > login -u username -p password --wait_for_otp
+One Time Passcode Sent to registered email.
+Enter OTP: 234567
+Discovering data...Done
+```
+
+
 ### Types Command
 
 #### Syntax
@@ -502,7 +516,7 @@ Discovering data...Done
 Each Redfish resource is associated to a [data type](/docs/concepts/datatypesandcollections/). The `types` command displays all selectable types available within the currently logged in server. Types include a name as well as version information. Types represent the schema used for the resource and indicate the version of the schema. Version information is `major.minor.errata` (for example: `SystemRoot.0.9.5`). Major versions are not backwards compatible, but everything else is.
 
 :::info NOTE
-See the iLO RESTful API Data Model Reference at <a href=" https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/#resource-definitions">https://hewlettpackard.github.io/ilo-rest-api-docs/</a> for a list and description of all the possible types.
+Refer to the [HPE iLO resource map](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_resmap{{process.env.LATEST_FW_VERSION}}/) for a the list and location of all the possible types.
 :::
 
 #### Parameters
@@ -546,14 +560,6 @@ Optionally set a starting point for data collection. If you do not specify a sta
 :::info NOTE
 The `path` flag can only be specified at the time of login, so if you are already logged into the server, the `path` flag will not change the path. If you are entering a command that is not the `login` command, but includes your login information, you can still specify the path flag there.
 :::
-
-#### Inputs
-
-None
-
-#### Outputs
-
-None
 
 #### Examples
 
@@ -729,12 +735,6 @@ Optionally set a starting point for data collection. If you do not specify a sta
 The `path` flag can only be specified at the time of login, so if you are already logged into the server, the `path` flag will not change the path. If you are entering a command that is not the `login` command, but includes your login information, you can still specify the path flag there.
 :::
 
-#### Inputs
-None
-
-#### Outputs
-
-None
 
 #### Examples
 
@@ -820,7 +820,7 @@ Supplying a property or multiple properties will cause list to display the curre
 
 Including the help flag will display help for the command.
 
-- **--filter [FILTER_ATTRIBUTE=FILTER_VALUE]**
+- **--filter [FILTER\_ATTRIBUTE=FILTER\_VALUE]**
 
 Optionally set a filter value for a filter attribute. This uses the provided filter for the currently selected type. Refer to the [Filter Option](/docs/redfishclients/ilorest-userguide/advancedusage/#filter-option) for more information.
 
@@ -868,17 +868,11 @@ The `path` flag can only be specified at the time of login, so if you are alread
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
 
-#### Inputs
-None
-
-#### Outputs
-None
+#### Examples
 
 :::info NOTE
 arguments are not case-sensitive.
 :::
-
-#### Examples
 
 With a Type selected, run the command without arguments to list all properties within the selected type, including reserved properties. The full list has been truncated here for space.
 
@@ -1017,14 +1011,6 @@ The `path` flag can only be specified at the time of login, so if you are alread
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
-
-#### Inputs
-
-None
-
-#### Outputs
-
-None
 
 #### Examples
 
@@ -1250,14 +1236,6 @@ The `path` flag can only be specified at the time of login, so if you are alread
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
-
-#### Inputs
-
-None
-
-#### Outputs
-
-None
 
 #### Examples
 
@@ -1507,14 +1485,6 @@ The `path` flag can only be specified at the time of login, so if you are alread
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
 
-#### Inputs
-
-None
-
-#### Outputs
-
-None
-
 #### Examples
 
 :::info NOTE
@@ -1642,16 +1612,6 @@ The `path` flag can only be specified at the time of login, so if you are alread
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
 
-#### Inputs
-
-None
-
-#### Outputs
-
-JSON file
-
-Save a selected type to a file in JSON format. You can edit the values in the file, and then use the `load` command to upload the changes to the server.
-
 #### Examples
 
 Here, the server is logged into, Bios is selected, and the corresponding JSON file is saved to a local directory as the file ilorest.json. The ilorest.json file holds all the information regarding the selected type. Here, the save function was performed on the Bios type, so the `ilorest.json` file that was saved holds the information about `Bios.` The file holding that information looks like the following.
@@ -1705,7 +1665,7 @@ Example json file:
 ]
 ```
 
-Use the multisave option to specify multiple types to save in a single file. This file can be sent to load in order to load multiple types with a single command. All type strings are delimited by a ','.
+Use the `--multisave` option to specify multiple types to save in a single file. This file can be sent to load in order to load multiple types with a single command. All type strings are delimited by a ','.
 
 ```shell
 iLOrest > save --multisave Bios.,ComputerSystem.
@@ -1734,11 +1694,12 @@ Logging session out.
 
 Loads the server configuration from a file. Run this command without parameters to use the configuration found in the file called `ilorest.json`. Otherwise, you can point this command to use any file you specify. Use this function to change the properties of a type to new values. This command uploads the new values of the type’s properties to the server.
 
-:::info NOTE
-<b>Read-only</b> and <b>System-unique</b> properties like Serial Numbers and ProductId are skipped, and remaining continue to be set.
-:::
-:::info NOTE
-If <b>System-unique</b> properties need to be set, use --uniqueoverride option.
+:::info NOTES
+
+- By default and in order to avoid unwanted communication interruptions to the ilO Dedicated Network Port, the `load` command skips modifications in the `EthernetInterfaces/1` resource. Use the `--force_network_config` parameter to modify this resource.
+- **Read-only** and **System-unique** properties like Serial Numbers and ProductId are skipped, and remaining continue to be set.
+- If **System-unique** properties need to be set, use `--uniqueoverride` option.
+
 :::
 
 #### Parameters
@@ -1771,6 +1732,10 @@ This option is only used on Gen 9 systems.
 
 Override the measures stopping the tool from writing over items that are System-unique.
 
+- **--force\_network\_config**
+
+Force loading iLO network configuration. By default, load will not load it.
+
 - **-m MPFILENAME, --multiprocessing=MPFILENAME**
 
 Optionally supply a filename to a multi-processing file to load concurrently on multiple servers.
@@ -1802,16 +1767,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. You need to be logged in to use this flag.
-
-#### Inputs
-
-JSON Object
-
-Input a JSON object to load from a custom configuration file, otherwise the configuration will default to looking for a file called `ilorest.json`.
-
-#### Outputs
-
-None
 
 #### Examples
 
@@ -1872,14 +1827,6 @@ Displays all pending changes, regardless of which type is currently selected. Al
 - **-h, --help**
 
 Including the help flag will display help for the command.
-
-#### Inputs
-
-None
-
-#### Outputs
-
-None
 
 #### Examples
 
@@ -1942,14 +1889,6 @@ This option is only used on Gen 9 systems.
 - **--reboot=REBOOT**
 
 Use this flag to perform a reboot command function after completion of operations. For help with parameters and descriptions regarding the reboot flag, run `help reboot`.
-
-#### Inputs
-
-None
-
-#### Outputs
-
-None
 
 #### Examples
 
@@ -2018,14 +1957,6 @@ To log out at the end of a command, include the *--logout* option. Not all comma
 
 Including the help flag will display help for the command.
 
-#### Inputs
-
-None
-
-#### Outputs
-
-None
-
 #### Examples
 
 Use the logout command to end the session and disconnect from the server.
@@ -2060,14 +1991,6 @@ Use the `exit` command if you wish to exit from the interactive shell. Using exi
 - **-h, --help**
 
 Including the help flag will display help for the command.
-
-#### Inputs
-
-None
-
-#### Outputs
-
-None
 
 #### Examples
 

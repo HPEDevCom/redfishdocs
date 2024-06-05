@@ -15,7 +15,6 @@ This section covers commands related to the discovery and configuration of HPE P
 
 #### Syntax
 
-
 clearpmmpendingconfig
 
 #### Description

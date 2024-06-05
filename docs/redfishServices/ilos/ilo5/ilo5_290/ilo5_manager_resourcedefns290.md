@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Manager resource definitions
 toc:

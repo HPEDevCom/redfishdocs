@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# Version 0.91
+# Version 0.94
 
 # Script name: _script_wrapper.sh 
 # This script is a wrapper to the other scripts contained in this folder, except
@@ -37,13 +37,13 @@ scriptList="_split_resourcedefns.sh _resourcedefns.sh _resmap.sh _msgregs.sh _ex
 required_executables="dos2unix sed awk"
 
 # Don't forget to update the following variables to process the right iLO version !
-export ilogen="iLO 6"
-export iLOFwVersion=1.45
+export ilogen="iLO 5"
+export iLOFwVersion=3.04
 export iLOGen=$(echo ${ilogen,,} | tr -d ' ')
 export iLOVersion=$(echo $iLOFwVersion | tr -d '.')
 
-export RepoLocation="/Git-Repo/CloneOfPrivate-hpe-ilo-redocly"
-#export RepoLocation="C:/iLORestAPIRedoc/hpe-ilo-redocly"
+#export RepoLocation="/Git-Repo/CloneOfPrivate-hpe-ilo-redocly"
+export RepoLocation="C:/api_redocly/hpe-ilo-redocly"
 export WorkingDirectory="$RepoLocation/docs/redfishServices/ilos/${iLOGen}/${iLOGen}_${iLOVersion}"
 
 export ResourcesFile_bck="${WorkingDirectory}/_raw_${iLOGen}_resourcedefns${iLOVersion}.md-bck"

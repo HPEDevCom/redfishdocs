@@ -9,548 +9,478 @@ toc:
 
 # HPE Python Redfish library v3.2 reference documentation
 
-This section describes the TBD
+This section describes the HPE Python Library that you can use for writing your own Redfish clients. It is an alternative to the <a href="https://github.com/DMTF/python-redfish-library" target="_blank">DMTF Python Redfish Library</a>
 
-## redfish.rest 
+## redfish.rest
 
 Base interface to simplify interaction with LegacyRest/Redfish data and Remote/Local
 connections.
 
-### redfish.rest.v1 
+### redfish.rest.v1
 
 Direct module for working with Redfish/REST technology.
 
-_class_ `redfish.rest.v1.AuthMethod `
+#### class redfish.rest.v1.AuthMethod()
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 AUTH Method class
 
 **BASIC**, **SESSION**, **CERTIFICATE** variables translate to their string counterparts
 basic, session, certificate.
 
-_exception_ `redfish.rest.v1.JsonDecodingError `
+#### exception redfish.rest.v1.JsonDecodingError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when there is an error in json data.
 
-_class_ `redfish.rest.v1.LegacyRestClient(**client_kwargs)`
+#### class redfish.rest.v1.LegacyRestClient(\*\*client_kwargs)
 
-<!-- Bases: [`<span class="pre">redfish.rest.v1.RestClient</span>`](http://hewlettpackard.github.io#redfish.rest.v1.RestClient "redfish.rest.v1.RestClient")-->
-Bases: [redfish.rest.v1.RestClient](http://hewlettpackard.github.io#redfish.rest.v1.RestClient "redfish.rest.v1.RestClient")
-
+Bases: `RestClient`
 
 Class for a **Legacy REST** client instance.
 Instantiates appropriate Rest object based on existing configuration.
 Use this to retrieve a pre-configured Legacy Rest Class.
 
 Basic arguments include (These can be omitted for most local connections):
-
-- **base\_url**: The IP or Hostname of the server to perform operations on.
-
+- **base_url**: The IP or Hostname of the server to perform operations on.
 - **username**: The username of the account to login with.
-
 - **password**: The username of the account to login with.
 
+For full description of the arguments allowed see `RestClient`
 
-For full description of the arguments allowed see [`<span class="pre">RestClient</span>`](http://hewlettpackard.github.io#redfish.rest.v1.RestClient "redfish.rest.v1.RestClient")
+#### class redfish.rest.v1.RedfishClient(\*\*client_kwargs)
 
-_class_ `redfish.rest.v1.RedfishClient(**client_kwargs)`
-
-Bases: [`<span class="pre">redfish.rest.v1.RestClient</span>`](http://hewlettpackard.github.io#redfish.rest.v1.RestClient "redfish.rest.v1.RestClient")
+Bases: `RestClient`
 
 Class for a **Redfish** client instance.
 Instantiates appropriate Redfish object based on existing configuration.
 Use this to retrieve a pre-configured Redfish Class.
 
 Basic arguments include (These can be omitted for most local connections):
-
-- **base\_url**: The IP or Hostname of the server to perform operations on. None for local.
-
+- **base_url**: The IP or Hostname of the server to perform operations on. None for local.
 - **username**: The username of the account to login with.
-
 - **password**: The username of the account to login with.
 
+For full description of the arguments allowed see `RestClient`
 
-For full description of the arguments allowed see [`<span class="pre">RestClient</span>`](http://hewlettpackard.github.io#redfish.rest.v1.RestClient "redfish.rest.v1.RestClient")
+#### class redfish.rest.v1.RestClient(default_prefix='/redfish/v1/', is_redfish=True, username=None, password=None, sessionid=None, base_url=None, auth=None, ca_cert_data=None, \*\*client_kwargs)
 
-_class_ `redfish.rest.v1.RestClient( _default\_prefix='/redfish/v1/'_, _is\_redfish=True_, _username=None_, _password=None_, _auth=None_, _\*\*client\_kwargs_) `
-
-Bases: [`<span class="pre">redfish.rest.v1.RestClientBase</span>`](http://hewlettpackard.github.io#redfish.rest.v1.RestClientBase "redfish.rest.v1.RestClientBase")
+Bases: `RestClientBase`
 
 REST client with Redfish and LegacyRest support built on top.
+- **Parameters**
 
-Parameters
-
-- **default\_prefix** ( _str_) – The root of the REST API, either /redfish/v1/ or /rest/v1.
-
-- **is\_redfish** ( _bool_) – Flag to force redfish conformance, even on LegacyRest clients.
-
-- **username** ( _str_) – The username of the account to login with.
-
-- **password** ( _str_) – The password of the account to login with.
-
-- **auth** (str or [`<span class="pre">AuthMethod</span>`](http://hewlettpackard.github.io#redfish.rest.v1.AuthMethod "redfish.rest.v1.AuthMethod") class variable.) – The authentication type to force.
-
-- **\*\*client\_kwargs** – Arguments to create a [`<span class="pre">RestClientBase</span>`](http://hewlettpackard.github.io#redfish.rest.v1.RestClientBase "redfish.rest.v1.RestClientBase") instance.
+    
+    - **default_prefix** (*str*) – The root of the REST API, either /redfish/v1/ or /rest/v1.
+    - **is_redfish** (*bool*) – Flag to force redfish conformance, even on LegacyRest clients.
+    - **username** (*str*) – The username of the account to login with.
+    - **password** (*str*) – The password of the account to login with.
+    - **auth** (str or `AuthMethod` class variable.) – The authentication type to force.
+    - **ca_cert_data** (*dict*) – Dictionary containing the certificate authority data (user CA,                          user root CA, user root CA key
+    - **\*\*client_kwargs** – Arguments to create a `RestClientBase` instance.
 
 
-_property_ `<span class="pre">base_url</span>` 
+#### property base_url()
 
 The connection’s URL to make calls against
 
-_property_ `<span class="pre">basic_auth</span>` 
+#### property basic_auth()
 
 The Client’s basic auth header, if any.
-
-`<span class="pre">login</span>`( _auth='session'_) 
-
+#### login(auth='session')
 Login to a Redfish or LegacyRest server.
 If auth is not supplied login will intelligently
 choose the authentication mode based on the arguments passed.
 Basic authentication MUST be specified with auth.
+- **Parameters**
 
-Parameters
+    **auth** (str or `AuthMethod` class variable) – The auth type to login with.
 
-**auth** (str or [`<span class="pre">AuthMethod</span>`](http://hewlettpackard.github.io#redfish.rest.v1.AuthMethod "redfish.rest.v1.AuthMethod") class variable) – The auth type to login with.
 
-_property_ `<span class="pre">login_url</span>` 
+#### property login_url()
 
 The login URI from the root response. This is where we post the
 credentials for a login.
-
-`<span class="pre">logout</span>`() 
-
+#### logout()
 Logout of session.
 
 YOU MUST CALL THIS WHEN YOU ARE DONE TO FREE UP SESSIONS
 
-_property_ `<span class="pre">password</span>` 
+#### property password()
 
 The password, if any. Once a login function has been called the credentials are removed
 from memory for security and this will return None.
 
-_property_ `<span class="pre">proxy</span>` 
+#### property proxy()
 
 The connection’s proxy, if any.
 
-_property_ `<span class="pre">session_key</span>` 
+#### property session_key()
 
 The Client’s session key, if any.
 
-_property_ `<span class="pre">session_location</span>` 
+#### property session_location()
 
 The session URI. Used for deleting the session when we logout.
 
-_property_ `<span class="pre">username</span>` 
+#### property username()
 
 The username, if any. Once a login function has been called the credentials are removed
 from memory for security and this will return None.
 
-_class_ `redfish.rest.v1.RestClientBase( _biospassword=None_, _\*\*client\_kwargs_) `
+#### class redfish.rest.v1.RestClientBase(biospassword=None, \*\*client_kwargs)
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 Base REST client. Each RestClientBase has a connection object built by parsing the
-client\_kwargs. This connection is used for communicating remotely or locally.
+client_kwargs. This connection is used for communicating remotely or locally.
+- **Parameters**
 
-Parameters
-
-- **biospassword** ( _str_) – The iLO Gen9 bios password. See [`<span class="pre">bios_password()</span>`](http://hewlettpackard.github.io#redfish.rest.v1.RestClientBase.bios_password "redfish.rest.v1.RestClientBase.bios_password")
-
-- **\*\*client\_kwargs** – Arguments to pass to the client argument. For possible values see
-[`<span class="pre">redfish.rest.connections.Blobstore2Connection</span>`](http://hewlettpackard.github.io#redfish.rest.connections.Blobstore2Connection "redfish.rest.connections.Blobstore2Connection") for a local
-connection or [`<span class="pre">redfish.rest.connections.HttpConnection</span>`](http://hewlettpackard.github.io#redfish.rest.connections.HttpConnection "redfish.rest.connections.HttpConnection")
-for remote connection.
+    
+    - **biospassword** (*str*) – The iLO Gen9 bios password. See `bios_password()`
+    - **\*\*client_kwargs** – Arguments to pass to the client argument. For possible values see
+    `redfish.rest.connections.Blobstore2Connection` for a local
+    connection or `redfish.rest.connections.HttpConnection`
+    for remote connection.
 
 
-_property_ `<span class="pre">bios_password</span>` 
+#### property bios_password()
 
 Property for the biospassword. Only required on Gen9 iLO 4 when RBSU bios password is set
 and modifying bios settings
-
-`<span class="pre">delete</span>`( _path_, _headers=None_) 
-
+#### delete(path, headers=None)
 Perform a DELETE request
+- **Parameters**
 
-Parameters
+    
+    - **path** (*str*) – The URI path.
+    - **args** (*dict*) – Any query to add to the URI. (Can also be directly added to the URI)
 
-- **path** ( _str_) – The URI path.
+- **Returns**
 
-- **args** ( _dict_) – Any query to add to the URI. (Can also be directly added to the URI)
+    A `redfish.rest.containers.RestResponse` object
 
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object
-
-`<span class="pre">get</span>`( _path_, _args=None_, _headers=None_) 
-
+#### get(path, args=None, headers=None)
 Perform a GET request
+- **Parameters**
 
-Parameters
+    
+    - **path** (*str*) – The URI path.
+    - **args** (*dict*) – Any query to add to the URI. (Can also be directly added to the URI)
+    - **headers** (*dict*) – Any extra headers to add to the request.
 
-- **path** ( _str_) – The URI path.
+- **Returns**
 
-- **args** ( _dict_) – Any query to add to the URI. (Can also be directly added to the URI)
+    A `redfish.rest.containers.RestResponse` object
 
-- **headers** ( _dict_) – Any extra headers to add to the request.
-
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object
-
-`<span class="pre">head</span>`( _path_, _headers=None_) 
-
+#### head(path, headers=None)
 Perform a HEAD request
+- **Parameters**
 
-Parameters
+    
+    - **path** (*str*) – The URI path.
+    - **headers** (*dict*) – Any extra headers to add to the request.
 
-- **path** ( _str_) – The URI path.
+- **Returns**
 
-- **headers** ( _dict_) – Any extra headers to add to the request.
+    A `redfish.rest.containers.RestResponse` object
 
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object
-
-`<span class="pre">patch</span>`( _path_, _body_, _args=None_, _headers=None_) 
-
+#### patch(path, body, args=None, headers=None)
 Perform a PATCH request
+- **Parameters**
 
-Parameters
+    
+    - **path** (*str*) – The URI path.
+    - **body** (*dict*) – The body to pass with the request.
+    - **args** (*dict*) – Any query to add to the URI. (Can also be directly added to the URI)
+    - **headers** (*dict*) – Any extra headers to add to the request.
 
-- **path** ( _str_) – The URI path.
+- **Returns**
 
-- **body** ( _dict_) – The body to pass with the request.
+    A `redfish.rest.containers.RestResponse` object
 
-- **args** ( _dict_) – Any query to add to the URI. (Can also be directly added to the URI)
-
-- **headers** ( _dict_) – Any extra headers to add to the request.
-
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object
-
-`<span class="pre">post</span>`( _path_, _body_, _args=None_, _headers=None_) 
-
+#### post(path, body, args=None, headers=None)
 Perform a POST request
+- **Parameters**
 
-Parameters
+    
+    - **path** (*str*) – The URI path.
+    - **body** (*dict*) – The body to pass with the request.
+    - **args** (*dict*) – Any query to add to the URI. (Can also be directly added to the URI)
+    - **headers** (*dict*) – Any extra headers to add to the request.
 
-- **path** ( _str_) – The URI path.
+- **Returns**
 
-- **body** ( _dict_) – The body to pass with the request.
+    A `redfish.rest.containers.RestResponse` object
 
-- **args** ( _dict_) – Any query to add to the URI. (Can also be directly added to the URI)
-
-- **headers** ( _dict_) – Any extra headers to add to the request.
-
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object
-
-`<span class="pre">put</span>`( _path_, _body_, _args=None_, _headers=None_) 
-
+#### put(path, body, args=None, headers=None)
 Perform a PUT request
+- **Parameters**
 
-Parameters
+    
+    - **path** (*str*) – The URI path.
+    - **body** (*dict*) – The body to pass with the request.
+    - **args** (*dict*) – Any query to add to the URI. (Can also be directly added to the URI)
+    - **headers** (*dict*) – Any extra headers to add to the request.
 
-- **path** ( _str_) – The URI path.
+- **Returns**
 
-- **body** ( _dict_) – The body to pass with the request.
-
-- **args** ( _dict_) – Any query to add to the URI. (Can also be directly added to the URI)
-
-- **headers** ( _dict_) – Any extra headers to add to the request.
+    A `redfish.rest.containers.RestResponse` object
 
 
-Returns
+#### exception redfish.rest.v1.ServerDownOrUnreachableError()
 
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object
-
-_exception_ `redfish.rest.v1.ServerDownOrUnreachableError `
-
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when server is unreachable.
 
-### redfish.rest.connections 
+### redfish.rest.connections
 
 All Connections for interacting with REST.
 
-_class_ `redfish.rest.connections.Blobstore2Connection( _\*\*conn\_kwargs_) `
+#### class redfish.rest.connections.Blobstore2Connection(\*\*conn_kwargs)
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 A connection for communicating locally with HPE servers
+- **Parameters**
 
-Parameters
+    **\*\*conn_kwargs** – Arguments to pass to the connection initialization.
+Possible arguments for *\*\*conn_kwargs* include:
+- **Username**
 
-**\*\*conn\_kwargs** – Arguments to pass to the connection initialization.
+    The username to login with
 
-Possible arguments for _\*\*conn\_kwargs_ include:
+- **Password**
 
-Username
+    The password to login with
 
-The username to login with
-
-Password
-
-The password to login with
-
-`<span class="pre">cert_login</span>`() 
-
+#### cert_login()
 Login using a certificate.
-
-`<span class="pre">rest_request</span>`( _path=''_, _method='GET'_, _args=None_, _body=None_, _headers=None_) 
-
+#### rest_request(path='', method='GET', args=None, body=None, headers=None)
 Rest request for blobstore client
+- **Parameters**
 
-Parameters
+    
+    - **path** (*str*) – The URI path to perform the operation on.
+    - **method** (*str*) – method to perform on the path.
+    - **args** (*dict*) – Any query to add to the URI. (Can also be directly added to the URI)
+    - **body** (*dict*) – body payload to include in the request if needed.
+    - **headers** (*dict*) – Any extra headers to add to the request.
 
-- **path** ( _str_) – The URI path to perform the operation on.
+- **Returns**
 
-- **method** ( _str_) – method to perform on the path.
-
-- **args** ( _dict_) – Any query to add to the URI. (Can also be directly added to the URI)
-
-- **body** ( _dict_) – body payload to include in the request if needed.
-
-- **headers** ( _dict_) – Any extra headers to add to the request.
+    A `redfish.rest.containers.RestResponse` object
 
 
-Returns
+#### exception redfish.rest.connections.ChifDriverMissingOrNotFound()
 
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object
-
-_exception_ `redfish.rest.connections.ChifDriverMissingOrNotFound `
-
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when CHIF driver is missing or not found.
 
-_exception_ `redfish.rest.connections.DecompressResponseError `
+#### exception redfish.rest.connections.DecompressResponseError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when decompressing the response failed.
 
-_class_ `redfish.rest.connections.HttpConnection( _base\_url_, _\*\*client\_kwargs_) `
+#### class redfish.rest.connections.HttpConnection(base_url, cert_data, \*\*client_kwargs)
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 HTTP connection capable of authenticating with HTTPS and Http/Socks Proxies
+- **Parameters**
 
-Parameters
+    
+    - **base_url** (*str*) – The URL to make HTTP calls against
+    - **\*\*client_kwargs** – Arguments to pass to the connection initialization. These are passed to a urllib3 [PoolManager](https://urllib3.readthedocs.io/en/latest/reference/index.html?highlight=PoolManager#urllib3.PoolManager). All arguments that can be passed to a PoolManager are valid arguments.
 
-- **base\_url** ( _str_) – The URL to make HTTP calls against
-
-- **\*\*client\_kwargs** – Arguments to pass to the connection initialization. These are passed to a urllib3 [PoolManager](https://urllib3.readthedocs.io/en/latest/reference/index.html?highlight=PoolManager#urllib3.PoolManager). All arguments that can be passed to a PoolManager are valid arguments.
-
-
-`<span class="pre">cert_login</span>`() 
-
+#### cert_login()
 Login using a certificate.
 
-_property_ `<span class="pre">proxy</span>` 
+#### property proxy()
 
 The proxy, if any.
-
-`<span class="pre">rest_request</span>`( _path_, _method='GET'_, _args=None_, _body=None_, _headers=None_) 
-
+#### rest_request(path, method='GET', args=None, body=None, headers=None)
 Format and do HTTP Rest request
+- **Parameters**
 
-Parameters
+    
+    - **path** (*str*) – The URI path to perform the operation on.
+    - **method** (*str*) – method to perform on the path.
+    - **args** (*dict*) – Any query to add to the URI. (Can also be directly added to the URI)
+    - **body** (*dict*) – body payload to include in the request if needed.
+    - **headers** (*dict*) – Any extra headers to add to the request.
 
-- **path** ( _str_) – The URI path to perform the operation on.
+- **Returns**
 
-- **method** ( _str_) – method to perform on the path.
-
-- **args** ( _dict_) – Any query to add to the URI. (Can also be directly added to the URI)
-
-- **body** ( _dict_) – body payload to include in the request if needed.
-
-- **headers** ( _dict_) – Any extra headers to add to the request.
+    A `redfish.rest.containers.RestResponse` object
 
 
-Returns
+#### exception redfish.rest.connections.InvalidCertificateError()
 
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object
-
-_exception_ `redfish.rest.connections.InvalidCertificateError `
-
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when a invalid certificate has been provided.
 
-_exception_ `redfish.rest.connections.InvalidCredentialsError `
+#### exception redfish.rest.connections.InvalidCredentialsError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when invalid credentials have been provided.
 
-_exception_ `redfish.rest.connections.RetriesExhaustedError `
+#### exception redfish.rest.connections.RetriesExhaustedError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when retry attempts have been exhausted.
 
-_exception_ `redfish.rest.connections.SecurityStateError `
+#### exception redfish.rest.connections.SecurityStateError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when there is a strict security state without authentication.
 
-### redfish.rest.containers 
+#### exception redfish.rest.connections.VnicNotEnabledError()
+
+Bases: `Exception`
+
+Raised when retry attempts have been exhausted when VNIC is not enabled.
+
+### redfish.rest.containers
 
 Containers used for REST requests and responses.
 
-_class_ `redfish.rest.containers.RestRequest( _path_, _method='GET'_, _data=''_, _url=None_) `
+#### class redfish.rest.containers.RestRequest(path, method='GET', data='', url=None)
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 Holder for Request information
+- **Parameters**
 
-Parameters
-
-- **path** ( _str_) – The URI path.
-
-- **method** ( _str_) – method to be implemented
-
-- **data** ( _dict_) – body payload for the rest call
+    
+    - **path** (*str*) – The URI path.
+    - **method** (*str*) – method to be implemented
+    - **data** (*dict*) – body payload for the rest call
 
 
-_property_ `<span class="pre">body</span>` 
+#### property body()
 
 The body to pass along with the request, if any.
 
-_property_ `<span class="pre">method</span>` 
+#### property method()
 
 The method to implement.
 
-_property_ `<span class="pre">path</span>` 
+#### property path()
 
 The path the request is made against.
 
-_class_ `redfish.rest.containers.RestResponse( _rest\_request_, _http\_response_) `
+#### class redfish.rest.containers.RestResponse(rest_request, http_response)
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 Returned by Rest requests
+- **Parameters**
 
-Parameters
-
-- **rest\_request** ( [`<span class="pre">RestRequest</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestRequest "redfish.rest.containers.RestRequest") object) – Holder for request information
-
-- **http\_response** ( `<span class="pre">HTTPResponse</span>` object) – Response from HTTP
+    
+    - **rest_request** (`RestRequest` object) – Holder for request information
+    - **http_response** (`HTTPResponse` object) – Response from HTTP
 
 
-_property_ `<span class="pre">dict</span>` 
+#### property dict()
 
 The response body data as an dict
-
-`<span class="pre">getheader</span>`( _name_) 
-
+#### getheader(name)
 Case-insensitive search for an individual header
+- **Parameters**
 
-Parameters
+    **name** (*str*) – The header name to retrieve.
 
-**name** ( _str_) – The header name to retrieve.
+- **Returns**
 
-Returns
+    returns a header from HTTP response or None if not found.
 
-returns a header from HTTP response or None if not found.
-
-`<span class="pre">getheaders</span>`() 
-
+#### getheaders()
 Get all headers included in the response.
-
-`<span class="pre">loaddict</span>`( _newdict_) 
-
+#### loaddict(newdict)
 Property for setting JSON data. Used during initialization.
+- **Parameters**
 
-Parameters
+    **newdict** (*str*) – The string data to set as JSON data.
 
-**newdict** ( _str_) – The string data to set as JSON data.
 
-_property_ `<span class="pre">obj</span>` 
+#### property obj()
 
 The response body data as an object
 
-_property_ `<span class="pre">ori</span>` 
+#### property ori()
 
 The original response body data
 
-_property_ `<span class="pre">path</span>` 
+#### property path()
 
 The path the request was made against.
 
-_property_ `<span class="pre">read</span>` 
+#### property read()
 
 The response body, attempted to be translated into json, else is a string.
 
-_property_ `<span class="pre">request</span>` 
+#### property request()
 
 The saved http request the response was generated by.
 
-_property_ `<span class="pre">session_key</span>` 
+#### property session_key()
 
 The saved session key for the connection.
 
-_property_ `<span class="pre">session_location</span>` 
+#### property session_location()
 
 The saved session location, used for logging out.
 
-_property_ `<span class="pre">status</span>` 
+#### property status()
 
 The status code of the request.
 
-## redfish.ris 
+## redfish.ris
 
 Expanded LegacyREST/Redfish interface for schema validation, database for responses, caching,
 and error registries.
 
-### redfish.ris.gen\_compat 
+### redfish.ris.gen_compat
 
 Compatibility functionality in between iLO versions and generic Redfish/LegacyRest servers.
 Used to provide convenient string variables that are usable on any iLO irrespective of version or
 API type.
 
-_class_ `redfish.ris.gen_compat.Definevals `
+#### class redfish.ris.gen_compat.Definevals()
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 Base class for setting platform dependent variables.
 
-_class_ `redfish.ris.gen_compat.DefinevalsNine `
+#### class redfish.ris.gen_compat.DefinevalsNine()
 
-Bases: [`<span class="pre">redfish.ris.gen_compat.Definevals</span>`](http://hewlettpackard.github.io#redfish.ris.gen_compat.Definevals "redfish.ris.gen_compat.Definevals")
+Bases: `Definevals`
 
 Platform dependent variables for iLO 4 LegacyRest (Gen 9).
-
-`<span class="pre">redfishchange</span>`() 
-
+#### redfishchange()
 Function to update redfish variables from LegacyRest to iLO 4 Redfish (Gen 9).
 
-_class_ `redfish.ris.gen_compat.Definevalstenplus `
+#### class redfish.ris.gen_compat.Definevalstenplus()
 
-Bases: [`<span class="pre">redfish.ris.gen_compat.Definevals</span>`](http://hewlettpackard.github.io#redfish.ris.gen_compat.Definevals "redfish.ris.gen_compat.Definevals")
+Bases: `Definevals`
 
 Platform dependent variables for iLO 5+ (Gen 10).
-
-`<span class="pre">redfishchange</span>`() 
-
+#### redfishchange()
 Empty function to update redfish variables (unneeded when the system is already redfish).
 
-_class_ `redfish.ris.gen_compat.Typesandpathdefines `
+#### class redfish.ris.gen_compat.Typesandpathdefines()
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 The global types and path definitions class. Holds information on a system and automatically
 creates the correct type strings along with some generic paths. Paths are meant to be used with
@@ -558,2104 +488,1731 @@ iLO systems. Paths may be different on generic Redfish systems. Self variables a
 the getgen function is called.
 
 Useful self variables that are created include:
-
 - **url**: The url of the system that the defines were created for.
-
 - **defs**: The string defines for the system that was passed to getgen. Includes key
 property keys, paths, types, and flags to check what the system type is.
-
 - **ilogen**: The iLO generation of the system that the defines were created for. For non-iLO
 Redfish systems this is set to **5**.
-
 - **iloversion**: The iLO version of the system that the defines were created for.
-
 - **flagiften**: Flag is set to true if the system is Gen 10 or a non-iLO Redfish system.
-
-
-`<span class="pre">defineregschemapath</span>`( _rootobj_) 
-
+#### defineregschemapath(rootobj)
 Defines the schema and registry paths using data in root path.
+- **Parameters**
 
-Parameters
+    **rootobj** (*dict.*) – The root path data.
 
-**rootobj** ( _dict._) – The root path data.
-
-`<span class="pre">getgen</span>`( _gen=None_, _url=None_, _username=None_, _password=None_, _logger=None_, _proxy=None_, _ca\_cert\_data={}_, _isredfish=True_) 
-
+#### getgen(gen=None, url=None, username=None, password=None, sessionid=None, logger=None, proxy=None, ca_cert_data={}, isredfish=True)
 Function designed to verify the servers platform. Will generate the Typeandpathdefines
 variables based on the system type that is detected.
+- **Parameters**
 
-Parameters
+    
+    - **url** (*str*) – The URL to perform the request on.
+    - **username** (*str*) – The username to login with.
+    - **password** (*str*) – The password to login with.
+    - **proxy** (*str*) – The proxy to connect to the system with.
+    - **ca_certs** (*dict*) – Dictionary including the TLS certificate information of user based
+    authentication
+    - **isredfish** (*bool*) – The flag to force redfish conformance on iLO 4 systems. You will still
+    need to call updatedefinesflag to update the defines to Redfish.
+    - **logger** (*str*) – The logger handler to log data too uses the default if none is provided.
 
-- **url** ( _str_) – The URL to perform the request on.
-
-- **username** ( _str_) – The username to login with.
-
-- **password** ( _str_) – The password to login with.
-
-- **proxy** ( _str_) – The proxy to connect to the system with.
-
-- **ca\_certs** ( _dict_) – Dictionary including the TLS certificate information of user based
-authentication
-
-- **isredfish** ( _bool_) – The flag to force redfish conformance on iLO 4 systems. You will still
-need to call updatedefinesflag to update the defines to Redfish.
-
-- **logger** ( _str_) – The logger handler to log data too uses the default if none is provided.
-
-
-`<span class="pre">modifyselectorforgen</span>`( _sel_) 
-
+#### modifyselectorforgen(sel)
 Changes the select to match the Generation’s HP string based to the correct type for
 specific iLO versions.
+- **Parameters**
 
-Parameters
+    **sel** (*str*) – query to be changed to match Generation’s HP string
 
-**sel** ( _str_) – query to be changed to match Generation’s HP string
+- **Returns**
 
-Returns
+    A modified selector matching the Generation’s HP string.
 
-A modified selector matching the Generation’s HP string.
+- **Return type**
 
-Return type
+    string
 
-string
-
-`<span class="pre">updatedefinesflag</span>`( _redfishflag=None_) 
-
+#### updatedefinesflag(redfishflag=None)
 Updates the redfish and rest flag depending on system and redfishflag input. On an iLO 5
 system or another Redfish system, this will do nothing. On an iLO 4 system with both Redfish
-and LegacyRest this will update the defines to redfish if the _redfishflag_ is set to True
+and LegacyRest this will update the defines to redfish if the *redfishflag* is set to True
 and stay with the LegacyRest defines otherwise.
+- **Parameters**
 
-Parameters
+    **redfishflag** (*bool*) – User input for redfish
 
-**redfishflag** ( _bool_) – User input for redfish
+- **Returns**
 
-Returns
+    True if the system should use Redfish, False for legacy Rest.
 
-True if the system should use Redfish, False for legacy Rest.
+- **Return type**
 
-Return type
-
-bool
-
-### redfish.ris.ris 
+    bool
+### redfish.ris.ris
 
 Monolith database implementation. Crawls Redfish and Legacy REST implementations
 and holds all data retrieved. The created database is called the **monolith** and referenced as
 such in the code documentation.
 
-_exception_ `redfish.ris.ris.BiosUnregisteredError `
+#### exception redfish.ris.ris.BiosUnregisteredError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when BIOS has not been registered correctly in iLO
 
-_exception_ `redfish.ris.ris.RisInstanceNotFoundError `
+#### exception redfish.ris.ris.RisInstanceNotFoundError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when attempting to select an instance that does not exist
 
-_class_ `redfish.ris.ris.RisMonolith( _client_, _typepath_, _directory\_load=True_) `
+#### class redfish.ris.ris.RisMonolith(client, typepath, directory_load=True)
 
-Bases: `<span class="pre">redfish.ris.sharedtypes.Dictable</span>`
+Bases: `Dictable`
 
-Monolithic cache of RIS data. This takes a [`<span class="pre">redfish.rest.v1.RestClient</span>`](http://hewlettpackard.github.io#redfish.rest.v1.RestClient "redfish.rest.v1.RestClient") and uses it to
+Monolithic cache of RIS data. This takes a `redfish.rest.v1.RestClient` and uses it to
 gather data from a server and saves it in a modifiable database called monolith.
+- **Parameters**
 
-Parameters
+    
+    - **client** (`redfish.rest.v1.RestClient`) – client to use for data retrieval. Client is saved as a weakref, using it requires
+    parenthesis and will not survive if the client used in init is removed.
+    - **typepath** (`redfish.rest.ris.Typesandpathdefines`) – The compatibility class to use for differentiating between Redfish/LegacyRest.
+    - **directory_load** (*bool*) – The flag to quick load using resource directory if possible.
+    When set to True this will load paths, etags, and types, but not create responses for
+    every monolith member. When responses are needed, they will need to be loaded separately.
 
-- **client** ( [`<span class="pre">redfish.rest.v1.RestClient</span>`](http://hewlettpackard.github.io#redfish.rest.v1.RestClient "redfish.rest.v1.RestClient")) – client to use for data retrieval. Client is saved as a weakref, using it requires
-parenthesis and will not survive if the client used in init is removed.
-
-- **typepath** ( `<span class="pre">redfish.rest.ris.Typesandpathdefines</span>`) – The compatibility class to use for differentiating between Redfish/LegacyRest.
-
-- **directory\_load** ( _bool_) – The flag to quick load using resource directory if possible.
-When set to True this will load paths, etags, and types, but not create responses for
-every monolith member. When responses are needed, they will need to be loaded separately.
-
-
-`<span class="pre">capture</span>`( _redmono=False_) 
-
+#### capture(redmono=False)
 Crawls the server specified by the client and returns the entire monolith.
+- **Parameters**
 
-Parameters
+    **redmono** (*bool*) – Flag to return only the headers and responses instead of the entire monolith
+    member data.
 
-**redmono** ( _bool_) – Flag to return only the headers and responses instead of the entire monolith
-member data.
+- **Return type**
 
-Return type
+    dict
 
-dict
-
-`<span class="pre">checkmodified</span>`( _opath_, _path=None_, _modpaths=None_) 
-
+#### checkmodified(opath, path=None, modpaths=None)
 Check if the path or its children are modified. When calling this
 function you only need to include opath.
+- **Parameters**
 
-Parameters
+    **opath** (*str*) – original path which has been modified
 
-**opath** ( _str_) – original path which has been modified
 
-_property_ `<span class="pre">client</span>` 
+#### property client()
 
 Returns the current client object reference
+- **Return type**
 
-Return type
+    class object
 
-class object
 
-_property_ `<span class="pre">directory_load</span>` 
+#### property directory_load()
 
 The flag to gather information about a tree without downloading every path. Only usable
 on HPE systems with a ResourceDirectory. type
-
-`<span class="pre">gettypename</span>`( _types_) 
-
+#### gettypename(types)
 Takes a full type response and returns all major types associated.
-Example: #Type.v1\_0\_0.Type will return iter(Type.1)
+Example: #Type.v1_0_0.Type will return iter(Type.1)
+- **Parameters**
 
-Parameters
+    **types** (*str*) – The type of the requested response.
 
-**types** ( _str_) – The type of the requested response.
+- **Return type**
 
-Return type
+    iter of major types
 
-iter of major types
-
-`<span class="pre">iter</span>`( _typeval=None_) 
-
+#### iter(typeval=None)
 An iterator that yields each member of monolith associated with a specific type. In the
 case that no type is included this will yield all members in the monolith.
+- **Return type**
 
-Return type
+    RisMonolithMemberv100
 
-[RisMonolithMemberv100](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberv100 "redfish.ris.ris.RisMonolithMemberv100")
-
-`<span class="pre">itertype</span>`( _typeval_) 
-
+#### itertype(typeval)
 Iterator that yields member(s) of given type in the monolith and raises an error if no
 member of that type is found.
+- **Parameters**
 
-Parameters
+    **typeval** (*str*) – type name of the requested member.
 
-**typeval** ( _str_) – type name of the requested member.
+- **Return type**
 
-Return type
+    RisMonolithMemberv100
 
-[RisMonolithMemberv100](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberv100 "redfish.ris.ris.RisMonolithMemberv100")
-
-`<span class="pre">killthreads</span>`() 
-
+#### killthreads()
 Function to kill threads on logout
-
-`<span class="pre">load</span>`( _path=None_, _includelogs=False_, _init=False_, _crawl=True_, _loadtype='href'_, _loadcomplete=False_, _path\_refresh=False_) 
-
+#### load(path=None, includelogs=False, init=False, crawl=True, loadtype='href', loadcomplete=False, path_refresh=False, json_out=False)
 Walks the entire data model and caches all responses or loads an individual path into
 the monolith. Supports both threaded and sequential crawling.
+- **Parameters**
 
-Parameters
+    
+    - **path** (*str.*) – The path to start the crawl from the provided path if crawling or
+    loads the path into monolith. If path is not included, crawl will start with
+    the default. The default is */redfish/v1/* or */rest/v1* depending on if the
+    system is Redfish or LegacyRest.
+    - **includelogs** (*bool*) – Flag to determine if logs should be downloaded as well in the crawl.
+    - **init** (*bool*) – Flag to determine if this is the initial load.
+    - **crawl** (*bool*) – Flag to determine if load should crawl through found links.
+    - **loadtype** (*str.*) – Flag to determine if loading standard links: *href* or schema links: *ref*.
+    - **loadcomplete** (*bool*) – Flag to download the entire data model including registries and
+    schemas.
+    - **path_refresh** (*bool*) – Flag to reload the path specified, clearing any patches and overwriting the
+    current data in the monolith.
 
-- **path** ( _str._) – The path to start the crawl from the provided path if crawling or
-loads the path into monolith. If path is not included, crawl will start with
-the default. The default is _/redfish/v1/_ or _/rest/v1_ depending on if the
-system is Redfish or LegacyRest.
+#### load_from_dict(src)
+Load data to monolith from a dict. This is the reverse of `to_dict()`.
+- **Parameters**
 
-- **includelogs** ( _bool_) – Flag to determine if logs should be downloaded as well in the crawl.
+    **src** (*str*) – data receive from rest operation.
 
-- **init** ( _bool_) – Flag to determine if this is the initial load.
-
-- **crawl** ( _bool_) – Flag to determine if load should crawl through found links.
-
-- **loadtype** ( _str._) – Flag to determine if loading standard links: _href_ or schema links: _ref_.
-
-- **loadcomplete** ( _bool_) – Flag to download the entire data model including registries and
-schemas.
-
-- **path\_refresh** ( _bool_) – Flag to reload the path specified, clearing any patches and overwriting the
-current data in the monolith.
-
-
-`<span class="pre">load_from_dict</span>`( _src_) 
-
-Load data to monolith from a dict. This is the reverse of [`<span class="pre">to_dict()</span>`](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolith.to_dict "redfish.ris.ris.RisMonolith.to_dict").
-
-Parameters
-
-**src** ( _str_) – data receive from rest operation.
-
-`<span class="pre">markmodified</span>`( _opath_, _path=None_, _modpaths=None_) 
-
+#### markmodified(opath, path=None, modpaths=None)
 Mark the paths to be modifed which are connected to current path. When calling this
 function you only need to include opath.
+- **Parameters**
 
-Parameters
+    **opath** (*str*) – original path which has been modified
 
-**opath** ( _str_) – original path which has been modified
-
-`<span class="pre">path</span>`( _path_) 
-
+#### path(path)
 Provides the member corresponding to the path specified. Case sensitive.
+- **Parameters**
 
-Parameters
+    **path** (*str*) – path of the monolith member to return
 
-**path** ( _str_) – path of the monolith member to return
+- **Return type**
 
-Return type
+    RisMonolithMemberv100
 
-[RisMonolithMemberv100](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberv100 "redfish.ris.ris.RisMonolithMemberv100")
-
-`<span class="pre">removepath</span>`( _path_) 
-
+#### removepath(path)
 Remove a given path from the cache
+- **Parameters**
 
-Parameters
+    **path** (*str*) – path which is to be checked if modified
 
-**path** ( _str_) – path which is to be checked if modified
+#### to_dict()
+Convert data to a dict from monolith. This is the reverse of `load_from_dict()`.
 
-`<span class="pre">to_dict</span>`() 
-
-Convert data to a dict from monolith. This is the reverse of [`<span class="pre">load_from_dict()</span>`](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolith.load_from_dict "redfish.ris.ris.RisMonolith.load_from_dict").
-
-_property_ `<span class="pre">type</span>` 
+#### property type()
 
 Return monolith version type
-
-`<span class="pre">typecheck</span>`( _types_) 
-
+#### typecheck(types)
 Check if a member of given type exists in the monolith
+- **Parameters**
 
-Parameters
+    **types** (*str*) – type to check.
 
-**types** ( _str_) – type to check.
+- **Return type**
 
-Return type
+    bool
 
-bool
 
-_property_ `<span class="pre">types</span>` 
+#### property types()
 
 Returns list of types for members in the monolith
+- **Return type**
 
-Return type
+    list
 
-list
-
-`<span class="pre">update_member</span>`( _member=None_, _resp=None_, _path=None_, _init=True_) 
-
+#### update_member(member=None, resp=None, path=None, init=True)
 Adds member to the monolith. If the member already exists the
 data is updated in place. Takes either a RisMonolithMemberv100 instance or a
-[`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") along with that responses path.
+`redfish.rest.containers.RestResponse` along with that responses path.
+- **Parameters**
 
-Parameters
-
-- **member** ( [_RisMonolithMemberv100_](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberv100 "redfish.ris.ris.RisMonolithMemberv100")) – The monolith member to add to the monolith.
-
-- **resp** ( [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse")) – The rest response to add to the monolith.
-
-- **path** ( _str_) – The path correlating to the response.
-
-- **init** ( _bool_) – Flag if addition is part of the initial load. Set this to false if you are
-calling this by itself.
+    
+    - **member** (*RisMonolithMemberv100*) – The monolith member to add to the monolith.
+    - **resp** (`redfish.rest.containers.RestResponse`) – The rest response to add to the monolith.
+    - **path** (*str*) – The path correlating to the response.
+    - **init** (*bool*) – Flag if addition is part of the initial load. Set this to false if you are
+    calling this by itself.
 
 
-_property_ `<span class="pre">visited_urls</span>` 
+#### property visited_urls()
 
 The urls visited by the monolith
 
-_class_ `redfish.ris.ris.RisMonolithMemberBase `
+#### class redfish.ris.ris.RisMonolithMemberBase()
 
-Bases: `<span class="pre">redfish.ris.sharedtypes.Dictable</span>`
+Bases: `Dictable`
 
 RIS monolith member base class
 
-_class_ `redfish.ris.ris.RisMonolithMemberv100( _restresp=None_, _isredfish=True_) `
+#### class redfish.ris.ris.RisMonolithMemberv100(restresp=None, isredfish=True)
 
-Bases: [`<span class="pre">redfish.ris.ris.RisMonolithMemberBase</span>`](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberBase "redfish.ris.ris.RisMonolithMemberBase")
+Bases: `RisMonolithMemberBase`
 
-Class used by [`<span class="pre">RisMonolith</span>`](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolith "redfish.ris.ris.RisMonolith") for holding information on a response and adds extra data
-for monolith usage. A member can be marked as _modified_ which means another operation may have
+Class used by `RisMonolith` for holding information on a response and adds extra data
+for monolith usage. A member can be marked as *modified* which means another operation may have
 rendered this member out of date. It should be reloaded before continuing to ensure data is
 up to date.
+- **Parameters**
 
-Parameters
-
-- **restresp** ( [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse")) – RestResponse to create a member from.
-
-- **isredfish** ( _bool_) – Flag if the response is redfish or not
+    
+    - **restresp** (`redfish.rest.containers.RestResponse`) – RestResponse to create a member from.
+    - **isredfish** (*bool*) – Flag if the response is redfish or not
 
 
-_property_ `<span class="pre">dict</span>` 
+#### property dict()
 
 Get the dictionary of the monolith member’s response
 
-_property_ `<span class="pre">etag</span>` 
+#### property etag()
 
 Get the etag of the response
-
-`<span class="pre">load_from_dict</span>`( _src_) 
-
+#### load_from_dict(src)
 Load variables to a monolith member from a dictionary.
-This is the reverse of [`<span class="pre">to_dict()</span>`](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberv100.to_dict "redfish.ris.ris.RisMonolithMemberv100.to_dict").
+This is the reverse of `to_dict()`.
+- **Parameters**
 
-Parameters
+    **src** (*dict*) – Source to load member data from.
 
-**src** ( _dict_) – Source to load member data from.
 
-_property_ `<span class="pre">maj_type</span>` 
+#### property maj_type()
 
 Get major type of the monolith member’s response
 
-_property_ `<span class="pre">patches</span>` 
+#### property patches()
 
 Get patches for the monolith member
 
-_property_ `<span class="pre">path</span>` 
+#### property path()
 
 Get path of the monolith member’s response
-
-`<span class="pre">popdefs</span>`( _typename_, _pathval_, _etagval_) 
-
+#### popdefs(typename, pathval, etagval)
 Populate the default values in the class
+- **Parameters**
 
-Parameters
-
-- **typename** ( _str_) – The default **Type** string. Example: @odata.type
-
-- **pathval** ( _str_) – The default **Path** string. Example: @odata.id
-
-- **etagval** ( _str_) – The default **ETag** value.
+    
+    - **typename** (*str*) – The default **Type** string. Example: @odata.type
+    - **pathval** (*str*) – The default **Path** string. Example: @odata.id
+    - **etagval** (*str*) – The default **ETag** value.
 
 
-_property_ `<span class="pre">resp</span>` 
+#### property resp()
 
 Get the entire response of the monolith member
+#### to_dict()
+Converts Monolith Member to a dictionary. This is the reverse of `load_from_dict()`.
+- **Returns**
 
-`<span class="pre">to_dict</span>`() 
+    returns the Monolith Member in dictionary form
 
-Converts Monolith Member to a dictionary. This is the reverse of [`<span class="pre">load_from_dict()</span>`](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberv100.load_from_dict "redfish.ris.ris.RisMonolithMemberv100.load_from_dict").
 
-Returns
-
-returns the Monolith Member in dictionary form
-
-_property_ `<span class="pre">type</span>` 
+#### property type()
 
 Get type of the monolith member’s response
 
-_exception_ `redfish.ris.ris.SchemaValidationError `
+#### exception redfish.ris.ris.SchemaValidationError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Schema Validation Class Error
 
-_exception_ `redfish.ris.ris.SessionExpired `
+#### exception redfish.ris.ris.SessionExpired()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when session has expired
 
-### redfish.ris.ris\_threaded 
+### redfish.ris.ris_threaded
 
-A threaded version of RIS \_load for quicker searching
+A threaded version of RIS _load for quicker searching
 
-_class_ `redfish.ris.ris_threaded.LoadWorker( _queue_) `
+#### class redfish.ris.ris_threaded.LoadWorker(queue)
 
-Bases: `<span class="pre">threading.Thread</span>`
+Bases: `Thread`
 
-A threaded implementation of \_load for quicker crawling
-
-`<span class="pre">get_exception</span>`() 
-
+A threaded implementation of _load for quicker crawling
+#### get_exception()
 Get any exception from the thread
-
-`<span class="pre">run</span>`() 
-
+#### run()
 Main worker function
 
-### redfish.ris.utils 
+### redfish.ris.utils
 
 Utility functions for internal and external use. Contains general json navigating functions as
 well as some monolith utility functions.
-
-`redfish.ris.utils.checkallowablevalues( _newdict=None_, _oridict=None_) `
-
+### redfish.ris.utils.checkallowablevalues(newdict=None, oridict=None)
 Validate dictionary changes with Redfish allowable values. This will raise an
-[`<span class="pre">redfish.ris.rmc_helper.IncorrectPropValue</span>`](http://hewlettpackard.github.io#redfish.ris.rmc_helper.IncorrectPropValue "redfish.ris.rmc_helper.IncorrectPropValue") error if the dictionary is not valid.
+`redfish.ris.rmc_helper.IncorrectPropValue` error if the dictionary is not valid.
+- **Parameters**
 
-Parameters
+    
+    - **newdict** (*dict*) – dictionary with only the properties that have changed.
+    - **oridict** (*dict*) – Full dictionary with current state. (Includes @Redfish.AllowableValues)
 
-- **newdict** ( _dict_) – dictionary with only the properties that have changed.
-
-- **oridict** ( _dict_) – Full dictionary with current state. (Includes @Redfish.AllowableValues)
-
-
-`redfish.ris.utils.diffdict( _newdict=None_, _oridict=None_, _settingskipped=[False]_) `
-
+### redfish.ris.utils.diffdict(newdict=None, oridict=None, settingskipped=[False])
 Diff two dictionaries, returning only the values that are different between the two.
+- **Parameters**
 
-Parameters
+    
+    - **newdict** (*dict*) – The first dictionary to check for differences.
+    - **oridict** (*dict*) – The second dictionary to check for differences.
+    - **settingskipped** (*list*) – Flag to determine if any settings were missing.
 
-- **newdict** ( _dict_) – The first dictionary to check for differences.
+- **Returns**
 
-- **oridict** ( _dict_) – The second dictionary to check for differences.
+    dictionary with only the properties that have changed.
 
-- **settingskipped** ( _list_) – Flag to determine if any settings were missing.
+- **Return type**
 
+    dict
 
-Returns
-
-dictionary with only the properties that have changed.
-
-Return type
-
-dict
-
-`redfish.ris.utils.filter_output( _output_, _sel_, _val_) `
-
+### redfish.ris.utils.filter_output(output, sel, val)
 Filters a list of dictionaries based on a key:value pair only returning the dictionaries
 that include the key and value.
+- **Parameters**
 
-Parameters
+    
+    - **output** (*list*) – List of dictionaries to check for the key:value.
+    - **sel** (*str*) – the key for the property to be filtered by.
+    - **val** (*str*) – value for the property be filtered by.
 
-- **output** ( _list_) – List of dictionaries to check for the key:value.
+- **Returns**
 
-- **sel** ( _str_) – the key for the property to be filtered by.
+    A filtered list from output parameter
 
-- **val** ( _str_) – value for the property be filtered by.
+- **Return type**
 
+    list
 
-Returns
-
-A filtered list from output parameter
-
-Return type
-
-list
-
-`redfish.ris.utils.get_errmsg_type( _results_) `
-
+### redfish.ris.utils.get_errmsg_type(results)
 Return the registry type of a response.
+- **Parameters**
 
-Parameters
+    **results** (`redfish.rest.containers.RestResponse`) – rest response.
 
-**results** ( [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse")) – rest response.
+- **Returns**
 
-Returns
+    A Registry Id type string, None if not match is found, or no_id if the
+    response is not an error message
 
-A Registry Id type string, None if not match is found, or no\_id if the
-response is not an error message
+- **Return type**
 
-Return type
+    None or string
 
-None or string
-
-`redfish.ris.utils.getattributeregistry( _instances_, _adict=None_) `
-
+### redfish.ris.utils.getattributeregistry(instances, adict=None)
 Gets an attribute registry in given monolith instances.
+- **Parameters**
 
-Parameters
+    
+    - **instances** (*list*) – list of `redfish.ris.ris.RisMonolithMemberv100` instances to be
+    checked for attribute registry.
+    - **adict** (*dict*) – A dictionary containing an AttributeRegistry
 
-- **instances** ( _list_) – list of [`<span class="pre">redfish.ris.ris.RisMonolithMemberv100</span>`](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberv100 "redfish.ris.ris.RisMonolithMemberv100") instances to be
-checked for attribute registry.
+- **Returns**
 
-- **adict** ( _dict_) – A dictionary containing an AttributeRegistry
+    returns a dictionary containing the attribute registry string(s)
 
+- **Return type**
 
-Returns
+    dict
 
-returns a dictionary containing the attribute registry string(s)
-
-Return type
-
-dict
-
-`redfish.ris.utils.iterateandclear( _dictbody_, _proplist_) `
-
+### redfish.ris.utils.iterateandclear(dictbody, proplist)
 Iterate over a dictionary and remove listed properties.
+- **Parameters**
 
-Parameters
+    
+    - **dictbody** (*dict** or **list*) – json body
+    - **proplist** (*list*) – property list
 
-- **dictbody** ( _dict_ _or_ _list_) – json body
-
-- **proplist** ( _list_) – property list
-
-
-`redfish.ris.utils.json_traversal( _data_, _key\_to\_find_, _ret\_dict=False_) `
-
+### redfish.ris.utils.json_traversal(data, key_to_find, ret_dict=False)
 PENDING MODIFICATION TO MORE GENERALIZED NOTATION
 
 Recursive function to traverse a JSON resposne object and retrieve the array of
 relevant data (value or full key/value pair). Only a single key needs to be found within the
 dictionary in order to return a valid dictionary or value.
 
-#Intended Usage:
-\- Error response message parsing
-\- Checkreadunique in Validation
+Intended Usage:
+- Error response message parsing
+- Checkreadunique in Validation
+- **Parameters**
 
-Parameters
+    
+    - **data** (*JSON error response object*) – json data to be parsed
+    - **key_to_find** (*String*) – JSON key to be found
+    - **ret_dict** (*boolean*) – return dictionary instead of just value
 
-- **data** ( _JSON error response object_) – json data to be parsed
+- **Returns**
 
-- **key\_to\_find** ( _String_) – JSON key to be found
+    value or dictionary containing ‘key_to_find’
+    (and all additional keys at the same level).
 
-- **ret\_dict** ( _boolean_) – return dictionary instead of just value
-
-
-Returns
-
-value or dictionary containing ‘key\_to\_find’
-(and all additional keys at the same level).
-
-`redfish.ris.utils.json_traversal_delete_empty( _data_, _old\_key=None_, _\_iter=None_, _remove\_list=None_) `
-
+### redfish.ris.utils.json_traversal_delete_empty(data, old_key=None, _iter=None, remove_list=None)
 Recursive function to traverse a dictionary and delete things which
-match elements in the remove\_list
-:param data: to be truncated
-:type data: list or dict
-:param old\_key: key from previous recursive call (higher in stack)
-:type old\_key: dictionary key
-:param \_iter: iterator tracker for list (tracks iteration across
+match elements in the remove_list
+- **Parameters**
+
+    
+    - **data** (*list** or **dict*) – to be truncated
+    - **old_key** (*dictionary key*) – key from previous recursive call (higher in stack)
+    - **_iter** – iterator tracker for list (tracks iteration across
 recursive calls)
-:type \_iter: numerical iterator
-:param remove\_list: list of items to be removed
+:type _iter: numerical iterator
+:param remove_list: list of items to be removed
 :type: list
 :returns: none
-
-`redfish.ris.utils.merge_dict( _currdict_, _newdict_) `
-
+### redfish.ris.utils.merge_dict(currdict, newdict)
 Merges dictionaries together.
+- **Parameters**
 
-Parameters
+    
+    - **currdict** (*dict*) – Dictionary that will absorb the second.
+    - **newdict** (*dict*) – Dictionary to merge into the first.
 
-- **currdict** ( _dict_) – Dictionary that will absorb the second.
-
-- **newdict** ( _dict_) – Dictionary to merge into the first.
-
-
-`redfish.ris.utils.navigatejson( _selector_, _currdict_, _val=None_) `
-
+### redfish.ris.utils.navigatejson(selector, currdict, val=None)
 Function for navigating the json dictionary. Searches a dictionary for specific keys
 and possibly values, returning only the dictionary sections for the requested keys and values.
+- **Parameters**
 
-Parameters
+    
+    - **selector** (*list*) – the property required from current dictionary.
+    - **val** (*str** or **int** or **bool*) – value to be filtered by.
+    - **currdict** (*json dictionary/list*) – json dictionary of list to be filtered
 
-- **selector** ( _list_) – the property required from current dictionary.
+- **Returns**
 
-- **val** ( _str_ _or_ _int_ _or_ _bool_) – value to be filtered by.
+    returns a dictionary of selected items
 
-- **currdict** ( _json dictionary/list_) – json dictionary of list to be filtered
+### redfish.ris.utils.print_handler(msg)
+Helper function for handling warning messages appropriately. If LOGGER level is set to 40
+print out the warnings, else log them as a warning.
+- **Parameters**
 
+    **msg** (*str*) – The warning message.
 
-Returns
-
-returns a dictionary of selected items
-
-`redfish.ris.utils.skipnonsettingsinst( _instances_) `
-
+### redfish.ris.utils.skipnonsettingsinst(instances)
 Removes non /settings sections. Useful for only returning settings monolith members.
 Example: Members with paths /redfish/v1/systems/1/bios/ and
 /redfish/v1/systems/1/bios/settings
 will return only the /redfish/v1/systems/1/bios/settings member.
+- **Parameters**
 
-Parameters
+    **instances** (*list*) – list of `redfish.ris.ris.RisMonolithMemberv100`
+    instances to check for settings paths.
 
-**instances** ( _list_) – list of [`<span class="pre">redfish.ris.ris.RisMonolithMemberv100</span>`](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberv100 "redfish.ris.ris.RisMonolithMemberv100")
-instances to check for settings paths.
+- **Returns**
 
-Returns
+    list of `redfish.ris.ris.RisMonolithMemberv100` setting instances
 
-list of [`<span class="pre">redfish.ris.ris.RisMonolithMemberv100</span>`](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberv100 "redfish.ris.ris.RisMonolithMemberv100") setting instances
+- **Return type**
 
-Return type
+    list
 
-list
-
-`redfish.ris.utils.validate_headers( _instance_, _verbose=False_) `
-
+### redfish.ris.utils.validate_headers(instance, verbose=False)
 Validates an instance is patchable.
+- **Parameters**
 
-Parameters
+    
+    - **instance** (`redfish.ris.RisMonolithMemberv100`) – Instance of the property to check.
+    - **verbose** (*bool*) – Flag to print or log more information.
 
-- **instance** ( `<span class="pre">redfish.ris.RisMonolithMemberv100</span>`) – Instance of the property to check.
+- **Returns**
 
-- **verbose** ( _bool_) – Flag to print or log more information.
+    True if the setting is not patchable, False if it is.
 
-
-Returns
-
-True if the setting is not patchable, False if it is.
-
-`redfish.ris.utils.warning_handler( _msg_) `
-
+### redfish.ris.utils.warning_handler(msg, override=False)
 Helper function for handling warning messages appropriately. If LOGGER level is set to 40
 print out the warnings, else log them as a warning.
+- **Parameters**
 
-Parameters
-
-**msg** ( _str_) – The warning message.
-
-### redfish.ris.rmc 
+    **msg** (*str*) – The warning message.
+### redfish.ris.rmc
 
 A convenience layer that combines multiple lower level classes and functions into one.
 
-_class_ `redfish.ris.rmc.RmcApp( _showwarnings=False_, _cache\_dir=None_) `
+#### class redfish.ris.rmc.RmcApp(showwarnings=False, cache_dir=None)
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 A convenience class that combines the client, compatibility, validation, caching,
 and monolith into one class.
+- **Parameters**
 
-Parameters
-
-- **showwarnings** ( _bool_) – Flag to print warnings to std.out (True) or log in log file (False)
-
-- **cache\_dir** ( _str_) – Cache directory to save cache data to, if None, RmcApp will not cache data.
-Cache can allow your RmcApp to persist between scripts.
+    
+    - **showwarnings** (*bool*) – Flag to print warnings to std.out (True) or log in log file (False)
+    - **cache_dir** (*str*) – Cache directory to save cache data to, if None, RmcApp will not cache data.
+    Cache can allow your RmcApp to persist between scripts.
 
 
-_property_ `<span class="pre">cache</span>` 
+#### property cache()
 
 True if we are caching data, False if we are not
 
-_property_ `<span class="pre">cachedir</span>` 
+#### property cachedir()
 
 The cache directory that is used to cache app data to a file,
 None if not caching data.
-
-`<span class="pre">commit</span>`() 
-
+#### commit()
 Applies all pending json patches to the server.
+- **Yields**
 
-Yields
+    Two strings.
+    1. Path being PATCHed
+    2. True if an error occurred during the PATCH, False if no error.
 
-Two strings.
-
-1. Path being PATCHed
-
-2. True if an error occurred during the PATCH, False if no error.
-
-
-`<span class="pre">create_save_header</span>`() 
-
+#### create_save_header()
 Adds save file headers to show what server the data came from.
+- **Parameters**
 
-Parameters
+    
+    - **selector** (*str.*) – The type selection for the get save operation.
+    - **selectignore** (*boolean*) – Return the save header even if there isn’t a selection to add it to.
 
-- **selector** ( _str._) – The type selection for the get save operation.
+- **Returns**
 
-- **selectignore** ( _boolean_) – Return the save header even if there isn’t a selection to add it to.
+    returns an header ordered dictionary
 
 
-Returns
-
-returns an header ordered dictionary
-
-_property_ `<span class="pre">current_client</span>` 
+#### property current_client()
 
 Get the current client
-
-`<span class="pre">delete_handler</span>`( _put\_path_, _headers=None_, _silent=False_, _service=False_) 
-
+#### delete_handler(put_path, headers=None, silent=False, service=False)
 Performs the client HTTP DELETE operation with monolith and response handling support.
 Response handling will output to logger or string depending on showmessages app argument.
+- **Parameters**
 
-Parameters
+    
+    - **put_path** (*str*) – The REST path to perform the delete operation on.
+    - **headers** (*dict*) – Any additional headers to be added to the request.
+    - **silent** (*bool*) – If False response will be parsed based on service flag and output to a log or
+    stdout. If True response will not be parsed and no message output or error
+    messages raised from the response handler.
+    - **service** (*bool*) – When handling the response, if True registries will be gathered and a full,
+    response will be output if False they will not and response handler will
+    instead return a generic message.
 
-- **put\_path** ( _str_) – The REST path to perform the delete operation on.
+- **Returns**
 
-- **headers** ( _dict_) – Any additional headers to be added to the request.
+    A `redfish.rest.containers.RestResponse` object containing response data
 
-- **silent** ( _bool_) – If False response will be parsed based on service flag and output to a log or
-stdout. If True response will not be parsed and no message output or error
-messages raised from the response handler.
-
-- **service** ( _bool_) – When handling the response, if True registries will be gathered and a full,
-response will be output if False they will not and response handler will
-instead return a generic message.
-
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object containing response data
-
-`<span class="pre">download_path</span>`( _paths_, _crawl=True_, _path\_refresh=False_) 
-
+#### download_path(paths, crawl=True, path_refresh=False)
 Loads paths into the monolith.
+- **Parameters**
 
-Parameters
+    
+    - **paths** (*list*) – list of paths to download
+    - **path_refresh** (*bool.*) – Flag to reload the paths or not.
+    - **crawl** (*boolean.*) – Flag to determine if load should traverse found links.
 
-- **paths** ( _list_) – list of paths to download
-
-- **path\_refresh** ( _bool._) – Flag to reload the paths or not.
-
-- **crawl** ( _boolean._) – Flag to determine if load should traverse found links.
-
-
-`<span class="pre">get_handler</span>`( _put\_path_, _silent=False_, _uncache=False_, _headers=None_, _service=False_) 
-
+#### get_handler(get_path, sessionid=None, silent=False, uncache=False, headers=None, service=False, username=None, password=None, base_url=None)
 Performs the client HTTP GET operation with monolith and response handling support.
 Response handling will output to logger or string depending on showmessages app argument.
+- **Parameters**
 
-Parameters
+    
+    - **put_path** (*str*) – The REST path to perform the get operation on.
+    - **uncache** (*bool*) – flag to not store the data downloaded into monolith.
+    - **headers** (*dict*) – Any additional headers to be added to the request.
+    - **silent** (*bool*) – If False response will be parsed based on service flag and output to a log or
+    stdout. If True response will not be parsed and no message output or error
+    messages raised from the response handler.
+    - **service** (*bool*) – When handling the response, if True registries will be gathered and a full,
+    response will be output if False they will not and response handler will
+    instead return a generic message.
 
-- **put\_path** ( _str_) – The REST path to perform the get operation on.
+- **Returns**
 
-- **uncache** ( _bool_) – flag to not store the data downloaded into monolith.
+    A `redfish.rest.containers.RestResponse` object
 
-- **headers** ( _dict_) – Any additional headers to be added to the request.
-
-- **silent** ( _bool_) – If False response will be parsed based on service flag and output to a log or
-stdout. If True response will not be parsed and no message output or error
-messages raised from the response handler.
-
-- **service** ( _bool_) – When handling the response, if True registries will be gathered and a full,
-response will be output if False they will not and response handler will
-instead return a generic message.
-
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object
-
-`<span class="pre">get_model</span>`( _currdict_, _attributeregistry_, _latestschema=None_, _newarg=None_, _proppath=None_) 
-
+#### get_model(currdict, attributeregistry, latestschema=None, newarg=None, proppath=None)
 Returns a model and possibly a bios model for the current instance’s schema/registry.
 This model can be used to read schema data and validate patches.
+- **Parameters**
 
-Parameters
+    
+    - **currdict** (*dict*) – The dictionary to gather the schema model from.
+    - **attributeregistry** (*dict*) – The current systems attribute registry. If not gathering a bios
+    registry this can be set to None.
+    - **latestschema** (*bool*) – Flag to determine if we should drop the schema version when we try to
+    match schema information. If True, the version will be dropped.
+    - **newargs** (*list*) – List of multi level properties to be gathered.
+    - **proppath** (*str*) – The path of the schema you want to validate (from Location header).
 
-- **currdict** ( _dict_) – The dictionary to gather the schema model from.
+- **Returns**
 
-- **attributeregistry** ( _dict_) – The current systems attribute registry. If not gathering a bios
-registry this can be set to None.
+    model and bios model
 
-- **latestschema** ( _bool_) – Flag to determine if we should drop the schema version when we try to
-match schema information. If True, the version will be dropped.
-
-- **newargs** ( _list_) – List of multi level properties to be gathered.
-
-- **proppath** ( _str_) – The path of the schema you want to validate (from Location header).
-
-
-Returns
-
-model and bios model
-
-`<span class="pre">get_selection</span>`( _selector=None_, _setenable=False_, _path\_refresh=False_) 
-
+#### get_selection(selector=None, setenable=False, path_refresh=False)
 Gathers instances and optionally the attributeregistry based on selector.
+- **Parameters**
 
-Parameters
+    
+    - **selector** (*str.*) – The type selection for the get operation.
+    - **setenable** (*boolean.*) – Flag to determine if registry should also be returned.
+    - **path_refresh** (*boolean.*) – Flag to reload the selected instances.
 
-- **selector** ( _str._) – The type selection for the get operation.
+- **Returns**
 
-- **setenable** ( _boolean._) – Flag to determine if registry should also be returned.
+    returns a list of selected items
 
-- **path\_refresh** ( _boolean._) – Flag to reload the selected instances.
-
-
-Returns
-
-returns a list of selected items
-
-`<span class="pre">getbiosfamilyandversion</span>`() 
-
+#### getbiosfamilyandversion()
 Function that returns the current BIOS version information.
-
-`<span class="pre">getcollectionmembers</span>`( _path_, _fullresp=False_) 
-
+#### getcollectionmembers(path, fullresp=False)
 Returns collection/item lists of the provided path.
+- **Parameters**
 
-Parameters
+    
+    - **path** (*bool.*) – path to return.
+    - **fullresp** – Return full json data instead of only members.
 
-- **path** ( _bool._) – path to return.
+- **Returns**
 
-- **fullresp** – Return full json data instead of only members.
+    list of collection members
 
-
-Returns
-
-list of collection members
-
-`<span class="pre">getidbytype</span>`( _tpe_) 
-
+#### getidbytype(tpe)
 Return a list of URIs that correspond to the supplied type string.
+- **Parameters**
 
-Parameters
+    **tpe** (*string.*) – type string to search for.
 
-**tpe** ( _string._) – type string to search for.
-
-`<span class="pre">getiloversion</span>`( _skipschemas=False_) 
-
+#### getiloversion(skipschemas=False)
 Function that returns the current iLO version.
+- **Parameters**
 
-Parameters
+    **skipschemas** (*bool*) – flag to determine whether to skip schema download. If False, this will
+    also verify if schemas are available.
 
-**skipschemas** ( _bool_) – flag to determine whether to skip schema download. If False, this will
-also verify if schemas are available.
+- **Returns**
 
-Returns
+    returns current iLO version
 
-returns current iLO version
-
-`<span class="pre">getprops</span>`( _selector=None_, _props=None_, _nocontent=None_, _skipnonsetting=True_, _remread=False_, _insts=None_) 
-
+#### getprops(selector=None, props=None, nocontent=None, skipnonsetting=True, remread=False, insts=None)
 Gets properties from a specified selector. If no selector is specified, uses the selector
 property in the app class. Instead of a selector a list of instances to search can be used
 instead. If both **selector** and **insts** are passed, **insts** is used.
 
 Specific values for multi-level dictionaries can be returned by passing each key
 separated by a “/” Ex: Key/Sub-Key/Sub-Sub-Key
+- **Parameters**
 
-Parameters
+    
+    - **selector** (*str*) – The type selection for the get operation.
+    - **skipnonsetting** (*bool*) – Flag to remove non settings path.
+    - **nocontent** (*list*) – Keys not found are added to the list provided.
+    - **remread** (*bool*) – Flag to remove readonly properties.
+    - **props** (*list*) – The keys to search for within current selection.
+    - **insts** (*list*) – List of RisMonolithMemberv100 to be searched for specific keys.
 
-- **selector** ( _str_) – The type selection for the get operation.
+- **Returns**
 
-- **skipnonsetting** ( _bool_) – Flag to remove non settings path.
+    A list of properties found in dictionary form.
 
-- **nocontent** ( _list_) – Keys not found are added to the list provided.
+- **Return type**
 
-- **remread** ( _bool_) – Flag to remove readonly properties.
+    list
 
-- **props** ( _list_) – The keys to search for within current selection.
-
-- **insts** ( _list_) – List of RisMonolithMemberv100 to be searched for specific keys.
-
-
-Returns
-
-A list of properties found in dictionary form.
-
-Return type
-
-list
-
-`<span class="pre">head_handler</span>`( _put\_path_, _silent=False_, _service=False_) 
-
+#### head_handler(put_path, silent=False, service=False)
 Performs the client HTTP HEAD operation with monolith and response handling support.
 Response handling will output to logger or string depending on showmessages app argument.
+- **Parameters**
 
-Parameters
+    
+    - **put_path** (*str*) – The REST path to perform the head operation on.
+    - **silent** (*bool*) – If False response will be parsed based on service flag and output to a log or
+    stdout. If True response will not be parsed and no message output or error
+    messages raised from the response handler.
+    - **service** (*bool*) – When handling the response, if True registries will be gathered and a full,
+    response will be output if False they will not and response handler will
+    instead return a generic message.
 
-- **put\_path** ( _str_) – The REST path to perform the head operation on.
+- **Returns**
 
-- **silent** ( _bool_) – If False response will be parsed based on service flag and output to a log or
-stdout. If True response will not be parsed and no message output or error
-messages raised from the response handler.
+    A `redfish.rest.containers.RestResponse` object containing response data
 
-- **service** ( _bool_) – When handling the response, if True registries will be gathered and a full,
-response will be output if False they will not and response handler will
-instead return a generic message.
-
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object containing response data
-
-`<span class="pre">info</span>`( _selector=None_, _props=None_, _dumpjson=True_, _latestschema=False_) 
-
+#### info(selector=None, props=None, dumpjson=True, latestschema=False)
 Gets schema information for properties from a specified selector. If no selector is
 specified, uses the selector property in the app class. If no properties are specified
 the entire schema dictionary is returned in a list.
+- **Parameters**
 
-Parameters
+    
+    - **selector** (*str*) – The type selection for the info operation.
+    - **props** (*str** or **list*) – The keys to gather schema data for within current selection.
+    - **dumpjson** (*bool*) – Flag to determine if output should be human readable or json schema.
+    - **latestschema** (*bool*) – Flag to determine if we should drop the schema version when we try to
+    match schema information. If True, the version will be dropped.
 
-- **selector** ( _str_) – The type selection for the info operation.
+- **Returns**
 
-- **props** ( _str_ _or_ _list_) – The keys to gather schema data for within current selection.
+    A list of property schema information if dumpjson is True or string if dumpjson is
+    False.
 
-- **dumpjson** ( _bool_) – Flag to determine if output should be human readable or json schema.
+- **Return type**
 
-- **latestschema** ( _bool_) – Flag to determine if we should drop the schema version when we try to
-match schema information. If True, the version will be dropped.
+    list or string
 
-
-Returns
-
-A list of property schema information if dumpjson is True or string if dumpjson is
-False.
-
-Return type
-
-list or string
-
-`<span class="pre">loadset</span>`( _seldict=None_, _fltrvals=(None,None)_, _diffonly=False_, _latestschema=False_, _uniqueoverride=False_, _selector=None_) 
-
+#### loadset(seldict=None, fltrvals=(None, None), diffonly=False, latestschema=False, uniqueoverride=False, selector=None)
 Creates json patches in monolith if the supplied dictionary passes schema validation.
 In the event schemas are unavailable the patches are always added. Patches that are created
-this way are not sent to the server until the [`<span class="pre">commit()</span>`](http://hewlettpackard.github.io#redfish.ris.rmc.RmcApp.commit "redfish.ris.rmc.RmcApp.commit") function is called, sending the
+this way are not sent to the server until the `commit()` function is called, sending the
 patches to the server. A list of patches that have not been sent to the server can be
-returned with the [`<span class="pre">status()</span>`](http://hewlettpackard.github.io#redfish.ris.rmc.RmcApp.status "redfish.ris.rmc.RmcApp.status") function.
+returned with the `status()` function.
+- **Parameters**
 
-Parameters
+    
+    - **selector** (*str*) – The type selection for the loadset operation.
+    - **seldict** (*dict*) – Dictionary with the patches to apply to the selected instances.
+    - **fltrvals** (*tuple*) – The filter values for the operation (Key,Val). If a selector returns
+    multiple instances fltrvals can filter the instances by a key/value pair,
+    limiting the returned instances to the one you want. If no filter is
+    supplied the patch dictionary will be applied to all instances.
+    - **latestschema** (*bool*) – Flag to determine if we should drop the schema version when we try to
+    match schema information. If True, the version will be dropped.
+    - **diffonly** (*bool*) – flag to differentiate only existing properties.
+    - **uniqueoverride** (*bool*) – Flag to determine if system unique properties should also be patched.
+    If this is True, then unique properties will be patched.
 
-- **selector** ( _str_) – The type selection for the loadset operation.
+- **Returns**
 
-- **seldict** ( _dict_) – Dictionary with the patches to apply to the selected instances.
+    returns a list of properties that have successfully been set
 
-- **fltrvals** ( _tuple_) – The filter values for the operation (Key,Val). If a selector returns
-multiple instances fltrvals can filter the instances by a key/value pair,
-limiting the returned instances to the one you want. If no filter is
-supplied the patch dictionary will be applied to all instances.
-
-- **latestschema** ( _bool_) – Flag to determine if we should drop the schema version when we try to
-match schema information. If True, the version will be dropped.
-
-- **diffonly** ( _bool_) – flag to differentiate only existing properties.
-
-- **uniqueoverride** ( _bool_) – Flag to determine if system unique properties should also be patched.
-If this is True, then unique properties will be patched.
-
-
-Returns
-
-returns a list of properties that have successfully been set
-
-`<span class="pre">login</span>`( _username=None_, _password=None_, _base\_url='blobstore://.'_, _path=None_, _skipbuild=False_, _includelogs=False_, _biospassword=None_, _is\_redfish=False_, _proxy=None_, _ssl\_cert=None_, _user\_ca\_cert\_data=None_) 
-
+#### login(username=None, password=None, sessionid=None, base_url='blobstore://.', path=None, skipbuild=False, includelogs=False, biospassword=None, is_redfish=False, proxy=None, ssl_cert=None, user_ca_cert_data=None, json_out=False)
 Performs a login on a the server specified by the keyword arguments. Will also create
-a monolith, client, and update the compatibility classes for the app instance. If base\_url
+a monolith, client, and update the compatibility classes for the app instance. If base_url
 is not included the login is assumed to be locally on the OS.
+- **Parameters**
 
-Parameters
+    
+    - **username** – The user name required to login to server.
+    - **password** (*str*) – The password credentials required to login.
+    - **base_url** (*str*) – The redfish host name or ip address to login to.
+    - **path** (*str*) – The path to initiate the monolith crawl from. If None, it will start from the
+    root. See monolith documentation on how the path is used.
+    - **proxy** (*str*) – The proxy required for connection (if any).
+    - **ssl_cert** (*str*) – The path to the CA bundle or SSL certificate to use with connection
+    (if any).
+    - **user_ca_cert_data** – Dictionary of user certificate data for iLO Certificate-based
+    authentication including iLO User TLS certificate, iLO User CA Root Key,           iLO User CA Root Key Password (for encrypted CAs)
+    - **skipbuild** (*bool*) – The flag to determine monolith download. If True, monolith will be
+    initiated empty, if False will build the monolith.
+    - **includelogs** (*bool*) – The flag to determine id logs should be downloaded in the crawl.
+    - **biospassword** (*str*) – The BIOS password for the server if set.
+    - **is_redfish** (*bool*) – If True, a Redfish specific header (OData) will be
+    added to every request. Only required if the system has both LegacyREST and Redfish.
 
-- **username** – The user name required to login to server.
+- **Type**
 
-- **password** ( _str_) – The password credentials required to login.
+    str
 
-- **base\_url** ( _str_) – The redfish host name or ip address to login to.
+- **Type**
 
-- **path** ( _str_) – The path to initiate the monolith crawl from. If None, it will start from the
-root. See monolith documentation on how the path is used.
+    user_ca_pass: str
 
-- **proxy** ( _str_) – The proxy required for connection (if any).
-
-- **ssl\_cert** ( _str_) – The path to the CA bundle or SSL certificate to use with connection
-(if any).
-
-- **user\_ca\_cert\_data** – Dictionary of user certificate data for iLO Certificate-based
-authentication including iLO User TLS certificate, iLO User CA Root Key, iLO User CA Root Key Password (for encrypted CAs)
-
-- **skipbuild** ( _bool_) – The flag to determine monolith download. If True, monolith will be
-initiated empty, if False will build the monolith.
-
-- **includelogs** ( _bool_) – The flag to determine id logs should be downloaded in the crawl.
-
-- **biospassword** ( _str_) – The BIOS password for the server if set.
-
-- **is\_redfish** ( _bool_) – If True, a Redfish specific header (OData) will be
-added to every request. Only required if the system has both LegacyREST and Redfish.
-
-
-Type
-
-str
-
-Type
-
-user\_ca\_pass: str
-
-`<span class="pre">logout</span>`( _url=None_) 
-
+#### logout(url=None)
 Performs a logout of the server and prepares the app for another system, setting app
 variables to default values.
+- **Parameters**
 
-Parameters
+    **url** (*str*) – The URL for the logout request. Only needed when using a cache.
 
-**url** ( _str_) – The URL for the logout request. Only needed when using a cache.
 
-_property_ `<span class="pre">monolith</span>` 
+#### property monolith()
 
 Get the monolith from the current client
-
-`<span class="pre">patch_handler</span>`( _put\_path_, _body_, _headers=None_, _silent=False_, _service=False_, _optionalpassword=None_) 
-
+#### patch_handler(put_path, body, headers=None, silent=False, service=False, optionalpassword=None)
 Performs the client HTTP PATCH operation with monolith and response handling support.
 Response handling will output to logger or string depending on showmessages app argument.
+- **Parameters**
 
-Parameters
+    
+    - **put_path** (*str*) – The REST path to perform the patch operation on.
+    - **body** (*dict*) – the body to perform the operation with.
+    - **headers** (*dict*) – Any additional headers to be added to the request.
+    - **optionalpassword** (*str*) – The bios password if it is required for the operation.
+    - **silent** (*bool*) – If False response will be parsed based on service flag and output to a log or
+    stdout. If True response will not be parsed and no message output or error
+    messages raised from the response handler.
+    - **service** (*bool*) – When handling the response, if True registries will be gathered and a full,
+    response will be output if False they will not and response handler will
+    instead return a generic message.
 
-- **put\_path** ( _str_) – The REST path to perform the patch operation on.
+- **Returns**
 
-- **body** ( _dict_) – the body to perform the operation with.
+    A `redfish.rest.containers.RestResponse` object containing response data
 
-- **headers** ( _dict_) – Any additional headers to be added to the request.
-
-- **optionalpassword** ( _str_) – The bios password if it is required for the operation.
-
-- **silent** ( _bool_) – If False response will be parsed based on service flag and output to a log or
-stdout. If True response will not be parsed and no message output or error
-messages raised from the response handler.
-
-- **service** ( _bool_) – When handling the response, if True registries will be gathered and a full,
-response will be output if False they will not and response handler will
-instead return a generic message.
-
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object containing response data
-
-`<span class="pre">post_handler</span>`( _put\_path_, _body_, _headers=None_, _silent=False_, _service=False_) 
-
+#### post_handler(put_path, body, headers=None, silent=False, service=False)
 Performs the client HTTP POST operation with monolith and response handling support.
 Response handling will output to logger or string depending on showmessages app argument.
+- **Parameters**
 
-Parameters
+    
+    - **put_path** (*str*) – The REST path to perform the post operation on.
+    - **body** (*dict*) – the body to perform the operation with.
+    - **headers** (*dict*) – Any additional headers to be added to the request.
+    - **silent** (*bool*) – If False response will be parsed based on service flag and output to a log or
+    stdout. If True response will not be parsed and no message output or error
+    messages raised from the response handler.
+    - **service** (*bool*) – When handling the response, if True registries will be gathered and a full,
+    response will be output if False they will not and response handler will
+    instead return a generic message.
 
-- **put\_path** ( _str_) – The REST path to perform the post operation on.
+- **Returns**
 
-- **body** ( _dict_) – the body to perform the operation with.
+    A `redfish.rest.containers.RestResponse` object containing response data
 
-- **headers** ( _dict_) – Any additional headers to be added to the request.
-
-- **silent** ( _bool_) – If False response will be parsed based on service flag and output to a log or
-stdout. If True response will not be parsed and no message output or error
-messages raised from the response handler.
-
-- **service** ( _bool_) – When handling the response, if True registries will be gathered and a full,
-response will be output if False they will not and response handler will
-instead return a generic message.
-
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object containing response data
-
-`<span class="pre">put_handler</span>`( _put\_path_, _body_, _headers=None_, _silent=False_, _optionalpassword=None_, _service=False_) 
-
+#### put_handler(put_path, body, headers=None, silent=False, optionalpassword=None, service=False)
 Performs the client HTTP PUT operation with monolith and response handling support.
 Response handling will output to logger or string depending on showmessages app argument.
+- **Parameters**
 
-Parameters
+    
+    - **put_path** (*str*) – The REST path to perform the put operation on.
+    - **body** (*dict*) – the body to perform the operation with.
+    - **headers** (*dict*) – Any additional headers to be added to the request.
+    - **optionalpassword** (*str*) – The bios password if it is required for the operation.
+    - **silent** (*bool*) – If False response will be parsed based on service flag and output to a log or
+    stdout. If True response will not be parsed and no message output or error
+    messages raised from the response handler.
+    - **service** (*bool*) – When handling the response, if True registries will be gathered and a full,
+    response will be output if False they will not and response handler will
+    instead return a generic message.
 
-- **put\_path** ( _str_) – The REST path to perform the put operation on.
+- **Returns**
 
-- **body** ( _dict_) – the body to perform the operation with.
+    A `redfish.rest.containers.RestResponse` object containing response data
 
-- **headers** ( _dict_) – Any additional headers to be added to the request.
-
-- **optionalpassword** ( _str_) – The bios password if it is required for the operation.
-
-- **silent** ( _bool_) – If False response will be parsed based on service flag and output to a log or
-stdout. If True response will not be parsed and no message output or error
-messages raised from the response handler.
-
-- **service** ( _bool_) – When handling the response, if True registries will be gathered and a full,
-response will be output if False they will not and response handler will
-instead return a generic message.
-
-
-Returns
-
-A [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse") object containing response data
-
-`<span class="pre">removereadonlyprops</span>`( _currdict_, _emptyraise=False_, _removeunique=True_, _specify\_props=None_) 
-
+#### removereadonlyprops(currdict, emptyraise=False, removeunique=True, specify_props=None)
 Remove read only properties from a dictionary. Requires schemas to be available.
+- **Parameters**
 
-Parameters
+    
+    - **currdict** (*dictionary*) – The dictionary to remove read only properties from.
+    - **emptyraise** (*boolean*) – Flag to raise an empty error for handling and failure to parse.
 
-- **currdict** ( _dictionary_) – The dictionary to remove read only properties from.
+- **Parm specify_props**
 
-- **emptyraise** ( _boolean_) – Flag to raise an empty error for handling and failure to parse.
+    Optionally set list of properties to be removed instead of the default.
 
-
-Parm specify\_props
-
-Optionally set list of properties to be removed instead of the default.
-
-`<span class="pre">restore</span>`( _creds=None_, _enc=False_) 
-
+#### restore(creds=None, enc=False)
 Restores the monolith from cache. Used to load a monolith data back into a new app
 class. Keyword arguments are only needed in a local client when in a high security mode.
+- **Parameters**
 
-Parameters
+    
+    - **creds** (*str*) – Credentials to create the client with.
+    - **enc** (*bool*) – Flag to determine if encoding functions are being used. True if being used false
+    if not.
 
-- **creds** ( _str_) – Credentials to create the client with.
-
-- **enc** ( _bool_) – Flag to determine if encoding functions are being used. True if being used false
-if not.
-
-
-`<span class="pre">save</span>`() 
-
+#### save()
 Updates the cache with the latest monolith data.
-
-`<span class="pre">select</span>`( _selector=None_, _fltrvals=(None,None)_, _path\_refresh=False_) 
-
+#### select(selector=None, fltrvals=(None, None), path_refresh=False)
 Selects instances based on selector and filter values. The select specified is saved in
 the app for further use. If another selector is sent, it overwrites the current one.
+- **Parameters**
 
-Parameters
+    
+    - **selector** (*str*) – The type (@odata.type for Redfish) to select.
+    - **fltrvals** (*tuple*) – The filter values for the select operation (Key,Val). If a selector returns
+    multiple instances fltrvals can filter the instances by a key/value pair,
+    limiting the returned instances to the one you want.
+    - **path_refresh** (*bool*) – The flag to reload the selected instances. If True, each instance will be
+    grabbed again from the server to make sure responses are up to date.
 
-- **selector** ( _str_) – The type (@odata.type for Redfish) to select.
+- **Returns**
 
-- **fltrvals** ( _tuple_) – The filter values for the select operation (Key,Val). If a selector returns
-multiple instances fltrvals can filter the instances by a key/value pair,
-limiting the returned instances to the one you want.
+    A list of selected monolith member instances.
 
-- **path\_refresh** ( _bool_) – The flag to reload the selected instances. If True, each instance will be
-grabbed again from the server to make sure responses are up to date.
+- **Return type**
+
+    RisMonolithMemberv100
 
 
-Returns
-
-A list of selected monolith member instances.
-
-Return type
-
-[RisMonolithMemberv100](http://hewlettpackard.github.io#redfish.ris.ris.RisMonolithMemberv100 "redfish.ris.ris.RisMonolithMemberv100")
-
-_property_ `<span class="pre">selector</span>` 
+#### property selector()
 
 The selector that will be used to gather data if no selector or instance argument is
 passed.
-
-`<span class="pre">set_decode_funct</span>`( _funct_) 
-
+#### set_decode_funct(funct)
 Set the decoding function for cache to use. Is used in conjunction with the
-set\_encode\_funct to turn the encoded data back into a usable string.
+set_encode_funct to turn the encoded data back into a usable string.
+- **Parameters**
 
-Parameters
+    **funct** (*function*) – The function to use for decoding data
 
-**funct** ( _function_) – The function to use for decoding data
-
-`<span class="pre">set_encode_funct</span>`( _funct_) 
-
+#### set_encode_funct(funct)
 Set the encoding function for cache to use. Can be used to protect sensitive data when
 it is at rest.
+- **Parameters**
 
-Parameters
+    **funct** (*function*) – The function to use for encoding data
 
-**funct** ( _function_) – The function to use for encoding data
-
-`<span class="pre">status</span>`() 
-
+#### status()
 Returns all pending changes that have not been committed yet.
-
-`<span class="pre">types</span>`( _fulltypes=False_) 
-
+#### types(fulltypes=False)
 Returns a list of types available to be queried and selected with monolith.
+- **Parameters**
 
-Parameters
+    **fulltypes** (*bool*) – Flag to determine if types return Redfish full name, if False will return
+    a shortened version of the type string.
 
-**fulltypes** ( _bool_) – Flag to determine if types return Redfish full name, if False will return
-a shortened version of the type string.
+- **Returns**
 
-Returns
+    A list of type strings.
 
-A list of type strings.
+- **Return type**
 
-Return type
+    list
 
-list
 
-_property_ `<span class="pre">validationmanager</span>` 
+#### property validationmanager()
 
 Get the valdation manager
 
-### redfish.ris.rmc\_helper 
+### redfish.ris.rmc_helper
 
 RMC helper file. Includes RMC errors and caching functionality for monolith.
 
-_exception_ `redfish.ris.rmc_helper.CurrentlyLoggedInError `
+#### exception redfish.ris.rmc_helper.CurrentlyLoggedInError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when attempting to select an instance that does not exist
 
-_exception_ `redfish.ris.rmc_helper.EmptyRaiseForEAFP `
+#### exception redfish.ris.rmc_helper.EmptyRaiseForEAFP()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when you need to check for issues and take different action.
 
-_exception_ `redfish.ris.rmc_helper.FailureDuringCommitError( _message_) `
+#### exception redfish.ris.rmc_helper.FailureDuringCommitError(message)
 
-Bases: [`<span class="pre">redfish.ris.rmc_helper.RdmcError</span>`](http://hewlettpackard.github.io#redfish.ris.rmc_helper.RdmcError "redfish.ris.rmc_helper.RdmcError")
+Bases: `RdmcError`
 
 Raised when there is an error while committing.
 
-_exception_ `redfish.ris.rmc_helper.IdTokenError `
+#### exception redfish.ris.rmc_helper.IdTokenError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when user is not authorized to complete the operation.
 
-_exception_ `redfish.ris.rmc_helper.IloResponseError `
+#### exception redfish.ris.rmc_helper.IloLicenseError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
+
+Raised when the proper iLO license is not available for a command
+
+#### exception redfish.ris.rmc_helper.IloResponseError()
+
+Bases: `Exception`
 
 Raised when iLO returns with a non 2XX response.
 
-_exception_ `redfish.ris.rmc_helper.IncompatibleiLOVersionError `
+#### exception redfish.ris.rmc_helper.IncompatibleiLOVersionError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when the iLO version is above or below the required version.
 
-_exception_ `redfish.ris.rmc_helper.IncorrectPropValue `
+#### exception redfish.ris.rmc_helper.IncorrectPropValue()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when you pass an incorrect value to for the associated property.
 
-_exception_ `redfish.ris.rmc_helper.InstanceNotFoundError `
+#### exception redfish.ris.rmc_helper.InstanceNotFoundError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when attempting to select an instance that does not exist.
 
-_exception_ `redfish.ris.rmc_helper.InvalidCommandLineError( _message_) `
+#### exception redfish.ris.rmc_helper.InvalidCommandLineError(message)
 
-Bases: [`<span class="pre">redfish.ris.rmc_helper.RdmcError</span>`](http://hewlettpackard.github.io#redfish.ris.rmc_helper.RdmcError "redfish.ris.rmc_helper.RdmcError")
+Bases: `RdmcError`
 
 Raised when user enter incorrect command line arguments
 
-_exception_ `redfish.ris.rmc_helper.InvalidPathError `
+#### exception redfish.ris.rmc_helper.InvalidPathError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when requested path is not found.
 
-_exception_ `redfish.ris.rmc_helper.InvalidSelectionError `
+#### exception redfish.ris.rmc_helper.InvalidSelectionError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when selection argument fails to match anything.
 
-_exception_ `redfish.ris.rmc_helper.LoadSkipSettingError `
+#### exception redfish.ris.rmc_helper.LoadSkipSettingError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when one or more settings are absent in given server.
 
-_exception_ `redfish.ris.rmc_helper.NothingSelectedError `
+#### exception redfish.ris.rmc_helper.NothingSelectedError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when attempting to access an object without first selecting it.
 
-_exception_ `redfish.ris.rmc_helper.NothingSelectedFilterError `
+#### exception redfish.ris.rmc_helper.NothingSelectedFilterError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when the filter applied doesn’t match any selection (general).
 
-_exception_ `redfish.ris.rmc_helper.NothingSelectedSetError `
+#### exception redfish.ris.rmc_helper.NothingSelectedSetError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when attempting to access an object without first selecting it (In set).
 
-_exception_ `redfish.ris.rmc_helper.RdmcError( _message_) `
+#### exception redfish.ris.rmc_helper.RdmcError(message)
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Base class for all RDMC Exceptions
 
-_class_ `redfish.ris.rmc_helper.RmcCacheManager( _rmc_) `
+#### class redfish.ris.rmc_helper.RmcCacheManager(rmc)
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 Manages caching/uncaching of data for RmcApp.
+- **Parameters**
 
-Parameters
+    **rmc** (`redfish.ris.rmc.RmcApp`) – RmcApp to be managed
 
-**rmc** ( [`<span class="pre">redfish.ris.rmc.RmcApp</span>`](http://hewlettpackard.github.io#redfish.ris.rmc.RmcApp "redfish.ris.rmc.RmcApp")) – RmcApp to be managed
 
-_class_ `redfish.ris.rmc_helper.RmcFileCacheManager( _rmc_) `
+#### class redfish.ris.rmc_helper.RmcFileCacheManager(rmc)
 
-Bases: [`<span class="pre">redfish.ris.rmc_helper.RmcCacheManager</span>`](http://hewlettpackard.github.io#redfish.ris.rmc_helper.RmcCacheManager "redfish.ris.rmc_helper.RmcCacheManager")
+Bases: `RmcCacheManager`
 
 RMC file cache manager.
+- **Parameters**
 
-Parameters
+    **rmc** (`redfish.ris.rmc.RmcApp`) – RmcApp to be managed
 
-**rmc** ( [`<span class="pre">redfish.ris.rmc.RmcApp</span>`](http://hewlettpackard.github.io#redfish.ris.rmc.RmcApp "redfish.ris.rmc.RmcApp")) – RmcApp to be managed
-
-`<span class="pre">cache_rmc</span>`() 
-
+#### cache_rmc()
 Saves monolith data to the file path specified in RmcApp.
-
-`<span class="pre">logout_del_function</span>`( _url=None_) 
-
+#### logout_del_function(url=None)
 Searches for a specific url in cache or returns all urls and returns them for RmcApp
 to run logout on, clearing the session.
+- **Parameters**
 
-Parameters
+    **url** (*str*) – The URL to pass back for logout.
 
-**url** ( _str_) – The URL to pass back for logout.
-
-`<span class="pre">uncache_rmc</span>`( _creds=None_, _enc=False_) 
-
+#### uncache_rmc(creds=None, enc=False)
 Uncaches monolith data from cache location specified by RmcApp.
+- **Parameters**
 
-Parameters
-
-- **creds** ( _dict_) – Dictionary of username and password.
-Only required for restoring high security local calls.
-
-- **enc** ( _bool_) – Flag if credentials passed are encoded.
+    
+    - **creds** (*dict*) – Dictionary of username and password.
+    Only required for restoring high security local calls.
+    - **enc** (*bool*) – Flag if credentials passed are encoded.
 
 
-_exception_ `redfish.ris.rmc_helper.UnableToObtainIloVersionError `
+#### exception redfish.ris.rmc_helper.ScepenabledError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
+
+Raised when the generation csr or deletion of https cert is issues when scep is enabled
+
+#### exception redfish.ris.rmc_helper.UnableToObtainIloVersionError()
+
+Bases: `Exception`
 
 Raised when iloversion is missing from default path.
 
-_exception_ `redfish.ris.rmc_helper.UndefinedClientError `
+#### exception redfish.ris.rmc_helper.UndefinedClientError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when there are no clients active (usually when user hasn’t logged in).
 
-_exception_ `redfish.ris.rmc_helper.UserNotAdminError( _message_) `
+#### exception redfish.ris.rmc_helper.UserNotAdminError(message)
 
-Bases: [`<span class="pre">redfish.ris.rmc_helper.RdmcError</span>`](http://hewlettpackard.github.io#redfish.ris.rmc_helper.RdmcError "redfish.ris.rmc_helper.RdmcError")
+Bases: `RdmcError`
 
 Raised when user doesn’t have admin priviledges, but they are required.
 
-_exception_ `redfish.ris.rmc_helper.ValidationError( _errlist_) `
+#### exception redfish.ris.rmc_helper.ValidationError(errlist)
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when there is a problem with user input.
-
-`<span class="pre">get_errors</span>`() 
-
+#### get_errors()
 Returns error list.
 
-_exception_ `redfish.ris.rmc_helper.ValueChangedError `
+#### exception redfish.ris.rmc_helper.ValueChangedError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised if user tries to set/commit a value when monolith has older data.
 
-### redfish.ris.resp\_handler 
+### redfish.ris.resp_handler
 
 Error response handler for Redfish or LegacryRest responses. Extended information only available
 with registries available on system, otherwise will return generic error responses.
 
-_class_ `redfish.ris.resp_handler.ResponseHandler( _validaition\_mgr_, _msg\_type_) `
+#### class redfish.ris.resp_handler.ResponseHandler(validaition_mgr, msg_type)
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 Class to handle error responses from the server.
+- **Parameters**
 
-Parameters
+    
+    - **validation_mgr** (*ValidationManager*) – ValidationManager instance to gather registries if needed. Available
+    in an RmcApp class as an attribute.
+    - **msg_reg_type** (*str*) – Redfish (#MessageRegistry.) or LegacyRest (MessageRegistry.)
+    message registry string. Available in Typesandpathdefines class.
 
-- **validation\_mgr** ( [_ValidationManager_](http://hewlettpackard.github.io#redfish.ris.validation.ValidationManager "redfish.ris.validation.ValidationManager")) – ValidationManager instance to gather registries if needed. Available
-in an RmcApp class as an attribute.
-
-- **msg\_reg\_type** ( _str_) – Redfish (#MessageRegistry.) or LegacyRest (MessageRegistry.)
-message registry string. Available in Typesandpathdefines class.
-
-
-`<span class="pre">get_error_messages</span>`( _regtype=None_) 
-
+#### get_error_messages(regtype=None)
 Returns registry error messages. Can specify a specific registry to return by Id.
+- **Parameters**
 
-Parameters
+    **regtype** (*str*) – Id of registry type to add to list.
 
-**regtype** ( _str_) – Id of registry type to add to list.
+- **Returns**
 
-Returns
+    A list of error messages.
 
-A list of error messages.
-
-`<span class="pre">get_message_data</span>`( _resp\_data_, _dl\_reg=False_) 
-
+#### get_message_data(resp_data, dl_reg=False)
 Obtain relevant keys from rest response.
+- **Parameters**
 
-Parameters
+    **resp** (`redfish.rest.containers.RestResponse`) – response
 
-**resp** ( [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse")) – response
+- **Returns**
 
-Returns
+    list of error response dictionaries
 
-list of error response dictionaries
-
-`<span class="pre">message_handler</span>`( _response\_data_, _verbosity=0_, _message\_text='NoResponse'_, _dl\_reg=False_) 
-
+#### message_handler(response_data, verbosity=0, message_text='No Response', dl_reg=False)
 Prints or logs parsed MessageId response based on verbosity level and returns the
 following message information in a list:
+* MessageArgs
+* MessageId
+* RestResponse status
+* Resolution
+* Full error message text
+- **Parameters**
 
-- MessageArgs
+    
+    - **response_data** (`redfish.rest.containers.RestResponse`) – message response of a call.
+    - **verbosity** (*int*) – Optional verbosity level. Only modifies what is output to log or screen.
+    - **message_text** (*str*) – Response message text. If not provided, message_handler will attempt to
+    parse it from the RestResponse and registries.
+    - **dl_reg** (*bool*) – Flag to download registry. If this is set to True a generic message response
+    will be returned instead of gathered from registries.
 
-- MessageId
+- **Returns**
 
-- RestResponse status
+    List of error response dictionaries.
 
-- Resolution
-
-- Full error message text
-
-
-Parameters
-
-- **response\_data** ( [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse")) – message response of a call.
-
-- **verbosity** ( _int_) – Optional verbosity level. Only modifies what is output to log or screen.
-
-- **message\_text** ( _str_) – Response message text. If not provided, message\_handler will attempt to
-parse it from the RestResponse and registries.
-
-- **dl\_reg** ( _bool_) – Flag to download registry. If this is set to True a generic message response
-will be returned instead of gathered from registries.
-
-
-Returns
-
-List of error response dictionaries.
-
-`<span class="pre">output_resp</span>`( _response_, _dl\_reg=False_, _verbosity=1_) 
-
+#### output_resp(response, dl_reg=False, verbosity=1)
 Prints or logs parsed MessageId response. Will raise an IloResponseError or return
 a list of message response data which includes the information returned from
-message\_handler.
+message_handler.
+- **Parameters**
 
-Parameters
+    
+    - **response** (`redfish.rest.containers.RestResponse`) – message response of a call.
+    - **dl_reg** (*bool*) – Flag to download registry. If this is set to True a generic message response
+    will be returned instead of gathered from registries.
+    - **verbosity** (*int*) – Optional verbosity level. Only modifies what is output to log or screen.
 
-- **response** ( [`<span class="pre">redfish.rest.containers.RestResponse</span>`](http://hewlettpackard.github.io#redfish.rest.containers.RestResponse "redfish.rest.containers.RestResponse")) – message response of a call.
+- **Returns**
 
-- **dl\_reg** ( _bool_) – Flag to download registry. If this is set to True a generic message response
-will be returned instead of gathered from registries.
+    List of error response dictionaries.
 
-- **verbosity** ( _int_) – Optional verbosity level. Only modifies what is output to log or screen.
-
-
-Returns
-
-List of error response dictionaries.
-
-`<span class="pre">verbosity_levels</span>`( _message_, _messageid=''_, _description=''_, _resolution=''_, _response\_status=None_, _verbosity=0_, _dl\_reg=False_) 
-
+#### verbosity_levels(message, messageid=' ', description=' ', resolution=' ', response_status=None, verbosity=0, dl_reg=False)
 Formatting based on verbosity level.
+- **Parameters**
 
-Parameters
+    
+    - **message** (*str*) – Message from BMC response combined with the registry model/schema.
+    - **messageid** (*str*) – Error code as classified by the BMC’s error code registry.
+    - **resolution** (*str*) – Message from BMC registry model/schema with the suggested
+    resolution for the given error.
+    - **response_status** (*int*) – HTTP response status code.
+    - **verbosity** (*int*) – Option to set/control output message (stderr) verbosity.
 
-- **message** ( _str_) – Message from BMC response combined with the registry model/schema.
+- **Returns**
 
-- **messageid** ( _str_) – Error code as classified by the BMC’s error code registry.
-
-- **resolution** ( _str_) – Message from BMC registry model/schema with the suggested
-resolution for the given error.
-
-- **resposne\_status** – HTTP response status code.
-
-- **verbosity** ( _int_) – Option to set/control output message (stderr) verbosity.
-
-
-Returns
-
-Message to be returned to caller.
-
-### redfish.ris.validation 
+    Message to be returned to caller.
+### redfish.ris.validation
 
 Handles schema and registry gathering as well as schema parsing and validation.
 
-_class_ `redfish.ris.validation.BaseValidator( _d_) `
+#### class redfish.ris.validation.BaseValidator(d)
 
-Bases: `<span class="pre">redfish.rest.containers.RisObject</span>`
+Bases: `RisObject`
 
 Base class for all validators.
-
-`<span class="pre">common_print_help</span>`( _name_) 
-
+#### common_print_help(name)
 Common human readable schema data.
+- **Parameters**
 
-Parameters
+    **name** (*str*) – clean name for outputting.
 
-**name** ( _str_) – clean name for outputting.
+- **Returns**
 
-Returns
+    A human readable string of schema data.
 
-A human readable string of schema data.
-
-`<span class="pre">is_array</span>`( _attrentry_, _arrval_, _name_) 
-
+#### is_array(attrentry, arrval, name)
 Validate that the given value is an array type.
+- **Parameters**
 
-Parameters
+    
+    - **attrentry** (*dict*) – Registry model entry used for validation.
+    - **attrval** (*str*) – Value of Key to validate.
 
-- **attrentry** ( _dict_) – Registry model entry used for validation.
+- **Returns**
 
-- **attrval** ( _str_) – Value of Key to validate.
+    A boolean based on whether type is array and the value is valid for array type.
 
-
-Returns
-
-A boolean based on whether type is array and the value is valid for array type.
-
-`<span class="pre">is_arrtype</span>`( _attrentry_) 
-
+#### is_arrtype(attrentry)
 Validate that the type is an array.
+- **Parameters**
 
-Parameters
+    **attrentry** (*dict*) – Registry model entry used for validation.
 
-**attrentry** ( _dict_) – Registry model entry used for validation.
+- **Returns**
 
-Returns
+    A boolean based on whether type is an array.
 
-A boolean based on whether type is an array.
-
-`<span class="pre">validate</span>`() 
-
+#### validate()
 Overridable function for validation
 
-_class_ `redfish.ris.validation.BoolValidator( _d_) `
+#### class redfish.ris.validation.BoolValidator(d)
 
-Bases: [`<span class="pre">redfish.ris.validation.BaseValidator</span>`](http://hewlettpackard.github.io#redfish.ris.validation.BaseValidator "redfish.ris.validation.BaseValidator")
+Bases: `BaseValidator`
 
 Bool validator class
-
-_static_ `<span class="pre">is_type</span>`( _attrentry_) 
-
+#### _static_ is_type(attrentry)
 Validate that the type is boolean.
+- **Parameters**
 
-Parameters
+    **attrentry** (*dict*) – Registry model entry used for validation.
 
-**attrentry** ( _dict_) – Registry model entry used for validation.
+- **Returns**
 
-Returns
+    A boolean based on whether type is boolean.
 
-A boolean based on whether type is boolean.
-
-`<span class="pre">print_help</span>`( _name_) 
-
+#### print_help(name)
 Human readable schema information specific to Boolean data.
+- **Parameters**
 
-Parameters
+    **name** (*str*) – Clean name for outputting human readable info.
 
-**name** ( _str_) – Clean name for outputting human readable info.
+- **Returns**
 
-Returns
+    A human readable string of schema data.
 
-A human readable string of schema data.
-
-`<span class="pre">validate</span>`( _newval_, _name_) 
-
+#### validate(newval, name)
 Validate against schemas.
+- **Parameters**
 
-Parameters
+    
+    - **newval** (*list*) – New value to be used for validation in a list
+    - **name** (*str*) – Clean name for outputting human readable info.
 
-- **newval** ( _list_) – New value to be used for validation in a list
+- **Returns**
 
-- **name** ( _str_) – Clean name for outputting human readable info.
+    An error if value is invalid.
 
 
-Returns
+#### class redfish.ris.validation.EnumValidator(d)
 
-An error if value is invalid.
-
-_class_ `redfish.ris.validation.EnumValidator( _d_) `
-
-Bases: [`<span class="pre">redfish.ris.validation.BaseValidator</span>`](http://hewlettpackard.github.io#redfish.ris.validation.BaseValidator "redfish.ris.validation.BaseValidator")
+Bases: `BaseValidator`
 
 Enum validator class
-
-_static_ `<span class="pre">is_type</span>`( _attrentry_) 
-
+#### _static_ is_type(attrentry)
 Validate that the type is enumeration.
+- **Parameters**
 
-Parameters
+    **attrentry** (*dict*) – Registry model entry used for validation.
 
-**attrentry** ( _dict_) – Registry model entry used for validation.
+- **Returns**
 
-Returns
+    A boolean based on whether type is eneumeration.
 
-A boolean based on whether type is eneumeration.
-
-`<span class="pre">print_help</span>`( _name_) 
-
+#### print_help(name)
 Human readable schema information specific to Enum data.
+- **Parameters**
 
-Parameters
+    **name** (*str*) – Clean name for outputting human readable info.
 
-**name** ( _str_) – Clean name for outputting human readable info.
+- **Returns**
 
-Returns
+    A human readable string of schema data.
 
-A human readable string of schema data.
-
-`<span class="pre">validate</span>`( _keyval_, _name_) 
-
+#### validate(keyval, name)
 Validate against schemas.
+- **Parameters**
 
-Parameters
+    
+    - **keyval** (*list*) – New value to be used for validation in a list
+    - **name** (*str*) – Clean name for outputting human readable info.
 
-- **keyval** ( _list_) – New value to be used for validation in a list
+- **Returns**
 
-- **name** ( _str_) – Clean name for outputting human readable info.
+    An error if validation fails.
 
 
-Returns
+#### class redfish.ris.validation.HpPropertiesRegistry(d)
 
-An error if validation fails.
-
-_class_ `redfish.ris.validation.HpPropertiesRegistry( _d_) `
-
-Bases: `<span class="pre">redfish.rest.containers.RisObject</span>`
+Bases: `RisObject`
 
 Models a schema or bios attribute registry. Registry model.
-
-`<span class="pre">get_validator</span>`( _attrname_, _newargs=None_, _oneof=None_) 
-
+#### get_validator(attrname, newargs=None, oneof=None)
 Returns attribute validator type.
+- **Parameters**
 
-Parameters
+    
+    - **attrname** (*str*) – attribute name to validate. Ex: In A/B/C, this will be A.
+    - **newargs** (*list*) – List of multi level properties to be modified. Ex: In A/B/C this will be
+    a list of B and C.
+    - **oneof** (*string*) – Special string for “oneof” options within validation.
 
-- **attrname** ( _str_) – attribute name to validate. Ex: In A/B/C, this will be A.
+- **Returns**
 
-- **newargs** ( _list_) – List of multi level properties to be modified. Ex: In A/B/C this will be
-a list of B and C.
+    The validator type class for the property passed.
 
-- **oneof** ( _string_) – Special string for “oneof” options within validation.
-
-
-Returns
-
-The validator type class for the property passed.
-
-`<span class="pre">nulltypevalidationcheck</span>`( _attrval=None_, _attrentry=None_) 
-
+#### nulltypevalidationcheck(attrval=None, attrentry=None)
 Function to validate null attributes against iLO schema
+- **Parameters**
 
-Parameters
+    
+    - **attrentry** (*str*) – Key of property to validate.
+    - **attrval** (*str*) – Value of Key to validate.
 
-- **attrentry** ( _str_) – Key of property to validate.
+- **Returns**
 
-- **attrval** ( _str_) – Value of Key to validate.
+    True if entry is null and valid.
 
-
-Returns
-
-True if entry is null and valid.
-
-`<span class="pre">validate_attribute</span>`( _attrentry_, _attrvallist_, _name_) 
-
+#### validate_attribute(attrentry, attrvallist, name)
 Function to validate attribute against its schema.
+- **Parameters**
 
-Parameters
+    
+    - **attrentry** (*str*) – Key of property to validate.
+    - **attrval** (*str*) – Value of Key to validate.
+    - **name** (*str*) – Clean name for outputting information to users.
 
-- **attrentry** ( _str_) – Key of property to validate.
+- **Returns**
 
-- **attrval** ( _str_) – Value of Key to validate.
+    returns list with validated attributes
 
-- **name** ( _str_) – Clean name for outputting information to users.
-
-
-Returns
-
-returns list with validated attributes
-
-`<span class="pre">validate_attribute_values</span>`( _tdict_) 
-
+#### validate_attribute_values(tdict)
 Look for tdict in the attribute list and attempt to validate its value.
+- **Parameters**
 
-Parameters
+    **tdict** (*dict*) – the dictionary to test against.
 
-**tdict** ( _dict_) – the dictionary to test against.
+- **Returns**
 
-Returns
+    A validated list
 
-A validated list
 
-_class_ `redfish.ris.validation.IntegerValidator( _d_) `
+#### class redfish.ris.validation.IntegerValidator(d)
 
-Bases: [`<span class="pre">redfish.ris.validation.BaseValidator</span>`](http://hewlettpackard.github.io#redfish.ris.validation.BaseValidator "redfish.ris.validation.BaseValidator")
+Bases: `BaseValidator`
 
 Interger validator class
-
-_static_ `<span class="pre">is_type</span>`( _attrentry_) 
-
+#### _static_ is_type(attrentry)
 Validate that the type is integer.
+- **Parameters**
 
-Parameters
+    **attrentry** (*dict*) – Registry model entry used for validation.
 
-**attrentry** ( _dict_) – Registry model entry used for validation.
+- **Returns**
 
-Returns
+    A boolean based on whether type is integer.
 
-A boolean based on whether type is integer.
-
-`<span class="pre">print_help</span>`( _name_) 
-
+#### print_help(name)
 Human readable schema information specific to Integer data.
+- **Parameters**
 
-Parameters
+    **name** (*str*) – Clean name for outputting human readable info.
 
-**name** ( _str_) – Clean name for outputting human readable info.
+- **Returns**
 
-Returns
+    A human readable string of schema data.
 
-A human readable string of schema data.
-
-`<span class="pre">validate</span>`( _newvallist_, _\__) 
-
+#### validate(newvallist, _)
 Validate against schemas.
+- **Parameters**
 
-Parameters
+    **newvallist** (*list*) – New value to be used for validation in a list
 
-**newvallist** ( _list_) – New value to be used for validation in a list
+- **Returns**
 
-Returns
+    An error if validation fails criteria.
 
-An error if validation fails criteria.
 
-_exception_ `redfish.ris.validation.InvalidPathsError `
+#### exception redfish.ris.validation.InvalidPathsError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when requested path is not found
 
-_class_ `redfish.ris.validation.ObjectValidator( _d_) `
+#### class redfish.ris.validation.ObjectValidator(d)
 
-Bases: [`<span class="pre">redfish.ris.validation.BaseValidator</span>`](http://hewlettpackard.github.io#redfish.ris.validation.BaseValidator "redfish.ris.validation.BaseValidator")
+Bases: `BaseValidator`
 
 Object validator class
-
-_static_ `<span class="pre">is_type</span>`( _attrentry_) 
-
+#### _static_ is_type(attrentry)
 Validate that the type is object.
+- **Parameters**
 
-Parameters
+    **attrentry** (*dict*) – Registry model entry used for validation.
 
-**attrentry** ( _dict_) – Registry model entry used for validation.
+- **Returns**
 
-Returns
+    A boolean based on whether type is object.
 
-A boolean based on whether type is object.
-
-`<span class="pre">print_help</span>`( _name_) 
-
+#### print_help(name)
 Human readable schema information specific to Object data.
+- **Parameters**
 
-Parameters
+    **name** (*str*) – Clean name for outputting human readable info.
 
-**name** ( _str_) – Clean name for outputting human readable info.
+- **Returns**
 
-Returns
+    A human readable string of schema data.
 
-A human readable string of schema data.
-
-`<span class="pre">validate</span>`( _newval_, _name_) 
-
+#### validate(newval, name)
 Validate against schemas.
+- **Parameters**
 
-Parameters
+    
+    - **newval** (*list*) – New value to be used for validation in a list
+    - **name** (*str*) – Clean name for outputting human readable info.
 
-- **newval** ( _list_) – New value to be used for validation in a list
+- **Returns**
 
-- **name** ( _str_) – Clean name for outputting human readable info.
+    An error if value is invalid.
 
 
-Returns
+#### class redfish.ris.validation.PasswordValidator(d)
 
-An error if value is invalid.
-
-_class_ `redfish.ris.validation.PasswordValidator( _d_) `
-
-Bases: [`<span class="pre">redfish.ris.validation.BaseValidator</span>`](http://hewlettpackard.github.io#redfish.ris.validation.BaseValidator "redfish.ris.validation.BaseValidator")
+Bases: `BaseValidator`
 
 Password validator class
-
-_static_ `<span class="pre">is_type</span>`( _attrentry_) 
-
+#### _static_ is_type(attrentry)
 Validate that the type is a password.
+- **Parameters**
 
-Parameters
+    **attrentry** (*dict*) – Registry model entry used for validation.
 
-**attrentry** ( _dict_) – Registry model entry used for validation.
+- **Returns**
 
-Returns
+    A boolean based on whether type is a password.
 
-A boolean based on whether type is a password.
-
-`<span class="pre">print_help</span>`( _name_) 
-
+#### print_help(name)
 Human readable schema information specific to Password data.
+- **Parameters**
 
-Parameters
+    **name** (*str*) – Clean name for outputting human readable info.
 
-**name** ( _str_) – Clean name for outputting human readable info.
+- **Returns**
 
-Returns
+    A human readable string of schema data.
 
-A human readable string of schema data.
-
-`<span class="pre">validate</span>`( _newvallist_, _\__) 
-
+#### validate(newvallist, _)
 Validate against schemas.
+- **Parameters**
 
-Parameters
+    **newvallist** (*list*) – New value to be used for validation in a list
 
-**newvallist** ( _list_) – New value to be used for validation in a list
+- **Returns**
 
-Returns
+    An error if validation fails criteria.
 
-An error if validation fails criteria.
 
-_exception_ `redfish.ris.validation.RegistryValidationError( _msg_, _regentry=None_, _selector=None_) `
+#### exception redfish.ris.validation.RegistryValidationError(msg, regentry=None, selector=None)
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Registration Validation Class Error
 
-_class_ `redfish.ris.validation.StringValidator( _d_) `
+#### class redfish.ris.validation.StringValidator(d)
 
-Bases: [`<span class="pre">redfish.ris.validation.BaseValidator</span>`](http://hewlettpackard.github.io#redfish.ris.validation.BaseValidator "redfish.ris.validation.BaseValidator")
+Bases: `BaseValidator`
 
 Constructor
-
-_static_ `<span class="pre">is_type</span>`( _attrentry_) 
-
+#### _static_ is_type(attrentry)
 Validate that the type is string.
+- **Parameters**
 
-Parameters
+    **attrentry** (*dict*) – Registry model entry used for validation.
 
-**attrentry** ( _dict_) – Registry model entry used for validation.
+- **Returns**
 
-Returns
+    A boolean based on whether type is string.
 
-A boolean based on whether type is string.
-
-`<span class="pre">print_help</span>`( _name_) 
-
+#### print_help(name)
 Human readable schema information specific to String data.
+- **Parameters**
 
-Parameters
+    **name** (*str*) – Clean name for outputting human readable info.
 
-**name** ( _str_) – Clean name for outputting human readable info.
+- **Returns**
 
-Returns
+    A human readable string of schema data.
 
-A human readable string of schema data.
-
-`<span class="pre">validate</span>`( _newvallist_, _\__) 
-
+#### validate(newvallist, _)
 Validate against schemas.
+- **Parameters**
 
-Parameters
+    **newvallist** (*list*) – New value to be used for validation in a list
 
-**newvallist** ( _list_) – New value to be used for validation in a list
+- **Returns**
 
-Returns
+    An error if validation fails criteria.
 
-An error if validation fails criteria.
 
-_class_ `redfish.ris.validation.Typepathforval( _typepathobj_) `
+#### class redfish.ris.validation.Typepathforval(typepathobj)
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 Way to store the typepath defines object.
 
-_exception_ `redfish.ris.validation.UnknownValidatorError `
+#### exception redfish.ris.validation.UnknownValidatorError()
 
-Bases: `<span class="pre">Exception</span>`
+Bases: `Exception`
 
 Raised when we find an attribute type that we don’t know how to validate.
 
-_class_ `redfish.ris.validation.ValidationManager( _monolith_, _defines=None_) `
+#### class redfish.ris.validation.ValidationManager(monolith, defines=None)
 
-Bases: `<span class="pre">object</span>`
+Bases: `object`
 
 Keeps track of all the schemas and registries and provides helpers
 to simplify validation.
-
-`<span class="pre">checkreadunique</span>`( _tdict_, _tkey_, _searchtype=None_, _reg=None_, _warnings=None_, _unique=None_) 
-
+#### checkreadunique(tdict, tkey, reg=None, warnings=None, unique=None, searchtype=None)
 Check for and remove the readonly and unique attributes if required.
+- **Parameters**
 
-Parameters
+    
+    - **tdict** (*dict.*) – the dictionary to test against.
+    - **tkey** (*str.*) – The attribute key value to be tested.
+    - **warnings** (*list.*) – list containing found warnings.
+    - **unique** (*str.*) – flag to determine override for unique properties.
+    - **reg** (*dict.*) – Registry entry of the given attribute.
 
-- **tdict** ( _dict._) – the dictionary to test against.
+- **Returns**
 
-- **tkey** ( _str._) – The attribute key value to be tested.
-
-- **warnings** ( _list._) – list containing found warnings.
-
-- **unique** ( _str._) – flag to determine override for unique properties.
-
-- **reg** ( _dict._) – Registry entry of the given attribute.
+    returns boolean.
 
 
-Returns
-
-returns boolean.
-
-_property_ `<span class="pre">errors</span>` 
+#### property errors()
 
 All errors found by the last validation.
+#### find_prop(propname, latestschema=False, proppath=None)
+Searches through all locations and returns the schema
+found for the provided propname type.
+- **Parameters**
 
-`<span class="pre">find_prop</span>`( _propname_, _latestschema=False_, _proppath=None_) 
+    
+    - **propname** (*str*) – String containing the schema name.
+    - **proppath** (*str*) – String containing the schema path if you wish to use that instead.
+    - **latestschema** (*bool*) – Flag to determine if we should drop the schema version when we try to
+    match schema information. If True, the version will be dropped.
 
-Searches through all locations and returns the first schema
-found for the provided type.
-
-Parameters
-
-- **propname** ( _str_) – String containing the schema name.
-
-- **proppath** ( _str_) – String containing the schema path if you wish to use that instead.
-
-- **latestschema** ( _bool_) – Flag to determine if we should drop the schema version when we try to
-match schema information. If True, the version will be dropped.
-
-
-`<span class="pre">find_property</span>`( _propname_, _cls=None_, _latestschema=False_) 
-
+#### find_property(propname, cls=None, latestschema=False)
 Returns iLO/BIOS registries/schemas
+- **Parameters**
 
-Parameters
+    
+    - **propname** (*str*) – string containing the registry/schema name.
+    - **cls** (*list*) – self._classes list of dictionaries.
+    - **latestschema** (*bool.*) – flag to drop the versioning in the type string.
 
-- **propname** ( _str_) – string containing the registry/schema name.
+- **Returns**
 
-- **cls** ( _list_) – self.\_classes list of dictionaries.
+    iLO/BIOS registries/schemas that match the supplied name.
 
-- **latestschema** ( _bool._) – flag to drop the versioning in the type string.
-
-
-Returns
-
-iLO/BIOS registries/schemas that match the supplied name.
-
-`<span class="pre">get_registry_model</span>`( _currtype=None_, _proppath=None_, _getmsg=False_, _searchtype=None_, _newarg=None_, _latestschema=False_) 
-
+#### get_registry_model(currtype=None, proppath=None, getmsg=False, searchtype=None, newarg=None, latestschema=False)
 Loads the schema file and find the registry model if available. A registry model is a
 object built for schema/bios registry data.
+- **Parameters**
 
-Parameters
+    
+    - **currtype** (*dict.*) – Type selection string.
+    - **proppath** (*str*) – String containing the schema path if you wish to use that instead.
+    - **getmsg** (*bool*) – Flag to determine if commit should be skipped.
+    - **searchtype** (*str*) – Include the attribute registry of you are validating a bios registry.
+    - **newarg** (*list*) – List of multi level properties to be modified.
+    - **latestschema** (*bool*) – Flag to determine if we should drop the schema version when we try to
+    match schema information. If True, the version will be dropped.
 
-- **currtype** ( _dict._) – Type selection string.
+- **Returns**
 
-- **proppath** ( _str_) – String containing the schema path if you wish to use that instead.
+    Schema in object form called a registry object.
 
-- **getmsg** ( _bool_) – Flag to determine if commit should be skipped.
-
-- **searchtype** ( _str_) – Include the attribute registry of you are validating a bios registry.
-
-- **newarg** ( _list_) – List of multi level properties to be modified.
-
-- **latestschema** ( _bool_) – Flag to determine if we should drop the schema version when we try to
-match schema information. If True, the version will be dropped.
-
-
-Returns
-
-Schema in object form called a registry object.
-
-`<span class="pre">geturidict</span>`( _locationobj_) 
-
+#### geturidict(locationobj)
 Return the external reference link.
+- **Parameters**
 
-Parameters
+    **locationobj** (*dict*) – Dictionary to get the URI reference from.
 
-**locationobj** ( _dict_) – Dictionary to get the URI reference from.
-
-`<span class="pre">itermems</span>`( _membername=None_) 
-
+#### itermems(membername=None)
 Searches through all locations and yields each entry.
+- **Parameters**
 
-Parameters
+    **membername** (*str*) – string containing the registry name. If not passed we use the typedefines
+    string by default.
 
-**membername** ( _str_) – string containing the registry name. If not passed we use the typedefines
-string by default.
-
-`<span class="pre">iterregmems</span>`( _membername=None_) 
-
+#### iterregmems(membername=None)
 Searches through all registries and yields each entry.
+- **Parameters**
 
-Parameters
+    **membername** (*str*) – string containing the registry name. If not passed we use the typedefines
+    string by default.
 
-**membername** ( _str_) – string containing the registry name. If not passed we use the typedefines
-string by default.
-
-`<span class="pre">iterschemamems</span>`( _membername=None_) 
-
+#### iterschemamems(membername=None)
 Searches through all schemas and yields each entry
+- **Parameters**
 
-Parameters
+    **membername** (*str*) – string containing the registry name. If not passed we use the typedefines
+    string by default.
 
-**membername** ( _str_) – string containing the registry name. If not passed we use the typedefines
-string by default.
-
-`<span class="pre">nestedreg</span>`( _reg=None_, _args=None_) 
-
+#### nestedreg(reg=None, args=None)
 Go through the registry entry to find the required nested attribute.
+- **Parameters**
 
-Parameters
+    
+    - **reg** (*dict*) – Registry entry of the given attribute.
+    - **args** (*list*) – List of multi level properties to be modified.
 
-- **reg** ( _dict_) – Registry entry of the given attribute.
+- **Returns**
 
-- **args** ( _list_) – List of multi level properties to be modified.
+    dict of Registry entry
 
-
-Returns
-
-dict of Registry entry
-
-`<span class="pre">reset_errors_warnings</span>`() 
-
+#### reset_errors_warnings()
 Resets warnings and errors, getting ready for the next validation.
-
-`<span class="pre">updatevalidationdata</span>`() 
-
+#### updatevalidationdata()
 Loads the types into the validation manager from monolith.
-
-`<span class="pre">validatedict</span>`( _tdict_, _currtype=None_, _proppath=None_, _latestschema=False_, _searchtype=None_, _monolith=None_, _reg=None_, _unique=None_) 
-
+#### validatedict(tdict, currtype=None, proppath=None, latestschema=False, searchtype=None, monolith=None, reg=None, unique=None)
 Load the schema file and validate tdict against it.
+- **Parameters**
 
-Parameters
+    
+    - **tdict** (*dict*) – the dictionary to test against.
+    - **currtype** (*str*) – String containing the type the tdict dictionary is.
+    - **proppath** (*str*) – String containing the schema path of the tdict dictionary if you wish to
+    use that instead.
+    - **latestschema** (*bool*) – Flag to determine if we should drop the schema version when we try to
+    match schema information. If True, the version will be dropped.
+    - **searchtype** (*str*) – Include the attribute registry of you are validating a bios registry.
+    - **monolith** (*dict*) – Full data model retrieved from server.
+    - **unique** (*bool*) – Flag to override for skipping unique properties.
+    - **reg** (*dict.*) – Registry entry of the given attribute. If this is not provided we will attempt
+    to search based on the searchtype and currtype/proppath arguments.
 
-- **tdict** ( _dict_) – the dictionary to test against.
+- **Returns**
 
-- **currtype** ( _str_) – String containing the type the tdict dictionary is.
-
-- **proppath** ( _str_) – String containing the schema path of the tdict dictionary if you wish to
-use that instead.
-
-- **latestschema** ( _bool_) – Flag to determine if we should drop the schema version when we try to
-match schema information. If True, the version will be dropped.
-
-- **searchtype** ( _str_) – Include the attribute registry of you are validating a bios registry.
-
-- **monolith** ( _dict_) – Full data model retrieved from server.
-
-- **unique** ( _bool_) – Flag to override for skipping unique properties.
-
-- **reg** ( _dict._) – Registry entry of the given attribute. If this is not provided we will attempt
-to search based on the searchtype and currtype/proppath arguments.
+    returns an error list.
 
 
-Returns
-
-returns an error list.
-
-_property_ `<span class="pre">warnings</span>` 
+#### property warnings()
 
 All warnings found by the last validation.
-
-`redfish.ris.validation.checkattr( _aobj_, _prop_) `
-
+### redfish.ris.validation.checkattr(aobj, prop)
 Check if an attribute exists
-
-[Previous](http://hewlettpackard.github.io/Frequently-Asked-Questions.html "Frequently Asked Questions")
-
-* * *
-
-© Copyright Copyright 2020 Hewlett Packard Enterprise Development LP.
-
-
-
-Other Versions
-
-Versions[latest](https://pages.github.hpe.com/intelligent-provisioning/python-redfish-library/)[3.0](https://pages.github.hpe.com/intelligent-provisioning/python-redfish-library/3.0/)
-

@@ -11,6 +11,50 @@ disableLastModified: false
 
 This section details usage and examples of HPE iLOrest commands related to configuring BIOS settings. These commands do things such as view and change the boot order, reset the BIOS configuration to the default settings, and configure iSCSI settings.
 
+As mentioned in the [HPE Bios](/docs/redfishservices/ilos/supplementdocuments/biosdoc/) section, the HPE Bios is composed of:
+
+- Bios attributes that can easily be retrieved with an `ilorest get --select bios.` command (append a `--json` option for a JSON output format).
+- OEM Bios resources like, but not limited to, ISCI, Bootorder, server config lock or KMS settings. The exhaustive list of OEM Bios resources can be retrieved with the following example:
+
+```text Generic request
+GET /redfish/v1/systems/1/bios/?$select=Oem/Hpe/Links
+```
+
+```shell iLOrest
+# The following request retrieves Bios related URIs
+# using a recursive jq request, ignoring errors
+# and 'null' responses
+
+ilorest login <ilo-ip> -u <ilo-user> -p password
+ilorest rawget --silent \
+        '/redfish/v1/systems/1/bios/?$select=Oem/Hpe/Links' | \
+        jq -r '..|."@odata.id"?' | grep -v null
+ilorest logout
+```
+
+```text iLO 5 response body
+/redfish/v1/systems/1/bios/
+/redfish/v1/systems/1/bios/baseconfigs/
+/redfish/v1/systems/1/bios/boot/
+/redfish/v1/systems/1/bios/kmsconfig/
+/redfish/v1/systems/1/bios/mappings/
+/redfish/v1/systems/1/bios/serverconfiglock/
+/redfish/v1/systems/1/bios/tlsconfig/
+/redfish/v1/systems/1/bios/iscsi/
+```
+
+```text iLO 6 response body
+
+/redfish/v1/systems/1/bios/
+/redfish/v1/systems/1/bios/oem/hpe/baseconfigs/
+/redfish/v1/systems/1/bios/oem/hpe/boot/
+/redfish/v1/systems/1/bios/oem/hpe/kmsconfig/
+/redfish/v1/systems/1/bios/oem/hpe/mappings/
+/redfish/v1/systems/1/bios/oem/hpe/serverconfiglock/
+/redfish/v1/systems/1/bios/oem/hpe/tlsconfig/
+/redfish/v1/systems/1/bios/oem/hpe/iscsi/
+```
+
 ### BiosDefaults command
 
 #### Syntax
@@ -19,7 +63,19 @@ This section details usage and examples of HPE iLOrest commands related to confi
 
 #### Description
 
-Sets the BIOS settings of the currently logged in server back to the default settings.
+Depending on the supplied parameters, this command sets Bios attributes to factory defaults or to custom user defaults. The `--mananufacturingdefaults` parameter sets both Bios attributes and OEM Bios resources to factory/manufacturing defaults.
+
+:::success TIP
+Refer to the [HPE BIOS](/docs/redfishservices/ilos/supplementdocuments/biosdoc/) section for advance
+detail concerning default **Bios attributes** and **OEM Bios resources**.
+:::
+
+Run with no parameter, the command resets Bios attributes to factory defaults. OEM Bios resources are not modified.
+A server reset is required to take this action into effect.
+
+:::success TIP
+Use the [pending command](#pending-command) to view the attributes that will be reset after next reboot.
+:::
 
 #### Parameters
 
@@ -32,20 +88,25 @@ Including the help flag will display help for the command.
 Select this flag to input a BIOS password. Include this flag if second-level BIOS authentication is needed for the command to execute.
 
 :::info NOTE
-This flag is used only on iLO 4 systems and not required on iLO 5 systems.
+This flag is used only on iLO 4 based systems and not required on iLO 5 and iLO 6 based systems.
 :::
 
 - **--reboot=REBOOT**
 
-Use this flag to perform a reboot command function after completion of operations. For help with parameters and descriptions regarding the reboot flag, run `help reboot`.
+Use this flag to perform a reboot of the server after completion of operations.
+For help with parameters and descriptions regarding the reboot flag, run `help reboot`.
 
 - **--userdefaults**
 
-Sets bios to user defaults instead of factory defaults.
+Sets Bios attributes to [user defaults](/docs/redfishservices/ilos/supplementdocuments/biosdoc/#reset-bios-attributes-to-user-defaults) instead of [factory defaults](/docs/redfishservices/ilos/supplementdocuments/biosdoc/#reset-bios-attributes-to-factory-defaults).
 
 - **--manufacturingdefaults**
 
-Sets bios to manufacturer defaults instead of factory defaults.
+Sets Bios attributes **and** OEM Bios resources to [manufacturing/factory](/docs/redfishservices/ilos/supplementdocuments/biosdoc/#reset-bios-attributes-and-hpe-bios-resources) defaults.
+
+:::success TIP
+Use the [pending command](#pending-command) to view the attributes that will be reset after next reboot.
+:::
 
 #### Login Parameters
 
@@ -68,50 +129,35 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 Use the provided CA bundle or SSL certificate with your login to connect
 securely to the system in remote mode. This flag has no effect in local mode.
 
-#### Inputs
-
-None
-
-#### Outputs
-
-None
-
 #### Examples
 
-To set the bios back to factory defaults, run the command without arguments
-
 :::info NOTE
-
-Some changes are not applied until the system is reset.
+Changes are not applied until the system is reset.
 :::
 
-```shell
-iLOrest > biosdefaults
-Resetting the currently logged in server's BIOS settings to defaults.
-One or more properties were changed and will not take effect until system is reset.
-```
-
-To set the BIOS back to user defaults, include the `--userdefaults` flag.
-
-```shell
-iLOrest > biosdefaults --userdefaults
-Resetting the currently logged in server's BIOS settings to defaults.
-One or more properties were changed and will not take effect until system is reset.
-```
-
-This command simultaneously logs in to the server at the provided URL (`--url`) with the provided username (`-u`) and password (`-p`), sets the BIOS back to default settings, then reboots (`--reboot`) the server to apply the changes. Using the reboot option automatically logs-out of the server.
-
-```shell
-iLOrest > biosdefaults --url xx.xx.xx.xx -u username -p password --reboot=ForceRestart
-Discovering data...Done
-Resetting the currently logged in server's BIOS settings to defaults.
-One or more properties were changed and will not take effect until system is reset.
-
-After the server is rebooted the session will be terminated.
-Please wait for the server to boot completely to login again.
-Rebooting server in 3 seconds...
+```shell Reset of Bios attributes to factory default
+ilorest login <ilo-ip> -u <ilo-user> -p password
+ilorest biosdefaults
 The operation completed successfully.
-Logging session out.
+ilorest logout
+```
+
+```shell Reset of Bios attributes to user defaults
+ilorest login <ilo-ip> -u <ilo-user> -p password
+ilorest biosdefaults --userdefaults
+Resetting BIOS attributes and settings to user defaults.
+The operation completed successfully.
+ilorest logout
+```
+
+The following example simultaneously logs in to the server at the provided URL (`--url`) with the provided username (`-u`) and password (`-p`).
+It sets the Bios attributes back to default settings, then reboots (`--reboot`) the server to apply the changes.
+
+```shell
+ilorest biosdefaults --url xx.xx.xx.xx -u username -p password --reboot=ForceRestart
+Discovering data...Done
+The operation completed successfully.
+The operation completed successfully.
 ```
 
 ### Bootorder command
@@ -186,15 +232,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Use the provided CA bundle or SSL certificate with your login to connect
 securely to the system in remote mode. This flag has no effect in local mode.
-
-#### Inputs
-
-None
-
-#### Outputs
-
-None
-
 
 #### Examples
 
@@ -291,7 +328,6 @@ Committing changes...
 The operation completed successfully.
 ```
 
-
 Change the continuous boot order using the `--continuousboot` option. Specify a option to boot to from the `Continuous and one time boot options` list.
 
 ```shell
@@ -299,7 +335,6 @@ iLOrest > bootorder --continuousboot=Cd --commit
 Committing changes...
 The operation completed successfully.
 ```
-
 
 To turn off any continuous or one-time boot options that have been configured, use the `--disablebootflag` option.
 
@@ -377,15 +412,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Use the provided CA bundle or SSL certificate with your login to connect
 securely to the system in remote mode. This flag has no effect in local mode.
-
-#### Inputs
-
-None
-
-#### Outputs
-
-None
-
 
 #### Examples
 
@@ -587,14 +613,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 Use the provided CA bundle or SSL certificate with your login to connect
 securely to the system in remote mode. This flag has no effect in local mode.
 
-#### Inputs
-
-None
-
-#### Outputs
-
-None
-
 #### Examples
 
 Run `pending` with no arguments to show current changes that *have* been committed to the server and are awaiting a reboot. In this example, no changes have been found.
@@ -628,7 +646,7 @@ HpeTlsConfig.v1_0_0:
 No pending changes found.
 ```
 
-After committing a change to AdminName the pending command shows the change to AdminName that will take effect on reboot.
+After committing a change to `AdminName`,  the `pending` command shows the change that will take effect on reboot.
 
 ```shell
 iLOrest > select bios.
@@ -665,7 +683,6 @@ Attributes=
 HpeTlsConfig.v1_0_0:
 No pending changes found.
 ```
-
 
 ### Results command
 
@@ -704,15 +721,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 Use the provided CA bundle or SSL certificate with your login to connect
 securely to the system in remote mode. This flag has no effect in local mode.
 
-#### Inputs
-
-None
-
-#### Outputs
-
-None
-
-
 #### Examples
 
 Run the command without any parameters to gather the results of any changes which occurred on the last reboot.
@@ -730,7 +738,6 @@ The operation completed successfully.
 Iscsi:
 The operation completed successfully.
 ```
-
 
 ### Setpassword command
 
@@ -776,19 +783,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Use the provided CA bundle or SSL certificate with your login to connect
 securely to the system in remote mode. This flag has no effect in local mode.
-
-#### Inputs
-
-None
-
-
-#### Outputs
-
-None
-
-:::info NOTE
-Please make sure the order of passwords is maintained. The passwords are extracted based on their position in the arguments list.
-:::
 
 #### Examples
 

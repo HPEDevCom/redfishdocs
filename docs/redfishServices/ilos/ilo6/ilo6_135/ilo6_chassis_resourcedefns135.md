@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Chassis resource definitions
 toc:

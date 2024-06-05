@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 import {
   Anchor,
@@ -185,6 +186,15 @@ function TabletMenu({ links, search, location }: MenuProps) {
   )
 }
 
+// very important for NavWrapper to be a "nav" HTML tag
+export const NavWrapper = styled.nav`
+ background: white; 
+
+  position: sticky;
+  top: 0;
+  z-index: 200;
+`;
+
 function SmallMenu({ links, search, location }: MenuProps) {
   const ref = React.useRef(null);
   const [displayMenu, setDisplayMenu] = React.useState(false);
@@ -344,5 +354,10 @@ export default function NavBar(props: NavBarProps) {
   const links = props.items.filter(item => item.type === 'href');
   const search = props.items.filter(item => item.type === 'search')[0] || null;
   const location = props.items.filter(item => item.type === 'location');
-  return <Menu links={links} search={search} location={location} />;
+  return (
+    <NavWrapper>
+      <Menu links={links} search={search} location={location} >
+      </Menu>
+    </NavWrapper>
+  );
 }

@@ -60,14 +60,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-
-None
-
-#### Output
-
-None
-
 #### Examples
 
 Deletecomp example commands:
@@ -101,7 +93,6 @@ The operation completed successfully.
 
 #### Syntax
 
-
 downloadcomp *[File Path] [Optional Parameters]*
 
 #### Description
@@ -110,7 +101,6 @@ downloadcomp *[File Path] [Optional Parameters]*
 Downloads firmware from the iLO repository.
 
 #### Parameters
-
 
 -**File Path**
 
@@ -125,7 +115,6 @@ Including the help flag will display help for the command.
 output directory for saving the file.
 
 #### Login Parameters
-
 
 - **--url=URL**
 
@@ -143,21 +132,13 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include this flag if you would prefer to connect using a session id instead of a normal login.
 
-- **--includelogs**         
+- **--includelogs**
 
 Optionally include logs in the data retrieval process.
 
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 
@@ -196,7 +177,7 @@ Some firmware can be flashed directly without a reboot, may require a reboot to 
 
 - **FWPKG PATH**
 
-The path to the (.fwpkg) file for flashing or the (.fwpkg) file itself if it is in the current working directory.
+The path to the `.fwpkg` file for flashing or the `.fwpkg` file itself if it is in the current working directory.
 
 - **-h, --help**
 
@@ -208,10 +189,56 @@ Include this flag to force upload firmware with the same name already on the rep
 
 - **--ignorechecks**
 
-Include this flag to ignore all checks to the taskqueue before attempting to process the .fwpkg file.
+Include this flag to ignore all checks to the Repository [Task Queue](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#taskqueue-command) before attempting to process the `.fwpkg` file.
+
+- **--targets target_list**
+
+Specify a comma separated list of similar firmware inventory IDs to be updated with supplied firmware package.
+
+- **--tpmover**
+
+Include this parameter to set the `TPMOverride` [property](/docs/redfishservices/ilos/ilo6/ilo6_157/ilo6_hpe_resourcedefns157/#tpmoverride) to `true` and pass the `TPMOverrideFlag` in on the associated flash operations.
+
+- **--update_srs**
+
+Add this parameter to update the System Recovery Set with the uploaded firmware.
+
+:::info NOTE
+This requires an account login with the system recovery set [privilege](https://servermanagementportal.ext.hpe.com/docs/redfishservices/ilos/ilo6/ilo6_156/ilo6_hpe_resourcedefns156/#recoveryprivilege).
+:::
+
+#### Examples
+
+The following example retrieves the IDs of UBM3 devices
+and update all of them with a single command.
+
+```shell
+ilorest list Id Name  --json --selector SoftwareInventory. --filter Name="8 SFF 24G x1NVMe/SAS UBM3*" 
+Id=30
+Name=8 SFF 24G x1NVMe/SAS UBM3 BC BP
+
+Id=29
+Name=8 SFF 24G x1NVMe/SAS UBM3 BC BP
+
+
+
+ilorest flashfwpkg HPE_UBM3_1.24_F.fwpkg --targets 29,30 --tpmover
+
+Uploading firmware: HPE_UBM3_1.24_F.fwpkg
+Successfully checked 'HPE_UBM3_1.24_F.fwpkg'.
+Uploading component HPE_UBM3_1.24_F.fwpkg.
+[200] The operation completed successfully.
+Component HPE_UBM3_1.24_F.fwpkg uploading successfully.
+Waiting for iLO UpdateService to finish processing the component
+Uploading took 00 hour(s) 00 minute(s) 02 second(s)
+payload: "{'Name': 'Update-460148', 'Command': 'ApplyUpdate', 'Filename': 'HPE_UBM3_1.24_F.fwpkg',
+'UpdatableBy': ['Bmc'], 'TPMOverride': True, 'Targets': ['/redfish/v1/UpdateService/Firmwar
+eInventory/29/', '/redfish/v1/UpdateService/FirmwareInventory/30/']}"
+Creating task: "Update-460148"
+The operation completed successfully.
+```
 
 #### Login Parameters
-
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -230,14 +257,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 
@@ -294,7 +313,9 @@ Install set name to create, remove, or invoke/deploy.
 Remove all install sets.
 
 :::info NOTE
-Recovery install sets are not removed.
+
+To remove recovery install sets during a local in-band session, you have to supply the `--user` and `--password` parameters. This security enhancement is needed because the local in-band management mode does not perform any authentication, as mentioned in the `login` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#login-command) description.
+
 :::
 
 - **-j, --json**
@@ -340,14 +361,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 
@@ -452,7 +465,7 @@ In case of problem during the addition of an install set, use the `-d, --debug` 
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest -v installset add badsequence.json
 [400] iLO.2.19.PropertyValueIncompatible
-ILOREST return code: 63
+iLOrest return code: 63
 ```
 
 ```json Badsequence.json file
@@ -574,14 +587,6 @@ User Certificate for certificate login.
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Input
-
-None
-
-#### Output
-
-None
-
 #### Examples
 
 To list the firmware on the iLO repository of the currently logged in system run the command without arguments.
@@ -647,7 +652,6 @@ Optionally include this flag to add the time a maintenance window expires.
 
 #### Login Parameters
 
-
 The following parameters can be included to login to a server in the same line as the command is run.
 
 - **--url=URL**
@@ -665,14 +669,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 
@@ -717,7 +713,6 @@ makeinstallset *[Optional Parameters]*
 
 #### Description
 
-
 Run to make installsets for iLO.
 If not logged into the server, the command will provide basic guidance on making an installset.
 If logged into the server, the command will provide guidance based on the current components on the system.
@@ -727,7 +722,6 @@ When using this command on a logged in sever, for best results, upload the compo
 :::
 
 #### Parameters
-
 
 - **-h, --help**
 
@@ -757,14 +751,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 
@@ -905,7 +891,6 @@ Include this flag when updating firmware if you have a TPM installed.
 
 #### Login Parameters
 
-
 The following parameters can be included to login to a server in the same line as the command is run.
 
 - **--url=URL**
@@ -923,14 +908,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 
@@ -984,7 +961,6 @@ The operation completed successfully.
 ### Uploadcomp Command
 
 #### Syntax
-
 
 uploadcomp *[Optional Parameters]*
 
@@ -1045,7 +1021,6 @@ The uploaded component becomes a part of the system recovery set (srs).
 
 #### Login Parameters
 
-
 The following parameters can be included to login to a server in the same line as the command is run.
 
 - **--url=URL**
@@ -1063,14 +1038,6 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 - **--logout**
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Input
-
-None
-
-#### Output
-
-None
 
 #### Examples
 

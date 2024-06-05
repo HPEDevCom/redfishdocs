@@ -1,584 +1,138 @@
 
 # Examples
 
-**NOTE**: Successful creation, modification or deletion of a resource will usually result in a response code of 200 or 201.
+:::info NOTE
+Successful creation, modification or deletion of a resource will usually result in a response code of 200 or 201.
 An unsuccessful attempt will likely result in a 400 error code with a more detailed error message within the body of
 the response, [‘@Message.ExtendedInfo](mailto:'@Message.ExtendedInfo)’.
+:::
 
-**NOTE**: Examples showcasing Redfish standard properties and Actions will work for any BMC implementing Redfish. Any HPE OEM extensions are labeled in the examples as such.
+:::info NOTE
+Examples showcasing Redfish standard properties and Actions will work for any BMC implementing Redfish.
+Any HPE OEM extensions are labeled in the examples as such.
+:::
 
 The [Redfish](https://github.hpe.com/intelligent-provisioning/python-redfish-library/tree/master/examples/Redfish) and
-[Legacy_Rest](https://github.hpe.com/intelligent-provisioning/python-redfish-library/tree/master/examples/Legacy_Rest) folders
+[Legacy\_Rest](https://github.hpe.com/intelligent-provisioning/python-redfish-library/tree/master/examples/Legacy_Rest) folders
 contain many examples for performing different iLO tasks using the Redfish API and Legacy RESTful API respectively.
 
 ## Redfish Example Reference Table
 
-| Example
+| Example| Link |
+| --- | --- |
+| Add an iLO Manager Account | [Redfish\_add\_user\_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/add_user_account.py) |
+| Revert the BIOs to default values | [Redfish\_bios\_revert\_default](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/bios_revert_default.py) |
+| Change the BIOs settings.| [Redfish\_change\_bios\_setting](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/change_bios_setting.py) |
+| Change the boot order for HPE iLO systems.  | [Redfish\_change\_boot\_order](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/change_boot_order.py) |
+| Change the temporary boot order.  | [Redfish\_change\_temporary\_boot\_order](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/change_temporary_boot_order.py) |
+| Clear AHS data for HPE iLO systems.  | [Redfish\_clear\_ahs\_data](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/clear_ahs_data.py) |
+| Clear IEL or IML Logs for HPE iLO systems.  | [Redfish\_clear\_ilo\_IEL\_IML\_log](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/clear_ilo_IEL_IML_log.py) |
+| Gather the computer system details.  | [Redfish\_computer\_details](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/computer_details.py) |
+| Configure SNMP for HPE iLO systems.  | [Redfish\_configure\_snmp](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/configure_snmp.py) |
+| Enable NTP servers for HPE iLO systems.  | [Redfish\_enable\_ntp\_servers](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/enable_ntp_servers.py) |
+| Enable secure boot.  | [Redfish\_enable\_secure\_boot](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/enable_secure_boot.py) |
+| Expand data responses.  | [Redfish\_expand\_data](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/expand_data.py) |
+| Clear IEL or IML Logs for HPE iLO systems.  | [Redfish\_find\_ilo\_mac\_address](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/find_ilo_mac_address.py) |
+| Generate a certificate signing request for HPE iLO systems.  | [Redfish\_generate\_csr](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/generate_csr.py) | [Redfish\_generate\_csr](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/generate_csr.py)
+| Gather ESKM data for HPE iLO systems.  | [Redfish\_get\_ESKM](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ESKM.py) |
+| Gather the Logical Drives on an HPE iLO system.  | [Redfish\_get\_LogicalDrives](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_LogicalDrives.py) |
+| Gather the Smart Array encryption settings on HPE iLO based systems.  | [Redfish\_get\_SmartArray\_EncryptionSettings](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_SmartArray_EncryptionSettings.py) |
+| Gather AHS data for HPE iLO systems.  | [Redfish\_get\_ahs\_data](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ahs_data.py) |
+| Obtain the base message registry.  | [Redfish\_get\_base\_registry](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_base_registry.py) |
+| Obtain the Manager IP.  | [Redfish\_get\_ilo\_ip](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ilo_ip.py) |
+| Obtain the Manager NIC data.  | [Redfish\_get\_ilo\_nic](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ilo_nic.py) |
+| Obtain an iLO license key for HPE iLO systems.  | [Redfish\_get\_license\_key](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_license_key.py) |
+| Obtain the power metrics average on HPE iLO systems.  | [Redfish\_get\_powermetrics\_average](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_powermetrics_average.py) |
+| Obtain iLO information.  | [Redfish\_get\_resource\_directory](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_resource_directory.py) |
+| Obtain iLO utility information, such as iLO generation, version and resource directory for HPE iLO systems.  | [Redfish\_ilorest\_util](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ilorest_util.py) |
+| Obtain schema data on any BMC with schemas available.  | [Redfish\_get\_schema](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_schema.py) |
+| Import an SSL certificate for HPE iLO systems.  | [Redfish\_import\_ssl](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/import_ssl.py) |
+| Modify a user account.  | [Redfish\_modify\_user\_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/modify_user_account.py) |
+| Mount virtual media for HPE iLO systems.  | [Redfish\_mount\_virtual\_media\_iso](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/mount_virtual_media_iso.py) |
+| Create Redfish client.  | [Redfish\_quickstart\_redfish](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/quickstart_redfish.py) |
+| Reboot a server.  | [Redfish\_reboot\_server](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/reboot_server.py) |
+| Remove a user account.  | [Redfish\_remove\_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/remove_account.py) |
+| Reset the ESKM event log for HPE iLO systems.  | [Redfish\_reset\_ESKM\_eventlog](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/reset_ESKM_eventlog.py) |
+| Reset a Manager.  | [Redfish\_reset\_ilo](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/reset_ilo.py) |
+| Reset a sever.  | [Redfish\_reset\_server](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/reset_server.py) |
+| Manually manage sessions with Redfish | [Redfish\_sessions](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/sessions.py) |
+| Set the primary ESKM key server properties for HPE iLO systems.  | [Redfish\_set\_ESKM\_PrimaryKeyServer](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_ESKM_PrimaryKeyServer.py) |
+| Set the ESKM username and password for HPE iLO systems.  | [Redfish\_set\_ESKM\_username\_password](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_ESKM_username_password.py) |
+| Set active Manager NIC.  | [Redfish\_set\_active\_ilo\_nic](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_active_ilo_nic.py) |
+| Set an ISCSI boot instance for HPE iLO systems.  | [Redfish\_set\_bios\_iscsi](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_bios_iscsi.py) |
+| Set the BIOS password for HPE iLO systems.  | [Redfish\_set\_bios\_password](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_bios_password.py) |
+| Set the Manager ethernet interface static IP.  | [Redfish\_set\_ethernet\_management\_iface\_static\_ip](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_ethernet_management_iface_static_ip.py) |
+| Set the NTP servers for HPE iLO systems.  | [Redfish\_set\_ilo\_ntp_servers](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_ilo_ntp_servers.py) |
+| Set the time zone for HPE iLO systems.  | [Redfish\_set\_ilo\_timezone](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_ilo_timezone.py) |
+| Add a license key for HPE iLO systems.  | [Redfish\_set\_license\_key](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_license_key.py) |
+| Set the server asset tag.  | [Redfish\_set\_server\_asset\_tag](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_server_asset_tag.py) |
+| Configure SNMP alert for HPE iLO systems.  | [Redfish\_set\_snmp\_alert](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_snmp_alert.py) |
+| Set the UID light.  | [Redfish\_set\_uid\_light](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_uid_light.py) |
+| Provide the firmware inventory on HPE iLO systems.  | [Redfish\_software\_firmware\_inventory](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/software_firmware_inventory.py) |
+| Test a connection to the ESKM system for HPE iLO systems.  | [Redfish\_test\_ESKM\_connection](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/test_ESKM_connection.py) |
+| Update the firmware by using an HTTP URL.  | [Redfish\_update\_ilo\_firmware](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/update_ilo_firmware.py) |
+| Upload the firmware to the iLO Repository for flashing.  | [Redfish\_upload\_firmware\_ilo\_repository](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/upload_firmware_ilo_repository.py) |
+| Upload a firmware component with a size less than 32 GB and associated compsig signature file to the iLO repository.  | [Redfish\_upload\_firmware\_ilo\_repository\_with\_compsig](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/upload_firmware_ilo_repository_with_compsig.py) |
 
- | Link
-
- |
-| Add an iLO Manager Account
-
- | [Redfish_add_user_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/add_user_account.py)
-
-                       |
-| Revert the BIOs to default values
-
- | [Redfish_bios_revert_default](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/bios_revert_default.py)
-
-                    |
-| Change the BIOs settings.
-
-         | [Redfish_change_bios_setting](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/change_bios_setting.py)
-
-                    |
-| Change the boot order for HPE iLO systems.
-
- | [Redfish_change_boot_order](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/change_boot_order.py)
-
-                      |
-| Change the temporary boot order.
-
-           | [Redfish_change_temporary_boot_order](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/change_temporary_boot_order.py)
-
-            |
-| Clear AHS data for HPE iLO systems.
-
-        | [Redfish_clear_ahs_data](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/clear_ahs_data.py)
-
-                         |
-| Clear IEL or IML Logs for HPE iLO systems.
-
- | [Redfish_clear_ilo_IEL_IML_log](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/clear_ilo_IEL_IML_log.py)
-
-                  |
-| Gather the computer system details.
-
-        | [Redfish_computer_details](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/computer_details.py)
-
-                       |
-| Configure SNMP for HPE iLO systems.
-
-        | [Redfish_configure_snmp](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/configure_snmp.py)
-
-                         |
-| Enable NTP servers for HPE iLO systems.
-
-    | [Redfish_enable_ntp_servers](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/enable_ntp_servers.py)
-
-                     |
-| Enable secure boot.
-
-                        | [Redfish_enable_secure_boot](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/enable_secure_boot.py)
-
-                     |
-| Expand data responses.
-
-                     | [Redfish_expand_data](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/expand_data.py)
-
-                            |
-| Clear IEL or IML Logs for HPE iLO systems.
-
- | [Redfish_find_ilo_mac_address](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/find_ilo_mac_address.py)
-
-                   |
-| Generate a certificate signing request for <br>
-HPE iLO systems.
-
- | [Redfish_generate_csr](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/generate_csr.py)
-
-                           |
-| Gather ESKM data for HPE iLO systems.
-
-                            | [Redfish_get_ESKM](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ESKM.py)
-
-                               |
-| Gather the Logical Drives on an HPE iLO system.
-
-                  | [Redfish_get_LogicalDrives](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_LogicalDrives.py)
-
-                      |
-| Gather the Smart Array encryption settings on <br>
-HPE iLO based systems.
-
- | [Redfish_get_SmartArray_EncryptionSettings](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_SmartArray_EncryptionSettings.py)
-
-      |
-| Gather AHS data for HPE iLO systems.
-
-                                      | [Redfish_get_ahs_data](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ahs_data.py)
-
-                           |
-| Obtain the base message registry.
-
-                                         | [Redfish_get_base_registry](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_base_registry.py)
-
-                      |
-| Obtain the Manager IP.
-
-                                                    | [Redfish_get_ilo_ip](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ilo_ip.py)
-
-                             |
-| Obtain the Manager NIC data.
-
-                                              | [Redfish_get_ilo_nic](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ilo_nic.py)
-
-                            |
-| Obtain an iLO license key for HPE iLO systems.
-
-                            | [Redfish_get_license_key](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_license_key.py)
-
-                        |
-| Obtain the power metrics average on HPE iLO <br>
-systems.
-
-                 | [Redfish_get_powermetrics_average](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_powermetrics_average.py)
-
-               |
-| Obtain iLO information.
-
-                                                   | [Redfish_get_resource_directory](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_resource_directory.py)
-
-                 |
-| Obtain iLO utility information, such as iLO <br>
-generation, version and resource directory for <br>
-HPE iLO systems.
-
- | [Redfish_ilorest_util](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/ilorest_util.py)
-
-                           |
-| Obtain schema data on any BMC with schemas <br>
-available.
-
-                                                            | [Redfish_get_schema](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_schema.py)
-
-                             |
-| Import an SSL certificate for HPE iLO systems.
-
-                                                                        | [Redfish_import_ssl](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/import_ssl.py)
-
-                             |
-| Modify a user account.
-
-                                                                                                | [Redfish_modify_user_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/modify_user_account.py)
-
-                    |
-| Mount virtual media for HPE iLO systems.
-
-                                                                              | [Redfish_mount_virtual_media_iso](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/mount_virtual_media_iso.py)
-
-                |
-| Create Redfish client.
-
-                                                                                                | [Redfish_quickstart_redfish](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/quickstart_redfish.py)
-
-                     |
-| Reboot a server.
-
-                                                                                                      | [Redfish_reboot_server](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/reboot_server.py)
-
-                          |
-| Remove a user account.
-
-                                                                                                | [Redfish_remove_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/remove_account.py)
-
-                         |
-| Reset the ESKM event log for HPE iLO systems.
-
-                                                                         | [Redfish_reset_ESKM_eventlog](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/reset_ESKM_eventlog.py)
-
-                    |
-| Reset a Manager.
-
-                                                                                                      | [Redfish_reset_ilo](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/reset_ilo.py)
-
-                              |
-| Reset a sever.
-
-                                                                                                        | [Redfish_reset_server](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/reset_server.py)
-
-                           |
-| Manually manage sessions with Redfish
-
-                                                                                 | [Redfish_sessions](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/sessions.py)
-
-                               |
-| Set the primary ESKM key server properties <br>
-for HPE iLO systems.
-
-                                                  | [Redfish_set_ESKM_PrimaryKeyServer](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_ESKM_PrimaryKeyServer.py)
-
-              |
-| Set the ESKM username and password for HPE <br>
-iLO systems.
-
-                                                          | [Redfish_set_ESKM_username_password](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_ESKM_username_password.py)
-
-             |
-| Set active Manager NIC.
-
-                                                                                               | [Redfish_set_active_ilo_nic](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_active_ilo_nic.py)
-
-                     |
-| Set an ISCSI boot instance for HPE iLO <br>
-systems.
-
-                                                                  | [Redfish_set_bios_iscsi](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_bios_iscsi.py)
-
-                         |
-| Set the BIOS password for HPE iLO systems.
-
-                                                                            | [Redfish_set_bios_password](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_bios_password.py)
-
-                      |
-| Set the Manager ethernet interface static IP.
-
-                                                                         | [Redfish_set_ethernet_management_iface_static_ip](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_ethernet_management_iface_static_ip.py)
-
- |
-| Set the NTP servers for HPE iLO systems.
-
-                                                                              | [Redfish_set_ilo_ntp_servers](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_ilo_ntp_servers.py)
-
-                     |
-| Set the time zone for HPE iLO systems.
-
-                                                                                | [Redfish_set_ilo_timezone](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_ilo_timezone.py)
-
-                        |
-| Add a license key for HPE iLO systems.
-
-                                                                                | [Redfish_set_license_key](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_license_key.py)
-
-                         |
-| Set the server asset tag.
-
-                                                                                             | [Redfish_set_server_asset_tag](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_server_asset_tag.py)
-
-                    |
-| Configure SNMP alert for HPE iLO systems.
-
-                                                                             | [Redfish_set_snmp_alert](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_snmp_alert.py)
-
-                          |
-| Set the UID light.
-
-                                                                                                    | [Redfish_set_uid_light](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_uid_light.py)
-
-                           |
-| Provide the firmware inventory on HPE iLO <br>
-systems.
-
-                                                               | [Redfish_software_firmware_inventory](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/software_firmware_inventory.py)
-
-             |
-| Test a connection to the ESKM system for HPE <br>
-iLO systems.
-
-                                                        | [Redfish_test_ESKM_connection](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/test_ESKM_connection.py)
-
-                    |
-| Update the firmware by using an HTTP URL.
-
-                                                                             | [Redfish_update_ilo_firmware](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/update_ilo_firmware.py)
-
-                     |
-| Upload the firmware to the iLO Repository for <br>
-flashing.
-
-                                                          | [Redfish_upload_firmware_ilo_repository](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/upload_firmware_ilo_repository.py)
-
-          |
-| Upload a firmware component with a size less <br>
-than 32 GB and associated compsig signature <br>
-file to the iLO repository.
-
- | [Redfish_upload_firmware_ilo_repository_with_compsig](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/upload_firmware_ilo_repository_with_compsig.py)
-
- |
 ## Legacy Rest Example Reference Table
 
-| Example
+| Example | Link |
+| --- | --- |
+| Add an iLO user account.  | [Legacy\_Rest\_add\_ilo\_user\_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/add_ilo_user_account.py) |
+| Revert the BIOs to default values.  | [Legacy\_Rest\_bios\_revert\_default](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/bios_revert_default.py) |
+| Change the BIOs settings.  | [Legacy\_Rest\_change\_bios\_setting](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/change_bios_setting.py) |
+| Change the boot order for HPE iLO systems.  | [Legacy\_Rest\_change\_boot\_order](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/change_boot_order.py) |
+| Change the temporary boot order.  | [Legacy\_Rest\_change\_temporary\_boot\_order](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/change_temporary_boot_order.py) |
+| Clear the AHS data.  | [Legacy\_Rest\_clear\_ahs\_data](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/clear_ahs_data.py) |
+| Clear IEL or IML Logs for HPE iLO systems.  | [Legacy\_Rest\_clear\_ilo\_event\_log](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/clear_ilo_event_log.py) |
+| Clear the IML.  | [Legacy\_Rest\_clear\_iml](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/clear_iml.py) |
+| Gather the computer system details.  | [Legacy\_Rest\_computer\_details](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/computer_details.py) |
+| Configure SNMP for HPE iLO systems.  | [Legacy\_Rest\_configure\_snmp](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/configure_snmp.py) |
+| Dump the ESKM event log.  | [Legacy\_Rest\_dump\_eskm\_event\_log](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/dump_eskm_event_log.py) |
+| Dump the iLO event log.  | [Legacy\_Rest\_dump\_ilo\_event\_log](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/dump_ilo_event_log.py) |
+| Dump the Manager NIC data.  | [Legacy\_Rest\_dump\_ilo\_nic](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/dump_ilo_nic.py) |
+| Dump the IML.  | [Legacy\_Rest\_dump\_iml](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/dump_iml.py) |
+| Enables secure boot.  | [Legacy\_Rest\_enable\_secure\_boot](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/enable_secure_boot.py) |
+| Clear IEL or IML Logs for HPE iLO systems.  | [Legacy\_Rest\_find\_ilo\_mac\_address](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/find_ilo_mac_address.py) |
+| Generate a certificate signing request for HPE iLO systems.  | [Legacy\_Rest\_generate\_csr](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/generate_csr.py) |
+| Gather ESKM data for HPE iLO systems.  | [Legacy\_Rest\_get\_ESKM](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_ESKM.py) |
+| Gather the encryption settings on HPE iLO systems.  | [Legacy\_Rest\_get\_EncryptionSettings](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_EncryptionSettings.py) |
+| Obtain the logical drives.  | [Legacy\_Rest\_get\_LogicalDrives](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_LogicalDrives.py) |
+| Gather AHS data for HPE iLO systems.  | [Legacy\_Rest\_get\_ahs\_data](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_ahs_data.py) |
+| Obtain the base message registry.  | [Legacy\_Rest\_get\_base\_registry](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_base_registry.py) |
+| Obtain the CSR.  | [Legacy\_Rest\_get\_csr](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_csr.py) |
+| Obtain the Manager IP.  | [Legacy\_Rest\_get\_ilo\_ip](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_ilo_ip.) |
+| Obtain the Manager NIC data.  | [Legacy\_Rest\_get\_ilo\_nic](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_ilo_nic.py) |
+| Obtain an iLO license key for HPE iLO systems.  | [Legacy\_Rest\_get\_license\_key](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_license_key.py) |
+| Obtain the power metrics average on HPE iLO systems | [Legacy\_Rest\_get\_powermetrics\_average](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_powermetrics_average.py) |
+| Obtain the iLO information, such as iLO generation, version, and resource directory for HPE iLO systems.  | [Legacy\_Rest\_get\_resource\_directory](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_resource_directory.py)
+| Obtain legacy resource directory. | [Legacy\_Rest\_get\_resource\_directory](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_resource_directory.py) |
+| Obtain the schema data on any system with schemas on system.  | [Legacy\_Rest\_get\_schema](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_schema.py) |
+| Import an SSL certificate for HPE iLO systems.  | [Legacy\_Rest\_import\_ssl](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/import_ssl.py) |
+| Modify a user account.  | [Legacy\_Rest\_modify\_ilo\_user\_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/modify_ilo_user_account.py) |
+| Mount virtual media for HPE iLO systems.  | [Legacy\_Rest\_mount\_virtual\_media\_iso](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/mount_virtual_media_iso.py) |
+| Remove an iLO user account.  | [Legacy\_Rest\_remove\_ilo\_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/remove_ilo_account.py) |
+| Reset the ESKM event log for HPE iLO systems.  | [Legacy\_Rest\_reset\_ESKM\_eventlog](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/reset_ESKM_eventlog.py) |
+| Reset iLO.  | [Legacy\_Rest\_reset\_ilo](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/reset_ilo.py) |
+| Reset a sever.  | [Legacy\_Rest\_reset\_server](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/reset_server.py) |
+| Create a session.  | [Legacy\_Rest\_sessions](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/sessions.py) |
+| Set active Manager NIC.  | [Legacy\_Rest\_set\_active\_ilo\_nic](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_active_ilo_nic.py) |
+| Set the DHCP boot instance for HPE iLO systems.  | [Legacy\_Rest\_set\_bios\_dhcp](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_dhcp.py) |
+| Set the primary ESKM key server for HPE iLO systems.  | [Legacy\_Rest\_set\_ESKM\_PrimaryKeyServer](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_ESKM_PrimaryKeyServer.py) |
+| Set the ESKM username and password for HPE iLO systems.  | [Legacy\_Rest\_set\_ESKM\_username\_password](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_ESKM_username_password.py) |
+| Set the NTP servers for HPE iLO systems.  | [Legacy\_Rest\_set\_Ilo\_ntp\_servers](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_Ilo_ntp_servers.py) |
+| Set an ISCSI boot instance for HPE iLO systems.  | [Legacy\_Rest\_set\_bios\_iscsi](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_iscsi.py) |
+| Set the BIOS password for HPE iLO systems.  | [Legacy\_Rest\_set\_bios\_password](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_password.py) |
+| Set the BIOS service.  | [Legacy\_Rest\_set\_bios\_service](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_service.py) |
+| Set the UEFI shell startup.  | [Legacy\_Rest\_set\_bios\_uefi\_shell\_startup](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_uefi_shell_startup.py) |
+| Set the URL boot file.  | [Legacy\_Rest\_set\_bios\_url\_boot\_file](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_url_boot_file.py) |
+| Set the time zone for HPE iLO systems.  | [Legacy\_Rest\_set\_ilo\_timezone](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_ilo_timezone.py) |
+| Add a license key for HPE iLO systems.  | [Legacy\_Rest\_set\_license\_key](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_license_key.py) |
+| Set the server asset tag.  | [Legacy\_Rest\_set\_server\_asset\_tag](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_server_asset_tag.py) |
+| Set the UID light.  | [Legacy\_Rest\_set\_uid\_light](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_uid_light.py) |
+| Test a connection to the ESKM system for HPE iLO systems.  | [Legacy\_Rest\_test\_ESKM\_connection](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/test_ESKM_connection.py) |
+| Update the firmware by using an HTTP URL.  | [Legacy\_Rest\_update\_ilo\_firmware](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/update_ilo_firmware.py) |
 
-                                                                                                                        | Link
-
-                                                |
-| Add an iLO user account.
-
-                                                                                                       | [Legacy_Rest_add_ilo_user_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/add_ilo_user_account.py)
-
-                    |
-| Revert the BIOs to default values.
-
-                                                                                             | [Legacy_Rest_bios_revert_default](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/bios_revert_default.py)
-
-                     |
-| Change the BIOs settings.
-
-                                                                                                      | [Legacy_Rest_change_bios_setting](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/change_bios_setting.py)
-
-                     |
-| Change the boot order for HPE iLO systems.
-
-                                                                                     | [Legacy_Rest_change_boot_order](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/change_boot_order.py)
-
-                       |
-| Change the temporary boot order.
-
-                                                                                               | [Legacy_Rest_change_temporary_boot_order](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/change_temporary_boot_order.py)
-
-             |
-| Clear the AHS data.
-
-                                                                                                            | [Legacy_Rest_clear_ahs_data](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/clear_ahs_data.py)
-
-                          |
-| Clear IEL or IML Logs for HPE iLO systems.
-
-                                                                                     | [Legacy_Rest_clear_ilo_event_log](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/clear_ilo_event_log.py)
-
-                     |
-| Clear the IML.
-
-                                                                                                                 | [Legacy_Rest_clear_iml](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/clear_iml.py)
-
-                               |
-| Gather the computer system details.
-
-                                                                                            | [Legacy_Rest_computer_details](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/computer_details.py)
-
-                        |
-| Configure SNMP for HPE iLO systems.
-
-                                                                                            | [Legacy_Rest_configure_snmp](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/configure_snmp.py)
-
-                          |
-| Dump the ESKM event log.
-
-                                                                                                       | [Legacy_Rest_dump_eskm_event_log](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/dump_eskm_event_log.py)
-
-                     |
-| Dump the iLO event log.
-
-                                                                                                        | [Legacy_Rest_dump_ilo_event_log](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/dump_ilo_event_log.py)
-
-                      |
-| Dump the Manager NIC data.
-
-                                                                                                     | [Legacy_Rest_dump_ilo_nic](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/dump_ilo_nic.py)
-
-                            |
-| Dump the IML.
-
-                                                                                                                  | [Legacy_Rest_dump_iml](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/dump_iml.py)
-
-                                |
-| Enables secure boot.
-
-                                                                                                           | [Legacy_Rest_enable_secure_boot](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/enable_secure_boot.py)
-
-                      |
-| Clear IEL or IML Logs for HPE iLO systems.
-
-                                                                                     | [Legacy_Rest_find_ilo_mac_address](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/find_ilo_mac_address.py)
-
-                    |
-| Generate a certificate signing request for <br>
-HPE iLO systems.
-
-                                                               | [Legacy_Rest_generate_csr](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/generate_csr.py)
-
-                            |
-| Gather ESKM data for HPE iLO systems.
-
-                                                                                          | [Legacy_Rest_get_ESKM](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_ESKM.py)
-
-                                |
-| Gather the encryption settings on HPE iLO systems.
-
-                                                                             | [Legacy_Rest_get_EncryptionSettings](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_EncryptionSettings.py)
-
-                  |
-| Obtain the logical drives.
-
-                                                                                                     | [Legacy_Rest_get_LogicalDrives](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_LogicalDrives.py)
-
-                       |
-| Gather AHS data for HPE iLO systems.
-
-                                                                                           | [Legacy_Rest_get_ahs_data](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_ahs_data.py)
-
-                            |
-| Obtain the base message registry.
-
-                                                                                              | [Legacy_Rest_get_base_registry](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_base_registry.py)
-
-                       |
-| Obtain the CSR.
-
-                                                                                                                | [Legacy_Rest_get_csr](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_csr.py)
-
-                                 |
-| Obtain the Manager IP.
-
-                                                                                                         | [Legacy_Rest_get_ilo_ip](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_ilo_ip.)
-
-                              |
-| Obtain the Manager NIC data.
-
-                                                                                                   | [Legacy_Rest_get_ilo_nic](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_ilo_nic.py)
-
-                             |
-| Obtain an iLO license key for HPE iLO systems.
-
-                                                                                 | [Legacy_Rest_get_license_key](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_license_key.py)
-
-                         |
-| Obtain the power metrics average on HPE iLO <br>
-systems
-
-                                                                       | [Legacy_Rest_get_powermetrics_average](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_powermetrics_average.py)
-
-                |
-| Obtain the iLO information, such as iLO <br>
-generation, version, and resource directory <br>
-for HPE iLO systems.
-
-             | [Legacy_Rest_get_resource_directory](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_resource_directory.py)
-
-[Legacy_Rest_get_resource_directory](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_resource_directory.py)
-
- |
-| Obtain the schema data on any system with <br>
-schemas on system.
-
-                                                              | [Legacy_Rest_get_schema](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/get_schema.py)
-
-                                                 |
-| Import an SSL certificate for HPE iLO systems.
-
-                                                                                 | [Legacy_Rest_import_ssl](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/import_ssl.py)
-
-                                                 |
-| Modify a user account.
-
-                                                                                                         | [Legacy_Rest_modify_ilo_user_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/modify_ilo_user_account.py)
-
-                                    |
-| Mount virtual media for HPE iLO systems.
-
-                                                                                       | [Legacy_Rest_mount_virtual_media_iso](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/mount_virtual_media_iso.py)
-
-                                    |
-| Remove an iLO user account.
-
-                                                                                                    | [Legacy_Rest_remove_ilo_account](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/remove_ilo_account.py)
-
-                                         |
-| Reset the ESKM event log for HPE iLO systems.
-
-                                                                                  | [Legacy_Rest_reset_ESKM_eventlog](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/reset_ESKM_eventlog.py)
-
-                                        |
-| Reset iLO.
-
-                                                                                                                     | [Legacy_Rest_reset_ilo](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/reset_ilo.py)
-
-                                                  |
-| Reset a sever.
-
-                                                                                                                 | [Legacy_Rest_reset_server](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/reset_server.py)
-
-                                               |
-| Create a session.
-
-                                                                                                              | [Legacy_Rest_sessions](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/sessions.py)
-
-                                                   |
-| Set active Manager NIC.
-
-                                                                                                        | [Legacy_Rest_set_active_ilo_nic](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_active_ilo_nic.py)
-
-                                         |
-| Set the DHCP boot instance for HPE iLO systems.
-
-                                                                                | [Legacy_Rest_set_bios_dhcp](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_dhcp.py)
-
-                                              |
-| Set the primary ESKM key server for HPE iLO <br>
-systems.
-
-                                                                      | [Legacy_Rest_set_ESKM_PrimaryKeyServer](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_ESKM_PrimaryKeyServer.py)
-
-                                  |
-| Set the ESKM username and password for HPE iLO <br>
-systems.
-
-                                                                   | [Legacy_Rest_set_ESKM_username_password](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_ESKM_username_password.py)
-
-                                 |
-| Set the NTP servers for HPE iLO systems.
-
-                                                                                       | [Legacy_Rest_set_Ilo_ntp_servers](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_Ilo_ntp_servers.py)
-
-                                        |
-| Set an ISCSI boot instance for HPE iLO systems.
-
-                                                                                | [Legacy_Rest_set_bios_iscsi](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_iscsi.py)
-
-                                             |
-| Set the BIOS password for HPE iLO systems.
-
-                                                                                     | [Legacy_Rest_set_bios_password](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_password.py)
-
-                                          |
-| Set the BIOS service.
-
-                                                                                                          | [Legacy_Rest_set_bios_service](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_service.py)
-
-                                           |
-| Set the UEFI shell startup.
-
-                                                                                                    | [Legacy_Rest_set_bios_uefi_shell_startup](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_uefi_shell_startup.py)
-
-                                |
-| Set the URL boot file.
-
-                                                                                                         | [Legacy_Rest_set_bios_url_boot_file](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_bios_url_boot_file.py)
-
-                                     |
-| Set the time zone for HPE iLO systems.
-
-                                                                                         | [Legacy_Rest_set_ilo_timezone](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_ilo_timezone.py)
-
-                                           |
-| Add a license key for HPE iLO systems.
-
-                                                                                         | [Legacy_Rest_set_license_key](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_license_key.py)
-
-                                            |
-| Set the server asset tag.
-
-                                                                                                      | [Legacy_Rest_set_server_asset_tag](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_server_asset_tag.py)
-
-                                       |
-| Set the UID light.
-
-                                                                                                             | [Legacy_Rest_set_uid_light](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/set_uid_light.py)
-
-                                              |
-| Test a connection to the ESKM system for HPE <br>
-iLO systems.
-
-                                                                 | [Legacy_Rest_test_ESKM_connection](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/test_ESKM_connection.py)
-
-                                       |
-| Update the firmware by using an HTTP URL.
-
-                                                                                      | [Legacy_Rest_update_ilo_firmware](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Legacy_Rest/update_ilo_firmware.py)
-
-                                        |
 ## Add iLO Manager Account
 
 Add an iLO Manager Account based on permissions (iLO 4 and iLO 5) or role ID (iLO 5).
@@ -785,7 +339,7 @@ def change_temporary_boot_order(_redfishobj, boottarget):
 
 ### Example of the Boot Object
 
-The folowing JSON output can be obtained first by noting the *systems_members_response* on line 42 above.
+The following JSON output can be obtained first by noting the *systems_members_response* on line 42 above.
 
 ```python
 else:
@@ -1030,11 +584,11 @@ if clear_log_services_uri:
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
 
-## Clear IEL/IML Data
+## Computer System Data
 
-Print computer system JSON data.
+The following example retrieves the `ComputerSystem` data in JSON format.
 
-```python
+```python Function definition
 def computer_details(_redfishobj):
     systems_members_uri = None
     systems_members_response = None
@@ -1058,14 +612,7 @@ def computer_details(_redfishobj):
     print(json.dumps(systems_members_response.dict, indent=4, sort_keys=True))
 ```
 
-### Computer System Data
-
-The folowing JSON output is obtained when accessing type *ComputerSystem*. Values may vary
-from system to system, and key entries may differ based on the schema version for #ComputerSystem.
-
-The user can preview the data prior:
-
-```JSON
+```json Body Response
 {
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.etag": "W/\"7010F715\"",
@@ -1442,7 +989,9 @@ def configure_snmp(_redfishobj, read_communities, snmp_alerts):
 In order to configure iLO Network Time Protocol, certain settings must be in-place on the iLO Management
 NIC(s) including settings the value of the OEM/HPE object key-value pair *UseNTPServers* to *True*.
 
-**NOTE**: An iLO Reset will be required in order for the change to be applied.
+:::info NOTE
+An iLO Reset is required for the change to be applied.
+:::
 
 ```python
 def enable_ntp(_redfishobj, ntp_servers):
@@ -1556,7 +1105,7 @@ def enable_secure_boot(_redfishobj, secure_boot_enable):
 
 ## Expand Data
 
-JSON data is typically provided in a collapsed/compactted state. Use *$expand* as a query string on the
+JSON data is typically provided in a collapsed/compacted state. Use _$expand_ as a query string on the
 desired URI.
 
 ```python
@@ -1570,17 +1119,11 @@ def expand_data(_redfishobj, expand_url="/redfish/v1/"):
     sys.stdout.write('\t'+str(exp_response.dict)+'\n')
 ```
 
-### Response Example
-
-Standard response:
-
-```TEXT
+```json Body Response with no expansion
 {'@odata.context': '/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection', '@odata.etag': 'W/"AA6D42B0"', '@odata.id': '/redfish/v1/Systems/', '@odata.type': '#ComputerSystemCollection.ComputerSystemCollection', 'Description': 'Computer Systems view', 'Name': 'Computer Systems', 'Members': [{'@odata.id': '/redfish/v1/Systems/1/'}], 'Members@odata.count': 1}
 ```
 
-Expanded response:
-
-```TEXT
+```json Expanded response
 {'@odata.context': '/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection', '@odata.etag': 'W/"5737F79D"', '@odata.id': '/redfish/v1/Systems/', '@odata.type': '#ComputerSystemCollection.ComputerSystemCollection', 'Description': 'Computer Systems view', 'Name': 'Computer Systems', 'Members': [{'@odata.context': '/redfish/v1/$metadata#ComputerSystem.ComputerSystem', '@odata.id': '/redfish/v1/Systems/1/', '@odata.type': '#ComputerSystem.v1_10_0.ComputerSystem', 'Id': '1', 'Actions': {'#ComputerSystem.Reset': {'ResetType@Redfish.AllowableValues': ['On', 'ForceOff', 'GracefulShutdown', 'ForceRestart', 'Nmi', 'PushPowerButton'], 'target': '/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/'}}, 'AssetTag': '', 'Bios': {'@odata.id': '/redfish/v1/systems/1/bios/'}, 'BiosVersion': 'U32 v2.22 (11/13/2019)', 'Boot': {'BootOptions': {'@odata.id': '/redfish/v1/Systems/1/BootOptions/'}, 'BootOrder': ['Boot0011', 'Boot0019', 'Boot0009', 'Boot0012', 'Boot0010', 'Boot0014', 'Boot000C', 'Boot000E', 'Boot000F', 'Boot0017', 'Boot000D', 'Boot0013'], 'BootSourceOverrideEnabled': 'Once', 'BootSourceOverrideMode': 'UEFI', 'BootSourceOverrideTarget': 'Hdd', 'BootSourceOverrideTarget@Redfish.AllowableValues': ['None', 'Cd', 'Hdd', 'Usb', 'SDCard', 'Utilities', 'Diags', 'BiosSetup', 'Pxe', 'UefiShell', 'UefiHttp', 'UefiTarget'], 'UefiTargetBootSourceOverride': 'None', 'UefiTargetBootSourceOverride@Redfish.AllowableValues': ['HD(1,GPT,0940C33C-EAF1-43CD-8C8F-4426672227FE,0x800,0x4E000)/\\EFI\\sles\\shim.efi', 'HD(1,GPT,22F62F69-47E7-4334-BCE6-A0B321810BA1,0x800,0x64000)/\\EFI\\redhat\\shimx64.efi', 'PciRoot(0x0)/Pci(0x1C,0x0)/Pci(0x0,0x0)/MAC(98F2B32CB4A8,0x0)/IPv4(0.0.0.0)/Uri()', 'PciRoot(0x0)/Pci(0x1C,0x0)/Pci(0x0,0x0)/MAC(98F2B32CB4A8,0x0)/IPv4(0.0.0.0)', 'PciRoot(0x0)/Pci(0x1C,0x0)/Pci(0x0,0x0)/MAC(98F2B32CB4A8,0x0)/IPv6(0000:0000:0000:0000:0000:0000:0000:0000)/Uri()', 'PciRoot(0x0)/Pci(0x1C,0x0)/Pci(0x0,0x0)/MAC(98F2B32CB4A8,0x0)/IPv6(0000:0000:0000:0000:0000:0000:0000:0000)', 'PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x0)', 'PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x1)', 'PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x2)', 'PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x3)', 'PciRoot(0x0)/Pci(0x14,0x0)/USB(0xD,0x0)/USB(0x1,0x0)', 'PciRoot(0x0)/Pci(0x14,0x0)/USB(0xD,0x0)/USB(0x1,0x1)']}, 'EthernetInterfaces': {'@odata.id': '/redfish/v1/Systems/1/EthernetInterfaces/'}, 'HostName': 'localhost.americas.hpqcorp.net', 'IndicatorLED': 'Off', 'Links': {'ManagedBy': [{'@odata.id': '/redfish/v1/Managers/1/'}], 'Chassis': [{'@odata.id': '/redfish/v1/Chassis/1/'}]}, 'LogServices': {'@odata.id': '/redfish/v1/Systems/1/LogServices/'}, 'Manufacturer': 'HPE', 'Memory': {'@odata.id': '/redfish/v1/Systems/1/Memory/'}, 'MemoryDomains': {'@odata.id': '/redfish/v1/Systems/1/MemoryDomains/'}, 'MemorySummary': {'Status': {'HealthRollup': 'OK'}, 'TotalSystemMemoryGiB': 32, 'TotalSystemPersistentMemoryGiB': 0}, 'Model': 'ProLiant DL360 Gen10', 'Name': 'Computer System', 'NetworkInterfaces': {'@odata.id': '/redfish/v1/Systems/1/NetworkInterfaces/'}, 'Oem': {'Hpe': {'@odata.context': '/redfish/v1/$metadata#HpeComputerSystemExt.HpeComputerSystemExt', '@odata.type': '#HpeComputerSystemExt.v2_9_0.HpeComputerSystemExt', 'Actions': {'#HpeComputerSystemExt.PowerButton': {'PushType@Redfish.AllowableValues': ['Press', 'PressAndHold'], 'target': '/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.PowerButton/'}, '#HpeComputerSystemExt.SecureSystemErase': {'target': '/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SecureSystemErase/'}, '#HpeComputerSystemExt.SystemReset': {'ResetType@Redfish.AllowableValues': ['ColdBoot', 'AuxCycle'], 'target': '/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SystemReset/'}}, 'AggregateHealthStatus': {'AgentlessManagementService': 'Unavailable', 'BiosOrHardwareHealth': {'Status': {'Health': 'OK'}}, 'FanRedundancy': 'Redundant', 'Fans': {'Status': {'Health': 'OK'}}, 'Memory': {'Status': {'Health': 'OK'}}, 'Network': {'Status': {'Health': 'OK'}}, 'PowerSupplies': {'PowerSuppliesMismatch': False, 'Status': {'Health': 'OK'}}, 'Processors': {'Status': {'Health': 'OK'}}, 'Storage': {'Status': {'Health': 'Warning'}}, 'Temperatures': {'Status': {'Health': 'OK'}}}, 'Bios': {'Backup': {'Date': '11/13/2019', 'Family': 'U32', 'VersionString': 'U32 v2.22 (11/13/2019)'}, 'Current': {'Date': '11/13/2019', 'Family': 'U32', 'VersionString': 'U32 v2.22 (11/13/2019)'}, 'UefiClass': 2}, 'CriticalTempRemainOff': False, 'CurrentPowerOnTimeSeconds': None, 'DeviceDiscoveryComplete': {'AMSDeviceDiscovery': 'NoAMS', 'DeviceDiscovery': 'vMainDeviceDiscoveryComplete', 'SmartArrayDiscovery': 'Complete'}, 'ElapsedEraseTimeInMinutes': 0, 'EndOfPostDelaySeconds': None, 'EstimatedEraseTimeInMinutes': 0, 'IntelligentProvisioningAlwaysOn': True, 'IntelligentProvisioningIndex': 8, 'IntelligentProvisioningLocation': 'System Board', 'IntelligentProvisioningVersion': '3.60.12', 'IsColdBooting': False, 'Links': {'HpeIpProvider': {'@odata.id': '/redfish/v1/systems/1/hpeip/'}, 'SUT': {'@odata.id': '/redfish/v1/systems/1/hpsut/'}, 'PCIDevices': {'@odata.id': '/redfish/v1/Systems/1/PCIDevices/'}, 'PCISlots': {'@odata.id': '/redfish/v1/Systems/1/PCISlots/'}, 'NetworkAdapters': {'@odata.id': '/redfish/v1/Systems/1/BaseNetworkAdapters/'}, 'SmartStorage': {'@odata.id': '/redfish/v1/Systems/1/SmartStorage/'}, 'USBPorts': {'@odata.id': '/redfish/v1/Systems/1/USBPorts/'}, 'USBDevices': {'@odata.id': '/redfish/v1/Systems/1/USBDevices/'}, 'EthernetInterfaces': {'@odata.id': '/redfish/v1/Systems/1/EthernetInterfaces/'}, 'WorkloadPerformanceAdvisor': {'@odata.id': '/redfish/v1/Systems/1/WorkloadPerformanceAdvisor/'}, 'SecureEraseReportService': {'@odata.id': '/redfish/v1/Systems/1/SecureEraseReportService/'}}, 'PCAPartNumber': '847479-001', 'PCASerialNumber': 'PVZEK0ARHA014I', 'PostDiscoveryCompleteTimeStamp': None, 'PostDiscoveryMode': None, 'PostMode': None, 'PostState': 'FinishedPost', 'PowerAllocationLimit': 500, 'PowerAutoOn': 'Restore', 'PowerOnDelay': 'Minimum', 'PowerOnMinutes': 80090, 'PowerRegulatorMode': 'OSControl', 'PowerRegulatorModesSupported': ['OSControl', 'Dynamic', 'Max', 'Min'], 'ProcessorJitterControl': {'ConfiguredFrequencyLimitMHz': 0, 'Mode': 'Disabled'}, 'SMBIOS': {'extref': '/smbios'}, 'ServerFQDN': '', 'SmartStorageConfig': [{'@odata.id': '/redfish/v1/systems/1/smartstorageconfig/'}], 'SystemROMAndiLOEraseComponentStatus': {'BIOSSettingsEraseStatus': 'Idle', 'iLOSettingsEraseStatus': 'Idle'}, 'SystemROMAndiLOEraseStatus': 'Idle', 'UserDataEraseComponentStatus': {}, 'UserDataEraseStatus': 'Idle', 'VirtualProfile': 'Inactive'}}, 'PowerState': 'On', 'ProcessorSummary': {'Count': 1, 'Model': 'Intel(R) Xeon(R) Bronze 3106 CPU @ 1.70GHz', 'Status': {'HealthRollup': 'OK'}}, 'Processors': {'@odata.id': '/redfish/v1/Systems/1/Processors/'}, 'SKU': 'DL3000GEN10', 'SecureBoot': {'@odata.id': '/redfish/v1/Systems/1/SecureBoot/'}, 'SerialNumber': 'TX86NP0121', 'Status': {'Health': 'Warning', 'HealthRollup': 'Warning', 'State': 'Enabled'}, 'Storage': {'@odata.id': '/redfish/v1/Systems/1/Storage/'}, 'SystemType': 'Physical', 'TrustedModules': [{'Oem': {'Hpe': {'@odata.context': '/redfish/v1/$metadata#HpeTrustedModuleExt.HpeTrustedModuleExt', '@odata.type': '#HpeTrustedModuleExt.v2_0_0.HpeTrustedModuleExt'}}, 'Status': {'State': 'Absent'}}], 'UUID': '30334C44-3030-5854-3836-4E5030313231'}], 'Members@odata.count': 1}
 ```
 
@@ -1641,7 +1184,9 @@ iLO Network Manager Interface: '3'
 
 Obtain an iLO Certificate Signing Request for use with Secure Socket Layer (SSL)/Transport Layer Security (TLS) Certificate.
 
-**NOTE**: This process may take some time to complete on iLO (~5 minutes).
+:::info NOTE
+This process may take some time to complete on iLO (~5 minutes).
+:::
 
 ```python
 def generate_csr(_redfishobj, csr_file, csr_properties):
@@ -1707,9 +1252,11 @@ def generate_csr(_redfishobj, csr_file, csr_properties):
 
 Obtain Active Health System Data.
 
-**NOTE**: AHS data is saved to a file, the contents of which are encoded. The use of an AHS Viewer to decode and parse
+:::info NOTE
+AHS data is saved to a file, the contents of which are encoded. The use of an AHS Viewer to decode and parse
 is required. Please review Active Health System Viewer Documentation for further details:
 [https://support.hpe.com/hpesc/public/docDisplay?docId=c05384164](https://support.hpe.com/hpesc/public/docDisplay?docId=c05384164)
+:::
 
 ```python
 def get_ahs_data(_redfishobj, logfile):
@@ -2270,7 +1817,9 @@ Power Metric Data
 
 Obtain iLO Resource Directory, quick access to all [‘@odata.type](mailto:'@odata.type)’ references and respective [‘@odata.id](mailto:'@odata.id)’.
 
-**NOTE**: This resource is only available on iLO systems.
+:::info NOTE
+This resource is only available on iLO systems.
+:::
 
 ```python
 def get_resource_directory(redfishobj):
@@ -3221,8 +2770,10 @@ def sessions(_redfishobj, login_account, login_password):
 Session token and URI. Session tokens can be cached and used for authentication for all subsequent calls
 as long as the session has not been terminated by the client or timed out by the server.
 
-**NOTE**: This is only true in production mode. Some higher security modes may require additional authentication
+:::info NOTE
+This is only true in production mode. Some higher security modes may require additional authentication
 techniques to be performed.
+:::
 
 ```TEXT
 Session X-Auth Token: 61ac3d750eeda276749cdd2138117a8f
@@ -3490,9 +3041,11 @@ Successful modification of BIOS password.
 
 Set HPE Enterprise Secure Key Manager Key Manager Config.
 
-**NOTE**: A valid ESKM key manager config is required and is tested upon patch submission.
+:::info NOTE
+A valid ESKM key manager config is required and is tested upon patch submission.
 An error initializing ESKM may occur if the ESKM key manager or associated required
 properties are invalid. See [‘@Message.ExtendedInfo](mailto:'@Message.ExtendedInfo)’ in the http response message.
+:::
 
 ```JSON
 {
@@ -3641,9 +3194,11 @@ def set_ilo_static_ipv4(_redfishobj, ipv4_dict, dns_dict):
 
 Configure NTP Server Settings.
 
-**NOTE**: The physical or shared ethernet networking adapter must be configured with *‘StaticNTPServers’:’True’*,
+:::info NOTE
+The physical or shared ethernet networking adapter must be configured with *‘StaticNTPServers’:’True’*,
 if static network time protocol servers are to be used. DHCP must also be disabled. The following is an error
 message which will occur in the event DHCP is enabled while attempting to configure static NTP server entries.
+:::
 
 ```JSON
 {
@@ -3721,8 +3276,9 @@ Successful modification of StaticNTPServers. (Only displaying response from *iLO
 
 Configure Network Time Protocol Time zone.
 
-**NOTE**: DHCP must be disabled. The following is an error message which will occur in the event DHCP is enabled while
-attempting to modify the NTP timezone.
+:::info NOTE
+DHCP must be disabled. The following is an error message which will occur in the event DHCP is enabled while attempting to modify the NTP timezone.
+:::
 
 ```JSON
 {
@@ -4303,7 +3859,7 @@ def update_ilo_firmware(_redfishobj, fw_url, tpm_flag):
 
 ## Upload firmware to iLO Repository
 
-Upload firmware to iLO’s Absaroka flash based repository. Firmware can be stored and catalogued, to be
+Firmware can be stored and catalogued, to be
 used at a later date or in the need to recover the platform from a failure condition. An http response code
 of 200 will be supplied upon completion of a successful upload; no other extended message information is provided.
 

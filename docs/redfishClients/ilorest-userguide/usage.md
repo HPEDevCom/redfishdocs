@@ -11,9 +11,9 @@ disableLastModified: true
 
 ## HPE iLOrest modes of operation
 
-<!-- The file-base mode description below is difficult to grasp. May need to rewrite it. -->
-<!-- What about the debug mode ? -->
-HPE iLOrest has three modes of operation. By default, the interactive mode is started when you launch HPE iLOrest. With scriptable mode, you can use a script that provides commands to HPE iLOrest. The file-based mode allows you to use a script that provides commands to HPE iLOrest and uses a file to load and save settings.
+[HPE iLOrest](/docs/redfishclients/ilorest-userguide/) has three modes of operation. By default, the interactive mode is started when you launch it. With the [scriptable mode](#scriptable-mode), you can use a script that calls the program followed by commands and arguments. The [file-based mode](#file-based-mode) allows you to use a script that calls the program followed by commands, arguments file(s) to load or save settings.
+
+In addition HPE iLOrest provides a [debug mode](/docs/redfishclients/ilorest-userguide/globalcommands/#global-commands-and-optional-arguments) very helpful for learning and troubleshooting.
 
 ### Interactive Mode
 
@@ -22,13 +22,13 @@ Interactive mode is started when you run the RESTful Interface Tool without any 
 Use the following instructions to start an interactive session on the different operating systems:
 
 - Microsoft Windows: Go to `C:\Program Files\Hewlett Packard Enterprise\RESTful Interface Tool` and double-click `ilorest.exe`. You must be an administrator to run `ilorest.exe`.
-- Linux and Ubuntu: Enter the following command as administrator: `/usr/sbin/ilorest` <!-- Really need to be "administrator" ? -->
+- Linux and Ubuntu: Enter the following command : `/usr/sbin/ilorest`
 - MAC: Enter the following command as administrator: `/Applications/ilorest`
 - VMware ESXi 7.0: Enter the following command as administrator: `/opt/tools/ilorest`
 - VMware ESXi 8.0: Enter the following command as administrator: `/opt/ilorest/bin/ilorest.sh`
 
 :::info NOTE
-In ESXi 7.0/8.0, ilorest is also integrated with the `esxcli` utility
+In ESXi 7.0/8.0, HPE iLOrest is integrated with the `esxcli` utility
 
 Here are some Examples:
 
@@ -52,15 +52,17 @@ Use the `exit` command at the prompt to exit from the interactive mode.
 
 Tab command completion is available for interactive mode in multiple capacities. See the features below.
 
-##### Commands
+##### Completing commands
 
 Tab command completion is available for viewing and completing commands.
 
 ![Tab complete commands](images/tab_command.gif "Tab complete commands")
 
-##### Types
+##### Completing types
 
-Redfish resources and properties are associated to a data type also called resource type or just type. To view or modify a resource, you must first select its type.
+Redfish resources and properties are associated to a data type also called
+resource type or just type. To view or modify a resource,
+you must first select its type.
 
 :::info TIP
 
@@ -74,21 +76,21 @@ Tab command completion is also available for viewing and completing types.
 
 ![Tab complete types](images/tab_types.gif "Tab complete types")
 
-##### Properties and sub-properties
+##### Completing properties and sub-properties
 
 Tab command completion is also available for viewing and completing properties.
 
-- You must be logged in and have a type selected
-- Also available for set and list
+- You must be logged in and have a type selected.
+- Also available for `set` and `list` commands.
 
 ![Tab complete props](images/tab_props.gif "Tab complete props")
 
-##### Schema information for properties
+##### Completing schema properties information
 
 Tab command completion can also show schema information for properties.
 
 - You must be logged in and have a type selected
-- Also available for set and list
+- Also available for `set` and `list`
 
 ![Tab complete schema](images/tab_schema.gif "Tab complete schema")
 
@@ -98,7 +100,7 @@ You can use the scriptable mode to script all the commands using an external inp
 
 The following example retrieves information regarding the `Bios` type:
 
-```shell
+```shell MS-DOS
 :: This is a batch file that logs into a remote server,
 :: selects the Bios type, and gets the BootMode value
 
@@ -132,6 +134,50 @@ ilorest.exe get BootMode
 pause
 ```
 
+```shell Linux
+#!/bin/bash
+
+#    RESTful Interface Tool Sample Script for HPE iLO Products    #
+#  Copyright 2014, 2020 Hewlett Packard Enterprise Development LP #
+
+# Description: This is a sample bash script to get the current    #
+#              boot mode.                                         #
+
+# NOTE:  You will need to replace the USER_LOGIN and PASSWORD     #
+#        and other values inside the quotation marks with values  #
+#        that are appropriate for your environment.               #
+
+#        Firmware support information for this script:            #
+#            iLO 5 - All versions                                 #
+#            iLO 4 - version 1.40 or later.                       #
+runLocal(){
+  ilorest get BootMode --selector=Bios. -u USER_LOGIN -p PASSWORD
+  ilorest logout
+}
+
+runRemote(){
+  ilorest get BootMode --selector=Bios. --url=$1 --user $2 --password $3
+  ilorest logout
+}
+
+error(){
+  echo "Usage:"
+  echo        "remote: Get_Current_Boot_Mode.sh ^<iLO url^> ^<iLO username^>  ^<iLO password^>"
+  echo        "local:  Get_Current_Boot_Mode.sh"
+}
+
+if [ "$#" -eq "3" ]
+then 
+  runRemote "$1" "$2" "$3"
+elif [ "$#" -eq "0" ]
+then
+  runLocal
+else
+  error
+fi
+
+```
+
 ### File-based mode
 
 File-based mode allows you to save and load settings from a file. This is similar to the `conrep.dat` files used by CONREP. File-based mode supports the JSON format.
@@ -140,8 +186,8 @@ The following script allows you to save, edit, and load a file to the server.
 
 The resources and properties of the `Bios` type is saved to a file called `ilorest1.json`. Then, after you modify any properties, the `load` command is used to make these changes on the server. Changes to read-only values are not reflected.
 
-```shell
-:: This a file-based edit mode helper for RESTful Interface Tool
+```shell MS-DOS
+:: This is a file-based edit mode helper for RESTful Interface Tool
 :: 1. Run to download selected type to a file called ilorest.json
 :: 2. Edit the ilorest.json file to make changes.
 :: 3. Press any key running batch program to continue with program,
@@ -262,7 +308,7 @@ Running HPE iLOrest against multiple managed systems can also be done using auto
 
 ## Configuration file
 
-The HPE iLOrest configuration file (redfish.conf) contains the default settings for the tool. You can use a text editor to change the behavior of the tool such as adding a server IP address, username, and password. The settings that you add or update in the configuration file are automatically loaded each time you start the tool.
+The HPE iLOrest configuration file (`redfish.conf`) contains the default settings for the tool. You can use a text editor to change the behavior of the tool such as adding a server IP address, username, and password. The settings that you add or update in the configuration file are automatically loaded each time you start the tool.
 
 Configuration file locations (only present for Windows/Linux/Ubuntu OS):
 

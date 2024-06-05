@@ -9,18 +9,30 @@ disableLastModified: false
 
 # Redfish examples
 
-This section provides several standard Redfish and HPE OEM specific examples. Other examples can be found throughout the document like in the [performing action](/docs/concepts/performing_actions/#oem-action-extensions) and in the [supplement documents](/docs/redfishservices/ilos/supplementdocuments) sections.
+This section provides several standard Redfish and HPE OEM specific examples.
+Other examples can be found throughout the document like in the
+[performing action](/docs/concepts/performing_actions/#oem-action-extensions)
+and in the [supplement documents](/docs/redfishservices/ilos/supplementdocuments) sections.
 
 ## BIOS Redfish examples
 
-This section presents standard Redfish requests related to the BIOS/UEFI subsystem. HPE specific BIOS/UEFI examples are presented in the [HPE BIOS](/docs/redfishservices/ilos/supplementdocuments/biosdoc/) section of the supplement documents.
+This section presents standard Redfish requests related to the BIOS/UEFI
+subsystem. HPE specific BIOS/UEFI examples are presented in the
+[HPE BIOS](/docs/redfishservices/ilos/supplementdocuments/biosdoc/)
+section of the supplement documents.
 
 ### Reading BIOS current settings
 
-The following example retrieves the current BIOS configuration of an iLO based server using cURL and Python.
+The following example retrieves the current BIOS configuration
+of an iLO based server using cURL and Python.
 
 :::warning Warning
-As mentioned in the [Getting Started](/docs/concepts/gettingstarted/) section, the <a href="https://github.com/DMTF/python-redfish-library" target="blank"> DMTF Redfish Python library</a> and the <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE Redfish Python library</a> cannot co-exist in the same Python environment. You should uninstall one before installing the other one.
+As mentioned in the
+[Getting Started](/docs/concepts/gettingstarted/) section, the
+<a href="https://github.com/DMTF/python-redfish-library" target="blank"> DMTF Redfish Python library</a>
+and the <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE Redfish Python library</a>
+cannot co-exist in the same Python environment. You should uninstall
+one before installing the other one.
 :::
 
 ```shell cURL
@@ -157,12 +169,17 @@ print('Response: '+json.dumps(response.dict, indent=4, sort_keys=True))
 }
 ```
 
-#### Update of a BIOS attribute
+### Update of a BIOS attribute
 
-On an iLO based server, the minimum required session ID privileges is `Configure`. The following example modifies the `AdminName`, `AdminEmail` and `AdminPhone` BIOS attributes on an iLO based server.
+On an iLO based server, the minimum required session ID privileges
+is `Configure`. The following example modifies the
+`AdminName`, `AdminEmail` and `AdminPhone` BIOS attributes on an
+iLO based server.
 
 :::success TIP
-When using iLOrest to set properties, you can include special characters (including spaces) by surrounding both the key and the value with double quotes.  
+When using iLOrest to set properties, you can include special characters
+(including spaces) by surrounding both the key and the value with double
+quotes.  
 :::
 
 ```shell iLOrest
@@ -195,9 +212,12 @@ Python <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/ma
 
 ### BIOS UEFI Secure Boot enablement
 
-The standard Redfish `SecureBootEnable` property is part of the `SecureBoot` data type. A reboot of the system is required to enable this property.
+The standard Redfish `SecureBootEnable` property is part of
+the `SecureBoot` data type. A reboot of the system is
+required to enable this property.
 
-The following example enables Secure Boot on an iLO based server. The minimum required session privilege is `Configure.`
+The following example enables Secure Boot on an iLO based server.
+The minimum required session privilege is `Configure.`
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -218,11 +238,16 @@ curl --insecure -u username:password  \
     {"SecureBootEnable":true}
 ```
 
-For a full Python example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/enable_secure_boot.py" target="_blank">enable\_secure\_boot.py</a>
+For a full Python example click here:
+<a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/enable_secure_boot.py" target="_blank">enable\_secure\_boot.py</a>
 
 ### Reset BIOS settings to defaults
 
-The following example resets BIOS attributes in an iLO 6 based server using the Redfish standard action. HPE provides [alternate methods](/docs/redfishservices/ilos/supplementdocuments/biosdoc/) with added value to achieve a similar goal.
+The following example resets BIOS attributes in an iLO 6 based
+server using the Redfish standard action.
+HPE provides
+[alternate methods](/docs/redfishservices/ilos/supplementdocuments/biosdoc/)
+with added value to achieve a similar goal.
 
 ```text Generic POST request
 POST /redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios
@@ -234,11 +259,24 @@ POST /redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios
 
 ## Server reset
 
-Server power control belongs to the global `ComputerSystem` resource. It is not part of the `Chassis` resource. The reason is because some systems can be configured with multiple Operating Systems, each of them spanning one or several chassis. The <a href="https://www.hpe.com/info/superdome" target="_blank">HPE Superdome Flex</a> is one of them. With this model, you can control the power of each operating system independently of each other by performing an HTTP operation on the desired Computer System item.
+Server power control belongs to the global `ComputerSystem` resource.
+It is not part of the `Chassis` resource. The reason is because some
+systems can be configured with multiple Operating Systems, each of
+them spanning one or several chassis.
+The <a href="https://www.hpe.com/info/superdome" target="_blank">HPE Superdome Flex</a>
+is one of them. With this model,
+you can control the power of each operating
+system independently of each other by performing an HTTP operation
+on the desired Computer System item.
 
-The standard method to reset a server, is to use the `ComputerSystem.Reset` Redfish standard action. Refer to the [Performing actions](/docs/concepts/performing_actions/) section for detail on the `Actions` object.
+The standard method to reset a server, is to use the `ComputerSystem.Reset`
+Redfish standard action.
+Refer to the [Performing actions](/docs/concepts/performing_actions/)
+section for detail on the `Actions` object.
 
-The following example resets an HPE iLO 6 based server using the standard Redfish method. The Minimum required session privilege is `Configure`.
+The following example resets an HPE iLO 6 based server
+using the standard Redfish method.
+The Minimum required session privilege is `Configure`.
 
 ```text Generic GET server reset actions
 GET /redfish/v1/Systems/1/?$select=Actions
@@ -282,21 +320,34 @@ ilorest logout
 
 ## Management Controller reset
 
-The following example lists the possible standard Redfish actions against an iLO 6 management controller with cURL and the HPE iLOrest Redfish client.
+The following example lists the
+possible standard Redfish actions against an
+HPE iLO 5 (or later) management controller with
+cURL and the HPE iLOrest Redfish client.
 
-```shell GET BMC Actions with cURL
-curl --location --request GET 'ilo-ip/redfish/v1/Managers/1/?$select=Actions' \
-     --header 'Content-Type: application/json' \
-     --header 'X-Auth-Token: 2e6886a529d5af368d46890ff82e3ce5'
+:::info NOTES
+By design, a Management Controller reset has no impact on the
+Operating System running in the server. You can safely restart
+(abruptly or gracefully) the Management Controller while th
+ Operating System is up and running.
+:::
+
+```text Generic request
+GET https://ilo-ip/redfish/v1/Managers/1/?$select=Actions
 ```
 
-```shell GET iLO Actions iLOrest
+```shell cURL
+curl --insecure --silent --user ilo-user:password  \
+     --request GET 'https://ilo-ip/redfish/v1/Managers/1/?$select=Actions' | jq
+```
+
+```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
-ilorest get --json Actions --select Manager
+ilorest get --json Actions --select Manager.
 ilorest logout
 ```
 
-```json Response body
+```json Body response
 {
   "Actions": {
     "#Manager.Reset": {
@@ -310,25 +361,49 @@ ilorest logout
 }
 ```
 
-The following example resets a iLO 6 management controller using the standard Redfish `Manager.Reset` action and the `iloreset` iLOrest macro-command.
+The above example returns `ForceRestart` and `GracefulRestart`
+for possible Manager Controller reset parameters,
+as mentioned in the resource definition
+[section](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions).
+Use the `GracefulRestart` value to wait for
+Management Controller running tasks to complete or to be
+gently stopped before restarting. Use `ForceRestart` to restart the
+Management Controller abruptly.
+
+:::info NOTE
+HPE iLO does not have the possibility to stop running
+tasks before triggering its restart. As a consequence,
+the `GracefulRestart` action is implemented as a `ForceRestart`.
+:::
+
+The following example resets an HPE iLO 5 (or later) using the
+standard Redfish `Manager.Reset` action with cURL and the
+`ilorest iloreset` [macro-command](/docs/redfishclients/ilorest-userguide/ilocommands/#iloreset-command).
+
+:::success TIP
+Refer to the
+[Authentication and sessions](/docs/concepts/redfishauthentication/#session-authentication)
+to learn how to create a session token like the one used by cURL
+in the next example.
+:::
 
 ```text Generic request
 POST /redfish/v1/Managers/1/Actions/Manager.Reset/
 
 Body:
 {
-    "ResetType": "GracefulRestart"
+    "ResetType": "ForceRestart"
 }
 ```
 
-```shell Reset BMC with cURL
+```shell cURL
 curl --location --request POST 'ilo-ip/redfish/v1/Managers/1/Actions/Manager.Reset/' \
      --header 'Content-Type: application/json' \
      --header 'X-Auth-Token: 2e6886a529d5af368d46890ff82e3ce5' \
-     --data-raw '{"ResetType": "GracefulRestart"}'
+     --data-raw '{"ResetType": "ForceRestart"}'
 ```
 
-```shell iLO Reset with iLOrest
+```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest iloreset
 ilorest logout 
@@ -336,23 +411,50 @@ ilorest logout
 
 ## GET MAC address of a Management Controller
 
-The goal of this example is to explain the workflow to retrieve the MAC address of the active management controller Ethernet interface of a server, connected to a physical network. MAC addresses of other network interfaces (ComputerSystem, HostInterfaces) are excluded. With this methodology, you should be able to write a long term Redfish client that works against any Redfish service implementation, including non-HPE.
+The goal of this example is to explain the workflow to retrieve
+the MAC address of the active management controller Ethernet interface of
+a server, connected to a physical network. MAC addresses of other
+network interfaces (ComputerSystem, HostInterfaces) are excluded.
+With this methodology, you should be able to write a long term
+Redfish client that works against any Redfish service implementation,
+including non-HPE.
 
 :::info NOTE
-The following methodology targets Redfish services compliant with version 1.6.0 or above.
+The following methodology targets Redfish services compliant with
+version 1.6.0 or above.
 
-Redfish services compliant with earlier versions must start browsing the Redfish tree at `/redfish/v1`.
+Redfish services compliant with earlier versions must start browsing
+the Redfish tree at `/redfish/v1`.
 :::
 
- The <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">Redfish schema specification</a>, provides, in table 5.2, the exhaustive list of the standard collections with their associated URIs. One of them is the `EthernetInterfaceCollection`.
+ The <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">Redfish schema specification</a>,
+ provides, in table 5.2, the exhaustive list of the standard collections
+ with their associated URIs. One of them is the `EthernetInterfaceCollection`.
 
-The URIs related to `EthernetInterfaceCollection` subordinate the following major subsystems: `Chassis`, `CompositionService` `ResourceBlocks`, `Systems` and `Managers`. Considering the goal of this exercise, you need to focus on the URIs below the  `Managers` subsystem: `/redfish/v1/Managers/{ManagerId}/EthernetInterfaces` and `/redfish/v1/Managers/{ManagerId}/HostInterfaces/{HostInterfaceId}/HostEthernetInterfaces`.
+The URIs related to `EthernetInterfaceCollection` subordinate the
+following major subsystems:
+`Chassis`, `CompositionService` `ResourceBlocks`, `Systems` and `Managers`.
+Considering the goal of this exercise, you need to focus on the URIs
+below the  `Managers` subsystem: `/redfish/v1/Managers/{ManagerId}/EthernetInterfaces`
+and `/redfish/v1/Managers/{ManagerId}/HostInterfaces/{HostInterfaceId}/HostEthernetInterfaces`.
 
-The second URI relates to `HostInterfaces` (i.e. virtual NIC on iLO based servers) allowing the access to the Management Controller from the operating system of the server. This type of ethernet interface is not relevant to this exercise as mentioned in the fist paragraph. Hence, the only relevant URI for this exercise is: `/redfish/v1/Managers/{ManagerId}/EthernetInterfaces`.
+The second URI relates to `HostInterfaces`
+(i.e. virtual NIC on iLO based servers) allowing the access to the
+Management Controller from the operating system of the server.
+This type of ethernet interface is not relevant to this exercise as
+mentioned in the fist paragraph. Hence, the only relevant URI
+for this exercise is: `/redfish/v1/Managers/{ManagerId}/EthernetInterfaces`.
 
-This URI is compliant with the Redfish Resource URI pattern definition (<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.6.0.pdf" target="_blank">paragraph 7.5.4</a>) as it contains the `{ManagerId}` string. Long term and portable Redfish clients must discover the list of possible Manager Identifiers and chose the most relevant one. The discovery of the Management Identifiers is performed with a GET operation toward the `ManagerCollection` URI.
+This URI is compliant with the Redfish Resource URI pattern definition
+(<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.6.0.pdf" target="_blank">paragraph 7.5.4</a>)
+as it contains the `{ManagerId}` string.
+Long term and portable Redfish clients must discover the
+list of possible Manager Identifiers and chose the most relevant one.
+The discovery of the Management Identifiers is performed with a
+GET operation toward the `ManagerCollection` URI.
 
-The following example provides portable methods to retrieve  controller manager Identifiers.
+The following example provides portable methods to retrieve
+controller manager Identifiers.
 
 ```text Generic GET request
 GET /redfish/v1/Managers
@@ -370,29 +472,30 @@ curl --insecure --silent --user ilo-user:password \
      jq -r '[.Members][][]["@odata.id"]'
 ```
 
-Response bodies:
-
-```json Response (HPE iLO)
+```json HPE iLO response
 {
   "@odata.id": "/redfish/v1/Managers/1/"
 }
 ```
 
-```json Response (OpenBMC)
+```json OpenBMC response
 {
   "@odata.id": "/redfish/v1/Managers/bmc/"
 }
 ```
 
-```json Response (HPE Superdome Flex 280)
+```json HPE Superdome Flex response
 {
   "@odata.id": "/redfish/v1/Managers/RMC/"
 }
 ```
 
-Once the Manager identifier URI is discovered, you can list the collection of Ethernet Interfaces attached to this particular manager:
+Once the Manager identifier URI is discovered,
+you can list the collection of Ethernet Interfaces
+attached to this particular manager:
 
-The following example retrieves the collection of Ethernet interfaces of an iLO based server.
+The following example retrieves the collection of
+Ethernet interfaces of an iLO based server.
 
 ```text Generic GET request
 GET /redfish/v1/Managers/1/EthernetInterfaces
@@ -411,12 +514,17 @@ ilorest logout
 ```
 
 :::success TIP
-In the above iLOrest example, you have to select only _Managers*_ interfaces. This is because iLOrest uses the `EthernetInterface` [data type](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#ethernetinterface) which owns several instances (URIs).
+In the above iLOrest example, you have to select
+only _Managers*_ interfaces. This is because iLOrest uses
+the `EthernetInterface` [data type](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#ethernetinterface)
+which owns several instances (URIs).
 
 Failure to do so retrieves also `Systems` interfaces.  
 :::
 
-The last step is to identify the interface physically connected to the management network among the URIs discovered in the previous step. This can be done with the `LinkUp` property and the following pseudo code:
+The last step is to identify the interface physically connected
+to the management network among the URIs discovered in the previous step.
+This can be done with the `LinkUp` property and the following pseudo code:
 
 ```text Pseudo code
 create list of Managers Ethernet interface URIs
@@ -453,13 +561,20 @@ done
 ```  
 
 :::info NOTE
-It is possible that Redfish services include Host Interfaces (also called vNICs) in the Manager `EthernetInterfaceCollection` (i.e. iLO Redfish). If at least one is enabled, the above script will print its MAC address in addition to the MAC address of the physical interface.
+It is possible that Redfish services include Host Interfaces
+(also called vNICs) in the Manager `EthernetInterfaceCollection`
+(i.e. iLO Redfish). If at least one is enabled, the above script
+will print its MAC address in addition to the MAC address of the
+physical interface.
 
-In that case, you will have to find a property common to all your computer vendors and use it to filter out undesirable interfaces. This property could belong to the OEM extension.
+In that case, you will have to find a property common to all your
+computer vendors and use it to filter out undesirable interfaces.
+This property could belong to the OEM extension.
 :::
 
 <!-- >
-Need to work on following solution with iLOrest and jq. The trick would be to find a suitable way to test LinkStatus with jq !
+Need to work on following solution with iLOrest and jq.
+The trick would be to find a suitable way to test LinkStatus with jq !
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -470,23 +585,34 @@ ilorest logout
 
 -->
 
-For a full Redfish example click here: <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/find_ilo_mac_address.py" target="_blank">find\_ilo\_mac_address.py</a>
+For a full Redfish example click here:
+<a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/find_ilo_mac_address.py" target="_blank">find\_ilo\_mac_address.py</a>
 
 ## Configuring user-defined temperature threshold
 
-iLO 6 offers the possibility to configure user-defined temperature thresholds using a Redfish action, and resulting in IML log entries generation if exceeded.
+iLO 6 offers the possibility to configure user-defined temperature
+thresholds using a Redfish action, and resulting in IML
+log entries generation if exceeded.
 
 :::info NOTE
 
-System defined temperature threshold cannot be modified. User defined temperature thresholds provide finer granularity to temperature thresholds.
+System defined temperature threshold cannot be modified.
+User defined temperature thresholds provide finer granularity
+to temperature thresholds.
 
 :::
 
-The following example is similar to [example 5](/docs/concepts/performing_actions/#example-5) in the performing actions section. It configures a user-defined temperature warning threshold on sensor 1 (Inlet-Ambient) of an iLO 6 based server. If the ambient temperature is exceeded, a warning IML entry is created.
+The following example is similar to
+[this one](/docs/concepts/performing_actions/#user-defined-temperature-threshold-creation)
+in the performing actions section. It configures a user-defined temperature
+warning threshold on sensor 1 (Inlet-Ambient) of an iLO 6 based server.
+If the ambient temperature is exceeded, a warning IML entry is created.
 
 :::success TIP
 
-Replace `AlertType=Warning` with `AlertType=Critical` to create a `CriticalUserTempThreshold` property in the sensor entry. If the ambient temperature is exceeded, a warning IML entry is created.
+Replace `AlertType=Warning` with `AlertType=Critical`
+to create a `CriticalUserTempThreshold` property in the sensor entry.
+If the ambient temperature is exceeded, a warning IML entry is created.
 
 :::
 
@@ -516,7 +642,9 @@ POST /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThre
 }
 ```
 
-Once a user defined temperature threshold is created, it is possible to retrieve the corresponding properties as shown in the following example.
+Once a user defined temperature threshold is created,
+it is possible to retrieve the corresponding properties as
+shown in the following example.
 
 ```text Generic request
 GET /redfish/v1/Chassis/1/Thermal/?$select=Temperatures/Oem/Hpe/
@@ -546,15 +674,20 @@ GET /redfish/v1/Chassis/1/Thermal/?$select=Temperatures/Oem/Hpe/
 
 ## Server Thermal Configuration
 
-Both BIOS and iLO/Chassis Redfish subsystems are able to manage the thermal configuration (fan cooling) of iLO based HPE servers. This paragraph provides detailed examples using both methods.
+Both BIOS and iLO/Chassis Redfish subsystems are
+able to manage the thermal configuration (fan cooling)
+of iLO based HPE servers. This paragraph provides detailed
+examples using both methods.
 
 ### Fan management using BIOS
 
-Fan cooling management can be performed with the `ThermalConfig` [BIOS attribute](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_bios_resourcedefns{{process.env.LATEST_FW_VERSION}}/#attributes).
+Fan cooling management can be performed with the
+`ThermalConfig` [BIOS attribute](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_bios_resourcedefns{{process.env.LATEST_FW_VERSION}}/#attributes).
 
 :::info NOTE:
 
-A reboot of the server **is required** to take BIOS attribute modifications, including `ThermalConfi`, into account.
+A reboot of the server **is required** to take
+BIOS attribute modifications, including `ThermalConfi`, into account.
 
 :::
 
@@ -613,11 +746,13 @@ ilorest logout
 
 ### Fan management using Thermal
 
-Fan cooling management can also be performed with the `ThermalConfiguration` property.
+Fan cooling management can also be performed
+with the `ThermalConfiguration` property.
 
 :::info NOTE
 
-A reboot of the server **is not required** to take `Thermal` modifications into account.
+A reboot of the server **is not required** to take
+`Thermal` modifications into account.
 
 :::
 
@@ -654,13 +789,15 @@ ilorest logout
 
 :::success TIP
 
-The possible values for the `ThermalConfiguration` property are listed in the [resource definition](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpethermalconfiguration) section:
+The possible values for the `ThermalConfiguration` property are listed in the
+[resource definition](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpethermalconfiguration) section:
 
 - `OptimalCooling`
 - `IncreasedCooling`
 - `MaximumCooling`
 - `EnhancedCooling`
-- `AcousticMode` (Edgeline-only option. Prioritizes minimizing noise from the enclosure.)
+- `AcousticMode` (Edgeline-only option.
+  Prioritizes minimizing noise from the enclosure.)
 
 :::
 
@@ -679,80 +816,124 @@ payload {'/redfish/v1/Chassis/1/Thermal/': {'Oem': {'Hpe': {'ThermalConfiguratio
 ## Redfish iscsi configuration example
 
 :::info NOTE
-Some examples in this section use a pseudo-code syntax for clarity. JSON pointer syntax is used to indicate specific properties.
+Some examples in this section use a pseudo-code syntax for clarity.
+JSON pointer syntax is used to indicate specific properties.
 :::
 
 :::warning Warning
-The <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> DMTF Redfish Python library</a> and the <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE Redfish Python library</a> cannot co-exist in the same Python environment. You should uninstall one before installing the other one.
+The <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> DMTF Redfish Python library</a>
+and the <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE Redfish Python library</a>
+cannot co-exist in the same Python environment.
+You should uninstall one before installing the other one.
 :::
 
-Before accessing Redfish resources and properties, you must create an instance of `RedfishObject`. The class constructor takes the Redfish service hostname/IP address, login username, and password or valid certificate as arguments. The class also initializes a login session, gets systems resources, and message registries as shown in this simple <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/quickstart_redfish.py" target="_blank"> example</a>.
+Before accessing Redfish resources and properties,
+you must create an instance of `RedfishObject`.
+The class constructor takes the Redfish service hostname/IP address,
+login username, and password or valid certificate as arguments.
+The class also initializes a login session, gets systems resources,
+and message registries as shown in this simple
+<a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/quickstart_redfish.py" target="_blank"> example</a>.
 
 ### Example iSCSI Software Initiator configuration
 
-The iSCSI Software Initiator allows you to configure an iSCSI target device to be used as a boot
-source. The BIOS current configuration object contains a link to a separate resource of type
-`HpeiSCSISoftwareInitiator.` The BIOS current configuration resource and the iSCSI Software
-Initiator current configuration resources are read-only. To change iSCSI settings, you need to
-follow another link to the `Settings` resource, which allows `PUT` and `PATCH` operations.
+The iSCSI Software Initiator allows you to configure an iSCSI
+target device to be used as a boot
+source. The BIOS current configuration object contains a
+link to a separate resource of type
+`HpeiSCSISoftwareInitiator.` The BIOS current configuration
+resource and the iSCSI Software
+Initiator current configuration resources are read-only.
+To change iSCSI settings, you need to
+follow another link to the `Settings` resource, which allows
+`PUT` and `PATCH` operations.
 
-The iSCSI target configurations are represented in an `iSCSISources` property, that is an
-array of objects, each containing the settings for a single target. The size of the array represents
-the total number of iSCSI boot sources that can be configured at the same time. Many mutable
-properties exist, including `iSCSIAttemptInstance,` which can be set to a unique integer
-in the range [1, _N_], where _N_ is the boot sources array size. By default, this _instance number_ is 0
-for all objects, indicating that the object should be ignored when configuring iSCSI.
+The iSCSI target configurations are represented in an `iSCSISources`
+property, that is an
+array of objects, each containing the settings for a single target.
+The size of the array represents
+the total number of iSCSI boot sources that can be configured at the same time.
+Many mutable
+properties exist, including `iSCSIAttemptInstance,` which can be set
+to a unique integer
+in the range [1, _N_], where _N_ is the boot sources array size.
+By default, this _instance number_ is 0
+for all objects, indicating that the object should be ignored when
+configuring iSCSI.
 
 Each object also contains two read-only properties—`StructuredBootString` and
-`UEFIDevicePath`, which are only populated after the target has been successfully configured
-as a boot source. More information about each property is available in the corresponding schema.
+`UEFIDevicePath`, which are only populated after
+the target has been successfully configured
+as a boot source. More information about each property
+is available in the corresponding schema.
 The iSCSI initiator name is represented by the `iSCSIInitiatorName` property.
 
-An additional read-only property, `iSCSINicSources,` is only shown in the iSCSI current
-configuration resource. This property is an array of strings representing the possible NIC instances
-that can be used as targets for iSCSI boot configuration. To confirm which NIC device each string
+An additional read-only property, `iSCSINicSources,`
+is only shown in the iSCSI current
+configuration resource. This property is an array of strings
+representing the possible NIC instances
+that can be used as targets for iSCSI boot configuration.
+To confirm which NIC device each string
 corresponds to, it is recommended to cross-reference two other resources:
 
-* A resource of type `HpeBiosMapping` can be found through a `Mappings` link in the BIOS
-current configurations resource. Within its `BiosPciSettingsMappings` property is an
-array of mappings between BIOS-specific device strings (such as the `NIC` source string)
-and a `CorrelatableID` string that can be used to refer to the same device in non-BIOS
-contexts.
-* A collection of `HpeServerPciDevices` may be found through a PCIDevices link in the
-`ComputerSystem` resource. The specific PCI device corresponding to the NIC instance
-can be found by searching for the `CorrelatableID` that will usually match a
-`UEFIDevicePath.` Once the `HpeServerPciDevice` resource is found, you have access
+- A resource of type `HpeBiosMapping` can be found through a `Mappings`
+  link in the BIOS
+  current configurations resource. Within its
+  `BiosPciSettingsMappings` property is an
+array of mappings between BIOS-specific device
+strings (such as the `NIC` source string)
+and a `CorrelatableID` string that can be used to refer to the same device
+in non-BIOS contexts.
+- A collection of `HpeServerPciDevices` may be found through a
+  PCIDevices link in the
+`ComputerSystem` resource.
+The specific PCI device corresponding to the NIC instance
+can be found by searching for the `CorrelatableID`
+that will usually match a
+`UEFIDevicePath.` Once the `HpeServerPciDevice`
+resource is found, you have access
 to all the human-readable properties useful for describing a NIC source.
 
-Changing the `iSCSISources` and `iSCSIInitiatorName` settings can be done through
-`PATCH` operations, very similar to how `HpeBios` settings are changed. However, whereas all BIOS
-settings are located in a single flat object, iSCSI settings are nested into arrays and sub-objects.
-When doing a `PATCH` operation, use empty objects (`{}`) in place of those boot source objects
+Changing the `iSCSISources` and `iSCSIInitiatorName` settings can be done
+through
+`PATCH` operations, very similar to how `HpeBios` settings are changed.
+However, whereas all BIOS
+settings are located in a single flat object, iSCSI settings are
+nested into arrays and sub-objects.
+When doing a `PATCH` operation, use empty objects (`{}`)
+in place of those boot source objects
 that you do not want to alter.
 
-The following example covers a situation where you have configured two iSCSI boot sources,
+The following example covers a situation where you have configured
+two iSCSI boot sources,
 and you would like to edit some existing settings, and add a third source.
 
-1. Iterate through `/redfish/v1/Systems` and choose a member `ComputerSystem.` Find a child resource of type `HpeiSCSISoftwareInitiator` that allows PATCH operations.
+1. Iterate through `/redfish/v1/Systems` and choose a member `ComputerSystem.`
+   Find a child resource of type `HpeiSCSISoftwareInitiator`
+   that allows PATCH operations.
 
-    * `{ilo-address}/redfish/v1/Systems/1/BIOS/iSCSI/Settings/`
+    - `{ilo-address}/redfish/v1/Systems/1/BIOS/iSCSI/Settings/`
 
-2. Inspect the existing `iSCSIBootSources` array. You need to inspect the
-`iSCSIBootAttemptInstance` property of each object to find the boot sources you are
-prefer to change.
+2. Inspect the existing `iSCSIBootSources` array.
+   You need to inspect the
+   `iSCSIBootAttemptInstance` property of
+   each object to find the boot sources you are prefer to change.
 
 3. Create a new JSON object with the `iSCSIBootSources` property.
 
-    * Use an empty object in the position of instance 1 to indicate that it should not be modified.
-Use an object in the position of instance 2 containing the properties that should be modified—all omitted properties will remain unmodified.
+    - Use an empty object in the position of instance 1 to
+      indicate that it should not be modified.
+    - Use an object in the position of instance 2
+      containing the properties that should be modified—all omitted properties will remain unmodified.
 
-    * To add a new boot source, find any position of instance 0 and replace it with an object
-containing all the new settings, and most importantly, a new unique value of
-iSCSIBootAttemptInstance.
+    - To add a new boot source,
+      find any position of instance 0 and replace it with an object
+      containing all the new settings, and most importantly,
+      a new unique value of iSCSIBootAttemptInstance.
 
 4. Change the iSCSI software initiator settings.
 
-    * `PATCH {ilo-address}/redfish/v1/Systems/1/BIOS/iSCSI/Settings/`
+    - `PATCH {ilo-address}/redfish/v1/Systems/1/BIOS/iSCSI/Settings/`
 
 ```json Existing example resource (truncated)
 {

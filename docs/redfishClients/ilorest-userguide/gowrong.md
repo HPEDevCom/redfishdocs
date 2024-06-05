@@ -9,9 +9,9 @@ disableLastModified: false
 
 # When Things Go Wrong
 
-This section provides debug information to help when things go wrong. If this section does not solve your issue please contact support or submit a github issue to our open source project <a href="https://github.com/HewlettPackard/python-redfish-utility/issues">here</a>.
+This section provides debug information to help when things go wrong. If this section does not solve your issue please contact support or submit a <a href="https://github.com/HewlettPackard/python-redfish-utility/issues" target="_blank">github issue</a> to our open source project.
 
-## I need return codes to script, but I'm not seeing any in the output.
+## I need return codes to script, but I'm not seeing any in the output
 
 You can see return codes and other information with the verbose flag.
 
@@ -107,7 +107,6 @@ You are not using a selector that is exclusive to the type you want and/or the t
 
 #### Action
 
-
 1. Use a selector that is exclusive to the type you want.
 
 2. Verify that the type you have selected, does not have more than one instance. In this case, the [filter option](../advancedusage/#filter-option) can help you limit the results to the instance you want.
@@ -142,24 +141,21 @@ iLOrest return code: 0
 
 #### Symptom
 
-
 The commit is failing, even though I can set a property.
 
 #### Cause
 
-
-This issue can happen for multiple reasons. The API tries  to catch issues with commits when the property is initially set, but not all possible issues can be caught.
+This issue can happen for multiple reasons. The API tries to catch issues with commits when the property is initially set, but not all possible issues can be caught.
 
 #### Action
-
 
 1. Run the [status command](../globalcommands/#status-command) to see what properties have failed to commit.
 
 2. To ensure you are sending data that will be accepted by the server, obtain schema information for the property that failed to commit with the [info command](../globalcommands/#info-command).
 
-3. Some properties require other properties to be set first. You can view the <a href=" https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/#resource-definitions">iLO REST API Doc's resource definitions</a> for the property you are trying to commit to see any additional information on modifying the property that is not in the schemas.
+3. Some properties require other properties to be set first. Refer to the [iLO REST API Doc's resource definitions](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/) for the property you are trying to commit to see any additional information on modifying the property that is not in the schemas.
 
-## I think this property is an array, but I can't tell by the get/list output.
+## I think this property is an array, but I can't tell by the get/list output
 
 It's hard to tell where the array is in this output until you print the response in json format.
 
@@ -209,18 +205,15 @@ iLOrest return code: 0
 
 #### Symptom
 
-
 It is difficult to tell the difference between arrays and nested JSON objects from the get/list output.
 
 #### Cause
-
 
 The get/list output does not distinguish between nested JSON objects and arrays. They both look similar in the output.
 
 #### Action
 
-
-Use the -j,--json flags to distinguish between arrays and nested JSON objects.
+Use the -j/--json flag to distinguish between arrays and nested JSON objects.
 
 ## I need to change a property, but it's an array... How can I modify that?
 
@@ -240,16 +233,13 @@ The operation completed successfully.
 
 #### Symptom
 
-
 I am unable to change a property for an array.
 
 #### Cause
 
-
 Array types must be set as a whole modified array inside brackets. ``[ ]``
 
 #### Action
-
 
 Set array types as a whole modified array inside brackets. ``[ ]``
 
@@ -259,16 +249,13 @@ You can also modify lists using the [save](../globalcommands/#save-command) and 
 
 #### Symptom
 
-
 Some commands will reboot the system.
 
 #### Cause
 
-
 Some commands will reboot the system because the reboot is required to complete the process. Other commands will tell you to reboot the system using the --reboot flag.
 
 #### Action
-
 
 :::warning Warning
 Please read the help for any warnings or notes specific to each command. Not all warnings are mentioned here and this list is only intended to describe some command behavior to be aware of.
@@ -309,11 +296,9 @@ This section describes known issues flashing certain versions or any intermediat
 
 #### Symptom
 
-
 You are unable to flash or upload iLO 5 firmware v2.10 or later to a system running an iLO firmware version earlier than iLO 5 v1.40.
 
 #### Cause
-
 
 The target system must be running iLO 5 firmware v1.40 or later before you attempt to flash or upload iLO 5 firmware v2.10 or later to the system.
 

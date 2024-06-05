@@ -11,13 +11,15 @@ disableLastModified: false
 
 This section is a guide to help Redfish client code adapt from the iLO 5 RESTful API to the iLO 6 RESTful API.
 
-:::info NOTE
-The **DCi** acronym mentioned below, refers to the HPE proprietary **Discovery and Configuration via iLO** protocol used between internal server devices and iLO.
+:::info NOTES
 
-The **RDE** acronym mentioned below, refers to the DMTF's **Platform Level Data Model for Redfish Device Enablement** (PLDM for RDE) <a href="https://www.dmtf.org/dsp/DSP0218" target="_blank">specification</a>.
+- The **DCi** [acronym](/docs/etc/glossaryterms/) mentioned below, refers to the HPE proprietary **Discovery and Configuration via iLO** protocol used between internal server devices and iLO.
 
-**DCi** and **RDE** acronyms refer to the protocol through which adapters Redfish data is supplied to Redfish clients. Refer to the `Controllers[{item}].UnderlyingDataSource` [resource definition](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#networkadapter) for more information.
+- The **RDE** [acronym](/docs/etc/glossaryterms/) mentioned below, refers to the DMTF's **Platform Level Data Model for Redfish Device Enablement** (PLDM for RDE) <a href="https://www.dmtf.org/dsp/DSP0218" target="_blank">specification</a>.
 
+- **DCi** and **RDE** [acronyms](/docs/etc/glossaryterms/) refer to the protocol through which adapters Redfish data is supplied to Redfish clients. Refer to the `Controllers[{item}].UnderlyingDataSource` [resource definition](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#networkadapter) for more information.
+
+- Refer to the [RDE section](/docs/redfishservices/ilos/supplementdocuments/rdesupport/#ilo-rde-uris-and-corresponding-http-methods) for information on how to identify URIs of such devices.
 :::
 
 ## Introduction
@@ -184,6 +186,21 @@ Refer to the [HPE Smart Storage Model (OEM) deprecated](#hpe-smart-storage-model
 |Property|Change|Note|
 |--------|-----------|----|
 |/Temperatures/{item}/PhysicalContext|Deprecated a few supported values in Temperatures (array) in Temperatures[{item}]PhysicalContext.|None.|
+
+#### Bios Renames and Removals
+
+`@odata.type: "#HpeBiosExt.v2_0_0.HpeBiosExt"`
+
+|Property|Change|Note|
+|--------|-----------|----|
+|`/redfish/v1/systems/{item}/bios/baseconfigs/`|`/redfish/v1/systems/{item}/bios/oem/hpe/baseconfigs/`|Redfish compliance|
+|`/redfish/v1/systems/{item}/bios/boot/`|`/redfish/v1/systems/{item}/bios/oem/hpe/boot/`|Redfish compliance|
+|`/redfish/v1/systems/{item}/bios/kmsconfig/`|`/redfish/v1/systems/{item}/bios/oem/hpe/kmsconfig/`|Redfish compliance|
+|`/redfish/v1/systems/{item}/bios/mappings/`|`/redfish/v1/systems/{item}/bios/oem/hpe/mappings/`|Redfish compliance|
+|`/redfish/v1/systems/{item}/bios/serverconfiglock/`|`/redfish/v1/systems/{item}/bios/oem/hpe/serverconfiglock/`|Redfish compliance|
+|`/redfish/v1/systems/{item}/bios/tlsconfig/`|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig/`|Redfish compliance|
+|`/redfish/v1/systems/{item}/bios/iscsi/`|`/redfish/v1/systems/{item}/bios/oem/hpe/iscsi/`|Redfish compliance|
+|`/redfish/v1/systems/{item}/bios/scalablepmem/`|Deprecated in iLO 6 v1.05.|None|
 
 ### Property Additions to existing Types
 

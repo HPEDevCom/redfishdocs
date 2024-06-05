@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Network resource definitions
 toc:
@@ -81,7 +82,7 @@ The following are the supported values:
 
 `@odata.type: "#NetworkAdapter.v1_9_0.NetworkAdapter"`
 
-A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters.
+A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters. The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
 
 ### Resource Instances
 
@@ -852,8 +853,8 @@ The following are the supported values:
 
 |Value|Description|
 |---|---|
-|`DCi`|HPE Proprietary DCi protocol|
-|`RDE`|DMTF RDE protocol|
+|`DCi`|HPE Proprietary DCi protocol. This value indicates HPE OEM properties will be present.|
+|`RDE`|DMTF RDE protocol. This value indicates HPE OEM properties will not be present.|
 
 ### Oem.Hpe.FactoryDefaultsActuationBehavior
 
@@ -1231,7 +1232,7 @@ Member of NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection
 
 `@odata.type: "#NetworkDeviceFunction.v1_8_0.NetworkDeviceFunction"`
 
-A Network Device Function represents a logical interface exposed by the network adapter.
+A Network Device Function represents a logical interface exposed by the network adapter. The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
 
 ### Resource Instances
 

@@ -10,7 +10,8 @@ toc:
 # Installation Guide
 
 :::info NOTE
-The <a href="https://subversion.apache.org/" targert="_blank">HPE Python library</a> supports **Python 2** up to the end of life (EOL) version 2.7.15 and **Python 3** (3.8).
+The <a href="https://subversion.apache.org/" targert="_blank">HPE Python library</a> supports only **Python 3** (3.8 and above).  
+Note that Python 2 is already EOL on Jan 1, 2020 and support is discontinued.
 :::
 
 ## Pip install
