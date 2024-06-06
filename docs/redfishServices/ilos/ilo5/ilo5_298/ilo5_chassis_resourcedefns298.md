@@ -15,6 +15,7 @@ For each data type provided by the HPE ilO Redfish service, find below its descr
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
 ## ChassisCollection
+
 `@odata.type: "#ChassisCollection.ChassisCollection"`
 
 A Collection of Chassis resource instances.
@@ -27,7 +28,7 @@ A Collection of Chassis resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Chassis](../ilo5_chassis_resourcedefns298/#chassis)|
 
@@ -70,7 +71,7 @@ The Chassis resource describes the physical components for a system. This object
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/ComputerSystems[]`|[ComputerSystem](../ilo5_computersystem_resourcedefns298/#computersystem)|
 |`Links/Drives[]`|[Drive](../ilo5_storage_resourcedefns298/#drive)|

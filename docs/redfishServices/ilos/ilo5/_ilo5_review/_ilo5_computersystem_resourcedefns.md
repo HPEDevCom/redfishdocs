@@ -15,6 +15,7 @@ For each data type provided by the HPE ilO Redfish service, find below its descr
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
 ## ComputerSystemCollection
+
 `@odata.type: "#ComputerSystemCollection.ComputerSystemCollection"`
 
 A Collection of ComputerSystem resource instances.
@@ -27,7 +28,7 @@ A Collection of ComputerSystem resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ComputerSystem](../ilo5_computersystem_resourcedefns304/#computersystem)|
 
@@ -70,7 +71,7 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Bios`|[Bios](../ilo5_bios_resourcedefns304/#bios)|
 |`EthernetInterfaces`|Collection of [EthernetInterface](../ilo5_network_resourcedefns304/#ethernetinterfacecollection)|
@@ -79,7 +80,7 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 |`LogServices`|Collection of [LogService](../ilo5_other_resourcedefns304/#logservicecollection)|
 |`Memory`|Collection of [Memory](../ilo5_other_resourcedefns304/#memorycollection)|
 |`NetworkInterfaces`|Collection of [NetworkInterface](../ilo5_network_resourcedefns304/#networkinterfacecollection)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface]
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface]|
 (#ethernetinterface)|
 |`Oem/Hpe/Links/NetworkAdapters`|Collection of [HpeBaseNetworkAdapter](../ilo5_hpe_resourcedefns304/#hpebasenetworkadaptercollection)|
 |`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](../ilo5_hpe_resourcedefns304/#hpeserverpcidevicecollection)|

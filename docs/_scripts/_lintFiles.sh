@@ -65,3 +65,10 @@ sed -i -e 's/ \{1,\}$//' $fileList
 # 4.
 # Remove multiple consecutive blank lines (MD012/no-multiple-blanks)
 sed -i -e '/^$/N;/^\n$/D' $fileList
+
+# 5.
+# Append missing "|" to table lines  (MD055/table-pip-style - Expected leading and trailing "!")
+sed -i -e '/^|/{/|$/!s/$/|/}' $fileList
+
+# 6.
+# ToDo: Pre-pend leading "|" when missing

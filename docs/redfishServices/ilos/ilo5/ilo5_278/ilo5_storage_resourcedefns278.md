@@ -15,6 +15,7 @@ For each data type provided by the HPE ilO Redfish service, find below its descr
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
 ## StorageCollection
+
 `@odata.type: "#StorageCollection.StorageCollection"`
 
 A Collection of Storage resource instances.
@@ -27,7 +28,7 @@ A Collection of Storage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Storage](../ilo5_storage_resourcedefns278/#storage)|
 
@@ -70,7 +71,7 @@ Storage defines a storage subsystem and its respective properties.  A storage su
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Drives[]`|[Drive](../ilo5_storage_resourcedefns278/#drive)|
 |`Links/Enclosures[]`|[Chassis](../ilo5_chassis_resourcedefns278/#chassis)|
@@ -550,6 +551,7 @@ A reference to the Volumes associated with this storage system.
 Volumes is a link (`"@odata.id": URI`) to another resource.
 
 ## StorageControllerCollection
+
 `@odata.type: "#StorageControllerCollection.StorageControllerCollection"`
 
 A Collection of Storage resource instances.
@@ -562,7 +564,7 @@ A Collection of Storage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[StorageController](../ilo5_storage_resourcedefns278/#storagecontroller)|
 
@@ -1048,6 +1050,7 @@ The following are the supported values:
 |`None`|A placement policy with no redundancy at the device level.|
 
 ## VolumeCollection
+
 `@odata.type: "#VolumeCollection.VolumeCollection"`
 
 A Collection of Volume resource instances.
@@ -1060,7 +1063,7 @@ A Collection of Volume resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Volume](../ilo5_storage_resourcedefns278/#volume)|
 
@@ -1088,6 +1091,7 @@ Member of VolumeCollection.VolumeCollection
 |Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
+
 ## Volume
 
 `@odata.type: "#Volume.v1_0_0.Volume"`
@@ -1102,7 +1106,7 @@ The Volume resource describes a volume, virtual disk, LUN, or other logical stor
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/Drives[]`|[Drive](../ilo5_storage_resourcedefns278/#drive)|
 

@@ -29,7 +29,7 @@ Bios contains properties surrounding a BIOS Attribute Registry (where the system
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`@Redfish.Settings/SettingsObject`|[Bios](../ilo5_bios_resourcedefns295/#bios)|
 |`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo5_hpe_resourcedefns295/#hpebaseconfigs)|

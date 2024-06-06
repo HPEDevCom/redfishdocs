@@ -29,7 +29,7 @@ Bios contains properties surrounding a BIOS Attribute Registry (where the system
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](../ilo5_hpe_resourcedefns281/#hpeserverbootsettings)|
 |`@Redfish.Settings/SettingsObject`|[Bios](../ilo5_bios_resourcedefns281/#bios)|
@@ -817,7 +817,7 @@ Member of [Bios.v1\_0\_0.Bios](#bios)
 
 | | |
 |---|---|
-|Description|Use this option to disable the POST One-Time Boot F11 Prompt.
+|Description|Use this option to disable the POST One-Time Boot F11 Prompt.|
 Note: When disabled, shell 'boot' command is not available for use.|
 |Type|Enumeration|
 |Read Only|False|
@@ -5069,7 +5069,7 @@ Member of [Bios.v1\_0\_0.Bios](#bios)
 
 | | |
 |---|---|
-|Description|When enabled, Sub-NUMA Clustering divides the processor's cores, cache, and memory into multiple NUMA domains. Enabling this feature can increase performance for workloads that are NUMA aware and optimized.
+|Description|When enabled, Sub-NUMA Clustering divides the processor's cores, cache, and memory into multiple NUMA domains. Enabling this feature can increase performance for workloads that are NUMA aware and optimized.|
 Note: When this option is enabled, up to 1GB of system memory may become unavailable.|
 |Type|Enumeration|
 |Read Only|False|

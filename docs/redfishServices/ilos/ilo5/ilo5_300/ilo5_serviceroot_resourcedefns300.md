@@ -28,7 +28,7 @@ The ServiceRoot resource describes the Redfish API service root.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`AccountService`|[AccountService](../ilo5_other_resourcedefns300/#accountservice)|
 |`Chassis`|Collection of [Chassis](../ilo5_chassis_resourcedefns300/#chassiscollection)|

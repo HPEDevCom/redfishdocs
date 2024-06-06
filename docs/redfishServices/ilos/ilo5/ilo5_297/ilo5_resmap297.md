@@ -14,6 +14,7 @@ The following table lists HPE iLO Redfish resource types and their associated UR
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
 # Resource Map
+
 |URI|Type|
 |:---|:---|
 |`/redfish/v1/`|[ServiceRoot](../ilo5_serviceroot_resourcedefns297/#serviceroot)|

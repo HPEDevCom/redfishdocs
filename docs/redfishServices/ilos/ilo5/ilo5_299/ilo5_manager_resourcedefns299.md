@@ -15,6 +15,7 @@ For each data type provided by the HPE ilO Redfish service, find below its descr
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
 ## ManagerCollection
+
 `@odata.type: "#ManagerCollection.ManagerCollection"`
 
 A Collection of Manager resource instances.
@@ -27,7 +28,7 @@ A Collection of Manager resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Manager](../ilo5_manager_resourcedefns299/#manager)|
 
@@ -88,7 +89,7 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`EthernetInterfaces`|Collection of [EthernetInterface](../ilo5_network_resourcedefns299/#ethernetinterfacecollection)|
 |`HostInterfaces`|Collection of [HostInterface](../ilo5_other_resourcedefns299/#hostinterfacecollection)|
@@ -1633,7 +1634,9 @@ Resets the iLO to Factory Defaults.
 |Value|Description|
 |---|---|
 |Default|Reset iLO to defaults, clear logs and reboot iLO.|
+
 ## ManagerAccountCollection
+
 `@odata.type: "#ManagerAccountCollection.ManagerAccountCollection"`
 
 A Collection of ManagerAccount resource instances.
@@ -1646,7 +1649,7 @@ A Collection of ManagerAccount resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ManagerAccount](../ilo5_manager_resourcedefns299/#manageraccount)|
 
@@ -1921,7 +1924,7 @@ iLO reset is required after the PATCH for the change to come into effect.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo5_network_resourcedefns299/#ethernetinterfacecollection)|
 |`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](../ilo5_hpe_resourcedefns299/#hpeilosnmpservice)|
