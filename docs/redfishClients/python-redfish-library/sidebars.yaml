@@ -9,23 +9,23 @@
   page: index.md
 - label: Changelog
   page: changelog.md
-- label: Installation
-  page: installationGuide.md
-- label: Client quick start  
-  page: clientQuickStart.md
-- label: Advanced usage
-  page: advancedUsage.md
-- label: The monolith
-  page: monolith.md
-- label: System compatibility
-  page: systemCompatibility.md
-- label: Examples
-  page: examples.md
-- label: Frequently asked questions
-  page: frequentlyAskedQuestions.md
-- group: Version 3.2
-  expanded: false
-  pages:
-  - label: Reference documentation
-    page: 3.2/python-library-reference3200.md
+#- label: Installation
+  #page: installationGuide.md
+#- label: Client quick start  
+  #page: clientQuickStart.md
+#- label: Advanced usage
+  #page: advancedUsage.md
+#- label: The monolith
+  #page: monolith.md
+#- label: System compatibility
+  #page: systemCompatibility.md
+#- label: Examples
+  #page: examples.md
+#- label: Frequently asked questions
+  #page: frequentlyAskedQuestions.md
+#- group: Version 3.2
+  #expanded: false
+  #pages:
+  #- label: Reference documentation
+    #page: 3.2/python-library-reference3200.md
 
