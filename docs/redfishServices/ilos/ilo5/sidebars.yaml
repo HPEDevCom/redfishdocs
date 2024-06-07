@@ -25,23 +25,23 @@
       pages:
             - label: ServiceRoot
               page: ilo5_304/ilo5_serviceroot_resourcedefns304.md
-            - label: Bios
-              page: ilo5_304/ilo5_bios_resourcedefns304.md
-            - label: Manager
-              page: ilo5_304/ilo5_manager_resourcedefns304.md
-            - label: ComputerSystem
-              page: ilo5_304/ilo5_computersystem_resourcedefns304.md
-            - label: Chassis
-              page: ilo5_304/ilo5_chassis_resourcedefns304.md
-            - label: Network
-              page: ilo5_304/ilo5_network_resourcedefns304.md
-            - label: Storage
-              page: ilo5_304/ilo5_storage_resourcedefns304.md
-            - label: HPE Oem extensions
-              page: ilo5_304/ilo5_hpe_resourcedefns304.md
-            - label: Other resource definitions 
-              page: ilo5_304/ilo5_other_resourcedefns304.md        
-    - label: Error messages
-      page: ilo5_304/ilo5_msgregs304.md
+            #- label: Bios
+              #page: ilo5_304/ilo5_bios_resourcedefns304.md
+            #- label: Manager
+              #page: ilo5_304/ilo5_manager_resourcedefns304.md
+            #- label: ComputerSystem
+              #page: ilo5_304/ilo5_computersystem_resourcedefns304.md
+            #- label: Chassis
+              #page: ilo5_304/ilo5_chassis_resourcedefns304.md
+            #- label: Network
+              #page: ilo5_304/ilo5_network_resourcedefns304.md
+            #- label: Storage
+              #page: ilo5_304/ilo5_storage_resourcedefns304.md
+            #- label: HPE Oem extensions
+              #page: ilo5_304/ilo5_hpe_resourcedefns304.md
+            #- label: Other resource definitions 
+              #page: ilo5_304/ilo5_other_resourcedefns304.md        
+    #- label: Error messages
+      #page: ilo5_304/ilo5_msgregs304.md
         #- label: OpenAPI reference documentation
         #  page: openapi/ilo5_304/ilo5304-openapi.yaml

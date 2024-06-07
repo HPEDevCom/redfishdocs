@@ -24,26 +24,26 @@
     pages:
     - label: ServiceRoot
       page: ilo6_158/ilo6_serviceroot_resourcedefns158.md
-    - label: Bios
-      page: ilo6_158/ilo6_bios_resourcedefns158.md
-    - label: Manager
-      page: ilo6_158/ilo6_manager_resourcedefns158.md
-    - label: ComputerSystem
-      page: ilo6_158/ilo6_computersystem_resourcedefns158.md
-    - label: Chassis
-      page: ilo6_158/ilo6_chassis_resourcedefns158.md
-    - label: Network
-      page: ilo6_158/ilo6_network_resourcedefns158.md
-    - label: Storage
-      page: ilo6_158/ilo6_storage_resourcedefns158.md
-    - label: HPE Oem extensions
-      page: ilo6_158/ilo6_hpe_resourcedefns158.md
-    - label: Other resource definitions 
-      page: ilo6_158/ilo6_other_resourcedefns158.md        
+    #- label: Bios
+      #page: ilo6_158/ilo6_bios_resourcedefns158.md
+    #- label: Manager
+      #page: ilo6_158/ilo6_manager_resourcedefns158.md
+    #- label: ComputerSystem
+      #page: ilo6_158/ilo6_computersystem_resourcedefns158.md
+    #- label: Chassis
+      #page: ilo6_158/ilo6_chassis_resourcedefns158.md
+    #- label: Network
+      #page: ilo6_158/ilo6_network_resourcedefns158.md
+    #- label: Storage
+      #page: ilo6_158/ilo6_storage_resourcedefns158.md
+    #- label: HPE Oem extensions
+      #page: ilo6_158/ilo6_hpe_resourcedefns158.md
+    #- label: Other resource definitions 
+      #page: ilo6_158/ilo6_other_resourcedefns158.md        
     #- label: Event definitions
     #  page: docs/ilos/ilo6158/ilo6_events158.md
-  - label: Error messages
-    page: ilo6_158/ilo6_msgregs158.md
+  #- label: Error messages
+    #page: ilo6_158/ilo6_msgregs158.md
     # The following page gets its label/title from the corresponding Ref Document in the
     # OpenAPI file (openapi/<path>/ilo6xxx-openapi.yaml), in the info: --> title: key.
     # - label: OpenAPI Reference Document
