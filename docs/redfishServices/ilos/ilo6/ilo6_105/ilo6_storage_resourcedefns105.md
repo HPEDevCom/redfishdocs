@@ -10,12 +10,12 @@ disableLastModified: false
 
 # Storage resource definitions of iLO 6 v1.05
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## StorageCollection
+
 `@odata.type: "#StorageCollection.StorageCollection"`
 
 A Collection of Storage resource instances.
@@ -28,7 +28,7 @@ A Collection of Storage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Storage](../ilo6_storage_resourcedefns105/#storage)|
 
@@ -73,7 +73,7 @@ Storage defines a storage subsystem and its respective properties.  A storage su
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Drives[]`|[Drive](../ilo6_storage_resourcedefns105/#drive)|
 |`Links/Enclosures[]`|[Chassis](../ilo6_chassis_resourcedefns105/#chassis)|
@@ -521,7 +521,6 @@ Member of [Storage.v1\_12\_0.Storage](#storage)
 
 `SupportedControllerProtocols` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -538,7 +537,6 @@ The following are the supported values:
 Member of [Storage.v1\_12\_0.Storage](#storage)
 
 `SupportedDeviceProtocols` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -559,7 +557,6 @@ The following are the supported values:
 Member of [Storage.v1\_12\_0.Storage](#storage)
 
 `SupportedRAIDTypes` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -595,6 +592,7 @@ A reference to the Volumes associated with this storage system.
 Volumes is a link (`"@odata.id": URI`) to another resource.
 
 ## StorageControllerCollection
+
 `@odata.type: "#StorageControllerCollection.StorageControllerCollection"`
 
 A Collection of Storage resource instances.
@@ -607,7 +605,7 @@ A Collection of Storage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[StorageController](../ilo6_storage_resourcedefns105/#storagecontroller)|
 
@@ -1054,7 +1052,6 @@ Member of [StorageController.v1\_0\_0.StorageController](#storagecontroller)
 
 `SupportedControllerProtocols` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -1077,7 +1074,6 @@ Member of [StorageController.v1\_0\_0.StorageController](#storagecontroller)
 
 `SupportedDeviceProtocols` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -1099,7 +1095,6 @@ The following are the supported values:
 Member of [StorageController.v1\_0\_0.StorageController](#storagecontroller)
 
 `SupportedRAIDTypes` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1130,6 +1125,7 @@ The following are the supported values:
 |`None`|A placement policy with no redundancy at the device level.|
 
 ## VolumeCollection
+
 `@odata.type: "#VolumeCollection.VolumeCollection"`
 
 A Collection of Volume resource instances.
@@ -1142,7 +1138,7 @@ A Collection of Volume resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Volume](../ilo6_storage_resourcedefns105/#volume)|
 
@@ -1172,6 +1168,7 @@ Member of VolumeCollection.VolumeCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO 6 1.05|
+
 ## Volume
 
 `@odata.type: "#Volume.v1_0_0.Volume"`
@@ -1186,7 +1183,7 @@ The Volume resource describes a volume, virtual disk, LUN, or other logical stor
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/Drives[]`|[Drive](../ilo6_storage_resourcedefns105/#drive)|
 
@@ -1756,7 +1753,6 @@ Member of [Drive.v1\_7\_0.Drive](#drive)
 
 `MessageArgs` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -1777,7 +1773,6 @@ Member of [Drive.v1\_7\_0.Drive](#drive)
 Member of [Drive.v1\_7\_0.Drive](#drive)
 
 `RelatedProperties` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1818,7 +1813,6 @@ The following are the supported values:
 Member of [Drive.v1\_7\_0.Drive](#drive)
 
 `HttpHeaders` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -2204,7 +2198,6 @@ Member of [Drive.v1\_7\_0.Drive](#drive)
 |Added|iLO 6 1.05|
 
 ### Actions
-
 
 **Drive.Reset**
 Member of [Drive.v1\_7\_0.Drive](#drive)

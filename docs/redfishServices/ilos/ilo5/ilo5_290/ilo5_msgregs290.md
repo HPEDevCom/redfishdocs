@@ -853,7 +853,7 @@ The BIOS action supplied in the POST operation is not yet implemented.
 
 ### iLO.2.18.BiosPasswordInfoInvalid
 
-The stored BIOS password information is invalid. A system reboot is necessary to restore password defaults.
+The stored BIOS password information is invalid. A system reboot is neccessary to retore password defaults.
 
 | | |
 |:---|:---|
@@ -2087,7 +2087,7 @@ The value being set for the property is same as existing value.
 
 | | |
 |:---|:---|
-|Message Format|"The new value %1 is same as existing value for the property %2."|
+|Message Format|"The new value %1 is same as exisiting value for the property %2."|
 |Severity|OK|
 |Resolution|None|
 
@@ -2513,13 +2513,13 @@ Unable to modify user rights.
 
 ### iLO.2.18.UnableToModifyAfterVirtualMediaInsert
 
-The value for the property cannot be changed after virtual media image is inserted.
+The value for the property cannot be changed after virual media image is inserted.
 
 | | |
 |:---|:---|
-|Message Format|"The value for property %1 cannot be changed after virtual media image is inserted."|
+|Message Format|"The value for property %1 cannot be changed after virual media image is inserted."|
 |Severity|Warning|
-|Resolution|Retry the operation during virtual media image insertion.|
+|Resolution|Retry the operation during virtual media image inseration.|
 
 ### iLO.2.18.UnableToModifyDueToMissingComponent
 
@@ -2587,7 +2587,7 @@ This operation is not supported when certificate enrollment service is enabled.
 
 | | |
 |:---|:---|
-|Message Format|"This operation is not supported when certificate enrollment service is enabled."|
+|Message Format|"This operation is not supported when certificte enrollment service is enabled."|
 |Severity|OK|
 |Resolution|Disable certificate enrollment Service to initiate import, delete or generate CSR of SSL certificate.|
 

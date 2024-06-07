@@ -13,8 +13,8 @@ The following table lists HPE iLO Redfish resource types and their associated UR
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 # Resource Map
+
 |URI|Type|
 |:---|:---|
 |`/redfish/v1/`|[ServiceRoot](../ilo6_serviceroot_resourcedefns110/#serviceroot)|
@@ -128,21 +128,23 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/SessionService/Sessions/{item}`|[Session](../ilo6_other_resourcedefns110/#session)|
 |`/redfish/v1/Systems`|Collection of [ComputerSystem](../ilo6_computersystem_resourcedefns110/#computersystemcollection)|
 |`/redfish/v1/Systems/{item}`|[ComputerSystem](../ilo6_computersystem_resourcedefns110/#computersystem)|
-|`/redfish/v1/Systems/{item}/BaseNetworkAdapters`|Collection of [HpeBaseNetworkAdapter](../ilo6_hpe_resourcedefns110/#hpebaseconfigs)|
-|`/redfish/v1/Systems/{item}/BaseNetworkAdapters/{item}`|[HpeBaseNetworkAdapter](../ilo6_hpe_resourcedefns110/#hpebaseconfigs)|
+|`/redfish/v1/Systems/{item}/BaseNetworkAdapters`|Collection of [HpeBaseNetworkAdapter](#hpebasenetworkadapter-v2_0_0-hpebasenetworkadapter)|
+|`/redfish/v1/Systems/{item}/BaseNetworkAdapters/{item}`|[HpeBaseNetworkAdapter](#hpebasenetworkadapter-v2_0_0-hpebasenetworkadapter)|
 |`/redfish/v1/Systems/{item}/Bios`|[Bios](../ilo6_bios_resourcedefns110/#bios)|
 |`/redfish/v1/Systems/{item}/Bios/Settings`|[Bios](../ilo6_bios_resourcedefns110/#bios)|
 |`/redfish/v1/Systems/{item}/Bios/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns110/#hpebaseconfigs)|
 |`/redfish/v1/Systems/{item}/Bios/boot`|[HpeServerBootSettings](../ilo6_hpe_resourcedefns110/#hpeserverbootsettings)|
 |`/redfish/v1/Systems/{item}/Bios/boot/Settings`|[HpeServerBootSettings](../ilo6_hpe_resourcedefns110/#hpeserverbootsettings)|
 |`/redfish/v1/Systems/{item}/Bios/boot/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns110/#hpebaseconfigs)|
+|`/redfish/v1/Systems/{item}/Bios/hpescalablepmem`|[HpeScalablePmem](#hpescalablepmem-v1_0_0-hpescalablepmem)|
+|`/redfish/v1/Systems/{item}/Bios/hpescalablepmem/Settings`|[HpeScalablePmem](#hpescalablepmem-v1_0_0-hpescalablepmem)|
 |`/redfish/v1/Systems/{item}/Bios/iscsi`|[HpeiSCSISoftwareInitiator](../ilo6_hpe_resourcedefns110/#hpeiscsisoftwareinitiator)|
 |`/redfish/v1/Systems/{item}/Bios/iscsi/Settings`|[HpeiSCSISoftwareInitiator](../ilo6_hpe_resourcedefns110/#hpeiscsisoftwareinitiator)|
 |`/redfish/v1/Systems/{item}/Bios/iscsi/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns110/#hpebaseconfigs)|
 |`/redfish/v1/Systems/{item}/Bios/mappings`|[HpeBiosMapping](../ilo6_hpe_resourcedefns110/#hpebiosmapping)|
-|`/redfish/v1/Systems/{item}/Bios/oem/hpe/tlsconfig`|[HpeTlsConfig](../ilo6_hpe_resourcedefns110/#hpetlsconfig)|
-|`/redfish/v1/Systems/{item}/Bios/oem/hpe/tlsconfig/Settings`|[HpeTlsConfig](../ilo6_hpe_resourcedefns110/#hpetlsconfig)|
-|`/redfish/v1/Systems/{item}/Bios/oem/hpe/tlsconfig/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns110/#hpebaseconfigs)|
+|`/redfish/v1/Systems/{item}/Bios/tlsconfig`|[HpeTlsConfig](../ilo6_hpe_resourcedefns110/#hpetlsconfig)|
+|`/redfish/v1/Systems/{item}/Bios/tlsconfig/Settings`|[HpeTlsConfig](../ilo6_hpe_resourcedefns110/#hpetlsconfig)|
+|`/redfish/v1/Systems/{item}/Bios/tlsconfig/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns110/#hpebaseconfigs)|
 |`/redfish/v1/Systems/{item}/Bios/Serverconfiglock`|[HpeServerConfigLock](../ilo6_hpe_resourcedefns110/#hpeserverconfiglock)|
 |`/redfish/v1/Systems/{item}/Bios/Serverconfiglock/Settings`|[HpeServerConfigLock](../ilo6_hpe_resourcedefns110/#hpeserverconfiglock)|
 |`/redfish/v1/Systems/{item}/Bios/Serverconfiglock/Baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns110/#hpebaseconfigs)|

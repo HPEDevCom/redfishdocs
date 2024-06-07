@@ -10,12 +10,12 @@ disableLastModified: false
 
 # Manager resource definitions of iLO 6 v1.05
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ManagerCollection
+
 `@odata.type: "#ManagerCollection.ManagerCollection"`
 
 A Collection of Manager resource instances.
@@ -28,7 +28,7 @@ A Collection of Manager resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Manager](../ilo6_manager_resourcedefns105/#manager)|
 
@@ -73,7 +73,7 @@ The Manager resource describes a manager.  Examples of managers are BMCs, Enclos
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns105/#ethernetinterfacecollection)|
 |`HostInterfaces`|Collection of [HostInterface](../ilo6_other_resourcedefns105/#hostinterfacecollection)|
@@ -99,7 +99,6 @@ The Manager resource describes a manager.  Examples of managers are BMCs, Enclos
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `ConnectTypesSupported` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -181,7 +180,6 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `ConnectTypesSupported` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -826,7 +824,6 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `KeySequence` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -928,7 +925,6 @@ The following are the supported values:
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `CustomKeySequence` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1439,7 +1435,6 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 
 `ConnectTypesSupported` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -1503,7 +1498,6 @@ VirtualMedia is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **Manager.Reset**
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
@@ -1554,7 +1548,6 @@ There are no parameters for this action.
 Member of [Manager.v1\_5\_1.Manager](#manager)
 Resets the iLO to Factory Defaults.
 
-
 **Parameters:**
 
 **ResetType (string)**
@@ -1562,7 +1555,9 @@ Resets the iLO to Factory Defaults.
 |Value|Description|
 |---|---|
 |Default|Reset iLO to defaults, clear logs and reboot iLO.|
+
 ## ManagerAccountCollection
+
 `@odata.type: "#ManagerAccountCollection.ManagerAccountCollection"`
 
 A Collection of ManagerAccount resource instances.
@@ -1575,7 +1570,7 @@ A Collection of ManagerAccount resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ManagerAccount](../ilo6_manager_resourcedefns105/#manageraccount)|
 
@@ -1800,7 +1795,7 @@ This resource is used to obtain or modify the network services managed by this m
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns105/#ethernetinterfacecollection)|
 |`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](../ilo6_hpe_resourcedefns105/#hpeilosnmpservice)|
@@ -2328,7 +2323,6 @@ Member of [ManagerNetworkProtocol.v1\_0\_0.ManagerNetworkProtocol](#managernetwo
 |Added|iLO 6 1.05|
 
 ### Actions
-
 
 **HpeiLOManagerNetworkService.SendTestAlertMail**
 Member of [ManagerNetworkProtocol.v1\_0\_0.ManagerNetworkProtocol](#managernetworkprotocol)

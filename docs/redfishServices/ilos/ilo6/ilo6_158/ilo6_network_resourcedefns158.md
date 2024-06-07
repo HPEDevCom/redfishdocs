@@ -2154,9 +2154,6 @@ See the Redfish standard schema and specification for information on common Stat
 
 A Collection of EthernetInterface resource instances.
 
-The EthernetInterface resource describes a single, logical ethernet interface or network interface controller (NIC).
-
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -2202,33 +2199,6 @@ Member of EthernetInterfaceCollection.EthernetInterfaceCollection
 `@odata.type: "#EthernetInterface.v1_4_1.EthernetInterface"`
 
 The EthernetInterface resource describes a single, logical ethernet interface or network interface controller (NIC).
-
-:::info Note
-
-The URI of the members of the computer system `EthernetInterface` collection
-can be represented with this notation:
-`/redfish/v1/Systems/{@SystemId}/EthernetInterfaces/{@nicId}`.
-
-Starting with iLO 5 firmware version 3.03, the `{@nicId}` naming schema is
-consistent across device types for supported devices.
-It is a string containing one or more characters in the
-range [0-9], with the following specification:
-
-- Lan On Motherboard (LOM) card range: 1-4
-- Open Compute Project (OCP) card range: 5-12
-  - OCP card 1 range: 5-8
-  - OCP card 2 range: 9-12
-- OCP card with a `{@nicId}` of 13 or greater are allocated for:
-  - PCIe cards in HPE Gen10 servers or HPE Gen11 servers
-  - Mezzanine cards in HPE Synergy servers
-
-Potentially, PCIe and Mezzanine cards can have 64 ports.
-Their corresponding `{@nicId}` is represented:
-
-- at slot 1 in the range: 13-76
-- at slot 2 in the range: 77-140
-
-:::
 
 ### Resource Instances
 

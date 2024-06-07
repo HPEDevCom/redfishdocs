@@ -208,8 +208,8 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters/{item}`|[HpeSmartStorageHostBusAdapter](../ilo5_hpe_resourcedefns290/#hpesmartstoragehostbusadapter)|
 |`/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters/{item}/DiskDrives`|Collection of [HpeSmartStorageDiskDrive](../ilo5_hpe_resourcedefns290/#hpesmartstoragediskdrivecollection)|
 |`/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters/{item}/DiskDrives/{item}`|[HpeSmartStorageDiskDrive](../ilo5_hpe_resourcedefns290/#hpesmartstoragediskdrive)|
-|`/redfish/v1/Systems/{item}/SmartStorageConfig`|[SmartStorageConfig](../ilo5_other_resourcedefns290/#smartstorageconfig)|
-|`/redfish/v1/Systems/{item}/SmartStorageConfig/Settings`|[SmartStorageConfig](../ilo5_other_resourcedefns290/#smartstorageconfig)|
+|`/redfish/v1/Systems/{item}/SmartStorageConfig`|[SmartStorageConfig](#smartstorageconfig-v2_0_0-smartstorageconfig)|
+|`/redfish/v1/Systems/{item}/SmartStorageConfig/Settings`|[SmartStorageConfig](#smartstorageconfig-v2_0_0-smartstorageconfig)|
 |`/redfish/v1/Systems/{item}/Storage`|Collection of [Storage](../ilo5_storage_resourcedefns290/#storagecollection)|
 |`/redfish/v1/Systems/{item}/Storage/{item}/Controllers/`|Collection of [StorageController](../ilo5_storage_resourcedefns290/#storagecontrollercollection)|
 |`/redfish/v1/Systems/{item}/Storage/{item}/Controllers/{item}`|[StorageController](../ilo5_storage_resourcedefns290/#storagecontroller)|

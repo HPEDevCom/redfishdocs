@@ -1857,7 +1857,7 @@ This resource is used to obtain or modify the network services managed by this m
 
 ### Granularity to enable/disable HTTP(S) ports
 
-iLO 5 v2.72 onwards supports enabling/disabling the HTTP/HTTPS ports.
+iLO 6 supports enabling/disabling the HTTP/HTTPS ports.
 
 **Disable/Enable HTTP(S) Port**:
 

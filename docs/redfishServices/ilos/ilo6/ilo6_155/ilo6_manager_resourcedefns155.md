@@ -10,12 +10,12 @@ disableLastModified: false
 
 # Manager resource definitions of iLO 6 v1.55
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ManagerCollection
+
 `@odata.type: "#ManagerCollection.ManagerCollection"`
 
 A Collection of Manager resource instances.
@@ -28,7 +28,7 @@ A Collection of Manager resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Manager](../ilo6_manager_resourcedefns155/#manager)|
 
@@ -67,7 +67,6 @@ The Manager resource describes a manager.  Examples of managers are BMCs, Enclos
 
 ### Manager.Reset
 
-
 There are two possible ways for Manager Reset. These are defined as `ForceRestart` and `GracefulRestart`.
 
 `POST /redfish/v1/Managers/1/Actions/Manager.Reset/`
@@ -81,7 +80,6 @@ There are two possible ways for Manager Reset. These are defined as `ForceRestar
 iLO `GracefulRestart` works in the same way as `ForceRestart`.
 :::
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -90,7 +88,7 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](../ilo6_hpe_resourcedefns155/#hpeilodatetime)|
 |`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](../ilo6_hpe_resourcedefns155/#hperemotesupport)|
@@ -1597,7 +1595,6 @@ VirtualMedia is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **Manager.Reset**
 Member of [Manager.v1\_5\_1.Manager](#manager)
 
@@ -1626,7 +1623,6 @@ There are no parameters for this action.
 Member of [Manager.v1\_5\_1.Manager](#manager)
 Resets the iLO to Factory Defaults.
 
-
 **Parameters:**
 
 **ResetType (string)**
@@ -1651,7 +1647,6 @@ There are no parameters for this action.
 Member of [Manager.v1\_5\_1.Manager](#manager)
 Action to enable cloud connect service.
 
-
 **Parameters:**
 
 **ActivationKey (string)**
@@ -1672,7 +1667,6 @@ There are no parameters for this action.
 Member of [Manager.v1\_5\_1.Manager](#manager)
 Action to disable cloud connect service.
 
-
 **Parameters:**
 
 **FailReason (string)**
@@ -1688,7 +1682,9 @@ Indicates the reason for cloud connection failure.
 |NetworkError|Indicates the cloud activation failed due to network issues.|
 |WrongiLOVersion|Indicates the cloud activation failed due to wrong iLO version errors.|
 |WrongActivationKey|Indicates the cloud activation failed due to wrong activation key errors.|
+
 ## ManagerAccountCollection
+
 `@odata.type: "#ManagerAccountCollection.ManagerAccountCollection"`
 
 A Collection of ManagerAccount resource instances.
@@ -1701,7 +1697,7 @@ A Collection of ManagerAccount resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ManagerAccount](../ilo6_manager_resourcedefns155/#manageraccount)|
 
@@ -1942,7 +1938,6 @@ This resource is used to obtain or modify the network services managed by this m
 
 ### Granularity to enable/disable HTTP(S) ports
 
-
 iLO 6 supports enabling/disabling the HTTP/HTTPS ports.
 
 **Disable/Enable HTTP(S) Port**:
@@ -1950,7 +1945,7 @@ iLO 6 supports enabling/disabling the HTTP/HTTPS ports.
 * The HTTP port can be disabled by setting the `"Port"` property to value 0. Similarly, it can be enabled by setting it to a valid port value like 80.
 * This has been decoupled from the HTTPS port enable/disable status.
 
-**NOTE**: 
+**NOTE**:
 
 `ProtocolEnabled` property under HTTP object is not related to HTTP alone. It is related to the whole webserver. Hence the `ProtocolEnabled` property will remain `true` unless the whole webserver is disabled.
 
@@ -1973,7 +1968,6 @@ PATCH `/redfish/v1/Managers/1/NetworkProtocol`
 
 iLO reset is required after the PATCH for the change to come into effect.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -1982,7 +1976,7 @@ iLO reset is required after the PATCH for the change to come into effect.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](../ilo6_hpe_resourcedefns155/#hpeilosnmpservice)|
 |`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns155/#ethernetinterfacecollection)|
@@ -2532,7 +2526,6 @@ Member of [ManagerNetworkProtocol.v1\_0\_0.ManagerNetworkProtocol](#managernetwo
 |Added|iLO6 1.05|
 
 ### Actions
-
 
 **HpeiLOManagerNetworkService.SendTestAlertMail**
 Member of [ManagerNetworkProtocol.v1\_0\_0.ManagerNetworkProtocol](#managernetworkprotocol)

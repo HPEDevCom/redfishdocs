@@ -7,21 +7,38 @@ toc:
 disableLastModified: false
 ---
 
-# Storage data models
+## Storage data models
 
-The following section describes the storage model supported by iLO 6 and later - [DMTF Redfish Storage Model](#dmtf-redfish-storage-model).
+The following section describes the storage model supported by
+iLO 6 and later - [DMTF Redfish Storage Model](#dmtf-redfish-storage-model).
 
 ## DMTF Redfish Storage Model
 
-HPE ProLiant Gen11 servers implement the DMTF standard known as Platform Level Data Model for Redfish Device Enablement (PLDM for RDE). This open standard allows storage controllers to host their own set of Redfish resources and capabilities which are rooted under the iLO `/redfish/v1` service root. As a result, responses to Redfish client requests are provided by the controllers through the iLO.
+HPE ProLiant Gen11 servers implement the DMTF standard known as Platform
+Level Data Model for Redfish Device Enablement (PLDM for RDE). This open
+standard allows storage controllers to host their own set of Redfish
+resources and capabilities which are rooted under the iLO `/redfish/v1`
+service root. As a result, responses to Redfish client requests are
+provided by the controllers through the iLO.
 
-Without the implementation of PLDM for RDE in either the iLO firmware or the storage controller firmware, the iLO responds to Redfish client requests using its own database of storage controller resources and properties, populated during Pre-OS tasks (POST).
+Without the implementation of PLDM for RDE in either the iLO firmware or
+the storage controller firmware, the iLO responds to Redfish client requests
+using its own database of storage controller resources and properties,
+populated during Pre-OS tasks (POST).
 
-For updated information on the Redfish resources, corresponding URIs, and supported HTTP methods towards storage controllers implementing PLDM for RDE, refer to the `Configuration` and `Redfish` sections of the <a href="https://support.hpe.com/hpesc/public/docDisplay?docId=a00110296en_us" target="_blank"> HPE SR Controller User Guide</a>
+For updated information on the Redfish resources, corresponding URIs, and
+supported HTTP methods towards storage controllers implementing PLDM for
+RDE, refer to the `Configuration` and `Redfish` sections of the
+<a href="https://support.hpe.com/hpesc/public/docDisplay?docId=a00110296en_us"
+target="_blank"> HPE SR Controller User Guide</a>
 
-The array controllers have implemented the DMTF Redfish storage data model for inventory (GET). The array controllers that have implemented the DMTF PLDM for RDE standard support Redfish write operations (POST, DELETE, and PATCH).
+The array controllers have implemented the DMTF Redfish storage data model
+for inventory (GET). The array controllers that have implemented the DMTF
+PLDM for RDE standard support Redfish write
+operations (POST, DELETE, and PATCH).
 
-The following table lists the Redfish resources and the corresponding URIs for the GET requests towards storage controllers implementing PLDM for RDE:
+The following table lists the Redfish resources and the corresponding URIs
+for the GET requests towards storage controllers implementing PLDM for RDE:
 
 | Redfish Resource | Method | URI |
 |:---|:---|:---|
@@ -34,7 +51,8 @@ The following table lists the Redfish resources and the corresponding URIs for t
 | Volume | GET | `/redfish/v1/Systems/{item}/Storage/{item}/Volumes/{item}` |
 | Drive | GET | `/redfish/v1/Systems/{item}/Storage/{item}/Drives/{item}` |
 
-The following table lists the Redfish resources and corresponding URIs for write requests towards storage controllers implementing PLDM for RDE:
+The following table lists the Redfish resources and corresponding URIs for
+write requests towards storage controllers implementing PLDM for RDE:
 
 | Redfish Resource | Method | URI |
 |:---|:---|:---|
@@ -42,12 +60,20 @@ The following table lists the Redfish resources and corresponding URIs for write
 | Volume Delete | DEL | `/redfish/v1/Systems/{item}/Storage/{item}/Volumes/{item}` |
 
 :::info NOTE
-The Redfish responses from controllers implementing PLDM for RDE depend on the schema versions that are supported by each device and are likely to vary across each device vendor/family/model. Create and delete volume operations will also likely vary across devices.
+The Redfish responses from controllers implementing PLDM for RDE depend on
+the schema versions that are supported by each device and are likely to
+vary across each device vendor/family/model. Create and delete volume
+operations will also likely vary across devices.
 :::
 
-For updated information on the Redfish resources, corresponding URIs, and supported HTTP methods towards storage controllers implementing PLDM for RDE, refer to the <a href="https://www.hpe.com/info/SmartRAID-Gen10Plus-UG" target="_blank"> HPE SR Gen10 Plus Controller User Guide</a>.
+For updated information on the Redfish resources, corresponding URIs, and
+supported HTTP methods towards storage controllers implementing PLDM for RDE,
+refer to the
+<a href="https://www.hpe.com/info/SmartRAID-Gen10Plus-UG"
+target="_blank"> HPE SR Gen10 Plus Controller User Guide</a>.
 
-For more information on RDE support changes and limitations, refer to the [Redfish Device Enablement (RDE) support](../rdesupport/) section.
+For more information on RDE support changes and limitations, refer to the
+[Redfish Device Enablement (RDE) support](../rdesupport/) section.
 
 ### GET requests examples
 
@@ -226,11 +252,20 @@ GET /redfish/v1/Systems/1/Storage/{item}/Volumes/{item}
 
 ### Creating Volumes
 
-Creating volumes in a storage controller supporting PLDM for RDE in write mode, is performed using a POST request toward the  `VolumeCollection` URI (`/redfish/v1/Systems/{item}/Storage/{item}/Volumes`). The exhaustive list of required and optional parameters of such POST requests can be retrieved with a GET request to `/redfish/v1/Systems/1/Storage/{item}/Volumes/Capabilities` This URI provides as well the possible values for each capability.
+Creating volumes in a storage controller supporting PLDM for RDE in
+write mode, is performed using a POST request toward the
+`VolumeCollection` URI
+(`/redfish/v1/Systems/{item}/Storage/{item}/Volumes`). The exhaustive list
+of required and optional parameters of such POST requests can be retrieved
+with a GET request to
+`/redfish/v1/Systems/1/Storage/{item}/Volumes/Capabilities` This URI
+provides as well the possible values for each capability.
 
 :::success TIP
 
-You should verify that POST requests are allowed to create volumes in a specific storage controller in the `Allow` response header of a GET request to the Volume collection URI. Refer to the next example.
+You should verify that POST requests are allowed to create volumes in a
+specific storage controller in the `Allow` response header of a GET request
+to the Volume collection URI. Refer to the next example.
 :::
 
 ```text Volume headers
@@ -252,10 +287,14 @@ HEAD /redfish/v1/Systems/1/Storage/{item}/Volumes
 
 ```
 
-To ease logical volume creation on writable storage controllers, you can retrieve optional and required parameters from the `Volumes/Capabilities` resource.
+To ease logical volume creation on writable storage controllers, you can
+retrieve optional and required parameters from the
+`Volumes/Capabilities` resource.
 
 :::info NOTE
-The `Volumes/Capabilities` property is present only in writable storage controllers, with the POST action listed in the `Allow` response headers of `VolumeCollection` URI.
+The `Volumes/Capabilities` property is present only in writable storage
+controllers, with the POST action listed in the `Allow` response headers
+of `VolumeCollection` URI.
 :::
 
 ```text Get volume capabilities

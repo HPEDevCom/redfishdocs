@@ -13,8 +13,8 @@ The following table lists HPE iLO Redfish resource types and their associated UR
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 # Resource Map
+
 |URI|Type|
 |:---|:---|
 |`/redfish/v1/`|[ServiceRoot](../ilo6_serviceroot_resourcedefns150/#serviceroot)|
@@ -142,9 +142,9 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/Systems/{item}/Bios/iscsi/Settings`|[HpeiSCSISoftwareInitiator](../ilo6_hpe_resourcedefns150/#hpeiscsisoftwareinitiator)|
 |`/redfish/v1/Systems/{item}/Bios/iscsi/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns150/#hpebaseconfigs)|
 |`/redfish/v1/Systems/{item}/Bios/mappings`|[HpeBiosMapping](../ilo6_hpe_resourcedefns150/#hpebiosmapping)|
-|`/redfish/v1/Systems/{item}/Bios/oem/hpe/tlsconfig`|[HpeTlsConfig](../ilo6_hpe_resourcedefns150/#hpetlsconfig)|
-|`/redfish/v1/Systems/{item}/Bios/oem/hpe/tlsconfig/Settings`|[HpeTlsConfig](../ilo6_hpe_resourcedefns150/#hpetlsconfig)|
-|`/redfish/v1/Systems/{item}/Bios/oem/hpe/tlsconfig/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns150/#hpebaseconfigs)|
+|`/redfish/v1/Systems/{item}/Bios/tlsconfig`|[HpeTlsConfig](../ilo6_hpe_resourcedefns150/#hpetlsconfig)|
+|`/redfish/v1/Systems/{item}/Bios/tlsconfig/Settings`|[HpeTlsConfig](../ilo6_hpe_resourcedefns150/#hpetlsconfig)|
+|`/redfish/v1/Systems/{item}/Bios/tlsconfig/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns150/#hpebaseconfigs)|
 |`/redfish/v1/Systems/{item}/BootOptions`|Collection of [BootOption](../ilo6_other_resourcedefns150/#bootoptioncollection)|
 |`/redfish/v1/Systems/{item}/BootOptions/{item}`|[BootOption](../ilo6_other_resourcedefns150/#bootoption)|
 |`/redfish/v1/Systems/{item}/EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns150/#ethernetinterfacecollection)|

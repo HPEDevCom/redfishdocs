@@ -74,6 +74,7 @@ The Chassis resource describes the physical components for a system. This object
 |Link Name|Destination type|
 |---|---|
 |`Links/ComputerSystems[]`|[ComputerSystem](../ilo5_computersystem_resourcedefns301/#computersystem)|
+|`Links/Drives[]`|[Drive](../ilo5_storage_resourcedefns301/#drive)|
 |`Links/ManagedBy[]`|[Manager](../ilo5_manager_resourcedefns301/#manager)|
 |`NetworkAdapters`|Collection of [NetworkAdapter](../ilo5_network_resourcedefns301/#networkadaptercollection)|
 |`Oem/Hpe/Links/Devices`|Collection of [HpeServerDevice](../ilo5_hpe_resourcedefns301/#hpeserverdevicecollection)|

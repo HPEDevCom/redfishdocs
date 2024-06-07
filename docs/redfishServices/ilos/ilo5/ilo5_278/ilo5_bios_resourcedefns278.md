@@ -32,6 +32,7 @@ Bios contains properties surrounding a BIOS Attribute Registry (where the system
 |Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](../ilo5_hpe_resourcedefns278/#hpeserverbootsettings)|
+|`Oem/Hpe/Links/ScalablePmem`|[HpeScalablePmem](#hpescalablepmem)|
 |`@Redfish.Settings/SettingsObject`|[Bios](../ilo5_bios_resourcedefns278/#bios)|
 |`Oem/Hpe/Links/TlsConfig`|[HpeTlsConfig](../ilo5_hpe_resourcedefns278/#hpetlsconfig)|
 |`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo5_hpe_resourcedefns278/#hpebaseconfigs)|

@@ -10,12 +10,12 @@ disableLastModified: false
 
 # Chassis resource definitions of iLO 6 v1.52
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ChassisCollection
+
 `@odata.type: "#ChassisCollection.ChassisCollection"`
 
 A Collection of Chassis resource instances.
@@ -28,7 +28,7 @@ A Collection of Chassis resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Chassis](../ilo6_chassis_resourcedefns152/#chassis)|
 
@@ -73,7 +73,7 @@ The Chassis resource describes the physical components for a system. This object
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/ComputerSystems[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns152/#computersystem)|
 |`Links/ManagedBy[]`|[Manager](../ilo6_manager_resourcedefns152/#manager)|
@@ -1351,7 +1351,6 @@ Thermal is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **HpeServerChassis.DisableMCTPOnServer**
 Member of [Chassis.v1\_23\_0.Chassis](#chassis)
 There are no parameters for this action.
@@ -1363,7 +1362,6 @@ There are no parameters for this action.
 **HpeServerChassis.ModifyEnclosureChassisFru**
 Member of [Chassis.v1\_23\_0.Chassis](#chassis)
 The action to modify field of enclosure chassis FRU.
-
 
 **Parameters:**
 

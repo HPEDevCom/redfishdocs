@@ -1470,7 +1470,7 @@ The Fabric schema represents a simple fabric consisting of one or more switches,
 
 |Uri|HTTP Allow|
 |---|---|
-|`/redfish/v1/fabrics/{item}`|GET POST PATCH |
+|`/redfish/v1/fabrics/{item}`|GET POST PATCH DELETE |
 
 ### Links to other Resources
 
@@ -5422,7 +5422,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 |---|---|
 |`/redfish/v1/chassis/{item}/networkadapters/{item}/ports/{item}`|GET POST PATCH |
 |`/redfish/v1/chassis/{item}/networkadapters/{item}/ports/{item}/settings`|GET PATCH |
-|`/redfish/v1/fabrics/{item}/switches/{item}/Ports/{item}`|GET POST PATCH |
+|`/redfish/v1/fabrics/{item}/switches/{item}/Ports/{item}`|GET POST PATCH DELETE |
 |`/redfish/v1/systems/{item}/networkinterfaces/{item}/ports/{item}`|GET POST PATCH |
 |`/redfish/v1/systems/{item}/networkinterfaces/{item}/ports/{item}/settings`|GET PATCH |
 |`/redfish/v1/systems/{item}/storage/{item}/controllers/{item}/ports/{item}`|GET PATCH |
@@ -10666,7 +10666,7 @@ The Switch schema contains properties that describe a fabric switch.
 
 |Uri|HTTP Allow|
 |---|---|
-|`/redfish/v1/fabrics/{item}/switches/{item}`|GET POST PATCH |
+|`/redfish/v1/fabrics/{item}/switches/{item}`|GET POST PATCH DELETE |
 
 ### Links to other Resources
 
@@ -10773,7 +10773,7 @@ A Collection of Switch Resource instances.
 
 |Uri|HTTP Allow|
 |---|---|
-|`/redfish/v1/fabrics/{item}/switches`|GET |
+|`/redfish/v1/fabrics/{item}/switches`|GET DELETE |
 
 ### Links to other Resources
 

@@ -63,24 +63,6 @@ Member of ManagerCollection.ManagerCollection
 
 The Manager resource describes a manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned manageability functions.
 
-### Manager.Reset
-
-There are two possible ways for a Manager Reset. These enums are defined as `ForceRestart` and `GracefulRestart`.
-
-```text POST request
-POST /redfish/v1/Managers/1/Actions/Manager.Reset/
-```
-
-```json Response Body
-{
-    "ResetType": "GracefulRestart"
-}
-```
-
-:::info NOTE
-iLO `GracefulRestart` works in the same way as `ForceRestart`.
-:::
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -1563,8 +1545,8 @@ Member of [Manager.v1\_5\_1.Manager](#manager)
 
 |Value|Description|
 |---|---|
-|ForceRestart|Perform a reset of the management processor firmware|
-|GracefulRestart|Perform a graceful shutdown followed by a restart of the management processor firmware|
+|ForceRestart|
+|GracefulRestart|
 
 **HpeiLO.ClearHotKeys**
 Member of [Manager.v1\_5\_1.Manager](#manager)

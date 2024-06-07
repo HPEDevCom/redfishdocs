@@ -17,6 +17,7 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 
 |URI|Type|
 |:---|:---|
+|` /redfish/v1/TelemetryService/MetricDefinitions/UnachCap`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
 |`/redfish/v1/`|[ServiceRoot](../ilo5_serviceroot_resourcedefns296/#serviceroot)|
 |`/redfish/v1/AccountService`|[AccountService](../ilo5_other_resourcedefns296/#accountservice)|
 |`/redfish/v1/AccountService/Accounts`|Collection of [ManagerAccount](../ilo5_manager_resourcedefns296/#manageraccountcollection)|
@@ -228,8 +229,29 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/TaskService/Tasks/{item}`|[Task](../ilo5_other_resourcedefns296/#task)|
 |`/redfish/v1/TelemetryService`|[TelemetryService](../ilo5_other_resourcedefns296/#telemetryservice)|
 |`/redfish/v1/TelemetryService/MetricDefinitions`|Collection of [MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinitioncollection)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/AmbTemp`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/Cap`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/CpuCapLim`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/CpuMax`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/CpuPwrSavLim`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/CpuWatts`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/DimmWatts`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/GpuWatts`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/MaxConsumedWatts`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/MinConsumedWatts`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/PrMode`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
+|`/redfish/v1/TelemetryService/MetricDefinitions/PunCap`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
 |`/redfish/v1/TelemetryService/MetricDefinitions/{item}`|[MetricDefinition](../ilo5_other_resourcedefns296/#metricdefinition)|
 |`/redfish/v1/TelemetryService/MetricReportDefinitions`|Collection of [MetricReportDefinition](../ilo5_other_resourcedefns296/#metricreportdefinitioncollection)|
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/AvgCPUXFreq`|[MetricReportDefinition](../ilo5_other_resourcedefns296/#metricreportdefinition)|
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/CPUICUtil`|[MetricReportDefinition](../ilo5_other_resourcedefns296/#metricreportdefinition)|
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/CPUUtil`|[MetricReportDefinition](../ilo5_other_resourcedefns296/#metricreportdefinition)|
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/CPUXPower`|[MetricReportDefinition](../ilo5_other_resourcedefns296/#metricreportdefinition)|
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/IOBusUtil`|[MetricReportDefinition](../ilo5_other_resourcedefns296/#metricreportdefinition)|
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/JitterCount`|[MetricReportDefinition](../ilo5_other_resourcedefns296/#metricreportdefinition)|
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/MemoryBusUtil`|[MetricReportDefinition](../ilo5_other_resourcedefns296/#metricreportdefinition)|
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics`|[MetricReportDefinition](../ilo5_other_resourcedefns296/#metricreportdefinition)|
 |`/redfish/v1/TelemetryService/MetricReportDefinitions/{item}`|[MetricReportDefinition](../ilo5_other_resourcedefns296/#metricreportdefinition)|
 |`/redfish/v1/TelemetryService/MetricReports/{item}`|[MetricReport](../ilo5_other_resourcedefns296/#metricreport)|
 |`/redfish/v1/TelemetryService/MetricsReport`|Collection of [MetricReport](../ilo5_other_resourcedefns296/#metricreportcollection)|
@@ -252,6 +274,7 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/UpdateService/UpdateTaskQueue/{item}`|[HpeComponentUpdateTask](../ilo5_hpe_resourcedefns296/#hpecomponentupdatetask)|
 |`/redfish/v1/systems/{item}/bios/Kmsconfig`|[HpeKmsConfig](../ilo5_hpe_resourcedefns296/#hpekmsconfig)|
 |`/redfish/v1/systems/{item}/bios/Serverconfiglock`|[HpeServerConfigLock](../ilo5_hpe_resourcedefns296/#hpeserverconfiglock)|
+|`/redfish/v1/telemetryservice/metricreports/PowerMetrics`|[MetricReport](../ilo5_other_resourcedefns296/#metricreport)|
 |`redfish/v1/Chassis/{item}/BaseFrus`|Collection of [HpeiLOFrus](../ilo5_hpe_resourcedefns296/#hpeilofruscollection)|
 |`redfish/v1/Chassis/{item}/BaseFrus/{item}`|[HpeiLOFrus](../ilo5_hpe_resourcedefns296/#hpeilofrus)|
 |`redfish/v1/Chassis/{item}/BaseFrus/{item}/Details`|[HpeiLOFrus](../ilo5_hpe_resourcedefns296/#hpeilofrus)|

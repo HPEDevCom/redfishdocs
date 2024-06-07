@@ -10,12 +10,12 @@ disableLastModified: false
 
 # Computersystem resource definitions of iLO 6 v1.40
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ComputerSystemCollection
+
 `@odata.type: "#ComputerSystemCollection.ComputerSystemCollection"`
 
 A Collection of ComputerSystem resource instances.
@@ -28,7 +28,7 @@ A Collection of ComputerSystem resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns140/#computersystem)|
 
@@ -73,13 +73,13 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns140/#ethernetinterfacecollection)|
-|`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](../ilo6_hpe_resourcedefns140/#hpeusbdevicescollection)|
+|`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice)|
 |`Links/Chassis[]`|[Chassis](../ilo6_chassis_resourcedefns140/#chassis)|
 |`Memory`|Collection of [Memory](../ilo6_other_resourcedefns140/#memorycollection)|
-|`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](../ilo6_hpe_resourcedefns140/#hpeusbportscollection)|
+|`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](#hpeusbport)|
 |`Oem/Hpe/Links/NetworkAdapters`|HpeBaseNetworkAdapterCollection|
 |`NetworkInterfaces`|Collection of [NetworkInterface](../ilo6_network_resourcedefns140/#networkinterfacecollection)|
 |`Processors`|Collection of [Processor](../ilo6_other_resourcedefns140/#processorcollection)|
@@ -2023,11 +2023,9 @@ Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 
 ### Actions
 
-
 **ComputerSystem.Reset**
 Member of [ComputerSystem.v1\_17\_0.ComputerSystem](#computersystem)
 This action resets the system.
-
 
 **Parameters:**
 

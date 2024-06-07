@@ -10,12 +10,12 @@ disableLastModified: false
 
 # Network resource definitions of iLO 6 v1.05
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## NetworkAdapterCollection
+
 `@odata.type: "#NetworkAdapterCollection.NetworkAdapterCollection"`
 
 A Collection of NetworkAdapter resource instances.
@@ -28,7 +28,7 @@ A Collection of NetworkAdapter resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[NetworkAdapter](../ilo6_network_resourcedefns105/#networkadapter)|
 
@@ -82,7 +82,7 @@ The following are the supported values:
 
 `@odata.type: "#NetworkAdapter.v1_5_0.NetworkAdapter"`
 
-A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters. The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
+A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters.
 
 ### Resource Instances
 
@@ -642,7 +642,6 @@ Member of [NetworkAdapter.v1\_5\_0.NetworkAdapter](#networkadapter)
 
 `FunctionTypes` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -691,7 +690,6 @@ Member of [NetworkAdapter.v1\_5\_0.NetworkAdapter](#networkadapter)
 
 `RDMASupport` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -720,8 +718,8 @@ The following are the supported values:
 
 |Value|Description|
 |---|---|
-|`DCi`|HPE Proprietary DCi protocol. This value indicates HPE OEM properties will be present.|
-|`RDE`|DMTF RDE protocol. This value indicates HPE OEM properties will not be present.|
+|`DCi`|HPE Proprietary DCi protocol|
+|`RDE`|DMTF RDE protocol|
 
 ### Oem.Hpe.FactoryDefaultsActuationBehavior
 
@@ -818,7 +816,6 @@ See the Redfish standard schema and specification for information on common Stat
 
 ### Actions
 
-
 **NetworkAdapter.ResetSettingsToDefault**
 Member of [NetworkAdapter.v1\_5\_0.NetworkAdapter](#networkadapter)
 There are no parameters for this action.
@@ -834,6 +831,7 @@ NOTE: Deprecated, will be removed in a future release.  Replaced by HpeNetworkAd
 There are no parameters for this action.
 
 ## NetworkDeviceFunctionCollection
+
 `@odata.type: "#NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection"`
 
 A Collection of NetworkDeviceFunction resource instances.
@@ -847,7 +845,7 @@ A Collection of NetworkDeviceFunction resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[NetworkDeviceFunction](../ilo6_network_resourcedefns105/#networkdevicefunction)|
 
@@ -882,7 +880,7 @@ Member of NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection
 
 `@odata.type: "#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction"`
 
-A Network Device Function represents a logical interface exposed by the network adapter. The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
+A Network Device Function represents a logical interface exposed by the network adapter.
 
 ### Resource Instances
 
@@ -895,7 +893,7 @@ A Network Device Function represents a logical interface exposed by the network 
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`@Redfish.Settings/SettingsObject`|[NetworkDeviceFunction](../ilo6_network_resourcedefns105/#networkdevicefunction)|
 
@@ -1142,7 +1140,6 @@ Member of [NetworkDeviceFunction.v1\_5\_0.NetworkDeviceFunction](#networkdevicef
 
 `NetDevFuncCapabilities` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -1218,7 +1215,6 @@ Member of [NetworkDeviceFunction.v1\_5\_0.NetworkDeviceFunction](#networkdevicef
 Member of [NetworkDeviceFunction.v1\_5\_0.NetworkDeviceFunction](#networkdevicefunction)
 
 `NetDevFuncCapabilities` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1624,6 +1620,7 @@ Member of [NetworkDeviceFunction.v1\_5\_0.NetworkDeviceFunction](#networkdevicef
 |Added|iLO 6 1.05|
 
 ## NetworkInterfaceCollection
+
 `@odata.type: "#NetworkInterfaceCollection.NetworkInterfaceCollection"`
 
 A Collection of NetworkInterface resource instances.
@@ -1636,7 +1633,7 @@ A Collection of NetworkInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[NetworkInterface](../ilo6_network_resourcedefns105/#networkinterface)|
 
@@ -1700,7 +1697,7 @@ A NetworkInterface contains references linking NetworkAdapter, NetworkPort, and 
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](../ilo6_network_resourcedefns105/#networkdevicefunctioncollection)|
 
@@ -1725,6 +1722,7 @@ Member of [NetworkInterface.v1\_2\_0.NetworkInterface](#networkinterface)
 See the Redfish standard schema and specification for information on common Status object.
 
 ## EthernetInterfaceCollection
+
 `@odata.type: "#EthernetInterfaceCollection.EthernetInterfaceCollection"`
 
 A Collection of EthernetInterface resource instances.
@@ -1738,7 +1736,7 @@ A Collection of EthernetInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[EthernetInterface](../ilo6_network_resourcedefns105/#ethernetinterface)|
 
@@ -2296,7 +2294,6 @@ Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 
 `NameServers` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -2524,7 +2521,6 @@ Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 
 `DNSServers` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -2585,7 +2581,6 @@ Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 
 `WINSServers` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -2609,7 +2604,6 @@ Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 
 `DNSServers` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -2845,7 +2839,6 @@ Member of [EthernetInterface.v1\_4\_1.EthernetInterface](#ethernetinterface)
 
 `StaticNameServers` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -2896,6 +2889,7 @@ This is a reference to a collection of VLANs and is only used if the interface s
 VLANs is a link (`"@odata.id": URI`) to another resource.
 
 ## NetworkPortCollection
+
 `@odata.type: "#NetworkPortCollection.NetworkPortCollection"`
 
 A Collection of NetworkPort resource instances.
@@ -2909,7 +2903,7 @@ A Collection of NetworkPort resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[NetworkPort](../ilo6_network_resourcedefns105/#networkport)|
 
@@ -2957,7 +2951,7 @@ A Network Port represents a discrete physical port capable of connecting to a ne
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`@Redfish.Settings/SettingsObject`|[NetworkPort](../ilo6_network_resourcedefns105/#networkport)|
 
@@ -2991,7 +2985,6 @@ The following are the supported values:
 Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `AssociatedNetworkAddresses` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -3706,7 +3699,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `BandwidthAssignmentTable` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|One entry in the DCB ETS Traffic Class (TC) Bandwidth Assignment Table.|
@@ -3739,7 +3731,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `PriorityAssignmentTable` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|One entry in the DCB ETS Priority Assignment Table indicating this priority's Traffic Class assignment.|
@@ -3761,7 +3752,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `TrafficSelectionAlgorithmTable` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -4293,7 +4283,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `SupportedEthernetCapabilities` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string or null|
@@ -4318,7 +4307,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 
 `CapableLinkSpeedMbps` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -4367,7 +4355,6 @@ Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)
 |Added|iLO 6 1.05|
 
 ### Actions
-
 
 **HpeNetworkPort.DiagnosticsReset**
 Member of [NetworkPort.v1\_2\_5.NetworkPort](#networkport)

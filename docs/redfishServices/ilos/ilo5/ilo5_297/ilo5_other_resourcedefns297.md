@@ -5294,7 +5294,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 `@odata.type: "#Port.v1_9_0.Port"`
 
-A  Port represents a discrete physical port capable of connecting to a network. The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
+A  Port represents a discrete physical port capable of connecting to a network.
 
 ### Resource Instances
 

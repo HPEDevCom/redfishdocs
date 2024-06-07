@@ -10,10 +10,9 @@ disableLastModified: false
 
 # Bios resource definitions of iLO 6 v1.05
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## Bios
 
@@ -30,7 +29,7 @@ Bios contains properties surrounding a BIOS Attribute Registry (where the system
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](../ilo6_hpe_resourcedefns105/#hpeserverbootsettings)|
 |`@Redfish.Settings/SettingsObject`|[Bios](../ilo6_bios_resourcedefns105/#bios)|
@@ -55,7 +54,6 @@ Member of [Bios.v1\_0\_0.Bios](#bios)
 |Read Only|True|
 
 ### Attributes
-
 
 **AcpiHpet (High Precision Event Timer (HPET) ACPI Support)**
 Member of [Bios.v1\_0\_0.Bios](#bios)
@@ -824,7 +822,7 @@ Member of [Bios.v1\_0\_0.Bios](#bios)
 
 | | |
 |---|---|
-|Description|Use this option to disable the POST One-Time Boot F11 Prompt.
+|Description|Use this option to disable the POST One-Time Boot F11 Prompt.|
 Note: When disabled, shell 'boot' command is not available for use.|
 |Type|Enumeration|
 |Read Only|False|
@@ -5076,7 +5074,7 @@ Member of [Bios.v1\_0\_0.Bios](#bios)
 
 | | |
 |---|---|
-|Description|When enabled, Sub-NUMA Clustering divides the processor's cores, cache, and memory into multiple NUMA domains. Enabling this feature can increase performance for workloads that are NUMA aware and optimized. 
+|Description|When enabled, Sub-NUMA Clustering divides the processor's cores, cache, and memory into multiple NUMA domains. Enabling this feature can increase performance for workloads that are NUMA aware and optimized.|
 Note: When this option is enabled, up to 1GB of system memory may become unavailable.|
 |Type|Enumeration|
 |Read Only|False|

@@ -13,8 +13,8 @@ The following table lists HPE iLO Redfish resource types and their associated UR
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 # Resource Map
+
 |URI|Type|
 |:---|:---|
 |`/redfish/v1/`|[ServiceRoot](../ilo6_serviceroot_resourcedefns105/#serviceroot)|
@@ -139,13 +139,15 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/Systems/{item}/Bios/boot`|[HpeServerBootSettings](../ilo6_hpe_resourcedefns105/#hpeserverbootsettings)|
 |`/redfish/v1/Systems/{item}/Bios/boot/Settings`|[HpeServerBootSettings](../ilo6_hpe_resourcedefns105/#hpeserverbootsettings)|
 |`/redfish/v1/Systems/{item}/Bios/boot/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns105/#hpebaseconfigs)|
+|`/redfish/v1/Systems/{item}/Bios/hpescalablepmem`|[HpeScalablePmem](#hpescalablepmem-v1_0_0-hpescalablepmem)|
+|`/redfish/v1/Systems/{item}/Bios/hpescalablepmem/Settings`|[HpeScalablePmem](#hpescalablepmem-v1_0_0-hpescalablepmem)|
 |`/redfish/v1/Systems/{item}/Bios/iscsi`|[HpeiSCSISoftwareInitiator](../ilo6_hpe_resourcedefns105/#hpeiscsisoftwareinitiator)|
 |`/redfish/v1/Systems/{item}/Bios/iscsi/Settings`|[HpeiSCSISoftwareInitiator](../ilo6_hpe_resourcedefns105/#hpeiscsisoftwareinitiator)|
 |`/redfish/v1/Systems/{item}/Bios/iscsi/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns105/#hpebaseconfigs)|
 |`/redfish/v1/Systems/{item}/Bios/mappings`|[HpeBiosMapping](../ilo6_hpe_resourcedefns105/#hpebiosmapping)|
-|`/redfish/v1/Systems/{item}/Bios/oem/hpe/tlsconfig`|[HpeTlsConfig](../ilo6_hpe_resourcedefns105/#hpetlsconfig)|
-|`/redfish/v1/Systems/{item}/Bios/oem/hpe/tlsconfig/Settings`|[HpeTlsConfig](../ilo6_hpe_resourcedefns105/#hpetlsconfig)|
-|`/redfish/v1/Systems/{item}/Bios/oem/hpe/tlsconfig/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns105/#hpebaseconfigs)|
+|`/redfish/v1/Systems/{item}/Bios/tlsconfig`|[HpeTlsConfig](../ilo6_hpe_resourcedefns105/#hpetlsconfig)|
+|`/redfish/v1/Systems/{item}/Bios/tlsconfig/Settings`|[HpeTlsConfig](../ilo6_hpe_resourcedefns105/#hpetlsconfig)|
+|`/redfish/v1/Systems/{item}/Bios/tlsconfig/baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns105/#hpebaseconfigs)|
 |`/redfish/v1/Systems/{item}/Bios/Serverconfiglock`|[HpeServerConfigLock](../ilo6_hpe_resourcedefns105/#hpeserverconfiglock)|
 |`/redfish/v1/Systems/{item}/Bios/Serverconfiglock/Settings`|[HpeServerConfigLock](../ilo6_hpe_resourcedefns105/#hpeserverconfiglock)|
 |`/redfish/v1/Systems/{item}/Bios/Serverconfiglock/Baseconfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns105/#hpebaseconfigs)|
@@ -191,6 +193,24 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/Systems/{item}/Processors`|Collection of [Processor](../ilo6_other_resourcedefns105/#processorcollection)|
 |`/redfish/v1/Systems/{item}/Processors/{item}`|[Processor](../ilo6_other_resourcedefns105/#processor)|
 |`/redfish/v1/Systems/{item}/SecureBoot`|[SecureBoot](../ilo6_other_resourcedefns105/#secureboot)|
+|`/redfish/v1/Systems/{item}/SmartStorage`|[HpeSmartStorage](#hpesmartstorage-v2_0_0-hpesmartstorage)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers`|Collection of [HpeSmartStorageArrayController](#hpesmartstoragearraycontroller-v2_2_0-hpesmartstoragearraycontroller)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}`|[HpeSmartStorageArrayController](#hpesmartstoragearraycontroller-v2_2_0-hpesmartstoragearraycontroller)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/DiskDrives`|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/DiskDrives/{item}`|[HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives`|Collection of [HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives/{item}`|[HpeSmartStorageLogicalDrive](#hpesmartstoragelogicaldrive-v2_3_0-hpesmartstoragelogicaldrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives/{item}/DataDrives`|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/StorageEnclosures`|Collection of [HpeSmartStorageStorageEnclosure](#hpesmartstoragestorageenclosure-v2_0_0-hpesmartstoragestorageenclosure)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/StorageEnclosures/{item}`|[HpeSmartStorageStorageEnclosure](#hpesmartstoragestorageenclosure-v2_0_0-hpesmartstoragestorageenclosure)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/UnconfiguredDrives`|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/UnconfiguredDrives/{item}`|[HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters`|Collection of [HpeSmartStorageHostBusAdapter](#hpesmartstoragehostbusadapter-v2_0_0-hpesmartstoragehostbusadapter)|
+|`/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters/{item}`|[HpeSmartStorageHostBusAdapter](#hpesmartstoragehostbusadapter-v2_0_0-hpesmartstoragehostbusadapter)|
+|`/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters/{item}/DiskDrives`|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
+|`/redfish/v1/Systems/{item}/SmartStorage/HostBusAdapters/{item}/DiskDrives/{item}`|[HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
+|`/redfish/v1/Systems/{item}/SmartStorageConfig`|[SmartStorageConfig](#smartstorageconfig-v2_0_0-smartstorageconfig)|
+|`/redfish/v1/Systems/{item}/SmartStorageConfig/Settings`|[SmartStorageConfig](#smartstorageconfig-v2_0_0-smartstorageconfig)|
 |`/redfish/v1/Systems/{item}/Storage`|Collection of [Storage](../ilo6_storage_resourcedefns105/#storagecollection)|
 |`/redfish/v1/Systems/{item}/Storage/{item}/Controllers/`|Collection of [StorageController](../ilo6_storage_resourcedefns105/#storagecontrollercollection)|
 |`/redfish/v1/Systems/{item}/Storage/{item}/Controllers/{item}`|[StorageController](../ilo6_storage_resourcedefns105/#storagecontroller)|
@@ -244,6 +264,8 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`redfish/v1/Systems/{item}/SecureEraseReportService`|[HpeSecureEraseReportService](../ilo6_hpe_resourcedefns105/#hpesecureerasereportservice)|
 |`redfish/v1/Systems/{item}/SecureEraseReportService/SecureEraseReportEntries`|Collection of [HpeSecureEraseReport](../ilo6_hpe_resourcedefns105/#hpesecureerasereportcollection)|
 |`redfish/v1/Systems/{item}/SecureEraseReportService/SecureEraseReportEntries/{item}`|[HpeSecureEraseReport](../ilo6_hpe_resourcedefns105/#hpesecureerasereport)|
+|`redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives/{item}/ActiveSpareDrives`|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
+|`redfish/v1/Systems/{item}/SmartStorage/ArrayControllers/{item}/LogicalDrives/{item}/StandbySpareDrives`|Collection of [HpeSmartStorageDiskDrive](#hpesmartstoragediskdrive-v2_1_0-hpesmartstoragediskdrive)|
 |`redfish/v1/Systems/{item}/Storage/{item}`|[Storage](../ilo6_storage_resourcedefns105/#storage)|
 |`redfish/v1/Systems/{item}/Storage/{item}/Drives/{item}`|[Drive](../ilo6_storage_resourcedefns105/#drive)|
 |`redfish/v1/Systems/{item}/Storage/{item}/Volumes`|Collection of [Volume](../ilo6_storage_resourcedefns105/#volumecollection)|

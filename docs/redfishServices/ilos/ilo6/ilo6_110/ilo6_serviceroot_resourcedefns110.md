@@ -28,7 +28,7 @@ The ServiceRoot resource describes the Redfish API service root.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Registries`|Collection of [MessageRegistryFile](../ilo6_other_resourcedefns110/#messageregistryfilecollection)|
 |`Managers`|Collection of [Manager](../ilo6_manager_resourcedefns110/#managercollection)|

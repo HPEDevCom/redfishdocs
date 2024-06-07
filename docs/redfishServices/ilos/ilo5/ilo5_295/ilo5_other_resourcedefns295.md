@@ -5247,7 +5247,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 `@odata.type: "#Port.v1_5_0.Port"`
 
-A  Port represents a discrete physical port capable of connecting to a network. The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
+A  Port represents a discrete physical port capable of connecting to a network.
 
 ### Resource Instances
 
@@ -11088,10 +11088,10 @@ The following are the supported values:
 
 |Value|Description|
 |---|---|
-|`OptimalCooling`|Provides the most efficient solution by configuring fan speeds to the minimum required to provide adequate cooling.|
-|`IncreasedCooling`|Operates fans at a higher speed.|
-|`MaximumCooling`|Provides the maximum cooling available for the system.|
-|`EnhancedCooling`|Provides additional cooling to the processors, which can improve performance.|
+|`OptimalCooling`||
+|`IncreasedCooling`||
+|`MaximumCooling`||
+|`EnhancedCooling`||
 |`AcousticMode`|Edgeline-only option. Prioritizes minimizing noise from the enclosure.|
 
 ### Status

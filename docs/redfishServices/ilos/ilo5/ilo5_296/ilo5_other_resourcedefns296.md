@@ -4145,6 +4145,20 @@ The metadata information about a metric.
 
 |Uri|HTTP Allow|
 |---|---|
+|` /redfish/v1/TelemetryService/MetricDefinitions/UnachCap`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/AmbTemp`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/Cap`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/CpuCapLim`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/CpuMax`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/CpuPwrSavLim`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/CpuWatts`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/DimmWatts`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/GpuWatts`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/MaxConsumedWatts`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/MinConsumedWatts`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/PrMode`|GET |
+|`/redfish/v1/TelemetryService/MetricDefinitions/PunCap`|GET |
 |`/redfish/v1/telemetryservice/metricdefinitions/{item}`|GET PATCH |
 
 ### Calculable
@@ -4356,6 +4370,7 @@ The metric definitions used to create a metric report.
 
 |Uri|HTTP Allow|
 |---|---|
+|`/redfish/v1/telemetryservice/metricreports/PowerMetrics`|GET |
 |`/redfish/v1/telemetryservice/metricreports/{item}`|GET PATCH |
 
 ### MetricReportDefinition
@@ -4457,6 +4472,14 @@ A set of metrics that are collected into a metric report.
 
 |Uri|HTTP Allow|
 |---|---|
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/AvgCPUXFreq`|GET PATCH |
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/CPUICUtil`|GET PATCH |
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/CPUUtil`|GET PATCH |
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/CPUXPower`|GET PATCH |
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/IOBusUtil`|GET PATCH |
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/JitterCount`|GET PATCH |
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/MemoryBusUtil`|GET PATCH |
+|`/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics`|GET PATCH |
 |`/redfish/v1/telemetryservice/metricreportdefinitions/{item}`|GET PATCH |
 
 ### MetricProperties (array)
@@ -5294,7 +5317,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 `@odata.type: "#Port.v1_9_0.Port"`
 
-A  Port represents a discrete physical port capable of connecting to a network. The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
+A  Port represents a discrete physical port capable of connecting to a network.
 
 ### Resource Instances
 

@@ -5104,7 +5104,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 `@odata.type: "#Port.v1_5_0.Port"`
 
-A  Port represents a discrete physical port capable of connecting to a network. The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
+A  Port represents a discrete physical port capable of connecting to a network.
 
 ### Resource Instances
 
@@ -8843,48 +8843,6 @@ Member of [SerialInterface.v1\_1\_7.SerialInterface](#serialinterface)
 |Type|boolean or null|
 |Read Only|False|
 
-## SerialInterfaceCollection
-
-```@odata.type: "#SerialInterfaceCollection.SerialInterfaceCollection"```
-
-A Collection of SerialInterface resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|```/redfish/v1/managers/{item}/serialinterfaces```|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type|
-|---|---|
-|```Members[]```|[SerialInterface](#serialinterface)|
-
-### Members (array)
-
-Member of SerialInterfaceCollection.SerialInterfaceCollection
-```Members``` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of SerialInterfaceCollection.SerialInterfaceCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of SerialInterfaceCollection.SerialInterfaceCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-
 ## Session
 
 `@odata.type: "#Session.v1_0_0.Session"`
@@ -10933,10 +10891,10 @@ The following are the supported values:
 
 |Value|Description|
 |---|---|
-|`OptimalCooling`|Provides the most efficient solution by configuring fan speeds to the minimum required to provide adequate cooling.|
-|`IncreasedCooling`|Operates fans at a higher speed.|
-|`MaximumCooling`|Provides the maximum cooling available for the system.|
-|`EnhancedCooling`|Provides additional cooling to the processors, which can improve performance.|
+|`OptimalCooling`||
+|`IncreasedCooling`||
+|`MaximumCooling`||
+|`EnhancedCooling`||
 |`AcousticMode`|Edgeline-only option. Prioritizes minimizing noise from the enclosure.|
 
 ### Status
@@ -11510,7 +11468,7 @@ The UpdateService resource describes the Update Service. It represents the prope
 |`FirmwareInventory`|Collection of [SoftwareInventory](../ilo5_other_resourcedefns278/#softwareinventorycollection)|
 |`Oem/Hpe/ComponentRepository`|Collection of [HpeComponent](../ilo5_hpe_resourcedefns278/#hpecomponentcollection)|
 |`Oem/Hpe/InstallSets`|Collection of [HpeComponentInstallSet](../ilo5_hpe_resourcedefns278/#hpecomponentinstallsetcollection)|
-|`Oem/Hpe/UpdateTaskQueue`|Collection of [HpeComponentUpdateTask](../ilo5_hpe_resourcedefns278/#hpecomponentupdatetaskqueuecollection)|
+|`Oem/Hpe/UpdateTaskQueue`|Collection of [HpeComponentUpdateTask](#hpecomponentupdatetask)|
 |`SoftwareInventory`|Collection of [SoftwareInventory](../ilo5_other_resourcedefns278/#softwareinventorycollection)|
 
 ### FirmwareInventory

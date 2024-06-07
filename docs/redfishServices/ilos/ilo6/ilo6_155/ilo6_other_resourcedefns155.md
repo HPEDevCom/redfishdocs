@@ -10,10 +10,9 @@ disableLastModified: false
 
 # Other resource definitions of iLO 6 v1.55
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## AccountService
 
@@ -22,7 +21,6 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 The AccountService resource describes the BMC user account management service. It represents the properties for this service and has links to the list of accounts.
 
 ### Managing User Accounts with the Accounts Collection
-
 
 **JSONPath**: `/Accounts/@odata.id`
 
@@ -35,7 +33,6 @@ The destination of this link is a collection of user accounts (see ManagerAccoun
 * You may remove a user account by DELETEing the resources representing the user
 > e.g. `DELETE https://{iLO}/redfish/v1/accountservice/accounts/{item}`
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -44,7 +41,7 @@ The destination of this link is a collection of user accounts (see ManagerAccoun
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Accounts`|Collection of [ManagerAccount](../ilo6_manager_resourcedefns155/#manageraccountcollection)|
 
@@ -578,18 +575,15 @@ Roles is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **HpeiLOAccountService.ImportKerberosKeytab**
 Member of [AccountService.v1\_5\_0.AccountService](#accountservice)
 Import the Kerberos keytab file.
-
 
 **Parameters:**
 
 **ImportUri (string)**
 
 URI of the kerberos keytab file.
-
 
 ## BootOption
 
@@ -658,8 +652,8 @@ Member of [BootOption.v1\_0\_1.BootOption](#bootoption)
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## BootOptionCollection
+
 `@odata.type: "#BootOptionCollection.BootOptionCollection"`
 
 A Collection of BootOption resource instances.
@@ -672,7 +666,7 @@ A Collection of BootOption resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[BootOption](../ilo6_other_resourcedefns155/#bootoption)|
 
@@ -702,7 +696,6 @@ Member of BootOptionCollection.BootOptionCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## Certificate
 
@@ -972,8 +965,8 @@ Member of [Certificate.v1\_6\_0.Certificate](#certificate)
 |Added|iLO6 1.05|
 |Format|date-time|
 
-
 ## CertificateCollection
+
 `@odata.type: "#CertificateCollection.CertificateCollection"`
 
 A Collection of Certificate resource instances.
@@ -1003,7 +996,7 @@ A Collection of Certificate resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Certificate](../ilo6_other_resourcedefns155/#certificate)|
 
@@ -1034,7 +1027,6 @@ Member of CertificateCollection.CertificateCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## CertificateLocations
 
 `@odata.type: "#CertificateLocations.v1_0_2.CertificateLocations"`
@@ -1046,7 +1038,6 @@ The CertificateLocations schema describes a Resource that an administrator can u
 |Uri|HTTP Allow|
 |---|---|
 |`/redfish/v1/certificateservice/certificatelocations`|GET |
-
 
 ## CertificateService
 
@@ -1062,7 +1053,7 @@ The CertificateService schema describes a certificate service that represents th
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/CertificateLocations`|[CertificateLocations](../ilo6_other_resourcedefns155/#certificatelocations)|
 
@@ -1072,7 +1063,6 @@ The information about the location of certificates.
 CertificateLocations is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
-
 
 **CertificateService.GenerateCSR**
 Member of [CertificateService.v1\_0\_3.CertificateService](#certificateservice)
@@ -1435,11 +1425,9 @@ Member of [ComponentIntegrity.v1\_2\_0.ComponentIntegrity](#componentintegrity)
 
 ### Actions
 
-
 **ComponentIntegrity.TPMGetSignedMeasurements**
 Member of [ComponentIntegrity.v1\_2\_0.ComponentIntegrity](#componentintegrity)
 This action gets the TPM Signed Measurements.
-
 
 **Parameters:**
 
@@ -1462,7 +1450,6 @@ An object that identify the PCRs to sign.
 **ComponentIntegrity.SPDMGetSignedMeasurements**
 Member of [ComponentIntegrity.v1\_2\_0.ComponentIntegrity](#componentintegrity)
 This action gets the SPDM Signed Measurements.
-
 
 **Parameters:**
 
@@ -1487,6 +1474,7 @@ The slot identifier for the certificate containing the private key to generate t
 An array of indices that identify the measurement blocks to sign.
 
 ## ComponentIntegrityCollection
+
 `@odata.type: "#ComponentIntegrityCollection.ComponentIntegrityCollection"`
 
 A Collection of ComponentIntegrity resource instances.
@@ -1499,7 +1487,7 @@ A Collection of ComponentIntegrity resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ComponentIntegrity](../ilo6_other_resourcedefns155/#componentintegrity)|
 
@@ -1529,7 +1517,6 @@ Member of ComponentIntegrityCollection.ComponentIntegrityCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.10|
-
 
 ## EventDestination
 
@@ -1591,6 +1578,7 @@ Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
 `HttpHeaders` is an array containing elements of:
 
 **HttpHeaders[{item}]**
+
 ### MetricReportDefinitions (array)
 
 Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
@@ -1711,8 +1699,8 @@ The following are the supported values:
 |---|
 |`RedfishEvent`|
 
-
 ## EventDestinationCollection
+
 `@odata.type: "#EventDestinationCollection.EventDestinationCollection"`
 
 A Collection of EventDestination resource instances.
@@ -1725,7 +1713,7 @@ A Collection of EventDestination resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[EventDestination](../ilo6_other_resourcedefns155/#eventdestination)|
 
@@ -1756,7 +1744,6 @@ Member of EventDestinationCollection.EventDestinationCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## EventService
 
 `@odata.type: "#EventService.v1_7_2.EventService"`
@@ -1771,7 +1758,7 @@ The EventService resource describes the Event Service.  It represents the proper
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Subscriptions`|Collection of [EventDestination](../ilo6_other_resourcedefns155/#eventdestinationcollection)|
 |`Oem/Hpe/CACertificates`|Collection of [HpeCertificate](../ilo6_hpe_resourcedefns155/#hpecertificatecollection)|
@@ -1918,7 +1905,6 @@ Subscriptions is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **EventService.SubmitTestEvent**
 Member of [EventService.v1\_7\_2.EventService](#eventservice)
 
@@ -1962,7 +1948,6 @@ There are no parameters for this action.
 Member of [EventService.v1\_7\_2.EventService](#eventservice)
 Imports a Trusted CA Certificate
 
-
 **Parameters:**
 
 **Certificate (string)**
@@ -1983,7 +1968,7 @@ The Fabric schema represents a simple fabric consisting of one or more switches,
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
 
@@ -2045,8 +2030,8 @@ The following are the supported values:
 The collection of links to the switches that this fabric contains.
 Switches is a link (`"@odata.id": URI`) to another resource.
 
-
 ## FabricCollection
+
 `@odata.type: "#FabricCollection.FabricCollection"`
 
 A Collection of Fabric Resource instances.
@@ -2059,7 +2044,7 @@ A Collection of Fabric Resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Fabric](../ilo6_other_resourcedefns155/#fabric)|
 
@@ -2090,15 +2075,11 @@ Member of FabricCollection.FabricCollection
 |Read Only|True|
 |Added|iLO6 1.54|
 
-
 ## HostInterface
 
 `@odata.type: "#HostInterface.v1_1_1.HostInterface"`
 
 The HostInterface resource describes a Redfish Host Interface, which is a method of accessing the Redfish API from the host computer system.
-
-
-
 
 ### Resource Instances
 
@@ -2168,8 +2149,8 @@ Member of [HostInterface.v1\_1\_1.HostInterface](#hostinterface)
 This is a reference to a collection of NICs that Computer Systems use for network communication with this Host Interface.
 HostEthernetInterfaces is a link (`"@odata.id": URI`) to another resource.
 
-
 `HostEthernetInterfaces` property is not supported in iLO5.
+
 ### HostInterfaceType
 
 Member of [HostInterface.v1\_1\_1.HostInterface](#hostinterface)
@@ -2235,8 +2216,8 @@ NetworkProtocol is a link (`"@odata.id": URI`) to another resource.
 Member of [HostInterface.v1\_1\_1.HostInterface](#hostinterface)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## HostInterfaceCollection
+
 `@odata.type: "#HostInterfaceCollection.HostInterfaceCollection"`
 
 A Collection of HostInterface resource instances.
@@ -2249,7 +2230,7 @@ A Collection of HostInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HostInterface](../ilo6_other_resourcedefns155/#hostinterface)|
 
@@ -2279,7 +2260,6 @@ Member of HostInterfaceCollection.HostInterfaceCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## JsonSchemaFile
 
@@ -2346,8 +2326,8 @@ Member of [JsonSchemaFile.v1\_0\_4.JsonSchemaFile](#jsonschemafile)
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## JsonSchemaFileCollection
+
 `@odata.type: "#JsonSchemaFileCollection.JsonSchemaFileCollection"`
 
 A Collection of JsonSchemaFile resource instances.
@@ -2360,7 +2340,7 @@ A Collection of JsonSchemaFile resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[JsonSchemaFile](../ilo6_other_resourcedefns155/#jsonschemafile)|
 
@@ -2390,7 +2370,6 @@ Member of JsonSchemaFileCollection.JsonSchemaFileCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## LogEntry
 
@@ -2763,8 +2742,8 @@ The following are the supported values:
 |`Warning`|
 |`Critical`|
 
-
 ## LogEntryCollection
+
 `@odata.type: "#LogEntryCollection.LogEntryCollection"`
 
 A Collection of LogEntry resource instances.
@@ -2782,7 +2761,7 @@ A Collection of LogEntry resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[LogEntry](../ilo6_other_resourcedefns155/#logentry)|
 
@@ -3174,7 +3153,6 @@ Member of LogEntryCollection.LogEntryCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## LogService
 
 `@odata.type: "#LogService.v1_1_0.LogService"`
@@ -3193,7 +3171,7 @@ This resource contains properties for monitoring and configuring an event log se
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Entries`|Collection of [LogEntry](../ilo6_other_resourcedefns155/#logentrycollection)|
 
@@ -3273,12 +3251,12 @@ See the Redfish standard schema and specification for information on common Stat
 
 ### Actions
 
-
 **LogService.ClearLog**
 Member of [LogService.v1\_1\_0.LogService](#logservice)
 There are no parameters for this action.
 
 ## LogServiceCollection
+
 `@odata.type: "#LogServiceCollection.LogServiceCollection"`
 
 A Collection of LogService resource instances.
@@ -3292,7 +3270,7 @@ A Collection of LogService resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[LogService](../ilo6_other_resourcedefns155/#logservice)|
 
@@ -3322,7 +3300,6 @@ Member of LogServiceCollection.LogServiceCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## Memory
 
@@ -4270,7 +4247,6 @@ Member of [Memory.v1\_14\_0.Memory](#memory)
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## MemoryChunks
 
 `@odata.type: "#MemoryChunks.v1_2_3.MemoryChunks"`
@@ -4307,7 +4283,7 @@ Member of [MemoryChunks.v1\_2\_3.MemoryChunks](#memorychunks)
 `InterleaveSets` is an array containing elements of:
 
 **InterleaveSets[{item}].Memory**
-Describes a memory device of the interleave set. 
+Describes a memory device of the interleave set.
 Memory is a link (`"@odata.id": URI`) to another resource.
 
 **InterleaveSets[{item}].MemoryLevel**
@@ -4399,8 +4375,8 @@ Member of [MemoryChunks.v1\_2\_3.MemoryChunks](#memorychunks)
 Member of [MemoryChunks.v1\_2\_3.MemoryChunks](#memorychunks)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## MemoryChunksCollection
+
 `@odata.type: "#MemoryChunksCollection.MemoryChunksCollection"`
 
 A Collection of MemoryChunks resource instances.
@@ -4413,7 +4389,7 @@ A Collection of MemoryChunks resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MemoryChunks](../ilo6_other_resourcedefns155/#memorychunks)|
 
@@ -4444,8 +4420,8 @@ Member of MemoryChunksCollection.MemoryChunksCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## MemoryCollection
+
 `@odata.type: "#MemoryCollection.MemoryCollection"`
 
 A Collection of Memory resource instances.
@@ -4458,7 +4434,7 @@ A Collection of Memory resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Memory](../ilo6_other_resourcedefns155/#memory)|
 
@@ -4647,7 +4623,6 @@ Member of MemoryCollection.MemoryCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## MemoryDomain
 
 `@odata.type: "#MemoryDomain.v1_2_1.MemoryDomain"`
@@ -4740,8 +4715,8 @@ Member of [MemoryDomain.v1\_2\_1.MemoryDomain](#memorydomain)
 A reference to the collection of Memory Chunks associated with this Memory Domain.
 MemoryChunks is a link (`"@odata.id": URI`) to another resource.
 
-
 ## MemoryDomainCollection
+
 `@odata.type: "#MemoryDomainCollection.MemoryDomainCollection"`
 
 A Collection of MemoryDomain resource instances.
@@ -4754,7 +4729,7 @@ A Collection of MemoryDomain resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MemoryDomain](../ilo6_other_resourcedefns155/#memorydomain)|
 
@@ -4784,7 +4759,6 @@ Member of MemoryDomainCollection.MemoryDomainCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## MessageRegistryFile
 
@@ -4851,8 +4825,8 @@ Member of [MessageRegistryFile.v1\_0\_4.MessageRegistryFile](#messageregistryfil
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## MessageRegistryFileCollection
+
 `@odata.type: "#MessageRegistryFileCollection.MessageRegistryFileCollection"`
 
 A Collection of MessageRegistryFile resource instances.
@@ -4865,7 +4839,7 @@ A Collection of MessageRegistryFile resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MessageRegistryFile](../ilo6_other_resourcedefns155/#messageregistryfile)|
 
@@ -4895,7 +4869,6 @@ Member of MessageRegistryFileCollection.MessageRegistryFileCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## MetricDefinition
 
@@ -5069,8 +5042,8 @@ Member of [MetricDefinition.v1\_0\_0.MetricDefinition](#metricdefinition)
 |Read Only|False|
 |Added|iLO6 1.05|
 
-
 ## MetricDefinitionCollection
+
 `@odata.type: "#MetricDefinitionCollection.MetricDefinitionCollection"`
 
 A Collection of MetricDefinition resource instances.
@@ -5083,7 +5056,7 @@ A Collection of MetricDefinition resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MetricDefinition](../ilo6_other_resourcedefns155/#metricdefinition)|
 
@@ -5113,7 +5086,6 @@ Member of MetricDefinitionCollection.MetricDefinitionCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## MetricReport
 
@@ -5173,8 +5145,8 @@ Member of [MetricReport.v1\_0\_0.MetricReport](#metricreport)
 |Added|iLO6 1.05|
 |Format|date-time|
 
-
 ## MetricReportCollection
+
 `@odata.type: "#MetricReportCollection.MetricReportCollection"`
 
 A Collection of MetricReport resource instances.
@@ -5187,7 +5159,7 @@ A Collection of MetricReport resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MetricReport](../ilo6_other_resourcedefns155/#metricreport)|
 
@@ -5217,7 +5189,6 @@ Member of MetricReportCollection.MetricReportCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## MetricReportDefinition
 
@@ -5389,8 +5360,8 @@ Member of [MetricReportDefinition.v1\_4\_2.MetricReportDefinition](#metricreport
 Member of [MetricReportDefinition.v1\_4\_2.MetricReportDefinition](#metricreportdefinition)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## MetricReportDefinitionCollection
+
 `@odata.type: "#MetricReportDefinitionCollection.MetricReportDefinitionCollection"`
 
 A Collection of MetricReportDefinition resource instances.
@@ -5403,7 +5374,7 @@ A Collection of MetricReportDefinition resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MetricReportDefinition](../ilo6_other_resourcedefns155/#metricreportdefinition)|
 
@@ -5434,7 +5405,6 @@ Member of MetricReportDefinitionCollection.MetricReportDefinitionCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## PCIeDevice
 
 `@odata.type: "#PCIeDevice.v1_5_0.PCIeDevice"`
@@ -5449,7 +5419,7 @@ This is the schema definition for the PCIeDevice resource.  It represents the pr
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`PCIeFunctions`|[PCIeFunction](../ilo6_other_resourcedefns155/#pciefunction)|
 
@@ -5647,8 +5617,8 @@ Member of [PCIeDevice.v1\_5\_0.PCIeDevice](#pciedevice)
 Member of [PCIeDevice.v1\_5\_0.PCIeDevice](#pciedevice)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## PCIeDeviceCollection
+
 `@odata.type: "#PCIeDeviceCollection.PCIeDeviceCollection"`
 
 The collection of PCIeDevice Resource instances.
@@ -5661,7 +5631,7 @@ The collection of PCIeDevice Resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[PCIeDevice](../ilo6_other_resourcedefns155/#pciedevice)|
 
@@ -5691,7 +5661,6 @@ Member of PCIeDeviceCollection.PCIeDeviceCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## PCIeFunction
 
@@ -5844,8 +5813,8 @@ Member of [PCIeFunction.v1\_2\_3.PCIeFunction](#pciefunction)
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## PCIeFunctionCollection
+
 `@odata.type: "#PCIeFunctionCollection.PCIeFunctionCollection"`
 
 The collection of PCIeFunction Resource instances.
@@ -5858,7 +5827,7 @@ The collection of PCIeFunction Resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[PCIeFunction](../ilo6_other_resourcedefns155/#pciefunction)|
 
@@ -5888,7 +5857,6 @@ Member of PCIeFunctionCollection.PCIeFunctionCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## PCIeSlots
 
@@ -6123,7 +6091,6 @@ The following are the supported values:
 Member of [PCIeSlots.v1\_3\_0.PCIeSlots](#pcieslots)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## Port
 
 `@odata.type: "#Port.v1_9_0.Port"`
@@ -6131,7 +6098,6 @@ See the Redfish standard schema and specification for information on common Stat
 A  Port represents a discrete physical port capable of connecting to a network.
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
-
 
 ### Resource Instances
 
@@ -6147,7 +6113,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Port](../ilo6_other_resourcedefns155/#port)|
 
@@ -8178,7 +8144,6 @@ Member of [Port.v1\_9\_0.Port](#port)
 
 ### Actions
 
-
 **Port.Reset**
 Member of [Port.v1\_9\_0.Port](#port)
 
@@ -8205,6 +8170,7 @@ Reset Port
 |Nmi|Generate a diagnostic interrupt, which is usually an NMI on x86 systems, to stop normal operations, complete diagnostic actions, and, typically, halt the system.|
 
 ## PortCollection
+
 `@odata.type: "#PortCollection.PortCollection"`
 
 A Collection of Port resource instances.
@@ -8219,7 +8185,7 @@ A Collection of Port resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Port](../ilo6_other_resourcedefns155/#port)|
 
@@ -8250,7 +8216,6 @@ Member of PortCollection.PortCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## Power
 
 `@odata.type: "#Power.v1_3_0.Power"`
@@ -8265,7 +8230,7 @@ The Power resource describes the Power Metrics.  It represents the properties fo
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/FederatedGroupCapping`|[HpeiLOFederatedGroupCapping](../ilo6_hpe_resourcedefns155/#hpeilofederatedgroupcapping)|
 |`Oem/Hpe/Links/PowerMeter`|[HpePowerMeter](../ilo6_hpe_resourcedefns155/#hpepowermeter)|
@@ -9393,7 +9358,6 @@ See the Redfish standard schema and specification for information on common Redu
 Member of [Power.v1\_3\_0.Power](#power)
 See the Redfish standard schema and specification for information on common Status object.
 
-
 ## Processor
 
 `@odata.type: "#Processor.v1_7_2.Processor"`
@@ -9998,8 +9962,8 @@ Member of [Processor.v1\_7\_2.Processor](#processor)
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## ProcessorCollection
+
 `@odata.type: "#ProcessorCollection.ProcessorCollection"`
 
 A Collection of Processor resource instances.
@@ -10012,7 +9976,7 @@ A Collection of Processor resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Processor](../ilo6_other_resourcedefns155/#processor)|
 
@@ -10042,7 +10006,6 @@ Member of ProcessorCollection.ProcessorCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 
 ## Role
 
@@ -10152,8 +10115,8 @@ Member of [Role.v1\_2\_1.Role](#role)
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## RoleCollection
+
 `@odata.type: "#RoleCollection.RoleCollection"`
 
 A Collection of Role resource instances.
@@ -10166,7 +10129,7 @@ A Collection of Role resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Role](../ilo6_other_resourcedefns155/#role)|
 
@@ -10197,7 +10160,6 @@ Member of RoleCollection.RoleCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## SecureBoot
 
 `@odata.type: "#SecureBoot.v1_1_0.SecureBoot"`
@@ -10212,7 +10174,7 @@ This resource contains UEFI Secure Boot information. It represents properties fo
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`securebootdatabases`|Collection of [SecureBootDatabase](../ilo6_other_resourcedefns155/#securebootdatabasecollection)|
 
@@ -10272,11 +10234,9 @@ The following are the supported values:
 
 ### Actions
 
-
 **SecureBoot.ResetKeys**
 Member of [SecureBoot.v1\_1\_0.SecureBoot](#secureboot)
 Action to perform reset of the Secure Boot Keys.
-
 
 **Parameters:**
 
@@ -10315,7 +10275,7 @@ The SecureBootDatabase schema describes a UEFI Secure Boot database used to stor
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Certificates`|Collection of [Certificate](../ilo6_other_resourcedefns155/#certificatecollection)|
 |`Signatures`|Collection of [Signature](../ilo6_other_resourcedefns155/#signaturecollection)|
@@ -10343,11 +10303,9 @@ Signatures is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **SecureBootDatabase.ResetKeys**
 Member of [SecureBootDatabase.v1\_0\_0.SecureBootDatabase](#securebootdatabase)
 Action to perform reset of the Secure Boot Database Keys.
-
 
 **Parameters:**
 
@@ -10361,6 +10319,7 @@ This parameter specifies what type of reset action to perform.
 |DeleteAllKeys|Delete all Secure Boot Database keys on next boot.|
 
 ## SecureBootDatabaseCollection
+
 `@odata.type: "#SecureBootDatabaseCollection.SecureBootDatabaseCollection"`
 
 The collection of SecureBootDatabase resource instances.
@@ -10373,7 +10332,7 @@ The collection of SecureBootDatabase resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[SecureBootDatabase](../ilo6_other_resourcedefns155/#securebootdatabase)|
 
@@ -10403,7 +10362,6 @@ Member of SecureBootDatabaseCollection.SecureBootDatabaseCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.10|
-
 
 ## SerialInterface
 
@@ -10449,8 +10407,8 @@ Member of [SerialInterface.v1\_1\_7.SerialInterface](#serialinterface)
 |Read Only|False|
 |Added|iLO6 1.05|
 
-
 ## SerialInterfaceCollection
+
 `@odata.type: "#SerialInterfaceCollection.SerialInterfaceCollection"`
 
 A Collection of SerialInterface resource instances.
@@ -10463,7 +10421,7 @@ A Collection of SerialInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[SerialInterface](../ilo6_other_resourcedefns155/#serialinterface)|
 
@@ -10493,7 +10451,6 @@ Member of SerialInterfaceCollection.SerialInterfaceCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.40|
-
 
 ## Session
 
@@ -10755,8 +10712,8 @@ Member of [Session.v1\_0\_0.Session](#session)
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## SessionCollection
+
 `@odata.type: "#SessionCollection.SessionCollection"`
 
 A Collection of Session resource instances.
@@ -10769,7 +10726,7 @@ A Collection of Session resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/MySession`|[Session](../ilo6_other_resourcedefns155/#session)|
 |`Members[]`|[Session](../ilo6_other_resourcedefns155/#session)|
@@ -10801,7 +10758,6 @@ Member of SessionCollection.SessionCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## SessionService
 
 `@odata.type: "#SessionService.v1_0_0.SessionService"`
@@ -10816,7 +10772,7 @@ The SessionService resource describes the BMC Redfish Session Service.  It repre
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Sessions`|Collection of [Session](../ilo6_other_resourcedefns155/#sessioncollection)|
 
@@ -10851,7 +10807,6 @@ Sessions is a link (`"@odata.id": URI`) to another resource.
 
 Member of [SessionService.v1\_0\_0.SessionService](#sessionservice)
 See the Redfish standard schema and specification for information on common Status object.
-
 
 ## Signature
 
@@ -10921,8 +10876,8 @@ Member of [Signature.v1\_0\_2.Signature](#signature)
 |Read Only|True|
 |Added|iLO6 1.10|
 
-
 ## SignatureCollection
+
 `@odata.type: "#SignatureCollection.SignatureCollection"`
 
 The collection of Signature resource instances.
@@ -10942,7 +10897,7 @@ The collection of Signature resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Signature](../ilo6_other_resourcedefns155/#signature)|
 
@@ -10972,7 +10927,6 @@ Member of SignatureCollection.SignatureCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.10|
-
 
 ## SoftwareInventory
 
@@ -11123,8 +11077,8 @@ Member of [SoftwareInventory.v1\_2\_0.SoftwareInventory](#softwareinventory)
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## SoftwareInventoryCollection
+
 `@odata.type: "#SoftwareInventoryCollection.SoftwareInventoryCollection"`
 
 A Collection of SoftwareInventory resource instances.
@@ -11138,7 +11092,7 @@ A Collection of SoftwareInventory resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[SoftwareInventory](../ilo6_other_resourcedefns155/#softwareinventory)|
 
@@ -11169,7 +11123,6 @@ Member of SoftwareInventoryCollection.SoftwareInventoryCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## Switch
 
 `@odata.type: "#Switch.v1_9_1.Switch"`
@@ -11184,7 +11137,7 @@ The Switch schema contains properties that describe a fabric switch.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|Collection of [Port](../ilo6_other_resourcedefns155/#portcollection)|
 
@@ -11317,8 +11270,8 @@ Member of [Switch.v1\_9\_1.Switch](#switch)
 |Read Only|True|
 |Added|iLO6 1.55|
 
-
 ## SwitchCollection
+
 `@odata.type: "#SwitchCollection.SwitchCollection"`
 
 A Collection of Switch Resource instances.
@@ -11331,7 +11284,7 @@ A Collection of Switch Resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
 
@@ -11361,7 +11314,6 @@ Member of SwitchCollection.SwitchCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.54|
-
 
 ## Task
 
@@ -11586,8 +11538,8 @@ The following are the supported values:
 |`Warning`|A condition exists that requires attention.|
 |`Critical`|A critical condition exists that requires immediate attention.|
 
-
 ## TaskCollection
+
 `@odata.type: "#TaskCollection.TaskCollection"`
 
 A Collection of Task resource instances.
@@ -11600,7 +11552,7 @@ A Collection of Task resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Task](../ilo6_other_resourcedefns155/#task)|
 
@@ -11631,7 +11583,6 @@ Member of TaskCollection.TaskCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## TaskService
 
 `@odata.type: "#TaskService.v1_1_1.TaskService"`
@@ -11646,7 +11597,7 @@ The TaskService resource describes the Task service. It represents the propertie
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Tasks`|Collection of [Task](../ilo6_other_resourcedefns155/#taskcollection)|
 
@@ -11711,7 +11662,6 @@ See the Redfish standard schema and specification for information on common Stat
 This property references a resource of type Collection with a MemberType of TaskCollection.
 Tasks is a link (`"@odata.id": URI`) to another resource.
 
-
 ## TelemetryService
 
 `@odata.type: "#TelemetryService.v1_0_0.TelemetryService"`
@@ -11720,9 +11670,7 @@ The TelemetryService resource describes the Metrics Service.
 
 ### Telemetry not supported on AMD platforms
 
-
 Telemetry Service is supported only on Intel platform. On AMD systems, performing `GET` on `/redfish/v1/TelemetryService` will return 400 Error Operation not supported.
-
 
 ### Resource Instances
 
@@ -11732,7 +11680,7 @@ Telemetry Service is supported only on Intel platform. On AMD systems, performin
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`MetricReports`|Collection of [MetricReport](../ilo6_other_resourcedefns155/#metricreportcollection)|
 |`MetricReportDefinitions`|Collection of [MetricDefinition](../ilo6_other_resourcedefns155/#metricdefinitioncollection)|
@@ -11809,7 +11757,6 @@ The following are the supported values:
 
 A link to the collection of Triggers, which apply to metrics.
 Triggers is a link (`"@odata.id": URI`) to another resource.
-
 
 ## Thermal
 
@@ -12376,11 +12323,9 @@ Member of [Thermal.v1\_7\_1.Thermal](#thermal)
 
 ### Actions
 
-
 **HpeThermalExt.SetUserTempThreshold**
 Member of [Thermal.v1\_7\_1.Thermal](#thermal)
 The action to set a user defined threshold for a PCIe slot temperature sensor.
-
 
 **Parameters:**
 
@@ -12631,8 +12576,8 @@ The following are the supported values:
 |`LogToLogService`|Upon a trigger, record in a log.|
 |`RedfishEvent`|Upon a trigger, send a Redfish Event message of type MetricReport.|
 
-
 ## TriggersCollection
+
 `@odata.type: "#TriggersCollection.TriggersCollection"`
 
 A Collection of Triggers resource instances.
@@ -12645,7 +12590,7 @@ A Collection of Triggers resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Triggers](../ilo6_other_resourcedefns155/#triggers)|
 
@@ -12676,7 +12621,6 @@ Member of TriggersCollection.TriggersCollection
 |Read Only|True|
 |Added|iLO6 1.05|
 
-
 ## UpdateService
 
 `@odata.type: "#UpdateService.v1_2_1.UpdateService"`
@@ -12691,7 +12635,7 @@ The UpdateService resource describes the Update Service. It represents the prope
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/InstallSets`|Collection of [HpeComponentInstallSet](../ilo6_hpe_resourcedefns155/#hpecomponentinstallsetcollection)|
 |`Oem/Hpe/ComponentRepository`|Collection of [HpeComponent](../ilo6_hpe_resourcedefns155/#hpecomponentcollection)|
@@ -13036,7 +12980,6 @@ SoftwareInventory is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **UpdateService.SimpleUpdate**
 Member of [UpdateService.v1\_2\_1.UpdateService](#updateservice)
 
@@ -13061,7 +13004,7 @@ The password credential required for authentication to fetch image.
 
 **Targets (array)**
 
-Target Redfish URI 
+Target Redfish URI
 
 **HpeiLOUpdateServiceExt.DeleteInstallSets**
 Member of [UpdateService.v1\_2\_1.UpdateService](#updateservice)
@@ -13235,7 +13178,6 @@ Member of [VirtualMedia.v1\_3\_0.VirtualMedia](#virtualmedia)
 
 ### Actions
 
-
 **VirtualMedia.InsertMedia**
 Member of [VirtualMedia.v1\_3\_0.VirtualMedia](#virtualmedia)
 
@@ -13312,6 +13254,7 @@ A text description of the reason for this action invocation.
 A RSA2048 SHA-256 signature validating the provided Intent (Base64 encoded).
 
 ## VirtualMediaCollection
+
 `@odata.type: "#VirtualMediaCollection.VirtualMediaCollection"`
 
 A Collection of VirtualMedia resource instances.
@@ -13324,7 +13267,7 @@ A Collection of VirtualMedia resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[VirtualMedia](../ilo6_other_resourcedefns155/#virtualmedia)|
 
@@ -13354,5 +13297,4 @@ Member of VirtualMediaCollection.VirtualMediaCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
-
 

@@ -7,12 +7,17 @@ toc:
 disableLastModified: true
 ---
 
-# Managing Apollo Drive Bay Mapping
+## Managing Apollo Drive Bay Mapping
 
-The HPE Apollo 2000 System with the HPE Apollo r2800 Chassis (including the Storage Expander Backplane) supports 24 SFF HPE SmartDrives. The SFF drive bays can be assigned to specific server nodes.
+The HPE Apollo 2000 System with the HPE Apollo r2800 Chassis (including the
+Storage Expander Backplane) supports 24 SFF HPE SmartDrives. The SFF drive
 
 :::warning CAUTION
-Changing the drive bay mapping configuration might cause data loss or data corruption. For example, consider a configuration with drive bays two through seven assigned to node 1, with the drives configured as a RAID0 volume. Data corruption might occur if you change the drive bay mapping so that the configured drives are no longer available.
+Changing the drive bay mapping configuration might cause data loss or data
+corruption. For example, consider a configuration with drive bays two through
+seven assigned to node 1, with the drives configured as a RAID0 volume. Data
+corruption might occur if you change the drive bay mapping so that the
+configured drives are no longer available.
 :::
 
 ## Prerequisites
@@ -23,7 +28,10 @@ Changing the drive bay mapping configuration might cause data loss or data corru
 
 ## Getting host port topology details
 
-The `HostPortsInfo` JSON object displays the node number and SAS controller associated with each server host port. Before you change the drive bay mapping, HPE recommends using the following REST API to view and understand the PortNumber mapping:
+The `HostPortsInfo` JSON object displays the node number and SAS controller
+associated with each server host port. Before you change the drive bay
+mapping, HPE recommends using the following REST API to view and understand
+the PortNumber mapping:
 
 ```text GET request
 GET /redfish/v1/Chassis/1/AccHddService
@@ -94,7 +102,9 @@ GET /redfish/v1/Chassis/1/AccHddService/zone
 The value `PortNumber` null indicates that a drive bay is not assigned.
 :::
 
-The `PendingZoneConfiguration` JSON object displays the pending drive bay mapping configuration. This configuration will not be applied until all nodes remain powered off for at least 5 seconds.
+The `PendingZoneConfiguration` JSON object displays the pending drive bay
+mapping configuration. This configuration will not be applied until all
+nodes remain powered off for at least 5 seconds.
 
 ```json PendingZoneConfiguration example
 {
@@ -131,10 +141,16 @@ The value PortNumber null indicates that a drive bay is not assigned.
 
 ## Configuring drive bay mapping
 
-You can make drive bay mapping configuration changes from any server node. The changes take effect when all server nodes in the Apollo 2000 system chassis are powered off and the Chassis firmware is able to reset the Storage Expander backplane. All nodes must remain powered off for at least 5 seconds after you initiate the configuration change.
+You can make drive bay mapping configuration changes from any server node.
+The changes take effect when all server nodes in the Apollo 2000 system
+chassis are powered off and the Chassis firmware is able to reset the
+Storage Expander backplane. All nodes must remain powered off for at
+least 5 seconds after you initiate the configuration change.
 
-The following example shows three drive bays assigned to each node. This action returns a response indicating that all server nodes in the chassis must remain powered off for at least 5 seconds for the changes to take effect.
-
+The following example shows three drive bays assigned to each node.
+This action returns a response indicating that all server nodes
+in the chassis must remain powered off for at least 5 seconds
+for the changes to take effect.
 
 ```text POST request
 POST /redfish/v1/Chassis/1/AccHddService/Zone/Actions/HpeServerAccHddZone.ConfigureZone
@@ -195,9 +211,17 @@ POST /redfish/v1/Chassis/1/AccHddService/Zone/Actions/HpeServerAccHddZone.Config
 
 ## Setting drive bay mapping to the default configuration
 
-The default configuration divides the 24 SFF drive bays by the number of server host ports in the Apollo 2000 Chassis. In a configuration with four 1U servers, the default drive bay configuration is six drive bays allocated to each of the four server slots. In a configuration with two 2U servers, the default drive bay configuration is 12 drive bays allocated to each of the two server slots.
+The default configuration divides the 24 SFF drive bays by the number
+of server host ports in the Apollo 2000 Chassis. In a configuration
+with four 1U servers, the default drive bay configuration is six
+bays allocated to each of the four server slots. In a configuration
+with two 2U servers, the default drive bay configuration is 12 drive
+bays allocated to each of the two server slots.
 
-POST an empty JSON object to URI to set drive bay mapping to the default configuration. This action returns a response indicating that all server nodes in the chassis must remain powered off for at least 5 seconds for the changes to take effect.
+POST an empty JSON object to URI to set drive bay mapping to the default
+configuration. This action returns a response indicating that all server
+nodes in the chassis must remain powered off for at least 5 seconds
+for the changes to take effect.
 
 ```text POST request
 POST /redfish/v1/Chassis/1/AccHddService/Zone/Actions/HpeServerAccHddZone.LoadDefault

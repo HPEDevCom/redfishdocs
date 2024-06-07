@@ -85,8 +85,8 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 |`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](../ilo5_hpe_resourcedefns278/#hpeserverpcidevicecollection)|
 |`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](../ilo5_hpe_resourcedefns278/#hpeserverpcislotcollection)|
 |`Oem/Hpe/Links/SmartStorage`|[HpeSmartStorage](../ilo5_hpe_resourcedefns278/#hpesmartstorage)|
-|`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](../ilo5_hpe_resourcedefns278/#hpeusbdevicescollection)|
-|`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](../ilo5_hpe_resourcedefns278/#hpeusbportscollection)|
+|`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice)|
+|`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](#hpeusbport)|
 |`Oem/Hpe/SmartStorageConfig[]`|[SmartStorageConfig](../ilo5_other_resourcedefns278/#smartstorageconfig)|
 |`Processors`|Collection of [Processor](../ilo5_other_resourcedefns278/#processorcollection)|
 |`SecureBoot`|[SecureBoot](../ilo5_other_resourcedefns278/#secureboot)|

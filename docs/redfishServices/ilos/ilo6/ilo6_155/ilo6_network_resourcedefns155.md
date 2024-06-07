@@ -10,12 +10,12 @@ disableLastModified: false
 
 # Network resource definitions of iLO 6 v1.55
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## NetworkAdapterCollection
+
 `@odata.type: "#NetworkAdapterCollection.NetworkAdapterCollection"`
 
 A Collection of NetworkAdapter resource instances.
@@ -28,7 +28,7 @@ A Collection of NetworkAdapter resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[NetworkAdapter](../ilo6_network_resourcedefns155/#networkadapter)|
 
@@ -85,7 +85,6 @@ The following are the supported values:
 A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters.
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
-
 
 ### Resource Instances
 
@@ -1172,7 +1171,6 @@ See the Redfish standard schema and specification for information on common Stat
 
 ### Actions
 
-
 **NetworkAdapter.ResetSettingsToDefault**
 Member of [NetworkAdapter.v1\_9\_0.NetworkAdapter](#networkadapter)
 There are no parameters for this action.
@@ -1186,7 +1184,9 @@ Member of [NetworkAdapter.v1\_9\_0.NetworkAdapter](#networkadapter)
 NOTE: Deprecated, will be removed in a future release.  Replaced by HpeNetworkAdapter.FlushConfigurationToNVM.
 
 There are no parameters for this action.
+
 ## NetworkDeviceFunctionCollection
+
 `@odata.type: "#NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection"`
 
 A Collection of NetworkDeviceFunction resource instances.
@@ -1200,7 +1200,7 @@ A Collection of NetworkDeviceFunction resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[NetworkDeviceFunction](../ilo6_network_resourcedefns155/#networkdevicefunction)|
 
@@ -1239,7 +1239,6 @@ A Network Device Function represents a logical interface exposed by the network 
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -1251,7 +1250,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`@Redfish.Settings/SettingsObject`|[NetworkDeviceFunction](../ilo6_network_resourcedefns155/#networkdevicefunction)|
 
@@ -1958,6 +1957,7 @@ Member of [NetworkDeviceFunction.v1\_8\_0.NetworkDeviceFunction](#networkdevicef
 |Added|iLO6 1.05|
 
 ## NetworkInterfaceCollection
+
 `@odata.type: "#NetworkInterfaceCollection.NetworkInterfaceCollection"`
 
 A Collection of NetworkInterface resource instances.
@@ -1970,7 +1970,7 @@ A Collection of NetworkInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[NetworkInterface](../ilo6_network_resourcedefns155/#networkinterface)|
 
@@ -2034,7 +2034,7 @@ A NetworkInterface contains references linking NetworkAdapter, Port, and Network
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](../ilo6_network_resourcedefns155/#networkdevicefunctioncollection)|
 
@@ -2054,6 +2054,7 @@ Member of [NetworkInterface.v1\_2\_0.NetworkInterface](#networkinterface)
 See the Redfish standard schema and specification for information on common Status object.
 
 ## EthernetInterfaceCollection
+
 `@odata.type: "#EthernetInterfaceCollection.EthernetInterfaceCollection"`
 
 A Collection of EthernetInterface resource instances.
@@ -2067,7 +2068,7 @@ A Collection of EthernetInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[EthernetInterface](../ilo6_network_resourcedefns155/#ethernetinterface)|
 

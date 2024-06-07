@@ -10,10 +10,9 @@ disableLastModified: false
 
 # Hpe resource definitions of iLO 6 v1.20
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## HpeAutomaticCertEnrollment
 
@@ -164,11 +163,9 @@ Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpea
 
 ### Actions
 
-
 **HpeAutomaticCertEnrollment.ImportCACertificate**
 Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
 Imports a CA Certificate.
-
 
 **Parameters:**
 
@@ -189,7 +186,7 @@ Contains PEM formatted X509 certificate (Base64 encoded).
 |`/redfish/v1/systems/{item}/bios/baseconfigs`|GET |
 |`/redfish/v1/systems/{item}/bios/boot/baseconfigs`|GET |
 |`/redfish/v1/systems/{item}/bios/iscsi/baseconfigs`|GET |
-|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig/baseconfigs`|GET |
+|`/redfish/v1/systems/{item}/bios/tlsconfig/baseconfigs`|GET |
 
 ### BaseConfigs (array)
 
@@ -198,6 +195,7 @@ Member of [HpeBaseConfigs.v2\_0\_0.HpeBaseConfigs](#hpebaseconfigs)
 `BaseConfigs` is an array containing elements of:
 
 **BaseConfigs[{item}]**
+
 ### Capabilities
 
 **Capabilities.BaseConfig**
@@ -326,7 +324,7 @@ The HpeCertAuth resource describes the BMC certificate based authentication feat
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`CACertificates`|Collection of [HpeCertificate](../ilo6_hpe_resourcedefns120/#hpecertificatecollection)|
 |`Links/UserCertificateMapping`|Collection of [HpeiLOAccountCertificateMap](../ilo6_hpe_resourcedefns120/#hpeiloaccountcertificatemapcollection)|
@@ -414,7 +412,6 @@ Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 
 ### Actions
 
-
 **HpeCertAuth.DeleteCRL**
 Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 Remove an installed Certificate Revocation List (CRL).
@@ -424,7 +421,6 @@ There are no parameters for this action.
 **HpeCertAuth.ImportCRL**
 Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 Imports a Certificate Revocation List (CRL).
-
 
 **Parameters:**
 
@@ -436,12 +432,12 @@ Contains URI of PEM formatted certificate revocation list (CRL) (Base64 encoded)
 Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 Imports a Trusted Certificate
 
-
 **Parameters:**
 
 **Certificate (string)**
 
 Contains PEM formatted X509 certificate or PKCS7 certificate chain (Base64 encoded).
+
 ## HpeCertificate
 
 `@odata.type: "#HpeCertificate.v1_0_0.HpeCertificate"`
@@ -449,7 +445,6 @@ Contains PEM formatted X509 certificate or PKCS7 certificate chain (Base64 encod
 The HpeCertificate resource describes an X509 certificate.
 
 This resource type was added in iLO 5 1.20
-
 
 ### Resource Instances
 
@@ -516,6 +511,7 @@ Member of [HpeCertificate.v1\_0\_0.HpeCertificate](#hpecertificate)
 |Format|date-time|
 
 ## HpeCertificateCollection
+
 `@odata.type: "#HpeCertificateCollection.HpeCertificateCollection"`
 
 A Collection of HpeCertificate resource instances.
@@ -529,7 +525,7 @@ A Collection of HpeCertificate resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeCertificate](../ilo6_hpe_resourcedefns120/#hpecertificate)|
 
@@ -641,9 +637,11 @@ Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
 ### Criticality
 
 Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
+
 ### Criticality
 
 Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
+
 ### Criticality
 
 Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
@@ -780,6 +778,7 @@ Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
 |Added|iLO6 1.05|
 
 ## HpeComponentCollection
+
 `@odata.type: "#HpeComponentCollection.HpeComponentCollection"`
 
 A Collection of HpeComponent resource instances.
@@ -792,7 +791,7 @@ A Collection of HpeComponent resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeComponent](../ilo6_hpe_resourcedefns120/#hpecomponent)|
 
@@ -992,7 +991,6 @@ Member of [HpeComponentInstallSet.v1\_1\_0.HpeComponentInstallSet](#hpecomponent
 
 ### Actions
 
-
 **HpeComponentInstallSet.Invoke**
 Member of [HpeComponentInstallSet.v1\_1\_0.HpeComponentInstallSet](#hpecomponentinstallset)
 
@@ -1001,7 +999,9 @@ Member of [HpeComponentInstallSet.v1\_1\_0.HpeComponentInstallSet](#hpecomponent
 **ClearTaskQueue (boolean)**
 
 Previous items in the task queue can be cleared before the Install Set is invoked
+
 ## HpeComponentInstallSetCollection
+
 `@odata.type: "#HpeComponentInstallSetCollection.HpeComponentInstallSetCollection"`
 
 A Collection of HpeComponentInstallSet resource instances.
@@ -1014,7 +1014,7 @@ A Collection of HpeComponentInstallSet resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeComponentInstallSet](../ilo6_hpe_resourcedefns120/#hpecomponentinstallset)|
 
@@ -1296,6 +1296,7 @@ Member of [HpeComponentUpdateTask.v1\_2\_0.HpeComponentUpdateTask](#hpecomponent
 |Added|iLO6 1.05|
 
 ## HpeComponentUpdateTaskQueueCollection
+
 `@odata.type: "#HpeComponentUpdateTaskQueueCollection.HpeComponentUpdateTaskQueueCollection"`
 
 A Collection of HpeComponentUpdateTaskQueue resource instances.
@@ -1308,7 +1309,7 @@ A Collection of HpeComponentUpdateTaskQueue resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeComponentUpdateTask](../ilo6_hpe_resourcedefns120/#hpecomponentupdatetask)|
 
@@ -1405,13 +1406,12 @@ Member of [HpeDirectoryTest.v1\_0\_0.HpeDirectoryTest](#hpedirectorytest)
 
 ### Actions
 
-
 **HpeDirectoryTest.StartTest**
 Member of [HpeDirectoryTest.v1\_0\_0.HpeDirectoryTest](#hpedirectorytest)
 Start the directory test.
 
-
 **Parameters:**
+
 ## HpeESKM
 
 `@odata.type: "#HpeESKM.v2_0_0.HpeESKM"`
@@ -1580,7 +1580,6 @@ Member of [HpeESKM.v2\_0\_0.HpeESKM](#hpeeskm)
 
 ### Actions
 
-
 **HpeESKM.ClearESKMLog**
 Member of [HpeESKM.v2\_0\_0.HpeESKM](#hpeeskm)
 Clears ESKM log.
@@ -1592,6 +1591,7 @@ Member of [HpeESKM.v2\_0\_0.HpeESKM](#hpeeskm)
 Test ESKM connections.
 
 There are no parameters for this action.
+
 ## HpeHttpsCert
 
 `@odata.type: "#HpeHttpsCert.v2_0_0.HpeHttpsCert"`
@@ -1671,11 +1671,9 @@ Member of [HpeHttpsCert.v2\_0\_0.HpeHttpsCert](#hpehttpscert)
 
 ### Actions
 
-
 **HpeHttpsCert.ImportCertificate**
 Member of [HpeHttpsCert.v2\_0\_0.HpeHttpsCert](#hpehttpscert)
 Imports a Trusted Certificate and iLO is reset.
-
 
 **Parameters:**
 
@@ -1715,6 +1713,7 @@ The unit within the company or organization that owns this iLO subsystem.
 **State (string)**
 
 The state where the company or organization that owns this iLO subsystem is located.
+
 ## HpeiLOAccountCertificateMap
 
 `@odata.type: "#HpeiLOAccountCertificateMap.v1_0_1.HpeiLOAccountCertificateMap"`
@@ -1722,7 +1721,6 @@ The state where the company or organization that owns this iLO subsystem is loca
 The HpeiLOAccountCertificateMap resource describes mapping X509 certificates to user accounts.
 
 This resource type was added in iLO 5 1.20
-
 
 ### Resource Instances
 
@@ -1764,6 +1762,7 @@ Member of [HpeiLOAccountCertificateMap.v1\_0\_1.HpeiLOAccountCertificateMap](#hp
 |Added|iLO6 1.05|
 
 ## HpeiLOAccountCertificateMapCollection
+
 `@odata.type: "#HpeiLOAccountCertificateMapCollection.HpeiLOAccountCertificateMapCollection"`
 
 A Collection of HpeiLOAccountCertificateMap resource instances.
@@ -1776,7 +1775,7 @@ A Collection of HpeiLOAccountCertificateMap resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeiLOAccountCertificateMap](../ilo6_hpe_resourcedefns120/#hpeiloaccountcertificatemap)|
 
@@ -1980,7 +1979,6 @@ Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloac
 
 ### Actions
 
-
 **HpeiLOActiveHealthSystem.LogAmplifierData**
 Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
 
@@ -2014,6 +2012,7 @@ Origin of milestone.
 **HpeiLOActiveHealthSystem.ClearLog**
 Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
 There are no parameters for this action.
+
 ## HpeiLOBackupFile
 
 `@odata.type: "#HpeiLOBackupFile.v1_0_0.HpeiLOBackupFile"`
@@ -2062,11 +2061,12 @@ Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
 
 ### Actions
 
-
 **HpeiLOBackupFile.Restore**
 Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
 There are no parameters for this action.
+
 ## HpeiLOBackupFileCollection
+
 `@odata.type: "#HpeiLOBackupFileCollection.HpeiLOBackupFileCollection"`
 
 A Collection of HpeiLOBackupFile resource instances.
@@ -2079,7 +2079,7 @@ A Collection of HpeiLOBackupFile resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeiLOBackupFile](../ilo6_hpe_resourcedefns120/#hpeilobackupfile)|
 
@@ -2198,7 +2198,7 @@ The HpeiLODateTime resource describes the properties for managing the BMC data a
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/EthernetNICs`|Collection of [EthernetInterface](../ilo6_network_resourcedefns120/#ethernetinterfacecollection)|
 
@@ -2562,6 +2562,7 @@ Member of [HpeiLOFederationGroup.v2\_0\_0.HpeiLOFederationGroup](#hpeilofederati
 |Added|iLO6 1.05|
 
 ## HpeiLOFederationGroupCollection
+
 `@odata.type: "#HpeiLOFederationGroupCollection.HpeiLOFederationGroupCollection"`
 
 A Collection of HpeiLOFederationGroup resource instances.
@@ -2574,7 +2575,7 @@ A Collection of HpeiLOFederationGroup resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeiLOFederationGroup](../ilo6_hpe_resourcedefns120/#hpeilofederationgroup)|
 
@@ -2676,6 +2677,7 @@ Member of [HpeiLOFederationPeers.v2\_0\_0.HpeiLOFederationPeers](#hpeilofederati
 |Added|iLO6 1.05|
 
 ## HpeiLOFederationPeersCollection
+
 `@odata.type: "#HpeiLOFederationPeersCollection.HpeiLOFederationPeersCollection"`
 
 A Collection of HpeiLOFederationPeers resource instances.
@@ -2688,7 +2690,7 @@ A Collection of HpeiLOFederationPeers resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeiLOFederationPeers](../ilo6_hpe_resourcedefns120/#hpeilofederationpeers)|
 
@@ -2867,6 +2869,7 @@ Member of [HpeiLOFrus.v2\_0\_0.HpeiLOFrus](#hpeilofrus)
 |Added|iLO6 1.05|
 
 ## HpeiLOFrusCollection
+
 `@odata.type: "#HpeiLOFrusCollection.HpeiLOFrusCollection"`
 
 A Collection of HpeiLOFrus resource instances.
@@ -2880,7 +2883,7 @@ A Collection of HpeiLOFrus resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeiLOFrus](../ilo6_hpe_resourcedefns120/#hpeilofrus)|
 
@@ -3428,6 +3431,7 @@ The following are the supported values:
 |`Expired`|
 
 ## HpeiLOLicenseCollection
+
 `@odata.type: "#HpeiLOLicenseCollection.HpeiLOLicenseCollection"`
 
 A Collection of HpeiLOLicense resource instances.
@@ -3440,7 +3444,7 @@ A Collection of HpeiLOLicense resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeiLOLicense](../ilo6_hpe_resourcedefns120/#hpeilolicense)|
 
@@ -3567,7 +3571,7 @@ The HpeiLOSecurityDashboard resource describes the BMC security dashboard.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`SecurityParameters`|[HpeiLOSecurityParam](../ilo6_hpe_resourcedefns120/#hpeilosecurityparam)|
 
@@ -3712,6 +3716,7 @@ The following are the supported values:
 |`False`|The state of the Security Parameter is False.|
 
 ## HpeiLOSecurityParamCollection
+
 `@odata.type: "#HpeiLOSecurityParamCollection.HpeiLOSecurityParamCollection"`
 
 A Collection of HpeiLOSecurityParam resource instances.
@@ -3724,7 +3729,7 @@ A Collection of HpeiLOSecurityParam resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeiLOSecurityParam](../ilo6_hpe_resourcedefns120/#hpeilosecurityparam)|
 
@@ -3769,7 +3774,7 @@ The HpeiLOSnmpService resource describes the properties for managing the SNMP co
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`SNMPUsers`|Collection of [HpeSNMPUser](#hpesnmpuser)|
 |`SNMPAlertDestinations`|Collection of [HpeSNMPAlertDestination](../ilo6_hpe_resourcedefns120/#hpesnmpalertdestinationcollection)|
@@ -4113,10 +4118,10 @@ Member of [HpeiLOSnmpService.v2\_3\_0.HpeiLOSnmpService](#hpeilosnmpservice)
 
 ### Actions
 
-
 **HpeiLOSnmpService.SendSNMPTestAlert**
 Member of [HpeiLOSnmpService.v2\_3\_0.HpeiLOSnmpService](#hpeilosnmpservice)
 There are no parameters for this action.
+
 ## HpeiLOSSO
 
 `@odata.type: "#HpeiLOSSO.v2_0_0.HpeiLOSSO"`
@@ -4574,11 +4579,9 @@ Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 
 ### Actions
 
-
 **HpeiLOSSO.ImportDNSName**
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Add DNS Name to the record list.
-
 
 **Parameters:**
 
@@ -4589,7 +4592,6 @@ DNS Name of the HPE SSO Trusted Server.
 **HpeiLOSSO.ImportCertificate**
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Import the HPE SSO Certificate.
-
 
 **Parameters:**
 
@@ -4610,7 +4612,6 @@ Specifies the type of certificate imported.
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Delete SSO record by record number.
 
-
 **Parameters:**
 
 **RecordNumber (integer)**
@@ -4622,6 +4623,7 @@ Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Delete all the SSO records.
 
 There are no parameters for this action.
+
 ## HpeInvalidImage
 
 `@odata.type: "#HpeInvalidImage.v1_0_0.HpeInvalidImage"`
@@ -4703,6 +4705,7 @@ Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
 |Added|iLO6 1.05|
 
 ## HpeInvalidImageCollection
+
 `@odata.type: "#HpeInvalidImageCollection.HpeInvalidImageCollection"`
 
 A Collection of HpeInvalidImage resource instances.
@@ -4715,7 +4718,7 @@ A Collection of HpeInvalidImage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeInvalidImage](../ilo6_hpe_resourcedefns120/#hpeinvalidimage)|
 
@@ -4759,7 +4762,7 @@ Member of HpeInvalidImageCollection.HpeInvalidImageCollection
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`@Redfish.Settings/SettingsObject`|[HpeiSCSISoftwareInitiator](../ilo6_hpe_resourcedefns120/#hpeiscsisoftwareinitiator)|
 |`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns120/#hpebaseconfigs)|
@@ -5087,7 +5090,7 @@ The schema definition for Key Management Service configuration.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`@Redfish.Settings/SettingsObject`|[HpeKmsConfig](../ilo6_hpe_resourcedefns120/#hpekmsconfig)|
 |`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns120/#hpebaseconfigs)|
@@ -5294,6 +5297,7 @@ Member of [HpeMaintenanceWindow.v1\_0\_1.HpeMaintenanceWindow](#hpemaintenancewi
 |Format|date-time|
 
 ## HpeMaintenanceWindowCollection
+
 `@odata.type: "#HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection"`
 
 A Collection of HpeMaintenanceWindow resource instances.
@@ -5306,7 +5310,7 @@ A Collection of HpeMaintenanceWindow resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeMaintenanceWindow](../ilo6_hpe_resourcedefns120/#hpemaintenancewindow)|
 
@@ -5591,7 +5595,6 @@ This resource type was added in iLO 5 1.20
 
 HpeRemoteSupport enables management of HPE Remote Support configuration on iLO 5.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -5600,7 +5603,7 @@ HpeRemoteSupport enables management of HPE Remote Support configuration on iLO 5
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`ServiceEventLogs`|Collection of [LogEntry](../ilo6_other_resourcedefns120/#logentrycollection)|
 
@@ -5622,6 +5625,17 @@ The following are the supported values:
 |`DirectConnect`|
 |`CentralConnect`|
 
+### DataCollectionFrequencyInDays
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|The frequency of data collection in days. This is applicable only when the server is registered using Direct Connect.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO6 1.05|
+
 ### DestinationPort
 
 Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
@@ -5641,6 +5655,17 @@ Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
 |---|---|
 |Description|The host name or IP address of the Remote Support server. This is applicable for Central Connect only.|
 |Type|string|
+|Read Only|True|
+|Added|iLO6 1.05|
+
+### DirectConnectRegistrationIsCompleted
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|Step 2 of Direct Connect Registration completion status.|
+|Type|boolean|
 |Read Only|True|
 |Added|iLO6 1.05|
 
@@ -5811,6 +5836,10 @@ Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
 
 **Parameters:**
 
+**WebProxyUrl (string)**
+
+Web proxy server host name or IP address when connecting using Direct Connect.
+
 **DestinationUrl (string)**
 
 The host name or IP address of the Remote Support server. This is applicable for Central Connect only.
@@ -5938,6 +5967,7 @@ Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasere
 |Added|iLO6 1.05|
 
 ## HpeSecureEraseReportCollection
+
 `@odata.type: "#HpeSecureEraseReportCollection.HpeSecureEraseReportCollection"`
 
 A Collection of HpeSecureEraseReport resource instances.
@@ -5950,7 +5980,7 @@ A Collection of HpeSecureEraseReport resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeSecureEraseReport](../ilo6_hpe_resourcedefns120/#hpesecureerasereport)|
 
@@ -5995,7 +6025,7 @@ The HpeSecureEraseReportService resource describes the properties of the Secure 
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/SecureEraseReportEntries`|Collection of [HpeSecureEraseReport](../ilo6_hpe_resourcedefns120/#hpesecureerasereportcollection)|
 
@@ -6023,10 +6053,10 @@ Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hp
 
 ### Actions
 
-
 **HpeSecureEraseReportService.DeleteSecureEraseReport**
 Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hpesecureerasereportservice)
 There are no parameters for this action.
+
 ## HpeSecurityService
 
 `@odata.type: "#HpeSecurityService.v2_3_1.HpeSecurityService"`
@@ -6041,7 +6071,7 @@ The HpeSecurityService resource describes the properties for management of the s
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/SSO`|[HpeiLOSSO](../ilo6_hpe_resourcedefns120/#hpeilosso)|
 |`Links/SecurityParams`|Collection of [HpeiLOSecurityParam](../ilo6_hpe_resourcedefns120/#hpeilosecurityparamcollection)|
@@ -6292,7 +6322,6 @@ The HpeServerAccHddService resource describes the properties for management of s
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -6424,7 +6453,6 @@ The HpeServerAccHddZone resource describes the properties for management of shar
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -6548,7 +6576,6 @@ Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzon
 
 ### Actions
 
-
 **HpeServerAccHddZone.BackupConfigurationToBmc**
 Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzone)
 Backup Apollo Chassis Controller Hdd zone configuration to BMC.
@@ -6565,10 +6592,10 @@ There are no parameters for this action.
 Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzone)
 Execute Apollo Chassis Controller Hdd zone configuration.
 
-
 **Parameters:**
 
 **HostPort (array)**
+
 ## HpeServerAccPowerCalibration
 
 `@odata.type: "#HpeServerAccPowerCalibration.v1_0_0.HpeServerAccPowerCalibration"`
@@ -6576,7 +6603,6 @@ Execute Apollo Chassis Controller Hdd zone configuration.
 The HpeServerAccPowerCalibration resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -6850,11 +6876,9 @@ Member of [HpeServerAccPowerCalibration.v1\_0\_0.HpeServerAccPowerCalibration](#
 
 ### Actions
 
-
 **HpeServerAccPowerCalibration.Calibrate**
 Member of [HpeServerAccPowerCalibration.v1\_0\_0.HpeServerAccPowerCalibration](#hpeserveraccpowercalibration)
 Execute the Apollo Chassis Controller power calibration configuration.
-
 
 **Parameters:**
 
@@ -6872,6 +6896,7 @@ Execute the Apollo Chassis Controller power calibration configuration.
 |---|---|
 |Start|
 |Stop|
+
 ## HpeServerAccPowerLimit
 
 `@odata.type: "#HpeServerAccPowerLimit.v1_0_0.HpeServerAccPowerLimit"`
@@ -6879,7 +6904,6 @@ Execute the Apollo Chassis Controller power calibration configuration.
 The HpeServerAccPowerLimit resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -6977,15 +7001,14 @@ Member of [HpeServerAccPowerLimit.v1\_0\_0.HpeServerAccPowerLimit](#hpeserveracc
 
 ### Actions
 
-
 **HpeServerAccPowerLimit.ConfigurePowerLimit**
 Member of [HpeServerAccPowerLimit.v1\_0\_0.HpeServerAccPowerLimit](#hpeserveraccpowerlimit)
 Deploy the Apollo Chassis Controller power limit configuration.
 
-
 **Parameters:**
 
 **PowerLimits (array)**
+
 ## HpeServerAccPowerNodesInfo
 
 `@odata.type: "#HpeServerAccPowerNodesInfo.v1_0_0.HpeServerAccPowerNodesInfo"`
@@ -6993,7 +7016,6 @@ Deploy the Apollo Chassis Controller power limit configuration.
 The HpeServerAccPowerNodesInfo resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -7056,7 +7078,6 @@ The HpeServerAccPowerService resource describes the properties for management of
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -7111,7 +7132,6 @@ The following are the supported values:
 The HpeServerAccPowerZone resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -7173,15 +7193,14 @@ Member of [HpeServerAccPowerZone.v1\_0\_0.HpeServerAccPowerZone](#hpeserveraccpo
 
 ### Actions
 
-
 **HpeServerAccPowerZone.ConfigureZone**
 Member of [HpeServerAccPowerZone.v1\_0\_0.HpeServerAccPowerZone](#hpeserveraccpowerzone)
 Execute the Apollo Chassis Controller power regulation zone configuration.
 
-
 **Parameters:**
 
 **Zone (array)**
+
 ## HpeServerBootSettings
 
 `@odata.type: "#HpeServerBootSettings.v2_0_0.HpeServerBootSettings"`
@@ -7197,7 +7216,7 @@ The schema definition of the server UEFI Boot Order resource.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`@Redfish.Settings/SettingsObject`|[HpeServerBootSettings](../ilo6_hpe_resourcedefns120/#hpeserverbootsettings)|
 |`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns120/#hpebaseconfigs)|
@@ -7359,7 +7378,7 @@ The schema definition for Server Configuration Lock configuration.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`@Redfish.Settings/SettingsObject`|[HpeServerConfigLock](../ilo6_hpe_resourcedefns120/#hpeserverconfiglock)|
 |`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns120/#hpebaseconfigs)|
@@ -7627,7 +7646,6 @@ This resource type was added in iLO 5 1.20
 
 HpeServerDevice represents physical server devices including part information.  This is especially useful for system inventory.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -7636,7 +7654,7 @@ HpeServerDevice represents physical server devices including part information.  
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`DeviceInstances[]`|[HpeServerPciDevice](../ilo6_hpe_resourcedefns120/#hpeserverpcidevice)|
 
@@ -7830,6 +7848,7 @@ Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
 See the Redfish standard schema and specification for information on common Status object.
 
 ## HpeServerDeviceCollection
+
 `@odata.type: "#HpeServerDeviceCollection.HpeServerDeviceCollection"`
 
 A Collection of HpeServerDevice resource instances.
@@ -7842,7 +7861,7 @@ A Collection of HpeServerDevice resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeServerDevice](../ilo6_hpe_resourcedefns120/#hpeserverdevice)|
 
@@ -8161,6 +8180,7 @@ Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
 |Added|iLO6 1.05|
 
 ## HpeServerPciDeviceCollection
+
 `@odata.type: "#HpeServerPciDeviceCollection.HpeServerPciDeviceCollection"`
 
 A Collection of HpeServerPciDevice resource instances.
@@ -8173,7 +8193,7 @@ A Collection of HpeServerPciDevice resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeServerPciDevice](../ilo6_hpe_resourcedefns120/#hpeserverpcidevice)|
 
@@ -8449,6 +8469,7 @@ Member of [HpeServerPCISlot.v2\_1\_1.HpeServerPCISlot](#hpeserverpcislot)
 |Added|iLO6 1.05|
 
 ## HpeServerPCISlotCollection
+
 `@odata.type: "#HpeServerPCISlotCollection.HpeServerPCISlotCollection"`
 
 A Collection of HpeServerPCISlot resource instances.
@@ -8461,7 +8482,7 @@ A Collection of HpeServerPCISlot resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeServerPCISlot](../ilo6_hpe_resourcedefns120/#hpeserverpcislot)|
 
@@ -8499,7 +8520,6 @@ Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
 The HpeSNMPAlertDestination resource describes the properties for SNMP Alert Destinations.  The alert destination configuration up to 8 remote management systems that receive SNMP alerts from the BMC.
 
 This resource type was added in iLO 5 1.20
-
 
 ### Resource Instances
 
@@ -8566,6 +8586,7 @@ Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpale
 |Added|iLO6 1.05|
 
 ## HpeSNMPAlertDestinationCollection
+
 `@odata.type: "#HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection"`
 
 A Collection of HpeSNMPAlertDestination resource instances.
@@ -8578,7 +8599,7 @@ A Collection of HpeSNMPAlertDestination resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeSNMPAlertDestination](../ilo6_hpe_resourcedefns120/#hpesnmpalertdestination)|
 
@@ -8616,7 +8637,6 @@ Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
 The HpeSNMPUser resource describes the properties for SNMP support.  SNMPv3 supports the User-based Security Model (USM). With this model,security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.
 
 This resource type was added in iLO 5 1.20
-
 
 ### Resource Instances
 
@@ -8706,6 +8726,7 @@ Member of [HpeSNMPUser.v2\_1\_0.HpeSNMPUser](#hpesnmpuser)
 |Added|iLO6 1.05|
 
 ## HpeSNMPUsersCollection
+
 `@odata.type: "#HpeSNMPUsersCollection.HpeSNMPUsersCollection"`
 
 A Collection of HpeSNMPUsers resource instances.
@@ -8718,7 +8739,7 @@ A Collection of HpeSNMPUsers resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeSNMPUser](../ilo6_hpe_resourcedefns120/#hpesnmpuser)|
 
@@ -8759,12 +8780,12 @@ The schema definition for TLS configuration.
 
 |Uri|HTTP Allow|
 |---|---|
-|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig`|GET |
-|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig/settings`|GET PATCH |
+|`/redfish/v1/systems/{item}/bios/tlsconfig`|GET |
+|`/redfish/v1/systems/{item}/bios/tlsconfig/settings`|GET PATCH |
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`@Redfish.Settings/SettingsObject`|[HpeTlsConfig](../ilo6_hpe_resourcedefns120/#hpetlsconfig)|
 |`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns120/#hpebaseconfigs)|
@@ -9073,6 +9094,7 @@ Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
 |Added|iLO6 1.05|
 
 ## HpeUSBDevicesCollection
+
 `@odata.type: "#HpeUSBDevicesCollection.HpeUSBDevicesCollection"`
 
 A Collection of HpeUSBDevices resource instances.
@@ -9085,7 +9107,7 @@ A Collection of HpeUSBDevices resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeUSBDevice](../ilo6_hpe_resourcedefns120/#hpeusbdevice)|
 
@@ -9258,6 +9280,7 @@ Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
 |Added|iLO6 1.05|
 
 ## HpeUSBPortsCollection
+
 `@odata.type: "#HpeUSBPortsCollection.HpeUSBPortsCollection"`
 
 A Collection of HpeUSBPorts resource instances.
@@ -9270,7 +9293,7 @@ A Collection of HpeUSBPorts resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeUSBPort](../ilo6_hpe_resourcedefns120/#hpeusbport)|
 
@@ -9385,6 +9408,7 @@ The following are the supported values:
 |`High`|Utilization is high.|
 
 ## HpeWorkloadPerformanceAdvisorCollection
+
 `@odata.type: "#HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection"`
 
 A Collection of HpeWorkloadPerformanceAdvisor resource instances.
@@ -9397,7 +9421,7 @@ A Collection of HpeWorkloadPerformanceAdvisor resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HpeWorkloadPerformanceAdvisor](../ilo6_hpe_resourcedefns120/#hpeworkloadperformanceadvisor)|
 

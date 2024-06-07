@@ -172,7 +172,7 @@ Contains PEM formatted X509 certificate (Base64 encoded).
 |`/redfish/v1/systems/{item}/bios/baseconfigs`|GET |
 |`/redfish/v1/systems/{item}/bios/boot/baseconfigs`|GET |
 |`/redfish/v1/systems/{item}/bios/iscsi/baseconfigs`|GET |
-|`/redfish/v1/Systems/{item}/Bios/oem/hpe/tlsconfig/baseconfigs`|GET |
+|`/redfish/v1/systems/{item}/bios/tlsconfig/baseconfigs`|GET |
 
 ### BaseConfigs (array)
 
@@ -12365,8 +12365,8 @@ The schema definition for TLS configuration.
 
 |Uri|HTTP Allow|
 |---|---|
-|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig`|GET |
-|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig/settings`|GET PATCH |
+|`/redfish/v1/systems/{item}/bios/tlsconfig`|GET |
+|`/redfish/v1/systems/{item}/bios/tlsconfig/settings`|GET PATCH |
 
 ### Links to other Resources
 

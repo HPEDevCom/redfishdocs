@@ -7,20 +7,25 @@ toc:
 disableLastModified: false
 ---
 
-# Compute node data
+## Compute node data
 
 ## Base Field-Replaceable Units (FRUs)
 
-iLO 6 features the ability to display the Field-Replaceable Unit (FRU) data on server Synergy compute node boards.
+HPE iLO 6 features the ability to display the Field-Replaceable Unit (FRU)
+data on server Synergy compute node boards.
 
 ### Accessing Base FRUs through Redfish
 
-To access the Redfish Base FRUs resource, perform `GET` on `/redfish/v1/Chassis/1/BaseFrus/`. This resource includes a link to the collection of entries `/redfish/v1/Chassis/1/BaseFrus/`. Individual FRUs can be accessed by performing `GET` on `/redfish/v1/Chassis/1/BaseFrus/{@baseId}/Details`.
+To access the Redfish Base FRUs resource, perform `GET` on
+`/redfish/v1/Chassis/1/BaseFrus/`.
+This resource includes a link to the collection of entries
+`/redfish/v1/Chassis/1/BaseFrus/`. Individual FRUs can be accessed by
+performing `GET` on `/redfish/v1/Chassis/1/BaseFrus/{@baseId}/Details`.
 
 ```shell cURL
 curl --insecure --location         \
      --user ilo-user:password      \
-     https://{iLO}/redfish/v1/Chassis/1/BaseFrus/{@baseId}/Details/ 
+     https://{iLO}/redfish/v1/Chassis/1/BaseFrus/{@baseId}/Details/
 ```
 
 ```json Response body
@@ -163,13 +168,22 @@ curl --insecure --location         \
 
 ## Mezzanine FRUs
 
-The NIC and Mezzanine (Mezz) option FRU information informs Onboard Administrator of the type of interconnects each server requires. Before power is provided to a server blade, Onboard Administrator compares this information with the FRU EEPROMs on installed interconnect modules to check for electronic keying errors.
+The NIC and Mezzanine (Mezz) option FRU information informs Onboard
+Administrator of the type of interconnects each server requires. Before
+power is provided to a server blade, Onboard Administrator compares this
+information with the FRU EEPROMs on installed interconnect modules to
+check for electronic keying errors.
 
-iLO features the ability to display the FRU data on the cards in the Mezzanine slots.
+iLO features the ability to display the FRU data on the cards in
+the Mezzanine slots.
 
 ### Accessing MEZZ FRUs through Redfish
 
-To access the Redfish MEZZ FRUs resource, perform `GET` on `/redfish/v1/Chassis/1/MezzFrus/`. This resource includes a link to the collection of entries `/redfish/v1/Chassis/1/MezzFrus/`. Individual FRUs can be accessed by performing `GET` on `/redfish/v1/Chassis/1/MezzFrus/{@mezzId}/Details/`.
+To access the Redfish MEZZ FRUs resource, perform `GET` on
+`/redfish/v1/Chassis/1/MezzFrus/`. This resource includes a link to
+the collection of entries `/redfish/v1/Chassis/1/MezzFrus/`. Individual
+FRUs can be accessed by performing `GET` on
+`/redfish/v1/Chassis/1/MezzFrus/{@mezzId}/Details/`.
 
 ```shell cURL
 curl --insecure --location      \

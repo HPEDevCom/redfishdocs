@@ -7,67 +7,107 @@ toc:
 disableLastModified: false
 ---
 
-# iLO Backup and Restore
+## iLO Backup and Restore
 
 :::info NOTE
 
-It is possible that some properties or resources described in this section are not implemented in iLO 4 and ilo 5.
+It is possible that some properties or resources described in
+this section are not implemented in iLO 4 and ilo 5.
 
 :::
 
+The Backup and Restore feature allows you to backup and restore the iLO
+configuration on a system with the same hardware configuration as the system
+that was backed up. This feature is not meant to duplicate a configuration
+and apply it to a different iLO system.
 
-The Backup and Restore feature allows you to backup and restore the iLO configuration on a system with the same hardware configuration as the system that was backed up. This feature is not meant to duplicate a configuration and apply it to a different iLO system.
+In general, it is not expected that you will need to perform an iLO restore
+operation. However, there are cases in which having a backup of the
+configuration eases and expedites the return to a normal operating
+environment.
 
-In general, it is not expected that you will need to perform an iLO restore operation. However, there are cases in which having a backup of the configuration eases and expedites the return to a normal operating environment.
-
-As with any computer system, backing up your data is a recommended practice to minimize the impact from failures. Hewlett Packard Enterprise recommends performing a backup each time that you update the iLO firmware.
+As with any computer system, backing up your data is a recommended
+practice to minimize the impact from failures. Hewlett Packard Enterprise
+recommends performing a backup each time that you update the iLO firmware.
 
 ## Battery failure or removal
 
-Various configuration parameters are stored in the battery-powered SRAM. Although rare, the battery can fail. In some situations, battery removal and replacement might be required. To avoid the loss of configuration information, restore the iLO configuration from a backup file after the battery is replaced.
+Various configuration parameters are stored in the battery-powered SRAM.
+Although rare, the battery can fail. In some situations, battery removal
+and replacement might be required. To avoid the loss of configuration
+information, restore the iLO configuration from a backup file after the
+battery is replaced.
 
 ## Reset to factory defaults
 
-In some cases, you might need to reset iLO to the factory default settings to erase settings external to iLO. Resetting iLO to the factory default settings erases the iLO configuration. To recover the iLO configuration quickly, restore the configuration from a backup file after the reset to the factory default settings is complete.
+In some cases, you might need to reset iLO to the factory default settings to
+erase settings external to iLO. Resetting iLO to the factory default settings
+erases the iLO configuration. To recover the iLO configuration quickly,
+restore the configuration from a backup file after the reset to the factory
+default settings is complete.
 
 ## Accidental or incorrect configuration change
 
-In some cases, the iLO configuration might be changed incorrectly, causing important settings to be lost. This situation might occur if iLO is set to the factory default settings or user accounts are deleted. To recover the original configuration, restore the configuration from a backup file.
+In some cases, the iLO configuration might be changed incorrectly, causing
+important settings to be lost. This situation might occur if iLO is set to
+the factory default settings or user accounts are deleted. To recover the
+original configuration, restore the configuration from a backup file.
 
 ## System board replacement
 
-If a system board replacement is required to address a hardware issue, you can use this feature to transfer the iLO configuration from the original system board to the new system board.
+If a system board replacement is required to address a hardware issue, you
+can use this feature to transfer the iLO configuration from the original
+system board to the new system board.
 
 ## Lost license key
 
-If a license key is accidentally replaced, or you reset iLO to the factory default settings, and you are not sure which key to install, you can restore the license key and other configuration settings from a backup file.
+If a license key is accidentally replaced, or you reset iLO to the factory
+default settings, and you are not sure which key to install, you can restore
+the license key and other configuration settings from a backup file.
 
 ## What information is restored?
 
-The iLO configuration includes many categories such as Power, Network, Security, the User Database, and License Keys. Most configuration information is stored in the battery-powered SRAM memory device, and it can be backed up and restored.
+The iLO configuration includes many categories such as Power, Network,
+Security, the User Database, and License Keys. Most configuration information
+is stored in the battery-powered SRAM memory device, and it can be backed up
+and restored.
 
 ### Information that is not restored
 
-Some information is not suitable to be restored. The information that cannot be restored is not part of the iLO configuration, but instead is related to the iLO or server system state.
+Some information is not suitable to be restored. The information that cannot
+be restored is not part of the iLO configuration, but instead is related
+to the iLO or server system state.
 
 The following information is not backed up or restored:
 
-* Security state—Allowing a restore operation to change the iLO security state would defeat the principles of security and enforcement of security.
-* Integrated Management Log—To preserve information about events that occurred between the backup and the time or event that required the restore, this information is not restored.
-* iLO Event Log—To preserve information about events that occurred between the backup and the time or event that required the restore, this information is not restored.
-* Active Health System data—To preserve the information recorded during the backup and restore process, this information is not restored.
-* Server state information— Server power state (ON/OFF), Server UID LED states, iLO and server clock settings.
+* Security state—Allowing a restore operation to change the iLO security
+    state would defeat the principles of security and enforcement of security.
+* Integrated Management Log—To preserve information about events that
+    occurred between the backup and the time or event that required the
+    restore, this information is not restored.
+* iLO Event Log—To preserve information about events that occurred between
+    the backup and the time or event that required the restore,
+    this information is not restored.
+* Active Health System data—To preserve the information recorded during the
+    backup and restore process, this information is not restored.
+* Server state information— Server power state (ON/OFF), Server UID LED
+    states, iLO and server clock settings.
 
 ## Backing up the iLO configuration
 
 The iLO configuration backup process requires two steps:
 
-* Trigger a backup file creation in the nonvolatile flash memory (NAND) of the managed server with a GET of the `HpeiLOBackupRestoreService` [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilobackuprestoreservice).
-* Download the backup file locally with a GET of the `BackupFileLocation` property URI.
+* Trigger a backup file creation in the nonvolatile flash memory (NAND) of the
+    managed server with a GET of the `HpeiLOBackupRestoreService`
+    [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilobackuprestoreservice).
+* Download the backup file locally with a GET of the
+    `BackupFileLocation` property URI.
 
 The following example shows those two steps.
 
-The GET operation to the `BackupFileLocation` URI returns HTTP 200 with `Content Type: application/octet-stream`. This is the binary image of the backup file.
+The GET operation to the `BackupFileLocation` URI returns HTTP 200 with
+`Content Type: application/octet-stream`. This is the binary image of
+the backup file.
 
 ```text Create backup file and retrieve BackupFileLocation
 GET /redfish/v1/Managers/1/BackupRestoreService/?$select=BackupFileLocation
@@ -89,12 +129,24 @@ GET /bkupdata/HPE_TWA22525A7_20221208_1512.bak
 
 ## Restoring the iLO configuration
 
-To restore a backup file, perform a POST request to the `HttpPushUri` [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#httppushuri) of the `HpeiLOBackupRestoreService`. The `Content-Type` header of this POST request must be `multipart/form-data` and include the session key. A `Cookie` header containing the session key is also required. See example below.
+To restore a backup file, perform a POST request to the `HttpPushUri`
+[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#httppushuri)
+of the `HpeiLOBackupRestoreService`. The `Content-Type` header of this POST
+request must be `multipart/form-data` and include the session key.
+A `Cookie` header containing the session key is also required.
+See example below.
 
 :::info NOTE
-CURL and Python scripts using the <a href="https://github.com/HewlettPackard/python-ilorest-library/tree/master/src/redfish/rest" target="_blank">HPE Python Redfish library</a> don't need to supply any specific `Content-Type` header. It is done automatically. See example below.
+CURL and Python scripts using the
+<a href="https://github.com/HewlettPackard/python-ilorest-library/tree/master/src/redfish/rest" target="_blank">HPE Python Redfish library</a>
+don't need to supply any specific `Content-Type` header. It is done
+automatically. See example below.
 
-Python scripts using the <a href="https://github.com/DMTF/python-redfish-library/tree/master/src/redfish/rest" target="_blank">DMTF Python Redfish library</a> have to include a `multipart/form-data` `Content-Type` header to the POST request.
+Python scripts using the
+<a href="https://github.com/DMTF/python-redfish-library/tree/master/src/redfish/rest"
+target="_blank">DMTF Python Redfish library</a>
+have to include a `multipart/form-data` `Content-Type` header to the
+POST request.
 :::
 
 ```text Generic GET HttpPushUri request
@@ -111,7 +163,8 @@ GET /redfish/v1/managers/1/backuprestoreservice/?$select=HttpPushUri
 }
 ```
 
-The following example restores an iLO backup file using cURL and Python scripts with required headers.
+The following example restores an iLO backup file using cURL and
+Python scripts with required headers.
 
 ```shell cURL
 #!/usr/bin/bash
@@ -342,9 +395,14 @@ if __name__ == "__main__":
 
 ## Enabling Custom Backup and Restore
 
-The `HpeiLOBackupRestoreService` OEM resource type contains the `CustomBackupandRestore` [Boolean property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#custombackupandrestore). Users can enable this property to automatically allow restoring user defined iLO configuration that was earlier used for backup instead of the factory default settings.
+The `HpeiLOBackupRestoreService` OEM resource type contains the
+`CustomBackupandRestore` [Boolean property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#custombackupandrestore).
+Users can enable this property to automatically allow restoring user defined
+iLO configuration that was earlier used for backup instead of the factory
+default settings.
 
-The following example retrieves the value of the `CustomBackupandRestore` property as well as its human readable schema description.
+The following example retrieves the value of the `CustomBackupandRestore`
+property as well as its human readable schema description.
 
 ```text GET CustomBackupandRestore property
  GET /redfish/v1/managers/1/backuprestoreservice?$select=CustomBackupandRestore
@@ -393,10 +451,17 @@ Logging session out.
 
 :::info NOTE
 
-1. For iLO 6 v1.05, only IPMI and SNMP user configurations are covered in this custom backup and auto-restore feature.
-2. An IEL is logged when the `PATCH` is performed to set the `CustomBackupandRestore` property to `true`/`false`.
-3. When the auto-restore takes place during the iLO boot, there may be a possible delay of up to 120 seconds before some of the iLO functionalities become available after the auto-restore has taken place.
-4. iLO is configured to use the `Production` or `High Security state` - custom backup and auto-restore functionality is not supported in `FIPS` and higher security states.
-5. If iLO is reset to the factory default settings, then the custom backup needs to be configured again.
+1. For iLO 6 v1.05, only IPMI and SNMP user configurations are covered in
+    this custom backup and auto-restore feature.
+2. An IEL is logged when the `PATCH` is performed to set the
+    `CustomBackupandRestore` property to `true`/`false`.
+3. When the auto-restore takes place during the iLO boot, there may
+    be a possible delay of up to 120 seconds before some of the iLO
+    functionalities become available after the auto-restore has taken place.
+4. iLO is configured to use the `Production` or `High Security state` - custom
+    backup and auto-restore functionality is not supported in `FIPS` and
+    higher security states.
+5. If iLO is reset to the factory default settings, then the custom backup
+    needs to be configured again.
 
 :::

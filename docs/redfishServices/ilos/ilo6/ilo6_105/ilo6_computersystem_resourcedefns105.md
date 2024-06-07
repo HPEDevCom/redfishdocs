@@ -10,12 +10,12 @@ disableLastModified: false
 
 # Computersystem resource definitions of iLO 6 v1.05
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ComputerSystemCollection
+
 `@odata.type: "#ComputerSystemCollection.ComputerSystemCollection"`
 
 A Collection of ComputerSystem resource instances.
@@ -28,7 +28,7 @@ A Collection of ComputerSystem resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns105/#computersystem)|
 
@@ -73,7 +73,7 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Bios`|[Bios](../ilo6_bios_resourcedefns105/#bios)|
 |`EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns105/#ethernetinterfacecollection)|
@@ -86,8 +86,8 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 |`Oem/Hpe/Links/NetworkAdapters`|Collection of [HpeBaseNetworkAdapter](../ilo6_hpe_resourcedefns105/#hpebasenetworkadaptercollection)|
 |`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](../ilo6_hpe_resourcedefns105/#hpeserverpcidevicecollection)|
 |`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](../ilo6_hpe_resourcedefns105/#hpeserverpcislotcollection)|
-|`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](../ilo6_hpe_resourcedefns105/#hpeusbdevicescollection)|
-|`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](../ilo6_hpe_resourcedefns105/#hpeusbportscollection)|
+|`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice)|
+|`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](#hpeusbport)|
 |`Processors`|Collection of [Processor](../ilo6_other_resourcedefns105/#processorcollection)|
 |`SecureBoot`|[SecureBoot](../ilo6_other_resourcedefns105/#secureboot)|
 |`Storage`|Collection of [Storage](../ilo6_storage_resourcedefns105/#storagecollection)|
@@ -129,7 +129,6 @@ BootOptions is a link (`"@odata.id": URI`) to another resource.
 Member of [ComputerSystem.v1\_10\_0.ComputerSystem](#computersystem)
 
 `BootOrder` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -187,7 +186,6 @@ Member of [ComputerSystem.v1\_10\_0.ComputerSystem](#computersystem)
 
 `BootSourceOverrideTarget@Redfish.AllowableValues` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Description|The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is not Disabled.|
@@ -228,7 +226,6 @@ Member of [ComputerSystem.v1\_10\_0.ComputerSystem](#computersystem)
 Member of [ComputerSystem.v1\_10\_0.ComputerSystem](#computersystem)
 
 `UefiTargetBootSourceOverride@Redfish.AllowableValues` is an array containing elements of:
-
 
 | | |
 |---|---|
@@ -1220,7 +1217,6 @@ Member of [ComputerSystem.v1\_10\_0.ComputerSystem](#computersystem)
 
 `PowerRegulatorModesSupported` is an array containing elements of:
 
-
 | | |
 |---|---|
 |Type|string|
@@ -1850,11 +1846,9 @@ Member of [ComputerSystem.v1\_10\_0.ComputerSystem](#computersystem)
 
 ### Actions
 
-
 **ComputerSystem.Reset**
 Member of [ComputerSystem.v1\_10\_0.ComputerSystem](#computersystem)
 This action resets the system.
-
 
 **Parameters:**
 
