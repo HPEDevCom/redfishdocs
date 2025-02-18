@@ -1,12 +1,13 @@
 {
   "name": "hpe-redfish-portal",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "HPE server management portal",
   "license": "MIT",
   "scripts": {
+    "markdown-lint": "markdownlint-cli2 '**/*.md' '#node_modules'",
     "start": "redocly-portal develop --host 0.0.0.0 -p 3000",
-    "build": "redocly-portal build",
+    "build": "(yarn markdown-lint||true) && redocly-portal build",
     "clean": "redocly-portal clean"
   },
   "dependencies": {
@@ -16,6 +17,10 @@
     "grommet-theme-hpe": "^4.1.0",
     "react-helmet": "^6.1.0",
     "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.6.0",
+    "markdownlint-cli2-formatter-summarize": "0.0.5"
   },
   "resolutions": {
     "styled-components": "5.3.3",
