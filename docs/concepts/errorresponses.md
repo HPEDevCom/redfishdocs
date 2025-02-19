@@ -7,14 +7,15 @@ toc:
 disableLastModified: false
 ---
 
-# Redfish error responses and messages
+## Redfish error responses and messages
 
 Redfish error responses and messages appear in
 several places in the Redfish RESTful API:
 
 * Immediate responses to an HTTP operation.
 * Within `@Redfish.Settings` objects when external providers,
-  such as [BIOS](/docs/concepts/biosdatamodel/#changing-bios-attributes-and-understanding-redfishsettings),
+  such as
+  [BIOS](/docs/concepts/biosdatamodel/#changing-bios-attributes-and-understanding-redfishsettings),
   processed the settings (i.e. during reboot) and
   want to communicate the status in the model.
 
@@ -184,11 +185,14 @@ ilorest logout
 Some external Redfish providers like the BIOS subsystem require a two
 step process to modify their settings:
 
-1. A POST, PATCH or PUT request toward a **settings area**, also known as _pending area_.
+1. A POST, PATCH or PUT request toward a **settings area**, also known as
+   **_pending area_**.
 2. A reset of the server during which the content of the settings area
-   is analyzed, validated (or not) and transferred into the **current settings** area.
+  is analyzed, validated (or not) and transferred into
+  the **current settings** area.
 
-Refer to the [BIOS data model](/docs/concepts/biosdatamodel/#bios-current-and-pending-areas)
+Refer to the
+[BIOS data model](/docs/concepts/biosdatamodel/#bios-current-and-pending-areas)
 section for more information.
 
 The following paragraphs depict first, a successful modification of
@@ -382,8 +386,9 @@ The first `MessageId` contains a `Success` value informing that the analysis
 of the settings area has completed successfully. However, this does not mean
 that all the attributes in the list were valid.
 
-The next two `Messages` elements explain clearly that `Dhcpv8` and `Ipv8SubnetMask`
-are unknown properties. Hence they cannot be transferred in the BIOS current area.
+The next two `Messages` elements explain clearly that
+`Dhcpv8` and `Ipv8SubnetMask` are unknown properties. Hence they cannot be
+transferred in the BIOS current area.
 
 However, the `AdminName` property is not mentioned in the `@Redfish.Settings`
 object and has been successfully in the current BIOS area.

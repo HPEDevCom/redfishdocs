@@ -311,16 +311,16 @@ The BIOS attribute registries contains three top-level arrays:
 
 * **Menus:** Array containing the BIOS attributes menus and their hierarchy.
   This can be used
-(for instance) to build a user interface that resembles the
-local BIOS Setup, or to group
-properties that are related such as `ProcessorOptions` and `UsbOptions.`
+  (for instance) to build a user interface that resembles the
+  local BIOS Setup, or to group
+  properties that are related such as `ProcessorOptions` and `UsbOptions.`
 * **Attributes:** Array containing BIOS attributes and information
   about the attributes such as type, values, etc.
 * **Dependencies:** Array containing a list of dependencies of
   BIOS attributes on this server.
-This includes inter-setting dependencies that might cause one
-BIOS setting to change its
-value or its `ReadOnly` property based on the value of another BIOS setting.
+  This includes inter-setting dependencies that might cause one
+  BIOS setting to change its
+  value or its `ReadOnly` property based on the value of another BIOS setting.
 * **BaseConfigs:** Array containing a list of default manufacturing
   settings of BIOS attributes.
   This is equivalent to reading the BaseConfigs

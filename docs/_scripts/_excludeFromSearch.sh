@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# Version 0.1
+
 # This script must be called/launched by _script_wrapper.sh
 
 # This script excludes from the Redocly search engine all
@@ -13,8 +15,6 @@
 # all iLO 6 auto-generated files with a version less than 1.40
 # and only those files will be excluded of the Redocly search engine.
 
-# Version 0.01
-
 # Variables
 excludeKeyword="excludeFromSearch"
 excludeString="${excludeKeyword}: true"
@@ -22,14 +22,20 @@ excludeString="${excludeKeyword}: true"
 # Get list of files to process
 cd ${RepoLocation}/docs/redfishServices/ilos/${iLOGen}/
 
-allDirs=$(ls -d */)
+allDirs=$(ls -d [^_]*/) # exclude _iloX_review
 unset fileList
 for d in $allDirs ; do
     if [ "$d" \< "$(basename $WorkingDirectory)" ] ; then
         fileList="$fileList ${d}${iLOGen}*md" 
     fi
 done
-# echo $fileList
+
+# Process _iloX_r* special dirs like _iloX_review
+allDirs=$(ls -d _ilo?_r*/)
+
+for d in $allDirs ; do
+    fileList="$fileList ${d}_${iLOGen}*md"
+done
 
 # Remove lines containing "excludeFromSearch" if any
 sed -i -e "/${excludeKeyword}/d" $fileList

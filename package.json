@@ -1,7 +1,7 @@
 {
   "name": "hpe-redfish-portal",
   "private": true,
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "HPE server management portal",
   "license": "MIT",
   "scripts": {

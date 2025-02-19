@@ -13,7 +13,7 @@ This section is a guide to help client code adapt from the iLO 4 RESTful API to 
 
 ## Introduction
 
-The iLO 5 RESTful API is fully conformant with the Redfish® protocol <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.6.0.pdf" target="_blank">version 1.6.0</a> and the data model <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4.pdf" target="_blank">schema bundle version 2021.4</a>. Any remaining support for the pre-Redfish iLO RESTful API has been removed and is replaced by the Redfish equivalents. HPE continues to extend the Redfish data model (Oem.Hpe extensions) to enable value for the customer.
+The iLO 5 RESTful API is fully conformant with the Redfish® protocol and the data model mentioned in the [Changelog](/docs/redfishservices/ilos/ilo5/ilo5_changelog/#changelog) file. Any remaining support for the pre-Redfish iLO RESTful API has been removed and is replaced by the Redfish equivalents. HPE continues to extend the Redfish data model (Oem.Hpe extensions) to enable value for the customer.
 
 ## iLO 5 has the following additions not implemented in iLO 4
 
@@ -38,7 +38,7 @@ The iLO 5 RESTful API is fully conformant with the Redfish® protocol <a href="h
 
 ## Chunked Transfer Coding
 
-Unlike iLO 4, iLO 5 responds to all HTTP operations using <a href="https://www.rfc-editor.org/rfc/rfc7230#section-4.1" target="_blan">Chunked Transfer Coding</a>. This enables features like `$expand` that require very large responses.
+Unlike iLO 4, iLO 5 responds to all HTTP operations using <a href="https://www.rfc-editor.org/rfc/rfc7230#section-4.1" target="_blank">Chunked Transfer Coding</a>. This enables features like `$expand` that require very large responses.
 
 ## URI Remapping from /rest to /redfish
 

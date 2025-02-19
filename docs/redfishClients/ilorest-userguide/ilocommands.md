@@ -3,40 +3,45 @@ seo:
   title: iLO commands
 toc:
   enable: true
-  maxDepth: 3
+  maxDepth: 2
 disableLastModified: false
 ---
 
-## iLO Commands
+# iLO Commands
 
-This section includes advanced functions, also called **macro-commands**, for manipulating HPE iLO using HPE iLOrest. These commands include operations such as turning the server hardware on and off, resetting iLO, and updating firmware.
+This section includes advanced functions, also called **macro-commands**,
+for manipulating HPE iLO using HPE iLOrest. These commands include operations
+such as turning the server hardware on and off, resetting iLO,
+and updating firmware.
 
 iLO commands that are supported for a specific HPE server generation:
 
 - `certificate`: Gen10 and above. Limited functionality for Gen9
 - `fwintegritycheck`: Gen10 and above
-- `iloclone`: Gen10 and above
+- `iloclone`: Gen10 and above (**deprecated** in iLOrest 2.4.1 and [removed](/docs/redfishclients/ilorest-userguide/changelog/#version-321) in 3.2.1)
 - `sigrecompute`: Gen9
 
-### Backuprestore Command
+## Backuprestore Command
 
-#### Syntax
+### Syntax
 
 `backuprestore [OPTIONS]`
 
-#### Description
+### Description
 
-Backup and restore iLO to a server using a **.bak** file.
+Backup and restore iLO to a server using a `.bak` backup file.
 
 :::info NOTE
-Use this command to only restore the machine from which the backup file was created.
+Use this command to only restore the machine from which the backup
+file was created.
 
-To apply one configuration in multiple systems, refer to the `serverclone` [command](#serverclone-command).
+To apply one configuration in multiple systems, refer to
+the `serverclone` [command](#serverclone-command).
 
 This command is available only in remote mode.
 :::
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -44,76 +49,94 @@ Including the help flag will display help for the command.
 
 - **-f FILENAME, --filename=FILENAME**
 
-Use this command to specify the which backup file to restore. By default, the command will try to find a .bak file in the current working directory.
+Use this command to specify the which backup file to restore.
+By default, the command will try to find a `.bak` file in
+the current working directory.
 
 - **--filepass=FPASS**
 
-Use the provided password when creating the backup file. The same password must be used for restoring.
+Use the provided password when creating the backup file.
+The same password must be used for restoring.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server
+in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along
+with the user and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password
+and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and URL
+flags to login. Use the provided iLO password corresponding to the
+username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not logged
+in will have no effect.
 
-#### Examples
+### Examples
 
-To create a backup (.bak) file run the command with the `backup` argument.
+To create a backup (`.bak`) file run the command with the `backup` argument.
 
 ```shell
-iLOrest > backuprestore backup
+ilorest backuprestore backup
 Downloading backup file HPE_Kappa_20190203_0012.bak...Download complete.
 ```
 
-To restore a server using the .bak file run the command with the `restore` argument. By default the command will search for a (.bak) file in the current working directory. Specify a (.bak) file using the `(-f, --filename)` option.
+To restore a server using the `.bak` file run the command with
+the `restore` argument. By default the command will search for a
+(`.bak`) file in the current working directory.
+Specify a (`.bak`) file using the `(-f, --filename)` option.
 
 ```shell
-iLOrest > backuprestore restore
+ilorest backuprestore restore
 Restore in progress. iLO while be unresponsive while the restore completes.
 Your session will be terminated.
 Logging session out.
 ```
 
-### Certificate Command
+## Certificate Command
 
-#### Syntax
+### Syntax
 
 `certificate [SUBCOMMAND] [Optional Parameters]`
 
-#### Description
+### Description
 
-Command for importing both iLO and login authorization certificates as well as generating iLO certificate signing requests.
+Command for importing both iLO and login authorization
+certificates as well as generating iLO certificate signing requests.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### SUBCOMMAND
+### SUBCOMMAND
 
-Use `ilorest certificate SUBCOMMAND --help` to print the corresponding embedded help syntax.
+Use `ilorest certificate SUBCOMMAND --help` to print the
+corresponding embedded help syntax.
 
 - `gen_csr` - Creates new Certificate Signing Request (CSR)
 - `getcsr` - Downloads the CSR into default file `certificate.txt`.
-- `view` - Prints SCEP certificate with option `--scep_cert` or HTTP TLS/SSL certificate with option `--https_cert`.
+- `view` - Prints SCEP certificate with option `--scep_cert` or
+  HTTP TLS/SSL certificate with option `--https_cert`.
 - `auto_enroll` - Configures new SCEP certificate.
-- `import` - Imports any type of certificate into iLO (CA cert, TLS/SSL, CRL, SCEP, IDEVID, LDEVID, SYSTEMIAK...).
-- `export` - Exports certificate locally (IDEVID, LDEVID, SYSTEMIAK, PLATFORMCERT).
+- `import` - Imports any type of certificate into iLO
+  (CA cert, TLS/SSL, CRL, SCEP, IDEVID, LDEVID, SYSTEMIAK...).
+- `export` - Exports certificate locally
+  (IDEVID, LDEVID, SYSTEMIAK, PLATFORMCERT).
   
 Refer to the [examples](#examples-1) for usage.
 
@@ -161,7 +184,8 @@ Specify a URL as the source of the import.
 
 :::info NOTE
 
-A certificate must be imported from a file or from a URL (only supported for TLS/SSL certificates).
+A certificate must be imported from a file or from a URL
+(only supported for TLS/SSL certificates).
 
 :::
 
@@ -189,111 +213,149 @@ Declare the export is an X.509 formatted Platform certificate.
 
 - **--id**
 
-Specify the id of the certificate to retrieve from the collection. Requires a certificate type selection.
+Specify the id of the certificate to retrieve from the collection.
+Requires a certificate type selection.
 
 - **-f File, --filename File**
 
-Specify the filename/filepath for the resulting certificate to be saved to. By default, the certificate is printed to the console.
+Specify the filename/filepath for the resulting certificate to be saved to.
+By default, the certificate is printed to the console.
 
 **_getcsr Arguments_**
 
 - **--TLS_CERT**
 
-Declare retrieval of an X.509 formatted TLS/SSL certificate signing request (CSR).
+Declare retrieval of an X.509 formatted TLS/SSL certificate
+signing request (CSR).
 
 - **--PLATFORM_CERT**
 
-Declare retrieval of an X.509 formatted Platform certificate signing request (CSR).
+Declare retrieval of an X.509 formatted Platform certificate
+signing request (CSR).
 
 - **-f File, --filename File**
 
-Specify the filename/filepath for the resulting certificate signing request (CSR) to be saved to. By default, the CSR is printed to the console.
+Specify the filename/filepath for the resulting certificate
+signing request (CSR) to be saved to. By default,
+the CSR is printed to the console.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server
+in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to
+the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along
+with the user and URL flags to login. Use the
+provided iLO password corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the
+server after this command is completed. Using this
+flag when not logged in will have no effect.
 
-#### Examples
+### Examples
 
-To Generate an HTTP TLS/SSL certificate signing request use the `gen_csr` argument along with the following information `Organization Name`, `Organization Unit`, `Common Name`, `Country`, `State`, `City`, `Include IP`. Use quotes to include parameters which containing whitespaces. The `Include IP` argument is a Boolean (`True`, `False`)
+To Generate an HTTP TLS/SSL certificate signing request use
+the `gen_csr` argument along with the following information
+`Organization Name`,
+`Organization Unit`, `Common Name`, `Country`, `State`, `City`, `Include IP`.
+Use quotes to include parameters which containing whitespaces.
+The `Include IP` argument is a Boolean (`True`, `False`).
 
 ```shell
-iLOrest > login
+ilorest login
 Discovering data...Done
-iLOrest > certificate csr "Hewlett Packard Enterprise" "ILORestGroup" "iLOrest" "US" "Texas" "Houston" False 
+ilorest certificate csr "Hewlett Packard Enterprise" "ILORestGroup" "iLOrest" "US" "Texas" "Houston" False 
 The operation completed successfully.
 ```
 
 :::info NOTE
 
-- Please make sure the order of arguments is correct. The parameters are extracted based on their position in the arguments list.
+- Please make sure the order of arguments is correct.
+  The parameters are extracted based on their position in the arguments list.
 - Some certificate types (i.e. SCEP) are not available on Gen9.
 - Use the `singlesignon` command to import single sign on certificates.
-- Use quotes to include parameters with whitespaces, when generating a CSR. For example: certificate gen_csr "Hewlett Packard Enterprise" "iLOrest Group" "CName" "United States" "Texas" "Houston" False
+- Use quotes to include parameters with whitespaces, when
+  generating a CSR. For example: certificate gen_csr
+  "Hewlett Packard Enterprise"
+  "iLOrest Group" "CName" "United States" "Texas" "Houston" False
 - Platform certificates are specific to diagnostic usage purposes.
 
 :::
 
-To retrieve an HTTP TLS/SSL certificate signing request use the `getcsr --TLS_CERT` argument. The default filename is `certificate.txt`, saved to the current working directory. Including the _(-f, --filename)_ option will change the default name.
+To retrieve an HTTP TLS/SSL certificate signing request
+use the `getcsr --TLS_CERT` argument. The default
+filename is `certificate.txt`, saved to the current working
+directory. Including the _(-f, --filename)_ option will
+change the default name.
 
 ```shell
-iLOrest > certificate getcsr --TLS_CERT
+ilorest certificate getcsr --TLS_CERT
 Discovering data...Done
 Certificate saved to: certificate.txt
 ```
 
-To import an HTTP TLS/SSL signed certificate use the `import --tls_cert` argument followed by a file containing the certificate.
+To import an HTTP TLS/SSL signed certificate use the `import --tls_cert`
+argument followed by a file containing the certificate.
 
 ```shell
-iLOrest > certificate import --tls_cert certfile.txt
+ilorest certificate import --tls_cert certfile.txt
 The operation completed successfully.
 ```
 
 :::success TIP
 
-With iLO 5 firmware 2.78 and later or iLO 6 firmware 1.30 and later, it is possible to import/upload into iLO, a file containing an https TLS/SSL certificate with its associated private key. This combined file can contain a wildcard certificate and associated private key.
+With iLO 5 firmware 2.78 and later or iLO 6 firmware 1.30 and later,
+it is possible to import/upload into iLO, a file containing an https
+TLS/SSL certificate with its associated private key.
+This combined file can contain a wildcard certificate and associated
+private key.
 
 Use the following process:
 
 1. Generate a CSR for iLO(s) as well as private key.
 2. Get the the CSR signed.
-3. Combine both the private key and the signed certificate into a single file.
-4. Use the `certificate import --tls_cert` command (see example  above) to upload the combined file to the iLO(s).
+3. Combine both the private key and the signed certificate
+   into a single file.
+4. Use the `certificate import --tls_cert`
+   command (see example  above) to upload the combined file to the iLO(s).
 5. Wait for the iLO(s) to reset.
 
 :::
 
-To import a CA certificate, use the `import --ca_cert` argument followed by a file containing the certificate.
+To import a CA certificate, use the `import --ca_cert`
+argument followed by a file containing the certificate.
 
 ```shell
-iLOrest > certificate import --ca_cert certfile.txt
+ilorest certificate import --ca_cert certfile.txt
 The operation completed successfully.
 ```
 
-To import a Certificate Revocation List (CRL) use the `import --crl_cert` argument followed by the URL to the certificate list file.
+To import a Certificate Revocation List (CRL) use
+the `import --crl_cert` argument followed by the URL
+to the certificate list file.
 
 ```shell
-iLOrest > certificate import --crl_cert https://hostname/location/to/cert.txt
+ilorest certificate import --crl_cert https://hostname/location/to/cert.txt
 The operation completed successfully.
 ```
 
-To view an HTTP TLS/SSL certificate, use the `certificate` command with `view` subcommand followed by option `--https_cert`
+To view an HTTP TLS/SSL certificate, use the `certificate`
+command with `view` subcommand followed by option `--https_cert`
 
 ```shell
 ilorest certificate view --https_cert
@@ -309,10 +371,11 @@ ValidNotAfter:2033-02-12T09:59:35Z
 ValidNotBefore:2023-02-15T09:59:35Z
 ```
 
-To view a `scep` certificate, use the `certificate` command with `view` subcommand followed by option `--scep_cert`
+To view a `scep` certificate, use the `certificate` command with
+`view` subcommand followed by option `--scep_cert`
 
 ```shell
-iLOrest certificate view --scep_cert
+ilorest certificate view --scep_cert
 Scep Certificate details ...
 Id:AutomaticCertificateEnrollment
 Certificate@Redfish.AllowableValues:['Certificate']
@@ -331,112 +394,146 @@ OrgUnit:ISS
 State:Houston
 ````
 
-To import a scep certificate, use `certificate` command with the `import` subcommand followed by option `--scep` and  provide the scep certificate file
+To import a scep certificate, use `certificate` command with the `import`
+subcommand followed by option `--scep` and  provide the scep certificate file
 
 ```shell
-iLOrest certificate import --scep_cert scep.txt
+ilorest certificate import --scep_cert scep.txt
 Imported the scep certificate successfully
 ```
 
-To import a CA certificate, use the `certificate` command with the `import` subcommand followed by option `--ca_cert` provided with ca cert file
+To import a CA certificate, use the `certificate` command with the
+`import` subcommand followed by option `--ca_cert` provided with
+CA cert file
 
 ```shell
-iLOrest certificate import --ca_cert ca.cer
+ilorest certificate import --ca_cert ca.cer
 Imported CA certificate successfully
 ```
 
-To import IDEVID certificate, use certificate command with import subcommand followed by option --idevid_cert provided with IDEVID cert file
+To import IDEVID certificate, use certificate command with
+import subcommand followed by option --idevid_cert
+provided with IDEVID cert file
 
 ```shell
-iLOrest certificate import --idevid_cert IDEVID.cer
+ilorest certificate import --idevid_cert IDEVID.cer
 Imported the iLOIDevID certificate successfully
 ```
 
-To export LDEVID certificate, use certificate command with export subcommand followed by option --ldevid_cert and -f with a file name in which the certificate will be stored.
+To export LDEVID certificate, use certificate command with
+export subcommand followed by option `--ldevid_cert` and `-f`
+with a file name in which the certificate will be stored.
 
 ```shell
-iLOrest certificate export --ldevid_cert -f myLDEVID.cer
+ilorest certificate export --ldevid_cert -f myLDEVID.cer
 The certificate was saved to: myLDEVID.cer
 ```
 
-To export SystemIAK certificate use certificate command with export subcommand followed by option --systemiak_cert and -f with a file name in which the certificate will be stored.
+To export SystemIAK certificate use certificate command with
+export subcommand followed by option `--systemiak_cert` and `-f`
+with a file name in which the certificate will be stored.
 
 ```shell
-iLOrest certificate export --systemiak_cert -f mySystemIAK.cer
+ilorest certificate export --systemiak_cert -f mySystemIAK.cer
 The certificate was saved to: mySystemIAK.cer
 ```
 
-To auto enroll, use certificate command with `auto_enroll` subcommand followed by required arguments
+To auto enroll, use certificate command with `auto_enroll`
+subcommand followed by required arguments.
 
 ```shell
-iLOrest certificate auto_enroll "Hewlett Packard Enterprise" "ILORestGroup" "iLOrest" "US" "Americas" "Houston" "https://10.10.10.10/certsrv/mscep/mscep.dll" "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" "True" "False"
+ilorest certificate auto_enroll "Hewlett Packard Enterprise" "ILORestGroup" "iLOrest" "US" "Americas" "Houston" "https://10.10.10.10/certsrv/mscep/mscep.dll" "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" "True" "False"
 ```
 
-### Clearrestapistate Command
+## Clearrestapistate Command
 
-#### Syntax
+### Syntax
 
 `clearrestapistate [Optional Parameters]`
 
-#### Description
-Clears the persistent RESTful API state. Generally not needed and shouldn't be done unless there are issues viewing info, setting, or committing data.
+### Description
+Clears the persistent RESTful API state.
+Generally not needed and shouldn't be done
+unless there are issues viewing info, setting, or committing data.
 
 :::warning Warning
-Some types such as Bios, Icsci, and SmartStorageConfig will not be available until a system reboot occurs after running this command.
+Some types such as Bios, Icsci, and SmartStorageConfig
+will not be available until a system reboot occurs after
+running this command.
 :::
 
-
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login
+to a server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet,
+use the provided iLO URL along with the user
+and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet,
+use this flag along with the password
+and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with
+the user and URL flags to login. Use the provided iLO
+password corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the
+server after this command is completed. Using this flag
+when not logged in will have no effect.
 
-#### Examples
+### Examples
 
 To Clear the persistent RESTful API state run the command without arguments.
 
 ```shell
-iLOrest > clearrestapistate
+ilorest clearrestapistate
 The operation completed successfully.
 ```
 
 :::info NOTE
 
-Pending iLO configuration settings are stored in volatile memory. If clearrestapistate is utilized prior to a requested reboot or iLO reset, provider data be purged and the handover of updated configuration data to the relevant firmware controller will not be made as anticipated during POST or upon iLO reset. BIOS, SmartArray and ethernet management NICs are all potentially affected.
+Pending iLO configuration settings are stored in volatile memory.
+If `clearrestapistate` is utilized prior to a requested reboot or iLO reset,
+provider data be purged and the handover of updated configuration data
+to the relevant firmware controller will not be made as anticipated
+during POST or upon iLO reset.
+BIOS, SmartArray and ethernet management NICs are all potentially affected.
 :::
 
-### Computeopsmanagement Command
+## Computeopsmanagement Command
 
-#### Syntax
+### Syntax
 
 `computeopsmanagement [connect/disconnect/status] [OPTIONS]`
 
-#### Description
+### Description
 
-This command enables your servers to be discovered, monitored and managed through the <a href="https://www.hpe.com/us/en/hpe-greenlake-compute-ops-management.html" target="_blank">HPE GreenLake for Compute Ops Management</a>.
+This command enables your servers to be discovered,
+monitored and managed through the
+<a href="https://www.hpe.com/us/en/hpe-greenlake-compute-ops-management.html" target="_blank">HPE GreenLake for Compute Ops Management</a> (COM)
+also known as
+[CloudConnect](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpecloudconnect).
 
-#### Parameters
+Refer to the related `HpeiLO.*CloudConnect` [actions](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions)
+for more detail.
+
+### Parameters
 
 - **connect**
 
@@ -464,67 +561,109 @@ Use this while connecting and providing activation key.
 
 - **-j, --json**
 
-Use this command to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Use this command to change the displayed output to JSON format.
+Preserving the JSON data structure makes the information easier to parse.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server
+in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the
+server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the
+user and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in will
+have no effect.
 
-#### Examples
+### Examples
 
-To enable your servers to be discovered, monitored and managed through Compute Ops Management.
+To enable your servers to be discovered,
+monitored and managed through Compute Ops Management.
 
-```Shell
-iLOrest > computeopsmanagement connect --activationkey keyvalue
+:::info NOTE
+The activation key needed to connect to COM
+is the customer account ID of HPE GreenLake.
+
+Obtain the account ID by visiting the
+HPE GreenLake portal -> Manage -> Account Details card.
+:::
+
+```shell computeopsmanagement
+
+ilorest computeopsmanagement connect --activationkey keyvalue
 Connecting computeopsmanagement...
 computeopsmanagement connection is successful
 ```
 
-To disconnect from Compute Ops Management
+```shell Generic POST command
+POST /redfish/v1/Managers/1/Actions/Oem/Hpe/HpeiLO.EnableCloudConnect
 
-```Shell
-iLOrest > computeopsmanagement disconnect
+Payload:
+{"ActivationKey": "Keyvalue"}
+
+```
+
+To disconnect from Compute Ops Management.
+
+```shell computeopsmanagement
+ilorest computeopsmanagement disconnect
 The operation completed successfully.
+```
+
+```shell Generic POST
+POST /redfish/v1/Managers/1/Actions/Oem/Hpe/HpeiLO.DisableCloudConnect
+
+Payload: {}
 ```
 
 To check the status of Compute Ops Management
 
-```Shell
-iLOrest > computeopsmanagement status
+```shell computeopsmanagement
+ilorest computeopsmanagement status
 ------------------------------------------------
 Compute Ops Management Status
 ------------------------------------------------
 Compute Ops Management Status : NotEnabled
 ```
 
-### Directory Command
+```shell get
+ilorest get Oem/Hpe/CloudConnect/CloudConnectStatus --select=Manager.
+Oem=
+     Hpe=
+          CloudConnect=
+                        CloudConnectStatus=NotEnabled
+```
 
-#### Syntax
+## Directory Command
+
+### Syntax
 
 `directory [kerberos/ldap/test] [OPTIONS]`
 
-#### Description
+### Description
 
+This command will view/update Kerberos or
+LDAP directory settings, add/delete directory roles,
+and test directory settings.
 
-This command will view/update Kerberos or LDAP directory settings, add/delete directory roles, and test directory settings.
-
-#### Parameters
+### Parameters
 
 - **ldap**
 
@@ -532,7 +671,8 @@ Use this parameter to update or view LDAP settings.
 
 - **kerberos**
 
-Use this parameter to update or view Kerberos (Active Directory) settings.
+Use this parameter to update or view Kerberos
+(Active Directory) settings.
 
 - **test**
 
@@ -568,7 +708,9 @@ Use this option to enable or disable the authentication for local accounts.
 
 - **--authentication=AUTHMODE**
 
-Use this option to choose a LDAP authentication mode. The available modes are DefaultSchema (Directory Default Schema or Schema-   free) and ExtendedSchema (HPE Extended Schema).
+Use this option to choose a LDAP authentication mode. The available modes
+are DefaultSchema (Directory Default Schema or Schema- free)
+and ExtendedSchema (HPE Extended Schema).
 
 - **--addsearch=SEARCH, --removesearch=SEARCH**
 
@@ -585,35 +727,44 @@ When adding role map, SID is optional.
 
 - **-j, --json**
 
-Use this command to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Use this command to change the displayed output to JSON format.
+Preserving the JSON data structure makes the information easier to parse.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to
+login to a server in the same line as the command is run.
 
--
 **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the server
+in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with
+the password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user
+and URL flags to login. Use the provided iLO password corresponding
+to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in will
+have no effect.
 
-#### Examples
+### Examples
 
-To view current LDAP or kerberos settings run the command with the `ldap` or `kerberos` arguments.
+To view current LDAP or kerberos settings run the command
+with the `ldap` or `kerberos` arguments.
 
 ```shell
-iLOrest > directory ldap
+ilorest directory ldap
 Discovering data...Done
 LDAP settings:
 --------------------------------
@@ -629,7 +780,7 @@ Remote Role Mapping(s):
         Remote Group: Administrators
         Local Role: dirgroup9d4546a03a03bb977c03086a
         Remote Group: Authenticated Users:S-1-5-11
-iLOrest > directory kerberos
+ilorest directory kerberos
 Kerberos settings:
 --------------------------------
 Enabled: False
@@ -644,26 +795,35 @@ Remote Role Mapping(s):
         Remote Group: Authenticated Users:S-1-5-11
 ```
 
-To add credentials to a service specify the service with the `ldap` or `kerberos` argument followed by the `USERNAME` and `PASSWORD` of the directory. The `--enable` flag was passed because previously the directory was disabled.
+To add credentials to a service specify the service
+with the `ldap` or `kerberos` argument followed by
+the `USERNAME` and `PASSWORD` of the directory.
+The `--enable` flag was passed because previously the directory was disabled.
 
 ```shell
-iLOrest > directory ldap USERNAME PASSWORD --enable
+ilorest directory ldap USERNAME PASSWORD --enable
 Changing settings...
 The operation completed successfully.
 ```
 
-To specify the service address (`--serviceaddress`), port (`--port`), authentication schema (`--authentication`), and/or search strings (`--addsearch/--removesearch`) specify their respective options. Authentication schema and search strings can only be used with the LDAP directory.
+To specify the service address (`--serviceaddress`), port (`--port`),
+authentication schema (`--authentication`), and/or search strings
+(`--addsearch/--removesearch`) specify their respective options.
+Authentication schema and search strings can only be used with the
+LDAP directory.
 
 :::info NOTE
 
-The `--addsearch` value needs to be double quoted in order to escape the semicolon character (;) from its potential shell command separator meaning.
+The `--addsearch` value needs to be double quoted in order to escape
+the semicolon character (;) from its potential shell command separator
+meaning.
 :::
 
 ```shell
-iLOrest > directory ldap --serviceaddress x.x.y.z --addsearch "string3;string4" --authentication=ExtendedSchema --port 199
+ilorest directory ldap --serviceaddress x.x.y.z --addsearch "string3;string4" --authentication=ExtendedSchema --port 199
 Changing settings...
 The operation completed successfully.
-iLOrest > directory ldap
+ilorest directory ldap
 LDAP settings:
 --------------------------------
 Enabled: True
@@ -682,23 +842,28 @@ Remote Role Mapping(s):
         Remote Group: Authenticated Users:S-1-5-11
 ```
 
-To specify the realm (`--realm`) and/or key tab (`--keytab`) specify their respective options. Realm and key tab can only be used with the Kerberos directory.
+To specify the realm (`--realm`) and/or key tab (`--keytab`) specify
+their respective options. Realm and key tab can only be used with
+the Kerberos directory.
 
 ```shell
-iLOrest > directory kerberos --realm Forgotten --keytab https://location/to/keytab.txt
+ilorest directory kerberos --realm Forgotten --keytab https://location/to/keytab.txt
 Changing settings...
 The operation completed successfully.
 Adding keytab...
 The operation completed successfully.
 ```
 
-To add directory role maps include the `ldap` argument with the `--addrolemap` option with the form `LocalRole:RemoteRoleGroup:OptionalSID`. Multiple rolemaps can be added with '#' as seperator. Available roles can be found in the help text.
+To add directory role maps include the `ldap` argument with the
+`--addrolemap` option with the form `LocalRole:RemoteRoleGroup:OptionalSID`.
+Multiple rolemaps can be added with '#' as seperator. Available roles
+can be found in the help text.
 
 ```shell
-iLOrest > directory ldap --addrolemap "Administrator:Owners#ReadOnly:Reading Users:S-1-7-23"
+ilorest directory ldap --addrolemap "Administrator:Owners#ReadOnly:Reading Users:S-1-7-23"
 Changing settings...
 The operation completed successfully.
-iLOrest > directory ldap
+ilorest directory ldap
 LDAP settings:
 --------------------------------
 Enabled: True
@@ -721,11 +886,14 @@ Remote Role Mapping(s):
         Remote Group: Reading Users:S-1-7-23
 ```
 
-To add custom local role maps include the `ldap` argument with the `--addrolemap` option with the form `PrivNum1;PrivNum2;...:RemoteRoleGroup:OptionalSID`. Multiple rolemaps can be added with '#' as seperator. Numbers of privileges can be found in the help text.
-
+To add custom local role maps include the `ldap` argument
+with the `--addrolemap` option with the form
+`PrivNum1;PrivNum2;...:RemoteRoleGroup:OptionalSID`.
+Multiple rolemaps can be added with '#' as seperator.
+Numbers of privileges can be found in the help text.
 
 ```shell
-iLOrest > directory ldap --addrolemap "10;2;3:Another remote role:S-1-7-23"
+ilorest directory ldap --addrolemap "10;2;3:Another remote role:S-1-7-23"
 Changing settings...
 The operation completed successfully.
 Updating privileges of created role maps...
@@ -735,13 +903,16 @@ The operation completed successfully.
 Updated privileges for A TESTTT:S-1-7-23
 ```
 
-To remove directory role maps include the `ldap` argument with the `--removerolemap` option specifying the `LocalRole` of the role map to remove. Multiple role maps can be removed by separating them with '#'.
+To remove directory role maps include the `ldap` argument with
+the `--removerolemap` option specifying the `LocalRole` of the
+role map to remove. Multiple role maps can be removed by
+separating them with '#'.
 
 ```shell
-iLOrest > directory ldap --removerolemap "dirgroupb3b74668da9b6b0bc6864223#dirgroup8e167f4006abce0ae22977d4"
+ilorest directory ldap --removerolemap "dirgroupb3b74668da9b6b0bc6864223#dirgroup8e167f4006abce0ae22977d4"
 Changing settings...
 The operation completed successfully.
-iLOrest > directory ldap
+ilorest directory ldap
 LDAP settings:
 --------------------------------
 Enabled: True
@@ -760,16 +931,18 @@ Remote Role Mapping(s):
         Remote Group: Authenticated Users:S-1-5-11
 ```
 
-To perform directory tests use the `test` argument followed by `start` to start the directory test, `stop` to stop the directory test, or `viewresults` to view the results of the last directory test.
+To perform directory tests use the `test` argument followed by
+`start` to start the directory test, `stop` to stop the directory
+test, or `viewresults` to view the results of the last directory test.
 
 ```shell
-iLOrest > directory test start
+ilorest directory test start
 Starting the directory test. Monitor results with command: directory viewresults
 [200] The operation completed successfully.
-iLOrest > directory test stop
+ilorest directory test stop
 Stopping the directory test.
 [200] The operation completed successfully.
-iLOrest > directory test viewresults
+ilorest directory test viewresults
 Test: Directory Server DNS Name
 ------------------------
 Status: Failed
@@ -824,10 +997,13 @@ Notes:
 
 :::info NOTE
 
-To change settings, you must first enable the directory. You can use the `--enable` option to enable a directory in the same command as settings are set.
+To change settings, you must first enable the directory.
+You can use the `--enable` option to enable a directory
+in the same command as settings are set.
 :::
 
-When creating custom local roles use the following numbers to specify privileges.
+When creating custom local roles use the following numbers
+to specify privileges.
 
 ```shell
 LOCAL PRIVILEGES:
@@ -850,13 +1026,13 @@ LOCAL ROLES:
 - Administrator
 ```
 
-### Disableilofunctionality Command
+## Disableilofunctionality Command
 
-#### Syntax
+### Syntax
 
 `disableilofunctionality [Optional Parameters]`
 
-#### Description
+### Description
 Disable iLO functionality on the current logged in server.
 
 :::info NOTE
@@ -865,10 +1041,11 @@ Add the --force flag to ignore critical task checking before disabling iLO.
 :::
 
 :::warning Warning
-This will render iLO unable to respond to network operations and Redfish will be unavailable until iLO functionality is restored.
+This will render iLO unable to respond to network operations
+and Redfish will be unavailable until iLO functionality is restored.
 :::
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -878,151 +1055,249 @@ Including the help flag will display help for the command.
 
 Ignore any critical task checking and force disable iLO.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server
+in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the server in the same
+command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user
+and URL flags to login. Use the provided iLO password corresponding
+to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in will
+have no effect.
 
-#### Examples
+### Examples
 
 To Disable iLO functionality run the command without arguments.
 
 ```shell
-iLOrest > disableilofunctionality
+ilorest disableilofunctionality
 The operation completed successfully.
 Disabling iLO functionality. iLO will be unavailable on the logged in server until it is re-enabled manually.
 [200] The operation completed successfully.
 ```
 
-### Eskm Command
+## Eskm Command
 
-#### Syntax
+### Syntax
 
 `eskm [Command]* *[Optional Parameters]`
 
-#### Description
-Command for testing connections to the Enterprise Secure Key Manager system and clearing the Enterprise Secure Key Manager logs.
+### Description
+Command for testing connections to the Enterprise Secure Key Manager
+system and clearing the Enterprise Secure Key Manager logs.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login
+to a server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the server
+in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the
+user and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
-#### Examples
+### Examples
 
 To clear the ESKM logs use the `clearlog` argument.
 
 ```shell
-iLOrest > eskm clearlog
+ilorest eskm clearlog
 The operation completed successfully.
 ```
 
-To test the ESKM connections use the `testconnections` argument. The response will indicate if the system can connect properly or if there is an issue.
+To test the ESKM connections use the `testconnections`
+argument. The response will indicate if the system can
+connect properly or if there is an issue.
 
 ```shell
-iLOrest > eskm testconnections
+ilorest eskm testconnections
 Enterprise Secure Key Manager Servers are not configured.
 ```
 
-### Ethernet command
+## Ethernet command
 
-#### Syntax
+### Syntax
 
-ethernet [Command] [Optional Parameters]
+`ethernet [Command] [Optional Parameters]`
 
-Command for configuring Ethernet Management Controller Interfaces and associated properties.
+### Description
 
-#### Parameters
+Command for managing the
+[ethernet interfaces](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#ethernetinterface)
+of a server, as well as various iLO resources like
+[network protocols](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#managernetworkprotocol),
+[NTP servers](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#ntpservers-array)
+and [time zone](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#timezone).
+
+:::info Note
+
+Although some network adapters are able to communicate with the Ethernet protocol,
+the DMTF distinguishes the `EthernetInterface`
+<a href="https://redfish.dmtf.org/schemas/v1/EthernetInterface.json" target="_blank">schema/data type</a>
+from the `NetworkAdapter`
+<a href="https://redfish.dmtf.org/schemas/v1/EthernetInterface.json" target="_blank">schema/data type</a>.
+
+As a consequence, the `ethernet` command does not address the `NetworkAdapter` data type.
+Use the global `get`, `list` and `set`
+[commands](/docs/redfishclients/ilorest-userguide/globalcommands/)
+to manage network adapters.
+
+:::
+
+### Parameters
 
 - **default**
 
-Obtain iLO management networking interface details and configure basic properties such as enablement/disablement, domain name servers, ipv4 and ipv6 networking configuration.
+Run without arguments or with the `default` parameter, the `ethernet`
+command prints the properties
+on standard output (stdout) in a non-JSON format.
 
 - **Save**
 
-Save a network configuration.
+Save the ethernet interfaces and manager properties in a JSON formatted file.
+The default output filename is `eth.json` in the local folder.
+
+:::success Tip
+
+You can edit this file at will and use the
+`ethernet load` command to load it in a
+compatible system.
+
+:::
 
 - **Load**
 
-Load a network cofiguration.
+Load ethernet interfaces and iLO properties from
+a file generated by the `ethernet save` command.
+The default input filename is `eth.json` in the local folder.
 
-#### Optional parameters
+:::success TIP
 
-- **-h, --help**  
+Use the `--force_network_config` to force
+the load of network configuration.
+
+:::
+
+### Optional parameters
+
+- **-h, --help**
+
 Show the help message and exit.
 
-- **--encryption ENCRYPTION**  
+- **--encryption ENCRYPTION**
+
 Optionally include this flag to encrypt/decrypt a file using the key provided.
 
-- **-f ETHFILENAME, --ethfile ETHFILENAME**  
-Optionally specify a JSON file to store or load ethernet configuration data.
+- **-f ETHFILENAME, --ethfile ETHFILENAME**
 
-- **--enable_vnic**  
+Optionally specify a JSON filename as an alternative to the default `eth.json`.
+
+- **--force\_network\_config**
+
+Force loading iLO network configuration. This parameter is only relevant to
+the `load` sub-command. Refer to the
+[Configure iLO IP addresses](/docs/redfishclients/ilorest-userguide/examplecommandsscripts/#configure-ilo-ip-addresses)
+section for a detailed example.
+
+- **--enable_vnic**
+
 Enable virtual network interface of management network.
 
-- **--disable_vnic**  
+- **--disable_vnic**
+
 Disable virtual network interface of management network.
 
-- **--proxy http://proxy.company.net:8080**  
+- **--proxy http://proxy.company.net:8080**
+
 Configure Proxy Settings. Provide a proxy server and port
 
-- **--proxy None**  
+- **--proxy None**
+
 Clear Proxy Settings.
 
-- **--enable_nic 1,2,3**  
+- **--enable_nic 1,2,3**
+
 Enable network interfaces by listing each interface to be enabled. **Note**: Non-existent interfaces will be omitted from configuration.
 
-- **--disable_nic 1,2,3**  
+- **--disable_nic 1,2,3**
+
 Disable network interfaces by listing each interface to be disabled. **Note**: Non-existent interfaces will be omitted from configuration.
 
-- **--nameservers 8.8.8.8,1.1.1.1 OR ethernet --nameservers dns_resolver1.aws.com, dns_resolver2.aws.com**           
-Configure Domain Name Servers (DNS) in a list: <DNS1> <DNS2>
+- **--nameservers 8.8.8.8,1.1.1.1,2.2.2.2 OR ethernet --nameservers dns\_resolver1.aws.com,dns\_resolver2.aws.com**
 
-- **--network_ipv4 <ipv4 address>, <ipv4 gateway>, <ipv4 network mask>.**  
-Configure Static IPv4 Settings. Provide a list of network settings
+Configure Domain Name Servers (DNS) in a comma separated
+list (\<DNS1\>,\<DNS2\>,\<DNS3\>).
 
-#### Examples
+Avoid space characters in the list. Perform an **iLO reset** to modify effectively the supplied
+parameters.
+
+- **--network_ipv4 \<ipv4 address\>,\<ipv4 gateway\>,\<ipv4 network mask\>.**
+
+Configure Static IPv4 settings on the enabled iLO network port (Dedicated or Shared).
+Provide a list of network settings in a comma separated list.
+
+Avoid space characters in the list. Perform an **iLO reset** to modify effectively the supplied
+parameters.
+
+:::warning Warning
+
+Upon reset, open sessions (GUI, rest) are closed abruptly. You need to reconnect using the
+network information present in the `--network_ipv4` .
+
+Errors in the `Gateway` or `SubnetMask` may prevent you to reconnect.
+
+Read these [best practices](/docs/redfishclients/ilorest-userguide/examplecommandsscripts/#network-configuration-best-practices)
+before modifying the iLO IP network configuration.
+:::
+
+### Examples
 
 To enable Virtual NIC use the `--enable_vnic` argument.
 
 ```shell
-iLOrest > ethernet --enable_vnic
+ilorest ethernet --enable_vnic
 Enabling Virtual NIC...
 [200] The operation completed successfully.
 Warning: Resetting iLO...
@@ -1036,10 +1311,10 @@ You will need to re-login to access this system...
 iLOrest return code: 0
 ```
 
-To enable proxy use the `--proxy <proxyserver_withport>` argument. 
+To enable proxy use the `--proxy <proxyserver_withport>` argument.
 
 ```shell
-iLOrest > ethernet --proxy https://proxy.example.com:8080
+ilorest ethernet --proxy https://proxy.example.com:8080
 Enabling Proxy configuration...
 [200] The operation completed successfully.
 iLOrest return code: 0
@@ -1048,82 +1323,133 @@ iLOrest return code: 0
 To clear proxy use the `--proxy None` argument.
 
 ```shell
-iLOrest > ethernet --proxy None
+ilorest ethernet --proxy None
 Clearing Proxy configuration...
 [200] The operation completed successfully.
 iLOrest return code: 0
 ```
 
-### Factorydefaults Command
+The following example configures the active iLO management network
+port (Dedicated or Shared) with
+an IPv4 address, a gateway IP address and the network
+mask. Then it performs a reset of the iLO to modify effectively
+these properties.
 
-#### Syntax
+```shell
+ilorest  ethernet --network_ipv4 192.168.1.56,192.168.1.2,255.255.252.0
+The operation completed successfully.
+
+ilorest iloreset
+A management processor reset is in progress.
+```
+
+:::success TIP
+
+To be able to recover in case of a network misconfiguration,
+save the IPv6 link-local or MAC address
+as explained in this
+[best practice](/docs/redfishclients/ilorest-userguide/examplecommandsscripts/#network-configuration-best-practices)
+paragraph.
+
+::::
+
+## Factorydefaults Command
+
+### Syntax
 
 `factorydefaults [Optional Parameters]`
 
-#### Description
+### Description
 Reset iLO to factory defaults in the current logged in server.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a
+server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the
+server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user
+and URL flags to login. Use the provided iLO password corresponding
+to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in will have
+no effect.
 
-#### Examples
+### Examples
 
-To reset iLO to factory defaults in the current logged in server run the command without arguments.
+To reset iLO to factory defaults in the current logged in server
+run the command without arguments.
 
 ```shell
-iLOrest > factorydefaults
+ilorest factorydefaults
 Resetting iLO to factory default settings
 Current session will be terminated.
 The operation completed successfully.
 ```
 
 :::warning Warning
-This command will erase all iLO user setting data and reset iLO. Default credentials are required to access iLO after a factory reset.
+This command will erase all iLO user setting data and reset iLO.
+Default credentials are required to access iLO after a factory reset.
 :::
 
-### Firmwareupdate Command
+:::success Tip
+To reset ilO to factory defaults, the `factorydefaults` command performs an `HpeiLO.ResetToFactoryDefaults`
+[action](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions),
+consisting of a POST request toward `/redfish/v1/Managers/1/Actions/Oem/Hpe/HpeiLO.ResetToFactoryDefaults/`
+with the following body: `{"Action": "HpeiLO.ResetToFactoryDefaults", "ResetType": "Default"}`
 
-#### Syntax
+Other HPE Actions can be listed with a GET request toward
+`{{BmcURL}}/redfish/v1/Managers/{{ManagerId}}/?$select=Oem/Hpe/Actions`
+:::
+
+## Firmwareupdate Command
+
+### Syntax
 
 `Firmwareupdate [URI] [Optional Parameters]`
 
-#### Description
+### Description
 
-Use this command to update the firmware via URI. iLO must be able to access the URI for update to complete successfully. This command only supports firmware with a `.bin` extension.
+Use this command to update the firmware via URI.
+iLO must be able to access the URI for update to
+complete successfully. This command only supports
+firmware with a `.bin` extension.
 
 :::info NOTE
 
-The firmware update command is only supported in <b>iLO 4 2.20</b> or higher. And only iLO firmware and UEFI firmware are supported. Smart Components are not supported.
+The firmware update command is only supported
+in <b>iLO 4 2.20</b> or higher. And only iLO
+firmware and UEFI firmware are supported.
+Smart Components are not supported.
 :::
 
-#### Parameters
+### Parameters
 
 - **URI**
 
-Point the **firmwareupdate** command towards the firmware package file that holds the file for the firmware update.
+Point the **firmwareupdate** command towards the firmware
+package file that holds the file for the firmware update.
 
 - **-h, --help**
 
@@ -1131,35 +1457,47 @@ Including the help flag will display help for the command.
 
 - **--tpmenabled**
 
-Use this flag if the server you are currently logged into has a TPM chip installed.
+Use this flag if the server you are currently logged
+into has a TPM chip installed.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to
+login to a server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided
+iLO URL along with the user and password flags
+to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along
+with the password and URL flags to login to a server
+in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user
+and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in
+will have no effect.
 
-#### Input
+### Input
 
 URI pointing to a firmware package as shown in the first example below.
 
-#### Examples
+### Examples
 
-To update firmware specify the URI location of the firmware. iLO will then gather the file and flash it. The user will be logged out after firmware update completes successfully.
+To update firmware specify the URI location of the firmware.
+iLO will then gather the file and flash it. The user will be
+logged out after firmware update completes successfully.
 
 :::info NOTE
 
@@ -1167,7 +1505,7 @@ iLO does not always reset after a firmware update.
 :::
 
 ```shell
-iLOrest > firmwareupdate https://firmwarehost/path/to/firmware/file.fwpkg
+ilorest firmwareupdate https://firmwarehost/path/to/firmware/file.fwpkg
 
 Starting upgrading process...
 
@@ -1182,16 +1520,16 @@ A reboot may be required for firmware changes to take effect.
 Logging session out.
 ```
 
-### Fwintegritycheck Command
+## Fwintegritycheck Command
 
-#### Syntax
+### Syntax
 
 `fwintegritycheck [Optional Parameters]`
 
-#### Description
+### Description
 Perform a firmware integrity check on the current logged in server.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -1201,86 +1539,102 @@ Including the help flag will display help for the command.
 
 Optionally include this flag to show results of firmware integrity check.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to
+login to a server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided
+iLO URL along with the user and password flags to
+login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with
+the password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user
+and URL flags to login. Use the provided iLO password corresponding
+to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in will
+have no effect.
 
-#### Examples
+### Examples
 
-To perform a firmware integrity check run the command without arguments.
+To perform a firmware integrity check run the command
+without arguments.
 
 ```shell
-iLOrest > fwintegritycheck
+ilorest fwintegritycheck
 The operation completed successfully.
 ```
 
-To perform a firmware integrity check and return results of the check include the `--results` option.
+To perform a firmware integrity check and return results of
+the check include the `--results` option.
 
 ```shell
-iLOrest > fwintegritycheck --results
+ilorest fwintegritycheck --results
 The operation completed successfully.
 Awaiting results of firmware integrity check....
 Scan Result: OK
 ```
 
-### Iloaccounts Command
+## Iloaccounts Command
 
-#### Syntax
+### Syntax
 
 `iloaccounts [COMMAND] [OPTIONS]`
 
-#### Description
+### Description
 
-Adds/deletes an iLO account on the currently logged in server and modifies iLO account privileges.
+Adds/deletes an iLO account on the currently logged in server
+and modifies iLO account privileges.
 
 - **LOGINNAME:**  The account name, not used to login.
 - **USERNAME:** The account username name, used to login.
 - **PASSWORD:**  The account password, used to login.
 - **Id:** The number associated with an iLO user account.
 - **PRIVILEGES:**
-  * 1: Login
-  * 2: Remote Console
-  * 3: User Config
-  * 4: iLO Config
-  * 5: Virtual Media
-  * 6: Virtual Power and Reset
+  - 1: Login
+  - 2: Remote Console
+  - 3: User Config
+  - 4: iLO Config
+  - 5: Virtual Media
+  - 6: Virtual Power and Reset
 
 - **iLO 5 added privileges:**
-  * 7: Host NIC Config
-  * 8: Host Bios Config
-  * 9: Host Storage Config
-  * 10: System Recovery Config
+  - 7: Host NIC Config
+  - 8: Host Bios Config
+  - 9: Host Storage Config
+  - 10: System Recovery Config
 
 - **Roles:**
-  * Administrator
-  * ReadOnly
-  * Operator
+  - Administrator
+  - ReadOnly
+  - Operator
 
 :::info NOTE
-By default, only login privilege is added to the newly created account with role "ReadOnly" in iLO 5 and no privileges in iLO 4. To modify these privileges, you can remove properties that would be set by using --removeprivs or you can directly set which privileges are given using --addprivs.
+By default, only login privilege is added to the newly created
+account with role "ReadOnly" in iLO 5 and no privileges in iLO 4.
+To modify these privileges, you can remove properties that would
+be set by using -`-removeprivs` or you can directly set which privileges are
+given using `--addprivs`.
 :::
 
 :::info NOTE
 
 Please make sure the order of arguments is correct. The
 parameters are extracted based on their position in the arguments list.
-Only privileges available to the logged in account can be set to the new account.
+Only privileges available to the logged in account can be set to the new
+account.
 :::
 
 :::info NOTES
@@ -1291,13 +1645,15 @@ Account credentials are case-sensitive.
 
 :::success TIP
 
-When executing the command `iloaccounts add` in a Linux machine, an escape character needs to be added before special characters of the password.
+When executing the command `iloaccounts add` in a
+Linux machine, an escape character needs to be
+added before special characters of the password.
 
 Example: `iloaccount add rest rest 12iso\$help`
 
 :::
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -1305,46 +1661,64 @@ Including the help flag will display help for the command.
 
 - **--addprivs=OPTPRIVS**
 
-Optionally include this flag if you wish to specify which privileges you want added to the iLO account. Pick privileges from the privilege list in the above help text. Example: --addprivs=1,2,4
+Optionally include this flag if you wish to specify
+which privileges you want added to the iLO account.
+Pick privileges from the privilege list
+in the above help text. Example: `--addprivs=1,2,4`
 
 - **--removeprivs=OPTPRIVS**
 
-Optionally include this flag if you wish to specify which privileges you want removed from the iLO account. Pick privileges from the privilege list in the above help text. Example: --removeprivs=1,2,4
+Optionally include this flag if you wish to specify which
+privileges you want removed from the iLO account. Pick privileges
+from the privilege list in the above help text. Example: `--removeprivs=1,2,4`
 
 - **--role=ROLE**
 
-Optionally include this flag if you would like to specify Privileges by role. Valid choices are: Administrator, ReadOnly, and Operator.
+Optionally include this flag if you would
+like to specify Privileges by role. Valid choices are:
+Administrator, ReadOnly, and Operator.
 
 - **-j, --json**
 
-Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Optionally include this flag if you wish to change
+the displayed output to JSON format.
+Preserving the JSON data structure makes
+the information easier to parse.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to
+login to a server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the
+server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user
+and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after this
+command is completed. Using this flag when not logged in will have no effect.
 
-#### Examples
+### Examples
 
-To list the current iLO accounts on the system and their information, run the command without arguments.
+To list the current iLO accounts on the system and their information,
+run the command without arguments.
 
 ```shell
-iLOrest > iloaccounts
+ilorest iloaccounts
 Discovering data...Done
 iLO Account info:
 [Id] UserName (LoginName):
@@ -1365,12 +1739,15 @@ SystemRecoveryConfigPriv=True
 
 ```
 
-To add an iLO account include the `add` argument with the new account `USERNAME`, `LOGINNAME`, and `PASSWORD`. To optionally specify privileges at creation, use the `--addprivs` option with numbers from the privilege list.
+To add an iLO account include the `add` argument with the new
+account `USERNAME`, `LOGINNAME`, and `PASSWORD`.
+To optionally specify privileges at creation, 
+use the `--addprivs` option with numbers from the privilege list.
 
 ```shell
-iLOrest > iloaccounts add USERNAME ACCOUNTNAME PASSWORD --addprivs 1,4,7
+ilorest iloaccounts add USERNAME ACCOUNTNAME PASSWORD --addprivs 1,4,7
 [201] The operation completed successfully.
-iLOrest > iloaccounts
+ilorest iloaccounts
 iLO Account info:
 [Id] UserName (LoginName):
 Privileges
@@ -1403,10 +1780,13 @@ SystemRecoveryConfigPriv=False
 
 ```
 
-To modify an iLO account's privileges include the `modify` argument, the `Id` or the `Username` of the account to modify, and include the `--addprivs` and/or `--removeprivs` options with numbers from the privilege list.
+To modify an iLO account's privileges include the `modify` argument,
+the `Id` or the `Username` of the account to modify, and include the
+`--addprivs` and/or `--removeprivs` options with numbers from the privilege
+list.
 
 ```shell
-iLOrest > iloaccounts
+ilorest iloaccounts
 ...
 [3] USERNAME (ACCOUNTNAME):
 ServiceAccount=False
@@ -1421,9 +1801,9 @@ VirtualPowerAndResetPriv=False
 LoginPriv=True
 SystemRecoveryConfigPriv=False
 
-iLOrest > iloaccounts modify USERNAME --addprivs 2,3 --removeprivs 7
+ilorest iloaccounts modify USERNAME --addprivs 2,3 --removeprivs 7
 The account was modified successfully.
-iLOrest > iloaccounts
+ilorest iloaccounts
 ...
 [3] USERNAME (ACCOUNTNAME):
 ServiceAccount=False
@@ -1439,38 +1819,44 @@ LoginPriv=True
 SystemRecoveryConfigPriv=False
 ```
 
-To change the password of an account run the command with the `changepass` argument, specifying the `Id` or the `Username` of the account to modify and the new password.
+To change the password of an account run the command with the
+`changepass` argument, specifying the `Id` or the `Username` of
+the account to modify and the new password.
 
 ```shell
-iLOrest > iloaccounts changepass 3 newpassword
+ilorest iloaccounts changepass 3 newpassword
 The account was modified successfully.
 ```
 
-To delete an iLO account run the command with the `delete` argument, specifying the `Id` or the `Username` of the account for deletion.
+To delete an iLO account run the command with the `delete`
+argument, specifying the `Id` or the `Username` of the account for deletion.
 
 ```shell
-iLOrest > iloaccounts delete USERNAME
+ilorest iloaccounts delete USERNAME
 The account was removed successfully.
 ```
 
-To add a certificate to an account run the command with the `addcert` argument, specifying the `Id` or `Username` of the account followed by the path to an x.509 certificate.
+To add a certificate to an account run the command with the `addcert`
+argument, specifying the `Id` or `Username` of the account followed by
+the path to an x.509 certificate.
 
 ```shell
-iLOrest > iloaccounts addcert 3 C:\Temp\cert.txt
+ilorest iloaccounts addcert 3 C:\Temp\cert.txt
 The account was modified successfully.
 ```
 
-To delete a certificate from an account run the command with the `deletecert` argument, specifying either the `Id` or `Username` of the account.
+To delete a certificate from an account run the command with the `deletecert`
+argument, specifying either the `Id` or `Username` of the account.
 
 ```shell
-iLOrest > iloaccounts deletecert 3
+ilorest iloaccounts deletecert 3
 The account was modified successfully.
 ```
 
 To verify the certificate run a `rawget`
 
 ```shell
-iLOrest > rawget "/redfish/v1/AccountService/UserCertificateMapping/?$expand=."
+ilorest rawget "/redfish/v1/AccountService/UserCertificateMapping/?$expand=."
 [200] The operation completed successfully.
 {
   ... Truncated...
@@ -1497,7 +1883,8 @@ iLOrest > rawget "/redfish/v1/AccountService/UserCertificateMapping/?$expand=."
 }
 ```
 
-When applying privileges directly use the following numbers to specify privileges.
+When applying privileges directly use the following numbers
+to specify privileges.
 
 PRIVILEGES:
 
@@ -1517,30 +1904,32 @@ iLO 5 added privileges:
 
 :::info NOTE
 
-This command has been recently changed. Please review the new method to specify privileges and querying accounts.
+This command has been recently changed. Please review the new method to
+specify privileges and querying accounts.
 :::
 
-### Ilofederation Command
+## Ilofederation Command
 
-#### Syntax
+### Syntax
 
 `ilofederation [COMMAND] [ARGUMENTS] [OPTIONS]`
 
-#### Description
+### Description
 
-Adds, deletes, or modifies an iLO federation group on the currently logged in server.
+Adds, deletes, or modifies an iLO federation group on the currently
+logged in server.
 
 - **FEDERATIONNAME**: The name (Id) of the federation group.
-- **KEY**:  The key required to join the federation.
+- **KEY**: The key required to join the federation.
 - **Id**: The number associated with an iLO federation.
 
 - **PRIVILEGES:**
-  * 1: Login
-  * 2: Remote Console
-  * 3: User Config
-  * 4: iLO Config
-  * 5: Virtual Media
-  * 6: Virtual Power and Reset
+  - 1: Login
+  - 2: Remote Console
+  - 3: User Config
+  - 4: iLO Config
+  - 5: Virtual Media
+  - 6: Virtual Power and Reset
 
 - **iLO 5 added privileges:**
   * 7: Host NIC Config
@@ -1548,7 +1937,7 @@ Adds, deletes, or modifies an iLO federation group on the currently logged in se
   * 9: Host Storage Config
   * 10: System Recovery Config
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -1556,47 +1945,66 @@ Including the help flag will display help for the command.
 
 - **--addprivs=PRIVS**
 
-Optionally include this flag if you wish to specify which privileges you want added to the iLO federation. This overrides the default of duplicating privileges of the currently logged in federation on the new federation. Pick privileges from the privilege list in the above help text.
+Optionally include this flag if you wish to specify which privileges
+you want added to the iLO federation. This overrides the default of
+duplicating privileges of the currently logged in federation on the new
+federation.
+Pick privileges from the privilege list in the above help text.
 
 Example: --addprivs=1,2,4
 
 - **--removeprivs=PRIVS**
 
-Optionally include this flag if you wish to specify which privileges you want removed from the iLO federation. This overrides the default of duplicating privileges of the currently logged in federation on the new federation. Pick privileges from the privilege list in the above help text.
+Optionally include this flag if you wish to specify which privileges you
+want removed from the iLO federation. This overrides the default of
+duplicating privileges of the currently logged in federation on
+the new federation. Pick privileges from the privilege list in the
+above help text.
 
-Example: --removeprivs=1,2,4
+Example: `--removeprivs=1,2,4`
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in
+the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to
+the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with
+the user and URL flags to login. Use the provided iLO
+password corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
-#### Examples
+### Examples
 
 :::info NOTE
 
 The federation key must be 8 characters or greater.
 :::
 
-To add an iLO federation group to the current logged in server include the `add` argument with the new federation name and federation key. To optionally specify privileges at creation, use the `--addprivs` option with numbers from the privilege list.
+To add an iLO federation group to the current logged in server
+include the `add` argument with the new federation name and
+federation key. To optionally specify privileges at creation,
+use the `--addprivs` option with numbers from the privilege list.
 
 ```shell
-iLOrest > ilofederation
+ilorest ilofederation
 iLO Federation Id list with Privileges:
 
 Name=DEFAULT:
@@ -1610,9 +2018,9 @@ HostBIOSConfigPriv=False
 VirtualPowerAndResetPriv=False
 LoginPriv=True
 SystemRecoveryConfigPriv=False
-iLOrest > ilofederation add newfedname 8charfedkey --addprivs 1,3,5
+ilorest ilofederation add newfedname 8charfedkey --addprivs 1,3,5
 The resource has been created successfully.
-iLOrest > ilofederation
+ilorest ilofederation
 iLO Federation Id list with Privileges:
 
 Name=DEFAULT:
@@ -1640,12 +2048,12 @@ LoginPriv=True
 SystemRecoveryConfigPriv=False
 ```
 
-
-To list the current iLO federations and their information run the command with no arguments.
+To list the current iLO federations and their information run
+the command with no arguments.
 
 ```shell
 
-iLOrest > ilofederation
+ilorest ilofederation
 iLO Federation Id list with Privileges:
 
 Name=DEFAULT:
@@ -1661,18 +2069,20 @@ LoginPriv=True
 SystemRecoveryConfigPriv=False
 ```
 
-
-To change the key of an iLO federation group include the `changekey` argument with the federation name and the new key.
+To change the key of an iLO federation group
+include the `changekey` argument with the federation
+name and the new key.
 
 ```shell
-iLOrest > ilofederation changekey newfedname newfedkey
+ilorest ilofederation changekey newfedname newfedkey
 The operation completed successfully.
 ```
 
-To delete an iLO federation group include the `delete` argument with the federation name to delete.
+To delete an iLO federation group include the `delete`
+argument with the federation name to delete.
 
 ```shell
-iLOrest > ilofederation
+ilorest ilofederation
 iLO Federation Id list with Privileges:
 
 Name=DEFAULT:
@@ -1698,9 +2108,9 @@ HostBIOSConfigPriv=True
 VirtualPowerAndResetPriv=True
 LoginPriv=True
 SystemRecoveryConfigPriv=True
-iLOrest > ilofederation delete newfedname
+ilorest ilofederation delete newfedname
 The operation completed successfully.
-iLOrest > ilofederation
+ilorest ilofederation
 iLO Federation Id list with Privileges:
 
 Name=DEFAULT:
@@ -1716,12 +2126,13 @@ LoginPriv=True
 SystemRecoveryConfigPriv=False
 ```
 
-To modify an iLO federation group include the `modify` argument with the federation name you'd like to update.
+To modify an iLO federation group include the `modify`
+argument with the federation name you'd like to update.
 
 ```shell
-iLOrest > ilofederation modify newfederation 8charfedkey --addprivs 1,2,3,4
+ilorest ilofederation modify newfederation 8charfedkey --addprivs 1,2,3,4
 The resource has been created successfully.
-iLOrest > ilofederation
+ilorest ilofederation
 iLO Federation Id list with Privileges:
 
 Name=DEFAULT:
@@ -1747,9 +2158,9 @@ HostBIOSConfigPriv=False
 VirtualPowerAndResetPriv=False
 LoginPriv=True
 SystemRecoveryConfigPriv=False
-iLOrest > ilofederation modify newfederation --removeprivs 1,2,3
+ilorest ilofederation modify newfederation --removeprivs 1,2,3
 The operation completed successfully
-iLOrest > ilofederation
+ilorest ilofederation
 Name=DEFAULT:
 HostNICConfigPriv=False
 HostStorageConfigPriv=False
@@ -1775,7 +2186,8 @@ LoginPriv=False
 SystemRecoveryConfigPriv=False
 ```
 
-When applying privileges directly use the following numbers to specify privileges.
+When applying privileges directly use the following numbers
+to specify privileges.
 
 PRIVILEGES:
 
@@ -1795,20 +2207,21 @@ iLO 5 added privileges:
 
 :::info NOTE
 
-Please make sure the order of arguments is correct. The parameters are extracted based on their position in the arguments list.
+Please make sure the order of arguments is correct.
+The parameters are extracted based on their position in the arguments list.
 :::
 
-### Ilolicense Command
+## Ilolicense Command
 
-#### Syntax
+### Syntax
 
 `ilolicense [COMMAND] [LICENSE_KEY] [OPTIONS]`
 
-#### Description
+### Description
 
 Manages iLO licenses on the currently logged in server.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -1830,34 +2243,45 @@ Checks and matches the installed license with the provided license.
 
 Checks the status of installed iLO license.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server
+in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along
+with the user and password flags to login to the server in the
+same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user
+and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
-#### Examples
+### Examples
 
-The following example illustrate the different options of the `ilolicese` macro command.
+The following example illustrate the different options of
+the `ilolicese` macro command.
 
-Refer to the [iLO License service](/docs/redfishservices/ilos/supplementdocuments/licenseservice/) section for other examples.
+Refer to the
+[iLO License service](/docs/redfishservices/ilos/supplementdocuments/licenseservice/)
+section for other examples.
 
 ```shell License details
-iLOrest > ilolicense
+ilorest ilolicense
 Id:1
 Code:
 Message:
@@ -1908,67 +2332,75 @@ Name:iLO License
 ```
 
 ```shell Install license key
-iLOrest > ilolicense --install XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+ilorest ilolicense --install XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 The resource has been created successfully.
 ```
 
 ```shell Check license key
-iLOrest > ilolicense --check XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+ilorest ilolicense --check XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 Matched. Provided key is installed on this server
 ```
 
 ```shell Uninstall license key
-iLOrest > ilolicense --uninstall
+ilorest ilolicense --uninstall
 Uninstalled license successfully
 ```
 
 ```shell Check License state
-iLOrest > ilolicense --check_confirm
+ilorest ilolicense --check_confirm
 "State: unconfirmed"
 ```
 
-### Iloreset Command
+## Iloreset Command
 
-#### Syntax
+### Syntax
 
 `iloreset [Optional Parameters]`
 
-#### Description
+### Description
 
 Run this command to reset iLO on the currently logged in server.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server
+in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the
+server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the
+user and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in
+will have no effect.
 
-#### Examples
+### Examples
 
 To reset iLO run the command without arguments.
 
 ```shell
-iLOrest > iloreset
+ilorest iloreset
 
 After iLO resets the session will be terminated.
 Please wait for iLO to initialize completely before logging in again.
@@ -1978,20 +2410,21 @@ A management processor reset is in progress.
 ```
 
 :::warning Warning
-Resetting iLO will render it unresponseive as it resets. The user will be logged out.
+Resetting iLO will render it unresponseive as it resets.
+The user will be logged out.
 :::
 
-### Ipprofiles Command
+## Ipprofiles Command
 
-#### Syntax
+### Syntax
 
 `ipprofiles [Optional Parameters]`
 
-#### Description
+### Description
 
 Run this command to manage the hpeipprofile data store.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -2009,32 +2442,40 @@ Look for the key or keys in the ipprofile manager and delete.
 
 Copies the specified IP profile into the job queue and starts it.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server
+in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the server in
+the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with
+the password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and
+URL flags to login. Use the provided iLO password corresponding
+to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
-#### Examples
+### Examples
 
-To list the current profiles on the server, run the command without arguments..
+To list the current profiles on the server, run the command without arguments.
 
 ```shell
-iLOrest > ipprofiles
+ilorest ipprofiles
 {
   "@odata.type": "#HpeIpProfiles.v1_0_0.HpeIpProfiles",
   "1540504034216": "{profile: data}"
@@ -2044,43 +2485,47 @@ iLOrest > ipprofiles
 To upload an ipprofile, input a valid JSON file path as an argument.
 
 ```shell
-iLOrest > ipprofiles profile.json
+ilorest ipprofiles profile.json
 The operation completed successfully.
 ```
 
-To remove a profile, use the unique key contained in the profile with the `(-d, --delete)` option.
+To remove a profile, use the unique key contained in
+the profile with the `(-d, --delete)` option.
 
 ```shell
-iLOrest > ipprofiles -d 1540504034216
+ilorest ipprofiles -d 1540504034216
 The operation completed successfully.
-iLOrest > ipprofiles
+ilorest ipprofiles
 {
   "@odata.type": "#HpeIpProfiles.v1_0_0.HpeIpProfiles",
   "1549567973200": "{\"profile\": {}}"
 }
-iLOrest > ipprofiles -d 1549567973200
+ilorest ipprofiles -d 1549567973200
 The operation completed successfully.
-iLOrest > ipprofiles
+ilorest ipprofiles
 {
   "@odata.type": "#HpeIpProfiles.v1_0_0.HpeIpProfiles"
 }
 ```
 
-### Onebuttonerase Command
+## Onebuttonerase Command
 
-#### Syntax
+### Syntax
 
 `onebuttonerase [OPTIONS]`
 
-#### Description
+### Description
 
-Performs One Button Erase on a system. Erases all iLO settings, Bios settings, User Data, and iLO Repository data.
+Performs One Button Erase on a system. Erases all iLO settings,
+Bios settings, User Data, and iLO Repository data.
 
 :::warning Warning
-This command will erase user data. Use this command with extreme caution. Complete erase can take up to 24 hours to complete.
+This command will erase user data.
+Use this command with extreme caution.
+Complete erase can take up to 24 hours to complete.
 :::
 
-#### Paramters
+### Paramters
 
 - **-h, --help**
 
@@ -2094,32 +2539,43 @@ Use this command to skip monitoring of the one button erase process and simply t
 
 Use this command to skip the confirmation prompt before starting One Button Erase and begin the operation.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login
+to a server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided
+iLO URL along with the user and password flags
+to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag
+along with the password and URL flags to login to a
+server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with
+the user and URL flags to login. Use the provided
+iLO password corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the
+server after this command is completed.
+Using this flag when not logged in will have no effect.
 
-#### Examples
+### Examples
 
-To initiate One Button Erase and erase all iLO settings, BIOS settings, User Data, and iLO Repository data run the command without arguments.
+To initiate One Button Erase and erase all iLO settings,
+BIOS settings, User Data, and iLO Repository data run the
+command without arguments.
 
 ```shell
-iLOrest > onebuttonerase
+ilorest onebuttonerase
 Please type "erase" to begin erase process. Any other input will cancel the operation. If you wish to skip this prompt add the --confirm flag: erase
 One or more properties were changed and will not take effect until system is reset.
 The operation completed successfully.
@@ -2132,10 +2588,11 @@ iLO Settings Erase: Idle
 User Data Erase: Initiated /
 ```
 
-To optionally skip the confirmation before initiating One Button Erase include the `--confirm` option.
+To optionally skip the confirmation before initiating
+One Button Erase include the `--confirm` option.
 
 ```shell
-iLOrest > onebuttonerase --confirm
+ilorest onebuttonerase --confirm
 One or more properties were changed and will not take effect until system is reset.
 The operation completed successfully.
         One Button Erase Status
@@ -2147,49 +2604,179 @@ iLO Settings Erase: Idle
 User Data Erase: Initiated \
 ```
 
-### Reboot Command
+## Pending command
 
-#### Syntax
+### Syntax
+
+`pending [Optional Parameters]`
+
+### Description
+
+Displays pending committed changes present in the
+[settings](/docs/concepts/biosdatamodel/#bios-current-and-pending-areas)area,
+that will be applied after a reboot. Affected data types are:
+
+- `Bios.`
+- `HpeServerBootSettings.`
+- `HpeiSCSISoftwareInitiator.`
+- `HpeKmsConfig.`
+- `HpeServerConfigLock.`
+- `HpeTlsConfig.`
+- `SmartStorageConfig.` (iLO 5 only)
+
+:::info NOTE
+The above list may change over time.
+:::
+
+### Parameters
+
+- **-h, --help**
+
+Including the help flag will display help for the command.
+
+### Login Parameters
+
+The following parameters can be included to login to a
+server in the same line as the command is run.
+
+- **--url=URL**
+
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the
+server in the same command.
+
+- **-u User, --user=USER**
+
+If you are not logged in yet, including this flag along
+with the password and URL flags can be used to login to
+a server in the same command.
+
+- **-p Password, --password=PASSWORD**
+
+If you are not logged in yet, use this flag along with the
+user and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
+
+- **--https**
+
+Use the provided CA bundle or SSL certificate with your login to connect
+securely to the system in remote mode. This flag has no effect in local mode.
+
+### Examples
+
+Run `pending` to show current changes
+that have been committed and are awaiting
+a reboot. In the following example, only the `AdminName` Bios
+attribute has been modified and committed.
+
+```shell
+ilorest --nologo  pending
+Current Pending Changes:
+
+HpeServerBootSettings.v2_0_0:
+Id=
+    Current=boot
+    Pending=settings
+Name=
+      Current=Boot Order Current Settings
+      Pending=Boot Order Pending Settings
+HpeiSCSISoftwareInitiator.v2_0_0:
+Id=
+    Current=iscsi
+    Pending=settings
+Name=
+      Current=iSCSI Software Initiator Current Settings
+      Pending=iSCSI Software Initiator Pending Settings
+HpeKmsConfig.v1_0_0:
+Id=
+    Current=kmsconfig
+    Pending=settings
+Name=
+      Current=KMS Current Settings
+      Pending=KMS Pending Settings
+HpeServerConfigLock.v1_0_0:
+Id=
+    Current=serverconfiglock
+    Pending=settings
+Name=
+      Current=Server Configuration Lock Current Settings
+      Pending=Server Configuration Lock Pending Settings
+HpeTlsConfig.v1_0_0:
+Id=
+    Current=tlsconfig
+    Pending=settings
+Name=
+      Current=TLS Current Settings
+      Pending=TLS Pending Settings
+Bios.v1_0_4:
+Attributes=
+            AdminName=
+                       Current=John Deuf
+                       Pending=newname
+Id=
+    Current=bios
+    Pending=settings
+Name=
+      Current=BIOS Current Settings
+      Pending=BIOS Pending Settings
+```
+
+## Reboot Command
+
+### Syntax
 
 `reboot [Reboot Type] [Optional Parameters]`
 
-#### Description
+### Description
 
-Run this command to turn the system on, perform an immediate non-graceful shutdown followed by a restart of the system, generate a non-maskable interrupt and cause an immediate system halt, or simulate the pressing of the physical power button on the system.
+Run this command to turn the system on,
+perform an immediate non-graceful shutdown
+followed by a restart of the system,
+generate a non-maskable interrupt and cause
+an immediate system halt, or simulate the
+pressing of the physical power button on the system.
 
-#### Parameters
+### Parameters
 
 - **On**
 
-Use this reboot type to turn the system on. If the system is already on, this has no effect.
+Use this reboot type to turn the system on.
+If the system is already on, this has no effect.
 
 - **ForceOff**
 
-Use this reboot type to cause the system to perform an immediate non-graceful shutdown.
+Use this reboot type to cause the system to
+perform an immediate non-graceful shutdown.
 
 - **ForceRestart**
 
-Use this reboot type to perform an immediate non-graceful shutdown followed by a restart of the system.
+Use this reboot type to perform an
+immediate non-graceful shutdown followed by a restart of the system.
 
 - **Nmi**
 
-Use this reboot type to generate a non-maskable interrupt to cause an immediate system halt.
+Use this reboot type to generate a non-maskable interrupt
+to cause an immediate system halt.
 
 - **PushPowerButton**
 
-Use this reboot type to simulate the pressing of the physical power button on this system.
+Use this reboot type to simulate the pressing of the
+physical power button on this system.
 
 - **Press**
 
-Simulates the pressing of the physical power button on this system.
+Simulates the pressing of the physical
+power button on this system.
 
 - **PressAndHold**
 
-Simulates pressing and holding of the power button on this systems.
+Simulates pressing and holding of
+the power button on this systems.
 
 - **ColdBoot**
 
-Immediately removes power from the server, followed by a restart of the system.
+Immediately removes power from the server,
+followed by a restart of the system.
 
 - **-h, --help**
 
@@ -2199,41 +2786,49 @@ Including the help flag will display help for the command.
 
 Optionally include to request user confirmation for reboot.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login
+to a server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided
+iLO URL along with the user and password flags
+to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along
+with the password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the
+user and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--includelogs**
 
-You can optionally choose to set the **includelogs** flag. Doing so will include logs in the data retrieval process.
+You can optionally choose to set the **includelogs** flag.
+Doing so will include logs in the data retrieval process.
 
 :::info NOTE
-
 This option can be used to limit long login times.
 :::
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of
+the server after this command is completed.
+Using this flag when not logged in will have no effect.
 
-#### Examples
+### Examples
 
 If no arguments are supplied the default operation is `ForceRestart`.
 
 ```shell
-iLOrest > reboot
+ilorest reboot
 
 After the server is rebooted the session will be terminated.
 Please wait for the server to boot completely to login again.
@@ -2242,10 +2837,11 @@ The operation completed successfully.
 Logging session out.
 ```
 
-To perform a power function supply one of the reboot type parameters as an argument.
+To perform a power function supply one of the reboot type parameters
+as an argument.
 
 ```shell
-iLOrest > reboot ForceOff
+ilorest reboot ForceOff
 
 Server is powering off the session will be terminated.
 Please wait for the server to boot completely to login again.
@@ -2254,10 +2850,11 @@ The operation completed successfully.
 Logging session out.
 ```
 
-If the current power state does not allow for an operation to complete an error will be returned.
+If the current power state does not allow for an operation
+to complete an error will be returned.
 
 ```shell
-iLOrest > reboot On
+ilorest reboot On
 
 Session will now be terminated.
 Please wait for the server to boot completely to login again.
@@ -2267,137 +2864,179 @@ iLO response with code [400]: The operation was not successful due to the curren
 
 :::info NOTE
 
-- The reboot command will log out, the user, from the server. Wait for the system to fully reboot before attempting to login, or data such as Bios may be unavailable.
+- The reboot command will log out, the user, from the server.
+- Wait for the system to fully reboot before attempting to login,
+  or data such as Bios may be unavailable.
 - Arguments are not case-sensitive.
 
 :::
 
-### Results Command
+## Results Command
 
-#### Syntax
+### Syntax
 
 `results [Optional Parameters]`
 
-#### Description
+### Description
 
-Use this command to retrieve a Redfish response messages. The results command provides feedback after an iLO state change as a list of attributes that have been modified and a short message log that contains details regarding the state change. The results captured are limited to Redfish response messages for these groups: BIOS, iSCSI, and Smart Array.
+Use this command to retrieve a Redfish response messages.
+The results command provides feedback after an iLO state change as a
+list of attributes that have been modified and a short message log
+that contains details regarding the state change.
+The results captured are limited to Redfish response messages
+for these groups: `Bios.`, `HpeServerBootSettings.`, `HpeiSCSISoftwareInitiator.`,
+`HpeKmsConfig.`, `HpeServerConfigLock.`, `HpeTlsConfig.`, `SmartStorageConfig.` (iLO 5 only).
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a
+server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the
+server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along
+with the password and URL flags to login to a
+server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with
+the user and URL flags to login. Use the provided
+iLO password corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when
+not logged in will have no effect.
 
-### Sendtest Command
+## Sendtest Command
 
-#### Syntax
+### Syntax
 
 `sendtest [Test Type] [Optional Parameters]`
 
-#### Description
+### Description
 
 Command for triggering various tests to iLO.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in
+the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the
+server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along
+with the password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the
+user and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
-#### Examples
+### Examples
 
 Send syslog test to the current logged in server.
 
 ```shell
-iLOrest > sendtest syslog
+ilorest sendtest syslog
 The operation completed successfully.
 ```
 
 Send alert mail test to the current logged in server.
 
 ```shell
-iLOrest > sendtest alertmail
+ilorest sendtest alertmail
 The operation completed successfully.
 ```
 
 Send SNMP test alert to the current logged in server.
 
 ```shell
-iLOrest > sendtest snmpalert
+ilorest sendtest snmpalert
 The operation completed successfully.
 ```
 
-### Serverclone Command
+## Serverclone Command
 
-#### Syntax
+### Syntax
 
 `serverclone [save/load] [OPTIONS]`
 
-#### Description
+### Description
 
-Creates a JSON formatted clone file (named ilorest_clone.json) of a system's iLO and bios configuration by default. You have the option to include Smart Storage Array configurations, as well as Single Sign-On and TLS certificates.
+Saves or load a JSON formatted file
+of a system's iLO and Bios configurations.
+It is possible to save [RDE capable](/docs/etc/glossaryterms/) storage device configurations
+and load Single Sign-On and TLS certificates, with specific options.
 
 :::info NOTES
 
-- The JSON file might require some editing.
-- The default values are set for the iLO Management Account password and Federation Group key when the auto (automated mode) is used.
-- When loading a clone file, login using an iLO account with full administrative privileges (such as the Administrator account) to ensure all system parameters are cloned successfully.
-- When working with iLO Management Accounts or iLO Federation Groups, remove entries from the JSON clone file (within the relevant dictionary) in order to perform deletion. In order to create new accounts on the server, simply add relevant nested dictionaries to the JSON file.
--The Administrator account cannot be deleted using `serverclone`.
--If settings for a particular type should not be changed, it is suggested to completely omit this dictionary from the JSON clone file.
--When adding or modifying the user inlocal mode, recovery privileges might not get updated in production mode. This is because in-band production mode does not have priviledge to add it.
+- A saved JSON file might require some editing before being loaded into another system.
+- Read-only properties are automatically discarded during a load operation.
+- Default values are set for the iLO Management Account
+  password and Federation Group key when the `auto` (automated mode) is used.
+- When loading a clone file, use a fully privileged iLO account (such as the Administrator account)
+  to ensure all system parameters are loaded successfully.
+- When working with iLO Management Accounts or iLO Federation Groups,
+  remove entries from the JSON clone file (within the relevant dictionary)
+  in order to perform deletion. In order to create new accounts on the server,
+  simply add relevant nested dictionaries to the JSON file.
+- The Administrator account cannot be deleted using `serverclone`.
+- If settings for a particular type should not be changed,
+  it is suggested to completely omit this dictionary from the JSON clone file.
+- When adding or modifying the user in local mode, recovery
+  privileges might not get updated in production mode.
+  This is because in-band production mode does not have privilege to add it.
 
 :::
 
-#### Parameters
+### Parameters
 
 - **save**
 
-Used to save a clone file.
+Used to save a clone file. Default output file is in current directory with name `ilorest_clone.json`.
+Refer to the `--clonefile, -f` argument to save into another file.
 
 :::info NOTE
 
-`serverclone save` command **does not** save ethernet interfaces (manager or system) configuration. Use the `save` [iLO global command](/docs/redfishclients/ilorest-userguide/globalcommands/#save-command) to save network related configuration.
+`serverclone save` command **does not** save ethernet interfaces
+(manager or system) configuration. Use
+the `save` [iLO global command](/docs/redfishclients/ilorest-userguide/globalcommands/#save-command)
+or the `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#examples-1)
+to save network related configuration.
 
 :::
 
@@ -2407,7 +3046,13 @@ Used to load a clone file.
 
 :::info NOTE
 
-In order to avoid unwanted communication interruptions with the iLO, the `serverclone load` command ignores modifications performed to the Manager Dedicated Network port URI (`/redfish/v1/Managers/1/EthernetInterfaces/1`). Use a `rawpatch` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#examples-3) to modify the settings of this port.
+In order to avoid unwanted communication interruptions with the iLO,
+the `serverclone load` command ignores modifications performed to the
+Manager Dedicated and Shared Network port URIs
+(`/redfish/v1/Managers/1/EthernetInterfaces/[1,2]`).
+Use the `ethernet --network_ipv4` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
+or the `rawpatch` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#examples-3)
+to modify the settings of these ports.
 :::
 
 - **-h, --help**
@@ -2416,7 +3061,9 @@ Including the help flag will display help for the command.
 
 - **--biospassword=BIOSPASSWORD**
 
-Select this flag to input a BIOS password. Include this flag if second-level BIOS authentication is needed for the command to execute.
+Select this flag to input a BIOS password.
+Include this flag if second-level BIOS authentication
+is needed for the command to execute.
 
 :::info NOTE
 
@@ -2425,70 +3072,101 @@ This option is only used on Gen 9 systems.
 
 - **--encryption=ENCRYPTION**
 
-Use this command optionally to encrypt/decrypt a file using the key provided.
+Use this command optionally to encrypt/decrypt a
+file using the key provided.
 
-- **--ssocert=SSOCERT**
+- **--ssocert=SSOCERT.txt**
 
-Use this command during 'load' to include an SSO certificate. This should be properly formatted in a simple text file.
+Use this command during `load` to include an SSO certificate.
+This should be properly formatted in a simple text file.
 
-- **--tlscert=TLSCERT**
+- **--tlscert=TLSCERT.txt**
 
-Use this command during 'load' to include a TLS certificate. This should be properly formatted in a simple text file.
+Use this command during `load` to include a TLS certificate.
+This should be properly formatted in a simple text file.
 
 - **-f CLONEFILENAME, --clonefile=CLONEFILENAME**
 
-This is an optional command used to rename the default clone file 'ilorest_clone.json'.
+This is an optional command used to rename the default clone
+file `ilorest_clone.json` into `CLONEFILENAME`.
 
 - **-sf CLONEFILENAME, --storageclonefile=CLONEFILENAME**
 
-This is an optional command used to rename the default storage clone file 'ilorest_storage_clone.json'.
+This is an optional command used to rename the default
+storage clone file `ilorest_storage_clone.json` into `CLONEFILENAME`.
 
 - **--errarch=ARCHIVE, --archive=ARCHIVE**
 
-Allow for save to automatically archive the clone file and error log file. Use with load will archive the clone file, temporary patch file, error log file and changelog file.
+Allow for save to automatically archive the clone file and error log file.
+Use with load will archive the clone file, temporary patch file, error log file and changelog file.
 
 - **--uniqueoverride**
 
-Use this command to override the measures stopping the tool from writing over items that are system unique.
+Use this command to override the measures stopping the tool
+from writing over items that are system unique.
 
 - **--auto**
 
-This optional command provides preset credentials. The preset value of **<p/k>** is used as the password for the iLO account manager accounts and the iLO federation group keys. Warning and confirmation messages are suppressed including those used to alert the user of mismatches and system reboots/iLO resets.
+This optional command provides preset credentials.
+The preset value of **<p/k>** is used as the password for
+the iLO account manager accounts and the iLO federation group keys.
+Warning and confirmation messages are suppressed including those
+used to alert the user of mismatches and system reboots/iLO resets.
 
 - **--ilossa**
 
-This is an optional command used to include configuration of iLO Smart Array Devices during save or load processes.
+This is an optional command used to save configuration of
+[RDE capable](/docs/etc/glossaryterms/)
+storage device configurations during save or load processes.
+Use the `-sf CLONEFILENAME, --storageclonefile=CLONEFILENAME` option
+to modify the default `ilorest_storage_clone.json` filename.
 
 - **--nobios**
 
-This is an optional command used to remove Bios configuration  during save or load processes.
+This is an optional command used to exclude Bios configuration
+during save or load processes.
 
-#### Login Parameters
+- **all**
 
-The following parameters can be included to login to a server in the same line as the command is run.
+Save and load iLO, Bios and [RDE capable](/docs/etc/glossaryterms/)
+storage device configurations.
+
+### Login Parameters
+
+The following parameters can be included to login to a
+server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided
+iLO URL along with the user and password flags
+to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with
+the password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with
+the user and URL flags to login. Use the provided
+iLO password corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
-#### Examples
+### Examples
 
-To save an iLO and Bios config run the command with the `save` argument. You can specify a filename using the (`-f, --filename`) option, if this option is not used the command will search for `ilorest_clone.json`.
+To save an iLO and Bios config run the command with the `save` argument.
+You can specify a filename using the (`-f, --filename`) option,
+if this option is not used the command will use `ilorest_clone.json`.
 
 ```shell
-iLOrest > serverclone save
+ilorest serverclone save
 Saving properties of type: AccountService, path: /redfish/v1/AccountService/
 Saving properties of type: Bios, path: /redfish/v1/systems/1/bios/settings/
 Saving properties of type: ComputerSystem, path: /redfish/v1/Systems/1/
@@ -2523,10 +3201,14 @@ Saving properties of type: SmartStorageConfig, path: /redfish/v1/systems/1/smart
 Saving of clonefile to 'ilorest_clone.json' is complete.
 ```
 
-To save an iLO and Bios config while providing a placeholder value for all user inputs run the command with the `save` argument and include the (`--auto`) option. This option can be used to programmatically create a file without user input and then use a script to fill in the settings.
+To save an iLO and Bios config while providing a placeholder
+value for all user inputs run the command with the `save` argument
+and include the (`--auto`) option. This option can be used to
+programmatically create a file without user input and then
+use a script to fill in the settings.
 
 ```shell
-iLOrest > serverclone save --auto
+ilorest serverclone save --auto
 Saving properties of type: AccountService, path: /redfish/v1/AccountService/
 Saving properties of type: Bios, path: /redfish/v1/systems/1/bios/settings/
 Saving properties of type: ComputerSystem, path: /redfish/v1/Systems/1/
@@ -2560,10 +3242,12 @@ Saving properties of type: SmartStorageConfig, path: /redfish/v1/systems/1/smart
 Saving of clonefile to 'ilorest_clone.json' is complete.
 ```
 
-By default, `--ilossa` information is stored in default file `ilorest_storage_clone.json`. To store it in a custom file, use `-sf` instead of `-f`
+By default, `--ilossa` information is stored in default
+file `ilorest_storage_clone.json`.
+To store it in a custom file, use `-sf` instead of `-f`.
 
 ```shell
-iLOrest > serverclone save --nobios --ilossa --auto
+ilorest serverclone save --nobios --ilossa --auto
 Saving of storage clone file to 'ilorest_storage_clone.json'......
 Saving properties of type /redfish/v1/Systems/1/Storage/DE009000/
 Selected option(s): #VolumeCollection.VolumeCollection
@@ -2572,10 +3256,12 @@ Saving properties of type /redfish/v1/Systems/1/Storage/DE009000/Controllers/0
 Saving of storage clone file to 'ilorest_storage_clone.json' is complete.
 ```
 
-To load a clone file run the command with the `load` argument. You can specify a filename using the (`-f, --filename`) option, if this option is not used the command will search for `ilorest_clone.json`.
+To load a clone file run the command with the `load` argument.
+You can specify a filename using the (`-f, --filename`) option,
+if this option is not used the command will search for `ilorest_clone.json`.
 
 ```shell
-iLOrest > serverclone load -f ilorest_clone.json
+ilorest serverclone load -f ilorest_clone.json
 A configuration file 'ilorest_clone.json' containing configuration changes will be applied to this iLO server resulting in system setting changes for BIOS, ethernet controllers, disk controllers, deletion and rearrangement of logical disks...etc. Please confirm you acknowledge and would like to perform this operation now? (y/n)
 
 Proceeding with ServerClone Load Operation...
@@ -2646,12 +3332,14 @@ System already Powered Off: PowerOff
 Loading of clonefile 'ilorest_clone.json' to server is complete. Review the changelog file 'changelog.log'.
 ```
 
-To load a clone file with SSO and/or TLS certificates run the command with the `load` argument and include the `--tlscert` and/or `--ssocert` arguments followed by certificate files.
+To load a clone file with SSO and/or TLS certificates run the
+command with the `load` argument and include
+the `--tlscert` and/or `--ssocert` arguments followed by certificate files.
 
 ```shell
-iLOrest > login
+ilorest login
 Discovering data...Done
-iLOrest > serverclone load  --auto --tlscert sso_certificate.txt --ssocert certificate.txt
+ilorest serverclone load  --auto --tlscert sso_certificate.txt --ssocert certificate.txt
 This system has BIOS Version U32.
 BIOS Versions are different. Suggest to have 'U30' in place before upgrading.
 This system has has iLO 5 with firmware revision 1.40.
@@ -2672,9 +3360,12 @@ The contents of type: '#HpeiLOFederationGroup.v2_0_0.HpeiLOFederationGroup' shou
 ...
 ```
 
-An example of simultaneously deleting one account and adding another within a JSON file. For new accounts, the path is simply a placeholder, iLO will determine the URI to be used.
+An example of simultaneously deleting one account and
+adding another within a JSON file. For new accounts,
+the path is simply a placeholder, iLO will determine the URI to be used.
 
-Clone file snippet to be modified; the element to be removed is <font color="#01a982">highlighted</font>.
+Clone file snippet to be modified; the element to be
+removed is <font color="#01a982">highlighted</font>.
 
 ```shell
 {
@@ -2723,7 +3414,8 @@ Clone file snippet to be modified; the element to be removed is <font color="#01
 }
 ```
 
-New version of clone file. The new element added is <font color="#01a982">highlighted</font>.
+New version of clone file. The new element added
+is <font color="#01a982">highlighted</font>.
 
 ```shell
 {
@@ -2772,17 +3464,18 @@ New version of clone file. The new element added is <font color="#01a982">highli
 }
 ```
 
-### Serverinfo Command
+## Serverinfo Command
 
-#### Syntax
+### Syntax
 
 `serverinfo [Optional Parameters]`
 
-#### Description
+### Description
 
-Command for viewing server information like firmware, software and other useful info.
+Command for viewing server information like firmware,
+software and other useful info.
 
-#### Parameters
+### Parameters
 
 - **--firmware**
 
@@ -2830,7 +3523,8 @@ Including the help flag will display help for the command.
 
 - **-f FILENAME, --filename=FILENAME**
 
-Use this flag if you wish to use a different filename than the default one. The default filename is ilorest.json.
+Use this flag if you wish to use a different filename than the default one.
+The default filename is ilorest.json.
 
 - **--filter=FILTER**
 
@@ -2838,34 +3532,44 @@ Optionally set a filter value and a filter attribute to filter logs.
 
 - **-j, --json**
 
-Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Optionally include this flag if you wish to change the displayed
+output to JSON format. Preserving the JSON data structure makes
+the information easier to parse.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a
+server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided
+iLO URL along with the user and password flags to
+login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with
+the user and URL flags to login. Use the provided
+iLO password corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in will
+have no effect.
 
-#### Examples
+### Examples
 
 Use option --firmware to list the FW and its versions.
 
 ```shell
-iLOrest > serverinfo --firmware
+ilorest serverinfo --firmware
 
 ------------------------------------------------
 Firmware Information
@@ -2891,10 +3595,11 @@ Embedded Video Controller : 2.5
 Drive : HPD1
 ```
 
-Use option --proxy to view proxy settings. You can output the information to json file using --json or -j option.
+Use option --proxy to view proxy settings.
+You can output the information to json file using `--json` or `-j` option.
 
 ```shell
-iLOrest > serverinfo --proxy
+ilorest serverinfo --proxy
 
 ------------------------------------------------
 Proxy Information
@@ -2905,21 +3610,22 @@ ProxyServer : proxy.exampe.net
 ProxyUserName :
 ```
 
-### Serverlogs Command
+## Serverlogs Command
 
-#### Syntax
+### Syntax
 
-serverlogs *--selectlog=[Log_Selection] [Optional Parameters]*
+serverlogs `--selectlog=[Log_Selection] [Optional Parameters]`
 
-#### Description
+### Description
 
 Command for downloading and performing log operations.
 
 :::warning Warning
-You must use the default name when downloading AHS logs, the -f parameter is not supported.
+You must use the default name when downloading AHS logs,
+the -f parameter is not supported.
 :::
 
-#### Parameters
+### Parameters
 
 - **AHS**
 
@@ -2933,9 +3639,9 @@ Use this with the --selectlog option to perform operations on the IEL logs.
 
 Use this with the --selectlog option to perform operations on the IML logs.
 
-- **SA**
+- **SL**
 
-Use this with the --selectlog option to perfrom opertation on the Security logs.
+To perform operations on the Security logs.
 
 - **-h, --help**
 
@@ -2943,7 +3649,8 @@ Including the help flag will display help for the command.
 
 - **-f FILENAME, --filename=FILENAME**
 
-Use this flag if you wish to use a different filename than the default one. The default filename is ilorest.json.
+Use this flag if you wish to use a different filename than the default one.
+The default filename is `ilorest.json`.
 
 - **--filter=FILTER**
 
@@ -2951,12 +3658,13 @@ Optionally set a filter value and a filter attribute to filter logs.
 
 - **-j, --json**
 
-Optionally include this flag if you wish to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Optionally include this flag if you wish to change the displayed
+output to JSON format. Preserving the JSON data structure makes
+the information easier to parse.
 
 - **--selectlog=SERVICE**
 
 Read log from the given log service. Options: IML, IEL or AHS.
-
 
 - **-c, --clearlog**
 
@@ -2976,7 +3684,8 @@ Directory path for the ahs file.
 
 - **-m MAINMES, --maintenancemessage=MAINMES**
 
-Maintenance message to be inserted into the log. (IML LOGS ONLY FEATURE)
+Maintenance message to be inserted into the log.
+(IML LOGS ONLY FEATURE)
 
 - **--mpfile=MPFILENAME**
 
@@ -2984,48 +3693,61 @@ Use the provided filename to obtain server information.
 
 - **-o OUTDIRECTORY, --outputdirectory=OUTDIRECTORY**
 
-Use the provided directory to output data for multiple server downloads.
+Use the provided directory to output data for multiple
+server downloads.
 
 - **--mplog=MPLOG**
 
-Used to indicate the logs to be downloaded on multiple servers. Allowable values: IEL, IML, AHS, all or combination of any two.
+Used to indicate the logs to be downloaded on multiple servers.
+Allowable values: IEL, IML, AHS, all or combination of any two.
 
 - **-r REPIML, --repair=REPIML**
 
 Repair the IML log with the given ID.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login
+to a server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided
+iLO URL along with the user and password flags to
+login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with
+the password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the
+user and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
-#### Examples
+### Examples
 
-Select `AHS` to download AHS logs from a server to a file. The filename is pre-generated from the server serial number and date and time the AHS log was gathered.
+Select `AHS` to download AHS logs from a server to a file. The filename is
+pre-generated from the server serial number and date and time
+the AHS log was gathered.
 
 ```shell
-iLOrest > serverlogs --selectlog=AHS
+ilorest serverlogs --selectlog=AHS
 ```
 
-To view logs select a log using the `--selectlog` option. You can output logs to a file with the `(-f, --filename)` option.
+To view logs select a log using the `--selectlog` option.
+You can output logs to a file with the `(-f, --filename)` option.
 
 ```shell
-iLOrest > serverlogs --selectlog=IML
+ilorest serverlogs --selectlog=IML
 
 @odata.type=#LogEntry.v1_0_0.LogEntry
 Name=Integrated Management Log
@@ -3053,7 +3775,7 @@ Severity=OK
 To filter logs you can use the `--filter` option.
 
 ```shell
-iLOrest > serverlogs --selectlog=IML --filter Id=1
+ilorest serverlogs --selectlog=IML --filter Id=1
 
 @odata.type=#LogEntry.v1_0_0.LogEntry
 Name=Integrated Management Log
@@ -3078,30 +3800,37 @@ EntryType=Oem
 Severity=OK
 ```
 
-Use the `--customiseAHS` with a string to customize AHS results. This is only available for downloading remote AHS logs. This command will only download AHS logs from January 26th 2019 to February 1st 2019.
+Use the `--customiseAHS` with a string to customize AHS results.
+This is only available for downloading remote AHS logs.
+This command will only download AHS logs from
+January 26th 2019 to February 1st 2019.
 
 ```shell
 serverlogs --selectlog=AHS --customiseAHS "from=2019-01-26&&to=2019-02-01"
 ```
 
-Clear logs by selecting a log with `--selectlog` and including the `(-c, --clearlog)` option. This command will clear the AHS logs.
+Clear logs by selecting a log with `--selectlog` and including
+the `(-c, --clearlog)` option. This command will clear the AHS logs.
 
 ```shell
-iLOrest > serverlogs --selectlog=AHS --clearlog
+ilorest serverlogs --selectlog=AHS --clearlog
 One or more properties were changed and will not take effect until the device is reset and system is rebooted
 ```
 
-To insert an IML log use the `(-m, --maintenancemessage)` flag. This is only available with IML logs.
+To insert an IML log use the `(-m, --maintenancemessage)` flag.
+This is only available with IML logs.
 
 ```shell
-iLOrest > serverlogs --selectlog=IML -m "Text message for maintenance"
+ilorest serverlogs --selectlog=IML -m "Text message for maintenance"
 [201] The operation completed successfully.
 ```
 
-To set an IML log as repaired use the `(-r, --repair)` option. Specify the Id of a log to mark as repaired. You can only repair entries with severities of `Critical` or `Warning`.
+To set an IML log as repaired use the `(-r, --repair)` option.
+Specify the Id of a log to mark as repaired.
+You can only repair entries with severities of `Critical` or `Warning`.
 
 ```shell
-iLOrest > serverlogs --selectlog=IML --filter Severity=Critical
+ilorest serverlogs --selectlog=IML --filter Severity=Critical
 
 @odata.type=#LogEntry.v1_0_0.LogEntry
 Name=Integrated Management Log
@@ -3126,9 +3855,9 @@ OemRecordFormat=Hpe-IML
 Message=Innovation Engine Image Authentication Error. The Innovation Engine image could not be authenticated.
 EntryType=Oem
 Severity=Critical
-iLOrest > serverlogs --selectlog=IML -r 3
+ilorest serverlogs --selectlog=IML -r 3
 The operation completed successfully.
-iLOrest > serverlogs --selectlog=IML --filter Id=3
+ilorest serverlogs --selectlog=IML --filter Id=3
 
 @odata.type=#LogEntry.v1_0_0.LogEntry
 Name=Integrated Management Log
@@ -3155,62 +3884,77 @@ EntryType=Oem
 Severity=OK
 ```
 
-### Serverstate Command
+## Serverstate Command
 
-#### Syntax
+### Syntax
 
 `serverstate [Optional Parameter]`
 
-#### Description
+### Description
 
 Returns the current state of the server.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to
+a server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided
+iLO URL along with the user and password flags
+to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along
+with the password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and
+URL flags to login. Use the provided iLO password corresponding
+to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
-#### Examples
+### Examples
 
-To return the serverstate run the command without arguments. Possible values include: None, Unknown, Reset, PowerOff, InPost, InPostDiscoveryComplete, FinishedPost.
+To return the serverstate run the command without arguments.
+Possible values include: None, Unknown,
+Reset, PowerOff, InPost, InPostDiscoveryComplete, FinishedPost.
 
 ```shell
-iLOrest > serverstate
+ilorest serverstate
 The server is currently in state: FinishedPost
 ```
 
-### SetTwoFactorAuthentication Command
+## SetTwoFactorAuthentication Command
 
-#### Syntax
+### Syntax
 
 `settwofactorauthentication [enable/disable/status/smtp] [OPTIONS]`
 
-#### Description
+### Description
 
-Manage the HPE iLO Two Factor Authentication (TFA). The following actions can be performed: Configure the iLO SMTP settings, get and set (enable/disable) TFA. Refer to the [TFA section](/docs/redfishservices/ilos/supplementdocuments/tfa/) for more information.
+Manage the HPE iLO Two Factor Authentication (TFA).
+The following actions can be performed:
+Configure the iLO SMTP settings, get and set
+(enable/disable) TFA. Refer to the
+[TFA section](/docs/redfishservices/ilos/supplementdocuments/tfa/)
+for more information.
 
-#### Parameters
+### Parameters
 
 - **enable**
 
@@ -3250,48 +3994,56 @@ Use this to provide valid smtp port value for smtp settings
 
 - **-j, --json**
 
-Use this command to change the displayed output to JSON format. Preserving the JSON data structure makes the information easier to parse.
+Use this command to change the displayed output to JSON format.
+Preserving the JSON data structure makes the information easier to parse.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to
+login to a server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet,
+use the provided iLO URL along with the user and password
+flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet,
+use this flag along with the user and URL flags to login.
+Use the provided iLO password corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after this
+command is completed. Using this flag when not logged in will have no effect.
 
-#### Examples
+### Examples
 
 To set the SMTP settings on the server
 
 ```Shell
-iLOrest > settwofactorauthentication smtp --smtpfortfaenabled true --alertmailsenderdomain test@test.com --alertmailsmtpserver smtp.test.com --alertmailsmtpport 587
+ilorest settwofactorauthentication smtp --smtpfortfaenabled true --alertmailsenderdomain test@test.com --alertmailsmtpserver smtp.test.com --alertmailsmtpport 587
 The operation completed successfully.
 ```
 
 To enable TFA (Two Factor Authentication)
 
 ```Shell
-iLOrest > settwofactorauthentication enable 
+ilorest settwofactorauthentication enable 
 The operation completed successfully.
 ```
 
 To check the status of TFA enablement
 
 ```Shell
-iLOrest > settwofactorauthentication status 
+ilorest settwofactorauthentication status 
 TFA Status : Enabled
 SMTP for TFA Status : True
 ```
@@ -3299,137 +4051,158 @@ SMTP for TFA Status : True
 To disable TFA (Two Factor Authentication)
 
 ```Shell
-iLOrest > settwofactorauthentication disable
+ilorest settwofactorauthentication disable
 The operation completed successfully.
 ```
 
-### Sigrecompute Command
+## Sigrecompute Command
 
-#### Syntax
+### Syntax
 
 `sigrecompute [OPTIONS]`
 
-#### Description
+### Description
 Recalculate the signature on the systems configuration.
 
 :::info NOTE
 
-The sigrecompute command is not available on Redfish systems.
+The `sigrecompute` command is not available on Redfish systems.
 :::
 
-
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server in
+the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL along
+with the user and password flags to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the password and URL
+flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the user and
+URL flags to login. Use the provided iLO password corresponding to
+the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server after
+this command is completed. Using this flag when not logged in
+will have no effect.
 
-#### Examples
+### Examples
 
-To Recalculate the signature on the systems configuration run the command without arguments.
+To Recalculate the signature on the systems
+configuration run the command without arguments.
 
 ```shell
-iLOrest > sigrecompute
+ilorest sigrecompute
 The operation completed successfully.
 ```
 
-### Singlesignon Command
+## Singlesignon Command
 
-#### Syntax
+### Syntax
 
 `Singlesignon [OPTIONS]`
 
-#### Description
+### Description
 
 Command for all single sign on available actions.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Including the help flag will display help for the command.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a
+server in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided iLO URL
+along with the user and password flags to login to the server in the
+same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag along with the
+password and URL flags to login to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag along with the
+user and URL flags to login. Use the provided iLO password
+corresponding to the username you gave to login.
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
-#### Examples
+### Examples
 
-To delete a specific SSO record by running the command with the `deleterecord` argument and specify it by number.
+To delete a specific SSO record by running the command
+with the `deleterecord` argument and specify it by number.
 
 ```shell
-iLOrest > singlesignon deleterecord 1
+ilorest singlesignon deleterecord 1
 The operation completed successfully.
 ```
 
-To delete a specific SSO record by running the command with the `deleterecord` argument followed by the `all` keyword.
+To delete a specific SSO record by running the command
+with the `deleterecord` argument followed by the `all` keyword.
 
 ```shell
-iLOrest > singlesignon deleterecord all
+ilorest singlesignon deleterecord all
 The operation completed successfully.
 ```
 
-To import a SSO DNS name run the command with the `dnsname` argument followed by the DNS to import.
+To import a SSO DNS name run the command with
+the `dnsname` argument followed by the DNS to import.
 
 ```shell
-iLOrest > singlesignon importdns dnsname
+ilorest singlesignon importdns dnsname
 The operation completed successfully.
 ```
 
-To import a SSO certificate from a file run the command with the `importcert` argument followed by the certificate file to import. You can also import the certificate by URI, by specifying a URI path to the certificate instead.
+To import a SSO certificate from a file run the command
+with the `importcert` argument followed by the certificate
+file to import. You can also import the certificate by URI,
+by specifying a URI path to the certificate instead.
 
 ```shell
-iLOrest > singlesignon importcert certfile.txt
+ilorest singlesignon importcert certfile.txt
 The operation completed successfully.
 ```
 
-### Virtualmedia Command
+## Virtualmedia Command
 
-#### Syntax
+### Syntax
 
 `virtualmedia [ID] [URI] [OPTIONS]`
 
-#### Description
+### Description
 
 Command for inserting and removing virtual media.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -3437,7 +4210,9 @@ Including the help flag will display help for the command.
 
 - **--reboot=REBOOT**
 
-Use this flag to perform a reboot command function after completion of operations.  For help with parameters and descriptions regarding the reboot flag, run help reboot.
+Use this flag to perform a reboot command function after
+completion of operations.  For help with parameters and
+descriptions regarding the reboot flag, run help reboot.
 
 - **--remove**
 
@@ -3447,59 +4222,73 @@ Use this flag to remove the media from the selection.
 
 Use this flag if you wish to boot from the image on next server reboot.
 
-#### Login Parameters
+### Login Parameters
 
-The following parameters can be included to login to a server in the same line as the command is run.
+The following parameters can be included to login to a server
+in the same line as the command is run.
 
 - **--url=URL**
 
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+If you are not logged in yet, use the provided
+iLO URL along with the user and password flags
+to login to the server in the same command.
 
 - **-u User, --user=USER**
 
-If you are not logged in yet, use this flag along with the password and URL flags to login to a server in the same command.
+If you are not logged in yet, use this flag
+along with the password and URL flags to login
+to a server in the same command.
 
 - **-p Password, --password=PASSWORD**
 
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+If you are not logged in yet, use this flag
+along with the user and URL flags to login.
+Use the provided iLO password corresponding to the username you gave to login.
 
 :::info NOTE
 
-The image will be ejected automatically on the second server reboot so that the server does not boot to the image twice.
+The image will be ejected automatically on the second server
+reboot so that the server does not boot to the image twice.
 :::
 
 - **--logout**
 
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+Optionally include the logout flag to log out of the server
+after this command is completed. Using this flag when not
+logged in will have no effect.
 
-#### Examples
+### Examples
 
 To view current virtual media run the command without arguments.
 
 ```shell
-iLOrest > virtualmedia
+ilorest virtualmedia
 Available Virtual Media Options:
 [1] Media Types Available: Floppy USBStick  Image Inserted: None
 [2] Media Types Available: CD DVD  Image Inserted: None
 ```
 
-To insert virtual media specify the type of virtual media by Id number followed by the URI location to the image. You can specify the media to boot next reset by including the `--bootnextreset` option.
+To insert virtual media specify the type of virtual media by
+Id number followed by the URI location to the image.
+You can specify the media to boot next reset by including
+the `--bootnextreset` option.
 
 ```shell
-iLOrest > virtualmedia 2 https://xx.xx.xx.xx/path/to/vm.iso --bootnextreset
+ilorest virtualmedia 2 https://xx.xx.xx.xx/path/to/vm.iso --bootnextreset
 The operation completed successfully.
-iLOrest > virtualmedia
+ilorest virtualmedia
 Available Virtual Media Options:
 [1] Media Types Available: Floppy USBStick  Image Inserted: None
 [2] Media Types Available: CD DVD  Image Inserted: https://xx.xx.xx.xx/path/to/vm.iso
 ```
 
-To remove an inserted media specify the type of virtual media by Id number and include the `--remove` option.
+To remove an inserted media specify the type of virtual
+media by Id number and include the `--remove` option.
 
 ```shell
-iLOrest > virtualmedia 2 --remove
+ilorest virtualmedia 2 --remove
 The operation completed successfully.
-iLOrest > virtualmedia
+ilorest virtualmedia
 Available Virtual Media Options:
 [1] Media Types Available: Floppy USBStick  Image Inserted: None
 [2] Media Types Available: CD DVD  Image Inserted: None

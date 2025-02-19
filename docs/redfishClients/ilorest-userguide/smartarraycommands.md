@@ -3,11 +3,11 @@ seo:
   title: Storage devices commands
 toc:
   enable: true
-  maxDepth: 3
+  maxDepth: 2
 disableLastModified: false
 ---
 
-## Storage commands for RDE capable devices
+# Storage commands for RDE capable devices
 
 :::info NOTE
 
@@ -36,13 +36,13 @@ should return: `vMainDeviceDiscoveryComplete`
 
 :::
 
-### Storagecontroller command (former smartarray command)
+## Storagecontroller command (former smartarray command)
 
-#### Syntax
+### Syntax
 
 storagecontroller _[sub-command]_ _[parameters]_
 
-#### Description
+### Description
 
 - Display storage controller, logical volume and drive
 information of [PLDM for RDE](/docs/etc/glossaryterms/) capable storage
@@ -57,7 +57,7 @@ sub-command returns a summary of storage device(s) present in the system.
 Optional parameters narrows the scope of returned
 properties to individual controllers, volumes or drives.
 
-#### Sub-commands
+### Sub-commands
 
 - **default**
 
@@ -96,7 +96,7 @@ the configuration is saved in
 Load a JSON file with modified storage controller configurations
 (read-only properties are discarded).
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -128,7 +128,7 @@ Use this parameter to print the output in JSON format.
 
 Save or load the configuration information using `<filename.json>`
 
-#### Login Parameters
+### Login Parameters
 
 The following parameters can be included to login to a server in
 the same line as the command is run.
@@ -154,7 +154,7 @@ to the username you gave to login.
 
 Optionally include the `--logout` parameter to log out of the server after this command is completed. Using this parameter when not logged in will have no effect.
 
-#### Examples
+### Examples
 
 To list RDE capable storage devices with a brief summary of their properties,
 run the `storagecontroller` command without arguments or with the `default` sub-command.
@@ -587,13 +587,13 @@ ilorest get --select Drive. --filter "Links/Storage/@odata.id=/redfish/v1/System
 
 <!-- Need to include an example with load command. Need help.  -->
 
-### Createvolume Command (former createlogicaldrive command)
+## Createvolume Command (former createlogicaldrive command)
 
-#### Syntax
+### Syntax
 
 createvolume sub-command _[Parameters]_
 
-#### Description
+### Description
 
 Creates a new volume on the selected storage device/controller.
 
@@ -625,7 +625,7 @@ Potentially accepts available parameters.
 - --paritytype: Default, Rapid
 - --storageid: Storage Id (iLO 6 only).
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -690,7 +690,7 @@ Optionally include to choose the strip size in bytes (usable in custom creation 
 
 Optionally include to choose the stripe size in bytes (usable in custom creation only).
 
-#### Login Parameters
+### Login Parameters
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -710,7 +710,7 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Examples
+### Examples
 
 To create quickly a volume, run the command with the following arguments: The type of creation as `quickdrive`, the raid level, the number of drives to use, the type of drive to use, the drive interface type, and the drive location. Also include the `--controller` option selecting the controller the drive will be created on. See the options list for possible values of these and more.
 
@@ -770,17 +770,17 @@ run the results command to check for errors in the configuration.
 
 :::
 
-### Deletevolume Command (former deletelogicaldrive command)
+## Deletevolume Command (former deletelogicaldrive command)
 
-#### Syntax
+### Syntax
 
 deletevolume _[Optional Parameters]_
 
-#### Description
+### Description
 
 Deletes volume(s) from the selected controller of a specific storage device.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -802,7 +802,7 @@ Use this flag to delete all volumes on a controller.
 
 Use this flag to override the "are you sure?" text when deleting a logical drive.
 
-#### Login Parameters
+### Login Parameters
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -822,7 +822,7 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Examples
+### Examples
 
 The following example deletes volume 239 behind controller 0 of storage id DE040000.
 
@@ -854,21 +854,21 @@ To delete multiple volumes by drive location include the drive location of the d
 
 <!-- Need a working example illustrating the above statement -->
 
-### Drivesanitize Command
+## Drivesanitize Command
 
 <!--
     The Drivesanitize command needs a complete review/re-test.
 -->
 
-#### Syntax
+### Syntax
 
 drivesanitize _[Optional Parameters]_
 
-#### Description
+### Description
 
 Erase/Sanitizes physical drives.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
@@ -902,7 +902,7 @@ Include this flag to perform a coldboot command function after completion of ope
 
 Use this flag to sanitize all physical drives on a controller.
 
-#### Login Parameters
+### Login Parameters
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -922,7 +922,7 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Examples
+### Examples
 
 To sanitize a physical drive pass its drive location along with the `--controller` option to specify which controller to perform the operation on.
 
@@ -960,97 +960,45 @@ ilorest > drivesanitize 1I:1:1 --controller=1 --storageid=DE00900 --mediatype="H
 DriveReset path and payload: /redfish/v1/Systems/1/Storage/DE00A000/Drives/8/Actions/Drive.Reset, {"ResetType": "ForceOn"}
 ```
 
-### Factoryresetcontroller Command
-
-<!-- 
-     The Factoryresetcontroller command needs
-     a complete review/re-test.
--->
-
-#### Syntax
-
-factoryresetcontroller _[Optional Parameters]_
-
-#### Description
-
-Restores a controller to factory defaults.
-
-#### Parameters
-
-- **-h, --help**
-
-Including the help flag will display help for the command.
-
-- **--controller=CONTROLLER**
-
-Use this flag to select the corresponding controller.
-
-#### Login Parameters
-
-The following parameters can be included to login to a server in the same line as the command is run.
-
-- **--url=URL**
-
-If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
-
-- **-u User, --user=USER**
-
-If you are not logged in yet, including this flag along with the password and URL flags can be used to login to a server in the same command.
-
-- **-p Password, --password=PASSWORD**
-
-If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
-
-- **--logout**
-
-Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
-
-#### Examples
-
-To factory reset a controller run this command and specify it's index with the `--controller` option.
-
-```shell
-ilorest > factoryresetcontroller --controller=1
-One or more properties were changed and will not take effect until system is reset.
-```
-
-To factory reset all controllers run this command and include the `--all` option.
-
-```shell
-ilorest > factoryresetcontroller --all
-One or more properties were changed and will not take effect until system is reset.
-```
-
-### Clearcontrollerconfig Command
+## Clearcontrollerconfig Command
 
 <!-- 
      The Clearcontrollerconfig command needs
      a complete review/re-test.
 -->
 
-#### Syntax
+### Syntax
 
-clearcontrollerconfig _[Optional Parameters]_
+clearcontrollerconfig _[Parameters]_
 
-#### Description
+### Description
 
-Clears controller configuration.
+<!-- 
+Need to explain how to select 
+a specific device when several are present 
+in the system.
+-->
 
-#### Parameters
+Clears specific controller configuration. This command does not reset
+the entire device to factory settings. It can be used for
+reconfiguring or troubleshooting.
+
+:::info NOTE
+<a href="https://www.hpe.com/psnow/doc/a50006146enw?from=app&section=search&isFutureVersion=true"
+target="_blank">Broadcom MegaRaid MR controllers</a>
+for Gen11 servers don't support this command.
+:::
+### Parameters
 
 - **-h, --help**
 
-Including the help flag will display help for the command.
+Including the `--help` parameter displays help for the command.
 
 - **--controller=CONTROLLER**
 
-Use this flag to select the corresponding controller.
+Use this parameter to select the corresponding controller.
 
-- **--all**
-
-Use this flag to sanitize all physical drives on a controller.
-
-#### Login Parameters
+### Login Parameters
 
 The following parameters can be included to login to a server in the same line as the command is run.
 
@@ -1070,11 +1018,80 @@ If you are not logged in yet, use this flag along with the user and URL flags to
 
 Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
 
-#### Examples
+### Examples
 
-To clear a controller configuration run the command including the `--controller` option specifying the controller to clear.
+To clear a controller configuration run the command including the `--controller` parameter specifying the controller to clear.
 
 ```shell
-ilorest > clearcontrollerconfig --controller=1
-One or more properties were changed an will not take effect until system is reset.
+ilorest clearcontrollerconfig --controller=1
+The operation completed successfully.
+```
+
+## Factoryresetcontroller Command
+
+<!-- 
+     The Factoryresetcontroller command needs
+     a complete review/re-test.
+-->
+
+### Syntax
+
+factoryresetcontroller _[Parameters]_
+
+### Description
+
+Restores a controller to factory defaults and
+remove user data and customizations.
+
+### Parameters
+
+- **-h, --help**
+
+Including the `--help` parameter displays help for the command.
+
+- **--controller=CONTROLLER**
+
+Use this parameter to select the corresponding controller.
+
+- **--reset_type RESET_TYPE**
+
+Against iLO 6 only, this parameter provides the reset type.
+Possible values are: `resetall` and `preservevolumes`.
+
+- **--storageid STORAGEID**
+
+Against iLO 6 only, this parameter selects a specific storage device.
+
+### Login Parameters
+
+The following parameters can be included to login to a server in the same line as the command is run.
+
+- **--url=URL**
+
+If you are not logged in yet, use the provided iLO URL along with the user and password flags to login to the server in the same command.
+
+- **-u User, --user=USER**
+
+If you are not logged in yet, including this flag along with the password and URL flags can be used to login to a server in the same command.
+
+- **-p Password, --password=PASSWORD**
+
+If you are not logged in yet, use this flag along with the user and URL flags to login. Use the provided iLO password corresponding to the username you gave to login.
+
+- **--logout**
+
+Optionally include the logout flag to log out of the server after this command is completed. Using this flag when not logged in will have no effect.
+
+### Examples
+
+```shell iLO 5
+ilorest factoryresetcontroller --controller=0
+FactoryReset path and payload: /redfish/v1/systems/1/smartstorageconfig/settings/, {'Actions': [{'Action': 'FactoryReset'}], 'DataGuard': 'Disabled'}
+The operation completed successfully.
+[0]: Slot 0
+```
+
+```shell iLO 6
+ilorest factoryresetcontroller --storageid DE040000 --reset_type preservevolumes
+The operation completed successfully.
 ```

@@ -37,7 +37,11 @@ The requirements for the managed server are as follows:
 
 ## Updating the JSON schemas used by HPE iLOrest
 
-<!-- Need practical examples or the exact location where the schemas are updated to better illustrate the topic -->
+<!-- 
+     Need practical examples or the exact location
+     where the schemas are updated to better illustrate
+     the topic
+-->
 Latest schemas are automatically updated when using
 HPE iLO 4 2.10 or later and the RESTful Interface
 Tool 2.4.0 or later.  
@@ -71,14 +75,16 @@ Use `mount -o remount,exec /tmp` to remount `/tmp` in `exec` mode.
 
 ## Installing the iLOrest PyPI package
 
-The iLOrest PyPI package is an official <a href="https://pypi.org/project/ilorest" target="_blank">PyPI project</a>.
+The iLOrest PyPI package is an official
+<a href="https://pypi.org/project/ilorest" target="_blank">PyPI project</a>.
 
 ### Requirements
 
 - Python3 is required prior to the installation.
 - ARM based servers: Verify in the iLOrest [Changelog](../changelog/) section
 that the iLOrest PyPI package is supported on this architecture.
-- Absence of the [DMTF's Python Redfish Library](/docs/redfishclients/python-redfish-library/installationguide/#pip-install)
+- Absence of the
+  [DMTF's Python Redfish Library](/docs/redfishclients/python-redfish-library/installationguide/#pip-install)
 
 ### Installation methods
 
@@ -118,7 +124,8 @@ Use the following command to completely uninstall the package:
 ### Linux
 
 1. Open a terminal window.
-2. Run the following command to start interactive mode: `/usr/sbin/ilorest`
+2. Run the following command to start interactive
+   mode: `/usr/sbin/ilorest`
 
 ### MAC
 

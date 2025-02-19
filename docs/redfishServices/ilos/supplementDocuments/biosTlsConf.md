@@ -7,38 +7,58 @@ toc:
 disableLastModified: false
 ---
 
-# HTTPS Boot TLS Configuration
+## HTTPS Boot TLS Configuration
 
- This section describes the Transport Layer Security (TLS) configuration of the UEFI (BIOS) subsystem. This configuration is required if you want to boot an operating system from remote using the HTTPS protocol.
+This section describes the HPE Transport Layer Security (TLS) configuration
+of the UEFI/BIOS
+[OEM extension](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpetlsconfig).
+This configuration is required if you want to boot an operating system from
+remote using the HTTPS protocol.
 
 :::info NOTE
-The iLO TLS configuration is presented in the [Security Service](/docs/redfishservices/ilos/supplementdocuments/securityservice/) section.
+The iLO TLS configuration is presented in the
+[Security Service](/docs/redfishservices/ilos/supplementdocuments/securityservice/)
+section.
 :::
 
- The HPE Oem `#HpeTlsConfig` data type extension, located under `/redfish/v1/Systems/{id}/bios/oem/hpe/tlsconfig/`, is used for reading and setting properties. It has three resources:
+ In iLO 6, the HPE OEM `#HpeTlsConfig` extension
+[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpetlsconfig)
+is `/redfish/v1/Systems/{id}/bios/oem/hpe/tlsconfig/`. In iLO 5 the
+[URI](/docs/redfishservices/ilos/ilo5/ilo5_{{process.env.LATEST_ILO5_FW_VERSION}}/ilo5_hpe_resourcedefns{{process.env.LATEST_ILO5_FW_VERSION}}/#hpetlsconfig)
+is `/redfish/v1/Systems/{id}/bios/tlsconfig/`. It is used for
+reading and setting properties. It has three resources:
 
-* **Current Settings Resource (read-only)** : `/redfish/v1/systems/1/bios/oem/hpe/tlsconfig/`
-  * Contains current TLS certificates resource configuration data present in the system.
-* **Pending Settings Resource (read/write)** : `/redfish/v1/systems/1/bios/oem/hpe/tlsconfig/settings/`
-  * Writable resource used to configure Bios TLS certificates settings
-  * Modifiable properties:
+- **Current Settings Resource (read-only)** :
+  `/redfish/v1/systems/1/bios/oem/hpe/tlsconfig/`
+  - Contains current TLS certificates resource configuration data active
+    in the system.
 
-    * `"Ciphers"` - Set the desired supported ciphers
-    * `"HostnameCheck"` - Enable/Disable host name checking
-    * `"ProtocolVersion"` - Set the desired protocol version
-    * `"VerifyMode"` - Set the verification method (PEER/NONE)
-    * `"NewCertificates"` - An array of the certificates to be installed
-    * `"DeleteCertificates"` - An array of the fingerprints of the certificates to be deleted
-    * Read Only properties that gets modified internally:
-    * `"Certificates"` - An array of all the installed certificates
-    * `"TlsCaCertificateCount"` - The number of the installed certificates
+- **Pending Settings Resource (read/write)** :
+    `/redfish/v1/systems/1/bios/oem/hpe/tlsconfig/settings/`
+  - Writable resources
+    - `"Ciphers"` - Set the desired supported ciphers
+    - `"HostnameCheck"` - Enable/Disable host name checking
+    - `"ProtocolVersion"` - Set the desired protocol version
+    - `"VerifyMode"` - Set the verification method (PEER/NONE)
+    - `"NewCertificates"` - An array of the certificates to be installed
+    - `"DeleteCertificates"` - An array of the fingerprints of the
+      certificates to be deleted
+  
+  - Read Only properties that gets modified internally:
+    - `"Certificates"` - An array of all the installed certificates
+    - `"TlsCaCertificateCount"` - The number of the installed certificates
 
-* **TLS Default Settings Resource (read-only)** : `/redfish/v1/systems/1/bios/oem/hpe/tlsconfig/baseconfigs/`
-   Holds the default values of the resource
+- **TLS Default Settings Resource (read-only)** :
+  `/redfish/v1/systems/1/bios/oem/hpe/tlsconfig/baseconfigs/`
+  - Holds the default values of the resource. Refer to the
+    [example below](#resetting-the-tls-resource-to-its-default-settings)
+    to perform the reset.
 
 ## Installing Certificates
 
-The certificates are X509 keys. In PEM format, the certificates are encoded in a series of strings with LF or CR-LF invisible characters in their ASCII representation (\n or \r\n):
+The certificates are X509 keys. In PEM format, the certificates are encoded
+in a series of strings with LF or CR-LF invisible characters in their
+ASCII representation (\n or \r\n):
 
 The following is an example of a CR-LF certificate in a PEM format:
 
@@ -51,7 +71,8 @@ The following is an example of a CR-LF certificate in a PEM format:
     -----END CERTIFICATE-----
 ```
 
-It should be modified to replace the CR-LF characters with their ASCII representation:
+It should be modified to replace the CR-LF characters with their ASCII
+representation:
 
 ```Text
     -----BEGIN CERTIFICATE-----\r\nMIIGxDCCBaygAwIBAgIQUkL9757013wOQ2heZMCLizANBgkqhkiG9w0BAQsFADCB\r\nkTELMAkGA1UEBhMCVVMxKzApBgNVBAo
@@ -61,12 +82,21 @@ It should be modified to replace the CR-LF characters with their ASCII represent
 ```
 
 :::success Tip
-On Linux systems, you can use the following `sed` command to replace the CR-LF or LF invisible characters with their ASCII representation:
+On Linux systems, you can use the following `sed` or `awk` commands to
+replace the CR-LF or LF invisible characters in a `file` with their
+ASCII representation:
 
+`dos2unix file`<br>
 `sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' file`
+
+or
+
+`dos2unix file`<br>
+`awk '{printf "%s\\n", $0}' file`
 :::
 
-Finally, the certificates needs to be PUT (only a PUT would work) through the API (Postman,..):
+Finally, the certificate needs to be PUT (only a PUT request will
+be successful) through the API:
 
 ```text PUT request
 PUT /redfish/v1/Systems/{item}/bios/oem/hpe/tlsconfig/settings/
@@ -125,7 +155,9 @@ PUT /redfish/v1/Systems/{item}/bios/oem/hpe/tlsconfig/settings/
 
 ## Deleting Certificates
 
-When a certificate is installed, a new field is created with the Fingerprint of that certificate (SHA256). To remove a certificate, PUT the fingerprint to remove in the settings environment.
+When a certificate is installed, a new field is created with the Fingerprint
+of that certificate (SHA256). To remove a certificate, PUT the fingerprint
+to remove in the settings environment.
 
 ```text PUT request
 PUT /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
@@ -178,10 +210,10 @@ PUT /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 
 ## Examples of other changes
 
-* **Modifying Ciphers**
+- **Modifying Ciphers**
 
 ```text PATCH request
-PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
+PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/ 
 ```
 
 ```json Body
@@ -190,7 +222,7 @@ PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 }
 ```
 
-* **Modifying VerifyMode**
+- **Modifying VerifyMode**
 Possible values: PEER or NONE.
 
 ```text PATCH request
@@ -203,7 +235,7 @@ PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 }    
 ```
 
-* **Modifying HostnameCheck**
+- **Modifying HostnameCheck**
 Cannot be changed if `VerifyMode` is set to NONE.
 
 ```text PATCH request
@@ -216,7 +248,7 @@ PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 }    
 ```
 
-* **Modifying ProtocolVersion**
+- **Modifying ProtocolVersion**
 Possible values: "AUTO", "1.0", "1.1" or "1.2".
 
 ```text PATCH request

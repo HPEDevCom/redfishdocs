@@ -259,3 +259,73 @@ Then, specify the logger file name, format of the logger, and the logging level.
 ```
 
 After running some commands, your log file should be populated in the file specified at creation.
+
+## Execution of parallel in-band commands
+
+Starting with version 5.1.0.0, the HPE Python Redfish library supports the execution of atmost 8 parallel processes in <a href="https://developer.hpe.com/blog/chif-driver-not-found/#quick-reminder-of-ilorest-in-band-management" target="_blank">local / in-band</a> mode.
+
+Any method of parallel scripting is supported as long as no more than eight local connections are started simultaneously.
+
+:::info NOTE
+HPE iLOs in High Security or FIPS security modes have restrictions. Refer to this [section](/docs/redfishclients/ilorest-userguide/highsecurity/#setting-ilo-in-a-high-security-mode) for more information.
+:::
+
+The following example launches in parallel three threads of a Python script.
+
+```shell Command
+seq 1 3 | xargs -I -P3 python get_temp.py inband
+```
+
+```python Script source
+#
+# This Python script retrieves thermal information
+# using the HPE Python Redfish library in local / in-band mode.
+# This script returns an error when launched against an iLO
+# in HighSecurity or FIPS security mode.
+#
+# You must elevate your privilege to Administrator or root (i.e sudo) to run
+# successfully this script against an iLO in Production security mode.
+#
+# Use the following commands to install the HPE Python Redfish library:
+#
+#    pip uninstall redfish
+#    pip install python-ilorest-library
+
+# Refer to
+# https://servermanagementportal.ext.hpe.com/docs/redfishclients/python-redfish-library/
+# for more information.
+
+import redfish
+ 
+import time
+import contextlib
+import sys
+
+@contextlib.contextmanager
+def perf(title):
+    start = time.time()
+    yield
+    finish = time.time()
+    print("{} took {} seconds".format(title, finish - start))
+ 
+
+def get_temp_values_inband():
+    with perf("inband"):
+        client = redfish.RedfishClient(base_url="blobstore://.")
+        client.get("/redfish/v1/Chassis/1/Thermal")
+
+def get_temp_values_outband():
+    with perf("outband"):
+        client = redfish.RedfishClient(
+            base_url="https://X.X.X.X", username="admin-user", password="adminpass"
+        )
+        client.login()
+        client.get("/redfish/v1/Chassis/1/Thermal")
+ 
+ 
+if sys.argv[1] == "inband":
+    get_temp_values_inband()
+else:
+    get_temp_values_outband()
+
+```

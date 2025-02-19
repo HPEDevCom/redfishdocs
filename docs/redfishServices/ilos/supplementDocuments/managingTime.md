@@ -7,15 +7,17 @@ toc:
 disableLastModified: false
 ---
 
-# Managing Time in iLO
+## Managing Time in iLO
 
 :::info NOTE
 
-It is possible that some properties or resources described in this section are not implemented in iLO 4 and iLO 5.
+It is possible that some properties or resources described in this section
+are not implemented in iLO 4 and iLO 5.
 
 :::
 
-iLO obtains the date and time from one of several sources and is not manually configurable.
+iLO obtains the date and time from one of several sources and is not
+manually configurable.
 
 * Network Time Protocol (NTP) Servers
 * System UEFI during Boot
@@ -24,11 +26,14 @@ The configurable iLO time/date related configuration properties are:
 
 * Time zone
 * NTP Server addresses
-* Option to synchronize the host to the date and time of iLO during first boot after AC power is applied (`PropagateTimeToHost` Boolean, in the `HpeiLODateTime` data type.)
+* Option to synchronize the host to the date and time of iLO during
+  first boot after AC power is applied (`PropagateTimeToHost` Boolean,
+  in the `HpeiLODateTime` data type.)
 
 ## iLO date and time
 
-Current date and time of iLO is available in the main `Manager` resource at `/redfish/v1/Managers/{id}`
+Current date and time of iLO is available in the main `Manager`
+resource at `/redfish/v1/Managers/{id}`
 
 ```text Generic GET date/time
 GET /redfish/v1/Managers/{id}/?$select=DateTime, DateTimeLocalOffset
@@ -55,13 +60,18 @@ ilorest --nologo get --json DateTime DateTimeLocalOffset  \
 
 ### Date/Time Service Resource
 
-A link exists in `/redfish/v1/Managers/{id}` to the iLO Date/Time Service. It points to a DateTime resource at `/redfish/v1/Managers/{id}/DateTime` part of the `HpeiLODateTime` data type.
+A link exists in `/redfish/v1/Managers/{id}` to the iLO Date/Time Service.
+It points to a DateTime resource at `/redfish/v1/Managers/{id}/DateTime`
+part of the `HpeiLODateTime` data type.
 
 ## Time Zone Management
 
-Time Zone configuration is performed with a PATCH to the `HpeiLODateTime` resource type at `/redfish/v1/Managers/{id}/DateTime`.
+Time Zone configuration is performed with a PATCH to the `HpeiLODateTime`
+resource type at `/redfish/v1/Managers/{id}/DateTime`.
 
-The available time zones are listed in the `TimeZoneList` property. Take note of the `Index` value of the time zone you wish iLO to be configured with. Then `PATCH` the `TimeZone.Index` property:
+The available time zones are listed in the `TimeZoneList` property. Take note
+of the `Index` value of the time zone you wish iLO to be configured with.
+Then `PATCH` the `TimeZone.Index` property:
 
 ```text Time zone configuration
 PATCH /redfish/v1/Managers/{id}/DateTime
@@ -75,9 +85,15 @@ PATCH /redfish/v1/Managers/{id}/DateTime
 }
 ```
 
-If the operation is successful, iLO responds with `HTTP 200 OK` and `ResetRequired`. An iLO reset is required for date and time operations to be applied. After a successful PATCH the `ConfigurationSettings` property contains `SomePendingReset` indicating that some settings have changed but they not take effect until iLO is reset.
+If the operation is successful, iLO responds with `HTTP 200 OK`
+and `ResetRequired`. An iLO reset is required for date and time
+operations to be applied. After a successful PATCH the
+`ConfigurationSettings` property contains `SomePendingReset`
+indicating that some settings have changed but they not take
+effect until iLO is reset.
 
-The following example illustrates this behavior using the iLOrest command line tool. Only relevant output is shown.
+The following example illustrates this behavior using the iLOrest
+command line tool. Only relevant output is shown.
 
 ```shell iLOrest
 ilorest login ilo-ip -u user -p password
@@ -90,8 +106,8 @@ ilorest get --json TimeZone/Index ConfigurationSettings
     "Name": "Central America, Central Time(US & Canada)",
     "UtcOffset": "-06:00",
     "Value": "CST+6:00CDT+05:00:00,M3.2.0/02:00:00,M11.1.0/02:00:00"
-  }
 }
+
 
 ilorest set TimeZone/Index=17 --commit
 Added the following patch:
@@ -104,8 +120,9 @@ The operation completed successfully.
 ilorest get --json TimeZone/Index ConfigurationSettings
 {
   "ConfigurationSettings": "SomePendingReset",
-  "TimeZone": {
-    "Index": 17
+  "TimeZone": 
+  {
+    "Index": 17 
   }
 }
 
@@ -118,7 +135,8 @@ ilorest login ilo-ip -u user -p password --selector HpeiLODateTime.
 ilorest get --json TimeZone/Index ConfigurationSettings
 {
   "ConfigurationSettings": "Current",
-  "TimeZone": {
+  "TimeZone": 
+  {
     "Index": 17
   }
 }
@@ -126,11 +144,15 @@ ilorest get --json TimeZone/Index ConfigurationSettings
 ilorest logout
 ```
 
-If the time zone is configured to be managed by DHCP, iLO responds with `HTTP 400` and `SNTPConfigurationManagedByDHCPAndIsReadOnly` (see Using DHCP Supplied Time Settings).
+If the time zone is configured to be managed by DHCP, iLO responds with
+`HTTP 400` and `SNTPConfigurationManagedByDHCPAndIsReadOnly`
+(see Using DHCP Supplied Time Settings).
 
 ## Configuring the Network Time Protocol (NTP)
 
-The current configured Network Time Protocol (NTP) servers are available in the `HpeiLODateTime` resource type at `/redfish/v1/Managers/{id}/DateTime`.
+The current configured Network Time Protocol (NTP) servers are available
+in the `HpeiLODateTime` resource type at
+`/redfish/v1/Managers/{id}/DateTime`.
 
 ```text Generic GET NTP servers request
 GET /redfish/v1/Managers/{id}/DateTime/?$select=NTPServers
@@ -157,7 +179,8 @@ ilorest logout
 }
 ```
 
-If NTP is not being managed by DHCP, you may PATCH server addresses into the `StaticNTPServers` array as shown in the following example.
+If NTP is not being managed by DHCP, you may PATCH server addresses
+into the `StaticNTPServers` array as shown in the following example.
 
 ```text NTP servers PATCH URI
 PATCH /redfish/v1/Managers/{id}/DateTime
@@ -180,7 +203,10 @@ PATCH /redfish/v1/Managers/{id}/DateTime
 }
 ```
 
-If the operation is successful, iLO responds with `HTTP 200 OK` and `Success`. After a successful PATCH the `ConfigurationSettings` property contains `Current` indicating that the new settings have have been taken into account.
+If the operation is successful, iLO responds with `HTTP 200 OK` and
+`Success`. After a successful PATCH the `ConfigurationSettings` property
+contains `Current` indicating that the new settings have have been taken
+into account.
 
 :::success TIP
 To empty the NTP servers list, PATCH with the following body:
@@ -189,10 +215,12 @@ To empty the NTP servers list, PATCH with the following body:
 :::
 
 :::warning Warning
-If you empty the NTP servers list, an iLO reset is required to take the modification into account.
+If you empty the NTP servers list, an iLO reset is required to take
+the modification into account.
 :::
 
-The following example is an iLOrest sequence of commands to set one or two NTP servers. The first example shows how to verify the new settings.
+The following example is an iLOrest sequence of commands to set one or two
+NTP servers. The first example shows how to verify the new settings.
 
 ```shell iLOrest: Empty the NTP servers list
 ilorest login ilo-ip -u user -p password
@@ -220,7 +248,10 @@ ilorest logout
 ```
 
 :::success TIP
-If you receive a `400 bad request` response code with the `ArrayPropertyOutOfBound` error message, you should empty the NTP servers list, reset the iLO and re-submit your query.
+If you receive a `400 bad request` response code with the
+`ArrayPropertyOutOfBound` error message, you should empty the NTP servers
+list, reset the iLO and resubmit your query.
 :::
 
-If the time zone is configured to be managed by DHCP, iLO responds with `HTTP 400` and `SNTPConfigurationManagedByDHCPAndIsReadOnly`.
+If the time zone is configured to be managed by DHCP, iLO responds
+with `HTTP 400` and `SNTPConfigurationManagedByDHCPAndIsReadOnly`.

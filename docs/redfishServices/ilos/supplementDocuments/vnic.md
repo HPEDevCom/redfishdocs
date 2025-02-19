@@ -7,16 +7,23 @@ toc:
 disableLastModified: false
 ---
 
-# The iLO Redfish Host Interface ("Virtual NIC")
+## The iLO Redfish Host Interface ("Virtual NIC")
 
-iLO implements the <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.0.pdf" target="_blank">Redfish Host Interface</a>
-specification to access iLO's HTTPS resources (including the Redfish API and the Web GUI) from the host. This interface (aka Virtual NIC) is disabled by default.
+iLO implements the
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.0.pdf"
+target="_blank">Redfish Host Interface</a>
+specification to access iLO's HTTPS resources (including the Redfish API
+and the Web GUI) from the host. This interface (aka Virtual NIC)
+is disabled by default.
 
-When accessing iLO from the operating system through the virtual network interface, authentication is enforced even if you logged as a privileged user in the server operating system.
+When accessing iLO from the operating system through the virtual
+network interface, authentication is enforced even if you logged
+as a privileged user in the server operating system.
 
 ## Managing the Virtual NIC
 
-The status of the iLO Virtual NIC can be retrieved from  Hpe Oem extension of `Manager` resource:
+The status of the iLO Virtual NIC can be retrieved from
+Hpe Oem extension of `Manager` resource:
 
 ```text GET VNIC status
 GET /redfish/v1/Managers/1/?$select=Oem/Hpe/VirtualNICEnabled
@@ -36,7 +43,9 @@ GET /redfish/v1/Managers/1/?$select=Oem/Hpe/VirtualNICEnabled
 }
 ```
 
-The Virtual NIC may be enabled in iLO either though the iLO Web GUI or by a Redfish operation. An iLO reset is required for this change to take effect.
+The Virtual NIC may be enabled in iLO either though the iLO Web GUI
+or by a Redfish operation. An iLO reset is required for this
+change to take effect.
 
 ```text PATCH
 PATCH /redfish/v1/Managers/{managerId}/
@@ -67,17 +76,23 @@ PATCH /redfish/v1/Managers/{managerId}/
 ```
 
 :::success TIP
-Read the <a href="https://www.hpe.com/support/ilo6" target="_blank">User Guide</a> to enable the Virtual NIC in the server operating system.
+Read the <a href="https://www.hpe.com/support/ilo6"
+target="_blank">User Guide</a>
+to enable the Virtual NIC in the server operating system.
 :::
 
 ## Using the Virtual NIC
 
-When enabled in both the server operating system and in iLO, software running on the server operating system may access the iLO Web GUI or Redfish API using IP address `16.1.15.1`. Normal authentication is required.
+When enabled in both the server operating system and in iLO, software running
+on the server operating system may access the iLO Web GUI or Redfish API
+using IP address `16.1.15.1`. Normal authentication is required.
 
-The configuration of the iLO virtual NIC can be retrieved with GET operation from the `EthernetInterfaceCollection` resource type:
+The configuration of the iLO virtual NIC can be retrieved with GET operation
+from the `EthernetInterfaceCollection` resource type:
 
 ```text GET VNIC configuration
-GET /redfish/v1/Managers/1/EthernetInterfaces/?$filter=Name eq 'Manager Virtual Network Interface'
+GET /redfish/v1/Managers/1/EthernetInterfaces/?$filter=Name 
+eq 'Manager Virtual Network Interface'
 ```
 
 ```json
@@ -139,12 +154,15 @@ GET /redfish/v1/Managers/1/EthernetInterfaces/?$filter=Name eq 'Manager Virtual 
 ```
 
 :::info NOTE
-The Virtual NIC does NOT act as a passthrough to traffic to the iLO physical network connection (iLO dedicated or shared network port). It is a separate network connection into iLO's resources.
+The Virtual NIC does NOT act as a passthrough to traffic to the iLO physical
+network connection (iLO dedicated or shared network port). It is a separate
+network connection into iLO's resources.
 :::
 
 ## Disabling the Virtual NIC
 
-The Virtual NIC may be disabled either though the Web GUI or by a Redfish operation. An iLO reset is required for this change to take effect.
+The Virtual NIC may be disabled either though the Web GUI or by a Redfish
+operation. An iLO reset is required for this change to take effect.
 
 ```text PATCH
 PATCH /redfish/v1/Managers/{managerId}/

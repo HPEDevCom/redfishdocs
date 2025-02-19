@@ -11,35 +11,44 @@ disableLastModified: true
 
 ## Filter Option
 
-This section covers some advanced features and options available with HPE iLOrest.
+This section covers some advanced features
+and options available with HPE iLOrest.
 
-Selecting the `EthernetInterface.` type reveals many instances. To return a single instance we can filter by a property value. In the following example, we are filtering by `@odata.id`.
+Selecting the `EthernetInterface.` type reveals many instances.
+To return a single instance we can filter by a property value.
+In the following example, we are filtering by `@odata.id`.
 
-By default, `--filter` attempts to match the property and value case insensitively, but exactly. If no matches are found HPE iLOrest will return an error.
+By default, `--filter` attempts to match the property and
+value case insensitively, but exactly. If no matches are
+found HPE iLOrest will return an error.
 
 ```Shell Successful filter
-iLOrest > select EthernetInterface.
-iLOrest > list @odata.id
-
-@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/2/
-
-@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/1/
+ilorest select EthernetInterface.
+ilorest list Id @odata.id
 
 @odata.id=/redfish/v1/Managers/1/EthernetInterfaces/1/
-
-@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/3/
-
+Id=1
 @odata.id=/redfish/v1/Managers/1/EthernetInterfaces/2/
+Id=2
+@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/12/
+Id=12
+@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/11/
+Id=11
+@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/9/
+Id=9
+@odata.id=/redfish/v1/Managers/1/EthernetInterfaces/3/
+Id=3
+@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/10/
+Id=10
 
-@odata.id=/redfish/v1/Systems/1/EthernetInterfaces/4/
-
-iLOrest > list Id --filter "@odata.id=/redfish/v1/Managers/1/EthernetInterfaces/1/"
+ilorest list Id @odata.id --filter "@odata.id=/redfish/v1/Managers/1/EthernetInterfaces/1/"
+@odata.id=/redfish/v1/Managers/1/EthernetInterfaces/1/
 Id=1
 ```
 
 ```shell Unsuccessful filter
-iLOrest > list Id --filter "@Odata.id=/redfish/v1/Managers/1/"
-Unable to locate instance for 'ethernetinterface.' and filter '@Odata.id=/redfish/v1/Managers/1/'
+ilorest list Id @odata.id --filter "@Odata.id=/redfish/v1/Managers/1/"
+Unable to locate instance for 'ethernetinterface.' and filter '@odata.id=/redfish/v1/Managers/1/'
 ```
 
 Partial string matching is supported with the `*` character.
@@ -70,7 +79,11 @@ EthernetInterface.v1_4_1(/redfish/v1/Managers/1/EthernetInterfaces/2/) (Currentl
 
 ### Description
 
-If there is more than one instance of a type on the system, when you select it, the `--filter` option can be used to narrow down the results. With this narrowed result, you can set specific instance properties, list specific instance properties, or get specific instance properties.
+If there is more than one instance of a type on the system,
+when you select it, the `--filter` option can be used to narrow
+down the results. With this narrowed result, you can set
+specific instance properties, list specific
+instance properties, or get specific instance properties.
 
 :::success TIP
 The filter option can be used in the get, list, and set commands.
@@ -78,7 +91,9 @@ The filter option can be used in the get, list, and set commands.
 
 ## Path Option
 
-To start type collection from a specific path include the `--path` option followed by the path to start from. This can limit or add new types depending on the path specified.
+To start type collection from a specific path include
+the `--path` option followed by the path to start from.
+This can limit or add new types depending on the path specified.
 
 ```shell All data types (Truncated)
 iLOrest > login xx.xx.xx.xx -u username -p password
@@ -135,4 +150,9 @@ Type options:
 
 ### Description
 
-The path option can set a different URI as the starting point for type discovery. The default path is `/redfish/v1/`. This option is useful if you wish to view specific types, which are not available by default or if you wish to lower the time it takes to login. It is not recommended to use this flag on systems with a resource directory.
+The path option can set a different URI as the starting point
+for type discovery. The default path is `/redfish/v1/`.
+This option is useful if you wish to view specific types
+ which are not available by default or if you wish to
+ lower the time it takes to login. It is not recommended
+ to use this flag on systems with a resource directory.

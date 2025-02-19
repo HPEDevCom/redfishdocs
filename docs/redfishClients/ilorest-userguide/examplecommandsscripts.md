@@ -3,7 +3,7 @@ seo:
   title: Use case examples and macro commands
 toc:
   enable: true
-  maxDepth: 2
+  maxDepth: 3
 disableLastModified: false
 ---
 
@@ -184,7 +184,9 @@ Logging session out.
 The `Bios` type has two properties that both need to be used to change the administrator password, `AdminPassword` and `OldAdminPassword`. `AdminPassword` is the new password you want to change to, and `OldAdminPassword` is the current password you have.
 
 :::info NOTE
+
 If there is no current password, you must include `OldAdminPassword=""`
+
 :::
 
 ![BIOS Password Example 1](images/BIOSPassword_1.png "BIOS Password Example 1")
@@ -383,37 +385,57 @@ Configure system boot mode.
 
 ## BootOrder Command Examples
 
-The `bootorder` command is made up of a list of select, get, and set commands. In order to demonstrate the order of these events, the `bootorder` command is manually stepped through one step at a time to show that it only uses other provided commands to perform its task.
+The `bootorder` command is made up of a list of select, get,
+and set commands. In order to demonstrate the order of these events,
+the `bootorder` command is manually stepped through one step at
+a time to show that it only uses other provided commands to perform its task.
 
 ![Bootorder Example 1](images/BootOrder_1.png "BootOrder example 1")
 
-First the server is logged into, and the `select` and `get` commands are performed on the `Bios` type and the `BootMode` property, respectively.
+First the server is logged into, and the `select` and `get`
+commands are performed on the `Bios` type and the `BootMode` property,
+respectively.
 
 ![Bootorder Example 2](images/BootOrder_2.png "BootOrder example 2")
 
-Next the `select` and `get` commands are used to retrieve the `BootSourceOverrideSupported` property of the `ComputerSystem` type.
+Next the `select` and `get` commands are used to retrieve the `BootSourceOverrideSupported`
+property of the `ComputerSystem` type.
 
 :::info NOTE
-All of these operations, such as `select` and `get`, are already implemented in the RESTful Interface Tool.
+All of these operations, such as `select` and `get`,
+are already implemented in the RESTful Interface Tool.
 :::
 
 ![Bootorder Example 3](images/BootOrder_3.png "BootOrder example 3")
 
-If the `bootmode` retrieved earlier is UEFI, then the `UefiTargetBootSourceOverrideSupported` property (one time boot settings) is retrieved with the get command. If the `bootmode` is not UEFI, then the one time boot settings would have been set to `None`.
+If the `bootmode` retrieved earlier is UEFI, then the `UefiTargetBootSourceOverrideSupported`
+property (one time boot settings) is retrieved with the get command. If the `bootmode` is not UEFI,
+then the one time boot settings would have been set to `None`.
 
 ![Bootorder Example 4](images/BootOrder_4.png "BootOrder example 4")
 
-If this is not a one time boot or a continuous boot, and the `disable boot` flag has not been set, then the `HpServerBootSettings` type is selected with the `select` command, and the `PersistentBootConfigOrder` property is retrieved with the `get` command.
+If this is not a one time boot or a continuous boot, and the `disable boot` flag
+has not been set, then the `HpServerBootSettings` type is selected with
+the `select`
+command, and the `PersistentBootConfigOrder`
+property is retrieved with the `get` command.
 
 ![Bootorder Example 5](images/BootOrder_5.png "BootOrder example 5")
 
-Then, using this information along with the specified boot order provided in the command, the new boot order is updated using the `set` command.
+Then, using this information along with the specified boot order provided
+in the command, the new boot order is updated using the `set` command.
 
 ![Bootorder Example 6](images/BootOrder_6.png "BootOrder example 6")
 
-After making all the changes to the boot order, the changes are finally committed with the commit command.
+After making all the changes to the boot order, the changes are finally
+committed with the commit command.
 
-All of the commands shown here are executed the same way in the actual `bootorder` command, and are called in the same order to execute the `bootorder` command. You can write your own scripts to combine commands just like bootorder did, to use the provided commands in the RESTful Interface Tool for higher-level functionality.
+All of the commands shown here are executed the same way in the
+actual `bootorder` command, and are called in the same order to
+execute the `bootorder` command. You can write your own scripts
+to combine commands just like bootorder did,
+to use the provided commands in the RESTful Interface Tool for higher-level
+functionality.
 
 ## Resetting iLO
 
@@ -455,7 +477,9 @@ Logging session out.
 
 ## Logging Examples
 
-iLO Logs consist of Active Health System (AHS), Integrated Event Log (IEL), and an Integrated Management Log (IML). Logs can be retrieved for analysis or cleared to wipe the slate.
+iLO Logs consist of Active Health System (AHS), Integrated Event Log (IEL),
+and an Integrated Management Log (IML). Logs can be retrieved for analysis or
+cleared to wipe the slate.
 
 ### Set AHS Status
 
@@ -467,7 +491,7 @@ iLO Logs consist of Active Health System (AHS), Integrated Event Log (IEL), and 
 .\Set_AHS_Status.bat 100.100..100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 Discovering data...Done
 
 Logging session out.
@@ -479,7 +503,6 @@ Logging session out.
 |    **Linux**                   | **Windows**                                                                  |
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Clear_AHS_Data.sh" target="_blank">Clear\_AHS\_Data.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Clear_AHS_Data.bat" target="_blank">Clear\_AHS\_Data.bat</a> |
-
 
 ```shell
 .\Clear_AHS_Data.bat 100.100.100.101 administrator password
@@ -527,7 +550,11 @@ Logging session out.
 
 ## Directory Command Examples
 
-HPE iLO based systems can be linked to domain controllers, usage of the the directory command can perform modification and tests against Lightweight Directory Access Protocol (LDAP) directory information services and Microsoft based active directory (AD) domain network controllers. The following examples are of interest:
+HPE iLO based systems can be linked to domain controllers, usage of the the
+directory command can perform modification and tests against Lightweight
+Directory Access Protocol (LDAP) directory information services and Microsoft
+based active directory (AD) domain network controllers. The following examples
+are of interest:
 
 ### Get LDAP CA Certificate State
 
@@ -555,7 +582,7 @@ Logging session out.
 .\Start_Directory_Test.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 Discovering data...Done
 The operation completed successfully.
 
@@ -573,7 +600,7 @@ Logging session out.
 .\Abort_Directory_Test.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 Discovering data...Done
 
 The operation completed successfully.
@@ -590,7 +617,7 @@ Logging session out.
 .\Get_Directory_Test_Results.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 Discovering data...Done
 The operation completed successfully.
 
@@ -649,9 +676,12 @@ Logging session out.
 
 ## iLO User Management Examples
 
-HPE iLO Management Account Users are able to perform a range of operations on a system based on permissions levels (or in HPE iLO 5 and later, based on Redfish predefined roles). This can vary from administrative level system changes to monitoring/read-only get requests, as well as a number.  
+HPE iLO Management Account Users are able to perform a range of operations on a
+system based on permissions levels (or in HPE iLO 5 and later, based on Redfish
+predefined roles). This can vary from administrative level system changes to
+monitoring/read-only get requests, as well as a number.
 
-### Privileges Table (iLO 4 and iLO 5)
+### Privileges Table (iLO 4 and 5)
 
 |          **Privileges**        |        **Description**        |**iLO Support start**|
 |--------------------------------|-------------------------------|---------------|
@@ -676,7 +706,8 @@ HPE iLO Management Account Users are able to perform a range of operations on a 
 
 ### Add User
 
-Add a new iLO management user account. By default only the login privilege is provided (equivalent to read-only predefined role).
+Add a new iLO management user account. By default only the login privilege is
+provided (equivalent to read-only predefined role).
 Additional privileges (and roleIDs for iLO 5 systems) can be configured.
 
 |    **Linux**                   | **Windows**                                                                  |
@@ -687,7 +718,7 @@ Additional privileges (and roleIDs for iLO 5 systems) can be configured.
 .\Add_User.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 The operation completed successfully.
 
@@ -741,7 +772,8 @@ Logging session out.
 
 ### Modify User Password
 
-Reset an iLO management account password. The first example is specifically for the default Administrator account, the second for any subsequently
+Reset an iLO management account password. The first example is specifically for
+the default Administrator account, the second for any subsequently.
 created account.
 
 |    **Linux**                   | **Windows**                                                                  |
@@ -753,7 +785,7 @@ created account.
 .\Administrator_reset_pw.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 
 Logging session out.
@@ -771,7 +803,7 @@ Get all iLO management account user privileges.
 .\Get_User.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 
 Oem=
@@ -798,12 +830,11 @@ Completely remove an iLO management account.
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Delete_User.sh" target="_blank">Delete\_User.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Delete_User.bat" target="_blank">Delete\_User.bat</a> |
 
-
 ```shell
 .\Delete_User.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 
 Logging session out.
@@ -815,7 +846,8 @@ iLO Federation allows management of a collection of servers from a single iLO.
 
 ### Add Federation Group
 
-Add a new federation group by defining a federation name, key and associated privileges for the group.
+Add a new federation group by defining a federation name, key and associated
+privileges for the group.
 
 |    **Linux**                   | **Windows**                                                                  |
 |--------------------------------|------------------------------------------------------------------------------|
@@ -825,7 +857,7 @@ Add a new federation group by defining a federation name, key and associated pri
 .\Add_Federation_Group.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 
 
@@ -872,7 +904,7 @@ Obtain Federation Group Privileges.
 .\Get_Federation_Group.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 
 Privileges=
@@ -891,18 +923,18 @@ Logging session out.
 
 ### Get Federation Multicast Options
 
-Obtain Federation Group Multicast Settings. Settings are used in broadcast for iLO collective control.
+Obtain Federation Group Multicast Settings. Settings are used in broadcast for
+iLO collective control.
 
 |    **Linux**                    | **Windows**                                                                  |
 |---------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Federation_Multicast_Options.sh" target="_blank">Get\_Federation\_Multicast\_Options.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Federation_Multicast_Options.bat " target="_blank">Get\_Federation\_Multicast\_Options.bat</a> |
 
-
 ```shell
 .\Get_Federation_Multicast_Options.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 
 Oem=
@@ -928,7 +960,7 @@ Deletion of a Federation Group
 .\Delete_Federation_Group.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 [200] The operation completed successfully.
 The operation completed successfully.
@@ -938,7 +970,8 @@ Logging session out.
 
 ## Virtual Media
 
-HPE iLO provides a method to boot from virtualized media by providing a remote URL. This can include bootable virtualized USB, Floppy disk, CD/DVD ISO media.
+HPE iLO provides a method to boot from virtualized media by providing a remote
+URL. This can include bootable virtualized USB, Floppy disk, CD/DVD ISO media.
 
 ### Mount Virtual Media
 
@@ -960,122 +993,691 @@ Eject virtual media from the system.
 .\Eject_Virtual_Media.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 
 Logging session out.
 ```
 
-## Configuring iLO Management Network Interfaces
+## iLO network configuration
 
-iLO's management networking interfaces can be customized to allow for connectivity for physical, dedicated connections, shared networking (single physical adapter contains internal VLAN capabilities) and virtual networking interfaces for connectivity to the host operating system (iLO 5 1.45 and later).
+HPE iLO is very flexible in term of network capabilities.
+It can communicate with remote systems
+using a dedicated physical network port or using a port shared
+with the operating system (OS). In band communication with OS
+is also possible (iLO 5 1.45 and later) with the host interface
+also called "Manager Virtual Network Interface" or
+[Virtual NIC](/docs/redfishservices/ilos/supplementdocuments/vnic/#managing-the-virtual-nic).
 
-### Get Networking
+This section presents several examples for getting or setting iLO networking properties.
 
-Retrieve networking parameters, enablements and data ports.
+### Get iLO networking properties
+
+In addition to the following examples, the `save --selector EthernetInterface.`
+[global command](/docs/redfishclients/ilorest-userguide/globalcommands/#save-command)
+and the `ethernet save` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
+can be used to get iLO network properties. Refer to their
+respective documentation sections for more detail and limitation.
+
+#### IP configuration
+
+The following example displays the `Name`, the URI and the status
+of the active iLO network port in JSON format.
+
+:::success TIP
+
+The following example uses the `list`
+[command](/docs/redfishclients/ilorest-userguide/globalcommands/#list-command)
+to be able to retrieve
+[_reserved attributes_](/docs/redfishclients/ilorest-userguide/globalcommands/#reserved-properties)
+like `@odata.id`.
+
+The `get` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command)
+discards such attributes.
+
+:::
+
+```shell
+ilorest login <ilo-ip> -u <ilo-user> -p password
+ilorest list Name @odata.id Oem/Hpe/NICEnabled \
+        --selector EthernetInterface.          \
+        --filter Name="Manager*"               \
+        --filter Oem/Hpe/NICEnabled=true       \
+        --json
+ilorest logout
+
+{
+  "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/",
+  "Name": "Manager Dedicated Network Interface",
+  "Oem": {
+    "Hpe": {
+      "NICEnabled": true
+    }
+  }
+}
+```
+
+The following example retrieves the IPv4 configuration
+of the active iLO network port using the `get`
+[global command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command),
+and the `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command).
+
+:::info NOTE
+Refer the previous example to retrieve the
+URI of the iLO active network port passed to
+the `rawget` command.
+:::
+
+```shell get IPv4
+alias ilorest="ilorest --nologo"
+ilorest login <ilo-ip> -u <ilo-user> -p password
+ilorest get DHCPv4 NameServers IPv4Addresses \
+        --selector EthernetInterface.        \
+        --filter Oem/Hpe/NICEnabled=true     \
+        --json
+ilorest logout
+```
+
+```shell rawget IPv4
+ilorest --nologo login <ilo-ip> -u <ilo-user> -p password
+ilorest --nologo rawget --silent /redfish/v1/Managers/1/EthernetInterfaces/1 | \
+          jq '{"DHCPv4": .DHCPv4,
+              "IPv4Addresses": .IPv4Addresses,
+              "NameServers": .NameServers}'
+```
+
+```json IPv4 output
+{
+  "DHCPv4": {
+    "DHCPEnabled": true,
+    "UseDNSServers": true,
+    "UseDomainName": true,
+    "UseGateway": true,
+    "UseNTPServers": false,
+    "UseStaticRoutes": true
+  },
+  "IPv4Addresses": [
+    {
+      "Address": "192.168.0.5",
+      "AddressOrigin": "DHCP",
+      "Gateway": "192.168.1.1",
+      "SubnetMask": "255.255.252.0"
+    }
+  ],
+  "NameServers": [
+    "192.168.2.1",
+    "192.168.2.3"
+  ]
+}
+```
+
+#### Network protocols
+
+The following example runs a GitHub script to print
+the network protocols properties supported by the
+remote iLO.
 
 |    **Linux**                    | **Windows**                                                                  |
 |---------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Network.sh" target="_blank">Get\_Network.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Network.bat" target="_blank">Get\_Network.bat</a> |
 
-```shell
-.\Get_Network.bat 100.100.100.101 administrator password
-iLOrest : RESTful Interface Tool version 3.1
-Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
+```shell Get_Network.bat
+.\Get_Network.bat DL365G11-2-ILO.lj.lab administrator password
+iLORest : RESTful Interface Tool version 5.2.0.0
+Copyright (c) 2014-2024 Hewlett Packard Enterprise Development LP
 --------------------------------------------------------------------------------
-Discovering data...Done
-FQDN=ilocn771200w0.americas.hpqcorp.net
+```
+
+```shell Output (truncated)
+FQDN=DL365G11-2-ILO.lj.lab
 HTTP=
-      ProtocolEnabled=True
       Port=80
-HTTPS=
-       ProtocolEnabled=True
-       Port=443
-HostName=ilocn771200w0
-IPMI=
-      ProtocolEnabled=False
-      Port=623
-KVMIP=
-       ProtocolEnabled=True
-       Port=17990
+      ProtocolEnabled=True
+
+...= ..
+
+Name=Manager Network Services
 Oem=
      Hpe=
-          RemoteSyslogServer=""
-          VirtualMediaEncryptionEnabled=True
-          AlertMailSMTPAuthPw=None
-          FederationEnabled=True
-          RemoteSyslogPort=514
-          RemoteSyslogEnabled=False
-          ConfigurationSettings=Current
-          SerialOverLanLogging=False
-          SNMPTrapPort=162
-          AlertMailSMTPSecureEnabled=True
+          AlertMailEmail=foo@bar.com
+          ...
+          WebProxyConfiguration=
+                                 ProxyPassword=None
+                                 ...=...
+                                 ProxyUserName=""
           XMLResponseEnabled=True
-          AlertMailSMTPAuthEnabled=False
-          AlertMailEnabled=False
-          AlertMailSMTPAuthUser=""
-          AlertMailEmail=""
-          AlertMailSenderDomain=""
-          AlertMailSMTPPort=25
-          FederationSupported=True
-          AlertMailSMTPServer=""
 SNMP=
-      ProtocolEnabled=True
       Port=161
-SSDP=
       ProtocolEnabled=True
-      NotifyMulticastIntervalSeconds=600
-      NotifyTTL=5
-      Port=1900
-      NotifyIPv6Scope=Site
-SSH=
-     ProtocolEnabled=True
-     Port=22
-Status=
-        State=Enabled
+...=...
 VirtualMedia=
-              ProtocolEnabled=True
               Port=17988
+              ProtocolEnabled=True
 Logging session out.
 ```
 
-### Shared Network Port
+#### Finding iLO MAC address
 
-Configure iLO shared networking port.
+This paragraph proposes several examples to retrieve the MAC addresses
+of the ethernet interfaces present in a system.
+Refer to the
+[Get MAC address of a Management Controller](/docs/examples/redfishexamples/#get-mac-address-of-a-management-controller)
+paragraph for the detailed workflow of this operation.
 
-|    **Linux**                    | **Windows**                                                                  |
-|---------------------------------|------------------------------------------------------------------------------|
-| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Shared_Network_Port.sh" target="_blank">Shared\_Network\_Port.sh</a>
-| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Shared_Network_Port.bat" target="_blank">Shared\_Network\_Port.bat</a> |
+:::info NOTE
+
+Although some network adapters are able to communicate with the Ethernet protocol,
+the DMTF distinguishes the `EthernetInterface`
+<a href="https://redfish.dmtf.org/schemas/v1/EthernetInterface.json" target="_blank">schema/data type</a>
+from the `NetworkAdapter`
+<a href="https://redfish.dmtf.org/schemas/v1/EthernetInterface.json" target="_blank">schema/data type</a>.
+
+This paragraph treats only the `EthernetInterface` data type.
+
+:::
+
+:::success TIP
+
+It is also possible to retrieve MAC addresses by parsing
+the files created by the `save --selector EthernetInterface`
+[command](/docs/redfishclients/ilorest-userguide/globalcommands/#save-command)
+or the `ethernet save`
+[command.](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command).
+
+:::
+
+The following example prints the MAC address of all ethernet interfaces present in a server,
+including system/OS interfaces.
+
+:::success TIP
+
+Use the `list` command if you want to print
+[reserved attributes](/docs/redfishclients/ilorest-userguide/globalcommands/#reserved-properties) like
+`@odata.id`, which contains the URI of the selected interface.
+
+:::
+
+```shell Get all MAC addresses
+ilorest get Oem/Hpe/NICEnabled Name MACAddress \
+        --selector EthernetInterface.          \
+        --json
+```
+
+```json All MAC addresses output
+[
+  {
+    "MACAddress": "00:62:0b:4d:fd:c3",
+    "Name": "vmnic0"
+  },
+  {
+    "MACAddress": "0A:CA:FE:F0:0D:04",
+    "Name": "Manager Virtual Network Interface"
+  },
+  {
+    "MACAddress": "5C:ED:8C:01:0D:7C",
+    "Name": "Manager Dedicated Network Interface",
+    "Oem": {
+      "Hpe": {
+        "NICEnabled": true
+      }
+    }
+  },
+  {
+    "MACAddress": "5C:ED:8C:01:0D:7D",
+    "Name": "Manager Shared Network Interface",
+    "Oem": {
+      "Hpe": {
+        "NICEnabled": false
+      }
+    }
+  },
+  {
+    "MACAddress": "00:62:0b:4d:fd:c2",
+    "Name": "vmnic3"
+  },
+  {
+    "MACAddress": "00:62:0b:4d:fd:c5",
+    "Name": "vmnic1"
+  },
+  {
+    "MACAddress": "00:62:0b:4d:fd:c4",
+    "Name": "vmnic2"
+  }
+]
+```
+
+The following example prints the MAC address of iLO interfaces and their enablement.
+
+```shell iLO MAC addresses
+alias ilorest="ilorest --nologo"
+ilorest login <ilo-ip> -u <ilo-user> -p password
+ilorest get Oem/Hpe/NICEnabled Name MACAddress  \
+        --selector EthernetInterface.           \
+        --filter Name="Manager*"                
+        --json
+ilorest logout
+```
+
+```json iLO MAC addresses output
+[
+  {
+    "MACAddress": "5C:ED:8C:01:0D:7C",
+    "Name": "Manager Dedicated Network Interface",
+    "Oem": {
+      "Hpe": {
+        "NICEnabled": true
+      }
+    }
+  },
+  {
+    "MACAddress": "0A:CA:FE:F0:0D:04",
+    "Name": "Manager Virtual Network Interface"
+  },
+  {
+    "MACAddress": "5C:ED:8C:01:0D:7D",
+    "Name": "Manager Shared Network Interface",
+    "Oem": {
+      "Hpe": {
+        "NICEnabled": false
+      }
+    }
+  }
+]
+```
+
+The following example prints the MAC address of the **active** iLO interface using the `get`
+[global command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command)
+and the `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command).
+
+```shell get active MAC address
+alias ilorest="ilorest --nologo"
+ilorest login <ilo-ip> -u <ilo-user> -p password
+ilorest get Oem/Hpe/NICEnabled Name MACAddress   \
+        --selector EthernetInterface.            \
+        --filter Oem/Hpe/NICEnabled=true         \
+        --json
+ilorest logout
+```
+
+```shell rawget active MAC address
+ilorest login <ilo-ip> -u <ilo-user> -p password
+ilorest --nologo rawget --silent /redfish/v1/Managers/1/EthernetInterfaces/1 | \
+        jq '{"NICEnabled": .Oem.Hpe.NICEnabled,
+             "Name": .Name,
+             "MACAddress": .MACAddress}'
+ilorest logout
+```
+
+```json MAC address output
+{
+  "MACAddress": "5C:ED:8C:01:0D:7C",
+  "Name": "Manager Dedicated Network Interface",
+  "Oem": {
+    "Hpe": {
+      "NICEnabled": true
+    }
+  }
+}
+```
+
+### Set iLO networking properties
+
+This section provides examples on how to change the iLO IP configuration.
+
+:::warning WARNING
+
+A change of the iLO network IP configuration requires
+an [iLO reset](/docs/redfishclients/ilorest-userguide/ilocommands/#iloreset-command).
+
+A network misconfiguration will lead to an unreachable iLO after reset. Refer to the following
+paragraph for best practices before changing an iLO IP configuration.
+
+:::
+
+#### Network configuration best practices
+
+Setting erroneous iLO IP information leads to its unreachability.
+The following provides some best practices to perform prior to
+modify iLO IP modification.
+
+These best practices are based on the fact that
+the iLO active network port always has an IPv6 link-local Stateless Address Autoconfiguration
+(SLAAC) address, starting with `FE80::`.
+Moreover, if the `RFC7217Enabled` property has the default `false` value,
+the SLAAC link local
+iLO address is derived from the MAC address.
+
+As a consequence, if you
+**save the MAC address** (or the link-local SLAAC address), you will
+have a mean to access your iLO,
+regardless any IPv4 or IPv6 misconfiguration.
+
+The following example retrieves the MAC and the iLO SLAAC link-local addresses
+of the active iLO network port in JSON format.
 
 ```shell
-.\Shared_Network_Port.bat 100.100.100.101 administrator password
-iLOrest : RESTful Interface Tool version 3.1
-Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
-Discovering data...Done
-
-Logging session out.
+ilorest login <ilo-ip> -u <ilo-user> -p pasword
+ilorest get MACAddress IPv6Addresses/Address --select EthernetInterface. \
+        --filter Oem/Hpe/NICEnabled="True"                               \
+        --json
+{
+  "IPv6Addresses": [
+    {
+      "Address": "FE80::9618:82FF:FE71:A07B"
+    }
+  ],
+  "MACAddress": "94:18:82:71:A0:7B"
+}
 ```
 
-## Finding iLO MAC address
+:::success TIP
 
-Finding the iLO MAC address is not implemented in the RESTful Interface Tool, but is easily reached by a set of `select` and `list` commands
+Given a MAC address, you can calculate and display
+the related IPv6 link local SLAAC address,
+using the `ipv6calc`
+<a href="https://www.deepspace6.net/projects/ipv6calc.html" target="_blank">utility</a>
+and the following command:
 
-![MAC Address Example 1](images/MacAddress1.png "Mac Address example 1")
+```shell
+echo -n "fe80::" ; ipv6calc --quiet --in mac 94:18:82:71:A0:7B --out eui64
+fe80::9618:82ff:fe71:a07b
+```
 
-First login to the server. Then `select` the `EthernetInterfaces.` type.
+:::
 
-![MAC Address Example 2](images/MacAddress2.png "Mac Address example 2")
+To establish a connection to an IPv6 link-local address,
+you need first to log into a system connected to the
+**same Local Area Network (LAN)** as the targeted iLO.
+Then, you need to identify the ethernet interface index
+connected physically to
+this LAN. On Linux this index is similar to `eth0`, `eno1`
+or `eno5np0`. Use the `ip address list` command identify this index.
 
-Now using the `list` command, list the `name`, `macaddress`, and `status` values with the filter of the value `Name` starting with Manager.
+On windows, you can use a PowerShell command similar to this one:
+`Get-NetAdapter | Where-Object { $_.Status -eq 'Up' } | Select-Object Name, InterfaceIndex`
 
-## Setting Active iLO NIC
+The following example comes from a Linux system. It verifies that
+the interface connected on the same LAN as the targeted iLO supports
+IPv6, by checking whether it has a link-local address
+starting with `FE80::`. Then, with iLOrest and cURL,
+it retrieves the IPv4 configuration of the remote IPv6 link-local address.
 
-```json Gen10
+```shell Checking IPv6
+# Retrieving IPv6 link local of interface connected to iLO target
+# network.
+ ip -6 address list ens22f0 | grep -i fe80
+    inet6 fe80::262:bff:fe4e:1748/64 scope link noprefixroute
+```
+
+```shell iLOrest
+# Connect to remote iLO via its IPv6 link-local address
+# Retrieve IPv4 properties of active iLO network port
+ilorest login [FE80::9618:82FF:FE71:A07B%ens22f0] -u <ilo-user> -p password
+ilorest select EthernetInterface.
+ilorest get Ipv4Addresses --filter Oem/Hpe/NICEnabled="True" --json
 {
-    "path": "/redfish/v1/Managers/1/EthernetInterfaces/1",
-    "body": {
+  "IPv4Addresses": [
+    {
+      "Address": "192.168.1.45",
+      "AddressOrigin": "Static",
+      "Gateway": "192.168.1.1",
+      "SubnetMask": "255.255.252.0"
+    }
+  ]
+}
+
+```
+
+```shell cURL
+# Connect to remote iLO via its IPv6 link-local address
+# Retrieve IPv4 properties of active iLO network port
+curl --insecure --silent --location  \
+     --user <ilo-user>:password        \
+     https://[FE80::9618:82FF:FE71:A07B%ens22f0]/redfish/v1/Managers/1/EthernetInterfaces/1 | \
+     jq '.IPv4Addresses[]'
+
+{
+  "Address": "192.168.1.45",
+  "AddressOrigin": "Static",
+  "Gateway": "192.168.1.1",
+  "SubnetMask": "255.255.252.0"
+}
+
+```
+
+:::success TIPS
+
+- Most of the browsers (i.e. Chromium or Gecko based) don't support IPv6 link local addresses.
+- `SSH` supports connecting to IPv6 link local addresses, but without the `[]` wrapper notation. See next example.
+
+```shell
+ssh ilo-user@FE80::9618:82FF:FE71:A07B%ens22f0 date
+ilo-user@fe80::9618:82ff:fe71:a07b%ens22f0's password:
+date
+Aug 19 2024
+```
+
+:::
+
+#### Configure iLO IP addresses
+
+This paragraph presents examples and pointers to examples changing the iLO IP configuration.
+
+- Refer to the last
+  [example](/docs/redfishclients/ilorest-userguide/ilocommands/#examples-7)
+  of the `ethernet`
+  [command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
+  for configuring iLO using the `--network_ipv4` parameter.
+
+- Refer to the `rawpatch` [examples](/docs/redfishclients/ilorest-userguide/rawcommands/#examples-3)
+  section for an example configuring the iLO dedicated network port.
+
+The following example loads a configuration file,
+using the `load --force_network_config`
+[global command](/docs/redfishclients/ilorest-userguide/globalcommands/#load-command)
+and then resets the iLO.
+The configuration file can be generated by the `save`
+[global command](/docs/redfishclients/ilorest-userguide/globalcommands/#save-command)
+or the `ethernet save` [iLO command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
+and then edited to set the iLO Shared Network port enabled and IPv4 properties.
+
+:::info NOTE
+
+Read-only properties like `Id` are automatically and silently discarded
+during the load operation.
+
+:::
+
+```shell load
+ilorest load --force_network_config -f load.json
+ilorest iloreset
+```
+
+```json load.json
+[
+  {
+    "Comments": {
+      "Manufacturer": "HPE",
+      "Model": "ProLiant DL360 Gen10",
+      "BIOSFamily": "U32",
+      "BIOSDate": "02/22/2024",
+      "SerialNumber": "MXQ73301YK",
+      "iLOVersion": "iLO 5 v3.04"
+    }
+  },
+  {
+    "EthernetInterface.v1_4_1.EthernetInterface": {
+      "/redfish/v1/Managers/1/EthernetInterfaces/2/": {
+        "Id": "1",
+        "InterfaceEnabled": true,
+        "AutoNeg": true,
+        "DHCPv4": {
+          "DHCPEnabled": false,
+          "UseDNSServers": false,
+          "UseDomainName": false,
+          "UseGateway": false,
+          "UseNTPServers": false,
+          "UseStaticRoutes": false
+        },
+        "IPv4StaticAddresses": [
+          {
+            "Address": "192.168.1.45",
+            "Gateway": "192.168.1.1",
+            "SubnetMask": "255.255.252.0"
+          }
+        ],
+        "StatelessAddressAutoConfig": {
+          "IPv6AutoConfigEnabled": true
+        },
+        "StaticNameServers": [
+          "192.168.2.3",
+          "192.168.2.1",
+          "8.8.8.8",
+          "::",
+          "::",
+          "::"
+        ]
+      }
+    }
+  }
+]
+
+```
+
+The following example uses the `ethernet load`
+[command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
+to configure and enable the iLO Shared network port. Then, it resets the iLO.
+The `eth.json` configuration file has been generated with the `ethernet save`
+[iLO command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
+and then edited.
+
+```shell Ethernet load
+ilorest login <ilo-ip> -u <ilo-user> -p password
+ilorest ethernet load --force_network_config
+NIC Interface Enabled.
+
+ilorest reset
+A management processor reset is in progress.
+```
+
+```json eth.json
+[
+  {
+    "Comments": {
+      "Manufacturer": "HPE",
+      "Model": "ProLiant DL360 Gen10",
+      "BIOSFamily": "U32",
+      "BIOSDate": "02/22/2024",
+      "SerialNumber": "MXQ73301YK",
+      "iLOVersion": "iLO 5 v3.04"
+    }
+  },
+  {
+    "EthernetInterface.v1_4_1.EthernetInterface": {
+      "/redfish/v1/Managers/1/EthernetInterfaces/2/": {
+        "Id": "1",
+        "InterfaceEnabled": true,
+        "AutoNeg": true,
+        "DHCPv4": {
+          "DHCPEnabled": false,
+          "UseDNSServers": false,
+          "UseDomainName": false,
+          "UseGateway": false,
+          "UseNTPServers": false,
+          "UseStaticRoutes": false
+        },
+        "IPv4StaticAddresses": [
+          {
+            "Address": "192.168.1.45",
+            "Gateway": "192.168.1.1",
+            "SubnetMask": "255.255.252.0"
+          }
+        ],
+        "StatelessAddressAutoConfig": {
+          "IPv6AutoConfigEnabled": true
+        },
+        "StaticNameServers": [
+          "192.168.2.3",
+          "192.168.2.1",
+          "8.8.8.8",
+          "::",
+          "::",
+          "::"
+        ]
+      }
+    }
+  }
+]
+```
+
+:::success TIP
+All of the above IP configuration methods require an iLO reset. One possibility to verify the iLO reset
+is finished, is to test the HTTPS port connectivity (port 443 by default). You could use
+the new IP address for that test. However, if an error has been introduced during the network configuration,
+you will never get any successful response.
+
+However, if you test against the IPv6 link local address, you will always detect when
+the iLO is back online. Only then, you can test your new configuration.
+
+From a system on the same LAN as the targeted iLO,
+the following example opens a session to the iLO and performs
+an iLO reset. Then it waits for the iLO to listen
+on its IPv6 link local address, on port 443 (HTTPS).
+
+Once the iLO web service is back online, it tests the new IP configuration
+and exits the loop.
+
+```shell
+ilorest login FE80::9618:82FF:FE71:A07B%ens22f0 -u <ilo-user> -p password
+ilorest iloreset
+sleep 5           # Make sure the reset is started
+echo -n "Waiting for iLO to reset ."
+while true ; do
+    nc -vz FE80::9618:82FF:FE71:A07B%ens22f0 443 &>/dev/null
+    if [ $? -eq 0 ]; then
+        sleep 10  # Make sure iLO listens on new IP
+        nc -vz <new-ip> 443
+        break
+    fi
+    echo -n "."
+    sleep 5
+done
+echo " Done"
+```
+
+:::
+
+#### Setting Active iLO NIC
+
+The following example activates the iLO shared network port using
+a `rawpatch` command against the `Oem.Hpe.NICEnabled` extension property.
+Then it resets the iLO.
+
+:::warning WARNING
+
+The `set` global command fails to modify the iLO network configuration.
+This is why you must use a `rawpatch` command or
+a `ethernet load` command for this purpose.
+
+:::
+
+:::success TIP
+
+Use the following command to retrieve the URI of
+the iLO shared network port:
+
+`ilorest list @odata.id --filter Name="Manager Shared*" --select EthernetInterface.`
+
+:::
+
+```shell rawpatch
+ilorest rawpatch Payload.json
+ilorest iloreset
+```
+
+```json Payload.json for Gen10 and later
+{
+    "/redfish/v1/Managers/1/EthernetInterfaces/2" : {
         "Oem": {
             "Hpe": {
                 "NICEnabled": true
@@ -1085,9 +1687,9 @@ Now using the `list` command, list the `name`, `macaddress`, and `status` values
 }
 ```
 
-```json Gen9
+```json Payload.json for Gen9
 {
-    "path": "/redfish/v1/Managers/1/EthernetInterfaces/1",
+    "path": "/redfish/v1/Managers/1/EthernetInterfaces/2",
     "body": {
         "Oem": {
             "Hp": {
@@ -1098,15 +1700,28 @@ Now using the `list` command, list the `name`, `macaddress`, and `status` values
 }
 ```
 
-To set the HPE iLO NIC, first login to the server. Then use a `rawpatch` command
+The following example configures the iLO shared network port as active using a GitHub provide script.
 
-![NIC Example 1](images/NIC.png "Mac Address example 1")
+|    **Linux**                    | **Windows**                                                                  |
+|---------------------------------|------------------------------------------------------------------------------|
+| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Shared_Network_Port.sh" target="_blank">Shared\_Network\_Port.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Shared_Network_Port.bat" target="_blank">Shared\_Network\_Port.bat</a> |
 
-To set the NIC, first login to the server. Then we will be using a `rawpatch` command
+```shell
+.\Shared_Network_Port.bat 100.100.100.101 administrator password
+iLOrest : RESTful Interface Tool version 3.1
+Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
+-------------------------------------------------------------------------------
+Discovering data...Done
+
+Logging session out.
+```
 
 ## Updating Firmware
 
-Firmware updates can be submitted to iLO for self update or can be utilized for component level updates. On iLO 5 systems with integrated flash storage, these updates can be uploaded and staged for later use or stored, for recovery purposes (recovery install set).
+Firmware updates can be submitted to iLO for self update or can be utilized for
+component level updates. On iLO 5 systems with integrated flash storage, these
+updates can be uploaded and staged for later use or stored, for recovery
+purposes (recovery install set).
 
 ### Update Component
 
@@ -1120,7 +1735,7 @@ Update a language pack component.
 ./Update_Language.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 A component with the same name (PICGen10_1.0.7s.fwpkg) has been found. Would you like to upload and overwrite this file? (y/n)y
 The operation completed successfully.
@@ -1136,9 +1751,12 @@ Logging session out.
 
 ![TPM Example](images/TPM_disable.png "TPM Example")
 
-**Above:** When the server is rebooted, the `TpmState` is changed from `PresentEnabled` to `PresentDisabled`.
+**Above:** When the server is rebooted, the `TpmState` is changed from
+`PresentEnabled` to `PresentDisabled`.
 
-If you need to disable TPM on a group of servers, you can use a set of commands in RESTful Interface Tool. For example, if you are installing SPPs and OSs on bare-metal servers, and you need to disable TPM prior to starting installation.
+If you need to disable TPM on a group of servers, you can use a set of commands
+in RESTful Interface Tool. For example, if you are installing SPPs and OSs on
+bare-metal servers, and you need to disable TPM prior to starting installation.
 
 ### Enabling the TPM
 
@@ -1147,7 +1765,8 @@ If you need to disable TPM on a group of servers, you can use a set of commands 
 To enable the TPM, you can set the `TpmState` to `PresentEnabled`. **See side example**.
 
 :::info NOTE
-When you are disabling or enabling TPM, depending on the TPM chip type on the server, the TPM visibility might be `Tpm2Visibility` or `TpmVisibility`.
+When you are disabling or enabling TPM, depending on the TPM chip type on the
+server, the TPM visibility might be `Tpm2Visibility` or `TpmVisibility`.
 :::
 
 ## Raw commands Examples
@@ -1163,11 +1782,15 @@ When you are disabling or enabling TPM, depending on the TPM chip type on the se
 }
 ```
 
-To update an iLO license key, use the `rawpost` command. For more information, refer to the [rawpost command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawpost-command).
+To update an iLO license key, use the `rawpost` command. For more information,
+refer to the
+[rawpost command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawpost-command).
 
 The following is an example of the JSON to include when using the `rawpost` command.
 
-To delete an iLO license, use the `rawdelete` command. For more information, see [rawdelete command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawdelete-command). The following is an example of the JSON to include when using the `rawdelete` command:
+To delete an iLO license, use the `rawdelete` command. For more information, see
+[rawdelete command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawdelete-command).
+The following is an example of the JSON to include when using the `rawdelete` command:
 
 `rawdelete /rest/v1/Managers/1/LicenseService`
 
@@ -1184,11 +1807,13 @@ To delete an iLO license, use the `rawdelete` command. For more information, see
 }
 ```
 
-To deploy a SPP, use the `rawpost` command. For more information, refer to the [rawpost command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawpost-command).
+To deploy a SPP, use the `rawpost` command. For more information, refer to the
+[rawpost command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawpost-command).
 
 `ilorest -v --nologo rawpost virtualmedia.json --url=xx.xx.xx.xxx --user=Admin --password=password`
 
-The following is an example of the JSON to include when using the `rawpost` command.
+The following is an example of the JSON to include when using the
+`rawpost` command.
 
 ## General Script Examples
 
@@ -1225,7 +1850,8 @@ ilorest.exe get
 pause
 ```
 
-This is a batch file that logs into a remote server, selects the `Bios` type, and gets the `BootMode` value.
+This is a batch file that logs into a remote server, selects the `Bios` type,
+and gets the `BootMode` value.
 
 ### Saving and Loading a File Using File-Based Editing Mode
 
@@ -1235,7 +1861,8 @@ This is a file-based edit mode helper for HPE iLOrest.
 
 2. Edit the `ilorest.json` file to make changes.
 
-3. Press any key running batch program to continue with program, uploading the newly edited program to the server.
+3. Press any key running batch program to continue with program, uploading the
+   newly edited program to the server.
 
 ```shell
 :: saveload.bat [SELECTOR] [FILENAME]
@@ -1264,7 +1891,8 @@ ilorest.exe load -f %2
 
 ## Miscellaneous
 
-Configure iLO licensing, set unit identification lamp, hotkey configuration, obtaining system power metrics, and configuring the iLO's time zone.
+Configure iLO licensing, set unit identification lamp, hotkey configuration,
+obtaining system power metrics, and configuring the iLO's time zone.
 
 ### iLO Licensing
 
@@ -1276,7 +1904,7 @@ Configure iLO licensing, set unit identification lamp, hotkey configuration, obt
 .\License.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 
 Logging session out.
@@ -1284,8 +1912,10 @@ Logging session out.
 
 ### UID Control
 
-iLO based systems utilize a unit identification led which can be controlled to easily and uniquely identify a physical device. This script
-modifies the UID light state of HPE iLO 4 and iLO 5 only. Refer to the iLO 6 [Changelog](/docs/redfishservices/ilos/ilo6/ilo6_changelog/) for details.
+iLO based systems utilize a unit identification led which can be controlled to
+easily and uniquely identify a physical device. This script
+modifies the UID light state of HPE iLO 4 and iLO 5 only. Refer to the iLO 6
+[Changelog](/docs/redfishservices/ilos/ilo6/ilo6_changelog/) for details.
 
 |    **Linux**                   | **Windows**                                                                  |
 |--------------------------------|------------------------------------------------------------------------------|
@@ -1295,7 +1925,7 @@ modifies the UID light state of HPE iLO 4 and iLO 5 only. Refer to the iLO 6 [Ch
 .\UID_Control.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Discovering data...Done
 
 
@@ -1304,7 +1934,7 @@ Logging session out.
 ilorest get IndicatorLED --selector=ComputerSystem.
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 ```
 
@@ -1318,7 +1948,7 @@ Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
 ./Hotkey_Config.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 The operation completed successfully.
 Logging session out.
 ```
@@ -1327,13 +1957,17 @@ Logging session out.
 
 ![Timezone Example 1](images/timezone1.png "Time zone example 1")
 
-First we login and select the `HpeiLODateTime.` type. If using Gen9, select the `HpiLODateTime` type instead. We then `list` the `TimeZoneList`.
+First we login and select the `HpeiLODateTime.` type. If using Gen9, select the
+`HpiLODateTime` type instead. We then `list` the `TimeZoneList`.
 
-Now scroll around looking for the time zone that is wanted. In the case of the example, we will be using US/Hawaii. Take note of the index associated with the Name.(2 in the case of US/Hawaii)
+Now scroll around looking for the time zone that is wanted. In the case of the
+example, we will be using US/Hawaii. Take note of the index associated with the
+Name(2 in the case of US/Hawaii).
 
 ![Time zone Example 2](images/timezone2.png "Time zone example 2")
 
-Finally, we `set` the Index to 2. Check the status to make sure the change is queued and finally make sure to `commit` to finalize the changes.
+Finally, we `set` the Index to 2. Check the status to make sure the change
+is queued and finally make sure to `commit` to finalize the changes.
 
 ### Getting Powermetric average
 
@@ -1341,7 +1975,8 @@ First login to the server.
 
 ![Power Example 1](images/power.png "Powermetric example 1")
 
-Next `select` the Power. type. Finally `list powercontrol`. The power metric average is represented by the `AverageConsumedWatts` value.
+Next `select` the Power. type. Finally `list powercontrol`.
+The power metric average is represented by the `AverageConsumedWatts` value.
 
 ### Getting Encryption Settings
 
@@ -1349,18 +1984,27 @@ To get the encryption settings, first login to the server
 
 ![Encryption Setting Example 1](images/encryptionsettings.png "Encryption Setting example 1")
 
-Then `select` the `HpeSmartStorageArrayControllerCollection` type. If on a `Gen9` server select `HpSmartStorageArrayControllerCollection` instead.
+Then `select` the `HpeSmartStorageArrayControllerCollection` type.
+If on a `Gen9` server select `HpSmartStorageArrayControllerCollection` instead.
 
-In the provided example, many of the resources for the encryption setting are not available. If available there will be values of `Name`, `Model`, `SerialNumber`, `EncryptionBootPasswordSet`, `EncryptionCryptoOfficerPasswordSet`, `EncrpytionLocalKeyCacheEnabled`, `EncryptionMixedVolumesEnabled`,`EncryptionPhyiscalDriveCount`,`EncryptionRecoveryParamsSet`,`EncryptionStandaloneModeEnabled`, and/or `EncryptionUserPasswordSet`.
+In the provided example, many of the resources for the encryption setting
+are not available. If available there will be values of `Name`, `Model`,
+`SerialNumber`, `EncryptionBootPasswordSet`,
+`EncryptionCryptoOfficerPasswordSet`, `EncrpytionLocalKeyCacheEnabled`,
+`EncryptionMixedVolumesEnabled`,`EncryptionPhyiscalDriveCount`,
+`EncryptionRecoveryParamsSet`,`EncryptionStandaloneModeEnabled`,
+and/or `EncryptionUserPasswordSet`.
 
 ### Retrieve SSD WearOut/WearStatus
 
 Depending on the context, the life time status of SSD devices is called WearOut
 or WearStatus. Redfish has standardized this property as
-`PredictedMediaLifeLeftPercent` in the [Drive schema](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#drive).
+`PredictedMediaLifeLeftPercent` in the
+[Drive schema](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#drive).
 
 For each drive in a server, the following example retrieves its URI,
-predicted media life left percent, physical locations and the HPE legacy WearStatus, from an HPE iLO6 based server with firmware 1.55 and latest UBMx firmware.
+predicted media life left percent, physical locations and the HPE legacy
+WearStatus, from an HPE iLO6 based server with firmware 1.55 and latest UBMx firmware.
 
 ```shell Retrieval of PredictedMediaLifeLeftPercent
 

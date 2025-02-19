@@ -7,24 +7,39 @@ toc:
 disableLastModified: false
 ---
 
-# iLO License service
+## iLO License service
 
-The iLO License service is an OEM Redfish [data type](/docs/concepts/datatypesandcollections/#data-types) composed of the [collection service](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilolicensecollection) and the [service](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilolicense) itself.
+The iLO License service is an OEM Redfish
+[data type](/docs/concepts/datatypesandcollections/#data-types)
+composed of the
+[collection service](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilolicensecollection)
+and the
+[service](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilolicense) itself.
 
-Refer to the <a href="https://www.hpe.com/support/ilo6">iLO Licensing Guide</a> for more information on iLO licenses.
+Refer to the
+<a href="https://www.hpe.com/support/ilo6">iLO Licensing Guide</a>
+for more information on iLO licenses.
 
-This section provides examples for managing the iLO license featuring cURL and iLOrest with its built-in `ilolicense` [macro command](/docs/redfishclients/ilorest-userguide/ilocommands/#ilolicense-command).
+This section provides examples for managing the iLO license featuring cURL
+and iLOrest with its built-in `ilolicense`
+[macro command](/docs/redfishclients/ilorest-userguide/ilocommands/#ilolicense-command).
 
 :::info NOTE
-By default (i.e. factory defaults), iLO contains a license with empty properties. Hence the number of members in the `HpeiLOLicenseCollection` is one. This number never increments.
+By default (i.e. factory defaults), iLO contains a license with empty
+properties. Hence the number of members in the `HpeiLOLicenseCollection`
+is one. This number never increments.
 :::
 
 ## View iLO license properties
 
-The following example retrieves the license properties of an iLO 6 based server.
+The following example retrieves the license properties of an
+iLO 6 based server.
 
 :::success TIP
-The iLO license collection can have only one license. Hence, you can use the `?only` [query parameter](/docs/redfishservices/ilos/supplementdocuments/odataqueryoptions/) to expand the only member of the collection
+The iLO license collection can have only one license. Hence, you can use the
+`?only`
+[query parameter](/docs/redfishservices/ilos/supplementdocuments/odataqueryoptions/)
+to expand the only member of the collection
 :::
 
 ```text Generic GET request
@@ -164,10 +179,16 @@ Name:iLO License
 
 ## Installing an iLO license
 
-To install a license for the first time or to renew/upgrade/downgrade a license, use a POST request to the `HpeiLOLicense` service [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_resmap{{process.env.LATEST_FW_VERSION}}/). This operation overrides the currently installed license.
+To install a license for the first time or to renew/upgrade/downgrade a
+license, use a POST request to the `HpeiLOLicense` service
+[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_resmap{{process.env.LATEST_FW_VERSION}}/).
+This operation overrides the currently installed license.
 
 :::info NOTE
-A successful iLO license installation returns a 201 HTTP code as well as the OpenData `error` object containing the successful `Base.*.Created` Message Id. Although receiving the `error` object may be confusing for a successful operation, it is fully compliant with the Redfish specification.
+A successful iLO license installation returns a 201 HTTP code as well as the
+OpenData `error` object containing the successful `Base.*.Created` Message Id.
+Although receiving the `error` object may be confusing for a successful
+operation, it is fully compliant with the Redfish specification.
 :::
 
 ```text Generic request and body
@@ -210,7 +231,6 @@ X-XSS-Protection: 1; mode=block
         "MessageId": "Base.1.12.Created"
       }
     ]
-  }
 }
 ```
 
@@ -221,12 +241,14 @@ ilorest logout
 ```
 
 :::success TIP
-A Python example using the HPE Python Redfish library is available in the <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_license_key.py" target="_blank">HPE GitHub repository</a>.
+A Python example using the HPE Python Redfish library is available in the
+<a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_license_key.py" target="_blank">HPE GitHub repository</a>.
 :::
 
 ## Uninstalling an iLO license
 
-When you uninstall the iLO license, the `HpeiLOLicenseCollection` data type still contains one member, but this only member has mostly empty fields.
+When you uninstall the iLO license, the `HpeiLOLicenseCollection` data type
+still contains one member, but this only member has mostly empty fields.
 
 ```text Generic request
 DELETE  /redfish/v1/Managers/1/LicenseService/1/
@@ -245,11 +267,11 @@ curl --silent --location --header 'X-Auth-Token: 460eba169821e0ab389705269b3cb44
   "error": {
     "code": "iLO.0.10.ExtendedInfo",
     "message": "See @Message.ExtendedInfo for more information.",
-    "@Message.ExtendedInfo": [
+    "@Message.ExtendedInfo": 
+    [
       {
         "MessageId": "Base.1.12.Success"
       }
     ]
-  }
 }
 ```

@@ -2734,9 +2734,11 @@ An example Redfish response error message following a successful reset of iLO.
 
 ## Sessions
 
-Example of session management.
+In the following
+<a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/sessions.py" target="_blank">example</a>,
+the `sessions()` function creates a new session, prints its URI and token. Then it deletes it.
 
-```python
+```Python Python code
 def sessions(_redfishobj, login_account, login_password):
 
     new_session = {"UserName": login_account, "Password": login_password}
@@ -2765,9 +2767,52 @@ def sessions(_redfishobj, login_account, login_password):
                              " Message Info...")
 ```
 
-### Session Creation
+```Text Output
+Success!
 
-Session token and URI. Session tokens can be cached and used for authentication for all subsequent calls
+        Session /redfish/v1/SessionService/Sessions/admin0000000067166017b810616 created.
+        This is the session X-Auth Token key 69fe736fa3ce58a205d7444b5833ad80.
+{
+    "@odata.context": "/redfish/v1/$metadata#Session.Session",
+    "@odata.etag": "W/\"34D65544\"",
+    "@odata.id": "/redfish/v1/SessionService/Sessions/demopaq0000000067166017b810616",
+    "@odata.type": "#Session.v1_0_0.Session",
+    "Description": "Manager User Session",
+    "Id": "demopaq0000000067166017b810616",
+    "Name": "User Session",
+    "Oem": {
+        "Hpe": {
+            "@odata.context": "/redfish/v1/$metadata#HpeiLOSession.HpeiLOSession",
+            "@odata.type": "#HpeiLOSession.v2_1_0.HpeiLOSession",
+            "AccessTime": "2024-10-21T14:07:19Z",
+            "LoginTime": "2024-10-21T14:07:19Z",
+            "MySession": false,
+            "UserExpires": "2024-10-21T14:37:19Z",
+            "UserIP": "10.124.117.191",
+            "UserTag": "REST",
+            "UserType": "Local"
+        }
+    },
+    "UserName": "admin"
+}
+        Terminating this session.
+{
+    "error": {
+        "@Message.ExtendedInfo": [
+            {
+                "MessageId": "Base.1.18.NoValidSession"
+            }
+        ],
+        "code": "iLO.0.10.ExtendedInfo",
+        "message": "See @Message.ExtendedInfo for more information."
+    }
+}
+
+```
+
+### Session tokens
+
+Session tokens can be cached and used for authentication for all subsequent calls
 as long as the session has not been terminated by the client or timed out by the server.
 
 :::info NOTE
@@ -2775,40 +2820,34 @@ This is only true in production mode. Some higher security modes may require add
 techniques to be performed.
 :::
 
-```TEXT
-Session X-Auth Token: 61ac3d750eeda276749cdd2138117a8f
-Session URI: /redfish/v1/SessionService/Sessions/admin000000005f3d4cbfdbde43a8
+Once a session has been created, its associated token can be used with Redfish clients
+as shown in this [paragraph](/docs/concepts/redfishauthentication/#using-a-session).
+
+The following example shows how to use a valid session token with the `python-ilorest-library`.
+
+:::success TIP
+If your data center is managed by HPE OneView, it is possible to create securely a
+<a href="https://developer.hpe.com/blog/the-power-of-single-sign-on-with-hpe-oneview/"
+target="_blank">single sign on (SSO) OneView token</a> and use it in a Python code,
+as shown in the following example.
+:::
+
+```Python
+from redfish import RedfishClient
+import sys
+
+iloToken="e0f57dfedea47e795a8141d912e4a22e"
+iloURL="https://<iLO.IP.address>"
+
+REDFISHOBJ=RedfishClient(base_url=iloURL, session_key=iloToken)
+REDFISHOBJ.login()
+
+response = REDFISHOBJ.get("/redfish/v1/systems/1", None)
+
+sys.stdout.write("%s\n" % response)
 ```
 
-An example Redfish response error message following a successful creation.
-
-```JSON
-{
-    "@odata.context": "/redfish/v1/$metadata#Session.Session",
-    "@odata.etag": "W/\"F1F51DF3\"",
-    "@odata.id": "/redfish/v1/SessionService/Sessions/admin000000005f3d4cbfdbde43a8",
-    "@odata.type": "#Session.v1_0_0.Session",
-    "Description": "Manager User Session",
-    "Id": "admin000000005f3d4cbfdbde43a8",
-    "Name": "User Session",
-    "Oem": {
-        "Hpe": {
-            "@odata.context": "/redfish/v1/$metadata#HpeiLOSession.HpeiLOSession",
-            "@odata.type": "#HpeiLOSession.v2_1_0.HpeiLOSession",
-            "AccessTime": "2020-08-19T16:01:03Z",
-            "LoginTime": "2020-08-19T16:01:03Z",
-            "MySession": false,
-            "UserExpires": "2020-08-19T16:31:03Z",
-            "UserIP": "16.214.34.25",
-            "UserTag": "REST",
-            "UserType": "Local"
-        }
-    },
-    "UserName": "admin"
-}
-```
-
-### Session Creation
+### Session Deletion
 
 Terminating a session from the client side simply requires deletion of the session URI.
 Attempting to re-access the session results in the following response message.

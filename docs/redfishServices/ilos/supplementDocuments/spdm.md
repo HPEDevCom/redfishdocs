@@ -7,72 +7,114 @@ toc:
 disableLastModified: false
 ---
 
-# iLO and the Security Protocol and Data Model (SPDM)
+## iLO and the Security Protocol and Data Model (SPDM)
 
 :::info NOTE
-The Security Protocol and Data Model (SPDM) has been implemented in iLO 6 version 1.10 and later. Previous versions of HPE iLO don't implement this standard.
+The Security Protocol and Data Model (SPDM) has been implemented in
+iLO 6 version 1.10 and later. Previous versions of HPE iLO don't implement
+this standard.
 :::
 
-The Security Protocol and Data Model (SPDM) enables zero trust between the server management controller and option cards. It uses the <a href="https://www.dmtf.org/standards/spdm" target="_blank">DMTF standard specification</a> to verify and authenticate option cads.
+The Security Protocol and Data Model (SPDM) enables zero trust between the
+server management controller and option cards. It uses the
+<a href="https://www.dmtf.org/standards/spdm"
+target="_blank">DMTF standard specification</a>
+to verify and authenticate option cads.
 
-SPDM provides message exchange between the management controller and internal server components, sequence diagrams, message formats, and other relevant semantics for authentication and measurements of components and options cards.
+SPDM provides message exchange between the management controller and internal
+server components, sequence diagrams, message formats, and other relevant
+semantics for authentication and measurements of components and options cards.
 
-Redfish defines the Component Integrity service which allows redfish clients to view SPDM details. In HPE iLO 6 version 1.10 and later, the `ComponentIntegrityCollection` URI is at `/redfish/v1/ComponentIntegrity/`.
+Redfish defines the Component Integrity service which allows redfish clients
+to view SPDM details. In HPE iLO 6 version 1.10 and later, the
+`ComponentIntegrityCollection` URI is at `/redfish/v1/ComponentIntegrity/`.
 
-HPE iLO uses SPDM to authenticate and verify the integrity of the following component types within HPE servers:
+HPE iLO uses SPDM to authenticate and verify the integrity of the following
+component types within HPE servers:
 
 - PCIe Option Cards (PCIe, OCP, Mezz slots)
 - NVMe Drives attached directly to CPU
 
 The authentication results are reported through:
 
-- Integrate Management Log ([IML](/docs/redfishservices/ilos/supplementdocuments/logservices/#integrated-management-log))
-- Security Log ([SL](/docs/redfishservices/ilos/supplementdocuments/logservices/#security-logs))
+- Integrate Management Log
+    ([IML](/docs/redfishservices/ilos/supplementdocuments/logservices/#integrated-management-log))
+- Security Log
+    ([SL](/docs/redfishservices/ilos/supplementdocuments/logservices/#security-logs))
 - [Redfish Alerts](/docs/concepts/redfishevents/#the-redfish-event-service)
-- [SNMP](/docs/redfishservices/ilos/supplementdocuments/snmp/) traps
+- [SNMP](/docs/redfishservices/ilos/supplementdocuments/networkprotocols/#simple-network-management-protocol)
+    traps
 - iLO GUI (System Information-->Device Inventory)
 - Redfish API (see next paragraph)
 
-You can control the SPDM functionality through the iLO GUI (Security-->Access Settings-->iLO) and the Redfish API of the following resources:
+You can control the SPDM functionality through the iLO GUI
+(Security-->Access Settings-->iLO) and the Redfish API of
+the following resources:
 
 - [Global Component Integrity](#global-component-integrity-property)
 - [Component Integrity Policy](#component-integrity-policy)
 - [Security Dashboard Security Parameter](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilosecuritydashboard)
-- Device [Component Integrity Enablement](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#componentintegrityenabled) (Boolean)
+- Device
+    [Component Integrity Enablement](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#componentintegrityenabled) (Boolean)
 - Device Component Integrity policy
-- [Certificate Management](/docs/redfishservices/ilos/supplementdocuments/securityservice/) (`Import`, `Revoke`, `Delete` and `View`) <!-- It would be nice to explain which iLO certificate URIs are related to Component Integrity. The problem is that iLO does not provide the /redfish/v1/Managers/1/SecurityPolicy/SPDM mentioned in DSP2046 ! -->
-- Measurements [control and monitor](#fetching-component-integrity-measurements)
+- [Certificate Management](/docs/redfishservices/ilos/supplementdocuments/securityservice/)
+    (`Import`, `Revoke`, `Delete` and `View`) <!-- It would be nice to explain which iLO certificate URIs are related to Component Integrity. The problem is that iLO does not provide the /redfish/v1/Managers/1/SecurityPolicy/SPDM mentioned in DSP2046 ! -->
+- Measurements
+    [control and monitor](#fetching-component-integrity-measurements)
 
-Refer the HPE iLO 6 1.10 (or later) <a href="https://www.hpe.com/support/ilo6" target="_blank">User Guide</a> for detail on accessing the above resources via the iLO Graphical User Interface.
+Refer the HPE iLO 6 1.10 (or later)
+<a href="https://www.hpe.com/support/ilo6" target="_blank">User Guide</a>
+for detail on accessing the above resources via the iLO
+Graphical User Interface.
 
 ## Global Component Integrity property
 
-The `GlobalComponentIntegrity` from the `HpeSecurityService` [resource](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesecurityservice) defaults to `disabled` as not all components are expected to support SPDM. If you enable `GlobalComponentIntegrity`, HPE iLO authenticates all applicable components in the server using SPDM. Every applicable component will be reported to the security logs as verified successfully or verified unsuccessfully.
+The `GlobalComponentIntegrity` from the `HpeSecurityService`
+[resource](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesecurityservice)
+defaults to `disabled` as not all components are expected to support
+SPDM. If you enable `GlobalComponentIntegrity`, HPE iLO authenticates
+all applicable components in the server using SPDM. Every applicable
+component will be reported to the security logs as verified successfully
+or verified unsuccessfully.
 
-<!-- Noticed: Shortly after an iLO reset, the `ComponentIntegrityCollection` and the `ComponentIntegrity.v` types/instances 
-are not available. It is required wait long enough for those instances to appear in the `/redfish/v1/resourcedirectory` URI
+<!-- Noticed: Shortly after an iLO reset, the `ComponentIntegrityCollection`
+and the `ComponentIntegrity.v` types/instances 
+are not available. It is required wait long enough for those instances to
+appear in the `/redfish/v1/resourcedirectory` URI
 
-It would be good to have the `types` command with a --refresh argument. See https://github.hpe.com/intelligent-provisioning/python-restful-interface-tool/issues/834
-
+It would be good to have the `types` command with a --refresh argument. 
+See
+https://github.hpe.com/intelligent-provisioning/python-restful-interface-tool/issues/834
 -->
 
 :::info NOTE
 
-- When `GlobalComponentIntegrity` is set to `Disabled` the `ComponentIntegrityCollection` contains `0` members.
-- When `GlobalComponentIntegrity` is set to `Enabled`, the `ComponentIntegrityCollection` contains a member for each applicable component (i.e. PCI slots, NVMe, etc).
+- When `GlobalComponentIntegrity` is set to `Disabled`
+    the `ComponentIntegrityCollection` contains `0` members.
+- When `GlobalComponentIntegrity` is set to `Enabled`, the
+    `ComponentIntegrityCollection` contains a member for each
+    applicable component (i.e. PCI slots, NVMe, etc).
 
 :::
 
-<!-- In the following sentence, it would be nice to provide a link with all possible reasons why a verification is unsuccessful -->
+<!-- In the following sentence, it would be nice to provide a link with all
+possible reasons why a verification is unsuccessful -->
 
-Components which verified unsuccessfully contain additional details explaining why (such as unsupported, missing root CA, unsupported algorithm, etc). Any component type that is non-authentic or unsupported changes the `OverallSecurityStatus` to `Risk` (property of the `HpeiLOSecurityDashboard` [data type](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilosecuritydashboard)).
+Components which verified unsuccessfully contain additional details
+explaining why (such as unsupported, missing root CA, unsupported algorithm,
+etc). Any component type that is non-authentic or unsupported changes the
+`OverallSecurityStatus` to `Risk` (property of the `HpeiLOSecurityDashboard`
+[data type](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilosecuritydashboard)).
 
 ### Examples
 
-The following example retrieves the `GlobalComponentIntegrity` and the `ComponentIntegrityPolicy` properties. The response body shows respective values as `Enabled` and `HaltBootOnSPDMFailure`.
+The following example retrieves the `GlobalComponentIntegrity`
+and the `ComponentIntegrityPolicy` properties. The response body
+shows respective values as `Enabled` and `HaltBootOnSPDMFailure`.
 
 ```text generic GET request
-GET /redfish/v1/Managers/1/SecurityService/?$select=GlobalComponentIntegrity, ComponentIntegrityPolicy
+GET /redfish/v1/Managers/1/SecurityService/?$select=GlobalComponentIntegrity,
+ComponentIntegrityPolicy
 ```
 
 ```bash iLOrest
@@ -93,7 +135,9 @@ ilorest logout
 }
 ```
 
-A system with the `GlobalComponentIntegrity` enabled and the `ComponentIntegrityPolicy` set to `HaltBootOnSPDMFailure` returns a `ComponentIntegrity` collection similar to one in the following example.
+A system with the `GlobalComponentIntegrity` enabled and the
+`ComponentIntegrityPolicy` set to `HaltBootOnSPDMFailure` returns a
+`ComponentIntegrity` collection similar to one in the following example.
 
 ```Shell Generic GET request
 GET /redfish/v1/ComponentIntegrity/
@@ -132,14 +176,19 @@ ilorest logout
 
 ## Component Integrity Policy
 
-The `ComponentIntegrityPolicy` property, part of the `HpeSecurityService` [resource](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesecurityservice), controls the system boot policy based on the SPDM authentication results of the devices in the server. The two policies are:
+The `ComponentIntegrityPolicy` property, part of the `HpeSecurityService`
+[resource](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesecurityservice),
+controls the system boot policy based on the SPDM authentication
+results of the devices in the server. The two policies are:
 
-- `HaltBootOnSPDMFailure`: Select this option to halt the system boot during SPDM Authentication failure.
+- `HaltBootOnSPDMFailure`: Select this option to halt the system boot
+    during SPDM Authentication failure.
 - `NoPolicy`: Select this option to boot the system in normal mode.
 
-### Examples
+### Component Integrity Policy Examples
 
-The following example changes the `ComponentIntegrityPolicy` property to `HaltBootOnSPDMFailure`.
+The following example changes the `ComponentIntegrityPolicy`
+property to `HaltBootOnSPDMFailure`.
 
 :::info NOTE
 A system reset is required to fully validate the modification.
@@ -206,10 +255,12 @@ ilorest logout
 }
 ````
 
-The following example retrieves the details of a storage controller successfully verified by the SPDM protocol.
+The following example retrieves the details of a storage controller
+successfully verified by the SPDM protocol.
 
 :::info NOTE
-The response body contains a hash (measurement) of the four subcomponents of this device.
+The response body contains a hash (measurement) of the four subcomponents
+of this device.
 :::
 
 ```text Generic GET request
@@ -275,25 +326,40 @@ ilorest logout
 ```
 
 :::success TIP
-You can map the component URI (i.e. `/redfish/v1/ComponentIntegrity/0`) with its device URI using the `TargetComponentURI` (i.e. `/redfish/v1/Systems/1/Storage/DE040000` )
+You can map the component URI (i.e. `/redfish/v1/ComponentIntegrity/0`)
+with its device URI using the `TargetComponentURI`
+(i.e. `/redfish/v1/Systems/1/Storage/DE040000` )
 :::
 
 ## Fetching component integrity measurements
 
-HPE iLO 6 and later supports fetching component integrity measurements from devices, including the embedded Trusted Platform Module (TPM) and the operating system. This operation can be performed regularly by Redfish clients to verify the integrity of the components of a system.
+HPE iLO 6 and later supports fetching component integrity measurements
+from devices, including the embedded Trusted Platform Module (TPM) and
+the operating system. This operation can be performed regularly by Redfish
+clients to verify the integrity of the components of a system.
 
-A component integrity measurement is a technique to ensure the component of a system has not been altered before its use or during run time.The verification of the integrity Trusted Platform Modules (TPMs) is explained in the [following paragraph](#fetching-tpm-measurements).
+A component integrity measurement is a technique to ensure the component of
+a system has not been altered before its use or during run time.The
+verification of the integrity Trusted Platform Modules (TPMs) is explained
+in the [following paragraph](#fetching-tpm-measurements).
 
-The fetch of such measurements is performed by POSTing an action to a location specified in the `Actions` Redfish object of the members of the `ComponentIntegrity` collection.
+The fetch of such measurements is performed by POSTing an action to a
+location specified in the `Actions` Redfish object of the members of
+the `ComponentIntegrity` collection.
 
-The following example fetches the component integrity measurements of the storage controller used in the previous example. The optional `Nonce` parameter is not provided in this example.
+The following example fetches the component integrity measurements of
+the storage controller used in the previous example. The optional
+`Nonce` parameter is not provided in this example.
 
 :::success Tip
-The `SignedMeasurements` value in the body response of the next example, corresponds to the concatenation of the four measurements mentioned in the previous example.  
+The `SignedMeasurements` value in the body response of the next example,
+corresponds to the concatenation of the four measurements mentioned in
+the previous example.
 :::
 
 ```text Generic request
-POST /redfish/v1/ComponentIntegrity/0/Actions/ComponentIntegrity.SPDMGetSignedMeasurements/
+POST /redfish/v1/ComponentIntegrity/0/Actions/
+ComponentIntegrity.SPDMGetSignedMeasurements/
 ```
 
 ```json Body request
@@ -322,10 +388,12 @@ ilorest logout
 }
 ```
 
-The following example specifies a valid 64 hexadecimal digits `Nonce` parameter in the body of the action POST request.
+The following example specifies a valid 64 hexadecimal digits
+`Nonce` parameter in the body of the action POST request.
 
 ```text Generic request
-POST /redfish/v1/ComponentIntegrity/0/Actions/ComponentIntegrity.SPDMGetSignedMeasurements/
+POST /redfish/v1/ComponentIntegrity/0/Actions/
+ComponentIntegrity.SPDMGetSignedMeasurements/
 ```
 
 ```json Body request
@@ -358,14 +426,19 @@ ilorest logout
 }
 ```
 
-The following example specifies an invalid `Nonce` parameter with 32 characters in the body of the POST action to retrieve the measurements.
+The following example specifies an invalid `Nonce` parameter with 32
+characters in the body of the POST action to retrieve the measurements.
 
 :::success TIP
-The `Nonce` property is an hexadecimal encoded set of bytes (^[0-9a-fA-F]{64}$). As such, 64 characters are needed to obtain a 32 byte string. Providing less characters (i.e. 32) triggers the error returned in the next example.
+The `Nonce` property is an hexadecimal encoded set of bytes
+(^[0-9a-fA-F]{64}$). As such, 64 characters are needed to obtain a
+32 byte string. Providing less characters (i.e. 32) triggers the error
+returned in the next example.
 :::
 
 ```text Generic request
-POST /redfish/v1/ComponentIntegrity/0/Actions/ComponentIntegrity.SPDMGetSignedMeasurements/
+POST /redfish/v1/ComponentIntegrity/0/Actions/
+ComponentIntegrity.SPDMGetSignedMeasurements/
 ```
 
 ```json Body request
@@ -393,9 +466,12 @@ POST /redfish/v1/ComponentIntegrity/0/Actions/ComponentIntegrity.SPDMGetSignedMe
 
 ### Fetching TPM measurements
 
-HPE iLO represents a TPM with two members (TPM-0, TPM-1) in the `ComponentIntegrityCollection`.
+HPE iLO represents a TPM with two members (TPM-0, TPM-1)
+in the `ComponentIntegrityCollection`.
 
-`TPM-0` contains the Operating System Platform Component Registers (PCRs) also called measurements. Each PCR corresponds to an Operating System component. `TPM-1` contains iLO firmware PCRs.
+`TPM-0` contains the Operating System Platform Component
+Registers (PCRs) also called measurements. Each PCR corresponds
+to an Operating System component. `TPM-1` contains iLO firmware PCRs.
 
 <!--  The inclusion of a better description of PCRs are in these issue:
      https://github.hpe.com/HPE-iLO-Redfish-API/ilo5-rest-api-docs/issues/266
@@ -404,25 +480,41 @@ HPE iLO represents a TPM with two members (TPM-0, TPM-1) in the `ComponentIntegr
 Reference docs:
 - https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/
 - https://trustedcomputinggroup.org/wp-content/uploads/TCG_PCClient_PFP_r1p05_v23_pub.pdf
- -->
+-->
 
-The following prerequisites must be satisfied to retrieve TPM-0 (OS) and TPM-1 (iLO) PCRs:
+The following prerequisites must be satisfied to retrieve TPM-0 (OS)
+and TPM-1 (iLO) PCRs:
 
-<!-- The following is an attempt to map the BIOS prerequisites with BIOS Redfish attributes.
-     It MUST be reviewed and acknowledged by SME (i.e. mailto:sunilkbhagat@hpe.com) -->
+<!-- The following is an attempt to map the BIOS prerequisites
+with BIOS Redfish attributes.
+     It MUST be reviewed and acknowledged by
+     SME (i.e. mailto:sunilkbhagat@hpe.com) -->
 
-- An Operating System (OS) must be installed on the server. No specific action required in the OS configuration.
-- BIOS firmware needs to support TPM measurements. For information on "Configuring Trusted Platform Module (TPM) options", refer to <a href="https://support.hpe.com/hpesc/public/docDisplay?docId=sd00002648en_us" target="_blank">UEFI System Utilities User Guide for HPE ProLiant Gen11 Servers, and HPE Synergy</a>.
-  - `TPM Visibility` must be set to `Visible` (`TpmVisibility` Bios attribute)
-  - `TPM UEFI Option ROM Measurement` must be set to `Enabled` (`TpmUefiOpromMeasuring` Bios attribute) <!-- SME need to validate this assertion -->
-  - `Current TPM State` must be set to `Present and Enabled` (`TpmState` Bios attribute).
-  - In the `Current TPM 2.0 Active PCRs` field select `SHA256 and SHA384` (`TpmActivePcrs` Bios attribute).
+- An Operating System (OS) must be installed on the server.
+    No specific action required in the OS configuration.
+- BIOS firmware needs to support TPM measurements. For information
+    on "Configuring Trusted Platform Module (TPM) options", refer to
+    <a href="https://support.hpe.com/hpesc/public/docDisplay?docId=sd00002648en_us"
+    target="_blank">UEFI System Utilities User Guide for HPE ProLiant Gen11
+    Servers, and HPE Synergy</a>.
+  - `TPM Visibility` must be set to `Visible`
+        (`TpmVisibility` Bios attribute)
+  - `TPM UEFI Option ROM Measurement` must be set to `Enabled`
+        (`TpmUefiOpromMeasuring` Bios attribute)
+            <!-- SME need to validate this assertion -->
+  - `Current TPM State` must be set to `Present and Enabled`
+        (`TpmState` Bios attribute).
+  - In the `Current TPM 2.0 Active PCRs` field select
+        `SHA256 and SHA384` (`TpmActivePcrs` Bios attribute).
 
 :::info NOTE
-Inability to meet any of the above prerequisites results in the [error message](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_ILO6_FW_VERSION}}/#ilo219hashalgnotsupported) `iLO.2.19.HashAlgNotSupported`
+Inability to meet any of the above prerequisites results in the
+[error message](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_ILO6_FW_VERSION}}/) `HashAlgNotSupported`
 :::
 
-The following example retrieves the required Bios attribute values. Refer to this [section](/docs/examples/redfishexamples/#update-of-a-bios-attribute) to modify a BIOS Redfish attribute.
+The following example retrieves the required Bios attribute values.
+Refer to this [section](/docs/examples/redfishexamples/#update-of-a-bios-attribute)
+to modify a BIOS Redfish attribute.
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -440,7 +532,8 @@ ilorest
 
 ```
 
-The following example retrieves the properties of the TPM-0 (OS) component, including each PCR measurements.
+The following example retrieves the properties of the TPM-0
+(OS) component, including each PCR measurements.
 
 ```text Generic request
 GET /redfish/v1/ComponentIntegrity/TPM-0
@@ -653,7 +746,8 @@ ilorest rawget /redfish/v1/ComponentIntegrity/TPM-0
 }
 ```
 
-The following example retrieves the properties of the TPM-1 (iLO firmware) component, including each PCR measurements.
+The following example retrieves the properties of the TPM-1 (iLO firmware)
+component, including each PCR measurements.
 
 ```text Generic request
 GET redfish/v1/ComponentIntegrity/TPM-1
@@ -708,25 +802,32 @@ GET redfish/v1/ComponentIntegrity/TPM-1
 }
 ```
 
-The following example fetches the PCR measurements from the `TPM-1` component member. The payload of this request is described in the following table:
+The following example fetches the PCR measurements from the `TPM-1`
+component member. The payload of this request is described in
+the following table:
 
 | Property | Type | Description |
 | --- | --- | --- |
 | PCRSelection | string | Indicates the targeted PCR. Mandatory parameter with possible values: `PCR0` or `PCR8` |
 | Nonce | string | A set of bytes as a hex-encoded string that is signed with the measurements. Length of the Nonce should be between 1 and 32 characters and is an optional parameter. |
 
-<!-- The above Nonce definition says "that is signed with the measurements" while the NOTE below says: "uses the provided nonce to sign the PCR"
+<!-- The above Nonce definition says "that is signed with the measurements"
+while the NOTE below says: "uses the provided nonce to sign the PCR"
      Which definition is right ??
  -->
 
 :::info NOTE
-HPE iLO uses the provided nonce to sign the PCR. If the nonce value is not provided, HPE iLO creates the nonce internally.
+HPE iLO uses the provided nonce to sign the PCR. If the nonce value is not
+provided, HPE iLO creates the nonce internally.
 :::
 
-<!-- Need to explain the Body response of the following example and how to use it: Sending multiple POST requests don't retrieve same measurement ! bug or feature ? -->
+<!-- Need to explain the Body response of the following example and how to
+use it: Sending multiple POST requests don't retrieve same measurement !
+bug or feature ? -->
 
 ```text Generic request
-POST /redfish/v1/ComponentIntegrity/TPM-1/Actions/ComponentIntegrity.TPMGetSignedMeasurements
+POST /redfish/v1/ComponentIntegrity/TPM-1/Actions/
+ComponentIntegrity.TPMGetSignedMeasurements
 ```
 
 ```json Body request
@@ -746,12 +847,12 @@ Same example using iLOrest:
 
 ```shell iLOrest
 cat GetTPM-1-Measurements.json
-{
-    "/redfish/v1/ComponentIntegrity/TPM-1/Actions/ComponentIntegrity.TPMGetSignedMeasurements": {
-        "PCRSelection": "PCR0",
-        "Nonce": "0123456789abcdef0123456789abcdef"
+    {
+        "/redfish/v1/ComponentIntegrity/TPM-1/Actions/ComponentIntegrity.TPMGetSignedMeasurements": {
+            "PCRSelection": "PCR0",
+            "Nonce": "0123456789abcdef0123456789abcdef"
     }
-}
+
 
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest rawpost --silent --response GetTPM-1-Measurements.json | jq

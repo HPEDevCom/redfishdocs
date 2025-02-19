@@ -48,7 +48,7 @@ var observer = new MutationObserver(function() {
     //ucepScript.setAttribute('src','https://h50007.www5.hpe.com/hfws/us/en/hpe/latest.r/root?contentType=js&switchToCHF=true&expand_view=false&hide_country_selector=true&console_mode=true&hide_main_nav=false&hide_search=false&hide_cart=false&hide_cube_menu=false&hide_sign_in=true&header_logo=hpe&slim_footer=false&hide_help_menu=true');
 
     //Expanded view enabled (expansion of the HPE Logo on the left and the other logos on the right):
-    ucepScript.setAttribute('src','https://h50007.www5.hpe.com/hfws/us/en/hpe/latest.r/root?contentType=js&switchToCHF=true&expand_view=true&hide_country_selector=true&hide_sign_in=true');
+    ucepScript.setAttribute('src','https://h50007.www5.hpe.com/hfws/us/en/hpe/latest.r/root?contentType=js&switchToCHF=true&expand_view=true&hide_country_selector=true&hide_sign_in=true&slim_footer=true');
 
     //Default expend_view=false:
     //ucepScript.setAttribute('src','https://h50007.www5.hpe.com/hfws/us/en/hpe/latest.r/root?contentType=js&switchToCHF=true&hide_country_selector=true&hide_sign_in=true'); 

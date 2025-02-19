@@ -3,33 +3,31 @@ seo:
   title: Persistent Memory commands
 toc:
   enable: true
-  maxDepth: 3
+  maxDepth: 2
 disableLastModified: false
 ---
 
-## Persistent Memory Commands
+# Persistent Memory Commands
 
 This section covers commands related to the discovery and configuration of HPE Persistent Memory.
 
-### Clear Pending Configuration Command
+## Clear Pending Configuration Command
 
-#### Syntax
+### Syntax
 
 clearpmmpendingconfig
 
-#### Description
-
+### Description
 
 Clears all pending persistent memory configuration tasks.
 
-#### Parameters
-
+### Parameters
 
 - **-h, --help**
 
 Displays help on the usage of this command.
 
-#### Examples
+### Examples
 
 Clear all pending persistent memory configuration tasks.
 
@@ -45,25 +43,17 @@ Deleted Task #1953
 
 ```
 
-### Persistent Memory Advanced Configuration Command
+## Persistent Memory Advanced Configuration Command
 
-#### Syntax
-
-
+### Syntax
 
 provisionpmm [-h | --help] [-m | --memory-mode=(0|%)] [-i | --pmem-interleave=(On|Off)] [-pid | --proc=(processorID)] [-f | --force]
 
-
-#### Description
-
-
+### Description
 
 Applies user specified configuration to persistent memory modules.
 
-
-#### Parameters
-
-
+### Parameters
 
 - **-h, --help**
 
@@ -71,23 +61,32 @@ Displays help on the usage of this command.
 
 - **-m, --memory-mode**
 
-Optionally allows user to specify the percentage of total capacity that should be configured as Volatile. Defaults to 0% Volatile. The remaining capacity will be configured as Persistent.
+Optionally allows user to specify the percentage of total capacity
+that should be configured as Volatile.
+Defaults to 0% Volatile. The remaining
+capacity will be configured as Persistent.
 
 - **-i, --pmem-interleave**
 
-Indicates whether the persistent memory regions should be interleaved or not (Allowed values: "on", "off").
+Indicates whether the persistent memory regions should be interleaved or not
+(Allowed values: "on", "off").
 
 - **-p, --proc**
 
-Optionally allows user to specify the processors (comma separated list of ProcessorNumbers) on which the selected configuration would be applied. Defaults to all processors.
+Optionally allows user to specify the processors
+(comma separated list of ProcessorNumbers) on which
+the selected configuration would be applied. Defaults
+to all processors.
 
 - **-f, --force**
 
-Allow the user to force the configuration by automatically accepting any prompts.
+Allow the user to force the configuration by automatically accepting
+any prompts.
 
-#### Examples
+### Examples
 
-Configure all persistent memory modules on processors 1 and 3 to 50% Volatile with no persistent interleave regions.
+Configure all persistent memory modules on processors
+1 and 3 to 50% Volatile with no persistent interleave regions.
 
 ```shell
 iLOrest > provisionpmm -m 50 -i off -pid 1,3
@@ -102,7 +101,8 @@ CREATE       63.19 GB    63.19 GB        3@12
 
 ```
 
-Example: Configure all installed persistent memory modules to 25% Volatile with persistent interleave regions.
+Example: Configure all installed persistent memory modules
+to 25% Volatile with persistent interleave regions.
 
 ```shell
 iLOrest > provisionpmm -m 25 -i on
@@ -117,10 +117,9 @@ CREATE       189.57 GB   63.19 GB        2@1, 2@12
 
 ```
 
-### Persistent Memory Discovery Command
+## Persistent Memory Discovery Command
 
-#### Syntax
-
+### Syntax
 
 showpmm --device | -D [--dimm=(DIMM IDs) | -I] [--json | -j]
 
@@ -130,12 +129,12 @@ showpmm --logical | -L [--json | -j]
 
 showpmm --summary | -M [--json | -j]
 
-#### Description
+### Description
 
 
 Displays information about the installed persistent memory modules.
 
-#### Parameters
+### Parameters
 
 
 - **-h, --help**
@@ -160,14 +159,17 @@ Shows a summary of the installed persistent memory modules.
 
 - **-I, --dimm**
 
-Optionally use this flag to filter output by DIMM IDs (ProcessorNumber@SlotNumber). Can be used in conjunction with the `-D | --device` or the `-C | --pmmconfig` flags.
+Optionally use this flag to filter output by DIMM IDs
+(ProcessorNumber@SlotNumber).
+Can be used in conjunction with
+the `-D | --device` or the `-C | --pmmconfig` flags.
 
 - **-j, --json**
 
 Optionally use this flag to display output in JSON format.
 
 
-#### Examples
+### Examples
 
 Show information about the physical persistent memory modules.
 
@@ -218,22 +220,19 @@ TotalPmemSize:  0.0 GB
 
 ```
 
-### Persistent Memory Guided Configuration Command
+## Persistent Memory Guided Configuration Command
 
-#### Syntax
-
+### Syntax
 
 applypmmconfig -L | --list
 
 applypmmconfig -C | --pmmconfig [-f | --force]
 
-#### Description
-
+### Description
 
 Apply a predefined configuration to installed persistent memory modules.
 
-#### Parameters
-
+### Parameters
 
 - **-h, --help**
 
@@ -251,7 +250,7 @@ Specify one of the predefined configIDs to apply to all persistent memory module
 
 Allow the user to force the configuration by automatically accepting any prompts.
 
-#### Examples
+### Examples
 
 Show a list of supported guided configurations.
 
@@ -282,20 +281,17 @@ CREATE       0.0 GB      252.76 GB       2@1, 2@12
 
 ```
 
-### Show Pending Configuration Command
+## Show Pending Configuration Command
 
-#### Syntax
-
+### Syntax
 
 showpmmpendingconfig [-j | --json]
 
-#### Description
-
+### Description
 
 Shows the queued tasks pending a reboot for configuring persistent memory modules.
 
-#### Parameters
-
+### Parameters
 
 - **-h, --help**
 
@@ -305,7 +301,7 @@ Displays help on the usage of this command.
 
 Optionally use this flag to display output in JSON format.
 
-#### Examples
+### Examples
 
 Show persistent memory configuration changes pending a reboot.
 
@@ -322,26 +318,23 @@ CREATE       94.78 GB    31.59 GB        2@12
 
 ```
 
-### Show Recommended Configuration Command
+## Show Recommended Configuration Command
 
-#### Syntax
-
+### Syntax
 
 showrecommendedpmmconfig
 
-#### Description
-
+### Description
 
 Shows the recommended persistent memory configurations.
 
-#### Parameters
-
+### Parameters
 
 - **-h, --help**
 
 Displays help on the usage of this command.
 
-#### Examples
+### Examples
 
 Show a list of recommended persistent memory configurations
 
@@ -355,23 +348,23 @@ MemoryModeTotalSize    PmemTotalSize    CacheRatio
 
 ```
 
-### Display Security State Command
+## Display Security State Command
 
-#### Syntax
+### Syntax
 
 pmmsecuritystate
 
-#### Description
+### Description
 
 Displaying the Security state of dimms.
 
-#### Parameters
+### Parameters
 
 - **-h, --help**
 
 Displays help on the usage of this command.
 
-#### Example
+### Example
 
 Displaying the Security state of dimms
 
