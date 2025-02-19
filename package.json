@@ -5,17 +5,16 @@
   "description": "HPE server management portal",
   "license": "MIT",
   "scripts": {
-    "start": "redocly-portal develop --host 0.0.0.0 -p 3000",
-    "build": "redocly-portal build",
-    "clean": "redocly-portal clean"
+    "start": "npx @redocly/cli preview --host 0.0.0.0 -p 3000"
   },
   "dependencies": {
-    "@redocly/developer-portal": "1.1.0-beta.132",
     "grommet": "^2.28.0",
     "grommet-icons": "^4.8.0",
     "grommet-theme-hpe": "^4.1.0",
     "react-helmet": "^6.1.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "@redocly/realm": "0.118.2",
+    "@redocly/portal-legacy-ui": "^0.1.0"
   },
   "resolutions": {
     "styled-components": "5.3.3",
