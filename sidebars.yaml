@@ -7,12 +7,12 @@ hpeRedfishMainSideBar:
        
   - group: Guides
     expanded: false
-    pages:
+    items:
     - label: Introduction
       page: docs/index.md
     - group: Redfish concepts
       expanded: false
-      pages:
+      items:
       - label: Redfish® at a glance
         page:  docs/concepts/index.md
 
@@ -60,7 +60,7 @@ hpeRedfishMainSideBar:
   # See https://redocly.com/docs/developer-portal/configuration/sidebar-nav/#Additional-sidebar  
   - group: HPE Redfish® services
     expanded: false
-    pages:
+    items:
       - label: Overview
         page:  docs/redfishServices/index.md
       - label: HPE iLO 5 Redfish® service
@@ -72,7 +72,7 @@ hpeRedfishMainSideBar:
   - separatorLine: true
   - group: HPE Redfish® clients
     expanded: false
-    pages:
+    items:
       - label: Overview
         page:  docs/redfishClients/index.md
       - label: HPE iLOrest user guide
@@ -86,7 +86,7 @@ hpeRedfishMainSideBar:
   - separatorLine: true
   - group: More references and material
     expanded: false
-    pages:
+    items:
       - label: Overview
         page: docs/references_and_material/index.md
       - label: Why is Redfish different...
