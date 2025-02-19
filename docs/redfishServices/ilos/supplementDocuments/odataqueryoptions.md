@@ -7,32 +7,50 @@ toc:
 disableLastModified: false
 ---
 
-# OData query options
+## OData query options
 
 :::info NOTE
 
-OData query options are not implemented in iLO 4. Refer to the [Adapting from iLO 4](/docs/redfishservices/ilos/ilo5/ilo5_adaptation/#odata-query-options) section for OData query options examples related to iLO 5.
+OData query options are not implemented in iLO 4. Refer to the
+[Adapting from iLO 4](/docs/redfishservices/ilos/ilo5/ilo5_adaptation/#odata-query-options)
+section for OData query options examples related to iLO 5.
 
-Non implemented OData query options are silently discarded by Redfish services.
+Non implemented OData query options are silently discarded by
+Redfish services.
 
 :::
 
-Redfish is an <a href="https://www.odata.org/" target="_blank">OData-derived</a> protocol with resources linking to other resources using `@odata.id`:
+Redfish is an
+<a href="https://www.odata.org/" target="_blank">OData-derived</a>
+protocol with resources linking to other resources using `@odata.id`:
 
 `{"@odata.id": "/redfish/v1/link_to_some_other_resource"}`
 
-The iLO Redfish implementation offers several OData services aiming at facilitating the consumption of data by Redfish clients.
+The iLO Redfish implementation offers several OData services aiming
+at facilitating the consumption of data by Redfish clients.
 
-As an example, the OData `$expand` query option causes the OData service to automatically replace a link with the results of an internal GET of the indicated URI. This is essential to allow the API to scale for clients. An example use case is to expand an event log to return the log entries inline with the collection and reduce the number of GETs required by the client.
+As an example, the OData `$expand` query option causes the OData service to
+automatically replace a link with the results of an internal GET of the
+indicated URI. This is essential to allow the API to scale for clients.
+An example use case is to expand an event log to return the log entries
+inline with the collection and reduce the number of GETs required
+by the client.
 
 Examples of client requests to expand (in the general OData case) looks like:
 
-* `GET /redfish/v1/some_resource?$expand=*($levels=1)` - Expand any references 1 level. Levels is assumed to be 1 by default so this is the same as `GET /redfish/v1/some_resource?$expand=*`
-* `GET /redfish/v1/some_resource?$expand=*($levels=3)` - Expand any references 3 levels deep. This case could require loop detection (For example, system expanding a link to chassis expanding a link back to system).
-* `GET /redfish/v1/some_resource?$expand=.` - Expand any references EXCEPT those found under the Links section.
-* `GET /redfish/v1/some_resource?$expand=./Oem/Hpe` - Expand any references found in the Oem/Hpe section of the resource.
+* `GET /redfish/v1/some_resource?$expand=*($levels=1)` - Expand any references
+    1 level. Levels is assumed to be 1 by default so this is the same as
+    `GET /redfish/v1/some_resource?$expand=*`
+* `GET /redfish/v1/some_resource?$expand=*($levels=3)` - Expand any references
+    3 levels deep. This case could require loop detection (For example,
+    system expanding a link to chassis expanding a link back to system).
+* `GET /redfish/v1/some_resource?$expand=.` - Expand any references EXCEPT
+    those found under the Links section.
+* `GET /redfish/v1/some_resource?$expand=./Oem/Hpe` - Expand any references
+    found in the Oem/Hpe section of the resource.
 
-OData query options supported by iLO are presented below along with use case examples.
+OData query options supported by iLO are presented below along with
+use case examples.
 
 ## iLO $expand
 
@@ -40,14 +58,20 @@ Using the rules above, iLO supports `$expand` in this way:
 
 `$expand` is applicable to HTTP GET only.
 
-`$expand=.`, `$expand=*` and `$expand=($levels=n)` result in the same behavior:
+`$expand=.`, `$expand=*` and `$expand=($levels=n)` result in the
+same behavior:
 
-* Expands all links in both root and Oem/Hpe sections not inside the `Links` sections.
-* Levels is always interpreted as 1, regardless of n. This is to avoid the potential for expanding recursively for interlinked resources.
-* The `Links` section is never expanded. This is to avoid expanding the Chassis and Manager related links on GET operations to System.
+* Expands all links in both root and Oem/Hpe sections not inside the
+    `Links` sections.
+* Levels is always interpreted as 1, regardless of n. This is to avoid
+    the potential for expanding recursively for interlinked resources.
+* The `Links` section is never expanded. This is to avoid expanding the
+    `Chassis` and `Manager` related links on `GET` operations to System.
 
 :::info NOTE
-The root resource at `/redfish/v1/` is available without authentication and has navigational links that can be expanded. An `$expand` request does not result in expansion unless valid authentication credentials are supplied.
+The root resource at `/redfish/v1/` is available without authentication and
+has navigational links that can be expanded. An `$expand` request does not
+result in expansion unless valid authentication credentials are supplied.
 :::
 
 :::warning Warning
@@ -57,10 +81,14 @@ There might be other links that do not support `$expand`.
 ### iLO $expand examples
 
 :::info NOTE
-iLO responds to all HTTP requests using <a href="https://www.rfc-editor.org/rfc/rfc7230#section-4.1" target="_blank">Chunked Transfer Coding</a>. This enables features like `$expand` that require very large responses.
+iLO responds to all HTTP requests using
+<a href="https://www.rfc-editor.org/rfc/rfc7230#section-4.1"
+target="_blank">Chunked Transfer Coding</a>.
+This enables features like `$expand` that require very large responses.
 :::
 
-The following example retrieves the `ChassisCollection` without the `$expand` query option:
+The following example retrieves the `ChassisCollection` without the
+`$expand` query option:
 
 ```text GET a collection without $expand query
 GET /redfish/v1/Chassis/
@@ -83,7 +111,8 @@ GET /redfish/v1/Chassis/
 }
 ```
 
-The next example retrieves the same `ChassisCollection` with the `$expand=.` query option:
+The next example retrieves the same `ChassisCollection` with the
+`$expand=.` query option:
 
 ```text GET a collection with $expand query
 GET /redfish/v1/Chassis/?$expand=.
@@ -122,18 +151,27 @@ GET /redfish/v1/Chassis/?$expand=.
                         "@odata.id": "/redfish/v1/Systems/1/Storage/DA000006/Drives/DA000006/"
                     },
                     ............
-    ],
+                ]
+                    }
+        },
+    ]
     "Members@odata.count": 1
 }
 ```
 
 ## iLO "only" query option
 
-iLO supports the `only` query parameter documented in the <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.13.0.pdf" target="_blank">Redfish API specification</a>. This query parameter is ignored except on collections with only one member. Examples include the `ComputerSystemCollection`, `ChassisCollection` and `ManagerCollection`.
+iLO supports the `only` query parameter documented in the
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.13.0.pdf"
+target="_blank">Redfish API specification</a>.
+This query parameter is ignored except on collections with only one member.
+Examples include the `ComputerSystemCollection`, `ChassisCollection`
+and `ManagerCollection`.
 
 ### iLO "only" example
 
-The following example retrieves the chassis collection without the `only` query option.
+The following example retrieves the chassis collection without the
+`only` query option.
 
 ```text GET chassis Collection
 GET /redfish/v1/Chassis/
@@ -156,7 +194,8 @@ GET /redfish/v1/Chassis/
 }
 ```
 
-The following example retrieves the a chassis collection of a system with only one chassis, using the `only` query option.
+The following example retrieves the a chassis collection of a system
+with only one chassis, using the `only` query option.
 
 ```text GET the only chassis member
 GET /redfish/v1/Chassis/?only
@@ -178,7 +217,7 @@ GET /redfish/v1/Chassis/?only
                 "@odata.id": "/redfish/v1/Managers/1/"
             }
         ],
-        
+            }
     .....
 
     "PCIeDevices": {
@@ -203,7 +242,10 @@ GET /redfish/v1/Chassis/?only
 }
 ```
 
-The following example uses the `only` query option to retrieve the chassis collection of a system containing a <a href="https://buy.hpe.com/us/en/options/smart-io/smart-io/smart-io/pensando-distributed-services-platform/p/1012796285" target="_blank">Pensando Data Processor Unit</a> (DPU).
+The following example uses the `only` query option to retrieve the chassis
+collection of a system containing a
+<a href="https://buy.hpe.com/us/en/options/smart-io/smart-io/smart-io/pensando-distributed-services-platform/p/1012796285"
+target="_blank">Pensando Data Processor Unit</a> (DPU).
 
 ```text GET Chassis collection with ?only query option
 GET /redfish/v1/Chassis/?only
@@ -231,18 +273,28 @@ GET /redfish/v1/Chassis/?only
 
 ## iLO $filter query option
 
-The [odata.org](https://www.odata.org/getting-started/basic-tutorial/#queryData) official site defines the `$filter` query as the following:
+The
+[odata.org](https://www.odata.org/getting-started/basic-tutorial/#queryData)
+official site defines the `$filter` query as the following:
 
-"_The `$filter` system query option allows clients to filter a collection of resources that are addressed by a request URL. The expression specified with `$filter` is evaluated for each resource in the collection, and only items where the expression evaluates to true are included in the response._".
+"_The `$filter` system query option allows clients to filter a collection of
+resources that are addressed by a request URL. The expression specified with
+`$filter` is evaluated for each resource in the collection, and only items
+where the expression evaluates to true are included in the response._".
 
-Six logical operators (Equals, Not Equals, Greater Than...) can be applied to the `$filter` query. They are defined in the <a href="http://docs.oasis-open.org/odata/odata/v4.0/odata-v4.0-part2-url-conventions.html" target="_blank">OData</a> specifications.
+Six logical operators (Equals, Not Equals, Greater Than...) can be applied
+to the `$filter` query. They are defined in the
+<a href="http://docs.oasis-open.org/odata/odata/v4.0/odata-v4.0-part2-url-conventions.html"
+target="_blank">OData</a> specifications.
 
 ### iLO $filter examples
 
-The following example retrieves the "iLO Dedicated Network Interface" properties (output abbreviated).
+The following example retrieves the "iLO Dedicated Network Interface"
+properties (output abbreviated).
 
 ```text GET request with $filter query
-GET /redfish/v1/Managers/1/EthernetInterfaces/?$filter=Name eq 'Manager Dedicated Network Interface'
+GET /redfish/v1/Managers/1/EthernetInterfaces/?$filter=Name eq
+'Manager Dedicated Network Interface'
 ```
 
 ```json Response body (abbreviated)
@@ -298,10 +350,12 @@ GET /redfish/v1/Managers/1/EthernetInterfaces/?$filter=Name eq 'Manager Dedicate
 }
 ```
 
-The next example retrieves only Integrated Management Log (IML) entries with severity `Repaired`.
+The next example retrieves only Integrated Management Log (IML) entries
+with severity `Repaired`.
 
 ```text GET specific IML entries
-GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$filter=Oem.Hpe.Severity eq 'Repaired'
+GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$filter=Oem.Hpe.Severity
+eq 'Repaired'
 ```
 
 ```json Response body (abbreviated)
@@ -387,7 +441,8 @@ GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$filter=Oem.Hpe.Severity eq '
 The following example retrieves IML entries created after a specific date.
 
 ```text GET IML entries filtered by date
-GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$filter=Created gt '2022-10-04T06:19:22Z'` 
+GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$filter=Created
+gt '2022-10-04T06:19:22Z'` 
 ```
 
 ```json Response body
@@ -465,7 +520,8 @@ GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$filter=Created gt '2022-10-0
 
 ## iLO $count query option
 
-The `$count` system query option allows Redfish clients to request a count of the matching resources included with the resources in the response.
+The `$count` system query option allows Redfish clients to request a count
+of the matching resources included with the resources in the response.
 
 ### iLO $count example
 
@@ -487,7 +543,10 @@ The `$count` system query option allows Redfish clients to request a count of th
 
 ## iLO $top and $skip query options
 
-The `$top` system query option requests the number of items in the queried collection to be included in the result. The `$skip` query option requests the number of items in the queried collection that are to be skipped and not included in the result.
+The `$top` system query option requests the number of items in the queried
+collection to be included in the result. The `$skip` query option requests
+the number of items in the queried collection that are to be skipped and
+not included in the result.
 
 ### iLO $top and $skip examples
 
@@ -575,7 +634,8 @@ GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$top=10
 }
 ```
 
-The request below returns IML entries starting at the 22th record (the `Members@odata.count` is 31).
+The request below returns IML entries starting at the 22th record
+(the `Members@odata.count` is 31).
 
 ```text Skip entries
  GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$skip=21
@@ -622,11 +682,13 @@ The request below returns IML entries starting at the 22th record (the `Members@
 
 ## iLO $select query option
 
-The `$select` query option allows Redfish clients to requests a limited set of properties.
+The `$select` query option allows Redfish clients to requests a limited
+set of properties.
 
 ### iLO $select examples
 
-The following example retrieves the `RedfishVersion` property of an iLO based server.
+The following example retrieves the `RedfishVersion` property of an
+iLO based server.
 
 ```text GET a single selected property
 GET /redfish/v1/?$select=RedfishVersion
@@ -642,7 +704,8 @@ GET /redfish/v1/?$select=RedfishVersion
 }
 ```
 
-The following example returns the `ChassisType` and `ServiceLabel` properties of a Data Processor Unit card.
+The following example returns the `ChassisType` and `ServiceLabel`
+properties of a Data Processor Unit card.
 
 ```text GET multiple selected properties
 GET /redfish/v1/Chassis/2/?$select=ChassisType,Location/PartLocation/ServiceLabel

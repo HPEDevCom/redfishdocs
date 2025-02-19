@@ -7,11 +7,15 @@ toc:
 disableLastModified: false
 ---
 
-# Redfish authentication and sessions
+## Redfish authentication and sessions
 
-If you perform an HTTP operation on any other resource than the root `/redfish/v1/` resource, you will receive an `HTTP 401 Unauthorized` error indicating that you don’t have the authentication needed to access the resource.
+If you perform an HTTP operation on any other resource than the root
+`/redfish/v1/` resource, you will receive an `HTTP 401 Unauthorized`
+error indicating that you don’t have the authentication needed
+to access the resource.
 
-The following example shows the error displayed on a `GET /redfish/v1/Systems/` request when no authentication is attempted:
+The following example shows the error displayed on a
+`GET /redfish/v1/Systems/` request when no authentication is attempted:
 
 ```shell cURL
 curl --include --insecure     \
@@ -41,7 +45,8 @@ HTTP/1.1 401 Unauthorized
 {
   "error": {
     "code": "Base.1.8.GeneralError",
-    "message": "A general error has occurred. See Resolution for information on how to resolve the error.",
+    "message": "A general error has occurred. 
+        See Resolution for information on how to resolve the error.",
     "@Message.ExtendedInfo": [
       {
         "@odata.type": "#Message.v1_1_0.Message",
@@ -58,15 +63,25 @@ HTTP/1.1 401 Unauthorized
 ```
 
 :::success TIP
-HPE implements a [Two Factor Authentication](/docs/redfishservices/ilos/supplementdocuments/tfa/) OEM extension in iLO firmware.
+HPE implements a
+[Two Factor Authentication](/docs/redfishservices/ilos/supplementdocuments/tfa/)
+OEM extension in iLO firmware.
 :::
 
 ## Basic authentication
 
-The Redfish API allows you to use HTTP Basic Authentication with a valid Management Controller user name and password. The following example retrieves the `/redfish/v1/Systems/` URI using cURL (with response headers), the HPE Redfish <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> Python library</a> and the <a href="https://github.com/DMTF/python-redfish-library" target="_blank">DMTF Redfish Python library</a>.
+The Redfish API allows you to use HTTP Basic Authentication with a valid
+Management Controller user name and password. The following example retrieves
+the `/redfish/v1/Systems/` URI using cURL (with response headers), the
+HPE Redfish <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> Python library</a>
+and the <a href="https://github.com/DMTF/python-redfish-library" target="_blank">DMTF Redfish Python library</a>.
 
 :::warning Warning
-The <a href="https://github.com/DMTF/python-redfish-library" target="blank"> DMTF Redfish Python library</a> and the <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE Redfish Python library</a> cannot co-exist in the same Python environment. You should uninstall one before installing the other one.
+The <a href="https://github.com/DMTF/python-redfish-library" target="blank"> DMTF Redfish Python library</a>
+and the
+<a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE Redfish Python library</a>
+cannot co-exist in the same Python environment. You should
+uninstall one before installing the other one.
 :::
 
 ```Bash cURL
@@ -91,7 +106,7 @@ curl --include --insecure     \
 import json
 from redfish import redfish_client
 
-# When running remotely connect using the BMC IP address, BMC account name, 
+# When running remotely connect using the BMC IP address, BMC account name,
 # and password to send https requests
 bmc_host = "https://{IP}"
 login_account = "admin"
@@ -154,27 +169,54 @@ REDFISH_OBJ.logout()
 ```
 
 :::info NOTE
-cURL does not need a specific logout operation to delete the session opened in the Redfish service. However, you should always make sure Python or PowerShell scripts disconnect completely from the remote Management Controller. Management Controllers have a low limit of simultaneous connections. Reaching this limit prevents other connections.
+cURL does not need a specific logout operation to delete the session opened
+in the Redfish service. However, you should always make sure Python or
+PowerShell scripts disconnect completely from the remote Management Controller.
+Management Controllers have a low limit of simultaneous connections.
+Reaching this limit prevents other connections.
 :::
 
 ## Session authentication
 
-For complex multi-resource operations, you should log in and establish a session in the Redfish service session manager object at the [documented URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#sessioncollection) `/redfish/v1/SessionService/Sessions`. To create such a session, POST a JSON object to the session manager.
+For complex multi-resource operations, you should log in and establish
+a session in the Redfish service session manager object at the
+[documented URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#sessioncollection)
+`/redfish/v1/SessionService/Sessions`.
+To create such a session, POST a JSON object to the session manager.
 
-If the session is created successfully, you receive an HTTP 201 (Created) response from the Management Controller. There will be also two important HTTP response headers.
+If the session is created successfully, you receive an HTTP 201 (Created)
+response from the Management Controller. There will be also two important
+HTTP response headers.
 
-- **X-Auth-Token** Your session key (token). This is a unique string for your login session. It must be included as a header in all subsequent HTTP operations during the session lifetime.
+- **X-Auth-Token** Your session key (token). This is a unique string for
+    your login session. It must be included as a header in all subsequent HTTP
+    operations during the session lifetime.
 
-- **Location** The URI of the newly created session resource. The Management Controller allocates a new session resource describing your session. This is the URI that has to be DELETEd in order to log out.
+- **Location** The URI of the newly created session resource.
+    The Management Controller allocates a new session resource describing your
+    session. This is the URI that has to be DELETEd in order to log out.
 
 :::success Tips
-It is a good practice to save the `Location` URI of the newly created session as well as the `X-Auth-Token`. This is your unique session information and will be needed later to issue other requests and to log out. High level Redfish libraries (i.e. HPE and DMTF Python Redfish libraries) save these two properties automatically in the Redfish object respectively at `REDFISH_OBJ.session_location`  and `REDFISH_OBJ.session\_key`.
+It is a good practice to save the `Location` URI of the newly created session
+as well as the `X-Auth-Token`. This is your unique session information and
+will be needed later to issue other requests and to log out. High level
+Redfish libraries (i.e. HPE and DMTF Python Redfish libraries) save these
+two properties automatically in the Redfish object respectively at
+`REDFISH_OBJ.session_location`  and `REDFISH_OBJ.session\_key`.
 :::
 
-The following example creates a Redfish session using cURL, the DMTF Redfish Python Library and the HPE Python Library.
+The following example creates a Redfish session using cURL,
+the DMTF Redfish Python Library and the HPE Python Library.
 
 :::warning Warning
-The <a href="https://github.com/DMTF/python-redfish-library" target="_blank"> DMTF</a> and the <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE </a> Python Redfish libraries cannot co-exist in the same Python environment. They contain identical classes names with different methods.
+The
+<a href="https://github.com/DMTF/python-redfish-library"
+target="_blank"> DMTF</a>
+and the
+<a href="https://github.com/HewlettPackard/python-ilorest-library"
+target="_blank"> HPE </a>
+Python Redfish libraries cannot co-exist in the same Python environment.
+They contain identical classes names with different methods.
 :::
 
 ```bash Session creation with cURL
@@ -301,7 +343,8 @@ print(json.dumps(RESPONSE.dict, indent=4, sort_keys=True))
 REDFISH_OBJ.logout()
 ```
 
-Examples of headers and body responses of a successful session creation using the Python scripts of the above example:
+Examples of headers and body responses of a successful session creation
+using the Python scripts of the above example:
 
 ```text Response Headers
 Cache-Control: no-cache
@@ -379,11 +422,20 @@ Session URI: /redfish/v1/SessionService/Sessions/admin0000000063bc4f87659ddce4
 
 ## Session management
 
-This section explains how to manually use the session location and the session key (token) with low level Redfish clients (ex: Postman, cURL). Higher level Redfish clients (iLOrest, PowerShell Cmdlets, Python scripts using Redfish libraries) should not require such manual session management.
+This section explains how to manually use the session location and the session
+key (token) with low level Redfish clients (ex: Postman, cURL).
+Higher level Redfish clients (iLOrest, PowerShell Cmdlets, Python scripts
+using Redfish libraries) should not require such manual session management.
 
 ### Using a session
 
-To use a newly created session, simply include the `X-Auth-Token` header with its all Redfish requests. The left part of the following example creates a session and saves the token and the session location URL in an array. The middle part of the example includes the `X-Auth-Token` header and its value and retrieves the properties of the just created session location (`${TokenAndUrl[1]}`). The right part shows the response body of an iLO 6 Redfish service.
+To use a newly created session, simply include the `X-Auth-Token` header with
+its all Redfish requests. The left part of the following example creates a
+session and saves the token and the session location URL in an array.
+The middle part of the example includes the `X-Auth-Token` header and its
+value and retrieves the properties of the just created session
+location (`${TokenAndUrl[1]}`). The right part shows the response body of
+an iLO 6 Redfish service.
 
 ```bash Session creation with cURL
 # The following Bash command creates a Redfish session and populates
@@ -450,9 +502,16 @@ curl --insecure \
 
 ### Disconnect a session
 
-Redfish services supports a limited number of simultaneous user sessions. If you do not properly log out from a session and open other sessions, you may reach this limit and will locked out until an unused session expires. To limit that risk, it is good practice to delete the current session when finished working with it.
+Redfish services supports a limited number of simultaneous user sessions.
+If you do not properly log out from a session and open other sessions, you
+may reach this limit and will locked out until an unused session expires.
+To limit that risk, it is good practice to delete the current session when
+finished working with it.
 
-To disconnect a session, send a DELETE request to the session location (`/redfish/v1/SessionService/Sessions/{item}`). In the following example user Administrator retrieves the session collection of an iLO 6 Redfish service and disconnect the session of user `student`.
+To disconnect a session, send a DELETE request to the session location
+(`/redfish/v1/SessionService/Sessions/{item}`). In the following example
+user Administrator retrieves the session collection of an iLO 6 Redfish
+service and disconnect the session of user `student`.
 
 ```text generic GET SessionCollection
 GET /redfish/v1/SessionService/Sessions/
@@ -494,21 +553,36 @@ DELETE /redfish/v1/SessionService/Sessions/student0000000063bd2164790ee259/
 ```
 
 :::success TIP
-If you failed to save your session location and need to delete your own session, the HPE iLO Redfish service implements the `MySession` link in the `Oem/Hpe` extension of the Session Collection URI (`/redfish/v1/SessionService/Sessions`). It provides as well the `MySession` Boolean property in the Oem extension of the session members.
+If you failed to save your session location and need to delete your own
+session, the HPE iLO Redfish service implements the `MySession` link in
+the `Oem/Hpe` extension of the Session Collection URI
+(`/redfish/v1/SessionService/Sessions`). It provides as well
+the `MySession` Boolean property in the Oem extension of the session members.
 
-You can use this information to identify your own session location and disconnect it safely using a DELETE operation.
+You can use this information to identify your own session location and
+disconnect it safely using a DELETE operation.
 :::
 
 ## Certificate authentication
 
-Some Redfish services like the HPE iLO Redfish service offer the possibility to authenticate users with an X509 certificate instead of username/password credentials. The following steps are required to benefit from this HPE added value feature on iLO based servers. Hints and pointers are provided for performing them via the iLO GUI or Redfish.
+Some Redfish services like the HPE iLO Redfish service offer the possibility
+to authenticate users with an X509 certificate instead of username/password
+credentials. The following steps are required to benefit from this HPE added
+value feature on iLO based servers. Hints and pointers are provided for
+performing them via the iLO GUI or Redfish.
 
-- An "iLO Advanced" license is required for this feature (iLO GUI: `Administration` --> `Licensing`)
+- An "iLO Advanced" license is required for this feature
+    (iLO GUI: `Administration` --> `Licensing`)
 
-    The following example shows the generic GET request to retrieve the detail of an HPE iLO license. It shows as well an iLOrest sequence to retrieve the iLO license type using two methods and the corresponding responses.
+    The following example shows the generic GET request to retrieve the detail
+    of an HPE iLO license. It shows as well an iLOrest sequence to retrieve
+    the iLO license type using two methods and the corresponding responses.
 
     :::success TIP
-    Refer to the [Odata query options](/docs/redfishservices/ilos/supplementdocuments/odataqueryoptions/#ilo-only-example) section to learn more about the `?only` option mentioned in the following generic GET request.
+    Refer to the
+    [Odata query options](/docs/redfishservices/ilos/supplementdocuments/odataqueryoptions/#ilo-only-example)
+    section to learn more about the `?only` option mentioned in the following
+    generic GET request.
     :::
 
     ```text Generic GET iLO License
@@ -527,7 +601,9 @@ Some Redfish services like the HPE iLO Redfish service offer the possibility to 
     License=iLO Advanced
     ```
 
-    The following example shows how to upload an HPE iLO license with a generic POST request (and associated body), an iLOrest sequence and then a cURL request.
+    The following example shows how to upload an HPE iLO license with a
+    generic POST request (and associated body), an iLOrest sequence
+    and then a cURL request.
 
     ```text Generic POST license request
     POST /redfish/v1/Managers/1/LicenseService/
@@ -550,12 +626,25 @@ Some Redfish services like the HPE iLO Redfish service offer the possibility to 
          https://{iLO-IP}/redfish/v1/Managers/1/LicenseService/ 
     ```
 
-- Configure [NTP Server(s)](/docs/redfishservices/ilos/supplementdocuments/managingtime/#configuring-the-network-time-protocol-ntp) (iLO GUI: `iLO [Dedicated|Shared] Network Port` --> `SNTP`)
-- Verify the [date and time](/docs/redfishservices/ilos/supplementdocuments/managingtime/#ilo-date-and-time) is accurate (iLO GUI: `Information` --> `iLO Overview` - Main pane: `iLO` - `iLO Date/Time`)
-- If not already done, generate an [SSL](/docs/redfishservices/ilos/supplementdocuments/securityservice/#generate-a-certificate-signing-request) iLO Certificate Signing Request (CSR), have a trusted root Certificate Authority (CA) sign it and import the signed SSL certificate in iLO (iLO GUI: `Security` --> `SSL Certificate` --> `Customize Certificate` --> `Import Certificate`)
-- Enable "CAC/Smartcard Authentication" (iLO GUI: `Security` --> `CAC/SmartCard`)
+- Configure
+    [NTP Server(s)](/docs/redfishservices/ilos/supplementdocuments/managingtime/#configuring-the-network-time-protocol-ntp)
+    (iLO GUI: `iLO [Dedicated|Shared] Network Port` --> `SNTP`)
+- Verify the
+    [date and time](/docs/redfishservices/ilos/supplementdocuments/managingtime/#ilo-date-and-time)
+    is accurate (iLO GUI: `Information` -->
+    `iLO Overview` - Main pane: `iLO` - `iLO Date/Time`)
+- If not already done, generate an
+    [SSL](/docs/redfishservices/ilos/supplementdocuments/securityservice/#generate-a-certificate-signing-request)
+    iLO Certificate Signing Request (CSR), have a trusted root Certificate
+    Authority (CA) sign it and import the signed SSL certificate in iLO
+    (iLO GUI: `Security` --> `SSL Certificate` -->
+    `Customize Certificate` --> `Import Certificate`)
+- Enable "CAC/Smartcard Authentication"
+    (iLO GUI: `Security` --> `CAC/SmartCard`)
 
-    The following example shows a generic PATCH request and the corresponding iLOrest sequence to enable the "CAC/Smartcard Authentication" of an HPE iLO 6.
+    The following example shows a generic PATCH request and the corresponding
+    iLOrest sequence to enable the "CAC/Smartcard Authentication" of
+    an HPE iLO 6.
 
     ```text generic PATCH request
     PATCH /redfish/v1/Managers/1/SecurityService/CertificateAuthentication/
@@ -570,17 +659,24 @@ Some Redfish services like the HPE iLO Redfish service offer the possibility to 
     ilorest logout
     ```
 
-- Create an [iLO user](/docs/redfishservices/ilos/supplementdocuments/managingusers/#creating-a-new-local-user-account) (iLO GUI: `Administration` --> `User Administration` ; Click on the `New` button)
-- Generate a signed certificate for the user created in the previous step (generate private key and CSR. Get CSR signed by trusted root CA).
+- Create an
+    [iLO user](/docs/redfishservices/ilos/supplementdocuments/managingusers/#creating-a-new-local-user-account)
+    (iLO GUI: `Administration` --> `User Administration` ;
+    Click on the `New` button)
+- Generate a signed certificate for the user created in the previous step
+    (generate private key and CSR. Get CSR signed by trusted root CA).
 
-    The following example provides hints to generate a user CSR (and associated private key) and sign it with a local self-signed Certificate Authority. 
+    The following example provides hints to generate a user CSR (and
+    associated private key) and sign it with a local self-signed Certificate
+    Authority.
 
     :::warning Warning
-    For obvious security reasons it is not recommended to sign CSRs and produce certificates with a self-signed Certificate Authority.
+    For obvious security reasons it is not recommended to sign CSRs and
+    produce certificates with a self-signed Certificate Authority.
     :::
 
     ```bash User key and CSR generation example
-    # This is a light example to generate a private key and 
+    # This is a light example to generate a private key and
     # Certificate Signing Request (CSR) for user student.
     u=student
     openssl req -new -newkey rsa:2048 -nodes -keyout ${u}.key -out ${u}.csr
@@ -600,10 +696,17 @@ Some Redfish services like the HPE iLO Redfish service offer the possibility to 
                -out ${u}.crt -in ${u}.csr
     ```
 
-- Map the just signed user certificate with user in iLO (GUI: `Security` --> `Certificate Mappings` --> `Authorized Certificates` ; select new user --> `Authorize New Certificate` --> `Import Certificate`)
+- Map the just signed user certificate with user in iLO (GUI: `Security` -->
+    `Certificate Mappings` --> `Authorized Certificates` ; select new user -->
+    `Authorize New Certificate` --> `Import Certificate`)
 
     :::success TIP
-    X509 certificate files contain lines of ASCII characters separated by the LineFeed (LF) or CarriageReturn-LineFeed (CR-LF) invisible characters. Those characters are not valid in Redfish POST actions and must be translated into respectively: `\n` and `\r\n`. You can use the following commands to convert X509 files with multiple lines into a suitable JSON body.
+    X509 certificate files contain lines of ASCII characters separated by the
+    LineFeed (LF) or CarriageReturn-LineFeed (CR-LF) invisible characters.
+    Those characters are not valid in Redfish POST actions and must be
+    translated into respectively: `\n` and `\r\n`. You can use the following
+    commands to convert X509 files with multiple lines into a suitable JSON
+    body.
 
     ```bash Stream Editor (sed)
     sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' certfile.crt > certfile.txt
@@ -622,7 +725,8 @@ Some Redfish services like the HPE iLO Redfish service offer the possibility to 
 
     :::
 
-    The following example presents the generic POST request to map an iLO user with a signed certificate.
+    The following example presents the generic POST request to map an iLO user
+    with a signed certificate.
 
     ```text generic POST request
     POST: /redfish/v1/AccountService/UserCertificateMapping
@@ -646,9 +750,13 @@ Some Redfish services like the HPE iLO Redfish service offer the possibility to 
     }
     ```
 
-- Import the trusted CA certificate used to sign the just created iLO user certificate (iLO GUI: `Security` --> `CAC-SmartCard` --> `Import Trusted CA Certificates`)
+- Import the trusted CA certificate used to sign the just created
+    iLO user certificate (iLO GUI: `Security` --> `CAC-SmartCard` -->
+    `Import Trusted CA Certificates`)
 
-    The following example provides the generic POST request and the corresponding iLOrest sequence to upload a trused CA certificate used to sign the certificed iLO user created earlier.
+    The following example provides the generic POST request and the
+    corresponding iLOrest sequence to upload a trused CA certificate
+    used to sign the certificed iLO user created earlier.
 
     ```text generic POST request
     POST /redfish/v1/Managers/1/SecurityService/CertificateAuthentication/Actions/HpeCertAuth.ImportCACertificate/
@@ -662,20 +770,24 @@ Some Redfish services like the HPE iLO Redfish service offer the possibility to 
     ilorest logout
     ```
 
-Once the above steps have been performed, it is possible to log into the remote iLO as certified user `student` using iLOrest or a Python script as shown in the following example.
+Once the above steps have been performed, it is possible to log into the
+remote iLO as certified user `student` using iLOrest or a Python script
+as shown in the following example.
 
 ```bash Certificate authentication with iLOrest
 # You can omit the --userpassphrase parameter if the --userkey file is not protected.
-ilorest login ilo-hst345g11-9 --usercert student.crt --userkey student.key --userpassphrase "passphrase"
-# The following command returns MySession URI to proof that user "student" is logged in.
+ilorest login ilo-hst345g11-9 --usercert student.crt --userkey student.key
+--userpassphrase "passphrase"
+# The following command returns MySession URI to proof that user
+"student" is logged in.
 ilorest get --json   | jq -r '.Oem.Hpe.Links.MySession'
 ilorest logout
 ```
 
 ```Python Certificate authentication
 
-# The following example uses the HPE Redfish Python library to connect to a 
-# remote iLO as user 'student', with the user's certificate. Morever, this 
+# The following example uses the HPE Redfish Python library to connect to a
+# remote iLO as user 'student', with the user's certificate. Morever, this
 # example verifies the validity of the SSL connection.
 
 # NOTE: The HPE Redfish Python library cannot co-exist with the
@@ -780,5 +892,6 @@ REDFISHOBJ.logout()
 ```
 
 :::info NOTE
-The DMTF Python Redfish library only provides basic and session authentication methods.
+The DMTF Python Redfish library only provides basic and session
+authentication methods.
 :::

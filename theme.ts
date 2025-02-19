@@ -1,6 +1,11 @@
 import { readableColor, transparentize } from 'polished';
 import saturnTheme from './grommet-theme.json';
 
+/*
+Refer to https://redocly.com/docs/developer-portal/configuration/theme/ 
+for the portal theme customization  
+*/
+
 export const theme = {
   spacing: {
     unit: 5,
@@ -84,13 +89,13 @@ export const theme = {
     backgroundColor: '#fafafa',
     width: '320px',
     spacing: {
-	    paddingVertical: 8,
-	    offsetNesting: 6,
+	    paddingVertical: 4,
+	    offsetNesting: 8,
     }
   },
   typography: {
     fontSize: '18px',
-    lineHeight: '1.45em',
+    lineHeight: '1.15em',
     fontWeightRegular: '400',
     fontWeightBold: '600',
     fontWeightLight: '300',
@@ -101,51 +106,66 @@ export const theme = {
       lineHeight: ({ typography }) => typography.lineHeight,
     },
     heading1: {
-      fontSize: saturnTheme.heading.level[1].medium.size,
+      //fontSize: saturnTheme.heading.level[1].small.size,
+      fontSize: ({ typography }) => typography.fontsize * 2 + 2,
       fontWeight: ({ typography }) => typography.headings.fontWeight,
       fontFamily: ({ typography }) => typography.headings.fontFamily,
       lineHeight: ({ typography }) => typography.headings.lineHeight,
       color: ({ colors }) => colors.text.primary,
+      marginBottom: "0.2em",
       capitalize: false,
     },
     heading2: {
-      fontSize: saturnTheme.heading.level[2].medium.size,
+      // fontSize: saturnTheme.heading.level[2].small.size,
+      fontSize: ({ typography }) => typography.fontsize + 1,
       fontWeight: ({ typography }) => typography.headings.fontWeight,
       color: ({ colors }) => colors.text.primary,
       fontFamily: ({ typography }) => typography.headings.fontFamily,
       lineHeight: ({ typography }) => typography.headings.lineHeight,
+      marginTop: "0.3em",
+      marginBottom: "0.1em",
       capitalize: false,
     },
     heading3: {
-      fontSize: saturnTheme.heading.level[3].medium.size,
+      // fontSize: saturnTheme.heading.level[3].small.size,
+      fontSize: ({ typography }) => typography.fontsize - 1,
       fontWeight: ({ typography }) => typography.headings.fontWeight,
       color: ({ colors }) => colors.text.primary,
       fontFamily: ({ typography }) => typography.headings.fontFamily,
       lineHeight: ({ typography }) => typography.headings.lineHeight,
+      marginTop: "0.3em",
+      marginBottom: "0.1em",
       capitalize: false,
     },
     heading4: {
-      fontSize: saturnTheme.heading.level[4].medium.size,
+      // fontSize: saturnTheme.heading.level[4].small.size,
+      fontSize: ({ typography }) => typography.fontsize - 3,
       fontWeight: ({ typography }) => typography.headings.fontWeight,
       color: ({ colors }) => colors.text.primary,
       fontFamily: ({ typography }) => typography.headings.fontFamily,
       lineHeight: ({ typography }) => typography.headings.lineHeight,
+      marginTop: "0.3em",
+      marginBottom: "0.1em",
       capitalize: false,
     },
     heading5: {
-      fontSize: saturnTheme.heading.level[5].medium.size,
+      fontSize: saturnTheme.heading.level[5].small.size,
       fontWeight: ({ typography }) => typography.headings.fontWeight,
       color: ({ colors }) => colors.text.primary,
       fontFamily: ({ typography }) => typography.headings.fontFamily,
       lineHeight: ({ typography }) => typography.headings.lineHeight,
+      marginTop: "0.3em",
+      marginBottom: "0.1em",
       capitalize: false,
     },
     heading6: {
-      fontSize: saturnTheme.heading.level[6].medium.size,
+      fontSize: saturnTheme.heading.level[6].small.size,
       fontWeight: ({ typography }) => typography.headings.fontWeight,
       color: ({ colors }) => colors.text.primary,
       fontFamily: ({ typography }) => typography.headings.fontFamily,
       lineHeight: ({ typography }) => typography.headings.lineHeight,
+      marginTop: "0.3em",
+      marginBottom: "0.1em",
       capitalize: false,
     },
     code: {

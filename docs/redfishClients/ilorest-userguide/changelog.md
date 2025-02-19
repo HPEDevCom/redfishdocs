@@ -12,6 +12,57 @@ disableLastModified: false
 The latest iLOrest packages can be freely downloaded from
 <a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest" target="_blank">GitHub</a>.
 
+A <a href="https://pypi.org/project/ilorest" target="_blank">PyPI</a> project is also available.
+
+## Version 5.3.0.0
+
+**Fixes:**
+
+- Fixed an issue with the `bootorder` [command](/docs/redfishclients/ilorest-userguide/bioscommands/#bootorder-command). New boot order was not set properly.
+- Fixed an  issue with the `esxcli` utility in ESXI 8.0.
+- Fixed an issue with the `certificate` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#certificate-command). In some cases, the `--getcsr` option was throwing an exception.
+- Fixed an issue with the `ethernet` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command) where `--nameservers` option was not accepting three name servers as it should.
+- Fixed an issue with the `select` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#select-command). RDE controller information was not listing when executing `list members --select StorageControllerCollection. --json`.
+- Fixed an issue with the `flashfwpkg` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#flashfwpkg-command). The command was not printing the returned iLO error message when the option `--tpmover` was supplied.
+- Fixed an issue with the `flashfwpkg` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#flashfwpkg-command).The command was not working with some directly connected drives or connected behind a storage controller.
+- Fixed an issue with the `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command). The command was not displaying the returned iLO error code when a non-existent URL was supplied as input.
+- Fixed an issue in the `login()` library
+  [function](/docs/redfishclients/python-redfish-library/3.2/python-library-reference3200/#loginauthsession)
+  preventing the use of a OneView generated session key (SSO token). Refer to this [paragraph](/docs/redfishclients/python-redfish-library/examples/#session-tokens) for more information.
+
+**Enhancements:**
+
+- Enhanced the `flashfwpkg` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#flashfwpkg-command) to support and flash <a href="https://developer.hpe.com/blog/benefits-of-the-platform-level-data-model-for-firmware-update-standard/#type-b" target="_blank">type B components</a>.
+- Enhanced the `flashfwpkg` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#flashfwpkg-command) to flash direct attached drive components correctly.
+
+## Version 5.2.0.0
+
+**Fixes:**
+
+- Fixed an issue with the
+`save` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#save-command).
+The command was not working with the `--multisave` parameter.
+- Fixed an issue with the `set` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#set-command). `--logout` was not logging the session out.
+- Fixed an  issue with the `set` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#set-command). Modification to the IP network configuration was not working as expected.
+- Fixed issues with `rawpost` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawpost-command) , `rawpatch` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawpatch-command). These commands were returning an exception error when a .txt file was supplied as input.
+
+**Enhancements:**
+
+- Support for third party firmware images .pup, .fpb, .hpb enabled in both inband as well as out of band communication for `flashfwpkg` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#flashfwpkg-command)
+
+## Version 5.1.0.0
+
+**Fixes:**
+
+- Fixed an issue with the
+`installset` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#installset-command). The output of this command was returning unwanted response in it prior to the fix.
+- Fixed multiple issues with the `Get` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command). `EthernetNetworkInterface` and `Power` types were wrongly displayed before the fix.
+
+**Enhancements:**
+
+- Support of 8 [parallel inband](/docs/redfishclients/python-redfish-library/advancedusage/#execution-of-parallel-in-band-commands) operations or command executions.
+- SLES 15 Sp6 support has been enabled.
+
 ## Version 5.0.0.0
 
 **Fixes:**
@@ -314,6 +365,10 @@ Refer to the [installation section](../installation/#installing-the-ilorest-pypi
 - `setpassword` able to set empty password.
 - Introduced Ethernet command. The Ethernet command handles the Ethernet related set and get parameters like IP, DNS, and so on. This also has save and load features.
 - `serverclone` options `--silent` and `--quiet` replaced with `--auto`.
+
+**Removed**
+
+- `iloclone` has been completely removed from iLOrest. It was deprecated since version 2.4.1 and the apparition of the `serverclone` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#serverclone-command).
 
 **Fixes:**
 

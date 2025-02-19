@@ -24,7 +24,7 @@ This section is a guide to help Redfish client code adapt from the iLO 5 RESTful
 
 ## Introduction
 
-The iLO 6 RESTful API is fully conformant with the Redfish® protocol <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.6.0.pdf" target="_blank">version 1.6.0</a> and the data model <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4.pdf" target="_blank">schema bundle version 2021.4</a>. Any remaining support for the pre-Redfish iLO RESTful API has been removed and is replaced by the Redfish equivalents. HPE continues to extend the Redfish data model (Oem.Hpe extensions) to enable value for the customer.
+The iLO 6 RESTful API is fully conformant with the Redfish® protocol and data model mentioned in the [Changelog](/docs/redfishservices/ilos/ilo6/ilo6_changelog/#changelog) file. Any remaining support for the pre-Redfish iLO RESTful API has been removed and is replaced by the Redfish equivalents. HPE continues to extend the Redfish data model (Oem.Hpe extensions) to enable value for the customer.
 
 Refer to the [Conformance](/docs/concepts/redfishconformance) section for more detail on this subject.
 

@@ -1,20 +1,23 @@
 #!/usr/bin/bash
 
-# Version 0.94
+# Version 0.96
 
 # Script name: _script_wrapper.sh 
 # This script is a wrapper to the other scripts contained in this folder, except
-# the standalone `_python_library.sh` script.
+# to the standalone `_python_library.sh` script.
 
-# It create configuratin variables and calls the other scripts in the right order in 
+# It creates configuration variables and calls the other scripts in the right order in 
 # order to convert raw and automaticaly generated files into Redocly MD files.
 
 # This script must be executed when new versions of the automatically generated 
 # files are posted, and before the Redocly rendering process (GitHub PR merge).
 
+# NOTE: Automatically generated files are created in the internal GitHub:
+#     https://github.hpe.com/HPE-iLO-Redfish-API/tools/tree/master/RedfishRefDoc
+
 # Requirements (if G is the iLO generation and VVV its firmware version (i.e. 110)):
 #        
-#        * The original Slate automatically generated _iloG_resourcedefns.md, 
+#        * The automatically generated _iloG_resourcedefns.md, 
 #          _iloG_resmap.md and _iloG_msgregs.md files MUST be stored respectively as:
 # 
 #          docs/redfishServices/ilos/iloG/iloG_VVV/_raw_iloG_resourcedefnsVVV.md-bck and
@@ -33,16 +36,19 @@
 #
 
 # Note: The following $scriptList variable is ordered. Don't modify this order!
-scriptList="_split_resourcedefns.sh _resourcedefns.sh _resmap.sh _msgregs.sh _excludeFromSearch.sh"
+# scriptList="_lintFiles.sh"
+scriptList="_split_resourcedefns.sh _resourcedefns.sh _resmap.sh _msgregs.sh _excludeFromSearch.sh _lintFiles.sh"
 required_executables="dos2unix sed awk"
 
 # Don't forget to update the following variables to process the right iLO version !
+
 export ilogen="iLO 5"
-export iLOFwVersion=3.04
+export iLOFwVersion=3.09
+
 export iLOGen=$(echo ${ilogen,,} | tr -d ' ')
 export iLOVersion=$(echo $iLOFwVersion | tr -d '.')
 
-#export RepoLocation="/Git-Repo/CloneOfPrivate-hpe-ilo-redocly"
+#export RepoLocation="C:/api_redocly/hpe-ilo-redocly"
 export RepoLocation="C:/api_redocly/hpe-ilo-redocly"
 export WorkingDirectory="$RepoLocation/docs/redfishServices/ilos/${iLOGen}/${iLOGen}_${iLOVersion}"
 
@@ -79,7 +85,6 @@ case $answer in
     exit 11
     ;;
 esac
-
 
 #
 ### Environment preparation

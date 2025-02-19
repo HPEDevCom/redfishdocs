@@ -60,4 +60,5 @@ be an ExtendedError object.
 
 All clients must correctly handle HTTP redirect (e.g. 308, 301, and so on.)
 iLO 5 will use redirection as a way to alias portions of the data model
-and to migrate the data model to the Redfish specified URIs (for example, /redfish/…).
+and to migrate the data model to the
+Redfish specified URIs (for example, /redfish/…).

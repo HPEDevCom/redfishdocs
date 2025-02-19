@@ -10,14 +10,106 @@ disableLastModified: false
 # Changelog
 
 The HPE iLO 5 Redfish service implements the DMTF Redfish specification
-<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.6.0.pdf" target="_blank">version 1.6.0</a>
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.20.1.pdf" target="_blank">version 1.20.1</a>
 and the schemas implemented by iLO 5 adhere to the DMTF Redfish schema bundle
-<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP8010_2021.4.zip" target="_blank">8010_2021.4</a>.
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP8010_2024.1.zip" target="_blank">8010_2024.1</a>.
 
 For a better understanding of the conformance to the DMTF Redfish,
 read the _Redfish versioning_ paragraph of this
 <a href="https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/" target="_blank">article</a>.
 
+## iLO 5 3.09 new features and changes
+
+### New URIs
+
+- No new URIs added for this release.
+
+### HTTP Methods - Additions and Deprecations
+
+- No HTTP methods changed across this release.
+
+### Deprecated URIs
+
+- No URIs deprecated for this release.
+
+### Redfish actions - additions and deprecations
+
+- `Manager.v1_5_1.Manager`:
+  - Added `HpeiLO.RetryCloudConnect`
+    [action](/docs/redfishservices/ilos/ilo5/ilo5_309/ilo5_manager_resourcedefns309/#actions).
+
+### Schema Updates
+
+- `ComputerSystem.v1_18_0.ComputerSystem`:
+  - Added `Oem.Hpe.DeviceDiscoveryComplete.ServerFirmwareInventoryComplete`
+    [property](/docs/redfishservices/ilos/ilo5/ilo5_309/ilo5_computersystem_resourcedefns309/#oemhpedevicediscoverycomplete).
+- `Manager.v1_5_1.Manager`:
+  - Added `Oem.Hpe.CloudConnect.ConnectionType`
+    [property](/docs/redfishservices/ilos/ilo5/ilo5_309/ilo5_manager_resourcedefns309/#oemhpecloudconnect).
+  - Added `Oem.Hpe.CloudConnect.WorkspaceId`
+    [property](/docs/redfishservices/ilos/ilo5/ilo5_309/ilo5_manager_resourcedefns309/#oemhpecloudconnect).
+  - Removed `Oem.Hpe.CloudConnect.ActivationKey`
+    [property](/docs/redfishservices/ilos/ilo5/ilo5_309/ilo5_manager_resourcedefns309/#oemhpecloudconnect).
+
+## iLO 5 3.07 new features and changes
+
+### New URIs
+
+- No new URIs added for this release.
+
+### HTTP Methods - Additions and Deprecations
+
+- Deprecated PATCH for `/redfish/v1/Systems/{@systemId}/WorkloadPerformanceAdvisor/{@WorkloadPerformanceAdvisorId}`
+
+- Deprecated PATCH for `/redfish/v1/TelemetryService`
+
+- Deprecated PATCH for `/redfish/v1/TelemetryService/MetricDefinitions/{@MetricDefinitionId}`
+
+- Deprecated PATCH for `/redfish/v1/TelemetryService/MetricReports/{@MetricReportId}`
+
+### Deprecated URIs
+
+- No URIs deprecated for this release.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to the supported Redfish Actions for this release.
+
+### Schema Updates
+
+- `AccountService.v1_5_0.AccountService` updated to `AccountService.v1_15_0.AccountService`:
+  - Added `HTTPBasicAuth` property: Indicates if `HTTP Basic authentication` is enabled for this service.
+  - Supported values: `Enabled`, `Disabled`, `Unadvertised`.
+- `HpeServerPCISlot.v2_1_1.HpeServerPCISlot` updated to `HpeServerPCISlot.v2_1_2.HpeServerPCISlot`:
+  - Added new values for the `length`
+    [property](/docs/redfishservices/ilos/ilo5/ilo5_307/ilo5_hpe_resourcedefns307/#length):
+    `Drive2_5`, `Drive3_5`.
+
+## iLO 5 3.06 new features and changes
+
+### New URIs
+
+- `/redfish/v1/Systems/{@systemId}/Storage/{@storageId}/Controllers/{@ControllerId}/Ports`
+    (GET,POST)- `#PortCollection.PortCollection`
+- `/redfish/v1/Systems/{@systemId}/Storage/{@storageId}/StorageControllers/{@StorageControllerId}/Ports`
+    (GET,POST)- `#PortCollection.PortCollection`
+
+### HTTP Methods - Additions and Deprecations
+
+- No HTTP methods changed across this release.
+
+### Deprecated URIs
+
+- No URIs deprecated for this release.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to the supported Redfish Actions for this release.
+
+### Schema Updates
+
+- No schema updates for this release.
+  
 ## iLO 5 3.04 new features and changes
 
 ### New URIs
@@ -88,8 +180,7 @@ Their corresponding `{@nicId}` is represented:
 
 ### Schema Updates
 
-- `Manager.v1_5_1.Manager`
-  - Added `Oem.Hpe.ForceOnDriveLED`: Forceful enablement of the drive LED to permanently ON (Blue) for Samsung PM9A3 drive.
+- No schema updates for this release.
 
 ## iLO 5 3.02 new features and changes
 
@@ -557,8 +648,11 @@ No changes have been made to supported Redfish Actions for this release.
   - Added `Location`: An object that contains the following properties such as `PartLocation` and `Placement`.
 
 - `#ComputerSystem.v1_10_0.ComputerSystem` updated to `#ComputerSystem.v1_13_0.ComputerSystem`
-  - Added `BootProgress` : Provides information about SmartNIC device operating system booting and operating system services. The property includes `LastState` and `OemLastState`. `LastState` - SmartNIC device operating system status with values such as `OSBootStarted` (the operating system has started booting), `OSRunning` (the operating system is running), and `OEM` (the operating system state which is reported in the `OemLastState` property). `OemLastState` - SmartNIC device operating system Oem status with values such as `OSServicesReady` (the operating system services are ready), `OSServicesOffline` (the operating system services are offline), `OSHalting` (the operating system has started halting), and `OSHalted` (the operating system has performed a shutdown).
+  - Added a `BootProgress{}` object providing information about [Data Processing Units (DPUs) and SmartNIC](/docs/redfishservices/ilos/supplementdocuments/smartnics/) devices visible under the `/redfish/v1/Systems/{item}` with `item > 1`. An example of such device is <a href="https://www.hpe.com/psnow/doc/a50001239enw" target="_blank">Pensando</a> devices.
   - Added `Oem.Hpe.AvailableSystemCapabilities (array)`: `AvailableSystemCapabilities` is an array that indicates SmartNIC DPU supports to OS-triggered DPC with the supported value `OStriggeredDPC`.
+    :::info NOTE
+        The `BootProgress{}` object is not populated in the main `ComputerSystem` member under `/redfish/v1/Systems/1`.
+    :::
   - Added `Oem.Hpe.BootProgress`: The property includes `OemResetReason` (the Smart NIC Device Operating system Oem reset reason) and `ResetReason` (the Smart NIC Device Operating system reset reason).
   - Added `Oem.Hpe.EnabledSystemCapabilities (array)`: `EnabledSystemCapabilities` is an array that indicates SmartNIC DPU supports to OS-triggered DPC with the supported value `OStriggeredDPC`.
   - Added `Oem.Hpe.IntegrationConfig`: `OsReadyTimeout` is the property of type `integer` and `Read Only` set to `false`.
@@ -603,17 +697,17 @@ No changes have been made to supported Redfish Actions for this release.
   ```
 
   ```json From iLO 5 v2.72 onwards
-    "Oem": {
-            "Hpe": {
-              "Links": {
-                "PCIDevices": [
-                  {
-                    "@odata.id": "/redfish/v1/Systems/1/PCIDevices/"
-                  }
-                ]
-              },
-            }
-          },
+      "Oem": {
+              "Hpe": {
+                "Links": {
+                  "PCIDevices": [
+                    {
+                      "@odata.id": "/redfish/v1/Systems/1/PCIDevices/"
+                    }
+                  ]
+                },
+              }
+      }, 
   ```
 
 ### RDE support changes

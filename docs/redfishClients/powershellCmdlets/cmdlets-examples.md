@@ -10,21 +10,42 @@ toc:
 
 # PowerShell Redfish examples
 
-This section provides useful examples to start writing PowerShell management scripts. In addition, several sample scripts are included in the iLO Cmdlets distribution, in a folder named Samples, which is located in the directory specified by the user while installing. The primary purpose of these sample scripts is to provide instructions on the following scripting aspects:
+This section provides useful examples to start writing PowerShell management
+scripts. In addition, several sample scripts are included in the iLO Cmdlets
+distribution, in a folder named Samples, which is located in the directory
+specified by the user while installing. The primary purpose of these sample
+scripts is to provide instructions on the following scripting aspects:
 
-- Samples for providing parameters for a cmdlet (such as named parameters, pipeline parameters, imported parameters from CSV).
+- Samples for providing parameters for a cmdlet (such as named parameters,
+  pipeline parameters, imported parameters from CSV).
 - Samples for handling with errors or exceptions in the script.
-- Samples for implementing scripts for complicated functions, which need several cmdlets. Examples of the functions are generating and importing iLO certificate settings, iLO IP to use, and Active Directory authentication.
+- Samples for implementing scripts for complicated functions, which need
+  several cmdlets. Examples of the functions are generating and importing
+  iLO certificate settings, iLO IP to use, and Active Directory authentication.
 
-The iLO script examples are packaged along with the .msi installer and Readme First installation document. Comprehensive PowerShell script examples are available in the <a href="https://github.com/HewlettPackard/PowerShell-ProLiant-SDK" target="_blank">Hewlett Packard GitHub repository</a>.
+The iLO script examples are packaged along with the .msi installer and
+Readme First installation document. Comprehensive PowerShell script examples
+are available in the
+<a href="https://github.com/HewlettPackard/PowerShell-ProLiant-SDK"
+target="_blank">Hewlett Packard GitHub repository</a>.
 
 :::success TIP
-Use `[System.GC]::Collect()` to optimize client system memory consumption during script execution.
+Use `[System.GC]::Collect()` to optimize client system memory
+consumption during script execution.
 :::
 
 ## Using the Find-HPEiLO Cmdlet
 
-When learning about the iLO cmdlets, a good place to start is with the `Find-HPEiLO` cmdlet. This cmdlet scans IP addresses and finds HPE iLOs that exist within the specified range. The Range parameter can be a single IP address, a subnet list, or a range of IP addresses. When the command finds an iLO, it obtains basic information about the iLO without requiring a username or password. This can be useful for performing a quick inventory within a data center, or perhaps determining what firmware versions exist. The information is returned as a single object or as an array of objects of iLOs found.
+When learning about the iLO cmdlets, a good place to start is
+with the `Find-HPEiLO` cmdlet.
+This cmdlet scans IP addresses and finds HPE iLOs that exist within
+the specified range. The Range parameter can be a single IP address,
+a subnet list, or a range of IP addresses. When the command finds an iLO,
+it obtains basic information about the iLO without requiring a username or
+password. This can be useful for performing a quick inventory within
+a data center, or perhaps determining what firmware versions exist.
+The information is returned as a single object or as an array of objects
+of iLOs found.
 
 :::success TIP
 If a comma is included in the range, double quotes are required. PowerShell interprets a comma (,) as a list separator. Without double quotes ("), part of what should be a string is interpreted by PowerShell as a number. The operation of combined ranges is defined as creating a combination of each subnet address with each other subnet.
@@ -41,7 +62,9 @@ Use the following syntax for specifying the range parameter:
 | `"10.20.30,29.93-103"` | Specifies two ranges of eleven addresses: `10.20.30.93` through `10.20.30.103` and `10.20.29.93` through `10.20.29.103` |
 
 :::info NOTE
-The default value for the Timeout parameter is 30 seconds. If the timeout value is not long enough for iLOs to respond, try using a Timeout parameter with a larger value.
+The default value for the Timeout parameter is 30 seconds.
+If the timeout value is not long enough for iLOs to respond,
+try using a Timeout parameter with a larger value.
 :::
 
 :::success TIP
@@ -161,7 +184,8 @@ ConnectionInfo : @{Redfish=}
 
 ## Establishing an iLO connection
 
-The HPE iLO Cmdlets support the following generations of HPE iLO based servers. Each generation of servers has a different connection mechanism.
+The HPE iLO Cmdlets support the following generations of HPE iLO based
+servers. Each generation of servers has a different connection mechanism.
 
 - iLO 4 servers
 - iLO 5 \iLO 6 servers
@@ -169,14 +193,21 @@ The HPE iLO Cmdlets support the following generations of HPE iLO based servers. 
 Prerequisites:
 
 - Install HPE iLO Cmdlets on the Windows management client.
-- Make sure that the iLO IP address of the target server is reachable on TCP port 443 (HTTPS) from the management client where the Cmdlets are installed.
-- The target HPE iLO must have a valid TLS/SSL server certificate. If a valid certificate is not available, use the `DisableCertificateAuthentication` switch parameter to establish a insecure connection.
+- Make sure that the iLO IP address of the target server is reachable on TCP
+  port 443 (HTTPS) from the management client where the Cmdlets are installed.
+- The target HPE iLO must have a valid TLS/SSL server certificate.
+  If a valid certificate is not available, use the
+  `DisableCertificateAuthentication` switch parameter to establish a
+  insecure connection.
 
 ### Connecting to an HPE iLO 4 based server
 
-To connect to an HPE Gen8 or Gen9 server, execute the `Connect-HPEiLO` Cmdlet with the remote iLO IP address and user credentials. Upon success, a  connection object is returned. Use it to execute other HPE iLO Cmdlets.
+To connect to an HPE Gen8 or Gen9 server, execute the
+`Connect-HPEiLO` Cmdlet with the remote iLO IP address and user credentials.
+Upon success, a  connection object is returned. Use it to execute other HPE iLO Cmdlets.
 
-The following example creates a connection to an HPE iLO 4 based server that does not have a valid TLS/SSL server certificate.
+The following example creates a connection to an HPE iLO 4 based server that
+does not have a valid TLS/SSL server certificate.
 
 ```PowerShell Connection creation
 PS C:\> $connection = Connect-HPEiLO -IP 10.20.30.40 -Username admin -Password admin123 -DisableCertificateAuthentication

@@ -8,16 +8,32 @@ disableLastModified: false
 
 # Error Codes
 
-The error codes listed below are returned by the HPE iLOrest tool. They are coming from the Redfish(r) service implemented in the iLO firmware. The verbose (`-v`) flag provides verbose output of HTTP, CHIF (CHannel InterFace) and iLO response messages. The error codes listed below are related to the Redfish client side errors or specifically translated from errors received through iLO response messages.
+The error codes listed below are returned by the HPE iLOrest tool.
+They are coming from the Redfish(r) service implemented in the iLO firmware.
+The verbose (`-v`) flag provides verbose output of HTTP, CHIF
+(CHannel InterFace) and iLO response messages.
+The error codes listed below are related to the Redfish client
+side errors or specifically translated from errors received
+through iLO response messages.
 
 :::info NOTE
-The Channel Interface (CHIF) driver is an HPE proprietary driver allowing in-band communication between applications and the Insight Lights Out (iLO) within HPE iLO based servers. It is stored as a dynamic loadable library file (`ilorest_chif.dll`) on Microsoft Windows and a shared object (`ilorest_chif.so`) on Linux.
+The Channel Interface (CHIF) driver is an HPE proprietary driver
+allowing in-band communication between applications and the Insight
+Lights Out (iLO) within HPE iLO based servers. It is stored as a dynamic
+loadable library file (`ilorest_chif.dll`) on Microsoft Windows and a
+shared object (`ilorest_chif.so`) on Linux.
 :::
 
 :::success TIPS
 
-- For troubleshooting purposes and errors and anomalies evaluation, use the included optional argument flag `-v` or `-vv` for verbose command console output and the `-d`/`--debug` flag to produce an `iLOrest.log` log file in the current directory. For further details, refer to the Global Options section.
-- To solve a `Missing token required for operation. Please add the proper token` error, add the BIOS password when executing the commands.
+- For troubleshooting purposes and errors and anomalies evaluation,
+  use the included optional argument flag `-v` or `-vv` for verbose
+  command console output and the `-d`/`--debug` flag to produce
+  an `iLOrest.log` log file in the current directory.
+  For further details, refer to the Global Options section.
+- To solve a
+  `Missing token required for operation. Please add the proper token`
+  error, add the BIOS password when executing the commands.
 
 :::
 
@@ -102,7 +118,8 @@ HPE iLOrest uses the following error codes:
 | 102        | UPDATE\_SERVICE\_BUSY                                                        | Update service is busy.                                                                                    | Verify iLO update service status. Try the operation after the current update service job has been completed.                                                                                                                                                                                                                               |
 | 103        | FAILED\_TO\_UPLOAD\_COMPONENT                                                | Failed to upload component.                                                                                | Verify the iLO update service status. Verify the component is of the correct type and is authentic (as per the settings of your system). Verify sufficient space is available on iLO repository for the component.                                                                                                                         |
 | 104        | TASKQUEUE\_ERROR                                                             | An error occurred executing one or more items of the current task queue.                                   | Verify the task queue parameters are correct. Retry the job.                                                                                                                                                                                                                                                                               |
-| 105        | DEVICE\_DISCOVERY\_IN\_PROGRESS                                              | Device Discovery in Progress.                                                                              | PLDM cmponent is trying to flash, but device discovery in progress in iLO. Please try after 10 min so that device discovery is completed.                                                                                                                                                                                                  |
+| 105        | DEVICE\_DISCOVERY\_IN\_PROGRESS                                              | Device Discovery in Progress.                                                                              | PLDM component is trying to flash, but device discovery in progress in iLO. Please try after 10 min so that device discovery is completed.                                                                                                                                                                                                  |
+| 108        | UPDATE\_WITH\_POWER\_OFF                                                     | Update tried while server is powered on.        | Flash the component while the server is powered off.                                                                                             |
 | 131        | TFA\_WRONG\_OTP                                                              | Wrong OTP entered for TFA.                                                                                 | Wrong One-time-password (OTP) entered. Request OTP again by entering username and password.                                                                                                                                                                                                                                                |
 | 132        | TFA\_OTP\_TIMEDOUT                                                           | Timed out for entering OTP.                                                                                | OTP was entered after 10 minutes. Please request the OTP again by entering username and password.                                                                                                                                                                                                                                          |
 | 133        | TFA\_ENABLED\_ERROR                                                          | TFA not completely enabled in iLO.                                                                         | Two Factory Authentication (TFA) is not fully enabled. Please check LDAP, SMTP settings as well in iLO.                                                                                                                                                                                                                                    |

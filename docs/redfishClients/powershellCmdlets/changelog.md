@@ -24,7 +24,11 @@ disableLastModified: true
 
 ### New features and Cmdlets
 
-- The connection object created using the `HPEiLOCmdlets` module can be used across other modules such as the `HPEBIOSCmdlets`. This allows a single session to be established on a particular iLO and the same is used to configure iLO/BIOS settings instead of creating multiple sessions to single iLO. (Version 3.0.0.0 onwards)
+- The connection object created using the `HPEiLOCmdlets`
+  module can be used across other modules such as the `HPEBIOSCmdlets`.
+  This allows a single session to be established on a particular iLO
+  and the same is used to configure iLO/BIOS settings instead of
+  creating multiple sessions to single iLO. (Version 3.0.0.0 onwards)
 
 ### Fixes
 

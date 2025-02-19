@@ -3,28 +3,37 @@ seo:
   title: Managing iLO users
 toc:
   enable: true
-  maxDepth: 2
+  maxDepth: 3
 disableLastModified: false
 ---
 
-# Managing iLO Users
+## Managing iLO Users
 
 :::info NOTE
 
-It is possible that some properties or resources described in this section are not implemented in iLO 4 and ilo 5.
+It is possible that some properties or resources described in this section
+are not implemented in HPE iLO 4 and iLO 5.
 
 :::
 
-iLO supports both local user authentication as well as directory authentication.
+iLO supports both local user authentication as well as directory
+authentication.
 
 * Role based local user administration via Redfish
 * Directory Authentication configuration via Redfish
 
-All user account modifications require the Redfish client to be authenticated with the "Administer User Accounts" privilege (`UserConfigPriv` in the Redfish `ManagerAccount` resource type)
+All user account modifications require the Redfish client to be
+authenticated with the "Administer User Accounts" privilege
+(`UserConfigPriv` in the Redfish `ManagerAccount` resource type)
 
 ## Local User Administration
 
-iLO has a local user database enabling consistent user management for all interfaces including the Web interface (GUI) as well as the Redfish API. The iLO local user accounts are managed in the AccountService (`/redfish/v1/AccountService`). An `Accounts` collection in the AccountService enables clients to create, modify, or remove local user accounts.
+HPE iLO has a local user database enabling consistent user management
+for all interfaces including the Web interface (GUI) as well as the
+Redfish API. The HPE iLO local user accounts are managed in the
+AccountService (`/redfish/v1/AccountService`). An `Accounts` collection
+in the AccountService enables clients to create, modify, or remove
+local user accounts.
 
 ```text GET request
 GET /redfish/v1/AccountService/Accounts/
@@ -47,10 +56,15 @@ GET /redfish/v1/AccountService/Accounts/
 }
 ```
 
-A local user account consists of a user name, password, and a set of privileges. The `RoleId` describes one of three defined Redfish roles based upon assigned privileges. The `Oem/Hpe/LoginName` property is a description of the account.
+A local user account consists of a user name, password, and a set
+of privileges. The `RoleId` describes one of three defined Redfish
+roles based upon assigned privileges. The `Oem/Hpe/LoginName` property
+is a description of the account.
 
 :::info NOTE
-Due to a terminology mismatch between the Redfish standard and historical iLO products, the Properties for `UserName` and `LoginName` are reversed in Redfish vs. the iLO Web interface:
+Due to a terminology mismatch between the Redfish standard and historical
+iLO products, the Properties for `UserName` and `LoginName` are reversed
+in Redfish vs. the HPE iLO Web interface:
 :::
 
 |Redfish Property|GUI Term|Description|Example|
@@ -103,12 +117,14 @@ GET /redfish/v1/AccountService/Accounts/1/
 ```
 
 :::info NOTE
-`Password` is always shown as `null` even though it is PATCHable with a new password
+`Password` is always shown as `null` even though it is PATCHable
+with a new password
 :::
 
 ### Roles and Privileges
 
-iLO uses a set of privileges assigned to each user account to grant and restrict access to features. iLO's privileges are:
+iLO uses a set of privileges assigned to each user account to grant and
+restrict access to features. iLO's privileges are:
 
 |Redfish|iLO Web Interface (GUI)|
 |---|---|
@@ -127,11 +143,18 @@ iLO uses a set of privileges assigned to each user account to grant and restrict
 
 You can use `RoleId` to create users with specific starting privileges.
 
-On a GET of the local user account, `RoleId` is synthesized based upon the enabled privileges. iLO does not store a separate `RoleId` value. For this reason, modifications to raw privileges may or may not result in a changed `RoleId` based upon iLO's mapping.
+On a GET of the local user account, `RoleId` is synthesized based upon
+the enabled privileges. iLO does not store a separate `RoleId` value.
+For this reason, modifications to raw privileges may or may not result
+in a changed `RoleId` based upon iLO's mapping.
 
-If the PATCH includes both `RoleID` and individual privileges, the privileges corresponding to the RoleId are assigned to the local user account first, and then the explicit privileges are assigned.
+If the PATCH includes both `RoleID` and individual privileges, the
+privileges corresponding to the RoleId are assigned to the local
+user account first, and then the explicit privileges are assigned.
 
-The following example sets all iLO privileges as long as the account performing the operation already has sufficient privileges to grant these privileges.
+The following example sets all iLO privileges as long as the account
+performing the operation already has sufficient privileges to grant
+these privileges.
 
 ```text Account role configuration
 PATCH /redfish/v1/AccountService/Accounts/{accountId}
@@ -170,12 +193,16 @@ The `RoleId` reported is the smallest superset of assigned privileges.
 
 ### Creating a new Local User Account
 
-The simplest possible new local user account create operation is to POST to the Accounts collection, as shown in the example below.
+The simplest possible new local user account create operation is to `POST`
+to the Accounts collection, as shown in the example below.
 
-The following example creates a user account `jsmith` with the default `ReadOnly` RoleId and only the iLO Login privilege. Notice that `Oem/Hpe/LoginName` defaults to the provided `UserName` unless it is specifically specified.
+The following example creates a user account `jsmith` with the default
+`ReadOnly` RoleId and only the iLO Login privilege. Notice that
+`Oem/Hpe/LoginName` defaults to the provided `UserName` unless it
+is specifically specified.
 
 ```text User creation
-PATCH /redfish/v1/AccountService/Accounts/
+POST /redfish/v1/AccountService/Accounts/
 ```
 
 ```json Body
@@ -235,7 +262,8 @@ GET /redfish/v1/AccountService/Accounts/{accountId}
 
 ### Creating a new Account using a RoleId
 
-You may specify a `RoleId` with a new user account, as shown in the following example.
+You may specify a `RoleId` with a new user account, as shown in
+the following example.
 
 ```text Account creation with RoleId
 POST /redfish/v1/AccountService/Accounts/
@@ -249,7 +277,8 @@ POST /redfish/v1/AccountService/Accounts/
 }
 ```
 
-To retrieve the just created account, perform a GET operation like in the following example.
+To retrieve the just created account, perform a GET operation
+like in the following example.
 
 ```text Retrieve account properties
 GET /redfish/v1/AccountService/Accounts/{accountId}
@@ -367,11 +396,15 @@ GET /redfish/v1/AccountService/Accounts/{accountId}
 ```
 
 :::success Info
-Several Python examples have been posted in the GitHub repository of the HPE Redfish library.
+Several Python examples have been posted in the GitHub repository
+of the HPE Redfish library.
 
-* <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/add_user_account.py" target="_blank">Add user account</a>
-* <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/modify_user_account.py" target="_blank">Modify user account</a>
-* <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/remove_account.py" target="_blank">Remove user account</a>
+* <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/add_user_account.py"
+    target="_blank">Add user account</a>
+* <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/modify_user_account.py"
+    target="_blank">Modify user account</a>
+* <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/remove_account.py"
+    target="_blank">Remove user account</a>
 
 :::
 
@@ -380,14 +413,18 @@ Several Python examples have been posted in the GitHub repository of the HPE Red
 The following properties are modifiable on an existing local user account:
 
 * `UserName`
-* `Password` - this is always returned as null, but you may PATCH it with a value to change the password
-* `RoleId` - PATCHing `RoleId` on an existing local user account will reset it’s existing privileges with those mapped to the RoleId.
+* `Password` - this is always returned as null, but you may PATCH it with
+    a value to change the password
+* `RoleId` - PATCHing `RoleId` on an existing local user account will reset
+    it’s existing privileges with those mapped to the RoleId.
 * `Oem/Hpe/LoginName`
-* `Oem/Hpe/Privileges/*` - any of the privileges may be modified with true or false
+* `Oem/Hpe/Privileges/*` - any of the privileges may be modified with true
+    or false
 
 ### Adding and Removing Privileges
 
-Local user account privileges may be modified with a PATCH to the URI of the desired `ManagerAccount` resource, as shown in the example below.
+Local user account privileges may be modified with a PATCH to the URI of the
+desired `ManagerAccount` resource, as shown in the example below.
 
 ```text PATCH user account
 PATCH /redfish/v1/AccountService/Accounts/{accountId}/
@@ -434,7 +471,8 @@ PATCH /redfish/v1/AccountService/Accounts/{accountId}/
 
 ### Changing Password
 
-Local user account passwords may be modified with a PATCH to the URI of the desired `ManagerAccount` resource, as shown in the example below.
+Local user account passwords may be modified with a PATCH to the URI of the
+desired `ManagerAccount` resource, as shown in the example below.
 
 ```text User password modification
 PATCH /redfish/v1/AccountService/Accounts/{accountId}/
@@ -446,9 +484,133 @@ PATCH /redfish/v1/AccountService/Accounts/{accountId}/
 }
 ```
 
+### Enabling and Disabling User Accounts
+
+The property `Enabled`, listed under the URI
+`redfish/v1/AccountService/Accounts/{AccountId}` allows an account with
+administrator privileges to enable or disable other iLO Accounts.
+Enabled admin accounts are able to perform `GET` and `PATCH` operations on
+the URI. Accounts that are not enabled cannot perform `GET` and `PATCH`
+operations. If the `Enabled` property is set to `True`, you are able to
+login and access HPE iLO. If the `Enabled` property is set to `False`,
+you will not be able to login and access iLO.
+
+Perform `GET`on the URI `redfish/v1/AccountService/Accounts/{AccountId}`
+
+```text GET view enabled account
+GET redfish/v1/AccountService/Accounts/{AccountId}
+```
+
+```json GET response
+{
+    "@odata.context": "/redfish/v1/$metadata#ManagerAccount.ManagerAccount",
+    "@odata.etag": "W/\"9DE38055\"",
+    "@odata.id": "/redfish/v1/AccountService/Accounts/14",
+    "@odata.type": "#ManagerAccount.v1_3_0.ManagerAccount",
+    "Id": "14",
+    "Description": "iLO User Account",
+    "Enabled": true,
+    "Links": {
+        "Role": {
+            "@odata.id": "/redfish/v1/AccountService/Roles/Administrator"
+        }
+    },
+    "Name": "User Account",
+    "Oem": {
+        "Hpe": {
+            "@odata.context": "/redfish/v1/$metadata#HpeiLOAccount.HpeiLOAccount",
+            "@odata.type": "#HpeiLOAccount.v2_2_0.HpeiLOAccount",
+            "LoginName": "admin",
+            "Privileges": {
+                "HostBIOSConfigPriv": true,
+                "HostNICConfigPriv": true,
+                "HostStorageConfigPriv": true,
+                "LoginPriv": true,
+                "RemoteConsolePriv": true,
+                "SystemRecoveryConfigPriv": false,
+                "UserConfigPriv": true,
+                "VirtualMediaPriv": true,
+                "VirtualPowerAndResetPriv": true,
+                "iLOConfigPriv": true
+            },
+            "ServiceAccount": false
+        }
+    },
+    "Password": null,
+    "PasswordChangeRequired": false,
+    "RoleId": "Administrator",
+    "UserName": "admin"
+} 
+```
+
+A local user account can be enabled or disabled with a PATCH to the URI
+of desired `ManagerAccount` resource, as shown in the example below.
+
+```text setting Enabled property
+PATCH redfish/v1/AccountService/Accounts/{AccountId}
+```
+
+```json PATCH Payload
+{
+    "Enabled": true
+}
+```
+
+```json PATCH Response
+{
+    "error": {
+        "code": "iLO.0.10.ExtendedInfo",
+        "message": "See @Message.ExtendedInfo for more information.",
+        "@Message.ExtendedInfo": [
+            {
+                "MessageId": "Base.1.17.AccountModified"
+            }
+        ]
+    }
+}
+```
+
+### Default iLO factory account
+
+When HPE iLO is reset to factory defaults using
+[iLOrest](https://servermanagementportal.ext.hpe.com/docs/redfishclients/ilorest-userguide/ilocommands/#factorydefaults-command)`factorydefaults`, the
+[Redfish action](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions)
+or using the System Utilities/iLO Configuration Utility menu, all user
+setting data are erased. Default credentials are required to access
+HPE iLO after a factory reset.
+
+The following example sets default HPE iLO
+[username](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpedefaultusername)
+and
+[password](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpedefaultpassword)
+after an iLO factory reset
+[action](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions).
+
+```shell cURL
+curl --insecure --silent --user <ilo-user>:password \
+     --header 'Content-Type: application/json'      \
+     --request PATCH 'https://<ilo-ip>/redfish/v1/AccountService' \
+     --data '{
+    "Oem": {
+        "Hpe": {
+            "DefaultUserName": "administrator",
+            "DefaultPassword": "DefaultFactoryPassword" }}
+                }'
+```
+
+```shell iLOrest
+ilorest login <ilo-ip> -u <ilo-user> -p password
+ilorest select AccountService.
+ilorest set Oem/Hpe/DefaultUserName="administrator"
+ilorest set Oem/Hpe/DefaultPassword="DefaultFactoryPassword"
+ilorest commit
+ilorest logout
+```
+
 ### Removing a Local User Account
 
-A local user account can be removed with a DELETE to the URI of desired `ManagerAccount` resource, as shown in the example below.
+A local user account can be removed with a DELETE to the URI of desired
+`ManagerAccount` resource, as shown in the example below.
 
 ```text User removal
  DELETE /redfish/v1/AccountService/Accounts/{accountId}/
@@ -458,7 +620,7 @@ A local user account can be removed with a DELETE to the URI of desired `Manager
 
 ### Enabling or Disabling Local User Accounts
 
-See the examples below for more information.
+The following example disables all local user accounts.
 
 ```text Enable/Disable user
 PATCH /redfish/v1/AccountService/
@@ -477,7 +639,8 @@ PATCH /redfish/v1/AccountService/
 ```
 
 :::info NOTE
-Disabling local user accounts is not allowed if both Directory Authentication and Kerberos Authentication are disabled.
+Disabling local user accounts is not allowed if both Directory
+Authentication and Kerberos Authentication are disabled.
 :::
 
 ### Configuring Active Directory Authentication
@@ -582,12 +745,14 @@ PATCH /redfish/v1/AccountService/
 
 ### Add User Search Contexts
 
-The following example shows two possibilities to add user search contexts. The first one (Body 1) adds two new User Search Contexts, with no already existing User Search Context present. The second one (Body 2) adds a new User Search Context, with two existing User Search Contexts present.
+The following example shows two possibilities to add user search contexts
+The first one (Body 1) adds two new User Search Contexts, with no already
+existing User Search Context present. The second one (Body 2) adds a new
+User Search Context, with two existing User Search Contexts present.
 
 ```text Add User Search contexts
 PATCH /redfish/v1/AccountService/
 ```
-
 
 ```json Body 1
 {
@@ -622,7 +787,12 @@ PATCH /redfish/v1/AccountService/
 
 ### Delete User Search Contexts
 
-The following example shows two possibilities to delete User Search Contexts. The first one (Body 1) deletes one/multiple User Search Contexts: Assume you have three existing User Search Contexts, e.g. "CN=Users,DC=domain,DC=com", "DC=domain,DC=com" and "DC=testdomain,DC=com". To delete one, exclude it from the payload and keep the ones to be retained.
+The following example shows two possibilities to delete User Search Contexts.
+The first one (Body 1) deletes one/multiple User Search Contexts: Assume
+you have three existing User Search Contexts,
+e.g. "CN=Users,DC=domain,DC=com", "DC=domain,DC=com" and
+"DC=testdomain,DC=com". To delete one, exclude it from the payload
+and keep the ones to be retained.
 
 The second one (Body 2) deletes all User Search Contexts.
 
@@ -725,7 +895,8 @@ GET /redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{certI
 ### Add new Directory Groups (No Existing Groups)
 
 :::info NOTE
-"Administrator" and "Operator" are predefined Redfish RoleIds. "LDAP" can also be used instead of "ActiveDirectory".
+"Administrator" and "Operator" are predefined Redfish RoleIds. "LDAP" can
+also be used instead of "ActiveDirectory".
 :::
 
 ```text Add new directory Groups
@@ -790,7 +961,11 @@ GET /redfish/v1/AccountService/?$select=LDAP/RemoteRoleMapping, ActiveDirectory/
 
 ### Add New Directory Groups to Existing Groups
 
-In the following example, assume that two directory groups are already present (TestGroup1 and TestGroup2. Use the `LocaleRole` and `RemoteGroup` values for the existing directory groups in the payload. Add an additional group "TestGroup3" with "ReadOnly" Redfish Role. "LDAP can also be used instead of "ActiveDirectory".
+In the following example, assume that two directory groups are already
+present (TestGroup1 and TestGroup2). Use the `LocaleRole` and `RemoteGroup`
+values for the existing directory groups in the payload. Add an additional
+group "TestGroup3" with "ReadOnly" Redfish Role. "LDAP can also be used
+instead of "ActiveDirectory".
 
 ```text Add New Directory groups to existing groups
 PATCH /redfish/v1/AccountService/
@@ -819,7 +994,11 @@ PATCH /redfish/v1/AccountService/
 
 ### Delete Directory Groups
 
-In the following example, assume you have three existing directory groups, e.g. "TestGroup1", "TestGroup2" and "TestGroup3". To delete "TestGroup3", exclude it from the payload and keep the ones to be retained. "LDAP" can also be used instead of "ActiveDirectory". It shows how to delete one/multiple Directory Groups (Body 1) or all Directory Groups (Body 2).
+In the following example, assume you have three existing directory groups,
+e.g. "TestGroup1", "TestGroup2" and "TestGroup3". To delete "TestGroup3",
+exclude it from the payload and keep the ones to be retained. "LDAP" can
+also be used instead of "ActiveDirectory". It shows how to delete
+one/multiple Directory Groups (Body 1) or all Directory Groups (Body 2).
 
 :::info NOTE
 "LDAP" can also be used instead of "ActiveDirectory"
@@ -933,8 +1112,10 @@ GET /redfish/v1/AccountService/Roles/{directoryGroupId}/
 
 ### Modify Directory Group Privileges
 
-Sample Body 1 (Update AssignedPrivileges): Add/Remove the privileges in the AssignedPrivileges[] array.
-Sample Body 2 (Update OemPrivileges): Add/Remove the privileges in the OemPrivileges[] array.
+Sample Body 1 (Update AssignedPrivileges):
+    Add/Remove the privileges in the AssignedPrivileges[] array.
+Sample Body 2 (Update OemPrivileges):
+    Add/Remove the privileges in the OemPrivileges[] array.
 
 ```text Add/Remove privileges
 PATCH /redfish/v1/AccountService/Roles/{directoryGroupId}/
