@@ -14,14 +14,14 @@
   page: ilo6_changelog.md
 - group: iLO 6 v1.66 Reference documents
   expanded: false
-  pages:
+  items:
   - label: Reference documents overview
     page: ilo6_166/index.md
   - label: Resource map
     page: ilo6_166/ilo6_resmap166.md        
   - group: Resource definitions
     expanded: false
-    pages:
+    items:
     - label: ServiceRoot
       page: ilo6_166/ilo6_serviceroot_resourcedefns166.md
     - label: Bios

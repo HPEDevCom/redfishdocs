@@ -15,14 +15,14 @@
   page: ilo5_changelog.md
 - group: iLO 5 v3.09 Reference documents
   expanded: false
-  pages:
+  items:
     - label: Reference documents overview
       page: ilo5_309/index.md
     - label: Resource map
       page: ilo5_309/ilo5_resmap309.md        
     - group: Resource definitions
       expanded: false
-      pages:
+      items:
             - label: ServiceRoot
               page: ilo5_309/ilo5_serviceroot_resourcedefns309.md
             - label: Bios
