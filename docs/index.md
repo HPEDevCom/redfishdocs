@@ -1,7 +1,7 @@
 ---
 seo:
   title: HPE server management with Redfish®
-disableLastModified: true
+disableLastModified: false
 toc:
    enable: false
 ---
