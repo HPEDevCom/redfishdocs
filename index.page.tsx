@@ -48,11 +48,11 @@ export default function Page() {
             >
               <Box>
                 <Heading level={1} size='small' margin='none' style={pageTitleStyle}>
-                  HPE Support APIs
+                HPE server management with Redfish
                 </Heading>
                 <Box width='large'>
                   <Paragraph margin="none" fill={true} style={pageDescStyle}>
-                    Access learning materials and best practices for working with our APIs.
+                  Redfish® is a standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC).
                   </Paragraph>
                 </Box>
                 <br/>
@@ -64,7 +64,7 @@ export default function Page() {
                   pad={{ bottom: 'xlarge'}}
                 >
                   <Button
-                    to="/docs/support/guides/getting_started/"
+                    to="/docs/"
                   >
                     <Card className='card' background={cardColor} pad={{ vertical: 'medium', horizontal: 'medium' }} fill={true}>
                       <CardHeader pad="xxmedium">
@@ -75,14 +75,14 @@ export default function Page() {
                       </CardHeader>
                       <CardBody pad={{ vertical: 'small', horizontal: '' }}>
                         <Text style={cardTitleStyle}>
-                          Getting Started with APIs</Text>
+                          Guides</Text>
                         <Paragraph style={cardContentStyle}>
-                          Learn how to access and use HPE APIs
+                        Access learning material and best practices for working with HPE Redfish® APIs. Browse this section to better understand the basic Redfish® concepts and review generic examples.
                         </Paragraph>
                       </CardBody>
                     </Card>
                   </Button>
-                  <Button to="/">
+                  <Button to="/docs/redfishServices/">
                     <Card className='card' background={cardColor} pad={{ vertical: 'medium', horizontal: 'medium' }} fill={true}>
                       <CardHeader pad="xmedium">
                         <Box direction="row" justify="start" align="center" gap="small">
@@ -92,14 +92,14 @@ export default function Page() {
                       </CardHeader>
                       <CardBody pad={{ vertical: 'small', horizontal: 'xxmedium' }}>
                         <Text style={cardTitleStyle}>
-                          Create API Clients</Text>
+                          Services</Text>
                         <Paragraph style={cardContentStyle}>
-                          View, manage and create API clients.
+                        Explore and integrate with HPE Redfish® services like the ones implemented in the different HPE iLO generations.
                         </Paragraph>
                       </CardBody>
                     </Card>
                   </Button>
-                    <Button to="/docs/support/services/">
+                  <Button to="/docs/redfishClients/">
                       <Card className='card' background={cardColor} pad={{ vertical: 'medium', horizontal: 'medium' }} fill={true}>
                         <CardHeader pad="xmedium">
                           <Box direction="row" justify="start" align="center" gap="small">
@@ -109,13 +109,13 @@ export default function Page() {
                         </CardHeader>
                         <CardBody pad={{ vertical: 'small', horizontal: 'xxmedium' }}>
                           <Text style={cardTitleStyle}>
-                            Explore APIs</Text>
+                            Clients</Text>
                           <Paragraph style={cardContentStyle}>
-                            A catalog of HPE Support APIs.
+                          Find Redfish® clients that assist in compliance to API standards like the HPE iLOrest tool.
                           </Paragraph>
                         </CardBody>
                       </Card>
-                    </Button>
+                  </Button>
                 </Grid>
               </Box>
             </Box>
