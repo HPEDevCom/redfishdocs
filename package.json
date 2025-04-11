@@ -5,15 +5,16 @@
     "description": "HPE server management portal",
     "license": "MIT",
     "scripts": {
-        "start": "npx @redocly/cli@latest preview --host 0.0.0.0 -p 3000"
+        "start": "npx @redocly/cli@latest preview --port 3000"
     },
     "dependencies": {
         "@redocly/realm": "*",
         "@redocly/theme": "*",
-        "react": "*",
         "grommet": "^2.28.0",
         "grommet-icons": "^4.8.0",
         "grommet-theme-hpe": "^4.1.0",
+        "react": "*",
+        "react-router-dom": "^6.30.0",
         "styled-components": "^5.3.6"
     },
     "devDependencies": {
