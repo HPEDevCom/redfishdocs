@@ -19,10 +19,10 @@ navbar:
 markdown:
   toc:
     depth: 2
-lastUpdatedBlock:
-  format: long
-  locale: en-US
-  hide: false
+  lastUpdatedBlock:
+    format: long
+    locale: en-US
+    hide: false
 logo:
   image: images/logo.svg
   link: /

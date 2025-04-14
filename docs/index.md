@@ -2,9 +2,10 @@
 markdown:
   toc:
     hide: true
+lastUpdatedBlock:
+  hide: true
 seo:
   title: HPE server management with Redfish
-lastUpdatedBlock:
   hide: true
 ---
 
