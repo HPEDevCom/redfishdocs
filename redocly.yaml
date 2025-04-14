@@ -20,9 +20,9 @@ markdown:
   toc:
     depth: 2
 lastUpdatedBlock:
-    format: long
-    locale: en-US
-    hide: false
+  format: long
+  locale: en-US
+  hide: false
 logo:
   image: images/logo.svg
   link: /
