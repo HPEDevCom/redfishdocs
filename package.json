@@ -12,5 +12,9 @@
         "@redocly/realm": "*",
         "@redocly/theme": "^0.52.0",
         "styled-components": "^5.3.11"
+    },
+    "devDependencies": {
+        "@types/node": "^22.14.1",
+        "@types/styled-components": "^5.1.34"
     }
 }
