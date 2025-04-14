@@ -3,16 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { ArrowRightIcon, Button } from '@redocly/theme';
-import { CardWithCode } from './@theme/components/CardWithCode/CardWithCode';
+// import { CardWithCode } from './@theme/components/CardWithCode/CardWithCode';
 import { Card } from '@redocly/theme/markdoc/components/Cards/Card';
 import { Cards } from '@redocly/theme/markdoc/components/Cards/Cards';
 
-const code = `curl -X POST \\
-  https://api.warp.com/warp/v1/time/set \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{"time": "+1s"}'
-`;
 
 export default function HomePage() {
   return (
@@ -25,11 +19,6 @@ export default function HomePage() {
         <Button size="large" variant="primary" tone="brand" to="/guides/quickstart">
           Get started
         </Button>
-        <CardWithCode
-          title="Quickstart"
-          description="Set up your environment and make your first call to warp you one second into the future."
-          code={code}
-        />
       </HeroContainer>
       <Container>
         <h3>Accelerate Your Development with the Power of Time</h3>
