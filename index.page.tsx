@@ -17,11 +17,6 @@ export default function HomePage() {
         <Button size="large" variant="primary" tone="brand" to="/guides/quickstart">
           Get started
         </Button>
-        <CardWithCode
-          title="Quickstart"
-          description="Set up your environment and make your first call to warp you one second into the future."
-          code={code}
-        />
       </HeroContainer>
       <Container>
         <h3>Accelerate Your Development with the Power of Time</h3>
