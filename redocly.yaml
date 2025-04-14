@@ -11,7 +11,7 @@ seo:
   description: WARP is the groundbreaking API that allows you to navigate, manipulate, and control time.
 navbar:
   items:
-    - page: guides/index.md
+    - page: docs/index.md
       label: Guides
 markdown:
   toc:
