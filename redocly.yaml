@@ -7,18 +7,34 @@ links:
   - href: https://fonts.googleapis.com/css2?family=VT323&display=swap
   - href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
 seo:
-  title: HPE Server Management with Redfish
-  description: HPE Server Management with Redfish API documentation.
-  siteUrl: https://servermanagement.ext.hpe.com
-  image: https://servermanagement.ext.hpe.com/images/hpe.svg
-  keywords: hpe, redfish, server management, api, documentation
+  title: Warp API
+  description: Warp is the groundbreaking API that allows you to navigate, manipulate, and control time.
+navbar:
+  items:
+    - page: tutorials/index.md
+      label: Missions
+    - page: guides/index.md
+      label: Guides
+    - page: apis/index.yaml
+      label: API Reference
+    - page: tools/index.md
+      label: Tools
+    - page: changelog.md
+      label: Changelog
+    - page: about.md
+      label: About this template
 markdown:
   toc:
     depth: 2
-  lastUpdatedBlock:
-    format: long
-    locale: en-US
-    hide: false
 logo:
   image: images/logo.svg
   link: /
+footer:
+  copyrightText: Copyleft © Redocly Inc. No rights reserved.
+  items:
+    - page: legal/terms.md
+      label: Terms
+    - page: legal/responsible-use.md
+      label: Responsible Use
+    - href: /
+      label: Cookies

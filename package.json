@@ -6,15 +6,10 @@
     "author": "Hewlett Packard Enterprise",
     "license": "MIT",
     "scripts": {
-        "start": "npx @redocly/cli preview --port 3000"
+      "start": "npx @redocly/cli@latest preview -p 3000"
     },
     "dependencies": {
-        "@redocly/realm": "*",
-        "@redocly/theme": "^0.52.0",
-        "styled-components": "^5.3.11"
-    },
-    "devDependencies": {
-        "@types/node": "^22.14.1",
-        "@types/styled-components": "^5.1.34"
+      "@redocly/realm": "*"
     }
-}
+  }
+
