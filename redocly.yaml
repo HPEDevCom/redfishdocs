@@ -1,49 +1,24 @@
 # reunite:
   # ignoreLint: true
   # ignoreLinkChecker: true
-  extends:
-    - minimal
-  links:
-    - href: https://fonts.googleapis.com/css2?family=VT323&display=swap
-    - href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
-  seo:
-    title: HPE Server Management with Redfish
-    description: HPE Server Management with Redfish API documentation.
-    siteUrl: https://servermanagement.ext.hpe.com
-    image: https://servermanagement.ext.hpe.com/images/hpe.svg
-    keywords: hpe, redfish, server management, api, documentation
-  navbar:
-    items:
-      - page: /
-        label: HPE Server Management with Redfish
-      - page: docs/index.md
-        label: Guides
-      - page: docs/redfishServices/index.md
-        label: Services
-      - page: docs/redfishServices/index.md
-        label: Clients
-      - href: https://www.dmtf.org/standards/redfish
-        label: Redfish standard
-        external: true
-  markdown:
-    toc:
-      depth: 2
-  logo:
-    image: images/hpe.svg
-    link: /
-  footer:
-    copyrightText: © 2024 Hewlett Packard Enterprise Development LP
-    items:
-      - label: Privacy 
-        href: 'https://www.hpe.com/us/en/legal/privacy.html'
-        external: true
-      - label: Terms of Use
-        href: 'https://www.hpe.com/us/en/about/legal/terms-of-use.html'
-        external: true
-      - label: Add Choices & Cookies
-        href: 'https://www.hpe.com/us/en/legal/privacy.html#datacollection'
-        external: true
-      - label: Do Not Sell My Personal Information
-        href: 'https://www.hpe.com/us/en/privacy/personal-information.html'
-        external: true
-  
+extends:
+  - minimal
+links:
+  - href: https://fonts.googleapis.com/css2?family=VT323&display=swap
+  - href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
+seo:
+  title: HPE Server Management with Redfish
+  description: HPE Server Management with Redfish API documentation.
+  siteUrl: https://servermanagement.ext.hpe.com
+  image: https://servermanagement.ext.hpe.com/images/hpe.svg
+  keywords: hpe, redfish, server management, api, documentation
+navbar:
+  items:
+    - page: docs/guides/index.md
+      label: Guides
+markdown:
+  toc:
+    depth: 2
+logo:
+  image: images/logo.svg
+  link: /

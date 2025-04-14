@@ -1,25 +1,16 @@
 {
     "name": "hpe-redfish-portal",
+    "version": "0.0.1",
     "private": true,
-    "version": "0.0.2",
     "description": "HPE server management portal",
+    "author": "Hewlett Packard Enterprise",
     "license": "MIT",
     "scripts": {
-        "start": "npx @redocly/cli@latest preview --port 3000"
+        "start": "npx @redocly/cli preview --port 3000"
     },
     "dependencies": {
         "@redocly/realm": "*",
-        "@redocly/theme": "*",
-        "grommet": "^2.28.0",
-        "grommet-icons": "^4.8.0",
-        "grommet-theme-hpe": "^4.1.0",
-        "react": "*",
-        "react-router-dom": "^6.30.0",
-        "styled-components": "^5.3.6"
-    },
-    "devDependencies": {
-        "cspell": "^8.3.2",
-        "markdownlint-cli2": "^0.12.1",
-        "markdownlint-cli2-formatter-summarize": "0.0.6"
+        "@redocly/theme": "^0.52.0",
+        "styled-components": "^5.3.11"
     }
 }
