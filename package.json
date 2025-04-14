@@ -1,12 +1,10 @@
 {
-    "name": "hpe-redfish-portal",
-    "version": "0.0.1",
+    "name": "warp",
+    "version": "1.0.0",
     "private": true,
-    "description": "HPE server management portal",
-    "author": "Hewlett Packard Enterprise",
-    "license": "MIT",
+    "type": "module",
     "scripts": {
-      "start": "npx @redocly/cli@latest preview -p 3000"
+      "start": "npx @redocly/cli preview"
     },
     "dependencies": {
       "@redocly/realm": "*"
