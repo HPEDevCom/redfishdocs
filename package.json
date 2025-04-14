@@ -4,10 +4,10 @@
     "private": true,
     "type": "module",
     "scripts": {
-      "start": "npx @redocly/cli preview"
+        "start": "npx @redocly/cli preview"
     },
     "dependencies": {
-      "@redocly/realm": "*"
+        "@redocly/realm": "*",
+        "react": "^18.3.1"
     }
-  }
-
+}
