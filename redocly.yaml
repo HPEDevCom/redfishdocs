@@ -12,6 +12,10 @@ seo:
   siteUrl: https://servermanagement.ext.hpe.com
   image: https://servermanagement.ext.hpe.com/images/hpe.svg
   keywords: hpe, redfish, server management, api, documentation
+navbar:
+  items:
+    - page: docs/index.md
+      label: Guides
 markdown:
   toc:
     depth: 2
