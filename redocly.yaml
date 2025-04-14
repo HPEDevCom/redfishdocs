@@ -13,7 +13,7 @@ navbar:
   items:
     - page: tutorials/index.md
       label: Missions
-    - page: docs/index.md
+    - page: guides/index.md
       label: Guides
     - page: apis/index.yaml
       label: API Reference
