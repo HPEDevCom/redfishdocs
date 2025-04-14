@@ -1,12 +1,3 @@
----
-seo:
-  title: HPE server management with Redfish
-markdown:
-  toc:
-    hide: true
-  lastUpdatedBlock:
-    hide: true
----
 
 # Introduction to the HPE server management portal
 
