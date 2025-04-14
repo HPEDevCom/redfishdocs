@@ -14,7 +14,7 @@ seo:
   keywords: hpe, redfish, server management, api, documentation
 navbar:
   items:
-    - page: docs/guides/index.md
+    - page: docs/index.md
       label: Guides
 markdown:
   toc:
