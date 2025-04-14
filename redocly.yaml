@@ -8,7 +8,7 @@ links:
   - href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
 seo:
   title: Warp API
-  description: Warp is the groundbreaking API that allows you to navigate, manipulate, and control time.
+  description: WARP is the groundbreaking API that allows you to navigate, manipulate, and control time.
 navbar:
   items:
     - page: tutorials/index.md
