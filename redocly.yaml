@@ -6,16 +6,16 @@ extends:
 links:
   - href: https://fonts.googleapis.com/css2?family=VT323&display=swap
   - href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
-navbar:
-  items:
-    - page: docs/index.md
-      label: Guides
 seo:
   title: HPE Server Management with Redfish
   description: HPE Server Management with Redfish API documentation.
   siteUrl: https://servermanagement.ext.hpe.com
   image: https://servermanagement.ext.hpe.com/images/hpe.svg
   keywords: hpe, redfish, server management, api, documentation
+navbar:
+  items:
+    - page: docs/index.md
+      label: Guides
 markdown:
   toc:
     depth: 2
