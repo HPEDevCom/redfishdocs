@@ -11,6 +11,8 @@ seo:
   description: Warp is the groundbreaking API that allows you to navigate, manipulate, and control time.
 navbar:
   items:
+    - page: tutorials/index.md
+      label: Missions
     - page: guides/index.md
       label: Guides
     - page: apis/index.yaml
@@ -27,3 +29,12 @@ markdown:
 logo:
   image: images/logo.svg
   link: /
+footer:
+  copyrightText: Copyleft © Redocly Inc. No rights reserved.
+  items:
+    - page: legal/terms.md
+      label: Terms
+    - page: legal/responsible-use.md
+      label: Responsible Use
+    - href: /
+      label: Cookies
