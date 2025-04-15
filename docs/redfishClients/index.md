@@ -1,6 +1,8 @@
 ---
 seo:
   title: HPE Redfish clients
+sidebar:
+  hide: false
 markdown:
   toc:
     hide: true

@@ -1,6 +1,8 @@
 ---
 seo:
   title: Introduction to the HPE server management portal
+sidebar:
+  hide: false
 markdown:
   toc:
     hide: true

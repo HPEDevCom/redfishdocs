@@ -1,0 +1,23 @@
+- label: Home
+  # The following href represents the root of the GitHub Redfish Portal repo
+  # The content of this '/' page is the index.page.tsx.
+  href: '/'
+- separatorLine: true
+
+- group: Guides
+  expanded: false
+  selectFirstItemOnExpand: true
+  items:
+    - label: Introduction
+      page: docs/index.md
+- separatorLine: true
+
+- group: HPE Redfish services
+  expanded: false
+  selectFirstItemOnExpand: true
+  items:
+    - label: Overview
+      page: docs/redfishServices/index.md
+    - label: Supplement documents
+      href: 'docs/redfishServices/ilos/supplementdocuments'
+- separatorLine: true

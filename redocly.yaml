@@ -1,6 +1,18 @@
-# reunite:
-  # ignoreLint: true
-  # ignoreLinkChecker: true
+# This file contains the project global settings as explained
+# the Reunite documentation:
+#  https://redocly.com/docs/realm/author/concepts/reunite#project-settings
+#
+# Those setings can be altered in a any page.
+    
+reunite:
+  ignoreLint: true
+  ignoreLinkChecker: true
+scripts:
+  head:
+    - src: './scripts/ucep-loader.js'
+    - src: 'https://h50007.www5.hpe.com/hfws-static/js/framework/jquery/v-3-6-0/jquery.js'
+  body:
+    - src:  https://www.hpe.com/global/metrics/easy/basic_measurement.js
 extends:
   - minimal
 links:
@@ -19,6 +31,7 @@ navbar:
       page: docs/redfishClients/index.md
     - label: Redfish standard
       href: https://www.dmtf.org/standards/redfish
+      external: true
 markdown:
   toc:
     depth: 3
@@ -30,12 +43,12 @@ logo:
   link: /
   altText: 'HPE server Management with Redfish'
 sidebar:
-  hide: false
+  hide: true
 search:
   engine: flexsearch
   hide: false
   shortcuts: 
-    -  ctrl+f
+    - ctrl+f
     - cmd+k
     - /
   ai: 

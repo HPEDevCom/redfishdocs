@@ -147,23 +147,6 @@ const Container = styled.div`
   }
 `;
 
-const Feature = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-
-  svg {
-    height: 16px;
-    width: 16px;
-    margin-top: 6px; // Aligns the icon with the first line of text
-    flex-shrink: 0; // Prevents the icon from shrinking
-    path {
-      fill: var(--color-persian-green-6);
-    }
-  }
-  margin-bottom: var(--spacing-sm);
-`;
-
 const ButtonContainer = styled.div`
   display: flex;
   gap: var(--spacing-xs);
