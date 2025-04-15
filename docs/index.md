@@ -1,6 +1,6 @@
 ---
 seo:
-  title: HPE server management with Redfish
+  title: Introduction to the HPE server management portal
 markdown:
   toc:
     hide: true
