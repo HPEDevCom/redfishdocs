@@ -19,12 +19,3 @@ markdown:
 logo:
   image: images/logo.svg
   link: /
-footer:
-  copyrightText: Copyleft © Redocly Inc. No rights reserved.
-  items:
-    - page: legal/terms.md
-      label: Terms
-    - page: legal/responsible-use.md
-      label: Responsible Use
-    - href: /
-      label: Cookies
