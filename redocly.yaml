@@ -7,15 +7,33 @@ links:
   - href: https://fonts.googleapis.com/css2?family=VT323&display=swap
   - href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
 seo:
-  title: WARP API
-  description: WARP is the groundbreaking API that allows you to navigate, manipulate, and control time.
+  title: HPE server management with Redfish®
+  description: Redfish is a standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC)
 navbar:
   items:
     - page: docs/index.md
       label: Guides
+    - page: docs/redfishServices/index.md
+      label: Services
+    - page: docs/redfishClients/index.md
+      label: redfishClients
 markdown:
   toc:
-    depth: 2
+    depth: 3
+    hide: true
+  lastUpdatedBlock:
+    hide: true
 logo:
-  image: images/logo.svg
+  image: images/hpe.svg
   link: /
+sidebar:
+  hide:false
+search:
+  engine: flexsearch
+  hide: false
+  shortcuts: 
+    -  ctrl+f
+    - cmd+k
+    - /
+  ai: 
+    hide: true
