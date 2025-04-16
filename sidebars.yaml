@@ -19,8 +19,14 @@
   selectFirstItemOnExpand: true
   items:
     - label: Overview
-      page: docs/redfishservices/index.md
+      page: docs/redfishServices/index.md
     - label: iLO supplement documents
-      page: docs/redfishservices/ilos/supplementDocuments/index.md
-      
+      page: docs/redfishServices/ilos/supplementDocuments/index.md
 - separatorLine: true
+
+- group: HPE Redfish clients
+  expanded: false
+  selectFirstItemOnExpand: true
+  items:
+    - label: Overview
+      page: docs/redfishClients/index.md
