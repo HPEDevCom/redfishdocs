@@ -1,4 +1,6 @@
 - separator: iLOrest user guide
 - label: Overview
   page: index.md
+- label: Changelog
+  page: changelog.md
   
