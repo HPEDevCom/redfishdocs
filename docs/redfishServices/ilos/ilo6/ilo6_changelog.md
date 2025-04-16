@@ -1262,7 +1262,8 @@ No changes have been made to supported Redfish Actions for this release.
 ### Schema updates
 
 - `#Certificate.v1_1_0.Certificate` updated to `#Certificate.v1_6_0.Certificate`
-  - Added `Issuer` and `Subject`: <ul>
+  - Added `Issuer` and `Subject`:
+  <ul>
     - `City`: The city or locality of the organization of the entity.
     - `CommonName`: The fully qualified domain name of the entity.
     - `Country`: The country of the organization of the entity.
@@ -1270,42 +1271,51 @@ No changes have been made to supported Redfish Actions for this release.
     - `Email`: The email address of the contact within the organization of the entity.
     - `Organization`: The name of the organization of the entity.
     - `OrganizationalUnit`: The name of the unit or division of the organization of the entity.
-    - `State`: The state, province, or region of the organization of the entity. </ul>
+    - `State`: The state, province, or region of the organization of the entity.
+  </ul>
 
 - `#Chassis.v1_10_2.Chassis` updated to `#Chassis.v1_19_2.Chassis`
   - Deprecated `IndicatorLED`
   - Added `Oem.Hpe.IndicatorLED`: The state of the indicator LED. Following are the supported values: `Null`, `Lit`, `Blinking` and `Off`. This is a fall back provided for clients who want to continue using `IndicatorLED`.
   - Added `LocationIndicatorActive`: An indicator allowing an operator to physically locate this resource. This property replaces `IndicatorLED`and is in-line with the updated DMTF schema.
   - Added `EnvironmentalClass`: The ASHRAE Environmental Class for the chassis. Following are the supported values: A2 - ASHRAE Environmental Class 'A2', A3 - ASHRAE Environmental Class 'A3', and A4 - ASHRAE Environmental Class 'A4'.
-  - Added `Location.PartLocation`:<ul>
+  - Added `Location.PartLocation`:
+  <ul>
     - `LocationOrdinalValue`: The number that represents the location of the part.  If LocationType is `slot` and this unit is in slot 2, the LocationOrdinalValue is 2.
     - `LocationType`: The location types for PartLocation. Following are the supported values: `Null`, `Slot`, `Bay`, `Connection`, `Socket`, and `Embedded`.
     - `Orientation`: The orientation for the ordering of the part location ordinal value. Following are the supported values: `Null`, `FrontToBack`, `BackToFront`, `TopToBottom`, `BottomToTop`, `LeftToRight`, and `RightToLeft`.
     - `Reference`: The reference area for the location of the part. Following are the supported values: `Null`, `Top`, `Bottom`, `Front`, `Rear`, `Left`, `Right`, and `Middle`.
-    - `ServiceLabel`: The label of the part location, such as a silk-screened name or a printed label. </ul>
-  - Added `Location.Placement`: <ul>
+    - `ServiceLabel`: The label of the part location, such as a silk-screened name or a printed label.
+  </ul>
+  - Added `Location.Placement`:
+  <ul>
     - `AdditionalInfo`: Area designation or other additional info.
     - `Rack`: The name of a rack location within a row.
     - `RackOffset`: The vertical location of the item, in terms of RackOffsetUnits.
     - `RackOffsetUnits`: The type of rack unit in use. Following are the supported values: `Null`, `OpenU` (a rack unit that is equal to 1.89 inches (48 mm)), and `EIA_310` (a rack unit that is equal to 1.75 inches (44.45 mm).
-    - `Row`: The name of the row. </ul>
-  - Added `CpuMezzProgrammableLogicDevice` to  `Oem.Hpe.Firmware`: The firmware version of the CPLD (System Programmable Logic Device).
+    - `Row`: The name of the row.
+  </ul>
+  - Added `CpuMezzProgrammableLogicDevice` to `Oem.Hpe.Firmware`: The firmware version of the CPLD (System Programmable Logic Device).
   - Added `Oem.Hpe.TelcoModeEnabled`: This property indicates if Telco mode is enabled on the server.
 
 - `#ComputerSystem.v1_10_0.ComputerSystem` updated to `#ComputerSystem.v1_17_0.ComputerSystem`
   - Deprecated `IndicatorLED`
   - Added `Oem.Hpe.IndicatorLED`: The state of the indicator LED. Following are the supported values: `Null`, `Lit`, `Blinking` and `Off`. This is a fall back added for clients that want to continue to use `IndicatorLED`
   - Added `LocationIndicatorActive`: An indicator allowing an operator to physically locate this resource. This property replaces `IndicatorLED`and is in-line with the updated DMTF schema.
-  - Added `BootProgress`: <ul>
-    - `OemLastState`: SmartNIC device operating system OEM status. Following are the supported values: `OSServicesReady`, `OSServicesOffline`, `OSHalting` and `OSHalted`. </ul>
+  - Added `BootProgress`:
+  <ul>
+    - `OemLastState`: SmartNIC device operating system OEM status. Following are the supported values: `OSServicesReady`, `OSServicesOffline`, `OSHalting` and `OSHalted`.
+  </ul>
   - Added `Oem.Hpe.AvailableSystemCapabilities`: Indicates SmartNIC DPU supports OS-triggered DPC. `OSTriggeredDPC` is the supported value.
-  - Added `Oem.Hpe.BootProgress`: <ul>
+  - Added `Oem.Hpe.BootProgress`:
+  <ul>
     - Added `OemResetReason`: The Smart NIC Device Operating system OEM reset
       reason. Following are the supported values: `Unknown`, `OSNormal`,
       `BMCNormal`, `OSCrash`, `HWWatchdog` and `Thermal`.
     - Added `ResetReason`: The Smart NIC Device Operating system reset reason.
       Following are the supported values: `OEM`, `Unknown`, `OSNormal`, `BMCNormal`,
-      `OSCrash`, `HWWatchdog` and `Thermal`. </ul>
+      `OSCrash`, `HWWatchdog` and `Thermal`.
+  </ul>
     - Added `BootProgress.OemLastState`: This object shall contain the last
       boot progress state and time. It
      provides information about
@@ -1316,11 +1326,13 @@ No changes have been made to supported Redfish Actions for this release.
   - Added `OsReadyTimeout` to `Oem.Hpe.IntegrationConfig`.
   - Added `Kernel.Version` to  `Oem.Hpe.OperatingSystem`: SmartNIC device operating system kernel version.
   - `SystemType`: The type of computer system that this resource represents. `DPU` is added to the supported values.
-  - Added `ComputerSystem.SetSimpleUpdateStatus`: Added the following Parameters: <ul>
+  - Added `ComputerSystem.SetSimpleUpdateStatus`: Added the following Parameters:
+  <ul>
     - `Message (string)`: Message to be displayed
     - `TaskState (string)`: TaskState identifies the type of action to be performed. Following are the supported values: `New`, `Starting`, `Running`,`Suspended`,`Interrupted`,`Pending`, `Stopping`, `Completed`, `Killed`,`Exception` and `Service`.
     - `PercentComplete (integer)`: Percentage of task complete.
-    - `TaskStatus (string)`: Current status of the ongoing task. Following are the supported values: `Ok`, `Warning` and `Critical`. </ul>
+    - `TaskStatus (string)`: Current status of the ongoing task. Following are the supported values: `Ok`, `Warning` and `Critical`.
+  </ul>
   
 - `#Drive.v1_7_0.Drive` upgraded to `Drive.v1_14_0.Drive`
   - Deprecated `IndicatorLED`
@@ -1333,17 +1345,21 @@ No changes have been made to supported Redfish Actions for this release.
 - `#HpeSecurityService.v2_3_1.HpeSecurityService`
   - Added `ComponentIntegrityPolicy`: `NoPolicy` and `HaltBootOnSPDMFailure` are the supported values.
   - Added `GlobalComponentIntegrity`: `Enabled` and `Disabled` are the supported values.
-  - Added the following to `TrustedOSSecurity`:<ul>
+  - Added the following to `TrustedOSSecurity`:
+  <ul>
     - `EnableBackgroundScan`: Enables or disables background scan of host OS software.
     - `LastScanResult`: Health of the host after the last scan done by Trusted OS Security scan engine. Following are the supported values: `OK`, `Critical`, `Unknown`.
     - `LastScanTime`: The time stamp of the last Trusted OS Security scan.
     - `OnIntegrityFailure`: Sets the policy for how the Trusted OS Security check handles integrity failures. Following are the supported values: `NoAction`, `Alert`, `PowerOff`, `PowerOffForce`,`Reset`, `ForceNMI` .
-    - `ScanEverySeconds`: Sets the interval between Trusted OS Security scans in second increments. </ul>
+    - `ScanEverySeconds`: Sets the interval between Trusted OS Security scans in second increments.
+  </ul>
 
 - `#HpeServerDevice.v2_1_0.HpeServerDevice`
-  - Added `FirmwareVersion`: <ul>
+  - Added `FirmwareVersion`:
+  <ul>
     - `ComponentName`: Name of GPU cores
-    - `VersionString`: Version String of GPU cores </ul>
+    - `VersionString`: Version String of GPU cores
+  </ul>
 
 - `#LogService.v1_0_0.LogService` updated to `LogService.v1_1_0.LogService`
   - Added `DateTime`: The current date and time, with UTC offset, that the Log Service uses to set or read time.
@@ -1366,16 +1382,20 @@ No changes have been made to supported Redfish Actions for this release.
     - `Reference`: The reference area for the location of the part. Following are the supported values: `Null`, `Top`,`Bottom`,`Front`,`Rear`, `Left`,`Right` and `Middle`.
     - `ServiceLabel`: The label of the part location, such as a silk-screened name or a printed label.
   </ul>
-  - Added `Location.Placement`: <ul>
+  - Added `Location.Placement`:
+  <ul>
     - `AdditionalInfo`: Area designation or other additional info.
     - `Rack`: The name of a rack location within a row.
     - `RackOffset`: The vertical location of the item, in terms of RackOffsetUnits.
     - `RackOffsetUnits`: The type of rack unit in use. Following are the supported values: `Null`, `OpenU` and `EIA_310`.
-    - `Row`: The name of the row. </ul>
-  - Added `Oem.Hpe.FcPorts`: is an array containing elements of: <ul>
+    - `Row`: The name of the row.
+  </ul>
+  - Added `Oem.Hpe.FcPorts`: is an array containing elements of:
+  <ul>
     - `PortNumber`: Port Number
     - `WWNN`: World Wide Node Name
-    - `WWPN`: World Wide Port Name </ul>
+    - `WWPN`: World Wide Port Name
+  </ul>
   - Added `Oem.Hpe.PhysicalPorts`:
   <ul>
     - `BadReceives`: A count of frames that were received by the adapter but which had an error.  This counter is the sum of mib items `cpqNicIfPhysAdapterAlignmentErrors`, `cpqNicIfPhysAdapterFCSErrors`, `cpqNicIfPhysAdapterFrameTooLongs`, and `cpqNicIfPhysAdapterInternalMacReceiveErrors`. If this counter increments frequently, check the more detailed error statistics and take appropriate action.
@@ -1395,19 +1415,23 @@ No changes have been made to supported Redfish Actions for this release.
 - `#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction` updated to `#NetworkDeviceFunction.v1_8_0.NetworkDeviceFunction`
 
 - `#PCIeDevice.v1_4_0.PCIeDevice` updated to `#PCIeDevice.v1_5_0.PCIeDevice`
-  - Added `Oem.Hpe.FirmwareVersion`: <ul>
+  - Added `Oem.Hpe.FirmwareVersion`:
+  <ul>
     - `ComponentName`: Name of GPU cores
-    - `VersionString`: Version string of GPU cores </ul>
+    - `VersionString`: Version string of GPU cores
+  </ul>
 
 - `#Port.v1_5_0.Port` updated to `#Port.v1_6_1.Port`
   - Added `AssociatedWorldWideNames`to `FibreChannel`
   
 - `#Power.v1_3_0.Power`
-  - Added `Oem.Hpe.Domains`: <ul>
+  - Added `Oem.Hpe.Domains`:
+  <ul>
     - `DomainName`: Power Supply Domain Name. Following values are supported: `System` and `GPU`.
     - `HighEfficiencyMode`: The redundant power supply mode that will be used when redundant power supplies are configured. The following values are supported: `Null`, `Auto`, `Balanced`, `Even`, `Odd` and `NoSupport`.
     - `PowerSupplies`: `PowerSupplies` is an array containing elements of: `PowerSupplies[{item}].@odata.id`
-    - `PowerSupplyRedundancy`: This indicates if the Power Supply is redundant or not. Following values are supported: `Redundant`, `NonRedundant`, `FailedRedundant` and `Unknown`. </ul>
+    - `PowerSupplyRedundancy`: This indicates if the Power Supply is redundant or not. Following values are supported: `Redundant`, `NonRedundant`, `FailedRedundant` and `Unknown`.
+  </ul>
   - `Oem.Hpe.HighEfficiencyMode`: Added `NoSupport` to supported values.
   - Added  `PowerSupplies.Oem.Hpe.Domain`: This indicates the domain of the specific power supply. Following values are supported: `System` and `GPU`.
   - `Oem.Hpe.HighEfficiencyMode`: `NoSupport` added as a supported value.

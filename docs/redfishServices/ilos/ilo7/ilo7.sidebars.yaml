@@ -1,0 +1,7 @@
+- separator: HPE iLO 7 Redfish service
+- label: Overview
+  page: index.md
+- label: Adapting from iLO 6
+  page: ilo7_adaptation.md
+- label: Changelog
+  page: ilo7_changelog.md
