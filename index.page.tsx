@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Button } from '@redocly/theme';
+import { ArrowRightIcon, Button } from '@redocly/theme';
 import { Card } from '@redocly/theme/markdoc/components/Cards/Card';
 import { Cards } from '@redocly/theme/markdoc/components/Cards/Cards';
 
@@ -17,16 +17,15 @@ export default function HomePage() {
           Get started
         </Button>
       </HeroContainer>
-      
       <Container>
         <Cards>
-          <Card title="Guides" to="/docs">
+          <Card title="Guides" to="/docs/index.md">
             Access learning material and best practices for working with HPE Redfish® APIs. Browse this section to better understand the basic Redfish concepts and review generic examples.
           </Card>
-          <Card title="Services" to="/docs/redfishservices">
-            Explore and integrate with HPE Redfish services like the ones implemented in the different HPE iLO generations.
+          <Card title="Services" to="/docs/redfishServices/index.md">
+            Explore and integrate with HPE Redfish® services like the ones implemented in the different HPE iLO generations.
           </Card>
-          <Card title="Clients" to="/docs/redfishclients">
+          <Card title="Clients" to="/docs/redfishClients/index.md">
             Find Redfish client documentation that assist in compliance to API standards like the HPE iLOrest tool.
           </Card>
         </Cards>

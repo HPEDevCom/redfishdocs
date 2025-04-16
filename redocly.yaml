@@ -2,7 +2,7 @@
 # the Reunite documentation:
 #  https://redocly.com/docs/realm/author/concepts/reunite#project-settings
 #
-# Those setings can be altered in a any page.
+# Those setings can be altered in a any page in a front matter section.
     
 reunite:
   ignoreLint: true
@@ -26,7 +26,7 @@ navbar:
     - label: Guides
       page: docs/index.md
     - label: Services
-      page: docs/redfishServices/index.md
+      page: docs/redfishservices/index.md
     - label: Clients
       page: docs/redfishClients/index.md
     - label: Redfish standard
@@ -43,7 +43,7 @@ logo:
   link: /
   altText: 'HPE server Management with Redfish'
 sidebar:
-  hide: true
+  hide: false
 search:
   engine: flexsearch
   hide: false

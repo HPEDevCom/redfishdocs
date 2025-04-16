@@ -5,7 +5,7 @@ sidebar:
   hide: false
 markdown:
   toc:
-    hide: true
+    hide: false
   lastUpdatedBlock:
     hide: false
 ---
