@@ -1,10 +1,14 @@
 ---
 seo:
   title: iLO 7 changelog
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
+sidebar:
+  hide: false
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdatedBlock:
+    hide: true
 ---
 
 # Changelog
