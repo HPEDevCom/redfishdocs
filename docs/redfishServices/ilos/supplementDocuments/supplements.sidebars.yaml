@@ -1,5 +1,5 @@
 - label: Back to Redfish services
-  page: /docs/redfishservices/index.md
+  page: /docs/redfishServices/index.md
 - separatorLine: true
 - separator: iLO supplement documents
 - label: Overview
