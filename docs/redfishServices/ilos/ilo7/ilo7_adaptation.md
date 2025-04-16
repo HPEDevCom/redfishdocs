@@ -20,7 +20,7 @@ iLO 6 RESTful API to the iLO 7 RESTful API.
 
 The iLO 7 RESTful API is fully conformant with the Redfish protocol and data
 model mentioned in the
-[Changelog](/docs/redfishservices/ilos/ilo7/ilo7_changelog/#changelog)
+[Changelog](ilo7_changelog/#changelog)
 file. Any remaining support for the pre-Redfish iLO RESTful API
 has been removed and is replaced by the Redfish equivalents.
 HPE continues to extend the Redfish data
@@ -33,7 +33,7 @@ section for more details on this subject.
 
 The following schemas have been removed
 from the iLO 7 version 1.11.00 and later versions,
-unless formal notification in the [iLO 7 Changelog](../ilo7_changelog) file.
+unless formal notification in the [iLO 7 Changelog](ilo7_changelog) file.
 
 <!-- 
 FDZ>>> The PowerSubsystem has been introduced silently
@@ -52,11 +52,11 @@ Not sure it is a good idea to mention its removal.
 ### HPE Automatic Certificate Enrollment (SCEP)
 
 The `HpeAutomaticCertEnrollment` schema
-([SCEP](/docs/redfishservices/ilos/supplementdocuments/securityservice/#automatic-certificate-enrollment))
+([SCEP](/docs/redfishServices/ilos/supplementdocuments/securityservice/#automatic-certificate-enrollment))
 has been removed from iLO 7 version 1.11.00.
 Only manual certification enrolment is supported in iLO 7 version 1.11.00
 and later versions, unless formal re-introduction notification
-in the [iLO 7 Changelog](../ilo7_changelog) file.
+in the [iLO 7 Changelog](ilo7_changelog) file.
 
 <!-- 
 
@@ -100,7 +100,7 @@ iLO 7, including the following URI:
 
 The following URIs have been removed from HPE iLO 7 1.11.00
 and later unless formal re-introduction notification in
-the iLO 7 [Changelog](../ilo7_changelog) file.
+the iLO 7 [Changelog](ilo7_changelog) file.
 
 ### AccHDDService
 
@@ -121,7 +121,7 @@ the iLO 7 [Changelog](../ilo7_changelog) file.
 - `/redfish/v1/managers/{@managerid}/securityservice/iLOidevid/certificates/{@certid}`
 - `/redfish/v1/Managers/{@ManagerId}/SecurityService/DisableWeakCiphers`
 - `TLS1_0` and `TLS1_1` enumeration values have been removed from the
-  `TLSVersion{}`[object](/docs/redfishservices/ilos/ilo7/ilo7_111/ilo7_hpe_resourcedefns111/#tlsversion)
+  `TLSVersion{}` [object](/docs/redfishservices/ilos/ilo7/ilo7_111/ilo7_hpe_resourcedefns111/#tlsversion)
 
 ### Controllers
 
