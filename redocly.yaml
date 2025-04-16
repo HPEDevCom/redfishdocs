@@ -48,8 +48,6 @@ search:
   engine: flexsearch
   hide: false
   shortcuts: 
-    - ctrl+f
-    - cmd+k
     - /
   ai: 
     hide: true

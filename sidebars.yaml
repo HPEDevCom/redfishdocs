@@ -9,13 +9,18 @@
   selectFirstItemOnExpand: true
   items:
     - label: Introduction
-      page: ./docs/index.md
+      page: docs/index.md 
     - label: Glossary
-      page: ./docs/etc/glossaryterms.md
+      page: docs/etc/glossaryterms.md
 - separatorLine: true
 
 - group: HPE Redfish services
   expanded: false
   selectFirstItemOnExpand: true
-  directory: docs/redfishservices
+  items:
+    - label: Overview
+      page: docs/redfishservices/index.md
+    - label: iLO supplement documents
+      page: docs/redfishservices/ilos/supplementDocuments/index.md
+      
 - separatorLine: true

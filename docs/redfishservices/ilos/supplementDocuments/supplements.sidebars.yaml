@@ -1,5 +1,26 @@
 - label: Back to Redfish services
-  page: /docs
+  page: /docs/redfishservices/index.md
 - separatorLine: true
-- label: Supplement documents
+- separator: iLO supplement documents
+- label: Overview
   page: index.md
+
+- group: Security
+  expanded: false
+  selectFirstItemOnExpand: true
+  items:
+    - label: HPE iLO Security service
+      page: securityService.md
+- label: OData query options
+  page: odataqueryoptions.md
+- label: Log services
+  page: logServices.md
+- label: Storage data models
+  page: storage.md
+
+- group: Miscellaneous
+  expanded: false
+  selectFirstItemOnExpand: true
+  items:
+    - label: DPUs and SmartNICs
+      page: smartnics.md
