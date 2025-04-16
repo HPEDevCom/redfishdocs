@@ -1202,8 +1202,10 @@ The following resource instances are added in this schema:
   - Added `Signatures`: A link to the collection of signatures contained in the UEFI Secure Boot database.
   - Added `Actions`:
     - `SecureBootDatabase.ResetKeys`: Action to perform reset of the Secure Boot Database Keys.
-  - Added `Parameters`:<ul>
-    - Added `ResetKeysType (string)` (the parameter specifies what type of reset action to perform). The values are `DeleteAllKeys` (delete all Secure Boot Database keys on next boot) and `ResetAllKeysToDefault` (reset to default Secure Boot Database keys on next boot).</ul></br>
+  - Added `Parameters`:
+  <ul>
+    - Added `ResetKeysType (string)` (the parameter specifies what type of reset action to perform). The values are `DeleteAllKeys` (delete all Secure Boot Database keys on next boot) and `ResetAllKeysToDefault` (reset to default Secure Boot Database keys on next boot).
+  </ul></br>
 The following resource instances are added in this schema:
 
   - `/redfish/v1/Systems/{@systemsId}/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId}` (GET, DELETE)
@@ -1268,7 +1270,7 @@ No changes have been made to supported Redfish Actions for this release.
     - `Email`: The email address of the contact within the organization of the entity.
     - `Organization`: The name of the organization of the entity.
     - `OrganizationalUnit`: The name of the unit or division of the organization of the entity.
-    - `State`: The state, province, or region of the organization of the entity.</ul>
+    - `State`: The state, province, or region of the organization of the entity. </ul>
 
 - `#Chassis.v1_10_2.Chassis` updated to `#Chassis.v1_19_2.Chassis`
   - Deprecated `IndicatorLED`
@@ -1286,7 +1288,7 @@ No changes have been made to supported Redfish Actions for this release.
     - `Rack`: The name of a rack location within a row.
     - `RackOffset`: The vertical location of the item, in terms of RackOffsetUnits.
     - `RackOffsetUnits`: The type of rack unit in use. Following are the supported values: `Null`, `OpenU` (a rack unit that is equal to 1.89 inches (48 mm)), and `EIA_310` (a rack unit that is equal to 1.75 inches (44.45 mm).
-    - `Row`: The name of the row.</ul>
+    - `Row`: The name of the row. </ul>
   - Added `CpuMezzProgrammableLogicDevice` to  `Oem.Hpe.Firmware`: The firmware version of the CPLD (System Programmable Logic Device).
   - Added `Oem.Hpe.TelcoModeEnabled`: This property indicates if Telco mode is enabled on the server.
 
@@ -1336,7 +1338,7 @@ No changes have been made to supported Redfish Actions for this release.
     - `LastScanResult`: Health of the host after the last scan done by Trusted OS Security scan engine. Following are the supported values: `OK`, `Critical`, `Unknown`.
     - `LastScanTime`: The time stamp of the last Trusted OS Security scan.
     - `OnIntegrityFailure`: Sets the policy for how the Trusted OS Security check handles integrity failures. Following are the supported values: `NoAction`, `Alert`, `PowerOff`, `PowerOffForce`,`Reset`, `ForceNMI` .
-    - `ScanEverySeconds`: Sets the interval between Trusted OS Security scans in second increments.</ul>
+    - `ScanEverySeconds`: Sets the interval between Trusted OS Security scans in second increments. </ul>
 
 - `#HpeServerDevice.v2_1_0.HpeServerDevice`
   - Added `FirmwareVersion`: <ul>
@@ -1356,12 +1358,14 @@ No changes have been made to supported Redfish Actions for this release.
   - Added the value `DDR5` to the supported values in `MemoryDeviceType`.
 
 - `#NetworkAdapter.v1_5_0.NetworkAdapter` upgraded to `#NetworkAdapter.v1_9_0.NetworkAdapter`
-  - Added `Location.PartLocation`: <ul>
+  - Added `Location.PartLocation`:
+  <ul>
     - `LocationOrdinalValue`: The number that represents the location of the part.  If LocationType is `slot` and this unit is in slot 2, the LocationOrdinalValue is 2.
     - `LocationType`: The location types for PartLocation. Following are the supported values: `Null`, `Slot`, `Bay`,`Connector`,`Socket`and `Embedded`.
     - `Orientation`: The orientation for the ordering of the part location ordinal value. Following are the supported values: `Null`, `FrontToBack`,`BackToFront`,`TopToBottom`,`BottomToTop`, `LeftToRight` and `RightToLeft`.
     - `Reference`: The reference area for the location of the part. Following are the supported values: `Null`, `Top`,`Bottom`,`Front`,`Rear`, `Left`,`Right` and `Middle`.
-    - `ServiceLabel`: The label of the part location, such as a silk-screened name or a printed label. </ul>
+    - `ServiceLabel`: The label of the part location, such as a silk-screened name or a printed label.
+  </ul>
   - Added `Location.Placement`: <ul>
     - `AdditionalInfo`: Area designation or other additional info.
     - `Rack`: The name of a rack location within a row.
@@ -1372,7 +1376,8 @@ No changes have been made to supported Redfish Actions for this release.
     - `PortNumber`: Port Number
     - `WWNN`: World Wide Node Name
     - `WWPN`: World Wide Port Name </ul>
-  - Added `Oem.Hpe.PhysicalPorts`: <ul>
+  - Added `Oem.Hpe.PhysicalPorts`:
+  <ul>
     - `BadReceives`: A count of frames that were received by the adapter but which had an error.  This counter is the sum of mib items `cpqNicIfPhysAdapterAlignmentErrors`, `cpqNicIfPhysAdapterFCSErrors`, `cpqNicIfPhysAdapterFrameTooLongs`, and `cpqNicIfPhysAdapterInternalMacReceiveErrors`. If this counter increments frequently, check the more detailed error statistics and take appropriate action.
     - `BadTransmits`: A count of frames that were not transmitted by the adapter because of an error.  This counter is the sum of MIB items cpqNicIfPhysAdapterDeferredTransmissions, cpqNicIfPhysAdapterLateCollisions, cpqNicIfPhysAdapterExcessiveCollisions, cpqNicIfPhysAdapterCarrierSenseErrors, and cpqNicIfPhysAdapterInternalMacTransmitErrors. If this counter increments frequently, check the more detailed error statistics and take appropriate action.
     - `FullDuplex`: Full-duplex data transmission means that data can be transmitted in both directions on a signal carrier at the same time.
@@ -1384,24 +1389,25 @@ No changes have been made to supported Redfish Actions for this release.
     - `SpeedMbps`: An estimate of the current bandwidth of the interface in Megabits per second.  For interfaces which do not vary in bandwidth or for those where no accurate estimation can be made, this object contains the nominal bandwidth.
     - `StructuredName`: PCI device structured name in UTF-8 format (e.g. 'NIC.LOM.1.1' - see PCIDevices in `/rest/v1/Systems/x/PCIDevices`)
     - `Team`: If a port is configured for NIC teaming, the name of the configured link between the physical ports that form a logical network adapter. This value is displayed for system NICs only (embedded and stand-up).
-    - `UEFIDevicePath`: UEFIDevice Path for correlation purposes.</ul>
+    - `UEFIDevicePath`: UEFIDevice Path for correlation purposes.
+  </ul>
 
 - `#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction` updated to `#NetworkDeviceFunction.v1_8_0.NetworkDeviceFunction`
 
 - `#PCIeDevice.v1_4_0.PCIeDevice` updated to `#PCIeDevice.v1_5_0.PCIeDevice`
-  - Added `Oem.Hpe.FirmwareVersion`:<ul>
+  - Added `Oem.Hpe.FirmwareVersion`: <ul>
     - `ComponentName`: Name of GPU cores
-    - `VersionString`: Version string of GPU cores</ul>
+    - `VersionString`: Version string of GPU cores </ul>
 
 - `#Port.v1_5_0.Port` updated to `#Port.v1_6_1.Port`
   - Added `AssociatedWorldWideNames`to `FibreChannel`
   
 - `#Power.v1_3_0.Power`
-  - Added `Oem.Hpe.Domains`:<ul>
+  - Added `Oem.Hpe.Domains`: <ul>
     - `DomainName`: Power Supply Domain Name. Following values are supported: `System` and `GPU`.
     - `HighEfficiencyMode`: The redundant power supply mode that will be used when redundant power supplies are configured. The following values are supported: `Null`, `Auto`, `Balanced`, `Even`, `Odd` and `NoSupport`.
     - `PowerSupplies`: `PowerSupplies` is an array containing elements of: `PowerSupplies[{item}].@odata.id`
-    - `PowerSupplyRedundancy`: This indicates if the Power Supply is redundant or not. Following values are supported: `Redundant`, `NonRedundant`, `FailedRedundant` and `Unknown`.</ul>
+    - `PowerSupplyRedundancy`: This indicates if the Power Supply is redundant or not. Following values are supported: `Redundant`, `NonRedundant`, `FailedRedundant` and `Unknown`. </ul>
   - `Oem.Hpe.HighEfficiencyMode`: Added `NoSupport` to supported values.
   - Added  `PowerSupplies.Oem.Hpe.Domain`: This indicates the domain of the specific power supply. Following values are supported: `System` and `GPU`.
   - `Oem.Hpe.HighEfficiencyMode`: `NoSupport` added as a supported value.

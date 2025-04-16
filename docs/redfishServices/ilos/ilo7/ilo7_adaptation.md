@@ -8,7 +8,8 @@ markdown:
     hide: true
     depth: 3
   lastUpdatedBlock:
-    hide: true---
+    hide: true
+---
 
 # Adapting from iLO 6
 
@@ -17,9 +18,16 @@ iLO 6 RESTful API to the iLO 7 RESTful API.
 
 ## Introduction
 
-The iLO 7 RESTful API is fully conformant with the Redfish® protocol and data model mentioned in the [Changelog](/docs/redfishservices/ilos/ilo7/ilo7_changelog/#changelog) file. Any remaining support for the pre-Redfish iLO RESTful API has been removed and is replaced by the Redfish equivalents. HPE continues to extend the Redfish data model (`Oem.Hpe` extensions) to enable value for the customer.
+The iLO 7 RESTful API is fully conformant with the Redfish protocol and data
+model mentioned in the
+[Changelog](/docs/redfishservices/ilos/ilo7/ilo7_changelog/#changelog)
+file. Any remaining support for the pre-Redfish iLO RESTful API
+has been removed and is replaced by the Redfish equivalents.
+HPE continues to extend the Redfish data
+model (`Oem.Hpe` extensions) to enable value for the customer.
 
-Refer to the [Conformance](/docs/concepts/redfishconformance) section for more details on this subject.
+Refer to the [Conformance](/docs/concepts/redfishconformance)
+section for more details on this subject.
 
 ## Schema removals
 
