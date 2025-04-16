@@ -1,3 +1,7 @@
+- label: Back to Redfish services
+  href: /docs/redfishservices
+- separatorLine: true
+
 - separator: HPE iLO 6 Redfish service
 - label: Overview
   page: index.md

@@ -25,7 +25,7 @@ export default function HomePage() {
           <Card title="Services" to="/docs/redfishservices">
             Explore and integrate with HPE Redfish® services like the ones implemented in the different HPE iLO generations.
           </Card>
-          <Card title="Clients" to="/docs/redfishClients">
+          <Card title="Clients" to="/docs/redfishclients">
             Find Redfish client documentation that assist in compliance to API standards like the HPE iLOrest tool.
           </Card>
         </Cards>
