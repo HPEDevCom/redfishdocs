@@ -6,12 +6,10 @@
     "private": true,
     "type": "module",
     "scripts": {
-      "preview": "npx @redocly/cli preview",
       "start": "npx @redocly/cli preview"
     },
     "dependencies": {
-      "@redocly/realm": "*",
-      "@redocly/cli": "latest"
+      "@redocly/realm": "*"
     }
   }
 
