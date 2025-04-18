@@ -1,13 +1,10 @@
 ---
 seo:
   title: iLOrest changelog
-sidebar:
-  hide: false
-markdown:
-  toc:
-    hide: true
-  lastUpdatedBlock:
-    hide: true
+toc:
+  enable: true
+  maxDepth: 2
+disableLastModified: false
 ---
 
 # HPE iLOrest changelog
@@ -135,10 +132,14 @@ where AHS download in Intelligent Provisioning environment was failing.
 
 - Enhanced the `serverclone`
 [command](/docs/redfishclients/ilorest-userguide/ilocommands/#serverclone-command)
-to check the [server power state](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_computersystem_resourcedefns{{process.env.LATEST_FW_VERSION}}/#powerstate)
+to check the [server power state](/docs/redfishservices/ilos/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}_{% $env.PUBLIC_LATEST_FW_VERSION %}/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}_computersystem_resourcedefns{% $env.PUBLIC_LATEST_FW_VERSION %}/#powerstate)
 before issuing a reboot.
 - Availability of an <a href="https://pypi.org/project/ilorest" target="_blank">iLOrest PyPI package</a>.
 fully equivalent to <a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest" target="_blank">other iLOrest packages</a>.
+
+[server power state](/docs/redfishservices/ilos/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}_{% $env.PUBLIC_LATEST_FW_VERSION %}/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}_computersystem_resourcedefns{% $env.PUBLIC_LATEST_FW_VERSION %}/#powerstate)
+
+{% link href=$PUBLIC_LATEST_ILO_GEN_VERSION %}Link{% /link %}
 
 :::info NOTES
 

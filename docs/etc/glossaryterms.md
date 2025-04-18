@@ -1,9 +1,13 @@
 ---
 seo:
   title: Glossary
-toc:
-  enable: false
-disableLastModified: true
+sidebar:
+  hide: false
+markdown:
+  toc:
+    hide: true
+  lastUpdatedBlock:
+    hide: true
 ---
 
 # Glossary
