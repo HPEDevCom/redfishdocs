@@ -166,25 +166,33 @@ POSSIBLE VALUES
 The following example retrieves the current security state using
 HPE iLOrest and cURL.
 
-```shell iLOrest
-ilorest login ilo-ip -u ilo-user -p password
-ilorest select HpeSecurityService.
-ilorest get SecurityState --json
-ilorest logout
-```
+{% tabs %}
+  {% tab label="iLOrest" %}
+  ```shell 
+  ilorest login ilo-ip -u ilo-user -p password
+  ilorest select HpeSecurityService.
+  ilorest get SecurityState --json
+  ilorest logout
+  ```
+  {% /tab %}
 
-```shell cURL
- curl --insecure --silent --user ilo-user:password \
-      'https://ilo-ip/redfish/v1/Managers/1/SecurityService/'  \
-      | jq  '{SecurityState}'
-```
+  {% tab label="cURL"%}
+  ```shell
+   curl --insecure --silent --user ilo-user:password \
+        'https://ilo-ip/redfish/v1/Managers/1/SecurityService/'  \
+        | jq  '{SecurityState}'
+  ```
+  {% /tab %}
 
-```json Response body
-{
-  "SecurityState": "Production"
-}
+  {% tab label="Response body" %}
+  ```json
+  {
+    "SecurityState": "Production"
+  }
 
-```
+  {% /tab %}
+  ```
+{% /tabs %}
 
 The following example transitions from `Production` to `HighSecurity`
 
