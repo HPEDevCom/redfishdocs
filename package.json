@@ -1,13 +1,17 @@
 {
-    "name": "warp",
-    "version": "1.0.0",
+    "name": "HPE server management with Redfish",
+    "version": "0.0.1",
+    "description": "Redfish is a standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC)",
+    "main": "index.page.tsx",
     "private": true,
     "type": "module",
     "scripts": {
+      "preview": "npx @redocly/cli preview",
       "start": "npx @redocly/cli preview"
     },
     "dependencies": {
-      "@redocly/realm": "*"
+      "@redocly/realm": "*",
+      "@redocly/cli": "latest"
     }
   }
 
