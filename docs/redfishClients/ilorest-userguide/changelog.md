@@ -137,10 +137,6 @@ before issuing a reboot.
 - Availability of an <a href="https://pypi.org/project/ilorest" target="_blank">iLOrest PyPI package</a>.
 fully equivalent to <a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest" target="_blank">other iLOrest packages</a>.
 
-[server power state](/docs/redfishservices/ilos/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}_{% $env.PUBLIC_LATEST_FW_VERSION %}/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}_computersystem_resourcedefns{% $env.PUBLIC_LATEST_FW_VERSION %}/#powerstate)
-
-{% link href=$PUBLIC_LATEST_ILO_GEN_VERSION %}Link{% /link %}
-
 :::info NOTES
 
 - Python3 is required prior to the installation.

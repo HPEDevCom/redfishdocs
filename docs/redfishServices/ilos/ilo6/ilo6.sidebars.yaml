@@ -9,3 +9,33 @@
   page: ilo6_adaptation.md
 - label: Changelog
   page: ilo6_changelog.md
+- group: iLO 6 v1.67 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents Overview
+      page: ilo6_167/index.md
+    - label: Resource map
+      page: ilo6_167/ilo6_resmap167.md
+    - group: Resource definitions
+      expanded: false
+      items:
+        - label: ServiceRoot
+          page: ilo6_167/ilo6_serviceroot_resourcedefns167.md
+        - label: Bios
+          page: ilo6_167/ilo6_bios_resourcedefns167.md
+        - label: Manager
+          page: ilo6_167/ilo6_manager_resourcedefns167.md
+        - label: ComputerSystem
+          page: ilo6_167/ilo6_computersystem_resourcedefns167.md
+        - label: Chassis
+          page: ilo6_167/ilo6_chassis_resourcedefns167.md
+        - label: Network
+          page: ilo6_167/ilo6_network_resourcedefns167.md
+        - label: Storage
+          page: ilo6_167/ilo6_storage_resourcedefns167.md
+        - label: HPE Oem extensions
+          page: ilo6_167/ilo6_hpe_resourcedefns167.md
+        - label: Other resource definitions 
+          page: ilo6_167/ilo6_other_resourcedefns167.md        
+        #- label: Event definitions
+        #  page: docs/ilos/ilo6167/ilo6_events167.md
