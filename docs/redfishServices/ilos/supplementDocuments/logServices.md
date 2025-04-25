@@ -28,10 +28,10 @@ and spanning over the following URIs:
 - `/redfish/v1/Systems/1/LogServices` (IML, SL, Alert Event Log)
 - `/redfish/v1/Managers/1/LogServices` (IEL)
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Several log query filtering examples are present in the
 [Odata Query section](/docs/redfishservices/ilos/supplementdocuments/odataqueryoptions/)
-:::
+{% /admonition %}
 
 ## Security Logs
 
@@ -98,10 +98,10 @@ SLs. Individual SLs can be accessed by performing `GET` on
 To completely clear all SLs, perform `POST` on
 `https://{iLOIP}/redfish/v1/systems/1/logservices/sl/Actions/LogService.ClearLog`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Cleared SLs are available in the server
 [AHS](#the-active-health-system-log) logs.
-:::
+{% /admonition %}
 
 ## Integrated Management Log
 
@@ -179,10 +179,10 @@ To manually mark an IML event as repaired, perform a `PATCH` on
 This is only supported on events that are of severity `Caution` or
 `Critical`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 When events are manually marked as repaired, SNMP or REST alerts are
 not notified.
-:::
+{% /admonition %}
 
 ```text Repair event request
 PATCH /redfish/v1/systems/1/logservices/iml/entries/{ImlId}
@@ -203,10 +203,10 @@ PATCH /redfish/v1/systems/1/logservices/iml/entries/{ImlId}
 To completely clear all IMLs, perform `POST` on
 `https://{iLOIP}/redfish/v1/systems/1/logservices/iml/Actions/LogService.ClearLog`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Cleared IMLs are available in the server
 [AHS](#the-active-health-system-log) logs.
-:::
+{% /admonition %}
 
 ## iLO Event Log
 
@@ -277,10 +277,10 @@ to clear the IELs. Individual IELs can be accessed by performing
 To completely clear all IELs, perform `POST` on
 `https://{iLOIP}/redfish/v1/managers/1/logservices/iel/Actions/LogService.ClearLog`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Cleared IELs are still present in the server
 [AHS](#the-active-health-system-log) logs.
-:::
+{% /admonition %}
 
 ## Alert Event Log
 
@@ -366,10 +366,10 @@ GET /redfish/v1/Systems/1/LogService/Event/Entries/24
 To completely clear all Alert Event Logs, perform POST toward
 `https://{iLOIP}/redfish/v1/Systems/1/LogServices/Event/Actions/LogService.ClearLog/`.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Read the [RESTful Events](/docs/concepts/redfishevents/) section for more
 information on Redfish Events.
-:::
+{% /admonition %}
 
 ## The Active Health System Log
 

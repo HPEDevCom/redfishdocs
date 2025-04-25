@@ -262,7 +262,7 @@ read the _Redfish versioning_ paragraph of this
   - `/redfish/v1/TelemetryService/MetricReportDefinitions/{@MetricReportDefinitionId}`
   - `/redfish/v1/TelemetryService/MetricReports/{@MetricReportId}`
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 The methods returned by the payload of a `GET` against `/redfish/v1/resourcedirectory` are
 incorrect for a few of the URIs. The methods that returned the `405 Method Not Allowed`
@@ -271,7 +271,7 @@ error are removed from those URIs.
 The `POST` method is removed from allowed methods if the URI is not a collection URI or a
 non-RDE URI.
   
-:::
+{% /admonition %}
 
 #### Examples
 
@@ -527,7 +527,7 @@ In HPE iLO 6 1.62, after removing the `POST` method:
 
 - Consistent `EthernetInterface` naming schema across device types.
 
-:::info Note
+{% admonition type="info" name="Note" %}
 
 The URI of the members of the computer system `EthernetInterface`
 can be represented with this notation:
@@ -552,7 +552,7 @@ Their corresponding `{@nicId}` is represented:
 - at slot 1 in the range: 13-76
 - at slot 2 in the range: 77-140
 
-:::
+{% /admonition %}
 
 ### HTTP methods - additions and deprecations
 
@@ -748,27 +748,27 @@ HPE iLO supports connecting to HPE Compute Ops Management (COM) using the `Activ
 
 - `redfish/v1/Fabrics/{@fabricId}/Switches/{@switchId}/Ports/{@PortId}` (GET, POST) - `#Port.v1_9_0.Port`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 `Fabrics` resource contains properties describing a simple fabric consisting of one or more switches with zero or more endpoints, and zero or more zones. Each `Fabrics` is involved in routing a data packet from routers from one end to other end.
-:::
+{% /admonition %}
 
 The following new URIs are subjective to Storage Enclosures being present on the server.
 
 - `redfish/v1/Chassis/{@ChassisId}`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - `@ChassisId` can be of the format `DE******` or a number ranging from 2-10 depending on if the Enclosure supports Redfish-Device-Enablement or Direct Attached respectively.
 - `Chassis/1` represents RackMount chassis.
-:::
+{% /admonition %}
 
 - `redfish/v1/Chassis/{@ChassisId}/Drives` (GET) - `#DriveCollection.DriveCollection`
 
 - `redfish/v1/Chassis/{@ChassisId}/Drives/{@DrivesId}` (GET,PATCH,POST) - `#Drive.v1_14_0.Drive`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 `Drives` is present only for `Chassis` resource that represents a Storage Enclosure.
-:::
+{% /admonition %}
 
 ### HTTP methods - additions and deprecations
 
@@ -861,9 +861,9 @@ The following new URIs are subjective to Storage Enclosures being present on the
 
 - `redfish/v1/TelemetryService/MetricReportDefinitions/`: The following collection members are added `CPUUtil`, `MemoryBusUtil`, `IOBusUtil`, `CPUICUtil`, `JitterCount`, `PowerMetrics`, `AvgCPUXFreq` and `CPUXPower`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 X depends on the number of sockets. The range of X lies between 0 to 3.
-:::
+{% /admonition %}
 
 - `redfish/v1/TelemetryService/MetricDefinitions/`: The following collection members are added `AverageConsumedWatts`, `MinConsumedWatts`, `MaxConsumedWatts`, `AmbTemp`, `Cap`, `CpuCapLim`,`CpuMax`, `CpuPwrSavLim`, `CpuWatts`, `DimmWatts`, `GpuWatts`, `PrMode`, `PunCap` and `UnachCap`.
 

@@ -155,7 +155,7 @@ in the future.
 - `Oem.Hpe.Firmware.Current.BuildNumberString`
 - `Oem.Hpe.Firmware.Current.Time`
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 In case your Redfish clients use the above deprecated properties,
 they can fall back to the `FirmwareVersion`
@@ -163,7 +163,7 @@ they can fall back to the `FirmwareVersion`
 or the Version property under
 `/redfish/v1/Manager/1/UpdateService/FirmwareInventory/{item}`.
 
-:::
+{% /admonition %}
 
 ## Property modifications
 

@@ -84,9 +84,9 @@ The `siteConfig.yaml` and MD files support an `seo` [section](https://redocly.co
 Markdown files support <a href="https://redocly.com/docs/developer-portal/guides/markdown/#admonitions" target="_blank"> admonitions</a>. This feature provides a way to distinguish info, warnings, danger, attention and success text. The syntax is:
 
 ```text
-:::keyword Optional text
+{% admonition type="keyword" name="Optional" %} text
 Pick keyword from the list: info, success, warning, danger, attention
-:::
+{% /admonition %}
 ```
 
 ### External links
@@ -295,7 +295,7 @@ target="_blank">migration script</a>.
 | Description | Redocly/Workflows | Reunite/Realm |
 | ---- | ---- | ---- |
 | Insert Redocly <a href="https://redocly.com/docs/realm/config/front-matter-config#options-in-front-matter-only" target="_blank">front matter section</a> at the very beginning of `.md` files | <pre>---<br>seo:<br>  title: Client best practices<br>toc:<br>  enable: true<br>  maxDepth: 2<br>disableLastModified: true<br>---<br><br># Level 1 header</pre> | <pre>---<br>seo:<br>  title: Client best practices<br>sidebar:<br>  hide: false<br>markdown:<br>  toc:<br>    hide:true<br>    depth: 2<br>  lastUpdateBlock:<br>    hide: true<br>---<br><br># Level 1 header</pre> |
-| Replace Workflows admonitions with <a href="https://redocly.com/docs/realm/get-started/migrate-from-legacy-portal#change-admonition-syntax" target="_blank"> Realm's</a>|<pre>:::info Note<br>Some text<br>:::</pre> | <pre>{% admonition type="info" name="NOTE" %}<br>Some text<br>{% /admonition %}</pre> |
+| Replace Workflows admonitions with <a href="https://redocly.com/docs/realm/get-started/migrate-from-legacy-portal#change-admonition-syntax" target="_blank"> Realm's</a>|<pre>{% admonition type="info" name="Note<br>Some" %} text<br>{% admonition type="</pre>" name="|" %} <pre>{% admonition type="info" name="NOTE" %}<br>Some text<br>{% /admonition %}</pre> |
 | Use HTML syntax to open external links in a new browser tab | <pre><a href="https://external.io/URI" target="_blank"\> Some text\</a\></pre> | No change |
 | Use Markdoc syntax to create an internal link with environment variables | <pre>\[property](/docs/redfishServices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}})</pre> | <pre>{% link-internal href=concat("/docs/redfishServices/ilos/" $env.TBD) %} property {% /link-internal %} |
 | Wrap inline code with only one backtick | <pre>This is the root URI: \`/redfish/v1/\`</pre> | No change |

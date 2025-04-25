@@ -76,9 +76,9 @@ There are two possible ways for Manager Reset. These are defined as `ForceRestar
 }
 `
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 iLO `GracefulRestart` works in the same way as `ForceRestart`.
-:::
+{% /admonition %}
 
 
 ### Resource Instances

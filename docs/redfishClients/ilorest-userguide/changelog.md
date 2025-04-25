@@ -137,7 +137,7 @@ before issuing a reboot.
 - Availability of an <a href="https://pypi.org/project/ilorest" target="_blank">iLOrest PyPI package</a>.
 fully equivalent to <a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest" target="_blank">other iLOrest packages</a>.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - Python3 is required prior to the installation.
 - The iLOrest PyPI package cannot coexist with the
@@ -145,13 +145,13 @@ fully equivalent to <a href="https://github.com/HewlettPackard/python-redfish-ut
 - This version supports only x86_64 systems.
 - Support on ARM based systems will be announced in a future release.
 
-:::
+{% /admonition %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Refer to the [installation section](../installation/#installing-the-ilorest-pypi-package) for additional information.
 
-:::
+{% /admonition %}
 
 ## Version 4.9.0.0
 

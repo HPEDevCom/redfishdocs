@@ -12,10 +12,10 @@ markdown:
 
 ## HPE security service
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 It is possible that some properties or resources described
 in this section are not implemented in HPE iLO 4 and iLO 5.
-:::
+{% /admonition %}
 
 The `HpeSecurityService`
 [subsystem](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesecurityservice)
@@ -151,7 +151,7 @@ POSSIBLE VALUES
 }
 ```
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - You may PATCH the `SecurityState` [property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#securitystate),
   but HPE iLO
@@ -161,7 +161,7 @@ POSSIBLE VALUES
 - `SynergySecurityMode` only concerns Synergy Composers.
 - `Wipe` is a transition state that cannot be set.
 
-:::
+{% /admonition %}
 
 The following example retrieves the current security state using
 HPE iLOrest and cURL.
@@ -289,7 +289,7 @@ With iLO 5 and 6 in `FIPS`
 valid credentials when willing to communicate with local iLO (in-band) via
 [CHIF](/docs/etc/glossaryterms/)
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - In `FIPS` security state, the `RequireHostAuthentication`
   [property](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_manager_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#oemhperequirehostauthentication)
@@ -298,19 +298,19 @@ valid credentials when willing to communicate with local iLO (in-band) via
   [property](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#securitystate) has been removed in HPE iLO 7.
   Refer to the [next paragraph](#transitioning-to-hpe-ilo-7) for more info concerning HPE iLO 7.
 
-:::
+{% /admonition %}
 
 In iLO 5 and 6 based servers, regardless the value of the
 [security state](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#securitystate), OS users must
 supply valid credentials when willing to communicate with local iLO (in-band) via
 the [Virtual NIC](../vnic).
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Use `ilorest login --force_vnic -u ilo-user -p ilo-password`
 to open an in-band Redfish session to the local iLO.
 
-:::
+{% /admonition %}
 
 The following example retrieves the value of the `SecurityState` and the `RequireHostAuthentication` properties
 with cURL and iLOrest from a remote iLO 6.
@@ -411,12 +411,12 @@ root> ilorest logout
 logging session out. 
 ```
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 As a reminder, whatever the security state of iLO,
 a non-privileged OS user cannot access the
 local iLO via CHIF or [Virtual NIC](../vnic) without formal authentication.
 The following example illustrates this assertion.
-:::
+{% /admonition %}
 
 ```shell in-band property retrieval when logged as ordinary OS user
 user> whoami
@@ -445,11 +445,11 @@ Refer to the
 [Roles and privileges](/docs/redfishservices/ilos/supplementdocuments/managingusers/#roles-and-privileges)
 paragraph for more detail on this topic.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 HPE iLO is not validating against the BIOS setup password,
 but is using the presence of the BIOS password to require
 BIOS Configuration Privilege.
-:::
+{% /admonition %}
 
 ## Transitioning to HPE iLO 7
 
@@ -464,7 +464,7 @@ Host Redfish clients must always
 before being able to perform Redfish requests through this communication path.
 This is not the case with iLO 5 and iLO 6 as explained [above](#in-band-management-of-ilo-5-and-6).
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 In addition to the removal of the [CHIF](/docs/etc/glossaryterms.md)
 between OS and iLO 7 (and later),
@@ -472,7 +472,7 @@ the `RequireHostAuthentication`
 [property](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#securitystate)
 has also been removed.
 
-:::
+{% /admonition %}
 
 ### Application accounts
 
@@ -494,7 +494,7 @@ credentials from unsecure locations, a companion application account and an asso
 during the application installation or at a later time. Application accounts are slightly different from iLO user
 accounts. This is why they are described in a specific [HPE OEM schema](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeiloappaccount). Application tokens are securely stored in the Truted Platform Module (TPM) of the server.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - Application accounts are applicable **only** for HPE applications.
 - Application accounts and application tokens are tightly coupled.
@@ -503,7 +503,7 @@ It may also refer to the "application token" only.
 
 - Similarly, the term "application token" may refer to both objects: "application token" and "application account".
 It may also refer to the "application account" only.
-:::
+{% /admonition %}
 
 The creation of application accounts (and associated application tokens) is performed only once,
 using the credentials of an already existing iLO user.
@@ -601,7 +601,7 @@ curl --insecure --silent --location -u ilo-user:password \
 }
 ```
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `privileges` object present in the Response tabulation of the previous example,
 has been inherited from the
 [OEM account privileges](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpeprivileges)
@@ -609,7 +609,7 @@ of the iLO user whose credentials have been used to create this application acco
 
 Refer to the [next paragraph](#installing-hpe-host-applications)
 for more detail.
-::::
+{% /admonition %}
 
 ### Installing HPE host applications
 
@@ -626,7 +626,7 @@ The following table lists the minimum privileges required by
 HPE host applications to operate seamlessly trough [in-band](../vnic/#in-band-management)
 communication with the underlying iLO.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 If you don't provide more privileges to the iLOrest
 application than the minimum ones listed below,
 iLOrest will not be able to modify properties in the
@@ -634,7 +634,7 @@ Redfish tree.
 
 Use iLOrest [out-of-band management](../vnic/#out-of-band-management) with sufficient privileges
 to modify the properties that cannot be [in-band](../vnic/#in-band-management) modified.
-:::
+{% /admonition %}
 
 | Host application Name | Minimum required application account privileges|
 | --- | --- |
@@ -773,13 +773,13 @@ ilorest appaccount exists --self
 Application account exists for this host application.
 ```
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 The iLOrest `appaccount` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#appaccount-command)
 can only be used during an [in-band](../vnic/#in-band-management) session created with the help of its own application account
 and from an iLO 7 based (or later) operating system.
 
-:::
+{% /admonition %}
 
 The following example demonstrates the flexibility of iLOrest
 and its associated application account. Without supplying any iLO
@@ -925,7 +925,7 @@ iLO features the following security states:
 3. FIPS (Federal Information Processing Standards)
 4. CNSA (Commercial National Security Algorithm)
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - TLS versions 1.0 and 1.1 can be enabled or disabled only in
   Production mode. They are **disabled in higher security modes**
@@ -933,7 +933,7 @@ iLO features the following security states:
 - Tools that do not support TLS 1.2 will not be able to
 - connect to iLO when TLS 1.0 and 1.1 are disabled.
 
-:::
+{% /admonition %}
 
 For more information on iLO security states, refer
 to the `iLO encryption settings` section in the
@@ -985,7 +985,7 @@ ilorest logout
 }
 ```
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 In iLO6 1.05 and iLO6 1.10, the TLSVersion properties are not PATCHable
 through Redfish. The workaround is to modify them through iLO GUI as
 explained in the _Enabling the Production security state_ section of the
@@ -995,7 +995,7 @@ target="_blank"> iLO User Guide </a>
 In iLO 6 v1.05 and v1.10, performing an update on
 TLS versions with a PATCH request and the enum values
 `Enabled` and `Disabled` returns an `iLO.2.15.PropertyValueBadParam` error.
-:::
+{% /admonition %}
 
 Enabling/disabling the TLS versions triggers an event and
 creates an alert for that event. The message arguments
@@ -1041,13 +1041,13 @@ are not usable or configurable in iLO. When `DisableWeakCiphers`
 is set to `{false}` `TLS1.0` and `TLS1.1` can be configured to
 enable/disable as per your requirement.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The property `DisableWeakCiphers` is only modifiable when the
 [Security State](/docs/redfishservices/ilos/supplementdocuments/securityservice/#ilo-security-state)
 is set as `Production` i.e. The Property won't be patched in
 the `SecurityService` URI when the iLO is operating in high security
 modes such as `FIPS` or `CNSA`.
-:::
+{% /admonition %}
 
 To disable weak ciphers perform `PATCH`
 
@@ -1113,7 +1113,7 @@ when weak ciphers are disabled.
 }
 ```
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - Tools that use weak ciphers and key length less than 2048-bit will not
   be able to connect to iLO when `DisableWeakCiphers` is enabled.
@@ -1129,7 +1129,7 @@ when weak ciphers are disabled.
     exchange, and ecdg-sha2-nisto384 key exchange
   - hmac-sha2-256 or AED_256_GCM MACs.
 
-:::
+{% /admonition %}
 
 ## TLS/SSL certificates
 
@@ -1157,12 +1157,12 @@ which the owner of the certificate acts as its own CA. By default,
 iLO creates a self-signed certificate for use in TLS/SSL connections.
 This certificate enables iLO to work without additional configuration steps.
 
-:::warning IMPORTANT
+{% admonition type="warning" name="IMPORTANT" %}
 Using a self-signed certificate is less secure than importing a
 signed/trusted certificate. Hewlett Packard Enterprise recommends
 importing a signed/trusted certificate to protect the security of
 the iLO processor.
-:::
+{% /admonition %}
 
 One of the most important piece of information in a TLS/SSL
 certificate is the website's public key. The public key makes
@@ -1179,10 +1179,10 @@ Signing Request (CSR) that you can send to a Certificate
 Authority (CA) and obtain back a trusted/signed TLS/SSL
 certificate that you can import into iLO.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 iLO generated private key during a CSR creation is kept secret in the iLO
 firmware and cannot be displayed.
-:::
+{% /admonition %}
 
 A signed/trusted TLS/SSL certificate is only valid with the
 public and secret keys generated with the corresponding CSR.
@@ -1192,11 +1192,11 @@ the previous CSR is imported, the certificate does cannot be imported.
 In that case, a new CSR must be generated and used to obtain a
 new signed certificate from a CA.
 
-:::info Prerequisites
+{% admonition type="info" name="Prerequisites" %}
 The `iLOConfigPriv`
 [privilege](/docs/redfishservices/ilos/supplementdocuments/managingusers/#roles-and-privileges)
 is required to manage iLO TLS/SSL certificates.
-:::
+{% /admonition %}
 
 #### Generate a Certificate Signing Request
 
@@ -1217,11 +1217,11 @@ To generate a CSR, you need the following information:
 - **Include IP** - Boolean to include (or not) the iLO IP
   address in the CSR.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 Many Certificate Authorities reject the `IncludeIP=True` input parameter.
 Set it to `False` if you are not sure that the CA you are using
 to sign the CSR can accept it.
-:::
+{% /admonition %}
 
 The CSR generation process consists of a POST request toward a
 [Redfish action](/docs/concepts/performing_actions/#performing-actions)
@@ -1651,7 +1651,7 @@ Once the Certificate Authority has returned a signed
 certificate, you can import it to the corresponding iLO
 using an ASCII format with LineFeed (LF) characters coded a `\n`.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Choose one of the following commands to convert a
 signed certificate with LF or CR-LF characters into
 respectively `\n` or `\r\n`.
@@ -1671,15 +1671,15 @@ dos2unix certfile.crt
 awk '{printf "%s\\n", $0}' certfile.crt > certfile.txt
 ```
 
-:::
+{% /admonition %}
 
 The following example imports a TSL/SSL
 signed certificate into iLO using the iLOrest certificate command.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 The `ilorest certificate tls` macro command accepts
 certificate files formatted with LF or CR-LF characters.
-:::
+{% /admonition %}
 
 ```text generic POST action
 POST {{iloURI}}/redfish/v1/Managers/1/SecurityService/HttpsCert/
@@ -1708,14 +1708,14 @@ as mentioned in the
 `Security` -> `SSL Certificate` -> `Import an SSL Certificate & Private Key`
 button in the iLO Graphical User Interface.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The sideloading of external Private key and signed
 associated into iLO is possible only on iLO 6 with firmware 1.30 and later.
 
-:::
+{% /admonition %}
 
-:::warning Limitations
+{% admonition type="warning" name="Limitations" %}
 
 - The total size of the combined certificate and private key
   file should not be more than 20 KB.
@@ -1735,13 +1735,13 @@ openssl req  -noout -modulus -in csr/$FILE.csr     | openssl md5   # CSR (PEM fo
 openssl x509 -noout -modulus -in certs/$FILE.crt   | openssl md5   # Signed certificate (PEM format)
 ```
 
-:::
+{% /admonition %}
 
 The following example uploads a certificate along with the
 private key combined in a single PEM file with CR and LF
 characters replaced with respectively `\r` and `\n`.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 You can use the following sequence of commands to
 combine and a certificate and associated private key and
 replace CR and LF characters with `\r` and `\n`:
@@ -1765,7 +1765,7 @@ dos2unix Certificate.crt PrivateKey.key
 awk '{printf "%s\\n", $0}' Certificate.crt PrivateKey.key > CombinedCertPrivateKey.pem
 ```
 
-:::
+{% /admonition %}
 
 ```text Generic POST request
 POST {{iloURI}}/redfish/v1/Managers/1/SecurityService/HttpsCert/Actions/HpeHttpsCert.ImportCertificate
@@ -1783,13 +1783,13 @@ introduced the support of the Simple Certificate Enrollment Protocol (SCEP)
 against the Microsoft Network Device Enrollment Service (NDES).
 When implemented, this feature allows HPE iLO to obtain and renew TLS/SSL certificate automatically.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 With the introduction of HPE iLO 7, SCEP has been removed. Check the iLO 7
 [changelog file](/docs/redfishservices/ilos/ilo7/ilo7_changelog/)
 for the re-introduction of SCEP or of another similar protocol.
 
-:::
+{% /admonition %}
 
 By default the feature is disabled. To enable automatic
 certificate enrollment for iLO, you must first configure
@@ -1798,9 +1798,9 @@ the following services on the certificate enrollment server:
 - Configure the Certificate Authority (CA).
 - Configure NDES. NDES is the Certificate Enrollment Server.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 This feature is not supported when iLO is in CNSA security state.
-:::
+{% /admonition %}
 
 #### Enabling Automatic Certificate Enrollment
 
@@ -1821,10 +1821,10 @@ This feature is not supported when iLO is in CNSA security state.
   <a href="https://www.hpe.com/support/ilo6"
   target="_blank">licensing documentation</a>.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 If Enrollment Service is enabled, removal and manual
 import of certificate is not allowed.
-:::
+{% /admonition %}
 
 To enable Automatic Certificate Enrollment,
 perform `PATCH` on
@@ -1851,10 +1851,10 @@ PATCH /redfish/v1/Managers/1/SecurityService/AutomaticCertificateEnrollment
 - `iLOConfigPriv`
     [privilege](/docs/redfishservices/ilos/supplementdocuments/managingusers/#roles-and-privileges)
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Updating the settings does not initiate certificate enrollment.
 To start the enrollment, first disable the service and enable it again.
-:::
+{% /admonition %}
 
 To view the automatic certificate enrollment settings, perform a `GET`
 like in the following example.
@@ -2001,10 +2001,10 @@ GET redfish/v1/managers/1/securityservice/httpscert/
 Use this feature to remove an SSL certificate and regenerate
 the iLO self-signed certificate.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 If Certificate Enrollment Service is enabled,
 removal and manual import of certificate is not allowed.
-:::
+{% /admonition %}
 
 You might want to remove a certificate for the following reasons:
 
@@ -2019,11 +2019,11 @@ You might want to remove a certificate for the following reasons:
 - `iLOConfigPriv`
   [privilege](/docs/redfishservices/ilos/supplementdocuments/managingusers/#roles-and-privileges)
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 
 The removal of the TLS/SSL iLO certificate triggers an immediate iLO reset.
 
-:::
+{% /admonition %}
 
 ```text Generic DELETE request
 DELETE /redfish/v1/managers/{item}/securityservice/httpscert/
@@ -2095,11 +2095,11 @@ in this section:
 - [System IAK certificate](#system-iak-certificate)
 - [Platform certificate](#platform-certificate)
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The UEFI (BIOS) TLS configuration is presented in the
 ([HTTPS Boot TLS configuration](/docs/redfishservices/ilos/supplementdocuments/biostlsconf/))
 paragraph.
-:::
+{% /admonition %}
 
 ### iLO IDevID
 
@@ -2132,11 +2132,11 @@ and delete LDevID outside the factory.
 
 #### Importing an LDevID certificate
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 16 KB is the maximum size of supported iLO LDevID certificates.
 
-:::
+{% /admonition %}
 
 Follow these steps in sequence to import an iLO LDevID certificate:
 
@@ -2168,14 +2168,14 @@ Follow these steps in sequence to import an iLO LDevID certificate:
   }
   ```
 
-  :::info NOTE
+  {% admonition type="info" name="NOTE" %}
 
   Starting with version 1.60 and later, HPE iLO 6 is compliant with the <a href="https://1.ieee802.org/security/802-1ar/" target="_blank">IEEE 802.1AR</a> standard that _specifies Secure Device Identifiers (DevIDs)_.
   
   Refer to the [next paragraph](#ilo-ldevid-csr-format) for detail concerning the IEEE 802.1AR compliant
   CSR format.
 
-  :::
+  {% /admonition %}
 
 - Send this CSR to your favorite Certificate Authority to obtain back a
   signed certificate.
@@ -2186,7 +2186,7 @@ Follow these steps in sequence to import an iLO LDevID certificate:
   with a body containing the `CertificateType` and `CertificateString`
   properties, as shown in the next example.
 
-  :::info NOTE
+  {% admonition type="info" name="NOTE" %}
   Replace non ASCII characters like CRLF or CR with
   literally "\n" in the `CertificateString` property.
 
@@ -2194,7 +2194,7 @@ Follow these steps in sequence to import an iLO LDevID certificate:
   [Installing certificate](/docs/redfishservices/ilos/supplementdocuments/biostlsconf/#installing-certificates)
   section for examples to achieve this task.
 
-  :::
+  {% /admonition %}
 
   ```Text Import signed LDevID certificate
   POST /redfish/v1/Managers/1/SecurityService/iLOLDevID/Certificates/
@@ -2221,7 +2221,7 @@ Follow these steps in sequence to import an iLO LDevID certificate:
   }
   ```
 
-  :::info NOTE
+  {% admonition type="info" name="NOTE" %}
   
   Before importing, iLO validates the input certificate with the following
   parameters:
@@ -2231,7 +2231,7 @@ Follow these steps in sequence to import an iLO LDevID certificate:
   - The signing and hashing algorithms used in the certificate are FIPS
     compliant.
 
-  :::
+  {% /admonition %}
 
 ##### iLO LDevID CSR format
 
@@ -2242,7 +2242,7 @@ used in iLO LDevID CSRs when iLO 6 firmware is 1.60 or above.
 Empty `Example` cells mean that value of the corresponding attribute is
 fixed and mentioned in the `Value` cell.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 iLO LDevID CSRs generated with iLO 6 version 1.60 and later use
 ASN.1 encoded values.
@@ -2250,7 +2250,7 @@ ASN.1 encoded values.
 In order to fully decode such CSRs, you should use a dedicated
 <a href="https://asn1js.eu/" targert="_blank">decoder</a>.
 
-:::
+{% /admonition %}
 
 Acronyms are explained in the [glossary](/docs/etc/glossaryterms/).
 
@@ -2297,10 +2297,10 @@ you must delete the existing LDevID certificate and generate a
 new certificate.
 See [Importing an LDevID certificate](#importing-an-ldevid-certificate).
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 In case LDevID certificate is lost due to secure erase,
 you can restore it using the Backup and Restore feature or replace it.
-:::
+{% /admonition %}
 
 ### System IDevID certificate
 
@@ -2329,10 +2329,10 @@ HPE iLO does not allow you to update or delete the certificate.
 You can only view the certificate using the RESTful API GET command toward
 `/redfish/v1/Managers/{@managerId}/SecurityService/SystemIAK/Certificates/{@certId}`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 HPE iLO IDevID, iLO LDevID, System IDevID, and System IAK are preserved
 across iLO security state transitions, reset to factory defaults.
-:::
+{% /admonition %}
 
 ### Platform certificate
 

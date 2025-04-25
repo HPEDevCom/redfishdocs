@@ -2231,7 +2231,7 @@ Member of EthernetInterfaceCollection.EthernetInterfaceCollection
 
 The EthernetInterface resource describes a single, logical ethernet interface or network interface controller (NIC).
 
-:::info Note
+{% admonition type="info" name="Note" %}
 
 The URI of the members of the computer system `EthernetInterface` collection can be represented with this notation: 
 `/redfish/v1/Systems/{@systemId}/EthernetInterfaces/{@nicId}`.
@@ -2250,7 +2250,7 @@ It is a string containing one or more characters in the range: [0-9], with the f
   Their corresponding `{@nicId}` is represented:
   - at slot 1 in the range: 13-76
   - at slot 2 in the range: 77-140
-:::
+{% /admonition %}
 
 
 ### Resource Instances

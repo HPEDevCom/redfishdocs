@@ -9,7 +9,7 @@ disableLastModified: false
 
 ## OData query options
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 OData query options are not implemented in iLO 4. Refer to the
 [Adapting from iLO 4](/docs/redfishservices/ilos/ilo5/ilo5_adaptation/#odata-query-options)
@@ -18,7 +18,7 @@ section for OData query options examples related to iLO 5.
 Non implemented OData query options are silently discarded by
 Redfish services.
 
-:::
+{% /admonition %}
 
 Redfish is an
 <a href="https://www.odata.org/" target="_blank">OData-derived</a>
@@ -68,24 +68,24 @@ same behavior:
 * The `Links` section is never expanded. This is to avoid expanding the
     `Chassis` and `Manager` related links on `GET` operations to System.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The root resource at `/redfish/v1/` is available without authentication and
 has navigational links that can be expanded. An `$expand` request does not
 result in expansion unless valid authentication credentials are supplied.
-:::
+{% /admonition %}
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 There might be other links that do not support `$expand`.
-:::
+{% /admonition %}
 
 ### iLO $expand examples
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 iLO responds to all HTTP requests using
 <a href="https://www.rfc-editor.org/rfc/rfc7230#section-4.1"
 target="_blank">Chunked Transfer Coding</a>.
 This enables features like `$expand` that require very large responses.
-:::
+{% /admonition %}
 
 The following example retrieves the `ChassisCollection` without the
 `$expand` query option:

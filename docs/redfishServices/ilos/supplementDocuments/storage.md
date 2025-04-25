@@ -38,7 +38,7 @@ RDE, refer to the
 target="_blank">HPE Storage Controllers Management Overview</a>
 technical whitepaper.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Redfish responses from controllers implementing PLDM for RDE depend on
 the schema versions that are supported by each device and are likely to
 vary across each device vendor/family/model. Create and delete volume
@@ -48,11 +48,11 @@ As an example, NS204 storage devices don't support the
 DELETE volume request, while SR and MR controllers do.
 Refer to the [Drive secure erase](#drive-secure-erase) paragraph below
 for an example of NS204i volume deletion.
-:::
+{% /admonition %}
 
 ## Storage requests examples
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 It is a good practice to verify that the server is powered on
 and that all the devices have been discovered before
@@ -68,7 +68,7 @@ Refer to this
 <a href="https://developer.hpe.com/blog/master-the-redfish-server-states-to-improve-your-monitoring-and-manageme/"
 target="_blank">article</a>
 for more information concerning server states.
-:::
+{% /admonition %}
 
 ### GET requests
 
@@ -481,14 +481,14 @@ with a GET request toward
 `/redfish/v1/Systems/1/Storage/{item}/Volumes/Capabilities`. This URI
 provides as well the possible values for each capability.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 - The `Volumes/Capabilities` URI only exists on writable storage devices.
 - You can verify that POST requests are allowed to create volumes in a
 specific storage controller by checking the `Allow` response header of a GET request
 to its Volume collection URI. Refer to the next example for detail.
 
-:::
+{% /admonition %}
 
 ```text Generic HEAD request
 HEAD /redfish/v1/Systems/1/Storage/{item}/Volumes
@@ -675,12 +675,12 @@ curl --silent --insecure --location -u $User:password \
      -X DELETE "https://${iLO}/redfish/v1/Systems/1/Storage/DE040000/Volumes/239"
 ```
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Refer to the [Drive secure erase](#drive-secure-erase) section for deleting
 the NS204 volume.
 
-:::
+{% /admonition %}
 
 ### Drive secure erase
 
@@ -688,7 +688,7 @@ Although volume deletion is sufficient for most use cases, data is still present
 In order to erase drive data, the DMTF proposes the `Drive.SecureErase`
 [action](/docs/concepts/performing_actions/), in the `Drive` schema.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `Drive.SecureErase` action may not be visible in the drive properties
 when the drive is part a volume.
 In this case, a [volume deletion](#deleting-volumes) is necessary
@@ -696,7 +696,7 @@ before the drive secure erase operation can occur.
 
 Refer to the [previous section](#deleting-volumes) for the generic
 way for deleting volumes.
-:::
+{% /admonition %}
 
 Using the latest version of <a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest"
 target="_blank">iLOrest</a>
@@ -712,7 +712,7 @@ if you have more than one NS204 devices in your server.
 
 2. Locate NS204i storage device, volume and disks URIs.
 
-   :::success TIP
+   {% admonition type="success" name="TIP" %}
    NS204 drives are not listed in the `DriveCollection` schema.
    Their URIs are under `/redfish/v1/Sytems/1/Storage/{NS204Id}/Drives`,
    which is not in the DMTF's
@@ -721,16 +721,16 @@ if you have more than one NS204 devices in your server.
 
    As a consequence, you'll have to extract the `Drives[]` array
    starting at the storage device URI.
-   :::
+   {% /admonition %}
 
 3. Deletion / `ResetToDefaults` of the logical volume to make the `Drive.SecureErase`
    action visible on the corresponding drives.
 
-   :::info NOTE
+   {% admonition type="info" name="NOTE" %}
    The volume URI of NS204 storage devices does not allow
    DELETE requests. It is needed to use the `ResetToDefaults` action
    for that purpose.
-   :::
+   {% /admonition %}
 
 4. Secure erase disks and restart server.
 
@@ -902,7 +902,7 @@ curl --silent --insecure --location -u $User:password \
        --data '{"ResetType": "ForceRestart"}'
 ```
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 While the secure erase process is in progress, you can monitor its progress by
 monitoring the `Operations[]` [array](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#operations-array)
 and the `Status` [property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#status-3)
@@ -922,4 +922,4 @@ for drive in $DriveURIs ; do
 done
 ```
 
-:::
+{% /admonition %}

@@ -15,7 +15,7 @@ markdown:
 
 This section is a guide to help Redfish client code adapt from the iLO 5 RESTful API to the iLO 6 RESTful API.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - The **DCi** [acronym](/docs/etc/glossaryterms/) mentioned below, refers to the HPE proprietary **Discovery and Configuration via iLO** protocol used between internal server devices and iLO.
 
@@ -24,7 +24,7 @@ This section is a guide to help Redfish client code adapt from the iLO 5 RESTful
 - **DCi** and **RDE** [acronyms](/docs/etc/glossaryterms/) refer to the protocol through which adapters Redfish data is supplied to Redfish clients. Refer to the `Controllers[{item}].UnderlyingDataSource` [resource definition](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#networkadapter) for more information.
 
 - Refer to the [RDE section](/docs/redfishservices/ilos/supplementdocuments/rdesupport/#ilo-rde-uris-and-corresponding-http-methods) for information on how to identify URIs of such devices.
-:::
+{% /admonition %}
 
 ## Introduction
 

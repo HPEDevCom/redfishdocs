@@ -36,7 +36,7 @@ you can create scripts to automate tasks.
 A debug mode is also available to troubleshoot or to get
 a better understanding of the Redfish protocol.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The HPE iLOrest tool is sometime referred as **the RESTful Interface Tool**
 in this document.
-:::
+{% /admonition %}

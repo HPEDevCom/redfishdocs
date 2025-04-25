@@ -229,10 +229,10 @@ against the `NetworkAdapter/{item}`
 [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#resource-instances-1).
 The following example configures the Nokia SmartNIC card to boot from a specific Bank.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Property modification are effective immediately after
 a successful PATCH request (no server restart required).
-:::
+{% /admonition %}
 
 The `BootBankSelected` property supports the following values:
 
