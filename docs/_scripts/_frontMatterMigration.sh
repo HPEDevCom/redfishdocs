@@ -14,28 +14,35 @@
 rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
-#mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/* -not -path -not -path */.github/*" -not -path "$rootDir/README.md")
+mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/* -not -path -not -path */.github/*" -not -path "$rootDir/README.md")
 
-mdFileList="/Git-Repo/ProtoRedfishDocs/docs/redfishClients/ilorest-userguide/changelog.md"
+#mdFileList="/Git-Repo/ProtoRedfishDocs/docs/redfishClients/ilorest-userguide/changelog.md"
 
 for file in $mdFileList
 do
-  echo Processing $file
+  echo "Processing $file ..."
   dos2unix $file &> /dev/null
 
   # front matter before fix
-  echo "Front matter before fix:"
-  sed -n '/^---$/,/^---$/p' $file
-  echo
+  #echo "Front matter before fix:"
+  #sed -n '/^---$/,/^---$/p' $file
+  #echo
 
-  # Move `exclude`into `excludeFromSearch`
+
+  # Replace `exclude` into `excludeFromSearch`
   sed -i 's/^exclude:/excludeFromSearch:/g' $file
   
+  # Check if processing is really needed
+  if grep -q "^markdown:" $file; then
+    echo -e "No processing needed. \n"
+    continue
+  fi
+
   # Capture and cleanup various front matter fields
-  lastUpdateBlock="$(awk '/^disableLastModified:/ {print "    hide: $NF"}' $file)"
+  lastUpdateBlock="$(awk '/^disableLastModified:/ {print $NF}' $file)"
   sed -i "/^disableLastModified:/d" $file
 
-  tocDepth="$(awk '/maxDepth:/ {print "    depth: $NF"}' $file)"
+  tocDepth="$(awk '/maxDepth:/ {print $NF}' $file)"
   sed -i "/maxDepth:/d" $file
 
 
@@ -44,12 +51,21 @@ do
   else
     hideToc="true"
   fi
-  echo "hideToc: $hideToc"
-  sed -i "/^toc:/d ; /enable:/d" $file
+  sed -i '/^toc:/d ; /enable:/d' $file
 
+  # Add new front matter fields
+  sed -i "/^seo:/i\
+  markdown:\n\
+  toc:\n\
+    hide: $hideToc\n\
+    depth: $tocDepth\n\
+  lastUpdateBlock:\n\
+    hide: $lastUpdateBlock" $file
+
+  echo "Done"
   # Front matter afer fix
-  echo "Front matter after fix:"
-  sed -n '/^---$/,/^---$/p' $file
+  #echo "Front matter after fix:"
+  #sed -n '/^---$/,/^---$/p' $file
   echo
 
 done
