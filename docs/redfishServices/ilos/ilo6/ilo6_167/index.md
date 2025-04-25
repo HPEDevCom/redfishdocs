@@ -1,9 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 
+  lastUpdateBlock:
+    hide: true
 seo:
   title: HPE iLO 6 v1.67 reference documents
-disableLastModified: true
-toc:
-   enable: false
 ---
 
 # HPE iLO 6 v1.67 reference documents overview

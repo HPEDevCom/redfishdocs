@@ -1,10 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
 seo:
   title: Bios resource definitions
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Bios resource definitions of iLO 6 v1.67

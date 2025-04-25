@@ -1,9 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 
+  lastUpdateBlock:
+    hide: false
 seo:
   title: iLO 6 v167 Error messages
-toc:
-  enable: false
-disableLastModified: false
 ---
 
 # Response message definitions of iLO 6 v1.67

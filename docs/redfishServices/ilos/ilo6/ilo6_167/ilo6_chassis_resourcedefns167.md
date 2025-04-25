@@ -1,10 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
 seo:
   title: Chassis resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Chassis resource definitions of iLO 6 v1.67

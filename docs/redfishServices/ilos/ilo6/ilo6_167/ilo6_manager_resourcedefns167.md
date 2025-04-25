@@ -1,10 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
 seo:
   title: Manager resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Manager resource definitions of iLO 6 v1.67

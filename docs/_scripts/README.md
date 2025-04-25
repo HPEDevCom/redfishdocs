@@ -1,5 +1,5 @@
 ---
-exclude: true
+excludeFromSearch: true
 ---
 
 # Slate to Redocly Markdown scripts

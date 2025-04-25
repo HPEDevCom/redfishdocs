@@ -1,10 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
 seo:
   title: OData query options
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 ## OData query options

@@ -1,10 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
 seo:
   title: iLOrest changelog
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # HPE iLOrest changelog

@@ -1,10 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
 seo:
   title: Storage data models
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Storage data models

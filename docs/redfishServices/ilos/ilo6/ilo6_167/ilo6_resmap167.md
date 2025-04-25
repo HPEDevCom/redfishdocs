@@ -1,9 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 
+  lastUpdateBlock:
+    hide: false
 seo:
   title: iLO 6 version 1.67 Resource map
-toc:
-  enable: false
-disableLastModified: false
 ---
 
 # Resource map of iLO 6 v1.67
