@@ -165,9 +165,6 @@ POSSIBLE VALUES
 
 The following example retrieves the current security state using
 HPE iLOrest and cURL.
-
-{% tabs %}
-  {% tab label="iLOrest" %}
   
   ```shell 
   ilorest login ilo-ip -u ilo-user -p password
@@ -175,10 +172,6 @@ HPE iLOrest and cURL.
   ilorest get SecurityState --json
   ilorest logout
   ```
-
-  {% /tab %}
-
-  {% tab label="cURL"%}
   
   ```shell
    curl --insecure --silent --user ilo-user:password \
@@ -186,18 +179,11 @@ HPE iLOrest and cURL.
         | jq  '{SecurityState}'
   ```
   
-  {% /tab %}
-
-  {% tab label="Response body" %}
-  
   ```json
   {
     "SecurityState": "Production"
   }
   ```
-  
-  {% /tab %}
-{% /tabs %}
 
 The following example transitions from `Production` to `HighSecurity`
 
