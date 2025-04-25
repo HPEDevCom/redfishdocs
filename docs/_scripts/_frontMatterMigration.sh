@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-# This script update Redocly/Workflows front matter
+# This script updates Redocly/Workflows front matter
 # into Reunite/Realm front matter.
 #
 # It is inspired from the migrateMarkdown function 
@@ -8,15 +8,13 @@
 # from Redocly.
 #
 #  Reunite front matter: tbd
-# Version 0.2
+# Version 0.3
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
 mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/* -not -path -not -path */.github/*" -not -path "$rootDir/README.md")
-
-#mdFileList="/Git-Repo/ProtoRedfishDocs/docs/redfishClients/ilorest-userguide/changelog.md"
 
 for file in $mdFileList
 do
