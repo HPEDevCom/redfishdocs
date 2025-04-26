@@ -1641,6 +1641,7 @@ using an ASCII format with LineFeed (LF) characters coded a `\n`.
 Choose one of the following commands to convert a
 signed certificate with LF or CR-LF characters into
 respectively `\n` or `\r\n`.
+{% /admonition %}
 
 ```bash Stream editor (sed)
 sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' certfile.crt > certfile.txt
@@ -1656,8 +1657,6 @@ sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' certfile.crt > certfile.txt
 dos2unix certfile.crt 
 awk '{printf "%s\\n", $0}' certfile.crt > certfile.txt
 ```
-
-{% /admonition %}
 
 The following example imports a TSL/SSL
 signed certificate into iLO using the iLOrest certificate command.
