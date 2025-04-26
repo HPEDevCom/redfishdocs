@@ -1713,14 +1713,14 @@ associated into iLO is possible only on iLO 6 with firmware 1.30 and later.
   You can use the following commands to fulfill this requirement.
   The output of those commands must be identical.
 
+{% /admonition %}
+
 ```shell
 FILE="filename" 
 openssl rsa  -noout -modulus -in private/$FILE.key | openssl md5   # Private key (PEM format)
 openssl req  -noout -modulus -in csr/$FILE.csr     | openssl md5   # CSR (PEM format)
 openssl x509 -noout -modulus -in certs/$FILE.crt   | openssl md5   # Signed certificate (PEM format)
 ```
-
-{% /admonition %}
 
 The following example uploads a certificate along with the
 private key combined in a single PEM file with CR and LF
