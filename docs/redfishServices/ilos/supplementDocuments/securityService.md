@@ -1942,7 +1942,7 @@ To disable Automatic Certificate Enrollment,
 perform `PATCH` on
 `/redfish/v1/Managers/1/SecurityService/AutomaticCertificateEnrollment`
 
-```text geneic PATCH request
+```text generic PATCH request
 PATCH /redfish/v1/Managers/1/SecurityService/AutomaticCertificateEnrollment
 ```
 
