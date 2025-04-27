@@ -49,10 +49,10 @@ do
   ' $file
 
   # Remove empty lines between /tabs and tabs
-  sed -i -E '/\{% \/tabs %}/,/^\s*$/d' $file
+  sed -i -E '/\{% \/tabs %}/,+2s/^\s*$//' $file
 
   # Remove "{% tabs %}" when found in line before "{% tab label="
-  #sed -i -E '/\{% tab label=/{x;s/\{% tab %}//;x;}' $file
+  sed -i -E '/\{% \/tabs /,+2s/\{% \/*tabs %}// ' $file
   
   
   echo -e "Done \n"
