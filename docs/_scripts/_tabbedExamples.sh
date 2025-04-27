@@ -48,8 +48,12 @@ do
   {% \/tabs %}
   ' $file
 
-  # Remove "{% /tabs %}" when found consecutive "{% tab %}" tags
-  sed -i -E 's/\{% \/tabs.*\n[ *]\{% tabs.*//' $file
+  # Remove empty lines between /tabs and tabs
+  sed -i -E '/\{% \/tabs %}/,/^\s*$/d' $file
+
+  # Remove "{% tabs %}" when found in line before "{% tab label="
+  #sed -i -E '/\{% tab label=/{x;s/\{% tab %}//;x;}' $file
+  
   
   echo -e "Done \n"
 done
