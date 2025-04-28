@@ -264,7 +264,7 @@ read the _Redfish versioning_ paragraph of this
 
 {% admonition type="info" name="NOTES" %}
 
-The methods returned by the payload of a `GET` against `/redfish/v1/resourcedirectory` are
+The methods returned by the response of a `GET` against `/redfish/v1/resourcedirectory` are
 incorrect for a few of the URIs. The methods that returned the `405 Method Not Allowed`
 error are removed from those URIs.
 
@@ -275,12 +275,23 @@ non-RDE URI.
 
 #### Examples
 
-In HPE iLO 6 1.61, before removing the `POST` method:
+The following example returns the response of a GET
+request from an iLO 6 1.61 and 1.62. The `POST` method
+of the Manager schema, visible
+in version 1.61 has been removed in 1.62.
 
 {% tabs %}
+{% tab label="Generic request" %}
+
+```text
+GET /redfish/v1/resourcedirectory
+```
+
+{% /tab %}
 {% tab label="Before removing POST" %}
 
 ```json
+    ...
     {"@odata.id": "/redfish/v1/Managers/1",
     "@odata.type": "#Manager.v1_5_1.Manager",
     "ETag": "W/\"4AE67964\"",
@@ -290,16 +301,14 @@ In HPE iLO 6 1.61, before removing the `POST` method:
       "POST",
       "PATCH"
                 ]}
+    ...
 ```
   
-  {% /tab %}
-  {% /tabs %}
-In HPE iLO 6 1.62, after removing the `POST` method:
-
-{% tabs %}
+{% /tab %}
 {% tab label="After removing POST" %}
 
 ```json
+    ...
     {"@odata.id": "/redfish/v1/Managers/1",
     "@odata.type": "#Manager.v1_5_1.Manager",
     "ETag": "W/\"4AE67964\"",
@@ -308,6 +317,7 @@ In HPE iLO 6 1.62, after removing the `POST` method:
       "HEAD",
       "PATCH"
             ]}
+    ...
 ```
   
   {% /tab %}
