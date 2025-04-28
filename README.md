@@ -99,53 +99,30 @@ The port of automatically generated files (`resmap.md`, `resourcedefns.md` and `
 
 ### Global environment variables
 
-Redocly has the possibility to handle <a href="https://redocly.com/docs/developer-portal/guides/environment-files/#.env.development" target="_blank">global environment variables</a>. Those variable are expended during both the local or the workflow rendering processes. They are defined in hidden files in the root of this repo with a naming scheme similar to `.env.filename`. To authorize their substitution before the Redocly rendering process occurs, you must list them in the `envVariablesAllowedClientSide` section of the `siteConfig.yaml` file as well as in the <a href="https://app.redocly.com/org/hpe/portal/redfish/settings/env-variables" target="_blank">Settings</a> of the portal.
+Redocly/Realm has the possibility to handle <a href="https://redocly.com/docs/realm/setup/how-to/env-variables#manage-environment-variables" target="_blank">global environment variables</a>. Those variables are expended during both the local or the realm rendering processes. For local use, refer to the `.env` file in the root directory of this repo.
 
-To ensure substitution during the local rendering process (yarn start on laptop), you have to declare those variables as part of your current shell (see example below).
+ When willing to deploy/render the project infrastructure, make sure that the Settings/Environment Variables are up to date (left pane).
 
 Then, you can reference those variables in the `.md` files with the following syntax: `{{process.env.VARIABLENAME}}`.
 
-As an example, the content of `.env.firmwareversions` is:
+As an example, the content of `.env` is:
 
 ```shell
-# cat .env.firmwareversions
-LATEST_FW_VERSION="120"
-LATEST_iLO6_FW_VERSION="120"
-LATEST_iLO5_FW_VERSION="278"
-LATEST_iLO_GEN_VERSION="ilo6"
+PUBLIC_LATEST_ILO_GEN_VERSION=ilo6
+PUBLIC_LATEST_FW_VERSION=167
+PUBLIC_LATEST_ILO6_FW_VERSION=167
+PUBLC_LATEST_ILO7_FW_VERSION=111
+PUBLIC_LATEST_ILO5_FW_VERSION=309
+PUBLIC_LATEST_PYTHON_LIBRARY_VERSION=3200
 ```
 
-The `siteConfig.yaml` file contains the following section to enable the substitution of the `LATEST_FW_VERSION` in the `.md` files.
+With the above definitions, the following Markdoc tag:
 
-```shell
-envVariablesAllowedClientSide:
-  - LATEST_FW_VERSION
-  - LATEST_ILO_GEN_VERSION
-  - LATEST_ILO6_FW_VERSION
-  - LATEST_ILO5_FW_VERSION
+`{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "/#hpeilobackuprestoreservice") %} Latest iLO {% /link-internal %}`
 
-```
+ will be expanded into:
 
-**Local rendering**: In addition to the above, and to benefit from this feature during a local rendering process, you must **declare corresponding environment variable** in your shell/bash session:
-
-```bash 
-cat >> ~/.bashrc << __EOF__
-export LATEST_ILO_GEN_VERSION="ilo6"
-export LATEST_FW_VERSION="120"      # This is the latest fw version of the latest iLO Gen version
-export LATEST_ILO6_FW_VERSION="120"
-export LATEST_ILO5_FW_VERSION="278"
-__EOF__
-
-source ~/.bashrc
-```
-
-With the above definitions, a reference to:
-
-`/docs/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilobackuprestoreservice`
-
- will be expanded to:
-
-`/docs/ilos/ilo6/ilo6_120/ilo6_hpe_resourcedefns120/#hpeilobackuprestoreservice`
+`/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_hpe_resourcedefns167#hpeilobackuprestoreservice`
 
 The use of those firmware variables ensures that hrefs links and fragments present the markdown files always point to the most appropriate firmware revision section.
 
@@ -291,13 +268,12 @@ In order to help for a smooth migration, Redocly proposes a
 <a herf="https://github.com/redocly-demo/migrate-portal/blob/main/bin.ts#L795"
 target="_blank">migration script</a>.
 
-
 | Description | Redocly/Workflows | Reunite/Realm |
 | ---- | ---- | ---- |
 | Insert Redocly <a href="https://redocly.com/docs/realm/config/front-matter-config#options-in-front-matter-only" target="_blank">front matter section</a> at the very beginning of `.md` files | <pre>---<br>seo:<br>  title: Client best practices<br>toc:<br>  enable: true<br>  maxDepth: 2<br>disableLastModified: true<br>---<br><br># Level 1 header</pre> | <pre>---<br>seo:<br>  title: Client best practices<br>sidebar:<br>  hide: false<br>markdown:<br>  toc:<br>    hide:true<br>    depth: 2<br>  lastUpdateBlock:<br>    hide: true<br>---<br><br># Level 1 header</pre> |
-| Replace Workflows admonitions with <a href="https://redocly.com/docs/realm/get-started/migrate-from-legacy-portal#change-admonition-syntax" target="_blank"> Realm's</a>|<pre>{% admonition type="info" name="Note<br>Some" %} text<br>{% admonition type="</pre>" name="|" %} <pre>{% admonition type="info" name="NOTE" %}<br>Some text<br>{% /admonition %}</pre> |
+| Replace Workflows admonitions with <a href="https://redocly.com/docs/realm/get-started/migrate-from-legacy-portal#change-admonition-syntax" target="_blank"> Realm's</a> | <pre>:::info NOTE<br>Some text<br>:::</pre> | <pre>{% admonition type="info" name="NOTE" %}<br>Some text<br>{% /admonition %}</pre> |
 | Use HTML syntax to open external links in a new browser tab | <pre><a href="https://external.io/URI" target="_blank"\> Some text\</a\></pre> | No change |
-| Use Markdoc syntax to create an internal link with environment variables | <pre>\[property](/docs/redfishServices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}})</pre> | <pre>{% link-internal href=concat("/docs/redfishServices/ilos/" $env.TBD) %} property {% /link-internal %} |
+| Use Markdoc syntax to create an internal link with environment variables | <pre>\[property](/docs/redfishServices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}})</pre> | <pre>{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION) %} property {% /link-internal %} |
 | Wrap inline code with only one backtick | <pre>This is the root URI: \`/redfish/v1/\`</pre> | No change |
 | Use Markdoc tag to add code block/fence titles  | <pre>\```text GET request<br>GET /redfish/v1/Chassis"<br>\```<br></pre> | <pre>\```text {% title="GET request" %}<br>GET /redfish/v1/Chassis"<br>\```<br></pre> |
 | Change code tabbed examples. See doc for <a href="https://redocly.com/docs/realm/get-started/migrate-from-legacy-portal#change-tabbed-code-samples" target="_blank">named tabs</a> | <pre>\```javascript<br>javascript;<br>\```<br><br>\```python<br>python<br>\```<br><br>\```java title<br>example text<br>\```<br><br>\```custom tab name<br>example text<br>\```</pre> | <pre>{% tabs %}<br>\```javascript<br>javascript;<br>\```<br><br>\```python<br>python<br>\```<br><br>\```java title<br>example text<br>\```<br><br>\```custom tab name<br>example text<br>\```<br>{% /tabs %}</pre> |
