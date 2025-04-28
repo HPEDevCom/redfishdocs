@@ -3,7 +3,7 @@
 # This script updates Redocly/Workflows tabbed examples
 # into Reunite/Realm tabbed examples.
 #
-# Version 0.1
+# Version 0.2
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
@@ -19,7 +19,7 @@ do
 
 # No need to process if "{% tab %}" already exists
   if grep -q "{% tab label=" $file; then
-    echo -e "Already processed\n"
+    echo -e "Already processed. Double check for manual process\n"
     continue
   fi
 
@@ -48,12 +48,11 @@ do
   {% \/tabs %}
   ' $file
 
-  # Remove empty lines between /tabs and tabs
-  sed -i -E '/\{% \/tabs %}/,+2s/^\s*$//' $file
+  # Remove empty lines after /tabs
+  sed -i '/{% \/tabs %}/{N;s/\n$//;}' $file
 
-  # Remove "{% tabs %}" when found in line before "{% tab label="
-  sed -i -E '/\{% \/tabs /,+2s/\{% \/*tabs %}// ' $file
-  
+  # Remove consecutive "/tabs" "tabs" lines
+  sed -i -E '/\{% \/tabs /{N;/\{% tabs %}/d}' $file
   
   echo -e "Done \n"
 done
