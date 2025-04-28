@@ -10,9 +10,9 @@ export function LinkInternal({ children, href }: { children: React.ReactNode; hr
   );
 }
 
-export function LinkExternal({ children, hr }: { children: React.ReactNode; hr: string }) {
+export function LinkExternal({ children, href }: { children: React.ReactNode; href: string }) {
   return (
-    <a href={hr} target="_blank" rel="noopener noreferrer">
+    <a href={href} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
   );
