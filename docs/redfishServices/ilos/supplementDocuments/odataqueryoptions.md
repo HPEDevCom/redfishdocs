@@ -7,6 +7,8 @@ markdown:
     hide: false
 seo:
   title: OData query options
+breadcrumbs:
+  hide: true
 ---
 
 ## OData query options
@@ -92,9 +94,15 @@ This enables features like `$expand` that require very large responses.
 The following example retrieves the `ChassisCollection` without the
 `$expand` query option:
 
+  {% tabs %}
+{% tab label="GET a collection without " %}
+
 ```text GET a collection without $expand query
 GET /redfish/v1/Chassis/
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -112,13 +120,21 @@ GET /redfish/v1/Chassis/
     "Members@odata.count": 1
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The next example retrieves the same `ChassisCollection` with the
 `$expand=.` query option:
+
+  {% tabs %}
+{% tab label="GET a collection with " %}
 
 ```text GET a collection with $expand query
 GET /redfish/v1/Chassis/?$expand=.
 ```
+  
+  {% /tab %}
+{% tab label="Response body (abbreviated)" %}
 
 ```json Response body (abbreviated)
 {
@@ -160,7 +176,9 @@ GET /redfish/v1/Chassis/?$expand=.
     "Members@odata.count": 1
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## iLO "only" query option
 
 iLO supports the `only` query parameter documented in the
@@ -175,9 +193,15 @@ and `ManagerCollection`.
 The following example retrieves the chassis collection without the
 `only` query option.
 
+  {% tabs %}
+{% tab label="GET chassis Collection" %}
+
 ```text GET chassis Collection
 GET /redfish/v1/Chassis/
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -195,13 +219,21 @@ GET /redfish/v1/Chassis/
     "Members@odata.count": 1
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the a chassis collection of a system
 with only one chassis, using the `only` query option.
+
+  {% tabs %}
+{% tab label="GET the only chassis member" %}
 
 ```text GET the only chassis member
 GET /redfish/v1/Chassis/?only
 ```
+  
+  {% /tab %}
+{% tab label="Response body (abreviated)" %}
 
 ```json Response body (abreviated)
 {
@@ -243,15 +275,23 @@ GET /redfish/v1/Chassis/?only
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example uses the `only` query option to retrieve the chassis
 collection of a system containing a
 <a href="https://buy.hpe.com/us/en/options/smart-io/smart-io/smart-io/pensando-distributed-services-platform/p/1012796285"
 target="_blank">Pensando Data Processor Unit</a> (DPU).
 
+  {% tabs %}
+{% tab label="GET Chassis collection with " %}
+
 ```text GET Chassis collection with ?only query option
 GET /redfish/v1/Chassis/?only
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -272,7 +312,9 @@ GET /redfish/v1/Chassis/?only
   "Members@odata.count": 2
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## iLO $filter query option
 
 The
@@ -294,10 +336,16 @@ target="_blank">OData</a> specifications.
 The following example retrieves the "iLO Dedicated Network Interface"
 properties (output abbreviated).
 
+  {% tabs %}
+{% tab label="GET request with " %}
+
 ```text GET request with $filter query
 GET /redfish/v1/Managers/1/EthernetInterfaces/?$filter=Name eq
 'Manager Dedicated Network Interface'
 ```
+  
+  {% /tab %}
+{% tab label="Response body (abbreviated)" %}
 
 ```json Response body (abbreviated)
 {
@@ -351,14 +399,22 @@ GET /redfish/v1/Managers/1/EthernetInterfaces/?$filter=Name eq
     "Members@odata.count": 1
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The next example retrieves only Integrated Management Log (IML) entries
 with severity `Repaired`.
+
+  {% tabs %}
+{% tab label="GET specific IML entries" %}
 
 ```text GET specific IML entries
 GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$filter=Oem.Hpe.Severity
 eq 'Repaired'
 ```
+  
+  {% /tab %}
+{% tab label="Response body (abbreviated)" %}
 
 ```json Response body (abbreviated)
 {
@@ -439,13 +495,21 @@ eq 'Repaired'
     "Members@odata.count": 16
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves IML entries created after a specific date.
+
+  {% tabs %}
+{% tab label="GET IML entries filtered by date" %}
 
 ```text GET IML entries filtered by date
 GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$filter=Created
 gt '2022-10-04T06:19:22Z'` 
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -519,7 +583,9 @@ gt '2022-10-04T06:19:22Z'`
     "Members@odata.count": 4
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## iLO $count query option
 
 The `$count` system query option allows Redfish clients to request a count
@@ -527,9 +593,15 @@ of the matching resources included with the resources in the response.
 
 ### iLO $count example
 
+  {% tabs %}
+{% tab label="GET the number of Security log entries" %}
+
 ```text GET the number of Security log entries
 /redfish/v1/systems/1/logservices/SL/Entries/?$count=true
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -542,7 +614,9 @@ of the matching resources included with the resources in the response.
     "Members@odata.count": 31
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## iLO $top and $skip query options
 
 The `$top` system query option requests the number of items in the queried
@@ -554,9 +628,15 @@ not included in the result.
 
 Retrieve the top (first) ten IML log entries:
 
+  {% tabs %}
+{% tab label="GET the top ten IML log entries" %}
+
 ```text GET the top ten IML log entries
 GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$top=10
 ```
+  
+  {% /tab %}
+{% tab label="Response body (abbreviated)" %}
 
 ```json Response body (abbreviated)
 
@@ -635,13 +715,21 @@ GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$top=10
     "Members@odata.count": 10
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The request below returns IML entries starting at the 22th record
 (the `Members@odata.count` is 31).
+
+  {% tabs %}
+{% tab label="Skip entries" %}
 
 ```text Skip entries
  GET /redfish/v1/Systems/1/LogServices/IML/Entries/?$skip=21
 ```
+  
+  {% /tab %}
+{% tab label="Response body (abbreviated)" %}
 
 ```json Response body (abbreviated)
 {
@@ -681,7 +769,9 @@ The request below returns IML entries starting at the 22th record
     "Members@odata.count": 10
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## iLO $select query option
 
 The `$select` query option allows Redfish clients to requests a limited
@@ -692,9 +782,15 @@ set of properties.
 The following example retrieves the `RedfishVersion` property of an
 iLO based server.
 
+  {% tabs %}
+{% tab label="GET a single selected property" %}
+
 ```text GET a single selected property
 GET /redfish/v1/?$select=RedfishVersion
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -705,13 +801,21 @@ GET /redfish/v1/?$select=RedfishVersion
     "RedfishVersion": "1.13.0"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example returns the `ChassisType` and `ServiceLabel`
 properties of a Data Processor Unit card.
+
+  {% tabs %}
+{% tab label="GET multiple selected properties" %}
 
 ```text GET multiple selected properties
 GET /redfish/v1/Chassis/2/?$select=ChassisType,Location/PartLocation/ServiceLabel
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -727,3 +831,6 @@ GET /redfish/v1/Chassis/2/?$select=ChassisType,Location/PartLocation/ServiceLabe
   }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}

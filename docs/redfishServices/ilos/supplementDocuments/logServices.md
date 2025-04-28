@@ -3,11 +3,13 @@ seo:
   title: Log services
 sidebar:
   hide: false
+breadcrumbs:
+  hide: true
 markdown:
   toc:
     hide: true
   lastUpdatedBlock:
-    hide: true
+    hide: false
 ---
 
 ## Log services
@@ -52,10 +54,16 @@ and an action
 SLs. Individual SLs can be accessed by performing `GET` on
 `/redfish/v1/Systems/1/LogServices/SL/Entries/{@SlId}`.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 > curl --insecure --location    \
        https://{iLO}/redfish/v1/systems/1/logservices/sl/entries/3
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -92,7 +100,9 @@ SLs. Individual SLs can be accessed by performing `GET` on
     "Severity": "Warning"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Clearing SLs through Redfish Action
 
 To completely clear all SLs, perform `POST` on
@@ -133,10 +143,16 @@ and an action `LogService.ClearLog` to clear the IMLs. Individual IMLs can
 be accessed by performing `GET` on
 `/redfish/v1/Systems/1/LogServices/IML/Entries/{Id}`.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 > curl --insecure --location   /
 https://{iLO}/redfish/v1/systems/1/logservices/iml/entries/{Id}
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
         {
@@ -171,7 +187,9 @@ https://{iLO}/redfish/v1/systems/1/logservices/iml/entries/{Id}
             "Severity": "OK"
         }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Repairing IMLs through Redfish PATCH
 
 To manually mark an IML event as repaired, perform a `PATCH` on
@@ -184,9 +202,15 @@ When events are manually marked as repaired, SNMP or REST alerts are
 not notified.
 {% /admonition %}
 
+  {% tabs %}
+{% tab label="Repair event request" %}
+
 ```text Repair event request
 PATCH /redfish/v1/systems/1/logservices/iml/entries/{ImlId}
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -197,7 +221,9 @@ PATCH /redfish/v1/systems/1/logservices/iml/entries/{ImlId}
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Clearing IMLs through Redfish Action
 
 To completely clear all IMLs, perform `POST` on
@@ -234,10 +260,16 @@ and an action
 to clear the IELs. Individual IELs can be accessed by performing
 `GET` on `/redfish/v1/Managers/1/LogServices/IEL/Entries/{@IelId}`.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 > curl --insecure --location \
   https://{iLO}/redfish/v1/managers/1/logservices/iel/entries/{IelId}
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -271,7 +303,9 @@ to clear the IELs. Individual IELs can be accessed by performing
     "Severity": "OK"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Clearing IELs through Redfish Action
 
 To completely clear all IELs, perform `POST` on
@@ -325,9 +359,15 @@ clear the Alert Event Logs. Individual Alert Event Logs can be accessed by
 performing GET on
 `/redfish/v1/Systems/1/LogServices/Event/Entries/{@entriesId}`.
 
+  {% tabs %}
+{% tab label="GET Event entry" %}
+
 ```text GET Event entry
 GET /redfish/v1/Systems/1/LogService/Event/Entries/24
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -360,7 +400,9 @@ GET /redfish/v1/Systems/1/LogService/Event/Entries/24
     "Severity": "Critical"
   }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Clearing Alert Event Log through Redfish Action
 
 To completely clear all Alert Event Logs, perform POST toward
@@ -411,9 +453,15 @@ Perform a GET of the `HpeiLOActiveHealthSystem` resource and look for the
 to time ranges. The following example retrieves this object from an
 iLO 6 based server.
 
+  {% tabs %}
+{% tab label="GET request" %}
+
 ```text GET request
 /redfish/v1/Managers/1/ActiveHealthSystem/?$select=Links
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -434,7 +482,9 @@ iLO 6 based server.
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Once you have identified the location of the AHS file, perform a GET to
 location with the following query parameters to define the download time
 range and embed customer case information:
@@ -459,19 +509,30 @@ download which can be saved to a file.
 The following example retrieves the entire AHS log from an
 HPE iLO 6 based server.
 
+  {% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET /redfish/v1/managers/1/activehealthsystem
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --location --user <ilo-user>:password \
      https://<ilo-ip>//redfish/v1/managers/1/activehealthsystem
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest -d serverlogs --selectlog=AHS --downloadallahs  
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 For a full Redfish example click here:
 <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ahs_data.py" target="_blank">get\_ahs\_data.py</a>

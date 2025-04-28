@@ -1,6 +1,8 @@
 ---
 seo:
   title: DPUs and Smart NICs
+breadcrumbs:
+  hide: true
 sidebar:
   hide: false
 markdown:

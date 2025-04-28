@@ -1,6 +1,8 @@
 ---
 seo:
   title: iLO 6 changelog
+breadcrumbs:
+  hide: true
 sidebar:
   hide: false
 markdown:
@@ -8,7 +10,7 @@ markdown:
     hide: false
     depth: 2
   lastUpdatedBlock:
-    hide: true
+    hide: false
 ---
 
 # Changelog
