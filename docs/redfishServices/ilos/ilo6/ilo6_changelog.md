@@ -277,7 +277,10 @@ non-RDE URI.
 
 In HPE iLO 6 1.61, before removing the `POST` method:
 
-```json POST payload
+{% tabs %}
+{% tab label="Before removing POST" %}
+
+```json
     {"@odata.id": "/redfish/v1/Managers/1",
     "@odata.type": "#Manager.v1_5_1.Manager",
     "ETag": "W/\"4AE67964\"",
@@ -288,10 +291,15 @@ In HPE iLO 6 1.61, before removing the `POST` method:
       "PATCH"
                 ]}
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In HPE iLO 6 1.62, after removing the `POST` method:
 
-``` json
+{% tabs %}
+{% tab label="After removing POST" %}
+
+```json
     {"@odata.id": "/redfish/v1/Managers/1",
     "@odata.type": "#Manager.v1_5_1.Manager",
     "ETag": "W/\"4AE67964\"",
@@ -301,6 +309,9 @@ In HPE iLO 6 1.62, after removing the `POST` method:
       "PATCH"
             ]}
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Deprecated URIs
 
@@ -569,16 +580,28 @@ HPE iLO supports connecting to HPE Compute Ops Management (COM) using the `Activ
 - Onboarding HPE iLO to COM is possible with both the COM `ActivationKey` or HPE GreenLake Workspace ID.
   Refer to the following example:
   
+  {% tabs %}
+  {% tab label="Action to onboard HPE iLO to COM" %}
+
   ```text Action to onboard HPE iLO to COM
       POST: /redfish/v1/Managers/1/Actions/Oem/Hpe/EnableCloudConnect
   ```
   
+  {% /tab %}
+  {% /tabs %}
+  
+  {% tabs %}
+  {% tab label="Body 1" %}
+
   ```json Body 1
     {
       "ActivationKey" : "<Activation Key>",
       "OverrideManager" : true
     }
   ```
+  
+  {% /tab %}
+  {% tab label="Body 2" %}
 
   ```json Body 2
     {
@@ -586,7 +609,9 @@ HPE iLO supports connecting to HPE Compute Ops Management (COM) using the `Activ
       "OverrideManager" : true
     }
   ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 - Rename of property:
   To view the HPE GreenLake account ID to which an HPE iLO is connected to the
   COM, the property `ActivationKey` under URI-`/redfish/v1/Managers/1/` is
