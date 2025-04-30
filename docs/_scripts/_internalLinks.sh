@@ -5,7 +5,7 @@
 # to the new format:
 # {% link-internal href=concat("/docs/path/", $env.PUBLIC_VAR, "/#fragment",) %} text {% /link-internal %}
 #
-# Version 0.2
+# Version 0.22
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
@@ -14,13 +14,17 @@ cd $rootDir/docs/_scripts
 #mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/README.md" -not -path "*/.github/*")
 mdFileList="$rootDir/docs/internallinks.md ../redfishServices/ilos/supplementDocuments/tfa.md ../redfishServices/ilos/supplementDocuments/backupAndRestore.md ../redfishServices/ilos/supplementDocuments/logServices.md" 
 
+# Example of a target string:
+target='"/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "/logservicecollection'
+
+
 for file in $mdFileList
 do
   echo "Processing file $file"
   dos2unix $file &> /dev/null
 
   if grep -q "^[ ]\+\[.*LATEST.*)" $file; then
-    echo "***Warning**: file contains spaces before the link. Need to process it manually."
+    echo -e "***Warning***: file contains spaces before the link. Need to process it manually.\n"
   fi  
 
   # Insert a newline just before `[` chars when this char is not the first char of the line
@@ -45,19 +49,23 @@ do
     echo -e "\tProcessing array element: $l ********\n"
     # Extract the link text and remove the asterisks
     linkText="$(echo $l | grep -o "\[.*\]" | tr -d '[]' | tr '*' ' ')"
-    echo -e "\tLink text: $linkText\n\n"
+    #echo -e "\tLink text: $linkText\n"
+    
     # Extract the link path
-    #linkPath="$(echo $l | grep -o "(.*LATEST.*)" | tr -d '()')"
-    
-    # Extract the fragment
-    #fragment="$(echo $linkPath | grep -o "#.*" | tr -d '#')"
-    
-    # Extract the path without the fragment
-    #path="$(echo $linkPath | sed 's/#.*//')"
-    
-    # Extract the env var name
-    #envVar="$(echo $path | grep -o "{{process.env.VAR}}" | tr -d '{}')"
-    
+    linkPath="$(echo $l | grep -o "(.*LATEST.*)" | tr -d '()')"
+    #echo -e "\tLink path: $linkPath\n"
+    # Move variables into new format
+    linkPath="$(echo $linkPath | sed 's/{{process\.env\./$env.PUBLIC_/g')"
+    linkPath="$(echo $linkPath | tr -d })"
+
+    # Extract the path prefix before first variable
+    prefix="$(echo ${linkPath%%\$env.*})"
+    #echo -e "\tPrefix: $prefix\n"
+
+    # Extract the path suffix after first variable TBD
+    suffix="$(echo ${linkPath##\$env.*})"
+    echo -e "\tSuffix: $suffix\n"
+
     # Create the new link format
     #newLink="{% link-internal href=concat(\"$path\", \$env.$envVar, \"/$fragment\") %} $linkText {% /link-internal %}"
     
@@ -65,8 +73,6 @@ do
     #sed -i "s|$l|$newLink|g" $file
     echo
   done
-  #grep -o "\[.*\]" $file | tr -d '[]'
-
   
   echo -e "Done \n"
 done
