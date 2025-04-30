@@ -8,24 +8,19 @@
 # from Redocly.
 #
 #  Reunite front matter: tbd
-# Version 0.3
+# Version 0.4
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
-mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/* -not -path -not -path */.github/*" -not -path "$rootDir/README.md")
+# mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/* -not -path -not -path */.github/*" -not -path "$rootDir/README.md")
+mdFileList="$rootDir/docs/redfishservices/ilos/supplementDocuments/backupAndRestore.md  $rootDir/docs/redfishservices/ilos/supplementDocuments/tfa.md"
 
 for file in $mdFileList
 do
   echo "Processing $file ..."
   dos2unix $file &> /dev/null
-
-  # front matter before fix
-  #echo "Front matter before fix:"
-  #sed -n '/^---$/,/^---$/p' $file
-  #echo
-
 
   # Replace `exclude` into `excludeFromSearch`
   sed -i 's/^exclude:/excludeFromSearch:/g' $file
