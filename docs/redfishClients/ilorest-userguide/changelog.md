@@ -134,8 +134,10 @@ where AHS download in Intelligent Provisioning environment was failing.
 
 - Enhanced the `serverclone`
 [command](/docs/redfishclients/ilorest-userguide/ilocommands/#serverclone-command)
-to check the [server power state](/docs/redfishservices/ilos/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}_{% $env.PUBLIC_LATEST_FW_VERSION %}/{% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}_computersystem_resourcedefns{% $env.PUBLIC_LATEST_FW_VERSION %}/#powerstate)
+to check the
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_computersystem_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "/#powerstate") %} server power state {% /link-internal %}
 before issuing a reboot.
+
 - Availability of an <a href="https://pypi.org/project/ilorest" target="_blank">iLOrest PyPI package</a>.
 fully equivalent to <a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest" target="_blank">other iLOrest packages</a>.
 
