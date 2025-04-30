@@ -42,11 +42,17 @@ Prior to the TFA enablement the following pre-requisites are mandatory:
 The following example shows a typical iLO Microsoft Active Directory
 configuration suitable for TFA.
 
+  {% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET /redfish/v1/AccountService/?$select=LDAP/LDAPService,
 LDAP/ServiceAddresses, LDAP/ServiceEnabled, Oem/Hpe/DirectorySettings,
 ActiveDirectory
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -54,6 +60,9 @@ ilorest select AccountService.
 ilorest get LDAP/LDAPService LDAP/ServiceAddresses LDAP/ServiceEnabled Oem/Hpe/DirectorySettings ActiveDirectory --json
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -110,7 +119,9 @@ ilorest logout
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example shows a typical iLO mail subsystem configuration
 suitable for TFA.
 
@@ -121,6 +132,9 @@ Microsoft Active Directory server needed for TFA. However, it can be used
 to test and validate the connectivity to the SMTP server.
 :::
 
+  {% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET 
 /redfish/v1/Managers/1/NetworkProtocol/?$select=Oem/Hpe/AlertMailSenderDomain,
@@ -129,6 +143,9 @@ Oem/Hpe/AlertMailSMTPAuthEnabled, Oem/Hpe/AlertMailSMTPAuthPw,
 Oem/Hpe/AlertMailSMTPSecureEnabled, Oem/Hpe/AlertMailSMTPPort,
 Oem/Hpe/AlertMailSMTPAuthUser
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -136,6 +153,9 @@ ilorest select NetworkProtocol.
 ilorest get Oem/Hpe/AlertMailSenderDomain Oem/Hpe/AlertMailSMTPServer Oem/Hpe/AlertMailEmail Oem/Hpe/AlertMailEnabled Oem/Hpe/AlertMailSMTPAuthEnabled Oem/Hpe/AlertMailSMTPAuthPw Oem/Hpe/AlertMailSMTPSecureEnabled Oem/Hpe/AlertMailSMTPPort Oem/Hpe/AlertMailSMTPAuthUser --json
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -158,14 +178,22 @@ ilorest logout
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example verifies that a Microsoft Active Directory user
 is properly configured (with a valid e-mail address) for TFA.
+
+  {% tabs %}
+{% tab label="PowerShell request" %}
 
 ```PowerShell PowerShell request
 PS C:> Get-ADUser -Filter "Name -eq 'ilo_admin'" -SearchBase "DC=lj,DC=lab"
 -Properties "mail" -Server dc.lj.lab -Credential lj\francois
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```PowerShell Body response
 
@@ -181,7 +209,9 @@ SID               : S-1-5-21-348893910-328035306-4278668119-1450
 Surname           :
 UserPrincipalName : ilo_admin@lj.lab
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 :::info NOTE
 If the `mail` property of a Microsoft Active Directory user is empty,
 trying to log into iLO with this username, returns a `409 Conflict` status
@@ -203,9 +233,15 @@ must be met and the following actions must be performed in that order:
 
 The following example configures `SMTPForTFAEnabled` for TFA:
 
+  {% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 PATCH redfish/v1/Managers/1/NetworkProtocol
 ```
+  
+  {% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
@@ -216,6 +252,9 @@ PATCH redfish/v1/Managers/1/NetworkProtocol
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -223,6 +262,9 @@ ilorest select NetworkProtocol.
 ilorest set Oem/Hpe/SMTPForTFAEnabled=true --commit
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -235,12 +277,20 @@ ilorest logout
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example configures `TwoFactorAuth` for TFA:
+
+  {% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 PATCH /redfish/v1/AccountService
 ```
+  
+  {% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
@@ -251,6 +301,9 @@ PATCH /redfish/v1/AccountService
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -258,6 +311,9 @@ ilorest select AccountService.
 ilorest set Oem/Hpe/TwoFactorAuth=Enabled --commit
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -270,7 +326,9 @@ ilorest logout
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 :::info NOTE
 
 - Attempting to authenticate a Microsoft Active Directory user
@@ -292,12 +350,18 @@ performs a GET toward the `AccountService` URI. The request is successful with
 a local account (Administrator), but fails with a Microsoft
 Active Directory username.
 
-```shell Basic authentication request of local user
+  {% tabs %}
+{% tab label="Basic auth. request of local user" %}
+
+```shell Basic auth. request of local user
 curl  -ksu Administrator:"AdminPassword"  -X GET  https://ilo-ip/redfish/v1/AccountService/ | jq  '.Oem.Hpe.TwoFactorAuth'
 "Enabled"
 ```
+  
+  {% /tab %}
+{% tab label="Basic auth. request of a Directory user" %}
 
-```shell Basic authentication request of a Directory user
+```shell Basic auth. request of a Directory user
 curl  -kisu ilo_admin:"ilo_adminPassword"  -X GET  https://ilo-ip/redfish/v1/AccountService/
 
 HTTP/1.1 401 Unauthorized
@@ -322,7 +386,9 @@ X-XSS-Protection: 1; mode=block
         ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Creating a User Session with TFA
 
 When TFA is enabled and the Microsoft Active Directory user credentials
@@ -333,9 +399,15 @@ request, a `OneTimePasscodeSent`
 is returned and an One Time Password (OTP) is sent to the configured
 Microsoft Active Directory user email.
 
+  {% tabs %}
+{% tab label="Generic Session creation" %}
+
 ```text Generic Session creation
 POST /redfish/v1/Sessions
 ```
+  
+  {% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
@@ -343,6 +415,9 @@ POST /redfish/v1/Sessions
     "Password": "words123"
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -360,16 +435,24 @@ POST /redfish/v1/Sessions
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To perform the TFA the Redfish client needs to get the OTP from the mail
 sent to the Microsoft Active Directory user and provide it in the payload
 of a second POST request toward `/redfish/v1/Sessions` as a `Token` property,
 along with the Microsoft Active Directory user credentials. The Token is a
 six digit positive non-zero integer value.
 
+  {% tabs %}
+{% tab label="Generic POST request" %}
+
 ```text Generic POST request
 POST /redfish/v1/Sessions
 ```
+  
+  {% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
@@ -378,6 +461,9 @@ POST /redfish/v1/Sessions
     "Token": "123456"
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -404,3 +490,6 @@ POST /redfish/v1/Sessions
     "UserName": "ilo_admin"
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}

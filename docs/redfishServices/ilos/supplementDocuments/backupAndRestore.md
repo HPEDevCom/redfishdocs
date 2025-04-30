@@ -111,9 +111,15 @@ The GET operation to the `BackupFileLocation` URI returns HTTP 200 with
 `Content Type: application/octet-stream`. This is the binary image of
 the backup file.
 
+  {% tabs %}
+{% tab label="Create backup file and retrieve BackupFileLocation" %}
+
 ```text Create backup file and retrieve BackupFileLocation
 GET /redfish/v1/Managers/1/BackupRestoreService/?$select=BackupFileLocation
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -124,11 +130,16 @@ GET /redfish/v1/Managers/1/BackupRestoreService/?$select=BackupFileLocation
     "BackupFileLocation": "/bkupdata/HPE_TWA22525A7_20221208_1512.bak"
 }
 ```
+  
+  {% /tab %}
+{% tab label="Retrieve backup file locally" %}
 
 ```text Retrieve backup file locally
 GET /bkupdata/HPE_TWA22525A7_20221208_1512.bak
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Restoring the iLO configuration
 
 To restore a backup file, perform a POST request to the `HttpPushUri`
@@ -151,9 +162,15 @@ have to include a `multipart/form-data` `Content-Type` header to the
 POST request.
 :::
 
+  {% tabs %}
+{% tab label="Generic GET HttpPushUri request" %}
+
 ```text Generic GET HttpPushUri request
 GET /redfish/v1/managers/1/backuprestoreservice/?$select=HttpPushUri
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -164,9 +181,14 @@ GET /redfish/v1/managers/1/backuprestoreservice/?$select=HttpPushUri
     "HttpPushUri": "/cgi-bin/uploadRestoreFile"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example restores an iLO backup file using cURL and
 Python scripts with required headers.
+
+  {% tabs %}
+{% tab label="cURL" %}
 
 ```shell cURL
 #!/usr/bin/bash
@@ -221,6 +243,9 @@ curl  --location                                       \
       --request DELETE https://${bmcIp}${Location}
 
 ```
+  
+  {% /tab %}
+{% tab label="HPE Python" %}
 
 ```Python HPE Python
 # This simple Python script uses the HPE Redfish Python Library
@@ -308,6 +333,9 @@ if __name__ == "__main__":
 
 
 ```
+  
+  {% /tab %}
+{% tab label="DMTF Python" %}
 
 ```Python DMTF Python
 # This simple Python script uses the DMTF Redfish Python Library
@@ -394,7 +422,9 @@ if __name__ == "__main__":
 
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Enabling Custom Backup and Restore
 
 The `HpeiLOBackupRestoreService` OEM resource type contains the
@@ -406,9 +436,15 @@ default settings.
 The following example retrieves the value of the `CustomBackupandRestore`
 property as well as its human readable schema description.
 
+  {% tabs %}
+{% tab label="GET CustomBackupandRestore property" %}
+
 ```text GET CustomBackupandRestore property
  GET /redfish/v1/managers/1/backuprestoreservice?$select=CustomBackupandRestore
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -419,6 +455,9 @@ property as well as its human readable schema description.
     "CustomBackupandRestore": false
 }
 ```
+  
+  {% /tab %}
+{% tab label="CustomBackupandRestore schema" %}
 
 ```bash CustomBackupandRestore schema
 ilorest login <ilo-ip> -u <ilop-user> -p <password>
@@ -450,7 +489,9 @@ ilorest logout
 Logging session out.
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 :::info NOTE
 
 1. For iLO 6 v1.05, only IPMI and SNMP user configurations are covered in

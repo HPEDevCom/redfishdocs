@@ -12,6 +12,8 @@
   items:
     - label: HPE iLO Security service
       page: securityService.md
+    - label: Two factor authentication
+      page: tfa.md
 - label: OData query options
   page: odataqueryoptions.md
 - label: Log services
