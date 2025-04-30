@@ -39,13 +39,13 @@ do
 
   # Remove the double quotes and transform the commas into spaces.
   lineList=($(echo ${lineList[@]} | tr ',' ' ' | tr -d \"))
-  
+
   # Process each line containing LATEST var
-  #for l in "${lineList[@]}" ; do
-    #echo -e "\tProcessing array element: $l ********\n"
-    # Extract the link text
-    #linkText="$(echo $l | grep -o "\[.*\]" | tr -d '[]')"
-    #echo -e "\tLink text: $linkText\n\n"
+  for l in "${lineList[@]}" ; do
+    echo -e "\tProcessing array element: $l ********\n"
+    # Extract the link text and remove the asterisks
+    linkText="$(echo $l | grep -o "\[.*\]" | tr -d '[]' | tr '*' ' ')"
+    echo -e "\tLink text: $linkText\n\n"
     # Extract the link path
     #linkPath="$(echo $l | grep -o "(.*LATEST.*)" | tr -d '()')"
     
@@ -63,8 +63,8 @@ do
     
     # Replace the old link with the new one in the file
     #sed -i "s|$l|$newLink|g" $file
-    #echo
-  #done
+    echo
+  done
   #grep -o "\[.*\]" $file | tr -d '[]'
 
   
