@@ -12,21 +12,19 @@ rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
 #mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/README.md" -not -path "*/.github/*")
-mdFileList="$rootDir/docs/internallinks.md" 
+mdFileList="$rootDir/docs/internallinks.md ../redfishServices/ilos/supplementDocuments/tfa.md ../redfishServices/ilos/supplementDocuments/backupAndRestore.md ../redfishServices/ilos/supplementDocuments/logServices.md" 
 
 for file in $mdFileList
 do
   echo Processing $file
   dos2unix $file &> /dev/null
 
-  # For each line containing internal links with env variables
-  # Insert a newline just before `[` chars
-  # and may be print a message to 
-  # re-run a second time to process those lines
-  # and skip the rest of the file.
+  if grep -q "^[ ]\+\[.*LATEST.*)" $file; then
+    echo "***Warning**: file contains spaces before the link. Need to process it manually."
+  fi  
 
   # Insert a newline just before `[` chars when this char is not the first char of the line
-  sed 's/ \(\[.*\](.*)\)/\n\1/g' $file
+  sed -i 's/ \(\[.*\](.*LATEST.*)\)/\n\1/g' $file
   
 
   # Extract text between brackets
