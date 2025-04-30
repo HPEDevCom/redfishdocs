@@ -125,12 +125,12 @@ ilorest logout
 The following example shows a typical iLO mail subsystem configuration
 suitable for TFA.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 The `AlertMailEmail` property is only related to the Alert Mail subsystem;
 the email it contains may not be part of any user configuration in the
 Microsoft Active Directory server needed for TFA. However, it can be used
 to test and validate the connectivity to the SMTP server.
-:::
+{% /admonition %}
 
   {% tabs %}
 {% tab label="Generic request" %}
@@ -212,12 +212,12 @@ UserPrincipalName : ilo_admin@lj.lab
   
   {% /tab %}
   {% /tabs %}
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 If the `mail` property of a Microsoft Active Directory user is empty,
 trying to log into iLO with this username, returns a `409 Conflict` status
 error with a "MailNotConfigured"
 [error response](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_ILO6_FW_VERSION}}/).
-:::
+{% /admonition %}
 
 ## Enabling Two Factor Authentication
 
@@ -329,7 +329,7 @@ ilorest logout
   
   {% /tab %}
   {% /tabs %}
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - Attempting to authenticate a Microsoft Active Directory user
     using `Basic-Auth` when TFA is `enabled` results in a
@@ -343,7 +343,7 @@ ilorest logout
     properly configured
   - enable `TwoFactorAuth` when `LDAPService` is not properly configured
 
-:::
+{% /admonition %}
 
 Using cURL and the basic user authentication mechanism, the following example
 performs a GET toward the `AccountService` URI. The request is successful with

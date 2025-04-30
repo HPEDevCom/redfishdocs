@@ -11,12 +11,12 @@ seo:
 
 ## iLO Backup and Restore
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 It is possible that some properties or resources described in
 this section are not implemented in iLO 4 and ilo 5.
 
-:::
+{% /admonition %}
 
 The Backup and Restore feature allows you to backup and restore the iLO
 configuration on a system with the same hardware configuration as the system
@@ -149,7 +149,7 @@ request must be `multipart/form-data` and include the session key.
 A `Cookie` header containing the session key is also required.
 See example below.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 CURL and Python scripts using the
 <a href="https://github.com/HewlettPackard/python-ilorest-library/tree/master/src/redfish/rest" target="_blank">HPE Python Redfish library</a>
 don't need to supply any specific `Content-Type` header. It is done
@@ -160,7 +160,7 @@ Python scripts using the
 target="_blank">DMTF Python Redfish library</a>
 have to include a `multipart/form-data` `Content-Type` header to the
 POST request.
-:::
+{% /admonition %}
 
   {% tabs %}
 {% tab label="Generic GET HttpPushUri request" %}
@@ -492,7 +492,7 @@ Logging session out.
   
   {% /tab %}
   {% /tabs %}
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 1. For iLO 6 v1.05, only IPMI and SNMP user configurations are covered in
     this custom backup and auto-restore feature.
@@ -507,4 +507,4 @@ Logging session out.
 5. If iLO is reset to the factory default settings, then the custom backup
     needs to be configured again.
 
-:::
+{% /admonition %}
