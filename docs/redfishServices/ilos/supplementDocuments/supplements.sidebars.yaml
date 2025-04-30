@@ -18,6 +18,8 @@
   page: odataqueryoptions.md
 - label: Log services
   page: logServices.md
+- label: Managing users
+  page: managingUsers.md
 - label: Storage data models
   page: storage.md
 
