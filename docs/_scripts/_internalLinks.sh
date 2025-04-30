@@ -26,8 +26,13 @@ do
   # Insert a newline just before `[` chars when this char is not the first char of the line
   sed -i 's/ \(\[.*\](.*LATEST.*)\)/\n\1/g' $file
   
+  # Insert a newline after the last `)` char of the internal link.
+  # Don't forget to remove the trailing space.
+  sed -i 's/^\(\[.*\](.*LATEST.*)\) /\1\n/g' $file
 
-  # Extract text between brackets
+  # Create a list of the lines containing LATEST
+  #grep '^\[.*\](.*LATEST.*)$' $file
+  # Process each line containing LATEST var
   #grep -o "\[.*\]" $file | tr -d '[]'
 
   
