@@ -10,7 +10,7 @@ rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
 mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/README.md" -not -path "*/.github/*")
-#mdFileList="$rootDir/docs/redfishservices/ilos/supplementdocuments/securityService.md" 
+#mdFileList="$rootDir/docs/redfishservices/ilos/supplementDocuments/managingUsers.md"
 
 for file in $mdFileList
 do

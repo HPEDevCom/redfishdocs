@@ -7,6 +7,8 @@ markdown:
     hide: false
 seo:
   title: iLO Backup and restore
+breadcrumbs:
+  hide: true
 ---
 
 ## iLO Backup and Restore

@@ -7,6 +7,8 @@ markdown:
     hide: false
 seo:
   title: Two factor authentication
+breadcrumbs:
+  hide: true
 ---
 
 ## Two Factor Authentication

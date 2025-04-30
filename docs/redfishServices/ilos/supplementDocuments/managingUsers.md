@@ -7,6 +7,8 @@ markdown:
     hide: false
 seo:
   title: Managing iLO users
+breadcrumbs:
+  hide: true
 ---
 
 ## Managing iLO Users

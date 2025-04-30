@@ -7,14 +7,17 @@
 # in https://github.com/redocly-demo/migrate-portal/blob/main/bin.ts#L795
 # from Redocly.
 #
-#  Reunite front matter: tbd
-# Version 0.5
+#  ToDo:
+#  - Investigate the insertion breadcrumbs with decent prefix, and not just the label
+#
+# Version 0.6
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
 mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/* -not -path -not -path */.github/*" -not -path "$rootDir/README.md")
+#mdFileList="$rootDir/docs/redfishservices/ilos/supplementDocuments/managingUsers.md" 
 
 for file in $mdFileList
 do
@@ -52,12 +55,11 @@ do
     hide: $hideToc\n\
     depth: $tocDepth\n\
   lastUpdateBlock:\n\
-    hide: $lastUpdateBlock" $file
+    hide: $lastUpdateBlock
+  breadcrumbs:
+    hide: true" $file
 
   echo "Done"
-  # Front matter afer fix
-  #echo "Front matter after fix:"
-  #sed -n '/^---$/,/^---$/p' $file
   echo
 
 done
