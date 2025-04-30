@@ -1,10 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
 seo:
   title: Two factor authentication
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 ## Two Factor Authentication
