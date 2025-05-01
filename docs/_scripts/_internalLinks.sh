@@ -5,7 +5,7 @@
 # to the new format:
 # {% link-internal href=concat("/docs/path/", $env.PUBLIC_VAR, "/#fragment",) %} text {% /link-internal %}
 #
-# Version 0.22
+# Version 0.23
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
@@ -47,6 +47,7 @@ do
   # Process each line containing LATEST var
   for l in "${lineList[@]}" ; do
     echo -e "\tProcessing array element: $l ********\n"
+
     # Extract the link text and remove the asterisks
     linkText="$(echo $l | grep -o "\[.*\]" | tr -d '[]' | tr '*' ' ')"
     #echo -e "\tLink text: $linkText\n"
@@ -59,13 +60,26 @@ do
     linkPath="$(echo $linkPath | tr -d })"
 
     # Extract the path prefix before first variable
+    # Something like "/docs/redfishservices/ilos/"
     prefix="$(echo ${linkPath%%\$env.*})"
     #echo -e "\tPrefix: $prefix\n"
 
-    # Extract the path suffix after first variable TBD
-    suffix="$(echo ${linkPath##\$env.*})"
-    echo -e "\tSuffix: $suffix\n"
+    # Extract the path suffix after first variable,
+    # and remove "$env.". It will be added back later.
+    suffix="\$$(echo ${linkPath#*\$})"
+    suffix="$(echo $suffix | sed 's/\$env\.//g')"
+    #echo -e "\tSuffix: $suffix\n"
 
+    # Remove directory separators from the suffix
+    # and place result into an array
+    suffixArray=($(echo $suffix | tr '/' ' '))
+    #echo -e "\tSuffix array: ${suffixArray[@]}\n"
+
+    # Replace '_' with '*' when located between two uppercase letters
+    suffixArray=($(echo ${suffixArray[@]} | sed -E 's/([A-Z])_([A-Z])/\1*\2/g'))
+    echo -e "\tSuffix array: ${suffixArray[@]}\n"
+    
+    
     # Create the new link format
     #newLink="{% link-internal href=concat(\"$path\", \$env.$envVar, \"/$fragment\") %} $linkText {% /link-internal %}"
     
