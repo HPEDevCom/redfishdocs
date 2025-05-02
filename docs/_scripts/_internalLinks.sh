@@ -5,7 +5,7 @@
 # to the new format:
 # {% link-internal href=concat("/docs/path/", $env.PUBLIC_VAR, "/#fragment",) %} text {% /link-internal %}
 #
-# Version 0.23
+# Version 0.24
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
@@ -46,7 +46,7 @@ do
 
   # Process each line containing LATEST var
   for l in "${lineList[@]}" ; do
-    echo -e "\tProcessing array element: $l ********\n"
+    #echo -e "\tProcessing array element: $l ********\n"
 
     # Extract the link text and remove the asterisks
     linkText="$(echo $l | grep -o "\[.*\]" | tr -d '[]' | tr '*' ' ')"
@@ -77,9 +77,36 @@ do
 
     # Replace '_' with '*' when located between two uppercase letters
     suffixArray=($(echo ${suffixArray[@]} | sed -E 's/([A-Z])_([A-Z])/\1*\2/g'))
+    #echo -e "\tSuffix array: ${suffixArray[@]}\n"
+    
+    # Insert a space before the _lower case string and after it
+    suffixArray=($(echo ${suffixArray[@]} | sed -E 's/VERSION(_.*)PUBLIC/VERSION \1 PUBLIC/g'))
+    #echo -e "\tSuffix array: ${suffixArray[@]}\n"
+
+    # Replace * back into _
+    suffixArray=($(echo ${suffixArray[@]} | sed 's/\*/_/g'))
+    #echo -e "\tSuffix array: ${suffixArray[@]}\n"
+
+    # Prepend "$env." before each "PUBLIC" string
+    suffixArray=($(echo ${suffixArray[@]} | sed 's/PUBLIC/\$env.PUBLIC/g'))
+    #echo -e "\tSuffix array: ${suffixArray[@]}\n"
+
+
+    # Insert ', "/", between variables'
+    suffixArray=($(echo ${suffixArray[@]} | sed 's?VERSION \$env?VERSION, "/", \$env?g'))
+    #echo -e "\tSuffix array: ${suffixArray[@]}\n"
+    
+    
+    
+    # Enclose the remaining '_' with double quotes
+    suffixArray=($(echo ${suffixArray[@]} | sed 's/VERSION_/VERSION, \"_\", /g'))
+    #echo -e "\tSuffix array: ${suffixArray[@]}\n"
+    
+    suffixArray=($(echo ${suffixArray[@]} | sed 's/VERSION _\([a-z].*\) \$env/VERSION\1_\$env/g'))
     echo -e "\tSuffix array: ${suffixArray[@]}\n"
     
-    
+    # TBD
+
     # Create the new link format
     #newLink="{% link-internal href=concat(\"$path\", \$env.$envVar, \"/$fragment\") %} $linkText {% /link-internal %}"
     
