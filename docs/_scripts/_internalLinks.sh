@@ -102,10 +102,13 @@ do
     suffixArray=($(echo ${suffixArray[@]} | sed 's/VERSION_/VERSION, \"_\", /g'))
     #echo -e "\tSuffix array: ${suffixArray[@]}\n"
     
-    suffixArray=($(echo ${suffixArray[@]} | sed 's/VERSION _\([a-z].*\) \$env/VERSION\1_\$env/g'))
+    # Wrap "_string " with double quotes
+    suffixArray=($(echo ${suffixArray[@]} | sed 's/VERSION _\(.*\) \$/VERSION, \"_\1\", \$/g'))
+    #echo -e "\tSuffix array: ${suffixArray[@]}\n"
+
+    # Wrap fragement with double quotes
+    suffixArray=($(echo ${suffixArray[@]} | sed 's?VERSION #\(.*\)?VERSION, \"/#\1?g'))    
     echo -e "\tSuffix array: ${suffixArray[@]}\n"
-    
-    # TBD
 
     # Create the new link format
     #newLink="{% link-internal href=concat(\"$path\", \$env.$envVar, \"/$fragment\") %} $linkText {% /link-internal %}"
