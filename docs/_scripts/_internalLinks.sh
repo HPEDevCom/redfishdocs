@@ -5,7 +5,7 @@
 # to the new format:
 # {% link-internal href=concat("/docs/path/", $env.PUBLIC_VAR, "/#fragment",) %} text {% /link-internal %}
 #
-# Version 0.24
+# Version 0.25
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
@@ -24,7 +24,7 @@ do
   dos2unix $file &> /dev/null
 
   if grep -q "^[ ]\+\[.*LATEST.*)" $file; then
-    echo -e "***Warning***: file contains spaces before the link. Need to process it manually.\n"
+    echo -e "***Warning***: file contains spaces before the link. Need to process it manually."
   fi  
 
   # Insert a newline just before `[` chars when this char is not the first char of the line
@@ -44,7 +44,7 @@ do
   # Remove the double quotes and transform the commas into spaces.
   lineList=($(echo ${lineList[@]} | tr ',' ' ' | tr -d \"))
 
-  # Process each line containing LATEST var
+  # Process each linein the array 
   for l in "${lineList[@]}" ; do
     #echo -e "\tProcessing array element: $l ********\n"
 
@@ -96,8 +96,6 @@ do
     suffixArray=($(echo ${suffixArray[@]} | sed 's?VERSION \$env?VERSION, "/", \$env?g'))
     #echo -e "\tSuffix array: ${suffixArray[@]}\n"
     
-    
-    
     # Enclose the remaining '_' with double quotes
     suffixArray=($(echo ${suffixArray[@]} | sed 's/VERSION_/VERSION, \"_\", /g'))
     #echo -e "\tSuffix array: ${suffixArray[@]}\n"
@@ -107,15 +105,15 @@ do
     #echo -e "\tSuffix array: ${suffixArray[@]}\n"
 
     # Wrap fragement with double quotes
-    suffixArray=($(echo ${suffixArray[@]} | sed 's?VERSION #\(.*\)?VERSION, \"/#\1?g'))    
-    echo -e "\tSuffix array: ${suffixArray[@]}\n"
+    suffixArray=($(echo ${suffixArray[@]} | sed 's?VERSION #\(.*\)?VERSION, \"/#\1\"?g'))    
+    #echo -e "\tSuffix array: ${suffixArray[@]}\n"
 
-    # Create the new link format
-    #newLink="{% link-internal href=concat(\"$path\", \$env.$envVar, \"/$fragment\") %} $linkText {% /link-internal %}"
-    
-    # Replace the old link with the new one in the file
-    #sed -i "s|$l|$newLink|g" $file
-    echo
+    # Create the new link
+    newLink="{% link-internal href=concat(\"$prefix\", ${suffixArray[@]}) %} $linkText {% /link-internal %}"
+    #echo -e "\tnewLink: $newLink\n"
+
+    # TBD Replace the old link with the new one in the file
+    sed -i "s|$l|$newLink|g" $file
   done
   
   echo -e "Done \n"
