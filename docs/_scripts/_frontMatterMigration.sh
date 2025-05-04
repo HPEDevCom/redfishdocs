@@ -6,20 +6,20 @@
 #  ToDo:
 #  - Investigate the insertion breadcrumbs with decent prefix, and not just the label
 #
-# Version 0.62
+# Version 0.63
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
-#mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/* -not -path -not -path */.github/*" -not -path "*/README.md")
-mdFileList="$rootDir/docs/redfishservices/ilos/ilo7/ilo7_111/ilo7_bios_resourcedefns111.md" 
+mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/* -not -path -not -path */.github/*" -not -path "*/README.md")
+#mdFileList="$rootDir/docs/redfishservices/ilos/ilo7/ilo7_111/ilo7_bios_resourcedefns111.md" 
 
 for file in $mdFileList
 do
   echo "Processing $file ..."
   dos2unix $file &> /dev/null
-  set -x
+  
   # Replace `exclude` into `excludeFromSearch`
   sed -i 's/^exclude:/excludeFromSearch:/g' $file
   
@@ -31,9 +31,15 @@ do
 
   # Capture and cleanup various front matter fields
   lastUpdateBlock="$(awk '/^disableLastModified:/ {print $NF}' $file)"
+  if [ -z "$lastUpdateBlock" ]; then
+    lastUpdateBlock="false"
+  fi
   sed -i "/^disableLastModified:/d" $file
 
   tocDepth="$(awk '/maxDepth:/ {print $NF}' $file)"
+  if [ -z "$tocDepth" ]; then
+    tocDepth="3"
+  fi
   sed -i "/maxDepth:/d" $file
 
   if [ "$(awk '/  enable:/ {print $NF}' $file)" == "true" ]; then
@@ -56,6 +62,6 @@ do
 
   echo "Done"
   echo
-  set +x
+  
 done
 echo
