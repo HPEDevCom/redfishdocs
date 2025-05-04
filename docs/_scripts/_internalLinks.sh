@@ -5,7 +5,7 @@
 # to the new format:
 # {% link-internal href=concat("/docs/path/", $env.PUBLIC_VAR, "/#fragment",) %} text {% /link-internal %}
 #
-# Version 0.27
+# Version 0.28
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
@@ -56,7 +56,7 @@ do
     # Remove line trailing dot if any
     l="$(echo $l | sed 's/\.$//g')"
 
-    echo -e "\tLink with fragment: $l\n"
+    #echo -e "\tLink with fragment: $l\n"
     # Extract the fragment, if any
     fragment="$(echo $l | grep -o '#.*$' | tr -d ')')"
     oldFragment="$fragment"
@@ -141,11 +141,11 @@ do
     else
       newLink="{% link-internal href=concat(\"$prefix\", ${suffixArray[@]}) %} $linkText {% /link-internal %}"
     fi
-    echo -e "\tnewLink: $newLink\n"
-    #set -x
+    #echo -e "\tnewLink: $newLink\n"
+    
     # Replace the old link with the new one in the file
     sed -i "s|^\[$linkText\](.*LATEST.*${string}.*)|$newLink|g" $file
-    #set +x
+    
   done
   
   echo -e "Done \n"
