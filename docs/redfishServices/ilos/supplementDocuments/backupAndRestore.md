@@ -102,8 +102,8 @@ The following information is not backed up or restored:
 The iLO configuration backup process requires two steps:
 
 * Trigger a backup file creation in the nonvolatile flash memory (NAND) of the
-    managed server with a GET of the `HpeiLOBackupRestoreService`
-    [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilobackuprestoreservice).
+  managed server with a GET of the `HpeiLOBackupRestoreService`
+  {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeilobackuprestoreservice") %} URI {% /link-internal %}.
 * Download the backup file locally with a GET of the
     `BackupFileLocation` property URI.
 
@@ -142,10 +142,11 @@ GET /bkupdata/HPE_TWA22525A7_20221208_1512.bak
   
   {% /tab %}
   {% /tabs %}
+
 ## Restoring the iLO configuration
 
 To restore a backup file, perform a POST request to the `HttpPushUri`
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#httppushuri)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#httppushuri") %} URI {% /link-internal %}
 of the `HpeiLOBackupRestoreService`. The `Content-Type` header of this POST
 request must be `multipart/form-data` and include the session key.
 A `Cookie` header containing the session key is also required.
@@ -427,10 +428,12 @@ if __name__ == "__main__":
   
   {% /tab %}
   {% /tabs %}
+
 ## Enabling Custom Backup and Restore
 
 The `HpeiLOBackupRestoreService` OEM resource type contains the
-`CustomBackupandRestore` [Boolean property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#custombackupandrestore).
+`CustomBackupandRestore`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#custombackupandrestore") %} Boolean property {% /link-internal %}.
 Users can enable this property to automatically allow restoring user defined
 iLO configuration that was earlier used for backup instead of the factory
 default settings.

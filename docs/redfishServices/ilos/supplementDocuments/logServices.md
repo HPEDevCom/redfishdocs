@@ -24,7 +24,7 @@ different types:
 - [Alert Event Log](#alert-event-log).
 
 These logs are part of the standard Redfish
-[LogServiceCollection](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#logservicecollection)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "/#logservicecollection") %} LogServiceCollection {% /link-internal %}
 and spanning over the following URIs:
 
 - `/redfish/v1/Systems/1/LogServices` (IML, SL, Alert Event Log)
@@ -445,7 +445,7 @@ for more information on the AHS log.
 Active Health System (AHS) data may be accessed by first discovering
 the resource of type `HpeiLOActiveHealthSystem`. This is typically at
 `https://{iLO}/redfish/v1/managers/{item}/activehealthsystem/`. Refer to the
-[Resource Map](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_resmap{{process.env.LATEST_FW_VERSION}}/)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "/#logservicecollection") %} LogServiceCollection {% /link-internal %}
 section for confirmation of this URI.
 
 Perform a GET of the `HpeiLOActiveHealthSystem` resource and look for the
