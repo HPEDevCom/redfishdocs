@@ -5,7 +5,7 @@
 # to the new format:
 # {% link-internal href=concat("/docs/path/", $env.PUBLIC_VAR, "/#fragment",) %} text {% /link-internal %}
 #
-# Version 0.25
+# Version 0.26
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
@@ -35,7 +35,7 @@ do
   sed -i 's/^\(\[.*\](.*LATEST.*)\) /\1\n/g' $file
 
   # Create an array with the internal links lines.
-  # Elements are wrapped into double quotes.
+  # Array elements are wrapped into double quotes.
   lineList=($(awk '/^\[.*\](.*LATEST.*)$/ {print "\"" $0 "\"" }' $file))
 
   # Transform the space separators into commas and spaces into asterisks.
@@ -44,7 +44,7 @@ do
   # Remove the double quotes and transform the commas into spaces.
   lineList=($(echo ${lineList[@]} | tr ',' ' ' | tr -d \"))
 
-  # Process each linein the array 
+  # Process each element of the array 
   for l in "${lineList[@]}" ; do
     #echo -e "\tProcessing array element: $l ********\n"
 
@@ -52,6 +52,21 @@ do
     linkText="$(echo $l | grep -o "\[.*\]" | tr -d '[]' | tr '*' ' ')"
     #echo -e "\tLink text: $linkText\n"
     
+    # Extract the fragment, if any
+    fragment="$(echo $l | grep -o '#.*$' | tr -d ')')"
+    # If the fragment contains 'oemhpe', insert a dot before after oem and after hpe
+    if [[ $fragment == *oemhpe* ]]; then
+      fragment="$(echo $fragment | sed 's/oemhpe/oem.hpe./g')"
+      echo -e "\tFragment: $fragment\n"
+    fi
+    # If fragment exists, remove it from the link
+    echo -e "\tLink with fragment:    $l\n"
+    if [ -n "$fragment" ]; then
+      l="$(echo $l | sed "s/$fragment//g")"
+    fi
+    l="$(echo $l | sed "s/$fragment//g")"
+    echo -e "\tLink without fragment: $l\n"
+
     # Extract the link path
     linkPath="$(echo $l | grep -o "(.*LATEST.*)" | tr -d '()')"
     #echo -e "\tLink path: $linkPath\n"
@@ -100,6 +115,10 @@ do
     suffixArray=($(echo ${suffixArray[@]} | sed 's/VERSION_/VERSION, \"_\", /g'))
     #echo -e "\tSuffix array: ${suffixArray[@]}\n"
     
+    # Extract "_string"
+    string="$(echo ${suffixArray[@]} | sed -n 's/.*VERSION \(_.*\) \$env.*/\1/p')"
+    #echo -e "\tString: $string\n"
+    
     # Wrap "_string " with double quotes
     suffixArray=($(echo ${suffixArray[@]} | sed 's/VERSION _\(.*\) \$/VERSION, \"_\1\", \$/g'))
     #echo -e "\tSuffix array: ${suffixArray[@]}\n"
@@ -111,9 +130,10 @@ do
     # Create the new link
     newLink="{% link-internal href=concat(\"$prefix\", ${suffixArray[@]}) %} $linkText {% /link-internal %}"
     #echo -e "\tnewLink: $newLink\n"
-
-    # TBD Replace the old link with the new one in the file
-    sed -i "s|$l|$newLink|g" $file
+    #set -x
+    # Replace the old link with the new one in the file
+    sed -i "s|^\[$linkText\](.*LATEST.*${string}.*)|$newLink|g" $file
+    #set +x
   done
   
   echo -e "Done \n"
