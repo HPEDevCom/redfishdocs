@@ -5,6 +5,8 @@ markdown:
     depth: 2
   lastUpdateBlock:
     hide: false
+  breadcrumbs:
+    hide: true
 seo:
   title: Manager resource definitions
 ---

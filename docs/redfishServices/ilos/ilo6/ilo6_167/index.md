@@ -5,6 +5,8 @@ markdown:
     depth: 
   lastUpdateBlock:
     hide: true
+  breadcrumbs:
+    hide: true
 seo:
   title: HPE iLO 6 v1.67 reference documents
 ---

@@ -11,6 +11,8 @@ markdown:
     depth: 2
   lastUpdatedBlock:
     hide: false
+  breadcrumbs:
+    hide: true
 ---
 
 # Changelog

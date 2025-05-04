@@ -9,6 +9,8 @@ markdown:
     depth: 3
   lastUpdatedBlock:
     hide: true
+  breadcrumbs:
+    hide: true
 ---
 
 # Adapting from iLO 5

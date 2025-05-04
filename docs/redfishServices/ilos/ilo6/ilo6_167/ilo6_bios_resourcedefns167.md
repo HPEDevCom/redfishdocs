@@ -5,8 +5,11 @@ markdown:
     depth: 3
   lastUpdateBlock:
     hide: false
+  breadcrumbs:
+    hide: true
 seo:
   title: Bios resource definitions
+
 ---
 
 # Bios resource definitions of iLO 6 v1.67

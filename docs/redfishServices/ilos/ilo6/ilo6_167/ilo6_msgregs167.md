@@ -5,6 +5,8 @@ markdown:
     depth: 
   lastUpdateBlock:
     hide: false
+  breadcrumbs:
+    hide: true
 seo:
   title: iLO 6 v167 Error messages
 ---

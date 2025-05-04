@@ -5,6 +5,8 @@ markdown:
     depth: 
   lastUpdateBlock:
     hide: false
+  breadcrumbs:
+    hide: true
 seo:
   title: iLO 6 version 1.67 Resource map
 ---
