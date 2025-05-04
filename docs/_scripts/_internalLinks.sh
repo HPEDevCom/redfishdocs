@@ -11,8 +11,8 @@
 rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
-#mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/README.md" -not -path "*/.github/*")
-mdFileList="$rootDir/docs/internallinks.md ../redfishServices/ilos/supplementDocuments/tfa.md ../redfishServices/ilos/supplementDocuments/backupAndRestore.md ../redfishServices/ilos/supplementDocuments/logServices.md"
+mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/README.md" -not -path "*/.github/*")
+#mdFileList="$rootDir/docs/internallinks.md ../redfishServices/ilos/supplementDocuments/tfa.md ../redfishServices/ilos/supplementDocuments/backupAndRestore.md ../redfishServices/ilos/supplementDocuments/logServices.md"
 #mdFileList="../redfishServices/ilos/supplementDocuments/backupAndRestore.md ../redfishServices/ilos/supplementDocuments/logServices.md" 
 
 # Example of a target string:
@@ -60,25 +60,25 @@ do
     # Extract the fragment, if any
     fragment="$(echo $l | grep -o '#.*$' | tr -d ')')"
     oldFragment="$fragment"
-    echo -e "\tFragment: $fragment"
+    #echo -e "\tFragment: $fragment"
 
     # Wrap the fragment with double quotes
     if [ -n "$fragment" ]; then
       fragment="$(echo $fragment | sed 's/#\(.*\)/\"#\1\"/g')"
-      echo -e "\tWrapped Fragment: $fragment\n"
+      #echo -e "\tWrapped Fragment: $fragment\n"
     fi
 
     # If the fragment contains 'oemhpe', insert a dot before after oem and after hpe
     if [[ $fragment == *oemhpe* ]]; then
       fragment="$(echo $fragment | sed 's/oemhpe/oem.hpe./g')"
-      echo -e "\tOem Fragment: $fragment\n"
+      #echo -e "\tOem Fragment: $fragment\n"
     fi
 
     # If fragment is not empty, remove it from the link
     if [ -n "$oldFragment" ]; then
       l="$(echo $l | sed "s|$oldFragment||g")"
     fi
-    echo -e "\tLink without fragment: $l\n"
+    #echo -e "\tLink without fragment: $l\n"
 
     # Extract the link path
     linkPath="$(echo $l | grep -o "(.*LATEST.*)" | tr -d '()')"
