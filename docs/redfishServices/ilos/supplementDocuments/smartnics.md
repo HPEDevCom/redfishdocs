@@ -28,7 +28,7 @@ are presented in this paragraph.
 ### Properties
 
 The Nokia Cloud RAN SmartNIC card is modeled in the Redfish tree as a
-[Network Adapter](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#networkadapter)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_network_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#networkadapter") %} Network Adapter {% /link-internal %}
 contained in the main Chassis subsystem (`/redfish/v1/Chassis/1`).
 
 #### Getting properties
@@ -164,7 +164,7 @@ GET '/redfish/v1/Chassis/1/NetworkAdapters/?$expand=.' | \
   {% /tab %}
   {% /tabs %}
 As a PCIe device, the Nokia Cloud RAN SmartNIC card is a member of the
-[PCIeDevice Collection](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#pciedevicecollection)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#pciedevicecollection") %} PCIeDevice Collection {% /link-internal %}
 of the main chassis.
 
 The following example retrieves the PCIe properties of a Nokia Cloud RAN SmartNIC card.
@@ -207,7 +207,8 @@ GET /redfish/v1/Chassis/1/PCieDevices/?$expand=.' | \
   {% /tab %}
   {% /tabs %}
 The firmware properties of the Nokia Cloud RAN SmartNIC card can be retrieved from the
-Firmware Inventory URI of the `SoftwareInventory` [schema](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#softwareinventory)
+Firmware Inventory URI of the `SoftwareInventory`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#softwareinventory") %} schema {% /link-internal %}
 as shown in the following example.
 
 {% tabs %}
@@ -253,7 +254,7 @@ GET /redfish/v1/UpdateService/FirmwareInventory/?$expand=. | \
 
 Writeable properties can be modified with a PATCH request
 against the `NetworkAdapter/{item}`
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#resource-instances-1).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_network_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#resource-instances-1") %} URI {% /link-internal %}.
 The following example configures the Nokia SmartNIC card to boot from a specific Bank.
 
 {% admonition type="success" name="TIP" %}

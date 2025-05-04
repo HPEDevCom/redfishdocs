@@ -65,7 +65,7 @@ any operation to those devices.
 As mentioned in step 1 of the
 [Drive secure erase](/docs/redfishservices/ilos/supplementdocuments/storage/#drive-secure-erase)
 procedure below, the `Oem.Hpe.DeviceDiscoveryComplete.DeviceDiscovery`
-[property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_computersystem_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpedevicediscoverycomplete)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_computersystem_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.devicediscoverycomplete") %} property {% /link-internal %}
 should be equal to `vMainDeviceDiscoveryComplete` before any operation involving storage or network devices.
 
 Refer to this
@@ -1045,8 +1045,10 @@ curl --silent --insecure --location -u $User:password \
   {% /tabs %}
 {% admonition type="success" name="TIP" %}
 While the secure erase process is in progress, you can monitor its progress by
-monitoring the `Operations[]` [array](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#operations-array)
-and the `Status` [property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#status-3)
+monitoring the `Operations[]`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_storage_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#operations-array") %} array {% /link-internal %}
+and the `Status`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_storage_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#status-3") %} property {% /link-internal %}
 of the disks being erased.
 
 The following example retrieves the `Operations[]` array and the drives status property using iLOrest and cURL.
