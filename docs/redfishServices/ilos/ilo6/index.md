@@ -24,7 +24,9 @@ The [Changelog](/docs/redfishservices/ilos/ilo6/ilo6_changelog/) section contain
 
 ## Reference documents
 
-HPE iLO Redfish [reference documents](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/) contains all the needed API information related to published iLO firmware versions, for writing efficient Redfish clients.
+HPE iLO Redfish
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION) %} reference documents {% /link-internal %}
+contains all the needed API information related to published iLO firmware versions, for writing efficient Redfish clients.
 
 ## Supplement documents
 

@@ -18,7 +18,7 @@ in this section are not implemented in HPE iLO 4 and iLO 5.
 {% /admonition %}
 
 The `HpeSecurityService`
-[subsystem](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesecurityservice)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpesecurityservice") %} subsystem {% /link-internal %}
 is the main entry point to the different security mechanisms protecting
 the iLO and the platform (chassis and components).
 
@@ -33,7 +33,7 @@ and the [Secure Boot Databases](/docs/concepts/securebootdatabases/) sections.
 ## iLO Security State
 
 Starting with HPE iLO 5, the `SecurityState`
-[property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#securitystate)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#securitystate") %} property {% /link-internal %}
 can be modified. The following example retrieves the possible values
 from an HPE iLO 5 or 6 and an HPE iLO 7, using
 [HPE iLOrest](/docs/redfishclients/ilorest-userguide) and cURL Redfish clients.
@@ -173,7 +173,8 @@ POSSIBLE VALUES
   {% /tabs %}
 {% admonition type="info" name="NOTES" %}
 
-- You may PATCH the `SecurityState` [property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#securitystate),
+- You may PATCH the `SecurityState`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#securitystate") %} property {% /link-internal %},
   but HPE iLO
   enforces strict limitations on how security states can transition.
   Any unsupported transition results in an error. Refer to the next
@@ -296,24 +297,25 @@ This paragraph concerns only HPE iLO 5 and iLO 6. Refer to the
 [next paragraph](#transitioning-to-hpe-ilo-7) for [in-band management](../vnic/#in-band-management) of HPE iLO 7 and later.
 
 With iLO 5 and 6 in `Production`
-[security state](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#securitystate),
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_hpe_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/#securitystate") %} security state {% /link-internal %},
 privileged OS users (i.e. root, Administrator)
 can communicate with their local iLO ([in-band management](../vnic/#in-band-management)) via the
 [Channel Interface (CHIF)](/docs/etc/glossaryterms/)
 without supplying any credential, only
 when the `RequireHostAuthentication`
-[property](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_manager_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#oemhperequirehostauthentication) is set to `False` (default value).
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "ilo6_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#oem.hpe.requirehostauthentication") %} property {% /link-internal %}
+is set to `False` (default value).
 
 With iLO 5 and 6 in `HighSecurity`
-[state](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#securitystate),
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "ilo6_hpe_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#securitystate") %} state {% /link-internal %},
 privileged OS users
 (i.e. root, Administrator) can communicate with their local iLO via [CHIF](/docs/etc/glossaryterms/)
 without supplying any credential when the `RequireHostAuthentication`
-[property](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_manager_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#oemhperequirehostauthentication)
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "ilo6_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#oem.hpe.requirehostauthentication") %} property {% /link-internal %}
 is set to `False`.
 
 With iLO 5 and 6 in `FIPS`
-[security state](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#securitystate)
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "ilo6_hpe_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#securitystate") %} security state {% /link-internal %}
  and higher, all OS users must provide
 valid credentials when willing to communicate with local iLO (in-band) via
 [CHIF](/docs/etc/glossaryterms/)
@@ -321,16 +323,19 @@ valid credentials when willing to communicate with local iLO (in-band) via
 {% admonition type="info" name="NOTES" %}
 
 - In `FIPS` security state, the `RequireHostAuthentication`
-  [property](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_manager_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#oemhperequirehostauthentication)
+ 
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "ilo6_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#oem.hpe.requirehostauthentication") %} property {% /link-internal %}
   is set to `true` and cannot be modified.
 - The HPE OEM `RequireHostAuthentication`
-  [property](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#securitystate) has been removed in HPE iLO 7.
+ 
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#securitystate") %} property {% /link-internal %}
+has been removed in HPE iLO 7.
   Refer to the [next paragraph](#transitioning-to-hpe-ilo-7) for more info concerning HPE iLO 7.
 
 {% /admonition %}
 
 In iLO 5 and 6 based servers, regardless the value of the
-[security state](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#securitystate), OS users must
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "ilo6_hpe_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#securitystate") %} security state {% /link-internal %}, OS users must
 supply valid credentials when willing to communicate with local iLO (in-band) via
 the [Virtual NIC](../vnic).
 
@@ -532,7 +537,7 @@ This is not the case with iLO 5 and iLO 6 as explained [above](#in-band-manageme
 In addition to the removal of the [CHIF](/docs/etc/glossaryterms.md)
 between OS and iLO 7 (and later),
 the `RequireHostAuthentication`
-[property](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#securitystate)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#securitystate") %} property {% /link-internal %}
 has also been removed.
 
 {% /admonition %}
@@ -555,7 +560,9 @@ In order to provide those applications an in-band access to iLO without any
 human interaction and without the need for retrieving
 credentials from unsecure locations, a companion application account and an associated application token can be created
 during the application installation or at a later time. Application accounts are slightly different from iLO user
-accounts. This is why they are described in a specific [HPE OEM schema](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeiloappaccount). Application tokens are securely stored in the Truted Platform Module (TPM) of the server.
+accounts. This is why they are described in a specific
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeiloappaccount") %} HPE OEM schema {% /link-internal %}.
+Application tokens are securely stored in the Truted Platform Module (TPM) of the server.
 
 {% admonition type="info" name="NOTES" %}
 
@@ -581,9 +588,10 @@ With this process, host applications don't need to wait for a human being or
 to fetch iLO user credentials from an insecure location to authenticate and create a Redfish session.
 
 Application accounts are listed in the standard `ManagerAccountCollection`
-[collection](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#manageraccountcollection).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#manageraccountcollection") %} collection {% /link-internal %}.
 Application accounts are modeled in the OEM `HpeiLOAppAccount`
-[extension](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeiloappaccount) schema.
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeiloappaccount") %} extension {% /link-internal %}
+schema.
 
 The following example retrieves the collection of application accounts
 present in a remote HPE iLO 7.
@@ -686,7 +694,7 @@ curl --insecure --silent --location -u ilo-user:password \
 {% admonition type="info" name="NOTE" %}
 The `privileges` object present in the Response tabulation of the previous example,
 has been inherited from the
-[OEM account privileges](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpeprivileges)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.privileges") %} OEM account privileges {% /link-internal %}
 of the iLO user whose credentials have been used to create this application account.
 
 Refer to the [next paragraph](#installing-hpe-host-applications)
