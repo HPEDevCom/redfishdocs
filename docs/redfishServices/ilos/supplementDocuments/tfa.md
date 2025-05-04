@@ -36,10 +36,10 @@ Prior to the TFA enablement the following pre-requisites are mandatory:
 - Microsoft Active Directory users eligible for logging in via TFA must
     have a valid email address configured within Microsoft Active Directory.
 - HPE iLO must be properly configured for sending mails via the SMTP
-    configured server. Refer to the
-    [Manager Network Protocol](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#oemhpealertmailenabled)
-    section for the different properties related to the mail
-    and alert configuration.
+  configured server. Refer to the
+  {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#oem.hpe.alertmailenabled") %} Manager Network Protocol {% /link-internal %}
+  section for the different properties related to the mail
+  and alert configuration.
 
 The following example shows a typical iLO Microsoft Active Directory
 configuration suitable for TFA.
@@ -218,7 +218,7 @@ UserPrincipalName : ilo_admin@lj.lab
 If the `mail` property of a Microsoft Active Directory user is empty,
 trying to log into iLO with this username, returns a `409 Conflict` status
 error with a "MailNotConfigured"
-[error response](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_ILO6_FW_VERSION}}/).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_ILO6_FW_VERSION) %} error response {% /link-internal %}.
 {% /admonition %}
 
 ## Enabling Two Factor Authentication
@@ -227,10 +227,10 @@ To enable TFA in an HPE iLO management controller, the above pre-requisites
 must be met and the following actions must be performed in that order:
 
 1. Set
-    [SMTPForTFAEnabled](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#oemhpesmtpfortfaenabled)
-    to `true`
+   {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#oem.hpe.smtpfortfaenabled") %} SMTPForTFAEnabled {% /link-internal %}
+   to `true`
 2. Set
-   [TwoFactorAuth](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#oemhpetwofactorauth)
+   {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#oem.hpe.twofactorauth") %} TwoFactorAuth {% /link-internal %}
    to `Enabled`
 
 The following example configures `SMTPForTFAEnabled` for TFA:
@@ -338,8 +338,8 @@ ilorest logout
     `401` Unauthorized `No Valid Session` response.
 - If you configure `SMTPForTFAEnabled` to `false` when `TwoFactorAuth`
     is enabled, then `TwoFactorAuth` is automatically disabled.
-- You receive a "PropertyValueIncompatible"
-    [response message](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_ILO6_FW_VERSION}}/) when you:
+- You receive a `PropertyValueIncompatible` response message
+ when you:
   - enable `TwoFactorAuth` when `SMTPForTFAEnabled` is set to `false`
   - enable `TwoFactorAuth` when `LDAPAuthenticationMode` is not
     properly configured
@@ -391,13 +391,14 @@ X-XSS-Protection: 1; mode=block
   
   {% /tab %}
   {% /tabs %}
+
 ## Creating a User Session with TFA
 
 When TFA is enabled and the Microsoft Active Directory user credentials
 are provided in the body of a
 [session creation](/docs/concepts/redfishauthentication/#session-authentication)
 request, a `OneTimePasscodeSent`
-[response message](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_ILO6_FW_VERSION}}/)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_ILO6_FW_VERSION) %} response message {% /link-internal %}
 is returned and an One Time Password (OTP) is sent to the configured
 Microsoft Active Directory user email.
 
@@ -440,6 +441,7 @@ POST /redfish/v1/Sessions
   
   {% /tab %}
   {% /tabs %}
+
 To perform the TFA the Redfish client needs to get the OTP from the mail
 sent to the Microsoft Active Directory user and provide it in the payload
 of a second POST request toward `/redfish/v1/Sessions` as a `Token` property,

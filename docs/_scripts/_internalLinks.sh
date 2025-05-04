@@ -5,14 +5,15 @@
 # to the new format:
 # {% link-internal href=concat("/docs/path/", $env.PUBLIC_VAR, "/#fragment",) %} text {% /link-internal %}
 #
-# Version 0.26
+# Version 0.27
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
 #mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/README.md" -not -path "*/.github/*")
-mdFileList="$rootDir/docs/internallinks.md ../redfishServices/ilos/supplementDocuments/tfa.md ../redfishServices/ilos/supplementDocuments/backupAndRestore.md ../redfishServices/ilos/supplementDocuments/logServices.md" 
+mdFileList="$rootDir/docs/internallinks.md ../redfishServices/ilos/supplementDocuments/tfa.md ../redfishServices/ilos/supplementDocuments/backupAndRestore.md ../redfishServices/ilos/supplementDocuments/logServices.md"
+#mdFileList="../redfishServices/ilos/supplementDocuments/backupAndRestore.md ../redfishServices/ilos/supplementDocuments/logServices.md" 
 
 # Example of a target string:
 target='"/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "/logservicecollection'
@@ -52,19 +53,31 @@ do
     linkText="$(echo $l | grep -o "\[.*\]" | tr -d '[]' | tr '*' ' ')"
     #echo -e "\tLink text: $linkText\n"
     
+    # Remove line trailing dot if any
+    l="$(echo $l | sed 's/\.$//g')"
+
+    echo -e "\tLink with fragment: $l\n"
     # Extract the fragment, if any
     fragment="$(echo $l | grep -o '#.*$' | tr -d ')')"
+    oldFragment="$fragment"
+    echo -e "\tFragment: $fragment"
+
+    # Wrap the fragment with double quotes
+    if [ -n "$fragment" ]; then
+      fragment="$(echo $fragment | sed 's/#\(.*\)/\"#\1\"/g')"
+      echo -e "\tWrapped Fragment: $fragment\n"
+    fi
+
     # If the fragment contains 'oemhpe', insert a dot before after oem and after hpe
     if [[ $fragment == *oemhpe* ]]; then
       fragment="$(echo $fragment | sed 's/oemhpe/oem.hpe./g')"
-      echo -e "\tFragment: $fragment\n"
+      echo -e "\tOem Fragment: $fragment\n"
     fi
-    # If fragment exists, remove it from the link
-    echo -e "\tLink with fragment:    $l\n"
-    if [ -n "$fragment" ]; then
-      l="$(echo $l | sed "s/$fragment//g")"
+
+    # If fragment is not empty, remove it from the link
+    if [ -n "$oldFragment" ]; then
+      l="$(echo $l | sed "s|$oldFragment||g")"
     fi
-    l="$(echo $l | sed "s/$fragment//g")"
     echo -e "\tLink without fragment: $l\n"
 
     # Extract the link path
@@ -106,7 +119,6 @@ do
     suffixArray=($(echo ${suffixArray[@]} | sed 's/PUBLIC/\$env.PUBLIC/g'))
     #echo -e "\tSuffix array: ${suffixArray[@]}\n"
 
-
     # Insert ', "/", between variables'
     suffixArray=($(echo ${suffixArray[@]} | sed 's?VERSION \$env?VERSION, "/", \$env?g'))
     #echo -e "\tSuffix array: ${suffixArray[@]}\n"
@@ -123,13 +135,13 @@ do
     suffixArray=($(echo ${suffixArray[@]} | sed 's/VERSION _\(.*\) \$/VERSION, \"_\1\", \$/g'))
     #echo -e "\tSuffix array: ${suffixArray[@]}\n"
 
-    # Wrap fragement with double quotes
-    suffixArray=($(echo ${suffixArray[@]} | sed 's?VERSION #\(.*\)?VERSION, \"/#\1\"?g'))    
-    #echo -e "\tSuffix array: ${suffixArray[@]}\n"
-
-    # Create the new link
-    newLink="{% link-internal href=concat(\"$prefix\", ${suffixArray[@]}) %} $linkText {% /link-internal %}"
-    #echo -e "\tnewLink: $newLink\n"
+    # Create the new link when fragment
+    if [ -n "$fragment" ]; then
+      newLink="{% link-internal href=concat(\"$prefix\", ${suffixArray[@]}, ${fragment}) %} $linkText {% /link-internal %}"
+    else
+      newLink="{% link-internal href=concat(\"$prefix\", ${suffixArray[@]}) %} $linkText {% /link-internal %}"
+    fi
+    echo -e "\tnewLink: $newLink\n"
     #set -x
     # Replace the old link with the new one in the file
     sed -i "s|^\[$linkText\](.*LATEST.*${string}.*)|$newLink|g" $file
