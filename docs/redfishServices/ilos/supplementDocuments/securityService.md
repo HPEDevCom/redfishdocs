@@ -1,13 +1,14 @@
 ---
-seo:
-  title: HPE iLO security service
-sidebar:
-  hide: false
 markdown:
   toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
     hide: false
-  lastUpdatedBlock:
-    hide: false
+breadcrumbs:
+  hide: true
+seo:
+  title: HPE iLO security service
 ---
 
 ## HPE security service
