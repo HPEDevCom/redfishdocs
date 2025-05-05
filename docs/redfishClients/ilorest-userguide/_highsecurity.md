@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: true
 seo:
   title: Setting iLO in high security modes
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: true
 ---
 
 # Setting iLO in high security modes

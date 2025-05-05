@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: When things go wrong
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # When Things Go Wrong

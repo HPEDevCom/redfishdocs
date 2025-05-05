@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: true
 seo:
   title: iLOrest installation
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: true
 ---
 
 # HPE iLOrest installation procedure

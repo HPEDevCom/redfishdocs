@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: true
 seo:
   title: Using the RESTful Interface tool
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: true
 ---
 
 # Using the RESTful Interface Tool

@@ -1,9 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Error Codes
-toc:
-  enable: false
-disableLastModified: false
 ---
 
 # Error Codes

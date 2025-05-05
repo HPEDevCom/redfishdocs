@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: true
 seo:
   title: Advanced Options
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: true
 ---
 
 # Advanced Options

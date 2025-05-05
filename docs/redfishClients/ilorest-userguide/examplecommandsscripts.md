@@ -1,10 +1,14 @@
-﻿---
+---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Use case examples and macro commands
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Use Case Examples and Macro Commands

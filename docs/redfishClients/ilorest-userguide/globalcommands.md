@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Global commands and optional arguments
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Global commands and optional arguments
