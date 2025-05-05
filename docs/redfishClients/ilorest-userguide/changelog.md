@@ -5,6 +5,11 @@ markdown:
     depth: 2
   lastUpdateBlock:
     hide: false
+breadcrumbs:
+  hide: false
+  prefixItems:
+    - page: changelog.md
+      label: Clients / iLOrest user guide
 seo:
   title: iLOrest changelog
 ---

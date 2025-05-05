@@ -8,6 +8,8 @@ markdown:
     hide: true
   lastUpdatedBlock:
     hide: true
+breadcrumbs:
+  hide: true
 ---
 
 # HPE iLOrest Overview

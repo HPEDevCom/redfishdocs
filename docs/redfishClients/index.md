@@ -8,6 +8,8 @@ markdown:
     hide: true
   lastUpdatedBlock:
     hide: true
+breadcrumbs:
+  hide: false
 ---
 
 # HPE Redfish clients overview

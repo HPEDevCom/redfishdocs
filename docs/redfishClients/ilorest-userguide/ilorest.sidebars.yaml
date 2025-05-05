@@ -1,4 +1,5 @@
-
+- label: Back to Redfish clients
+  href: /docs/redfishclients
 
 - separatorLine: true
 - separator: iLOrest user guide
@@ -8,5 +9,3 @@
   page: changelog.md
 
 - separatorLine: true
-- label: Back to Redfish clients
-  page: /docs/redfishClients/index.md  

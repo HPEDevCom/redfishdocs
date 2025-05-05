@@ -1,4 +1,12 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: HPE iLO 7 v1.11 reference documents
 ---
