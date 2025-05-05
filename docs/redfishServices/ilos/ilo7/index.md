@@ -23,7 +23,9 @@ The [Changelog](/docs/redfishservices/ilos/ilo7/ilo7_changelog/) section contain
 
 ## Reference documents
 
-HPE iLO Redfish [reference documents](/docs/redfishservices/ilos/ilo7/ilo7_{{process.env.LATEST_ILO7_FW_VERSION}}/) contains all the needed API information related to published iLO firmware versions, for writing efficient Redfish clients.
+HPE iLO Redfish
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo7/ilo7_", $env.PUBLIC_LATEST_ILO7_FW_VERSION) %} reference documents {% /link-internal %}
+contains all the needed API information related to published iLO firmware versions, for writing efficient Redfish clients.
 
 ## Supplement documents
 
