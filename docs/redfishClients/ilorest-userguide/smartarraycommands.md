@@ -13,7 +13,7 @@ seo:
 
 # Storage commands for RDE capable devices
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - This section applies for HPE Gen10 and later servers.
 - This section contains commands for managing
@@ -23,9 +23,9 @@ capable storage devices only (MR, SR, NS...).
 use the `select type/get/set` paradigm or
 [raw](/docs/redfishclients/ilorest-userguide/rawcommands/) commands.
 
-:::
+{% /admonition %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Properties of [PLDM for RDE](/docs/etc/glossaryterms/)
 capable devices can only be accessed
 when the discovery of all devices
@@ -38,7 +38,7 @@ or `FinishedPost`
 - `ilorest get Oem/Hpe/DeviceDiscoveryComplete/DeviceDiscovery --select ComputerSystem.`
 should return: `vMainDeviceDiscoveryComplete`
 
-:::
+{% /admonition %}
 
 ## Storagecontroller command (former smartarray command)
 
@@ -761,7 +761,7 @@ Discovering data...Done
 ilorest > createvolume volume RAID1 2:3:4,2:3:8 --DisplayName Name1 --iOPerfModeEnabled False --ReadCachePolicy ReadAhead --WriteCachePolicy ProtectedWriteBack --WriteHoleProtectionPolicy Yes --capacitygib 1000 --controller=0 --storageid=DE00C000
 ```
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - If JBOD volumes are created by default in some controllers, these would be deleted when creating RAID volumes.
 - HPE iLO 6 onwards, there is no need to reboot after creating a volume.
@@ -772,7 +772,7 @@ ilorest > createvolume volume RAID1 2:3:4,2:3:8 --DisplayName Name1 --iOPerfMode
 If the drives are not present after a full reboot,
 run the results command to check for errors in the configuration.
 
-:::
+{% /admonition %}
 
 ## Deletevolume Command (former deletelogicaldrive command)
 
@@ -987,11 +987,11 @@ Clears specific controller configuration. This command does not reset
 the entire device to factory settings. It can be used for
 reconfiguring or troubleshooting.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 <a href="https://www.hpe.com/psnow/doc/a50006146enw?from=app&section=search&isFutureVersion=true"
 target="_blank">Broadcom MegaRaid MR controllers</a>
 for Gen11 servers don't support this command.
-:::
+{% /admonition %}
 ### Parameters
 
 - **-h, --help**

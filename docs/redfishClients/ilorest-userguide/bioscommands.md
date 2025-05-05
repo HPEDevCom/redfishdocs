@@ -84,21 +84,21 @@ to custom user defaults. The `--mananufacturingdefaults`
 parameter sets both Bios attributes and OEM Bios resources
 to factory/manufacturing defaults.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Refer to the
 [HPE BIOS](/docs/redfishservices/ilos/supplementdocuments/biosdoc/)
 section for advance
 detail concerning default **Bios attributes** and **OEM Bios resources**.
-:::
+{% /admonition %}
 
 Run with no parameter, the command resets Bios attributes to
 factory defaults. OEM Bios resources are not modified.
 A server reset is required to take this action into effect.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Use the [pending command](/docs/redfishclients/ilorest-userguide/ilocommands/#pending-command) to view the attributes
 that will be reset after next reboot.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -112,10 +112,10 @@ Select this flag to input a BIOS password. Include this
 flag if second-level BIOS authentication is needed for
 the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This flag is used only on iLO 4 based systems and not
 required on iLO 5 and iLO 6 based systems.
-:::
+{% /admonition %}
 
 - **--reboot=REBOOT**
 
@@ -137,10 +137,10 @@ Sets Bios attributes **and** OEM Bios resources to
 [manufacturing/factory](/docs/redfishservices/ilos/supplementdocuments/biosdoc/#reset-bios-attributes-and-hpe-bios-resources)
 defaults.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Use the [pending command](/docs/redfishclients/ilorest-userguide/ilocommands/#pending-command)
 to view the attributes that will be reset after next reboot.
-:::
+{% /admonition %}
 
 ### Login Parameters
 
@@ -173,9 +173,9 @@ local mode.
 
 ### Examples
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Changes are not applied until the system is reset.
-:::
+{% /admonition %}
 
 ```shell Reset of Bios attributes to factory default
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -245,9 +245,9 @@ while others will be reflected the next time the server is started.
 Select this flag to input a BIOS password. Include this
 flag if second-level BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This flag is used only on iLO 4 systems and not required on iLO 5 systems.
-:::
+{% /admonition %}
 
 - **--reboot=REBOOT**
 
@@ -485,9 +485,9 @@ Select this flag to input a BIOS password.
 Include this flag if second-level BIOS
 authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This flag is used only on iLO 4 systems.
-:::
+{% /admonition %}
 
 - **--reboot=REBOOT**
 

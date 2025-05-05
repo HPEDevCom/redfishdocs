@@ -35,10 +35,10 @@ iLO commands that are supported for a specific HPE server generation:
 
 The `appaccount` command offers options to create and delete [application accounts](/docs/redfishservices/ilos/supplementdocuments/securityservice/#transitioning-to-hpe-ilo-7). Additionally, it allows you to verify the existence and retrieve the details of all application accounts.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 - This command is can only be successfully executed from the operating system of an iLO 7 (or later) based system, with its Virtual NIC fully operational.
 - Recreate the Application account if the OS is changed from Linux/Windows to Esxi or Vice-Versa.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -74,19 +74,19 @@ corresponding embedded help syntax.
   5. `ilorest appaccount details --only_account --hostappid <app_id>`  
      Retrieves only the application account details stored in iLO for the host application associated with `<app_id>`. 
 
- :::info NOTE
+ {% admonition type="info" name="NOTE" %}
 
  You can add `-j`/`--json` along with all versions of details command in order change the displayed output to JSON format.
- ::: 
+ {% /admonition %}
 
 ### Examples
 
 The examples mentioned in this paragraph supposes the use of iLOrest version 6.0.0.0 (or later) installed in an iLO 7 (or later) based HPE server. In addition, the [Virtual NIC](/docs/redfishservices/ilos/supplementdocuments/vnic/) interface must be enabled and fully functional in both the operating system and the underlying iLO.
 
 If iLOrest has been installed without the creation of its associated application account, it is possible to create it with the following command.
-:::success TIP
+{% admonition type="success" name="TIP" %}
 The [application account privileges](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-account-privileges) section provides the minimum privileges associated the `ilorest-userapp` user mentioned in the following example.
-:::
+{% /admonition %}
 
 
 ```shell
@@ -104,10 +104,10 @@ Application account has been deleted successfully.
 ```
 To delete the application account for a specific host application, execute the `appaccount delete` command with the `--hostappid` parameter, followed by the last four digits of the application ID, along with the `-u` and `-p` parameters.
 
-:::success TIPS
+{% admonition type="success" name="TIPS" %}
 - The last four digits of host application account IDs can be retrieved with the `ilorest appaccount details --hostappid all` command
 - The ilorest-userapp mentioned in the following example must have the minimum privileges mentioned in this [paragraph](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-account-privileges).
-:::
+{% /admonition %}
 
 ```shell
  ilorest appaccount delete --hostappid 72db -u ilorest-userapp -p passx
@@ -184,7 +184,7 @@ App account exists in iLO: yes
 
 Backup and restore iLO to a server using a `.bak` backup file.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this command to only restore the machine from which the backup
 file was created.
 
@@ -192,7 +192,7 @@ To apply one configuration in multiple systems, refer to
 the `serverclone` [command](#serverclone-command).
 
 This command is available only in remote mode.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -339,12 +339,12 @@ Upload a system PlatformCert certificate.
 
 Specify a URL as the source of the import.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 A certificate must be imported from a file or from a URL
 (only supported for TLS/SSL certificates).
 
-:::
+{% /admonition %}
 
 **_Export Arguments_**
 
@@ -440,7 +440,7 @@ ilorest certificate csr "Hewlett Packard Enterprise" "ILORestGroup" "iLOrest" "U
 The operation completed successfully.
 ```
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - Please make sure the order of arguments is correct.
   The parameters are extracted based on their position in the arguments list.
@@ -452,7 +452,7 @@ The operation completed successfully.
   "iLOrest Group" "CName" "United States" "Texas" "Houston" False
 - Platform certificates are specific to diagnostic usage purposes.
 
-:::
+{% /admonition %}
 
 To retrieve an HTTP TLS/SSL certificate signing request
 use the `getcsr --TLS_CERT` argument. The default
@@ -474,7 +474,7 @@ ilorest certificate import --tls_cert certfile.txt
 The operation completed successfully.
 ```
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 With iLO 5 firmware 2.78 and later or iLO 6 firmware 1.30 and later,
 it is possible to import/upload into iLO, a file containing an https
@@ -492,7 +492,7 @@ Use the following process:
    command (see example  above) to upload the combined file to the iLO(s).
 5. Wait for the iLO(s) to reset.
 
-:::
+{% /admonition %}
 
 To import a CA certificate, use the `import --ca_cert`
 argument followed by a file containing the certificate.
@@ -613,11 +613,11 @@ Clears the persistent RESTful API state.
 Generally not needed and shouldn't be done
 unless there are issues viewing info, setting, or committing data.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 Some types such as Bios, Icsci, and SmartStorageConfig
 will not be available until a system reboot occurs after
 running this command.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -663,7 +663,7 @@ ilorest clearrestapistate
 The operation completed successfully.
 ```
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 Pending iLO configuration settings are stored in volatile memory.
 If `clearrestapistate` is utilized prior to a requested reboot or iLO reset,
@@ -671,7 +671,7 @@ provider data be purged and the handover of updated configuration data
 to the relevant firmware controller will not be made as anticipated
 during POST or upon iLO reset.
 BIOS, SmartArray and ethernet management NICs are all potentially affected.
-:::
+{% /admonition %}
 
 ## Computeopsmanagement Command
 
@@ -754,13 +754,13 @@ have no effect.
 To enable your servers to be discovered,
 monitored and managed through Compute Ops Management.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The activation key needed to connect to COM
 is the customer account ID of HPE GreenLake.
 
 Obtain the account ID by visiting the
 HPE GreenLake portal -> Manage -> Account Details card.
-:::
+{% /admonition %}
 
 ```shell computeopsmanagement
 
@@ -817,9 +817,9 @@ Oem=
 
 This command returns the generation of the underlying iLO or a remote iLO.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `detectilo` command can be launched without being formerly logged into a specific iLO (local or remote). The reason is because the `ManagerType` [property](/docs/redfishservices/ilos/ilo5/ilo5_309/ilo5_serviceroot_resourcedefns309/) is part of the `ServiceRoot` Redfish schema that does not require any [authentication](/docs/concepts/redfishauthentication/#redfish-authentication-and-sessions).
-:::
+{% /admonition %}
 
 
 ### Parameters
@@ -899,9 +899,9 @@ iLO Type: 5
 
 This command resets the [CHIF](/docs/etc/glossaryterms/) channels between the operating system and the underlying iLO of the current logged in server.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This command is applicable only for in-band (local) management of iLO 5 and iLO 6 based servers.
-:::
+{% /admonition %}
 
 You can use this command when you hit [error 71](/docs/redfishclients/ilorest-userguide/errors/), to reset CHIF channels, before restarting a CHIF session with underlying iLO.
 
@@ -997,10 +997,10 @@ Use this option to add or remove search strings for generic LDAP services.
 
 Use this option to add or remove Role Mapping(s) for the LDAP services.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 When adding role map, SID is optional.
-:::
+{% /admonition %}
 
 - **-j, --json**
 
@@ -1089,12 +1089,12 @@ authentication schema (`--authentication`), and/or search strings
 Authentication schema and search strings can only be used with the
 LDAP directory.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The `--addsearch` value needs to be double quoted in order to escape
 the semicolon character (;) from its potential shell command separator
 meaning.
-:::
+{% /admonition %}
 
 ```shell
 ilorest directory ldap --serviceaddress x.x.y.z --addsearch "string3;string4" --authentication=ExtendedSchema --port 199
@@ -1272,12 +1272,12 @@ Notes:
 
 ```
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 To change settings, you must first enable the directory.
 You can use the `--enable` option to enable a directory
 in the same command as settings are set.
-:::
+{% /admonition %}
 
 When creating custom local roles use the following numbers
 to specify privileges.
@@ -1312,15 +1312,15 @@ LOCAL ROLES:
 ### Description
 Disable iLO functionality on the current logged in server.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 Add the --force flag to ignore critical task checking before disabling iLO.
-:::
+{% /admonition %}
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 This will render iLO unable to respond to network operations
 and Redfish will be unavailable until iLO functionality is restored.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -1448,7 +1448,7 @@ of a server, as well as various iLO resources like
 [NTP servers](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#ntpservers-array)
 and [time zone](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#timezone).
 
-:::info Note
+{% admonition type="info" name="Note" %}
 
 Although some network adapters are able to communicate with the Ethernet protocol,
 the DMTF distinguishes the `EthernetInterface`
@@ -1461,7 +1461,7 @@ Use the global `get`, `list` and `set`
 [commands](/docs/redfishclients/ilorest-userguide/globalcommands/)
 to manage network adapters.
 
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -1476,13 +1476,13 @@ on standard output (stdout) in a non-JSON format.
 Save the ethernet interfaces and manager properties in a JSON formatted file.
 The default output filename is `eth.json` in the local folder.
 
-:::success Tip
+{% admonition type="success" name="Tip" %}
 
 You can edit this file at will and use the
 `ethernet load` command to load it in a
 compatible system.
 
-:::
+{% /admonition %}
 
 - **Load**
 
@@ -1490,12 +1490,12 @@ Load ethernet interfaces and iLO properties from
 a file generated by the `ethernet save` command.
 The default input filename is `eth.json` in the local folder.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Use the `--force_network_config` to force
 the load of network configuration.
 
-:::
+{% /admonition %}
 
 ### Optional parameters
 
@@ -1558,7 +1558,7 @@ Provide a list of network settings in a comma separated list.
 Avoid space characters in the list. Perform an **iLO reset** to modify effectively the supplied
 parameters.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 
 Upon reset, open sessions (GUI, rest) are closed abruptly. You need to reconnect using the
 network information present in the `--network_ipv4` .
@@ -1567,7 +1567,7 @@ Errors in the `Gateway` or `SubnetMask` may prevent you to reconnect.
 
 Read these [best practices](/docs/redfishclients/ilorest-userguide/examplecommandsscripts/#network-configuration-best-practices)
 before modifying the iLO IP network configuration.
-:::
+{% /admonition %}
 
 ### Examples
 
@@ -1620,7 +1620,7 @@ ilorest iloreset
 A management processor reset is in progress.
 ```
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 To be able to recover in case of a network misconfiguration,
 save the IPv6 link-local or MAC address
@@ -1628,7 +1628,7 @@ as explained in this
 [best practice](/docs/redfishclients/ilorest-userguide/examplecommandsscripts/#network-configuration-best-practices)
 paragraph.
 
-::::
+{% /admonition %}
 
 ## Factorydefaults Command
 
@@ -1685,12 +1685,12 @@ Current session will be terminated.
 The operation completed successfully.
 ```
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 This command will erase all iLO user setting data and reset iLO.
 Default credentials are required to access iLO after a factory reset.
-:::
+{% /admonition %}
 
-:::success Tip
+{% admonition type="success" name="Tip" %}
 To reset ilO to factory defaults, the `factorydefaults` command performs an `HpeiLO.ResetToFactoryDefaults`
 [action](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions),
 consisting of a POST request toward `/redfish/v1/Managers/1/Actions/Oem/Hpe/HpeiLO.ResetToFactoryDefaults/`
@@ -1698,7 +1698,7 @@ with the following body: `{"Action": "HpeiLO.ResetToFactoryDefaults", "ResetType
 
 Other HPE Actions can be listed with a GET request toward
 `{{BmcURL}}/redfish/v1/Managers/{{ManagerId}}/?$select=Oem/Hpe/Actions`
-:::
+{% /admonition %}
 
 ## Firmwareupdate Command
 
@@ -1713,13 +1713,13 @@ iLO must be able to access the URI for update to
 complete successfully. This command only supports
 firmware with a `.bin` extension.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The firmware update command is only supported
 in <b>iLO 4 2.20</b> or higher. And only iLO
 firmware and UEFI firmware are supported.
 Smart Components are not supported.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -1776,10 +1776,10 @@ To update firmware specify the URI location of the firmware.
 iLO will then gather the file and flash it. The user will be
 logged out after firmware update completes successfully.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 iLO does not always reset after a firmware update.
-:::
+{% /admonition %}
 
 ```shell
 ilorest firmwareupdate https://firmwarehost/path/to/firmware/file.fwpkg
@@ -1898,34 +1898,35 @@ and modifies iLO account privileges.
   - ReadOnly
   - Operator
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 By default, only login privilege is added to the newly created
 account with role "ReadOnly" in iLO 5 and no privileges in iLO 4.
 To modify these privileges, you can remove properties that would
 be set by using -`-removeprivs` or you can directly set which privileges are
 given using `--addprivs`.
-:::
+{% /admonition %}
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 Please make sure the order of arguments is correct. The
 parameters are extracted based on their position in the arguments list.
 Only privileges available to the logged in account can be set to the new
 account.
-:::
+{% /admonition %}
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 Account credentials are case-sensitive.
- 
-:::
 
-::: info NOTES  
+{% /admonition %}
+
+{% admonition type="info" name="NOTE" %}
+
 Redfish sessions created with an application account don't have the `UserConfigPriv` [privilege](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-account-privileges).
 As a result, iLO accounts cannot be added, modified, or deleted within these sessions.  
-:::  
+{% /admonition %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 When executing the command `iloaccounts add` in a
 Linux machine, an escape character needs to be
@@ -1933,7 +1934,7 @@ added before special characters of the password.
 
 Example: `iloaccount add rest rest 12iso\$help`
 
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -2184,11 +2185,11 @@ iLO 5 added privileges:
 9. Host Storage Config
 10. System Recovery Config
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 This command has been recently changed. Please review the new method to
 specify privileges and querying accounts.
-:::
+{% /admonition %}
 
 ## Ilofederation Command
 
@@ -2275,10 +2276,10 @@ logged in will have no effect.
 
 ### Examples
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The federation key must be 8 characters or greater.
-:::
+{% /admonition %}
 
 To add an iLO federation group to the current logged in server
 include the `add` argument with the new federation name and
@@ -2487,11 +2488,11 @@ iLO 5 added privileges:
 9. Host Storage Config
 10. System Recovery Config
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 Please make sure the order of arguments is correct.
 The parameters are extracted based on their position in the arguments list.
-:::
+{% /admonition %}
 
 ## Ilolicense Command
 
@@ -2691,10 +2692,10 @@ This process may take up to 3 minutes.
 A management processor reset is in progress.
 ```
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 Resetting iLO will render it unresponseive as it resets.
 The user will be logged out.
-:::
+{% /admonition %}
 
 ## Ipprofiles Command
 
@@ -2801,11 +2802,11 @@ ilorest ipprofiles
 Performs One Button Erase on a system. Erases all iLO settings,
 Bios settings, User Data, and iLO Repository data.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 This command will erase user data.
 Use this command with extreme caution.
 Complete erase can take up to 24 hours to complete.
-:::
+{% /admonition %}
 
 ### Paramters
 
@@ -2906,9 +2907,9 @@ that will be applied after a reboot. Affected data types are:
 - `HpeTlsConfig.`
 - `SmartStorageConfig.` (iLO 5 only)
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The above list may change over time.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -3095,9 +3096,9 @@ corresponding to the username you gave to login.
 You can optionally choose to set the **includelogs** flag.
 Doing so will include logs in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option can be used to limit long login times.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -3144,14 +3145,14 @@ Turning on the server in 3 seconds...
 iLO response with code [400]: The operation was not successful due to the current power state (for example, attempting to turn the power off when it is already off).
 ```
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - The reboot command will log out, the user, from the server.
 - Wait for the system to fully reboot before attempting to login,
   or data such as Bios may be unavailable.
 - Arguments are not case-sensitive.
 
-:::
+{% /admonition %}
 
 ## Results Command
 
@@ -3284,7 +3285,7 @@ of a system's iLO and Bios configurations.
 It is possible to save [RDE capable](/docs/etc/glossaryterms/) storage device configurations
 and load Single Sign-On and TLS certificates, with specific options.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - A saved JSON file might require some editing before being loaded into another system.
 - Read-only properties are automatically discarded during a load operation.
@@ -3303,7 +3304,7 @@ and load Single Sign-On and TLS certificates, with specific options.
   privileges might not get updated in production mode.
   This is because in-band production mode does not have privilege to add it.
 
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -3312,7 +3313,7 @@ and load Single Sign-On and TLS certificates, with specific options.
 Used to save a clone file. Default output file is in current directory with name `ilorest_clone.json`.
 Refer to the `--clonefile, -f` argument to save into another file.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 `serverclone save` command **does not** save ethernet interfaces
 (manager or system) configuration. Use
@@ -3320,13 +3321,13 @@ the `save` [iLO global command](/docs/redfishclients/ilorest-userguide/globalcom
 or the `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#examples-1)
 to save network related configuration.
 
-:::
+{% /admonition %}
 
 - **load**
 
 Used to load a clone file.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 In order to avoid unwanted communication interruptions with the iLO,
 the `serverclone load` command ignores modifications performed to the
@@ -3335,7 +3336,7 @@ Manager Dedicated and Shared Network port URIs
 Use the `ethernet --network_ipv4` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
 or the `rawpatch` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#examples-3)
 to modify the settings of these ports.
-:::
+{% /admonition %}
 
 - **-h, --help**
 
@@ -3347,10 +3348,10 @@ Select this flag to input a BIOS password.
 Include this flag if second-level BIOS authentication
 is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 This option is only used on Gen 9 systems.
-:::
+{% /admonition %}
 
 - **--encryption=ENCRYPTION**
 
@@ -3902,10 +3903,10 @@ serverlogs `--selectlog=[Log_Selection] [Optional Parameters]`
 
 Command for downloading and performing log operations.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 You must use the default name when downloading AHS logs,
 the -f parameter is not supported.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -4346,10 +4347,10 @@ The operation completed successfully.
 ### Description
 Recalculate the signature on the systems configuration.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The `sigrecompute` command is not available on Redfish systems.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -4527,11 +4528,11 @@ If you are not logged in yet, use this flag
 along with the user and URL flags to login.
 Use the provided iLO password corresponding to the username you gave to login.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The image will be ejected automatically on the second server
 reboot so that the server does not boot to the image twice.
-:::
+{% /admonition %}
 
 - **--logout**
 

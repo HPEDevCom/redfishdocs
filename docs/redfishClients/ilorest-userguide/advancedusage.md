@@ -89,9 +89,9 @@ down the results. With this narrowed result, you can set
 specific instance properties, list specific
 instance properties, or get specific instance properties.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 The filter option can be used in the get, list, and set commands.
-:::
+{% /admonition %}
 
 ## Path Option
 

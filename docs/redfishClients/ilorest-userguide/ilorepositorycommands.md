@@ -25,9 +25,9 @@ deletecomp *[ID/Name(s)] [Optional Parameters]*
 
 Deletes firmware from the iLO repository.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 You cannot delete firmware that is part of a task from the task queue or an install set.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -156,12 +156,12 @@ Download complete
 0 hour(s) 1 minute(s) 36 second(s)
 ```
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 
 - The output directory and files in that directory must be set to writable.
 - Any file in the output directory with the same name as the downloading firmware will be overwritten.
 
-:::
+{% /admonition %}
 
 ## Flashfwpkg Command
 
@@ -173,9 +173,9 @@ flashfwpkg *[FWPKG PATH] [Optional Parameters]*
 
 Run to upload and flash a `.fwpkg` components using the iLO repository.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Some firmware can be flashed directly without a reboot, may require a reboot to take effect, or may only be staged for flash on reboot. The command will inform users when a firmware update will take place.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -215,10 +215,10 @@ to `true` and pass the `TPMOverrideFlag` in on the associated flash operations.
 Add this parameter to update the System Recovery Set with the uploaded
 firmware.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This requires an account login with the system recovery set
 [privilege](https://servermanagementportal.ext.hpe.com/docs/redfishservices/ilos/ilo6/ilo6_156/ilo6_hpe_resourcedefns156/#recoveryprivilege).
-:::
+{% /admonition %}
 
 ### Examples
 
@@ -336,7 +336,7 @@ Install set name to create, remove, or invoke/deploy.
 
 Remove all install sets.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 To remove recovery install sets during a local in-band session, you have to supply
 the `--user` and `--password` parameters. This security enhancement is needed
@@ -344,7 +344,7 @@ because the local in-band management mode does not perform any authentication,
 as mentioned in the `login` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#login-command)
 description.
 
-:::
+{% /admonition %}
 
 - **-j, --json**
 
@@ -424,10 +424,10 @@ basic_update:
 Install sets can be added with their complete JSON structure or a subset
 containing only the members of the `sequence[]` array.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Refer to the [Makeinstallset command](#makeinstallset-command)
 to learn how to create an install set file.
-:::
+{% /admonition %}
 
 ```json Complete JSON structure
 {
@@ -576,10 +576,10 @@ Invoking install set:basic_update
 The operation completed successfully.
 ```
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Use the `taskqueue` [command](#taskqueue-command) without any
 argument to monitor the install set deployment.
-:::
+{% /admonition %}
 
 To delete an install set run the command with the `delete` argument
 followed by the `--name` specifying the name of the install set to delete.
@@ -804,10 +804,10 @@ making an installset.
 If logged into the server, the command will provide guidance based
 on the current components on the system.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 When using this command on a logged in sever, for best results, upload the
 components before running this command.
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -1077,7 +1077,7 @@ uploadcomp *[Optional Parameters]*
 
 Command to upload a firmware in the iLO repository.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - The `uploadcomp` command requires iLO 5 firmware version v1.48(a) or later.
   Earlier iLO 5 Firmware versions fails with a return code 103.  
@@ -1087,7 +1087,7 @@ Command to upload a firmware in the iLO repository.
 - Before updating the iLO firmware, read
   <a href="https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00068199en_us" target="_blank">the customer advisory regarding iLO firmware upgrades</a>.
 
-:::
+{% /admonition %}
 
 ### Parameters
 
@@ -1134,11 +1134,11 @@ If true, the uploaded component/binary will be flashed. The default is set to Fa
 
 The uploaded component becomes a part of the system recovery set (srs).
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 `--update_target` also need to passed along with `--update_srs` for
 component to be valid for that server.
-:::
+{% /admonition %}
 
 ### Login Parameters
 

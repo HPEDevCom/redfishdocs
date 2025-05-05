@@ -294,11 +294,11 @@ the `--reboot`  flag.
 
 #### Action
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 Please read the help for any warnings or notes specific to each command.
 Not all warnings are mentioned here and this list is only intended to describe
 some command behavior to be aware of.
-:::
+{% /admonition %}
 
 This list describes any reboot or reset behavior for commands:
 

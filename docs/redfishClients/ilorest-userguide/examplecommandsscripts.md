@@ -187,11 +187,11 @@ Logging session out.
 
 The `Bios` type has two properties that both need to be used to change the administrator password, `AdminPassword` and `OldAdminPassword`. `AdminPassword` is the new password you want to change to, and `OldAdminPassword` is the current password you have.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 If there is no current password, you must include `OldAdminPassword=""`
 
-:::
+{% /admonition %}
 
 ![BIOS Password Example 1](images/BIOSPassword_1.png "BIOS Password Example 1")
 
@@ -201,17 +201,17 @@ If you perform a `get` command to find the current `AdminPassword` and `OldAdmin
 
 In order to change the administrator password, you need to set the `AdminPassword` (the new value you want) and the `OldAdminPassword` (what the admin password was before), as well as include the `–biospassword` flag if the system is iLO 4.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `biospassword` value is the same as the `OldAdminPassword` value.
-:::
+{% /admonition %}
 
 ![BIOS Password Example 3](images/BIOSPassword_3.png "BIOS Password Example 3")
 
 After you&apos;ve set the values for `AdminPassword` and `OldAdminPassword`, you need to commit your changes and reboot your server:
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 To change the administrator password, `AdminPassword` and `OldAdminPassword` must be set in the same line.
-:::
+{% /admonition %}
 
 ![BIOS Password Example 4](images/BIOSPassword_4.png "BIOS Password Example 4")
 
@@ -220,10 +220,10 @@ Then when you log into the server again, the BIOS password will have been update
 ## BIOS Boot Settings and Control
 
 The following examples demonstrate methods to alter the boot configuration of the system.
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Redfish BIOS boot settings only support UEFI (Unified Extensible Firmware Interface). Legacy options are not supported,
 but may be available through configuration of BIOS attributes.
-:::
+{% /admonition %}
 
 ### Get Current Boot Mode
 
@@ -405,10 +405,10 @@ respectively.
 Next the `select` and `get` commands are used to retrieve the `BootSourceOverrideSupported`
 property of the `ComputerSystem` type.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 All of these operations, such as `select` and `get`,
 are already implemented in the RESTful Interface Tool.
-:::
+{% /admonition %}
 
 ![Bootorder Example 3](images/BootOrder_3.png "BootOrder example 3")
 
@@ -1028,7 +1028,7 @@ respective documentation sections for more detail and limitation.
 The following example displays the `Name`, the URI and the status
 of the active iLO network port in JSON format.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 The following example uses the `list`
 [command](/docs/redfishclients/ilorest-userguide/globalcommands/#list-command)
@@ -1039,7 +1039,7 @@ like `@odata.id`.
 The `get` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command)
 discards such attributes.
 
-:::
+{% /admonition %}
 
 ```shell
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -1066,11 +1066,11 @@ of the active iLO network port using the `get`
 [global command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command),
 and the `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command).
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Refer the previous example to retrieve the
 URI of the iLO active network port passed to
 the `rawget` command.
-:::
+{% /admonition %}
 
 ```shell get IPv4
 alias ilorest="ilorest --nologo"
@@ -1168,7 +1168,7 @@ Refer to the
 [Get MAC address of a Management Controller](/docs/examples/redfishexamples/#get-mac-address-of-a-management-controller)
 paragraph for the detailed workflow of this operation.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 Although some network adapters are able to communicate with the Ethernet protocol,
 the DMTF distinguishes the `EthernetInterface`
@@ -1178,9 +1178,9 @@ from the `NetworkAdapter`
 
 This paragraph treats only the `EthernetInterface` data type.
 
-:::
+{% /admonition %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 It is also possible to retrieve MAC addresses by parsing
 the files created by the `save --selector EthernetInterface`
@@ -1188,18 +1188,18 @@ the files created by the `save --selector EthernetInterface`
 or the `ethernet save`
 [command.](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command).
 
-:::
+{% /admonition %}
 
 The following example prints the MAC address of all ethernet interfaces present in a server,
 including system/OS interfaces.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Use the `list` command if you want to print
 [reserved attributes](/docs/redfishclients/ilorest-userguide/globalcommands/#reserved-properties) like
 `@odata.id`, which contains the URI of the selected interface.
 
-:::
+{% /admonition %}
 
 ```shell Get all MAC addresses
 ilorest get Oem/Hpe/NICEnabled Name MACAddress \
@@ -1328,7 +1328,7 @@ ilorest logout
 
 This section provides examples on how to change the iLO IP configuration.
 
-:::warning WARNING
+{% admonition type="warning" name="WARNING" %}
 
 A change of the iLO network IP configuration requires
 an [iLO reset](/docs/redfishclients/ilorest-userguide/ilocommands/#iloreset-command).
@@ -1336,7 +1336,7 @@ an [iLO reset](/docs/redfishclients/ilorest-userguide/ilocommands/#iloreset-comm
 A network misconfiguration will lead to an unreachable iLO after reset. Refer to the following
 paragraph for best practices before changing an iLO IP configuration.
 
-:::
+{% /admonition %}
 
 #### Network configuration best practices
 
@@ -1374,7 +1374,7 @@ ilorest get MACAddress IPv6Addresses/Address --select EthernetInterface. \
 }
 ```
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Given a MAC address, you can calculate and display
 the related IPv6 link local SLAAC address,
@@ -1387,7 +1387,7 @@ echo -n "fe80::" ; ipv6calc --quiet --in mac 94:18:82:71:A0:7B --out eui64
 fe80::9618:82ff:fe71:a07b
 ```
 
-:::
+{% /admonition %}
 
 To establish a connection to an IPv6 link-local address,
 you need first to log into a system connected to the
@@ -1449,7 +1449,7 @@ curl --insecure --silent --location  \
 
 ```
 
-:::success TIPS
+{% admonition type="success" name="TIPS" %}
 
 - Most of the browsers (i.e. Chromium or Gecko based) don't support IPv6 link local addresses.
 - `SSH` supports connecting to IPv6 link local addresses, but without the `[]` wrapper notation. See next example.
@@ -1461,7 +1461,7 @@ date
 Aug 19 2024
 ```
 
-:::
+{% /admonition %}
 
 #### Configure iLO IP addresses
 
@@ -1485,12 +1485,12 @@ The configuration file can be generated by the `save`
 or the `ethernet save` [iLO command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
 and then edited to set the iLO Shared Network port enabled and IPv4 properties.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 Read-only properties like `Id` are automatically and silently discarded
 during the load operation.
 
-:::
+{% /admonition %}
 
 ```shell load
 ilorest load --force_network_config -f load.json
@@ -1614,7 +1614,7 @@ A management processor reset is in progress.
 ]
 ```
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 All of the above IP configuration methods require an iLO reset. One possibility to verify the iLO reset
 is finished, is to test the HTTPS port connectivity (port 443 by default). You could use
 the new IP address for that test. However, if an error has been introduced during the network configuration,
@@ -1649,7 +1649,7 @@ done
 echo " Done"
 ```
 
-:::
+{% /admonition %}
 
 #### Setting Active iLO NIC
 
@@ -1657,22 +1657,22 @@ The following example activates the iLO shared network port using
 a `rawpatch` command against the `Oem.Hpe.NICEnabled` extension property.
 Then it resets the iLO.
 
-:::warning WARNING
+{% admonition type="warning" name="WARNING" %}
 
 The `set` global command fails to modify the iLO network configuration.
 This is why you must use a `rawpatch` command or
 a `ethernet load` command for this purpose.
 
-:::
+{% /admonition %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Use the following command to retrieve the URI of
 the iLO shared network port:
 
 `ilorest list @odata.id --filter Name="Manager Shared*" --select EthernetInterface.`
 
-:::
+{% /admonition %}
 
 ```shell rawpatch
 ilorest rawpatch Payload.json
@@ -1768,10 +1768,10 @@ bare-metal servers, and you need to disable TPM prior to starting installation.
 
 To enable the TPM, you can set the `TpmState` to `PresentEnabled`. **See side example**.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 When you are disabling or enabling TPM, depending on the TPM chip type on the
 server, the TPM visibility might be `Tpm2Visibility` or `TpmVisibility`.
-:::
+{% /admonition %}
 
 ## Raw commands Examples
 

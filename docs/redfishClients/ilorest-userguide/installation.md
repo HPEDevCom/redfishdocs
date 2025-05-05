@@ -77,7 +77,7 @@ Download the component bundle from <a href="https://vibsdepot.hpe.com" target="_
            In the example above, this would be:
               esxcli software component apply -d /tmp/ilorest-component_800.6.0.0.44-1OEM.802.0.0.22380479_24626604.zip
 
-:::info Note
+{% admonition type="info" name="Note" %}
 Depending on the certificate used to sign the VIB, you may need to
 change the host acceptance level. To do this, use the following command:
 `esxcli software acceptance set --level=<level>`.
@@ -85,7 +85,7 @@ change the host acceptance level. To do this, use the following command:
 Also, depending on the type of VIB being installed, you may have to put
 ESX into maintenance mode.  This can be done through the VI Client, or by
 adding the `--maintenance-mode` option to the above `esxcli` command.
-:::
+{% /admonition %}
 
 ### Upgrade installation
 
@@ -129,14 +129,14 @@ that the iLOrest PyPI package is supported on this architecture.
       or<br>
       `pip install ilorest-x.x.x.x.whl`<br>
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The above commands install two packages:
 
 - `ilorest`
 - `python-ilorest-library`
 
-:::
+{% /admonition %}
 
 ### Uninstalling the iLOrest PyPI package
 

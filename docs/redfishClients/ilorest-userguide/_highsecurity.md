@@ -19,13 +19,13 @@ For more information about the security states of HPE iLO, refer to
 [Security Service](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesecurityservice)
 section.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The content of this page is only related to iLO 5 and iLO 6 based servers.
 
 Refer to this
 [documentation section](/docs/redfishservices/ilos/supplementdocuments/securityservice/#transitioning-to-hpe-ilo-7)
 for iLO 7 and later.
-:::
+{% /admonition %}
 
 ## Setting iLO in a high security mode
 
@@ -38,9 +38,9 @@ and commit.
 
 ![Set Security 1](images/Security_1.png "Set Security 1")
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 After the commit operation has been completed, iLO resets to apply the changes.
-:::
+{% /admonition %}
 
 ## Using HPE iLOrest in iLO high security modes
 
@@ -52,11 +52,11 @@ To use HPE iLOrest locally (in-band) in a high security mode, you must pass cred
 
 ![Set Security 3](images/Security_3.png "Set Security 3")
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 In interactive mode, you only need to pass your credentials during the login
 command. In command line mode, you must pass credentials for EACH COMMAND,
 even if you are already logged in.
-:::
+{% /admonition %}
 
 If you do not pass the proper credentials in local mode, you receive and error.
 

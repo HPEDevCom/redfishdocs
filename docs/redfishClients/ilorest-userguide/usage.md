@@ -117,10 +117,10 @@ you want to manage, follow this method:
    ThermalSubsystem.v1_3_1
    ```
    
-   :::success TIP
+   {% admonition type="success" name="TIP" %}
    For each iLO firmware, you can browse the types from
    the [resource map](/docs/redfishservices/ilos/ilo6/ilo6_157/ilo6_resmap157/).
-   :::
+   {% /admonition %}
 
 2. If the above method fails, enter the property string
    in the search box of this portal (top right corner).
@@ -145,13 +145,13 @@ you want to manage, follow this method:
    FirmwareVersion=iLO 6 v1.59
    ```
 
-   :::success TIP
+   {% admonition type="success" name="TIP" %}
    iLOrest can select multiple types at once.
 
    The above example appends a `.` character to the selected
    type to avoid selecting the other types starting with
    string `Manager` like: `ManagerCollection`, `ManagerAccount`, etc.
-   :::
+   {% /admonition %}
 
 ## HPE iLOrest operation modes
 
@@ -192,7 +192,7 @@ session on the different operating systems:
 - VMware ESXi 8.0: Enter the following command
   as administrator: `/opt/ilorest/bin/ilorest.sh`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 In ESXi 7.0/8.0, HPE iLOrest is integrated with the `esxcli` utility
 
 Here are some Examples:
@@ -207,7 +207,7 @@ esxcli ilorest debug -q login
 esxcli ilorest debug -q logout
 ```
 
-:::
+{% /admonition %}
 
 Use the `exit` command at the prompt to exit from the interactive mode.
 
@@ -230,13 +230,13 @@ Redfish resources and properties are associated to a data type also called
 resource type or just type. To view or modify a resource,
 you must first select its type.
 
-:::info TIP
+{% admonition type="info" name="TIP" %}
 
 Resource types are listed in the
 [resource map](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_resmap{{process.env.LATEST_FW_VERSION}}/)
 section of the iLO Redfish reference document.
 
-:::
+{% /admonition %}
 
 Tab command completion is also available for viewing and completing types.
 

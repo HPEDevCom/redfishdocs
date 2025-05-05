@@ -18,7 +18,7 @@ that can be used through the RESTful Interface Tool.
 The commands in this section are the equivalents of HTTP
 RESTful **PATCH, GET, POST, PUT, DELETE**, and **HEAD**.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Before performing a `PATCH`, `POST` `PUT` or `DELETE` request against a specific URI,
 it is a good practice to verify this URI accepts such a request. This can be easily done
@@ -42,7 +42,7 @@ ilorest rawhead "/redfish/v1/Systems/1" |  jq '{"Allow": .Allow'}
 
 ```
 
-:::
+{% /admonition %}
 
 ## RawDelete Command
 
@@ -645,9 +645,9 @@ Usage: --headers=HEADER:VALUE,HEADER:VALUE
 Use this flag to supply a BIOS password. Include this flag if
 second-level BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This flag is used only on iLO 4 systems and not required on iLO 5 and later systems.
-:::
+{% /admonition %}
 
 - **--service**
 
@@ -737,7 +737,7 @@ The following example configures the Manager Dedicated Network port with
 a static IPv4 and disables DHCPv4. Then resets the iLO to take modifications
 into account.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 
 Upon reset, open sessions (GUI, rest) are closed abruptly. You need to reconnect using the
 network information present in the `rawpatch` companion file.
@@ -749,7 +749,7 @@ Refer to these
 before changing your iLO IP configuration or, potentially
 recover from a misconfiguration.
 
-:::
+{% /admonition %}
 
 ```shell Set static IPv4
 ilorest rawpatch StaticIPv4.json
@@ -942,10 +942,10 @@ This is helpful when you want to parse the output with a tool like `jq`.
 Select this flag to input a BIOS password. Include this flag if
 second-level BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This flag is used only on iLO 4 systems. It is not required
 on iLO 5 and later systems.
-:::
+{% /admonition %}
 
 - **--service**
 

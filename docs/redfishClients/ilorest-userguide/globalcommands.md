@@ -75,11 +75,11 @@ The debug option provides a timestamp of all transmit and response activity
 with iLO to a file called `iLORest.log`.
 This file is saved in the folder where from you launched the tool.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Use the debug mode when you have difficulties to write your own Redfish client
 in Python or another language. The debug option can help you
 understand how to perform specific requests.
-:::
+{% /admonition %}
 
 The following example shows the content of the `iLORest.log` file:
 
@@ -138,9 +138,9 @@ Use the provided proxy for communication.
 Use this flag if you wish to enable Redfish only compliance. It is enabled by
 default in systems with iLO 5 and above.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 The `--redfish` global option is **only** required for HPE iLO 4.
-:::
+{% /admonition %}
 
 ## Global commands
 
@@ -166,9 +166,9 @@ Displays command-line syntax and help menus for individual commands. Use this co
 
 Supplying a command to `help` displays the help message corresponding to the given command, as well as the options relating to that particular command.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 If no command is provided, the `help` command lists and provides a brief description of all available commands.
-:::
+{% /admonition %}
 
 - **-h, --help**
 
@@ -354,12 +354,12 @@ To login remotely run using iLO url and iLO credentials
         session via the Virtual NIC instead of the [CHIF](/docs/etc/glossaryterms/).
         example: login --force_vnic -u iLO-user -p password
 
-        :::info NOTE
+        {% admonition type="info" name="NOTE" %}
         The `--force_vnic` parameter is not relevant in iLO 7 based
         servers (and later) because the CHIF between the OS and
         the iLO has been
         [removed](/docs/redfishservices/ilos/supplementdocuments/securityservice/#transitioning-to-hpe-ilo-7).
-        :::
+        {% /admonition %}
 
 Login using OTP can be done in 2 ways.
 
@@ -434,17 +434,17 @@ LOGIN OPTIONS:
 Connects to a server, establishes a secure session, and discovers data from
 HPE iLO.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Refer to the
 [in-band management](/docs/redfishservices/ilos/supplementdocuments/vnic/#in-band-management)
 paragraph for detailed local login examples.
 
-:::
+{% /admonition %}
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 In band communication with iLO via the [Virtual NIC](/docs/redfishservices/ilos/supplementdocuments/vnic/) (vNIC), requires this interface to be enabled in both iLO and the operating system. Refer to this [section](/docs/redfishservices/ilos/supplementdocuments/securityservice/#transitioning-to-hpe-ilo-7) to benefit from a seamless authentication of in-band management on iLO 7 based servers.
-:::
+{% /admonition %}
 
 Login using certificate authentication has following requirements:  
 
@@ -464,7 +464,7 @@ In [out-of-band](/docs/redfishservices/ilos/supplementdocuments/vnic/#out-of-ban
 and the execution of the command using a single iLOrest invocation, using
 `--url`, `--user`, and `--password` flags. Optionally include the `--https` flag to validate the SSL certificate along with.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Failure to formerly logout after using an iLOrest (or another Redfish client)
 may saturate iLO with sessions and prevent other clients to login.
@@ -472,7 +472,7 @@ may saturate iLO with sessions and prevent other clients to login.
 You can use the standalone `logout` [command](#logout-command)
 or append the `--logout` parameter as shown in the next example.
 
-:::
+{% /admonition %}
 
 The following one line example logs into a remote iLO, retrieves its firmware version and logs out.
 
@@ -519,14 +519,14 @@ during implicit login. Refer to the
 [TFA section](/docs/redfishservices/ilos/supplementdocuments/tfa/)
 for more detail.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 In Linux, if password contains '!' (exclamation), then enclose the password
 with single quotation ('). Also, if the password includes special characters,
 then escape these characters with '\' (backslash).
 Eg: if the password is `test#123`, then type the password as `test\\#123`.
 
-:::
+{% /admonition %}
 
 - **--sessionid**
 
@@ -537,20 +537,20 @@ Connect to the server with the already known `sessionid`.
 Specify a user certificate file path for certificate based
 authentication with iLO.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The user private key is required.
-:::
+{% /admonition %}
 
 - **--userkey UserCertKey**
 
 Specify a user private key file path for certificate based authentication
 with iLO.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 If the user private key is password protected, but not included with
 `--userpassphrase`, then Urllib3 will automatically request the
 password on the command line.
-:::
+{% /admonition %}
 
 - **--userpassphrase UserPassphrase**
 
@@ -564,11 +564,11 @@ in iLO 5 and iLO 6
 [in-band](/docs/redfishservices/ilos/supplementdocuments/vnic/#in-band-management)
 (local) management contexts.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The in-band default communication path of HPE iLO 7 based servers and later is vNIC.
 Hence, this parameter cannot be used on such platforms.
-:::
+{% /admonition %}
 
 
 - **--includelogs**
@@ -576,9 +576,9 @@ Hence, this parameter cannot be used on such platforms.
 Optionally choose to set the **includelogs** flag. Doing so will include logs.
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--selector=SELECTOR**
 
@@ -592,21 +592,21 @@ is different from the one you currently have selected.
 Optionally set a starting point for data collection. If you do not specify a
 starting point, the default path will be `/rest/v1`.
 
-:::info NOTE:
+{% admonition type="info" name="NOTE:" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but includes
 your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 - **--biospassword=BIOSPASSWORD**
 
 Select this flag to input a BIOS password. Include this flag if second-level
 BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option is only used on HPE Gen 9 systems.
-:::
+{% /admonition %}
 
 - **--no\_app\_account**  
 
@@ -731,11 +731,11 @@ those schemas. Version information is `major.minor.errata`
 (i.e. `SystemRoot.0.9.5`).
 Major versions are not backward compatible, but everything else is.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Refer to the
 [HPE iLO resource map](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_resmap{{process.env.LATEST_FW_VERSION}}/)
 for a the list and location of all the possible types.
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -774,9 +774,9 @@ gave to login.
 Optionally choose to set the **includelogs** flag. Doing so will include logs
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -786,12 +786,12 @@ Refer to the
 [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but includes
 your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 #### Examples
 
@@ -890,7 +890,7 @@ parameter; run `command --help` to see available options.
 
 Refer to the `get` [examples](#examples-6) for more detail.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 The selection of the following data types points to their
 [pending/settings area](https://servermanagementportal.ext.hpe.com/docs/concepts/biosdatamodel/#bios-current-and-pending-areas)
 
@@ -917,7 +917,7 @@ Use a `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#exa
 to retrieve the current properties of the above data types.
 The URIs of the above data types can be quickly determined with the first example in this
 [section](/docs/redfishclients/ilorest-userguide/bioscommands/#bios-commands).
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -935,9 +935,9 @@ Including the help flag will display help for the command.
 Select this flag to input a BIOS password. Include this flag if second-level
 BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option is only used on Gen 9 systems.
-:::
+{% /admonition %}
 
 #### Login Parameters
 
@@ -965,9 +965,9 @@ gave to login.
 Optionally choose to set the **includelogs** flag. Doing so will include logs
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -977,12 +977,12 @@ Refer to the
 [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but
 includes your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 #### Examples
 
@@ -1060,12 +1060,12 @@ The following example selects all versions of the standard `Drive` data type,
 excluding legacy HPE `SmartStorage` types (they contain a "v2" string) and lists the URIs
 of the drives in the system.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Systems containing [PLDM](/docs/etc/glossaryterms/#glossary)
 capable devices may have several type versions:
 One version implemented in the management controller (iLO) and
 versions implemented within the devices.
-:::
+{% /admonition %}
 
 ```shell Drive types selection
 ilorest select drive.v1
@@ -1136,11 +1136,11 @@ Oem=
           PowerOnMinutes=814089
 ```
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Use the `select <type> --refresh` command to delete/remove changed
 settings that have not been [committed](#commit-command), as shown in
 the next example.
-:::
+{% /admonition %}
 
 ```shell
 ilorest set LocationIndicatorActive=True
@@ -1178,7 +1178,7 @@ Run without any argument, `list` displays the value(s) of all the properties of 
 [data type](/docs/concepts/datatypesandcollections/), including
 [reserved properties](#reserved-properties). The output can be in human-readable or JSON format.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - Supplying a list of nonexistent properties in the selected
 type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
@@ -1190,7 +1190,7 @@ type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
 - Identical property values of similar objects are only printed once.
 
 Refer to the [example](#examples-4) section below for illustration.
-:::
+{% /admonition %}
 
 ##### Reserved properties
 
@@ -1200,7 +1200,7 @@ The term **_reserved properties_** refers to "meta properties" like `@odata.*` o
 The `list` command displays reserved properties, while the `get`
 [command](#get-command) does not.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 As the list of reserved properties is evolving over time, it is not possible to provide
 the exhaustive list. However, you can get an idea of that list by comparing the output
@@ -1250,7 +1250,7 @@ diff listManager.json getManager.json
 ...
 ```
 
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -1259,7 +1259,7 @@ diff listManager.json getManager.json
 Supplying a property or a list of properties causes `list` to display the
 current value for that particular property or properties.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - Supplying a list of nonexistent properties in the selected
 type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
@@ -1272,7 +1272,7 @@ type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
 - Identical property values of similar objects are only printed once.
 
 Refer to the [example](#examples-4) section below for illustration.
-:::
+{% /admonition %}
 
 - **-h, --help**
 
@@ -1324,9 +1324,9 @@ to login.
 Optionally choose to set the **includelogs** flag. Doing so will include
 logs in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -1335,12 +1335,12 @@ starting point, the default path will be `/redfish/v1/`.
 Refer to the [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but includes
 your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -1406,11 +1406,11 @@ To return specific properties or sub-properties value, include them as arguments
 If the property you want to return is a sub-property add them in the form
 `Property/Sub-property`.
 
-:::success Best Practice
+{% admonition type="success" name="Best Practice" %}
 Although iLOrest arguments are not case-sensitive, it is a
 best practice to respect the case sensitivity of arguments. You may
 have to use Redfish clients that request the respect of the case.
-:::
+{% /admonition %}
 
 The following example retrieves three properties from the `ComputerSystem`
 [type](/docs/concepts/datatypesandcollections/).
@@ -1605,9 +1605,9 @@ to login.
 Optionally choose to set the **includelogs** flag. Doing so will include logs
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -1615,13 +1615,13 @@ Optionally set a starting point for data collection. If you do not specify a
 starting point, the default path will be `/redfish/v1/`.
 Refer to the [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option) for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are already
 logged into the server, the `path` flag will not change the path. If you are
 entering a command that is not the `login`
 command, but includes your login information,
 you can still specify the path flag there.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -1796,7 +1796,7 @@ Run without any argument, `get`displays the value(s) of all the propertie(s) of 
 [data type](/docs/concepts/datatypesandcollections/) excluding
 [reserved properties](#reserved-properties). The output can be in human-readable or JSON format.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - Supplying a list of nonexistent properties in the selected
 type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
@@ -1809,7 +1809,7 @@ type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
 - Identical property values of similar objects are only printed once.
 
 Refer to the [example](#examples-6) section below for illustration.
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -1874,9 +1874,9 @@ you gave to login.
 Optionally choose to set the **includelogs** flag. Doing so will include
 logs in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -1885,12 +1885,12 @@ starting point, the default path will be `/redfish/v1/`.
 Refer to the
 [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option) for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but includes
 your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -1903,11 +1903,11 @@ Using `get` without any property returns the values of all
 the properties in the selected
 type. In the following example, the output is truncated.
 
-:::success Best Practice
+{% admonition type="success" name="Best Practice" %}
 Although iLOrest arguments are not case-sensitive, it is a
 best practice to respect the case sensitivity of arguments. You may
 have to use Redfish clients that request the respect of the case.
-:::
+{% /admonition %}
 
 ```shell
 iLOrest > select Bios.
@@ -2124,10 +2124,10 @@ ilorest get CapacityMiB Name --json --select Memory.
 
 `set [Property=Value] [Path] [Optional Parameters]`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The syntax formats used to set properties can be tricky if not done correctly.
 See the following examples to illustrate how the syntax works.
-:::
+{% /admonition %}
 
 - `set AdminName=John`
 
@@ -2163,17 +2163,17 @@ This is **incorrect** syntax, and will not be correctly reflected on the server.
 Changes the value of a property in a currently selected type.
 Multiple properties can be set simultaneously.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 <b>Read-only</b> and <b>System-unique</b> properties like Serial Numbers
 and ProductId are skipped, and remaining continue to be set.
-:::
-:::info NOTE
+{% /admonition %}
+{% admonition type="info" name="NOTE" %}
 If <b>System-unique</b> properties need to be set, use `--uniqueoverride`
 option.
-:::
-:::warning Warning
+{% /admonition %}
+{% admonition type="warning" name="Warning" %}
 The changes set will be reflected on the server only after committing them.
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -2199,12 +2199,12 @@ Optionally set a filter value for a filter attribute. This uses the provided
 filter for the currently selected type. Refer to the
 [Filter Option](/docs/redfishclients/ilorest-userguide/advancedusage/#filter-option) for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
  Use this flag to narrow down your results. For example, selecting a common
  type might return multiple objects that are all of that type.
  If you want to modify the properties of only one of those objects,
  use the filter flag to narrow down results based on properties.
-:::
+{% /admonition %}
 
 - **--commit**
 
@@ -2217,9 +2217,9 @@ next time the server is started.
 Select this flag to input a BIOS password. Include this flag if second-level
 BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option is only used on Gen 9 systems.
-:::
+{% /admonition %}
 
 - **--reboot=REBOOT**
 
@@ -2256,9 +2256,9 @@ to login. Use the provided iLO password corresponding to the username you gave t
 Optionally choose to set the **includelogs** flag. Doing so will include logs
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -2268,12 +2268,12 @@ Refer to the
 [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but
 includes your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -2282,18 +2282,18 @@ is completed. You need to be logged in to use this flag.
 
 #### Examples
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Arguments are not case-sensitive.
-:::
+{% /admonition %}
 
 You can set multiple properties from the same type simultaneously. Add quotes
 around the property and value to add spaces in the value.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Even though the `get` command shows **ServiceName** is set to **ExampleService**
 and **AdminName** set to **Jason E**, the `commit` command must
 be performed next for the changes to be updated on the server.
-:::
+{% /admonition %}
 
 ```shell
 iLOrest > select Bios.
@@ -2376,7 +2376,7 @@ filter for the currently selected type. Refer to the
 [Filter Option](/docs/redfishclients/ilorest-userguide/advancedusage/#filter-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this flag to narrow down your results. For example, selecting a common
 type might return multiple objects that are all of that type.
 If you want to modify the properties of only one of those objects,
@@ -2384,7 +2384,7 @@ use the filter flag to narrow down results based on properties.
 
 Refer to the [example](/docs/redfishclients/ilorest-userguide/globalcommands/#examples-8)
 section below for an example.
-:::
+{% /admonition %}
 
 - **-j, --json**
 
@@ -2421,9 +2421,9 @@ to login.
 Optionally choose to set the **includelogs** flag. Doing so will include logs
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -2432,13 +2432,13 @@ starting point, the default path will be `/redfish/v1/`.
 Refer to the [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login`
 command, but includes your login information, you can still specify the path
 flag there.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -2451,7 +2451,7 @@ In the following example, iLOrest logs into a remote iLO,
 selects the `Bios.` subsystem and saves its configuration
 into the default `ilorest.json` file.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 A `--select Bios.` selection points to its
 [pending/settings area](/docs/concepts/biosdatamodel/#bios-current-and-pending-areas)
 
@@ -2478,7 +2478,7 @@ Use a `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#exa
 
 The URIs of the above data types can be quickly determined with the first example in this
 [section](/docs/redfishclients/ilorest-userguide/bioscommands/#bios-commands).
-:::
+{% /admonition %}
 
 ```shell Saving Bios configuration
 iLOrest > save --select Bios. --url xx.xx.xx.xx -u username -p password
@@ -2554,7 +2554,7 @@ Logging session out.
 The following example saves the configuration of the iLO shared network port.
 Use `Name="Manager Dedicated*` to retrieve the iLO dedicated network port configuration.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The following example excludes IPv4 and IPv6 information for security reasons.
 
@@ -2568,12 +2568,12 @@ to retrieve the configuration of ethernet interfaces (manager and system), inclu
 Use the `ethernet --network-ipv4` to modify the iLO IP network
 configuration.
 
-:::
+{% /admonition %}
 
-:::info TIP
+{% admonition type="info" name="TIP" %}
 
 
-:::
+{% /admonition %}
 
 ```shell
 ilorest save --selector EthernetInterface. --filter Name="Manager Shared*" -f SaveSharedPort.json --json
@@ -2593,7 +2593,7 @@ Otherwise, you can point this command to use any file you specify.
 Use this function to change the properties of a type to new values.
 This command uploads the new values of the type’s properties to the server.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - By default and in order to avoid unwanted communication interruptions
   to the ilO Dedicated Network Port, the `load` command skips modifications
@@ -2607,7 +2607,7 @@ Refer to these
 [examples](/docs/redfishclients/ilorest-userguide/examplecommandsscripts/#set-ilo-networking-properties)
 to change the IP iLO network configuration.
 
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -2625,9 +2625,9 @@ The default filename is `ilorest.json`.
 Select this flag to input a BIOS password. Include this flag if second-level
 BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option is only used on Gen 9 systems.
-:::
+{% /admonition %}
 
 - **--uniqueoverride**
 
@@ -2677,11 +2677,11 @@ is completed. You need to be logged in to use this flag.
 
 #### Examples
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Refer to this
 [section](http://localhost:3000/docs/redfishclients/ilorest-userguide/examplecommandsscripts/#configure-ilo-ip-addresses)
 for an example using the `--force_network_config` parameter.
-:::
+{% /admonition %}
 
 If no filename is supplied with the (`-f`, `--filename`) option, the `load` command looks for a
 file named `ilorest.json` in the current working directory.
@@ -2813,9 +2813,9 @@ Including the help flag will display help for the command.
 Select this flag to input a BIOS password. Include this flag if second-level
 BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option is only used on Gen 9 systems.
-:::
+{% /admonition %}
 
 - **--reboot=REBOOT**
 
@@ -2841,12 +2841,12 @@ The operation completed successfully.
 
 If you do not commit before logging out changes will be lost.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 You must commit changes before logging out or settings will not be updated on
 the server.
 
-:::
+{% /admonition %}
 
 ```shell
 iLOrest > select Bios.
