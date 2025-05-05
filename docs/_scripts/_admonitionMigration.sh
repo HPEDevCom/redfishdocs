@@ -4,13 +4,13 @@
 # into Reunite/Realm admonitions.
 #
 #
-# Version 0.3
+# Version 0.31
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
-mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/README.md -not -path */.github/*")
+mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/README.md" -not -path "*/.github/*")
 #mdFileList="$rootDir/docs/redfishservices/ilos/supplementDocuments/managingUsers.md" 
 
 for file in $mdFileList
