@@ -6,14 +6,14 @@
 #  ToDo:
 #  - Investigate the insertion breadcrumbs with decent prefix, and not just the label
 #
-# Version 0.63
+# Version 0.64
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
 mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/* -not -path -not -path */.github/*" -not -path "*/README.md")
-#mdFileList="$rootDir/docs/redfishservices/ilos/ilo7/ilo7_111/ilo7_bios_resourcedefns111.md" 
+#mdFileList="$rootDir/docs/redfishServices/ilos/supplementDocuments/securityService.md $rootDir/docs/redfishservices/ilos/ilo7/ilo7_111/ilo7_bios_resourcedefns111.md" 
 
 for file in $mdFileList
 do
@@ -49,7 +49,10 @@ do
   fi
   sed -i '/^toc:/d ; /enable:/d' $file
 
-  # Add new front matter fields
+  # Add new front matter fields.
+  # Show breadcrumbs only for reference documents.
+
+  if [[ $file =~ ilo[5-9] ]] ; then
   sed -i "/^seo:/i\
   markdown:\n\
   toc:\n\
@@ -57,8 +60,19 @@ do
     depth: $tocDepth\n\
   lastUpdateBlock:\n\
     hide: $lastUpdateBlock\n\
-  breadcrumbs:\n\
-    hide: true" $file
+breadcrumbs:\n\
+  hide: false" $file
+  else
+  sed -i "/^seo:/i\
+  markdown:\n\
+  toc:\n\
+    hide: $hideToc\n\
+    depth: $tocDepth\n\
+  lastUpdateBlock:\n\
+    hide: $lastUpdateBlock\n\
+breadcrumbs:\n\
+  hide: true" $file
+  fi
 
   echo "Done"
   echo
