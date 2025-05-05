@@ -91,18 +91,28 @@ adding the `--maintenance-mode` option to the above `esxcli` command.
 
 You can use the same command as for an initial installation:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 esxcli software component apply -d /full/path/to/ilorest-component
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Uninstalling the iLOrest ESXi package
 
 Use the following command to completely uninstall the package:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 esxcli software component remove -n ilorest-component
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Installing the iLOrest PyPI package
 
 PyPI package can be used on distros like MAC, Ubuntu.

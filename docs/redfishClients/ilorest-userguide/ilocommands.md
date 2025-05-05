@@ -89,19 +89,30 @@ The [application account privileges](/docs/redfishservices/ilos/supplementdocume
 {% /admonition %}
 
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest appaccount create --self -u adminuser -p passx
 -----------------------------------
 Application account has been generated and saved successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To delete the iLOrest application account, perform `appaccount delete` with `--self` parameter.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest appaccount delete --self
 -----------------------------------
 Application account has been deleted successfully.
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 To delete the application account for a specific host application, execute the `appaccount delete` command with the `--hostappid` parameter, followed by the last four digits of the application ID, along with the `-u` and `-p` parameters.
 
 {% admonition type="success" name="TIPS" %}
@@ -109,31 +120,49 @@ To delete the application account for a specific host application, execute the `
 - The ilorest-userapp mentioned in the following example must have the minimum privileges mentioned in this [paragraph](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-account-privileges).
 {% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
  ilorest appaccount delete --hostappid 72db -u ilorest-userapp -p passx
 -----------------------------------
 Application account has been deleted successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To check if the iLOrest application account exists, perform the `appaccount exists` command along with `--self` tag.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest appaccount exists --self
 -----------------------------------
 Application account exists for this host application.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To check if a particular host application account exists, perform the `appaccount exists` command with the `--hostappid` parameter, followed by the last four digits of the application ID.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest appaccount exists --hostappid 48bb
 -----------------------------------
 Application account does not exist for this host application.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To check the details of the iLOrest application account, perform the `appaccount details` command with `--self` parameter.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest appaccount details --self
 -----------------------------------
 Application Name: iLORest
@@ -141,10 +170,15 @@ Application Id: **00b5
 App account exists in TPM: yes
 App account exists in iLO: yes
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To check the details of a particular host application account, perform `appaccount details` command with the `--hostappid` parameter, followed by the last four digits of the application ID.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest appaccount details --hostappid fea0
 -----------------------------------
 Application Name: AMS
@@ -152,10 +186,15 @@ Application Id: **fea0
 App account exists in TPM: yes
 App account exists in iLO: yes
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To check the details of all host application accounts, perform `appaccount details` command with the `--hostappid` parameter, followed by `all`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest appaccount details --hostappid all
 -----------------------------------
 Application Name: iLORest
@@ -173,7 +212,9 @@ Application Id: **fea0
 App account exists in TPM: yes
 App account exists in iLO: yes
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Backuprestore Command
 
 ### Syntax
@@ -242,23 +283,33 @@ in will have no effect.
 
 To create a backup (`.bak`) file run the command with the `backup` argument.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest backuprestore backup
 Downloading backup file HPE_Kappa_20190203_0012.bak...Download complete.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To restore a server using the `.bak` file run the command with
 the `restore` argument. By default the command will search for a
 (`.bak`) file in the current working directory.
 Specify a (`.bak`) file using the `(-f, --filename)` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest backuprestore restore
 Restore in progress. iLO while be unresponsive while the restore completes.
 Your session will be terminated.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Certificate Command
 
 ### Syntax
@@ -433,13 +484,18 @@ the `gen_csr` argument along with the following information
 Use quotes to include parameters which containing whitespaces.
 The `Include IP` argument is a Boolean (`True`, `False`).
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest login
 Discovering data...Done
 ilorest certificate csr "Hewlett Packard Enterprise" "ILORestGroup" "iLOrest" "US" "Texas" "Houston" False 
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="info" name="NOTE" %}
 
 - Please make sure the order of arguments is correct.
@@ -460,20 +516,30 @@ filename is `certificate.txt`, saved to the current working
 directory. Including the _(-f, --filename)_ option will
 change the default name.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate getcsr --TLS_CERT
 Discovering data...Done
 Certificate saved to: certificate.txt
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To import an HTTP TLS/SSL signed certificate use the `import --tls_cert`
 argument followed by a file containing the certificate.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate import --tls_cert certfile.txt
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="success" name="TIP" %}
 
 With iLO 5 firmware 2.78 and later or iLO 6 firmware 1.30 and later,
@@ -497,24 +563,37 @@ Use the following process:
 To import a CA certificate, use the `import --ca_cert`
 argument followed by a file containing the certificate.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate import --ca_cert certfile.txt
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To import a Certificate Revocation List (CRL) use
 the `import --crl_cert` argument followed by the URL
 to the certificate list file.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate import --crl_cert https://hostname/location/to/cert.txt
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To view an HTTP TLS/SSL certificate, use the `certificate`
 command with `view` subcommand followed by option `--https_cert`
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate view --https_cert
 Https Certificate details ...
 Id:HttpsCert
@@ -527,11 +606,16 @@ Subject:C = FR, ST = Region Sud, L = Sophia-Antipolis, O = HPE, OU = Compute, CN
 ValidNotAfter:2033-02-12T09:59:35Z
 ValidNotBefore:2023-02-15T09:59:35Z
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To view a `scep` certificate, use the `certificate` command with
 `view` subcommand followed by option `--scep_cert`
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate view --scep_cert
 Scep Certificate details ...
 Id:AutomaticCertificateEnrollment
@@ -550,58 +634,90 @@ OrgName:Hewlett Packard Enterprise
 OrgUnit:ISS
 State:Houston
 ````
-
+  
+  {% /tab %}
+  {% /tabs %}
 To import a scep certificate, use `certificate` command with the `import`
 subcommand followed by option `--scep` and  provide the scep certificate file
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate import --scep_cert scep.txt
 Imported the scep certificate successfully
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To import a CA certificate, use the `certificate` command with the
 `import` subcommand followed by option `--ca_cert` provided with
 CA cert file
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate import --ca_cert ca.cer
 Imported CA certificate successfully
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To import IDEVID certificate, use certificate command with
 import subcommand followed by option --idevid_cert
 provided with IDEVID cert file
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate import --idevid_cert IDEVID.cer
 Imported the iLOIDevID certificate successfully
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To export LDEVID certificate, use certificate command with
 export subcommand followed by option `--ldevid_cert` and `-f`
 with a file name in which the certificate will be stored.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate export --ldevid_cert -f myLDEVID.cer
 The certificate was saved to: myLDEVID.cer
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To export SystemIAK certificate use certificate command with
 export subcommand followed by option `--systemiak_cert` and `-f`
 with a file name in which the certificate will be stored.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate export --systemiak_cert -f mySystemIAK.cer
 The certificate was saved to: mySystemIAK.cer
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To auto enroll, use certificate command with `auto_enroll`
 subcommand followed by required arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest certificate auto_enroll "Hewlett Packard Enterprise" "ILORestGroup" "iLOrest" "US" "Americas" "Houston" "https://10.10.10.10/certsrv/mscep/mscep.dll" "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" "True" "False"
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Clearrestapistate Command
 
 ### Syntax
@@ -658,11 +774,16 @@ when not logged in will have no effect.
 
 To Clear the persistent RESTful API state run the command without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest clearrestapistate
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="info" name="NOTE" %}
 
 Pending iLO configuration settings are stored in volatile memory.
@@ -762,12 +883,18 @@ Obtain the account ID by visiting the
 HPE GreenLake portal -> Manage -> Account Details card.
 {% /admonition %}
 
+  {% tabs %}
+{% tab label="computeopsmanagement" %}
+
 ```shell computeopsmanagement
 
 ilorest computeopsmanagement connect --activationkey keyvalue
 Connecting computeopsmanagement...
 computeopsmanagement connection is successful
 ```
+  
+  {% /tab %}
+{% tab label="Generic POST command" %}
 
 ```shell Generic POST command
 POST /redfish/v1/Managers/1/Actions/Oem/Hpe/HpeiLO.EnableCloudConnect
@@ -776,21 +903,34 @@ Payload:
 {"ActivationKey": "Keyvalue"}
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To disconnect from Compute Ops Management.
+
+  {% tabs %}
+{% tab label="computeopsmanagement" %}
 
 ```shell computeopsmanagement
 ilorest computeopsmanagement disconnect
 The operation completed successfully.
 ```
+  
+  {% /tab %}
+{% tab label="Generic POST" %}
 
 ```shell Generic POST
 POST /redfish/v1/Managers/1/Actions/Oem/Hpe/HpeiLO.DisableCloudConnect
 
 Payload: {}
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To check the status of Compute Ops Management
+
+  {% tabs %}
+{% tab label="computeopsmanagement" %}
 
 ```shell computeopsmanagement
 ilorest computeopsmanagement status
@@ -799,6 +939,9 @@ Compute Ops Management Status
 ------------------------------------------------
 Compute Ops Management Status : NotEnabled
 ```
+  
+  {% /tab %}
+{% tab label="get" %}
 
 ```shell get
 ilorest get Oem/Hpe/CloudConnect/CloudConnectStatus --select=Manager.
@@ -807,6 +950,9 @@ Oem=
           CloudConnect=
                         CloudConnectStatus=NotEnabled
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 ## Detectilo command
 
 ### Syntax
@@ -845,6 +991,9 @@ Supply an iLO IP address to detect its generation.
 
 The following example logs into a remote iLO and detect its generation. You can add `-j`/`--json` in order to get the JSON output.
 
+  {% tabs %}
+{% tab label="Text format" %}
+
 ```shell Text format
 ilorest login ilo-ip -u ilo-user -p password
 ilorest detectilo
@@ -852,6 +1001,9 @@ Using the current logged in session information.
 Detecting iLO for this server.
 iLO Type: 5
 ```
+  
+  {% /tab %}
+{% tab label="Json" %}
 
 ```shell Json
 ilorest detectilo --json
@@ -859,8 +1011,13 @@ ilorest detectilo --json
   "iLOType": "5"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To view the generation of the local iLO while logged into a remote iLO, use the `--ignore_session` parameter. You can add `-j`/`--json` in order to get the JSON output.
+
+  {% tabs %}
+{% tab label="Text format" %}
 
 ```shell Text format
 ilorest login ilo-ip -u ilo-user -p password
@@ -868,6 +1025,9 @@ ilorest detectilo --ignore_session
 Detecting iLO for this server.
 iLO Type: 7
 ```
+  
+  {% /tab %}
+{% tab label="Json" %}
 
 ```shell Json
 ilorest detectilo --json --ignore_session
@@ -875,10 +1035,16 @@ ilorest detectilo --json --ignore_session
   "iLOType": "7"
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 The following example returns the generation of the iLO supplied by the `--url` parameter. You can add `-j`/`--json` in order to get the JSON output.
 
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest detectilo --json --url 10.132.159.85
 {
   "iLOType": 5
@@ -888,7 +1054,9 @@ Detecting iLO for remote device 10.132.159.85
 iLO Type: 5
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Channelinterface command
 
 ### Syntax
@@ -920,14 +1088,19 @@ Use this command to reset all the CHIF channels in local mode of login.
 
 To reset all the active CHIF channels use the command `channelinterface reset`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest -v channelinterface reset
 
 Successfully reset the CHIF Interface.
 iLORest return code: 0
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Directory Command
 
 ### Syntax
@@ -1040,7 +1213,10 @@ have no effect.
 To view current LDAP or kerberos settings run the command
 with the `ldap` or `kerberos` arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest directory ldap
 Discovering data...Done
 LDAP settings:
@@ -1071,18 +1247,25 @@ Remote Role Mapping(s):
         Local Role: dirgroup9d4546a03a03bb977c03086a
         Remote Group: Authenticated Users:S-1-5-11
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To add credentials to a service specify the service
 with the `ldap` or `kerberos` argument followed by
 the `USERNAME` and `PASSWORD` of the directory.
 The `--enable` flag was passed because previously the directory was disabled.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest directory ldap USERNAME PASSWORD --enable
 Changing settings...
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To specify the service address (`--serviceaddress`), port (`--port`),
 authentication schema (`--authentication`), and/or search strings
 (`--addsearch/--removesearch`) specify their respective options.
@@ -1096,7 +1279,10 @@ the semicolon character (;) from its potential shell command separator
 meaning.
 {% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest directory ldap --serviceaddress x.x.y.z --addsearch "string3;string4" --authentication=ExtendedSchema --port 199
 Changing settings...
 The operation completed successfully.
@@ -1118,25 +1304,35 @@ Remote Role Mapping(s):
         Local Role: dirgroup9d4546a03a03bb977c03086a
         Remote Group: Authenticated Users:S-1-5-11
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To specify the realm (`--realm`) and/or key tab (`--keytab`) specify
 their respective options. Realm and key tab can only be used with
 the Kerberos directory.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest directory kerberos --realm Forgotten --keytab https://location/to/keytab.txt
 Changing settings...
 The operation completed successfully.
 Adding keytab...
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To add directory role maps include the `ldap` argument with the
 `--addrolemap` option with the form `LocalRole:RemoteRoleGroup:OptionalSID`.
 Multiple rolemaps can be added with '#' as seperator. Available roles
 can be found in the help text.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest directory ldap --addrolemap "Administrator:Owners#ReadOnly:Reading Users:S-1-7-23"
 Changing settings...
 The operation completed successfully.
@@ -1162,14 +1358,19 @@ Remote Role Mapping(s):
         Local Role: dirgroup8e167f4006abce0ae22977d4
         Remote Group: Reading Users:S-1-7-23
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To add custom local role maps include the `ldap` argument
 with the `--addrolemap` option with the form
 `PrivNum1;PrivNum2;...:RemoteRoleGroup:OptionalSID`.
 Multiple rolemaps can be added with '#' as seperator.
 Numbers of privileges can be found in the help text.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest directory ldap --addrolemap "10;2;3:Another remote role:S-1-7-23"
 Changing settings...
 The operation completed successfully.
@@ -1179,13 +1380,18 @@ Updated privileges for ANOTHERETSTT
 The operation completed successfully.
 Updated privileges for A TESTTT:S-1-7-23
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To remove directory role maps include the `ldap` argument with
 the `--removerolemap` option specifying the `LocalRole` of the
 role map to remove. Multiple role maps can be removed by
 separating them with '#'.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest directory ldap --removerolemap "dirgroupb3b74668da9b6b0bc6864223#dirgroup8e167f4006abce0ae22977d4"
 Changing settings...
 The operation completed successfully.
@@ -1207,12 +1413,17 @@ Remote Role Mapping(s):
         Local Role: dirgroup9d4546a03a03bb977c03086a
         Remote Group: Authenticated Users:S-1-5-11
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To perform directory tests use the `test` argument followed by
 `start` to start the directory test, `stop` to stop the directory
 test, or `viewresults` to view the results of the last directory test.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest directory test start
 Starting the directory test. Monitor results with command: directory viewresults
 [200] The operation completed successfully.
@@ -1271,7 +1482,9 @@ Status: NotRun
 Notes:
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="info" name="NOTE" %}
 
 To change settings, you must first enable the directory.
@@ -1282,7 +1495,10 @@ in the same command as settings are set.
 When creating custom local roles use the following numbers
 to specify privileges.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 LOCAL PRIVILEGES:
 1. Login
 2. Remote Console
@@ -1302,7 +1518,9 @@ LOCAL ROLES:
 - Operator
 - Administrator
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Disableilofunctionality Command
 
 ### Syntax
@@ -1364,13 +1582,18 @@ have no effect.
 
 To Disable iLO functionality run the command without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest disableilofunctionality
 The operation completed successfully.
 Disabling iLO functionality. iLO will be unavailable on the logged in server until it is re-enabled manually.
 [200] The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Eskm Command
 
 ### Syntax
@@ -1419,20 +1642,30 @@ logged in will have no effect.
 
 To clear the ESKM logs use the `clearlog` argument.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest eskm clearlog
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To test the ESKM connections use the `testconnections`
 argument. The response will indicate if the system can
 connect properly or if there is an issue.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest eskm testconnections
 Enterprise Secure Key Manager Servers are not configured.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Ethernet command
 
 ### Syntax
@@ -1573,7 +1806,10 @@ before modifying the iLO IP network configuration.
 
 To enable Virtual NIC use the `--enable_vnic` argument.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest ethernet --enable_vnic
 Enabling Virtual NIC...
 [200] The operation completed successfully.
@@ -1587,39 +1823,56 @@ A management processor reset is in progress.
 You will need to re-login to access this system...
 iLOrest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To enable proxy use the `--proxy <proxyserver_withport>` argument.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest ethernet --proxy https://proxy.example.com:8080
 Enabling Proxy configuration...
 [200] The operation completed successfully.
 iLOrest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To clear proxy use the `--proxy None` argument.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest ethernet --proxy None
 Clearing Proxy configuration...
 [200] The operation completed successfully.
 iLOrest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example configures the active iLO management network
 port (Dedicated or Shared) with
 an IPv4 address, a gateway IP address and the network
 mask. Then it performs a reset of the iLO to modify effectively
 these properties.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest  ethernet --network_ipv4 192.168.1.56,192.168.1.2,255.255.252.0
 The operation completed successfully.
 
 ilorest iloreset
 A management processor reset is in progress.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="success" name="TIP" %}
 
 To be able to recover in case of a network misconfiguration,
@@ -1678,13 +1931,18 @@ no effect.
 To reset iLO to factory defaults in the current logged in server
 run the command without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest factorydefaults
 Resetting iLO to factory default settings
 Current session will be terminated.
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="warning" name="Warning" %}
 This command will erase all iLO user setting data and reset iLO.
 Default credentials are required to access iLO after a factory reset.
@@ -1781,7 +2039,10 @@ logged out after firmware update completes successfully.
 iLO does not always reset after a firmware update.
 {% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest firmwareupdate https://firmwarehost/path/to/firmware/file.fwpkg
 
 Starting upgrading process...
@@ -1796,7 +2057,9 @@ Please wait for iLO to initialize completely before logging in again.
 A reboot may be required for firmware changes to take effect.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Fwintegritycheck Command
 
 ### Syntax
@@ -1849,21 +2112,31 @@ have no effect.
 To perform a firmware integrity check run the command
 without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest fwintegritycheck
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To perform a firmware integrity check and return results of
 the check include the `--results` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest fwintegritycheck --results
 The operation completed successfully.
 Awaiting results of firmware integrity check....
 Scan Result: OK
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Iloaccounts Command
 
 ### Syntax
@@ -2000,7 +2273,10 @@ command is completed. Using this flag when not logged in will have no effect.
 To list the current iLO accounts on the system and their information,
 run the command without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest iloaccounts
 Discovering data...Done
 iLO Account info:
@@ -2021,13 +2297,18 @@ LoginPriv=True
 SystemRecoveryConfigPriv=True
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To add an iLO account include the `add` argument with the new
 account `USERNAME`, `LOGINNAME`, and `PASSWORD`.
 To optionally specify privileges at creation, 
 use the `--addprivs` option with numbers from the privilege list.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest iloaccounts add USERNAME ACCOUNTNAME PASSWORD --addprivs 1,4,7
 [201] The operation completed successfully.
 ilorest iloaccounts
@@ -2062,13 +2343,18 @@ LoginPriv=True
 SystemRecoveryConfigPriv=False
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To modify an iLO account's privileges include the `modify` argument,
 the `Id` or the `Username` of the account to modify, and include the
 `--addprivs` and/or `--removeprivs` options with numbers from the privilege
 list.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest iloaccounts
 ...
 [3] USERNAME (ACCOUNTNAME):
@@ -2101,44 +2387,69 @@ VirtualPowerAndResetPriv=False
 LoginPriv=True
 SystemRecoveryConfigPriv=False
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To change the password of an account run the command with the
 `changepass` argument, specifying the `Id` or the `Username` of
 the account to modify and the new password.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest iloaccounts changepass 3 newpassword
 The account was modified successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To delete an iLO account run the command with the `delete`
 argument, specifying the `Id` or the `Username` of the account for deletion.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest iloaccounts delete USERNAME
 The account was removed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To add a certificate to an account run the command with the `addcert`
 argument, specifying the `Id` or `Username` of the account followed by
 the path to an x.509 certificate.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest iloaccounts addcert 3 C:\Temp\cert.txt
 The account was modified successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To delete a certificate from an account run the command with the `deletecert`
 argument, specifying either the `Id` or `Username` of the account.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest iloaccounts deletecert 3
 The account was modified successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To verify the certificate run a `rawget`
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest rawget "/redfish/v1/AccountService/UserCertificateMapping/?$expand=."
 [200] The operation completed successfully.
 {
@@ -2165,7 +2476,9 @@ ilorest rawget "/redfish/v1/AccountService/UserCertificateMapping/?$expand=."
   ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 When applying privileges directly use the following numbers
 to specify privileges.
 
@@ -2286,7 +2599,10 @@ include the `add` argument with the new federation name and
 federation key. To optionally specify privileges at creation,
 use the `--addprivs` option with numbers from the privilege list.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest ilofederation
 iLO Federation Id list with Privileges:
 
@@ -2330,11 +2646,16 @@ VirtualPowerAndResetPriv=False
 LoginPriv=True
 SystemRecoveryConfigPriv=False
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To list the current iLO federations and their information run
 the command with no arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 
 ilorest ilofederation
 iLO Federation Id list with Privileges:
@@ -2351,20 +2672,30 @@ VirtualPowerAndResetPriv=False
 LoginPriv=True
 SystemRecoveryConfigPriv=False
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To change the key of an iLO federation group
 include the `changekey` argument with the federation
 name and the new key.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest ilofederation changekey newfedname newfedkey
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To delete an iLO federation group include the `delete`
 argument with the federation name to delete.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest ilofederation
 iLO Federation Id list with Privileges:
 
@@ -2408,11 +2739,16 @@ VirtualPowerAndResetPriv=False
 LoginPriv=True
 SystemRecoveryConfigPriv=False
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To modify an iLO federation group include the `modify`
 argument with the federation name you'd like to update.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest ilofederation modify newfederation 8charfedkey --addprivs 1,2,3,4
 The resource has been created successfully.
 ilorest ilofederation
@@ -2468,7 +2804,9 @@ VirtualPowerAndResetPriv=False
 LoginPriv=False
 SystemRecoveryConfigPriv=False
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 When applying privileges directly use the following numbers
 to specify privileges.
 
@@ -2563,6 +2901,9 @@ Refer to the
 [iLO License service](/docs/redfishservices/ilos/supplementdocuments/licenseservice/)
 section for other examples.
 
+  {% tabs %}
+{% tab label="License details" %}
+
 ```shell License details
 ilorest ilolicense
 Id:1
@@ -2613,27 +2954,41 @@ LicenseTier:ADV
 LicenseType:Perpetual
 Name:iLO License
 ```
+  
+  {% /tab %}
+{% tab label="Install license key" %}
 
 ```shell Install license key
 ilorest ilolicense --install XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 The resource has been created successfully.
 ```
+  
+  {% /tab %}
+{% tab label="Check license key" %}
 
 ```shell Check license key
 ilorest ilolicense --check XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
 Matched. Provided key is installed on this server
 ```
+  
+  {% /tab %}
+{% tab label="Uninstall license key" %}
 
 ```shell Uninstall license key
 ilorest ilolicense --uninstall
 Uninstalled license successfully
 ```
+  
+  {% /tab %}
+{% tab label="Check License state" %}
 
 ```shell Check License state
 ilorest ilolicense --check_confirm
 "State: unconfirmed"
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Iloreset Command
 
 ### Syntax
@@ -2682,7 +3037,10 @@ will have no effect.
 
 To reset iLO run the command without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest iloreset
 
 After iLO resets the session will be terminated.
@@ -2691,7 +3049,9 @@ This process may take up to 3 minutes.
 
 A management processor reset is in progress.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="warning" name="Warning" %}
 Resetting iLO will render it unresponseive as it resets.
 The user will be logged out.
@@ -2757,25 +3117,38 @@ logged in will have no effect.
 
 To list the current profiles on the server, run the command without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest ipprofiles
 {
   "@odata.type": "#HpeIpProfiles.v1_0_0.HpeIpProfiles",
   "1540504034216": "{profile: data}"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To upload an ipprofile, input a valid JSON file path as an argument.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest ipprofiles profile.json
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To remove a profile, use the unique key contained in
 the profile with the `(-d, --delete)` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest ipprofiles -d 1540504034216
 The operation completed successfully.
 ilorest ipprofiles
@@ -2790,7 +3163,9 @@ ilorest ipprofiles
   "@odata.type": "#HpeIpProfiles.v1_0_0.HpeIpProfiles"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Onebuttonerase Command
 
 ### Syntax
@@ -2857,7 +3232,10 @@ To initiate One Button Erase and erase all iLO settings,
 BIOS settings, User Data, and iLO Repository data run the
 command without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest onebuttonerase
 Please type "erase" to begin erase process. Any other input will cancel the operation. If you wish to skip this prompt add the --confirm flag: erase
 One or more properties were changed and will not take effect until system is reset.
@@ -2870,11 +3248,16 @@ Bios Settings Erase: Idle
 iLO Settings Erase: Idle
 User Data Erase: Initiated /
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To optionally skip the confirmation before initiating
 One Button Erase include the `--confirm` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest onebuttonerase --confirm
 One or more properties were changed and will not take effect until system is reset.
 The operation completed successfully.
@@ -2886,7 +3269,9 @@ Bios Settings Erase: Idle
 iLO Settings Erase: Idle
 User Data Erase: Initiated \
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Pending command
 
 ### Syntax
@@ -2952,7 +3337,10 @@ that have been committed and are awaiting
 a reboot. In the following example, only the `AdminName` Bios
 attribute has been modified and committed.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest --nologo  pending
 Current Pending Changes:
 
@@ -3003,7 +3391,9 @@ Name=
       Current=BIOS Current Settings
       Pending=BIOS Pending Settings
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Reboot Command
 
 ### Syntax
@@ -3110,7 +3500,10 @@ Using this flag when not logged in will have no effect.
 
 If no arguments are supplied the default operation is `ForceRestart`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest reboot
 
 After the server is rebooted the session will be terminated.
@@ -3119,11 +3512,16 @@ Rebooting server in 3 seconds...
 The operation completed successfully.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To perform a power function supply one of the reboot type parameters
 as an argument.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest reboot ForceOff
 
 Server is powering off the session will be terminated.
@@ -3132,11 +3530,16 @@ Powering off the server in 3 seconds...
 The operation completed successfully.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 If the current power state does not allow for an operation
 to complete an error will be returned.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest reboot On
 
 Session will now be terminated.
@@ -3144,7 +3547,9 @@ Please wait for the server to boot completely to login again.
 Turning on the server in 3 seconds...
 iLO response with code [400]: The operation was not successful due to the current power state (for example, attempting to turn the power off when it is already off).
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="info" name="NOTE" %}
 
 - The reboot command will log out, the user, from the server.
@@ -3253,25 +3658,40 @@ logged in will have no effect.
 
 Send syslog test to the current logged in server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest sendtest syslog
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Send alert mail test to the current logged in server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest sendtest alertmail
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Send SNMP test alert to the current logged in server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest sendtest snmpalert
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Serverclone Command
 
 ### Syntax
@@ -3448,7 +3868,10 @@ To save an iLO and Bios config run the command with the `save` argument.
 You can specify a filename using the (`-f, --filename`) option,
 if this option is not used the command will use `ilorest_clone.json`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverclone save
 Saving properties of type: AccountService, path: /redfish/v1/AccountService/
 Saving properties of type: Bios, path: /redfish/v1/systems/1/bios/settings/
@@ -3483,14 +3906,19 @@ Saving properties of type: SecureBoot, path: /redfish/v1/Systems/1/SecureBoot/
 Saving properties of type: SmartStorageConfig, path: /redfish/v1/systems/1/smartstorageconfig/settings/
 Saving of clonefile to 'ilorest_clone.json' is complete.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To save an iLO and Bios config while providing a placeholder
 value for all user inputs run the command with the `save` argument
 and include the (`--auto`) option. This option can be used to
 programmatically create a file without user input and then
 use a script to fill in the settings.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverclone save --auto
 Saving properties of type: AccountService, path: /redfish/v1/AccountService/
 Saving properties of type: Bios, path: /redfish/v1/systems/1/bios/settings/
@@ -3524,12 +3952,17 @@ Saving properties of type: SecureBoot, path: /redfish/v1/Systems/1/SecureBoot/
 Saving properties of type: SmartStorageConfig, path: /redfish/v1/systems/1/smartstorageconfig/settings/
 Saving of clonefile to 'ilorest_clone.json' is complete.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 By default, `--ilossa` information is stored in default
 file `ilorest_storage_clone.json`.
 To store it in a custom file, use `-sf` instead of `-f`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverclone save --nobios --ilossa --auto
 Saving of storage clone file to 'ilorest_storage_clone.json'......
 Saving properties of type /redfish/v1/Systems/1/Storage/DE009000/
@@ -3538,12 +3971,17 @@ Selected option(s): #StorageControllerCollection.StorageControllerCollection
 Saving properties of type /redfish/v1/Systems/1/Storage/DE009000/Controllers/0
 Saving of storage clone file to 'ilorest_storage_clone.json' is complete.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To load a clone file run the command with the `load` argument.
 You can specify a filename using the (`-f, --filename`) option,
 if this option is not used the command will search for `ilorest_clone.json`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverclone load -f ilorest_clone.json
 A configuration file 'ilorest_clone.json' containing configuration changes will be applied to this iLO server resulting in system setting changes for BIOS, ethernet controllers, disk controllers, deletion and rearrangement of logical disks...etc. Please confirm you acknowledge and would like to perform this operation now? (y/n)
 
@@ -3614,12 +4052,17 @@ Resetting System...
 System already Powered Off: PowerOff
 Loading of clonefile 'ilorest_clone.json' to server is complete. Review the changelog file 'changelog.log'.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To load a clone file with SSO and/or TLS certificates run the
 command with the `load` argument and include
 the `--tlscert` and/or `--ssocert` arguments followed by certificate files.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest login
 Discovering data...Done
 ilorest serverclone load  --auto --tlscert sso_certificate.txt --ssocert certificate.txt
@@ -3642,7 +4085,9 @@ The contents of type: '#HpeiLOSnmpService.v2_2_0.HpeiLOSnmpService' should be co
 The contents of type: '#HpeiLOFederationGroup.v2_0_0.HpeiLOFederationGroup' should be compatible with '#HpeiLOFederationGroup.v2_0_0.HpeiLOFederationGroup', on this system.
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 An example of simultaneously deleting one account and
 adding another within a JSON file. For new accounts,
 the path is simply a placeholder, iLO will determine the URI to be used.
@@ -3650,7 +4095,10 @@ the path is simply a placeholder, iLO will determine the URI to be used.
 Clone file snippet to be modified; the element to be
 removed is <font color="#01a982">highlighted</font>.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 {
   ...
   "#ManagerAccount.v1_1_3.ManagerAccount": {
@@ -3696,11 +4144,16 @@ removed is <font color="#01a982">highlighted</font>.
   ...
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 New version of clone file. The new element added
 is <font color="#01a982">highlighted</font>.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 {
   ...
   "#ManagerAccount.v1_1_3.ManagerAccount": {
@@ -3746,7 +4199,9 @@ is <font color="#01a982">highlighted</font>.
   ...
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Serverinfo Command
 
 ### Syntax
@@ -3851,7 +4306,10 @@ have no effect.
 
 Use option --firmware to list the FW and its versions.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverinfo --firmware
 
 ------------------------------------------------
@@ -3877,11 +4335,16 @@ HPE Smart Array P408i-a SR Gen10 : 2.59-18
 Embedded Video Controller : 2.5
 Drive : HPD1
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Use option --proxy to view proxy settings.
 You can output the information to json file using `--json` or `-j` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverinfo --proxy
 
 ------------------------------------------------
@@ -3892,7 +4355,9 @@ ProxyPort : 8080
 ProxyServer : proxy.exampe.net
 ProxyUserName :
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Serverlogs Command
 
 ### Syntax
@@ -4022,14 +4487,22 @@ Select `AHS` to download AHS logs from a server to a file. The filename is
 pre-generated from the server serial number and date and time
 the AHS log was gathered.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverlogs --selectlog=AHS
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To view logs select a log using the `--selectlog` option.
 You can output logs to a file with the `(-f, --filename)` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverlogs --selectlog=IML
 
 @odata.type=#LogEntry.v1_0_0.LogEntry
@@ -4054,10 +4527,15 @@ Message=IML Cleared (iLO 5 user: admin)
 EntryType=Oem
 Severity=OK
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To filter logs you can use the `--filter` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverlogs --selectlog=IML --filter Id=1
 
 @odata.type=#LogEntry.v1_0_0.LogEntry
@@ -4082,37 +4560,57 @@ Message=IML Cleared (iLO 5 user: admin)
 EntryType=Oem
 Severity=OK
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Use the `--customiseAHS` with a string to customize AHS results.
 This is only available for downloading remote AHS logs.
 This command will only download AHS logs from
 January 26th 2019 to February 1st 2019.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 serverlogs --selectlog=AHS --customiseAHS "from=2019-01-26&&to=2019-02-01"
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Clear logs by selecting a log with `--selectlog` and including
 the `(-c, --clearlog)` option. This command will clear the AHS logs.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverlogs --selectlog=AHS --clearlog
 One or more properties were changed and will not take effect until the device is reset and system is rebooted
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To insert an IML log use the `(-m, --maintenancemessage)` flag.
 This is only available with IML logs.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverlogs --selectlog=IML -m "Text message for maintenance"
 [201] The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To set an IML log as repaired use the `(-r, --repair)` option.
 Specify the Id of a log to mark as repaired.
 You can only repair entries with severities of `Critical` or `Warning`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverlogs --selectlog=IML --filter Severity=Critical
 
 @odata.type=#LogEntry.v1_0_0.LogEntry
@@ -4166,7 +4664,9 @@ Message=Innovation Engine Image Authentication Error. The Innovation Engine imag
 EntryType=Oem
 Severity=OK
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Serverstate Command
 
 ### Syntax
@@ -4217,11 +4717,16 @@ To return the serverstate run the command without arguments.
 Possible values include: None, Unknown,
 Reset, PowerOff, InPost, InPostDiscoveryComplete, FinishedPost.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest serverstate
 The server is currently in state: FinishedPost
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## SetTwoFactorAuthentication Command
 
 ### Syntax
@@ -4311,33 +4816,53 @@ command is completed. Using this flag when not logged in will have no effect.
 
 To set the SMTP settings on the server
 
-```Shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```Shell Example
 ilorest settwofactorauthentication smtp --smtpfortfaenabled true --alertmailsenderdomain test@test.com --alertmailsmtpserver smtp.test.com --alertmailsmtpport 587
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To enable TFA (Two Factor Authentication)
 
-```Shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```Shell Example
 ilorest settwofactorauthentication enable 
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To check the status of TFA enablement
 
-```Shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```Shell Example
 ilorest settwofactorauthentication status 
 TFA Status : Enabled
 SMTP for TFA Status : True
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To disable TFA (Two Factor Authentication)
 
-```Shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```Shell Example
 ilorest settwofactorauthentication disable
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Sigrecompute Command
 
 ### Syntax
@@ -4390,11 +4915,16 @@ will have no effect.
 To Recalculate the signature on the systems
 configuration run the command without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest sigrecompute
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Singlesignon Command
 
 ### Syntax
@@ -4444,37 +4974,57 @@ logged in will have no effect.
 To delete a specific SSO record by running the command
 with the `deleterecord` argument and specify it by number.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest singlesignon deleterecord 1
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To delete a specific SSO record by running the command
 with the `deleterecord` argument followed by the `all` keyword.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest singlesignon deleterecord all
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To import a SSO DNS name run the command with
 the `dnsname` argument followed by the DNS to import.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest singlesignon importdns dnsname
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To import a SSO certificate from a file run the command
 with the `importcert` argument followed by the certificate
 file to import. You can also import the certificate by URI,
 by specifying a URI path to the certificate instead.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest singlesignon importcert certfile.txt
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Virtualmedia Command
 
 ### Syntax
@@ -4544,19 +5094,27 @@ logged in will have no effect.
 
 To view current virtual media run the command without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest virtualmedia
 Available Virtual Media Options:
 [1] Media Types Available: Floppy USBStick  Image Inserted: None
 [2] Media Types Available: CD DVD  Image Inserted: None
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To insert virtual media specify the type of virtual media by
 Id number followed by the URI location to the image.
 You can specify the media to boot next reset by including
 the `--bootnextreset` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest virtualmedia 2 https://xx.xx.xx.xx/path/to/vm.iso --bootnextreset
 The operation completed successfully.
 ilorest virtualmedia
@@ -4564,11 +5122,16 @@ Available Virtual Media Options:
 [1] Media Types Available: Floppy USBStick  Image Inserted: None
 [2] Media Types Available: CD DVD  Image Inserted: https://xx.xx.xx.xx/path/to/vm.iso
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To remove an inserted media specify the type of virtual
 media by Id number and include the `--remove` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest virtualmedia 2 --remove
 The operation completed successfully.
 ilorest virtualmedia
@@ -4576,3 +5139,6 @@ Available Virtual Media Options:
 [1] Media Types Available: Floppy USBStick  Image Inserted: None
 [2] Media Types Available: CD DVD  Image Inserted: None
 ```
+  
+  {% /tab %}
+  {% /tabs %}

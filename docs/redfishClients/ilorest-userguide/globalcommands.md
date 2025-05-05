@@ -61,14 +61,19 @@ iLO HTTP and the iLO Channel Interface Driver response messages:
 
 The following example shows extended verbosity:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 HTTP Response Code: [400]
 MessageId: iLO.2.8.PropertyNotWritableOrUnknown
 Description: The request included a value for a  read-only or unknown property.
 Message: The property "NTPServers" is a read-only property and cannot be assigned a value, or not valid for this resource.
 Resolution: If the operation did not complete, remove the property from the request body and resubmit the request.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 **-d, --debug**
 
 The debug option provides a timestamp of all transmit and response activity
@@ -83,7 +88,10 @@ understand how to perform specific requests.
 
 The following example shows the content of the `iLORest.log` file:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 2020-06-05 14:20:39,266 INFO    : Not using CA certificate.
 2020-06-05 14:20:39,267 INFO    : Initializing no proxy.
 2020-06-05 14:20:39,267 DEBUG : HTTP REQUEST: GET
@@ -108,7 +116,9 @@ Headers:
 
 Body Response of /redfish/v1/: {"@odata.context":"/redfish/v1/$metadata#ServiceRoot.ServiceRoot","@odata.etag":"W/\"16CA421D\"","@odata.id":"/redfish/v1/","@odata.type":"#ServiceRoot.v1_5_1.ServiceRoot","Id":"RootService","AccountService":{"@odata.id":"/redfish/v1/AccountService/"},"Chassis":{"@odata.id":"/redfish/v1/Chassis/"},"EventService":{"@odata.id":"/redfish/v1/EventService/"},"JsonSchemas":{"@odata.id":"/redfish/v1/JsonSchemas/"},"Links":{"Sessions":{"@odata.id":"/redfish/v1/SessionService/Sessions/"}},"Managers":{"@odata.id":"/redfish/v1/Managers/"},"Name":"HPE RESTful Root Service","Oem":{"Hpe":{"@odata.context":"/redfish/v1/$metadata#HpeiLOServiceExt.HpeiLOServiceExt","@odata.type":"#HpeiLOServiceExt.v2_3_0.HpeiLOServiceExt","Links":{"ResourceDirectory":{"@odata.id":"/redfish/v1/ResourceDirectory/"}},"Manager":[{"DefaultLanguage":"en","FQDN":"ILOMXQ849018N.americas.hpqcorp.net","HostName":"ILOMXQ849018N","Languages":[{"Language":"en","TranslationName":"English","Version":"2.10"}],"ManagerFirmwareVersion":"2.10","ManagerType":"iLO 5","Status":{"Health":"OK"}}],"Moniker":{"ADVLIC":"iLO Advanced","BMC":"iLO","BSYS":"BladeSystem","CLASS":"Baseboard Management Controller","FEDGRP":"DEFAULT","IPROV":"Intelligent Provisioning","PRODABR":"iLO","PRODFAM":"Integrated Lights-Out","PRODGEN":"iLO 5","PRODNAM":"Integrated Lights-Out 5","PRODTAG":"HPE iLO 5","STDLIC":"iLO Standard","SUMABR":"SUM","SUMGR":"Smart Update Manager","SYSFAM":"ProLiant","VENDABR":"HPE","VENDNAM":"Hewlett Packard Enterprise","WWW":"www.hpe.com","WWWAHSV":"www.hpe.com/servers/ahsv","WWWBMC":"www.hpe.com/info/ilo","WWWDOC":"www.hpe.com/support/ilo-docs","WWWERS":"www.hpe.com/services/getconnected","WWWGLIS":"reserved for liconf URI","WWWIOL":"www.hpe.com/info/insightonline","WWWLIC":"www.hpe.com/info/ilo","WWWLML":"www.hpe.com/support","WWWPASS":"www.hpe.com/support/hpesc","WWWPRV":"www.hpe.com/info/privacy","WWWQSPEC":"www.hpe.com/info/qs","WWWRESTDOC":"www.hpe.com/support/restfulinterface/docs","WWWSUP":"www.hpe.com/support/ilo5","WWWSWLIC":"www.hpe.com/software/SWLicensing"},"Sessions":{"CertCommonName":"ILOMXQ849018N.americas.hpqcorp.net","CertificateLoginEnabled":false,"KerberosEnabled":false,"LDAPAuthLicenced":true,"LDAPEnabled":false,"LocalLoginEnabled":true,"LoginFailureDelay":0,"LoginHint":{"Hint":"POST to /Sessions to login using the following JSON object:","HintPOSTData":{"Password":"password","UserName":"username"}},"SecurityOverride":false,"ServerName":""},"System":[{"Status":{"Health":"OK"}}],"Time":"2020-06-05T19:21:15Z"}},"Product":"ProLiant DL360 Gen10","ProtocolFeaturesSupported":{"ExpandQuery":{"ExpandAll":false,"Levels":true,"Links":false,"MaxLevels":1,"NoLinks":true},"FilterQuery":true,"OnlyMemberQuery":true,"SelectQuery":false},"RedfishVersion":"1.6.0","Registries":{"@odata.id":"/redfish/v1/Registries/"},"SessionService":{"@odata.id":"/redfish/v1/SessionService/"},"Systems":{"@odata.id":"/redfish/v1/Systems/"},"Tasks":{"@odata.id":"/redfish/v1/TaskService/"},"TelemetryService":{"@odata.id":"/redfish/v1/TelemetryService/"},"UUID":"d3372204-1b09-54ea-9aa0-88940c369d59","UpdateService":{"@odata.id":"/redfish/v1/UpdateService/"},"Vendor":"HPE"}
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 **--nostdoutlog**
 
 Disable debug logs to stdout.
@@ -188,7 +198,10 @@ The following example uses the iLOrest
 [script mode](/docs/redfishclients/ilorest-userguide/usage/#scriptable-mode)
 to display embedded help.
 
-```text
+  {% tabs %}
+{% tab label="Example" %}
+
+```text Example
 ilorest help
 usage: iLORest [GLOBAL OPTIONS] [COMMAND] [COMMAND ARGUMENTS] [COMMAND OPTIONS]
 
@@ -329,14 +342,19 @@ taskqueue                 - Manages the update task queue for iLO.
 uploadcomp                - Upload components/binary to the iLO Repository.
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The syntax to get help details for specific command is
 '<command> **-h** or **--help**'
 
 The following example uses the iLOrest interactive mode
 to display the embedded help of the `login` command.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest
 iLOrest > login -h
 usage: login [-h] [--wait_for_otp] [--sessionid SESSIONID] [-u USER] [-p PASSWORD] [-o LOGIN_OTP] [--biospassword BIOSPASSWORD] [--https HTTPS_CERT] [--usercert USER_CERTIFICATE]
@@ -422,7 +440,9 @@ LOGIN OPTIONS:
   --force_vnic          Force login through iLO Virtual NIC. **NOTE** iLO 5 required
   --logout              Logout after the completion of the command.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Login Command
 
 #### Syntax
@@ -476,7 +496,10 @@ or append the `--logout` parameter as shown in the next example.
 
 The following one line example logs into a remote iLO, retrieves its firmware version and logs out.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 
 ilorest get FirmwareVersion --selector Manager. --url ilo-ip --user ilo-user --password password --json --logout
 {
@@ -486,7 +509,9 @@ Logging session out.
 Logging session out.
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Parameters
 
 - **URL**
@@ -620,48 +645,73 @@ supply the URL, username, and
 password for the remote HPE iLO.
 
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login xx.xx.xx.xx -u username -p password
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To open a remote Redfish [session](/docs/concepts/redfishauthentication/#redfish-authentication-and-sessions),
 using certificates (instead of user/password credentials), supply the URL, user certificate, user
 key and user passphrase to the server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login xx.xx.xx.xx --usercert cert.pem --userkey userkey.pem --userpassphrase password
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In the following example, the `--select` option has been included so that
 the `Bios` type is selected once the user is logged in. You can prove that
 the `Bios` type has indeed been selected when we enter the `select` command
 alone.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login xx.xx.xx.xx -u username -p password --select Bios.
 Discovering data...Done
 ilorest select
 Current selection: Bios.v1_0_0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 IPv4, IPv6 addresses, or fully qualified hostnames can be specified. IPv6 addresses should use the following
 format.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login [xxxx::xxxx:xxxx:xxxx:xxxx] -u username -p password
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In the following example, a SSL certificate is included to validate the
 HTTPS connection
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login system.domain.net -u username -p password --https \path\to\SSLcert.crt
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In the following example, the URL, username, and password information are
 not specified on the command line nor in the configuration file.
 
@@ -674,11 +724,16 @@ of an application account. Refer to the
 documentation section for more information.
 
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 
 In iLO 5 and iLO 6 contexts, you can force the use of the
 [Virtual NIC](/docs/redfishservices/ilos/supplementdocuments/vnic/)
@@ -686,26 +741,42 @@ communication path with
 the `--force_vnic` flag and username and password credentials.
 
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login --force_vnic -u username -p password
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example forces the use of iLO 7 user credentials instead of the default [application account](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-accounts) mechanism, to create a session based in-band communication. This example is valid only in iLO 7 based servers (and later)
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login --no_app_account -u username -p password
 Attempt to login with Vnic...
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 
 #### To login using OTP
+
+  {% tabs %}
+{% tab label="Explicit OTP login" %}
 
 ```shell Explicit OTP login
 iLOrest > login -u ilo-username -p password -o 987654
 Discovering data...Done
 ```
+  
+  {% /tab %}
+{% tab label="Implicit OTP login" %}
 
 ```shell Implicit OTP login
 iLOrest > login -u username -p password --wait_for_otp
@@ -713,7 +784,9 @@ One Time Passcode Sent to registered email.
 Enter OTP: 234567
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Types Command
 
 #### Syntax
@@ -801,7 +874,10 @@ available [types](/docs/concepts/datatypesandcollections/)
 it returns the full type name (not the simplified one).
 See example below.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login ilo-ip -u username -p password
 Discovering data...Done
 iLOrest > types
@@ -817,12 +893,17 @@ EthernetInterface.v1_4_1
 EthernetInterfaceCollection
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following command simultaneously logs in to the server at the provided URL
 with the provided username and password, and lists all the available types
 that you can select. The full list has been truncated here for space.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > types --url xx.xx.xx.xx -u username -p password
 Discovering data...Done
 Type options:
@@ -837,12 +918,17 @@ EthernetInterface.v1_4_1
 EthernetInterfaceCollection
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Adding the `--fulltypes` option returns the full type name instead
 of the simplified versions. This is only available against Redfish
 conformant services.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > types --fulltypes
 Type options:
 #AccountService.v1_3_0.AccountService
@@ -857,7 +943,9 @@ Type options:
 #EventDestinationCollection.EventDestinationCollection
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Select Command
 
 #### Syntax
@@ -990,7 +1078,10 @@ The following example is for a didactic purpose only. It does not have
 any practical use case. It selects all types containing string `em`, regardless the
 case:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest select em
 
 ilorest select
@@ -1004,19 +1095,26 @@ HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection,
 HpeRemoteSupport.v2_6_0, MemoryDomainCollection.MemoryDomainCollection,
 TelemetryService.v1_0_0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example simultaneously logs in to a remote iLO at the provided URL
 with the provided username and password
 and selects the `ComputerSystem.` type.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem. --url xx.xx.xx.xx -u username -p password
 Discovering data...Done
 
 iLOrest > select
 Current selection: ComputerSystem.v1_4_0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In the previous example, the trailing dot (`.`) of the selected type
 excludes the `ComputerSystemCollection` type.
 
@@ -1024,7 +1122,10 @@ Excluding the collection associated with a type can be useful
 to avoid retrieving properties belonging to both types (i.e. `Name`)
 as shown in the next example.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest list Name @odata.id --json --select ComputerSystem
 [
   {
@@ -1038,24 +1139,34 @@ ilorest list Name @odata.id --json --select ComputerSystem
 ]
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example shows how to select all `Bios` subsystems or only `Bios`
 by excluding the HPE OEM
 <a href="https://developer.hpe.com/blog/why-is-redfish%C2%AE-different-from-other-rest-apis-part-1/#oem-extensions"
 target="_blank">extensions</a>.
+
+  {% tabs %}
+{% tab label="Select all Bios subsystems" %}
 
 ```shell Select all Bios subsystems
 iLOrest > select Bios
 iLOrest > select
 Current selection: HpeBiosMapping.v2_0_0, Bios.v1_0_0
 ```
+  
+  {% /tab %}
+{% tab label="Select only Bios subsystem" %}
 
 ```shell Select only Bios subsystem
 iLOrest > select Bios.
 iLOrest > select
 Current selection: Bios.v1_0_0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example selects all versions of the standard `Drive` data type,
 excluding legacy HPE `SmartStorage` types (they contain a "v2" string) and lists the URIs
 of the drives in the system.
@@ -1067,6 +1178,9 @@ One version implemented in the management controller (iLO) and
 versions implemented within the devices.
 {% /admonition %}
 
+  {% tabs %}
+{% tab label="Drive types selection" %}
+
 ```shell Drive types selection
 ilorest select drive.v1
 ilorest select
@@ -1074,6 +1188,9 @@ Current selection: Drive.v1_14_0, Drive.v1_16_0
 
 ilorest  list  "@odata.id"  --json
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```json Output
 [
@@ -1118,11 +1235,16 @@ ilorest  list  "@odata.id"  --json
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 iLOrest caches data once a type has been selected for the first time.
 To refresh a type with the most up to date information use the `--refresh` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem.
 iLOrest > get Oem/Hpe/PowerOnMinutes
 Oem=
@@ -1135,14 +1257,19 @@ Oem=
      Hpe=
           PowerOnMinutes=814089
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="success" name="TIP" %}
 Use the `select <type> --refresh` command to delete/remove changed
 settings that have not been [committed](#commit-command), as shown in
 the next example.
 {% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest set LocationIndicatorActive=True
 Added the following patch:
 {
@@ -1161,7 +1288,9 @@ Padbol# ilorest status
 No changes found
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### List Command
 
 #### Syntax
@@ -1207,10 +1336,16 @@ the exhaustive list. However, you can get an idea of that list by comparing the 
 of the `list` and the `get` commands against the `Manager` data type as shown in
 the next example.
 
+  {% tabs %}
+{% tab label="list and get Manager properties" %}
+
 ```shell list and get Manager properties
 ilorest list --json --select Manager. > listManager.json
 ilorest get  --json --select Manager. > getManager.json
 ```
+  
+  {% /tab %}
+{% tab label="Output difference (truncated)" %}
 
 ```shell Output difference (truncated)
 diff listManager.json getManager.json
@@ -1249,7 +1384,9 @@ diff listManager.json getManager.json
 <         },
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% /admonition %}
 
 #### Parameters
@@ -1352,6 +1489,9 @@ command is completed. You need to be logged in to use this flag.
 The following example lists all the properties of the `Bios` data type, in human readable
 and JSON formats.
 
+  {% tabs %}
+{% tab label="Interactive human readable (truncated)" %}
+
 ```shell Interactive human readable (truncated)
 iLOrest > select Bios.
 iLOrest > list
@@ -1367,6 +1507,9 @@ AdminEmail=""
 AdminName=""
 ...
 ```
+  
+  {% /tab %}
+{% tab label="JSON format (truncated)" %}
 
 ```json JSON format (truncated)
 iLOrest > select ComputerSystem.
@@ -1401,7 +1544,9 @@ iLOrest > list --json
       "Hdd",
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To return specific properties or sub-properties value, include them as arguments.
 If the property you want to return is a sub-property add them in the form
 `Property/Sub-property`.
@@ -1416,29 +1561,42 @@ The following example retrieves three properties from the `ComputerSystem`
 [type](/docs/concepts/datatypesandcollections/).
 The `AssetTag` property exists, but has an empty value ("").
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > list @odata.id Boot/BootSourceOverrideMode AssetTag --select ComputerSystem.
 @odata.id=/redfish/v1/Systems/1/
 AssetTag=""
 Boot=
       BootSourceOverrideMode=UEFI
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example tries retrieves a non-existing property (verbose mode)
 in the `ComputerSystem` type.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest -vv list foo --select ComputerSystem.
 Selected option(s): #ComputerSystem.v1_17_0.ComputerSystem
 
 Error: No get contents found for selected type.
 iLORest return code: 6
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example asks, in verbose mode, for the values of an existing
 (`PowerState`) and a non-existing (`foo`) properties in the `ComputerSystem.` subsystem.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest -vv list PowerState foo --select ComputerSystem. --json
 Selected option(s): #ComputerSystem.v1_17_0.ComputerSystem
 {
@@ -1447,12 +1605,17 @@ Selected option(s): #ComputerSystem.v1_17_0.ComputerSystem
 iLORest return code: 0
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example selects the `Bios` data type before
 asking, in verbose mode, for the values of properties belonging to another
 data type (`Memory.`). As a consequence, iLOrest returns an error.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest select Bios.
 ilorest -v list CapacityMiB Name Vend --json
 
@@ -1461,17 +1624,25 @@ Selected option(s): #Bios.v1_0_0.Bios
 Error: No get contents found for selected type.
 iLORest return code: 6
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example selects the `Bios.` type
 and then switches to the `Memory.` type to retrieve
 the values of three properties. However, one of
 them (`Vend`) is not spelled correctly. As a result,
 only valid properties are returned.
 
+  {% tabs %}
+{% tab label="Incorrect property" %}
+
 ```shell Incorrect property
 ilorest select Bios.
 ilorest -v list CapacityMiB Name Vend --json --select Memory.
 ```
+  
+  {% /tab %}
+{% tab label="Output (truncated)" %}
 
 ```json Output (truncated)
 Selected option(s): #Memory.v1_7_1.Memory
@@ -1496,12 +1667,17 @@ Selected option(s): #Memory.v1_7_1.Memory
 ]
 iLORest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the value of the `CapacityMiB`
 property in the `Memory.` subsystem. Several memory slots are populated with identical DIMMs (32768 MiB),
 but not all of them. In this case, iLOrest returns only two values: `0` and `32768`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest list CapacityMiB --json --select Memory.
 [
   {
@@ -1512,13 +1688,18 @@ ilorest list CapacityMiB --json --select Memory.
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the values of the `CapacityMiB` and `Name`
 properties in the `Memory.` subsystem. The `Name` value is different
 for each and every DIMM slot, populated or not. Hence the output displays
 both values for each memory slot. Output is truncated.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest list CapacityMiB Name --json --select Memory.
 [
   {
@@ -1545,7 +1726,9 @@ ilorest list CapacityMiB Name --json --select Memory.
 ]
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Info Command
 
 #### Syntax
@@ -1634,7 +1817,10 @@ Without any supplied property, `info` lists all
 available options in the selected [type](/docs/concepts/datatypesandcollections/).
 In the next example, the full list is truncated.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select Bios.
 iLOrest > info
 Info options:
@@ -1648,12 +1834,17 @@ AdminOtherInfo
 AdminPhone
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This following example simultaneously logs into a remote Redfish service at the provided
 URL (`--url`) with the provided username (`-u`) and password (`-p`),
 selects the `Power.` type, and displays the `PowerSupplies` property information.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > info PowerSupplies -u username -p password --url xx.xx.xx.xx --select Power.
 Discovering data...Done
 
@@ -1681,10 +1872,15 @@ SUB-PROPERTIES
     LineInputVoltageType, Oem, PowerSupplyType, LineInputVoltage,
     FirmwareVersion, Manufacturer
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Multiple properties belonging to the `VirtualMedia` type are specified in the next example.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select VirtualMedia.
 iLOrest > info Image WriteProtected
 
@@ -1729,11 +1925,16 @@ READ-ONLY
 POSSIBLE VALUES
     True or False
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Any Sub-Properties shown in an info response can be queried in the same form
 as `set`, `list`, and `get`: `Property/Sub-property`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem.
 iLOrest > info Boot
 
@@ -1780,7 +1981,9 @@ TYPE
 READ-ONLY
     False
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Get Command
 
 #### Syntax
@@ -1909,7 +2112,10 @@ best practice to respect the case sensitivity of arguments. You may
 have to use Redfish clients that request the respect of the case.
 {% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select Bios.
 iLOrest > get
 AcpiHpet=Enabled
@@ -1922,41 +2128,61 @@ AdminOtherInfo=""
 AdminPhone=""
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example prints the value of a property belonging
 to the type selected in the previous example (`Bios.`)
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > get AdminName
 AdminName=Jason E
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This command simultaneously logs in to a remote iLO at the provided URL (`--url`)
 with the provided username (-u) and password (-p), selects the `Bios.`
 type, and the `get` command is used to retrieve the `BootOrderPolicy`
 property of `Bios.`
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > get BootOrderPolicy --url xx.xx.xx.xx -u username -p password --select Bios.
 Discovering data...Done
 BootOrderPolicy=RetryIndefinitely
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Because the `--logout` parameter is included in the next example,
 the user is logged out of the remote
 Redfish service after the `get` command is performed.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem.
 iLOrest > get AssetTag --logout
 AssetTag=""
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieve multiple property and sub-property values,
 using the `/` separator.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem.
 iLOrest > get MemorySummary
 MemorySummary=
@@ -1972,9 +2198,14 @@ MemorySummary=
                        HealthRollup=OK
                TotalSystemMemoryGiB=32
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 You can use the `noreadonly` flag to narrow down your results
 to only retrieve properties that are writeable.
+
+  {% tabs %}
+{% tab label="All properties" %}
 
 ```shell All properties
 iLOrest > select ComputerSystem.
@@ -1998,6 +2229,9 @@ Boot=
       BootSourceOverrideEnabled=Disabled
 ...
 ```
+  
+  {% /tab %}
+{% tab label="Writeable only properties" %}
 
 ```shell Writeable only properties
 iLOrest > get --noreadonly --select ComputerSystem.
@@ -2021,12 +2255,17 @@ Oem=
           PostDiscoveryMode=None
           PowerRegulatorMode=OSControl
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example selects the `Bios` data type before
 asking, in verbose mode, for the values of properties belonging to another
 data type (`Memory.`). As a consequence, iLOrest returns an error.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest select Bios.
 ilorest -v get CapacityMiB Name Vend --json
 
@@ -2035,16 +2274,24 @@ Selected option(s): #Bios.v1_0_0.Bios
 Error: No get contents found for selected type.
 iLORest return code: 6
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example selects the `Bios.` type
 and then switches to the `Memory.` type to retrieve
 the values of three properties. However, one of
 them (`Vend`) is not spelled correctly.
 
+  {% tabs %}
+{% tab label="Incorrect property" %}
+
 ```shell Incorrect property
 ilorest select Bios.
 ilorest -v get CapacityMiB Name Vend --json --select Memory.
 ```
+  
+  {% /tab %}
+{% tab label="Output (truncated)" %}
 
 ```json Output (truncated)
 Selected option(s): #Memory.v1_7_1.Memory
@@ -2069,12 +2316,17 @@ Selected option(s): #Memory.v1_7_1.Memory
 ]
 iLORest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the value of the `CapacityMiB`
 property in the `Memory.` subsystem. Several memory slots are populated with identical DIMMs (32768 MiB),
 but not all of them. In this case, iLOrest returns only two values: `0` and `32768`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest get CapacityMiB --json --select Memory.
 [
   {
@@ -2085,11 +2337,16 @@ ilorest get CapacityMiB --json --select Memory.
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the value of the `CapacityMiB` and `Name`
 properties in the `Memory.` subsystem. The `Name` value is different
 for each and every DIMM slot, populated or not. Hence the output displays
 both values for each memory slot.
+
+  {% tabs %}
+{% tab label="Truncated output" %}
 
 ```shell Truncated output
 ilorest get CapacityMiB Name --json --select Memory.
@@ -2117,7 +2374,9 @@ ilorest get CapacityMiB Name --json --select Memory.
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Set Command
 
 #### Syntax
@@ -2295,7 +2554,10 @@ and **AdminName** set to **Jason E**, the `commit` command must
 be performed next for the changes to be updated on the server.
 {% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select Bios.
 iLOrest > get AdminName ServiceName
 AdminName=""
@@ -2305,23 +2567,33 @@ iLOrest > get AdminName ServiceName
 AdminName=Jason E
 ServiceName=ExampleService
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This command simultaneously logs in to the server at the provided URL
 (`--url`) with the provided username (`-u`) and password (`-p`),
 and then selects the `Bios.` type. The `set` command is used to set
 the `AdminName` property to `Jason E`, and the commit flag has
 been added to apply the changes to the server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > set "AdminName=Jason E" --url xx.xx.xx.xx -u username -p password --select Bios. --commit
 Discovering data...Done
 Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To revert your changes on a type you can use the refresh flag.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select Bios.
 iLOrest > get AdminName
 AdminName=Jason E
@@ -2332,7 +2604,9 @@ iLOrest > select Bios. --refresh
 iLOrest > get AdminName
 AdminName=Jason E
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Save Command
 
 #### Syntax
@@ -2480,12 +2754,18 @@ The URIs of the above data types can be quickly determined with the first exampl
 [section](/docs/redfishclients/ilorest-userguide/bioscommands/#bios-commands).
 {% /admonition %}
 
+  {% tabs %}
+{% tab label="Saving Bios configuration" %}
+
 ```shell Saving Bios configuration
 iLOrest > save --select Bios. --url xx.xx.xx.xx -u username -p password
 Discovering data...Done
 Saving configuration...
 Configuration saved to: ilorest.json
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```json Output
 [
@@ -2526,31 +2806,43 @@ Configuration saved to: ilorest.json
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Use the `--multisave` option to specify multiple types to save in a single
 file. This file can be sent to load in order to load multiple types with
 a single command. All type strings are delimited by a ','.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > save --multisave Bios.,ComputerSystem.
 Discovering data...Done
 Saving configuration...
 Configuration saved to: ilorest.json
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example simultaneously logs in to the server at the provided URL
 (`--url`) with the provided username (`-u`) and password (`-p`),
 selects the `Bios.` type, saves the JSON response to a file called
 `BiosInfo.json` in the current local directory, and then logs out.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > save --select Bios. --url xx.xx.xx.xx -u username -p password -f BiosInfo.json --logout
 Discovering data...Done
 Saving configuration...
 Configuration saved to: BiosInfo.json
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example saves the configuration of the iLO shared network port.
 Use `Name="Manager Dedicated*` to retrieve the iLO dedicated network port configuration.
 
@@ -2575,10 +2867,15 @@ configuration.
 
 {% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest save --selector EthernetInterface. --filter Name="Manager Shared*" -f SaveSharedPort.json --json
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Load Command
 
 #### Syntax
@@ -2687,29 +2984,42 @@ If no filename is supplied with the (`-f`, `--filename`) option, the `load` comm
 file named `ilorest.json` in the current working directory.
 Save will automatically select the required type to make changes.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > load
 Loading configuration...
 Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This command simultaneously logs in to the server at the provided URL
 (`--url`) with the provided username (`-u`) and password (`-p`)
 and load a file from the current working directory called `biosconfig.json`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > load --url xx.xx.xx.xx -u username -p password -f biosconfig.json
 Discovering data...Done
 Loading configuration...
 Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This is the multi-server configuration setup. You must pass in a multi-server
 file in the following format.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > load -m mpfilename.txt -f biosconfig.json
 Discovering data...Done
 Loading configuration for multiple servers...
@@ -2720,7 +3030,9 @@ Loading Configuration for xx.xx.xx.xx : SUCCESS
 Loading Configuration for xx.xx.xx.xy : SUCCESS
 All servers have been successfully configured.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 All servers are configured concurrently. Because the filename tag is included,
 it searches for the file called `biosconfig.json` and loads that information
 to the servers. If no values have changed, the load process is complete.
@@ -2728,13 +3040,18 @@ If any property values have changed, the changes are committed and the
 user is logged out of the server. Logs of the entire process are then
 stored in the same location as the iLOrest logs.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 --url 10.0.0.100 -u username -p password
 --url 10.0.0.101 -u username -p password
 --url 10.0.0.102 -u username -p password
 --url 10.0.0.103 -u username -p password
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Status Command
 
 #### Syntax
@@ -2758,7 +3075,10 @@ Including the help flag will display help for the command.
 The status command shows changes to be committed. The status command shows
 all pending changes, including changes for different types.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > status
 Current changes found:
 Bios.v1_0_0(/redfish/v1/systems/1/bios/settings/) (Currently selected)
@@ -2766,10 +3086,15 @@ Bios.v1_0_0(/redfish/v1/systems/1/bios/settings/) (Currently selected)
 ComputerSystem.v1_4_0(/redfish/v1/Systems/1/)
         AssetTag=newtag
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Once changes are committed they no longer show in status.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > status
 Current changes found:
 Bios.v1_0_0(/redfish/v1/systems/1/bios/settings/) (Currently selected)
@@ -2783,7 +3108,9 @@ The operation completed successfully.
 iLOrest > status
 No changes found
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Commit Command
 
 #### Syntax
@@ -2828,7 +3155,10 @@ run `help reboot`.
 
 Commit all pending changes made by set by running the `commit` command.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem.
 iLOrest > set AssetTag=newtag
 iLOrest > select Bios.
@@ -2838,7 +3168,9 @@ Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 If you do not commit before logging out changes will be lost.
 
 {% admonition type="info" name="NOTE" %}
@@ -2848,7 +3180,10 @@ the server.
 
 {% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select Bios.
 iLOrest > get AdminName
 AdminName=Chelsea K
@@ -2861,21 +3196,28 @@ iLOrest > get AdminName --select Bios.
 Discovering data...Done
 AdminName=Chelsea K
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Commit after running other commands by using the
 `--commit` option. This command simultaneously logs in to the server at the
 provided URL (`--url`) with the provided username (`-u`, `--user`) and password
 (`-p`, `--password`), selects the `ComputerSystem.` type, sets
 `AssetTag` to `""`, commits the change, and logs-out.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > set AssetTag="" --url xx.xx.xx.xx -u username -p password --selector ComputerSystem. --commit --logout
 Discovering data...Done
 Committing changes...
 The operation completed successfully.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Logout Command
 
 #### Syntax
@@ -2902,21 +3244,31 @@ Including the help flag will display help for the command.
 
 Use the logout command to end the session and disconnect from the server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login xx.xx.xx.xx -u username -p password
 Discovering data...Done
 iLOrest > logout
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Logout from another command using the `--logout` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > get AssetTag --select ComputerSystem. --logout
 AssetTag=""
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Exit Command
 
 #### Syntax
@@ -2938,8 +3290,14 @@ Including the help flag will display help for the command.
 
 This command exits the interactive shell.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > exit
 Logging session out.
 Bye for now
 ```
+  
+  {% /tab %}
+  {% /tabs %}

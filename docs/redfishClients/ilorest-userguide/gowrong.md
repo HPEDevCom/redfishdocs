@@ -24,7 +24,10 @@ to our open source project.
 
 You can see return codes and other information with the verbose flag.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest -v
 iLOrest : RESTful Interface Tool version 3.0
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
@@ -34,7 +37,9 @@ Discovering data...Done
 Monolith build process time: 0.259999990463
 iLOrest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Symptom
 
 I am unable to see return codes in the output.
@@ -52,7 +57,10 @@ information including return codes.
 
 You can see full payloads with debug mode. The response is truncated for space.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest -d login
 iLOrest : RESTful Interface Tool version 3.0
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
@@ -81,7 +89,9 @@ Headers:
 
 Body Response of /redfish/v1/: {"@odata.con...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Symptom
 
 I am unable to see what iLOrest is sending to iLO.
@@ -106,7 +116,10 @@ type. Modifying the selector to limit the selection solves this problem.
 The easiest way to do that is to add a period to ensure you
 are only selecting one type.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem
 Selected option(s): #ComputerSystemCollection.ComputerSystemCollection, #ComputerSystem.v1_4_0.ComputerSystem
 iLOrest return code: 0
@@ -114,7 +127,9 @@ iLOrest > select ComputerSystem.
 Selected option(s): #ComputerSystem.v1_4_0.ComputerSystem
 iLOrest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Symptom
 
 I am getting more data than what I would like.
@@ -137,7 +152,10 @@ are available for that type. We only want to modify or view 1 instance! We can
 use the [--filter](../advancedusage/#filter-option) option to limit to 1instance
 only.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select EthernetInterface.
 Selected option(s): #EthernetInterface.v1_4_1.EthernetInterface
 iLOrest return code: 0
@@ -160,7 +178,9 @@ Selected option(s): #EthernetInterface.v1_4_1.EthernetInterface
 @odata.id=/redfish/v1/Systems/1/EthernetInterfaces/3/
 iLOrest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## I can set a property, but the commit is failing
 
 #### Symptom
@@ -191,7 +211,10 @@ commits when the property is initially set, but not all possible issues can be c
 It's hard to tell where the array is in this output until you print the response
 in json format.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > get Boot/BootOrder Boot/BootSourceOverrideTarget
 Selected option(s): #ComputerSystem.v1_4_0.ComputerSystem
 Boot=
@@ -234,7 +257,9 @@ Selected option(s): #ComputerSystem.v1_4_0.ComputerSystem
 }
 iLOrest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Symptom
 
 It is difficult to tell the difference between arrays and nested JSON objects
@@ -253,7 +278,10 @@ Use the -j/--json flag to distinguish between arrays and nested JSON objects.
 
 In this example we are only flipping the first two boot order items in the array, but we need to send the whole array, not just the modified section. You can see with the [status command](../globalcommands/#status-command) that we are changing specific array values.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > set Boot/BootOrder=[Boot0015,Boot0014,Boot0016,Boot000A,Boot000B,Boot000C,Boot000D,Boot000E,Boot000F,Boot0010,Boot0012,Boot0013,Boot0011]
 iLOrest > status
 Current changes found:
@@ -264,7 +292,9 @@ iLOrest > commit
 Committing changes...
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Symptom
 
 I am unable to change a property for an array.

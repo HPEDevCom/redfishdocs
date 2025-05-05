@@ -70,29 +70,44 @@ Deletecomp example commands:
 
 To delete firmware by file name run the command with the file name as an argument. You can also delete multiple files by file name.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > deletecomp ilo5_137.bin
 The operation completed successfully.
 Deleted ilo5_137.bin
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To delete firmware by Id run the command with the file Ids as arguments. You can also delete a single file by Id.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > deletecomp 30d2d7fa,b5a00edc
 The operation completed successfully.
 Deleted 30d2d7fa
 The operation completed successfully.
 Deleted b5a00edc
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To delete all firmware on the iLO repository run the command and include the `--all` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > deletecomp --all
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Downloadcomp Command
 
 ### Syntax
@@ -148,14 +163,19 @@ Optionally include the logout flag to log out of the server after this command i
 
 To download a file run this command specifying the `file path` of the firmware.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > downloadcomp /fwrepo/ilo5_137.bin
 Downloading component, this may take a while...
 [200] The operation completed successfully.
 Download complete
 0 hour(s) 1 minute(s) 36 second(s)
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="warning" name="Warning" %}
 
 - The output directory and files in that directory must be set to writable.
@@ -225,7 +245,10 @@ This requires an account login with the system recovery set
 The following example retrieves the IDs of UBM3 devices
 and update all of them with a single command.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest list Id Name  --json --selector SoftwareInventory. --filter Name="8 SFF 24G x1NVMe/SAS UBM3*" 
 Id=30
 Name=8 SFF 24G x1NVMe/SAS UBM3 BC BP
@@ -250,7 +273,9 @@ eInventory/29/', '/redfish/v1/UpdateService/FirmwareInventory/30/']}"
 Creating task: "Update-460148"
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Login Parameters
 
 The following parameters can be included to login to a server in the same line
@@ -282,7 +307,10 @@ is completed. Using this flag when not logged in will have no effect.
 To upload firmware and flash (or stage for a flash) run the command with
 the `.fwpkg` file.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > flashfwpkg U32_1.46_10_02_2018.fwpkg
 Uploading firmware: U32_1.46_10_02_2018.signed.flash
 [200] The operation completed successfully.
@@ -291,11 +319,16 @@ Waiting for iLO UpdateService to finish processing the component
 0 hour(s) 1 minute(s) 28 second(s)
 Firmware has successfully been flashed and a reboot is required for this firmware to take effect.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To skip checks for something blocking firmware updates also include
 the `--ignorechecks` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > fwpkg ilo5_137.fwpkg --ignorechecks
 Uploading firmware: ilo5_137.bin
 [200] The operation completed successfully.
@@ -306,7 +339,9 @@ Firmware has successfully been flashed.
 iLO will reboot to complete flashing. Session will be terminated.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Installset Command
 
 ### Syntax
@@ -408,11 +443,17 @@ is completed. Using this flag when not logged in will have no effect.
 
 The following example lists install sets with basic formatting.
 
+  {% tabs %}
+{% tab label="Basic formatting" %}
+
 ```shell Basic formatting
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest installset
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```text Output
 Install Sets:
@@ -420,7 +461,9 @@ basic_update:
         SequenceName1: Action Filename1
         SequenceName2: Action Filemane2
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Install sets can be added with their complete JSON structure or a subset
 containing only the members of the `sequence[]` array.
 
@@ -428,6 +471,9 @@ containing only the members of the `sequence[]` array.
 Refer to the [Makeinstallset command](#makeinstallset-command)
 to learn how to create an install set file.
 {% /admonition %}
+
+  {% tabs %}
+{% tab label="Complete JSON structure" %}
 
 ```json Complete JSON structure
 {
@@ -468,6 +514,9 @@ to learn how to create an install set file.
     "IsRecovery": false
 }
 ```
+  
+  {% /tab %}
+{% tab label="List of sequence members" %}
 
 ```json List of sequence members
 [
@@ -490,33 +539,49 @@ to learn how to create an install set file.
         }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To add an install set, run the command with the `add` argument followed by
 an install set json file. When using sequence type json file, it is not
 necessary to include the `-n, --name` flag.
 In this scenario the iLO provides default install set name (time stamp).
+
+  {% tabs %}
+{% tab label="iLOrest command" %}
 
 ```shell iLOrest command
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest installset add myinstallset.json
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```shell Output
 [201] The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In case of problem during the addition of an install set, use the `-d, --debug`
 mode to troubleshoot. The following example fails to add an install
 set because it contains two identical sequence member names (`NonUnique`).
 The last lines of the iLOrest.log file explains this problem.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest -v installset add badsequence.json
 [400] iLO.2.19.PropertyValueIncompatible
 iLOrest return code: 63
 ```
+  
+  {% /tab %}
+{% tab label="Badsequence" %}
 
 ```json Badsequence.json file
 [
@@ -545,6 +610,9 @@ iLOrest return code: 63
         }
 ]
 ```
+  
+  {% /tab %}
+{% tab label="Debug output error" %}
 
 ```json Debug output error
 {
@@ -564,18 +632,25 @@ iLOrest return code: 63
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To invoke (deploy) an install set, run the command with the `invoke` command
 followed by the `-n, --name` option specifying the name of the install set to
 invoke. Add the `--tpmover` if a Trusted Platform Module (TPM) is installed in
 the system.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > installset invoke --name basic_update
 Invoking install set:basic_update
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% admonition type="success" name="TIP" %}
 Use the `taskqueue` [command](#taskqueue-command) without any
 argument to monitor the install set deployment.
@@ -584,20 +659,30 @@ argument to monitor the install set deployment.
 To delete an install set run the command with the `delete` argument
 followed by the `--name` specifying the name of the install set to delete.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > installset delete --name basic_update
 Deleting install set: basic_update...
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To remove all install sets run the command with the `--removeall` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 LOrest > installset --removeall
 Deleting all install sets...
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Listcomp Command
 
 ### Syntax
@@ -656,7 +741,10 @@ command is completed. Using this flag when not logged in will have no effect.
 To list the firmware on the iLO repository of the currently logged in system
 run the command without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > listcomp
 Id: ca3bcc4b
 Name: iLO 5
@@ -674,7 +762,9 @@ Component Uri:/fwrepo/ilo5_137.bin
 File Path: ilo5_137.bin
 SizeBytes: 33556520
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Maintenancewindow Command
 
 ### Syntax
@@ -752,43 +842,63 @@ is completed. Using this flag when not logged in will have no effect.
 To list the current maintenancewindows on the system run the command
 without arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > maintenancewindow
 MW-147746:
         Description: No description.
         Start After: 2015-11-21T00:00:00Z
         Expires at: No expire time set.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To Create a new maintenance window run the command with the `add` keyword
 followed by the time the maintenance window should start.
 If you do not supply a name for your maintenance window one will be
 randomly generated for you.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > maintenancewindow add 2018-11-21T00:00:00
 [201] The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To optionally specify an expire time (`--expire`), maintenance window name
 (`--name`), and/or description (`--description`)
 include their respective options.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > maintenancewindow add 2019-11-21T00:00:00 --expire=2019-11-22T00:00:00 --name=MyMaintenanceWindow --description "My maintenance window description."
 [201] The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To delete a maintenance window run the command with the `delete`
 keyword followed by the name or id of the maintenance window you wish to
 delete.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > maintenancewindow delete MyMaintenanceWindow
 Deleting MyMaintenanceWindow
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Makeinstallset Command
 
 ### Syntax
@@ -851,7 +961,10 @@ command is completed. Using this flag when not logged in will have no effect.
 
 Run without logging in for basic guidance on making an install set.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > makeinstallset
 Warning: This command will run in interactive mode.
 Entering new shell, type quit to leave!
@@ -891,10 +1004,15 @@ Enter description for the installset:
 }
 installset saved to myinstallset.json
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Run while logged into a system for guidance based on the current components on that system.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > makeinstallset
 Warning: This command will run in interactive mode.
 Entering new shell, type quit to leave!
@@ -951,7 +1069,9 @@ Enter description for the installset:
 }
 installset saved to myinstallset.json
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Taskqueue Command
 
 ### Syntax
@@ -1019,27 +1139,40 @@ command is completed. Using this flag when not logged in will have no effect.
 To create new wait task queue task, include the `create` keyword
 followed by the amount of time to wait.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > taskqueue create 60
 [200] The operation completed successfully.
 Creating task: "Wait-703879 60 seconds"
 [201] The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To create a new firmware task queue task, include the `create` keyword
 followed by the name of a firmware file that is already in the iLO repository.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > taskqueue create ilo5_137.bin
 [200] The operation completed successfully.
 Creating task: "Update-740856 iLO 5"
 [201] The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To list the tasks present in the task queue and their status, run
 the command with no arguments.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > taskqueue
 
 Current Update Task Queue:
@@ -1054,11 +1187,16 @@ Task Update-740856 iLO 5:
         State:Pending
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To delete all tasks from the update task queue, run the command with
 the `--resetqueue` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > taskqueue --resetqueue
 Deleting all update tasks...
 Deleting: Wait-703879 60 seconds
@@ -1066,7 +1204,9 @@ The operation completed successfully.
 Deleting: Update-740856 iLO 5
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Uploadcomp Command
 
 ### Syntax
@@ -1171,14 +1311,19 @@ this command is completed. Using this flag when not logged in will have no effec
 To upload firmware to the iLO repository run the command with
 the `--component` option specifying the firmware file to upload.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > uploadcomp --component ilo5_137.bin
 [200] The operation completed successfully.
 Component ilo5_137.bin uploaded successfully
 Waiting for iLO UpdateService to finish processing the component
 0 hour(s) 1 minute(s) 43 second(s)
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 By default the firmware is uploaded to the iLO Repository. For firmware iLO is
 capable of flashing you can instead directly flash it.
 To do this you need to include the `--update_repository`
@@ -1186,10 +1331,16 @@ flag to not include the firmware in the iLO repository and
 the `--update_target`
 flag to trigger iLO to flash.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > uploadcomp --component ilo5_140.bin --update_repository --update_target
 [200] The operation completed successfully.
 Component ilo5_140.bin uploaded successfully
 Waiting for iLO UpdateService to finish processing the component
 0 hour(s) 1 minute(s) 56 second(s)
 ```
+  
+  {% /tab %}
+  {% /tabs %}

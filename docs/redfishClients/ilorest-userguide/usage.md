@@ -32,15 +32,24 @@ its data type (schema file).
 The exhaustive list of schemas (selectors) can be retrieved with the
 `types` atomic command as shown in the following example.
 
-```shell Sequence to retrieve type list
+{% tabs %}
+{% tab label="Type list retrieval" %}
+
+```shell Type list retrieval
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest types
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="Short method to retrieve selectors" %}
 
-```shell Shorter method to retrieve selectors
+```shell Short method to retrieve selectors
 ilorest types --url <ilo-ip> -u <ilo-user> -p password --logout 
 ```
+  
+{% /tab %}
+{% tab label="Output (truncated)" %}
 
 ```text Output (truncated)
 Discovering data...Done
@@ -74,6 +83,9 @@ Volume.v1_6_2
 VolumeCollection
 Logging session out.
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 If you don't know which schema describes the property
 you want to manage, follow this method:
@@ -82,45 +94,63 @@ you want to manage, follow this method:
    belongs to the storage subsystem, look for all selectors having
    "storage" in their name. Here are few example performed
    against an iLO 6 based system.
-   
+
    Storage: controllers, drives, logical volumes
-   
-   ```shell Storage/drive/volume selectors
-   ilorest login <ilo-ip> -u <ilo-username> -p password
-   ilorest types | grep -i -E "storage|drive|volume"
-   ilorest logout
-   ```
-   
-   ```shell Output
-   Drive.v1_15_0
-   Drive.v1_17_0
-   DriveCollection
-   Storage.v1_12_0
-   StorageCollection
-   StorageController.v1_0_0
-   StorageControllerCollection
-   Volume.v1_8_0
-   VolumeCollection
-   ```
-   
-   Thermal: Fans, temperature
-   
-   ```shell Thermal types
-   ilorest login <ilo-ip> -u <ilo-username> -p password
-   ilorest types | grep -i thermal
-   ilorest logout
-   ````
-   
-   ```text Output
-   Thermal.v1_7_1
-   ThermalMetrics.v1_3_1
-   ThermalSubsystem.v1_3_1
-   ```
-   
-   {% admonition type="success" name="TIP" %}
-   For each iLO firmware, you can browse the types from
-   the [resource map](/docs/redfishservices/ilos/ilo6/ilo6_157/ilo6_resmap157/).
-   {% /admonition %}
+
+  {% tabs %}
+  {% tab label="Storage" %}
+
+  ```shell Storage/drive/volume selectors
+  ilorest login <ilo-ip> -u <ilo-username> -p password
+  ilorest types | grep -i -E "storage|drive|volume"
+  ilorest logout
+  ```
+  
+  {% /tab %}
+  {% tab label="Output" %}
+
+  ```shell Output
+  Drive.v1_15_0
+  Drive.v1_17_0
+  DriveCollection
+  Storage.v1_12_0
+  StorageCollection
+  StorageController.v1_0_0
+  StorageControllerCollection
+  Volume.v1_8_0
+  VolumeCollection
+  ```
+  
+  {% /tab %}
+  {% /tabs %}
+
+  Thermal: Fans, temperature
+
+  {% tabs %}
+  {% tab label="Thermal types" %}
+
+  ```shell Thermal types
+  ilorest login <ilo-ip> -u <ilo-username> -p password
+  ilorest types | grep -i thermal
+  ilorest logout
+  ````
+  
+  {% /tab %}
+  {% tab label="Output" %}
+
+  ```text Output
+  Thermal.v1_7_1
+  ThermalMetrics.v1_3_1
+  ThermalSubsystem.v1_3_1
+  ```
+  
+  {% /tab %}
+  {% /tabs %}
+
+  {% admonition type="success" name="TIP" %}
+  For each iLO firmware, you can browse the types from
+  the [resource map](/docs/redfishservices/ilos/ilo6/ilo6_157/ilo6_resmap157/).
+  {% /admonition %}
 
 2. If the above method fails, enter the property string
    in the search box of this portal (top right corner).
@@ -134,7 +164,10 @@ you want to manage, follow this method:
   
 3. Select the found schema to manage your property.
 
-   ```shell
+   {% tabs %}
+   {% tab label="Example" %}
+
+   ```shell Example
    ilorest login <ilo-ip> -u <ilo-user> -p password
    ilorest select Manager.
    
@@ -144,6 +177,9 @@ you want to manage, follow this method:
    ilorest get FirmwareVersion
    FirmwareVersion=iLO 6 v1.59
    ```
+  
+   {% /tab %}
+   {% /tabs %}
 
    {% admonition type="success" name="TIP" %}
    iLOrest can select multiple types at once.
@@ -197,7 +233,10 @@ In ESXi 7.0/8.0, HPE iLOrest is integrated with the `esxcli` utility
 
 Here are some Examples:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 esxcli ilorest cmd -q login
 esxcli ilorest cmd -q types
 esxcli ilorest cmd -q "select Bios."
@@ -206,7 +245,9 @@ esxcli ilorest help
 esxcli ilorest debug -q login
 esxcli ilorest debug -q logout
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 {% /admonition %}
 
 Use the `exit` command at the prompt to exit from the interactive mode.
@@ -272,6 +313,9 @@ of server objects.
 
 The following example retrieves information regarding the `Bios` type:
 
+  {% tabs %}
+{% tab label="MS" %}
+
 ```shell MS-DOS
 :: This is a batch file that logs into a remote server,
 :: selects the Bios type, and gets the BootMode value
@@ -305,6 +349,9 @@ ilorest.exe select Bios.
 ilorest.exe get BootMode
 pause
 ```
+  
+  {% /tab %}
+{% tab label="Linux" %}
 
 ```shell Linux
 #!/bin/bash
@@ -349,7 +396,9 @@ else
 fi
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### File-based mode
 
 File-based mode allows you to save and load settings from a file.
@@ -363,6 +412,9 @@ The resources and properties of the `Bios` type is saved to a
 file called `ilorest1.json`. Then, after you modify any properties,
 the `load` command is used to make these changes on the server.
 Changes to read-only values are not reflected.
+
+  {% tabs %}
+{% tab label="MS" %}
 
 ```shell MS-DOS
 :: This is a file-based edit mode helper for RESTful Interface Tool
@@ -395,6 +447,9 @@ ilorest.exe save --selector=%1 --json -f %2
 pause
 ilorest.exe load -f %2
 ```
+  
+  {% /tab %}
+{% tab label="ilorest1" %}
 
 ```json ilorest1.json content (truncated)
 {
@@ -419,7 +474,9 @@ ilorest.exe load -f %2
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 When the example script is run, the following output is produced:
 
 ![File Mode example](images/FileBasedMode_1.png "File Based Mode example")
@@ -470,11 +527,17 @@ executes the HPE iLOrest local executable.
 **The -w server[1-10]** part of the example replaces the
 string `%h` in the rest of the command with `1, 2, ..., 10`.
 
-```Shell Start ten iLOerest sessions
+{% tabs %}
+{% tab label="Start ten iLOrest sessions" %}
+
+```Shell Start ten iLOrest sessions
 clush --nostdin --worker=exec -w 'server[1-10]' ilorest --cache-dir=ilo-%h login ilo-%h -u ilo-user -p password
 clush --nostdin --worker=exec -w 'server[1-10]' ilorest --cache-dir=ilo-%h get --json SerialNumber --selector Chassis.
 clush --nostdin --worker=exec -w 'server[1-10]' ilorest --cache-dir=ilo-%h logout
 ```
+  
+{% /tab %}
+{% tab label="Detail of the iLOrest background sessions" %}
 
 ```shell Detail of the iLOrest background sessions
 ilorest --cache-dir=ilo-server1 login ilo-server1 -u username -p password
@@ -517,10 +580,12 @@ ilorest --cache-dir=ilo-server10 login ilo-server10 -u username -p password
 ilorest --cache-dir=ilo-server10 get --json SerialNumber --selector Chassis.
 ilorest --cache-dir=ilo-server10 logout
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 Running HPE iLOrest against multiple managed systems can also be done
 using automation tools such as Ansible, Chef, and Puppet.
-
 
 ## Configuration file
 
@@ -536,6 +601,9 @@ Configuration file locations
 
 - Windows OS: The same location as the `ilorest.exe` executable.
 - Linux/Ubuntu OS: `/etc/ilorest/redfish.conf`
+
+{% tabs %}
+{% tab label="Windows default configuration file" %}
 
 ```text Windows default configuration file
 [ilorest]
@@ -592,6 +660,9 @@ Configuration file locations
 # option to set default load input file
 # loadfile = ilorest.json
 ```
+  
+{% /tab %}
+{% tab label="Linux default configuration file" %}
 
 ```text Linux default configuration file
 [iLOrest]
@@ -648,3 +719,6 @@ Configuration file locations
 # option to set default load input file
 # loadfile = ilorest.json
 ```
+  
+{% /tab %}
+{% /tabs %}
