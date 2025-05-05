@@ -806,7 +806,7 @@ Major versions are not backward compatible, but everything else is.
 
 {% admonition type="info" name="NOTE" %}
 Refer to the
-[HPE iLO resource map](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_resmap{{process.env.LATEST_FW_VERSION}}/)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_resmap", $env.PUBLIC_LATEST_FW_VERSION) %} HPE iLO resource map {% /link-internal %}
 for a the list and location of all the possible types.
 {% /admonition %}
 

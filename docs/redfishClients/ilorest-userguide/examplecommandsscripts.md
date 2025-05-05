@@ -2300,7 +2300,7 @@ and/or `EncryptionUserPasswordSet`.
 Depending on the context, the life time status of SSD devices is called WearOut
 or WearStatus. Redfish has standardized this property as
 `PredictedMediaLifeLeftPercent` in the
-[Drive schema](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#drive).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_storage_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#drive") %} Drive schema {% /link-internal %}.
 
 For each drive in a server, the following example retrieves its URI,
 predicted media life left percent, physical locations and the HPE legacy

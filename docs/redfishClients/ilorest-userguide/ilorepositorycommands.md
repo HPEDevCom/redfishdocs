@@ -351,7 +351,7 @@ installset *[Optional Parameters]*
 ### Description
 
 Command to perform operations on
-[install sets](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#hpecomponentinstallset).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#hpecomponentinstallset") %} install sets {% /link-internal %}.
 Among other objects, install sets contain a `Name`, an `Id` and an ordered
 list of installation instructions `sequence[]` that may be invoked/deployed.
 

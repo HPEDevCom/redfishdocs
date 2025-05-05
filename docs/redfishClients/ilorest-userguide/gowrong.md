@@ -40,6 +40,7 @@ iLOrest return code: 0
   
   {% /tab %}
   {% /tabs %}
+
 #### Symptom
 
 I am unable to see return codes in the output.
@@ -92,6 +93,7 @@ Body Response of /redfish/v1/: {"@odata.con...
   
   {% /tab %}
   {% /tabs %}
+
 #### Symptom
 
 I am unable to see what iLOrest is sending to iLO.
@@ -130,6 +132,7 @@ iLOrest return code: 0
   
   {% /tab %}
   {% /tabs %}
+
 #### Symptom
 
 I am getting more data than what I would like.
@@ -181,6 +184,7 @@ iLOrest return code: 0
   
   {% /tab %}
   {% /tabs %}
+
 ## I can set a property, but the commit is failing
 
 #### Symptom
@@ -202,7 +206,7 @@ commits when the property is initially set, but not all possible issues can be c
    [info command](../globalcommands/#info-command).
 
 3. Some properties require other properties to be set first. Refer to the
-   [iLO REST API Doc's resource definitions](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/)
+   {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION) %} iLO REST API Doc's resource definitions {% /link-internal %}
    for the property you are trying to commit to see any additional information
    on modifying the property that is not in the schemas.
 
@@ -260,6 +264,7 @@ iLOrest return code: 0
   
   {% /tab %}
   {% /tabs %}
+
 #### Symptom
 
 It is difficult to tell the difference between arrays and nested JSON objects
@@ -379,7 +384,6 @@ you attempt to flash or upload iLO 5 firmware v2.10 or later to the system.
 
 1. Flash or upload to iLO 5 firmware v1.40x.
 2. Flash or upload to iLO 5 firmware v2.10 or later on the system.
-
 
 ## When vNIC Login Fails
 

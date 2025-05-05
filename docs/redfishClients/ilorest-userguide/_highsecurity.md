@@ -16,7 +16,7 @@ seo:
 This section describes how to set a managed HPE iLO into a high security
 state and how to use the RESTful Interface Tool in these modes.
 For more information about the security states of HPE iLO, refer to
-[Security Service](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesecurityservice)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpesecurityservice") %} Security Service {% /link-internal %}
 section.
 
 {% admonition type="info" name="NOTE" %}
@@ -33,7 +33,7 @@ To modify the security mode of a managed iLO with iLOrest, select the
 `HpeSecurityService.` [data type](/docs/concepts/datatypesandcollections/#data-types),
 and then set the `SecurityState`
 property to one of the
-[allowed values](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#securitystateredfishallowablevalues-array)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#securitystateredfishallowablevalues-array") %} allowed values {% /link-internal %}
 and commit.
 
 ![Set Security 1](images/Security_1.png "Set Security 1")
