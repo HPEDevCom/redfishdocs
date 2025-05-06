@@ -16,6 +16,8 @@
       page: tfa.md
     - label: HTTPS boot TLS configuration
       page: biosTlsConf.md
+    - label: Secure erase
+      page: secureSystemErase.md
     - label: DCSCM and HPM
       page: dcScmAndHpm.md
 - label: OData query options
@@ -38,6 +40,8 @@
   page: backupAndRestore.md
 - label: Storage data models
   page: storage.md
+- label: Redfish Device Enablement (RDE)
+  page: rdeSupport.md
 - label: Network protocols
   page: networkProtocols.md
 
@@ -51,5 +55,7 @@
       page: iscsiConf.md
     - label: Managing Apollo drive bay mapping
       page: apolloDriveBayMapping.md
+    - label: Persistent memory configuration
+      page: pmmConfig.md
     - label: Field replaceable units (FRUs)
       page: frus.md
