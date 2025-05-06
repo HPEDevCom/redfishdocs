@@ -14,10 +14,16 @@
       page: securityService.md
     - label: Two factor authentication
       page: tfa.md
+    - label: HTTPS boot TLS configuration
+      page: biosTlsConf.md
 - label: OData query options
   page: odataqueryoptions.md
+- label: HPE BIOS
+  page: biosDoc.md
 - label: Log services
   page: logServices.md
+- label: iLO Telemetry service
+  page:  iloTelemetryService.md
 - label: Managing users
   page: managingUsers.md
 - label: iLO host interface (vNIC)
