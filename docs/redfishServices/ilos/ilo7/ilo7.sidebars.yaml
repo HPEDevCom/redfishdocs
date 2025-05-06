@@ -37,3 +37,5 @@
           page: ilo7_111/ilo7_hpe_resourcedefns111.md
         - label: Other resource definitions 
           page: ilo7_111/ilo7_other_resourcedefns111.md
+    - label: Error messages
+      page: ilo7_111/ilo7_msgregs111.md

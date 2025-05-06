@@ -8,7 +8,7 @@ markdown:
 breadcrumbs:
   hide: false
 seo:
-  title: The Redfish® Event Service
+  title: The Redfish Event Service
 ---
 
 # The Redfish Event Service
@@ -153,8 +153,9 @@ GET /redfish/v1/EventService/Subscriptions/{item}/
   
   {% /tab %}
   {% /tabs %}
+
 The `RegistryPrefixes`
-{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#registryprefixes-array-1") %} property {% /link-internal %}
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#registryprefixes-array") %} property {% /link-internal %}
 is a list of message registry prefixes to subscribe to. They correspond to the
 prefix of the
 {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION) %} error messages {% /link-internal %}
@@ -162,7 +163,7 @@ of the form `<RegistryPrefix>.<MajorVersion>.<MinorVersion>.<MessageKey>`.
 
 If you subscribe to the the `StorageDevice` registry prefix, the destination
 event listener will receive all the error messages starting with
-"[StorageDevice](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_FW_VERSION}}/#storagedevice11batterycharging)".
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION, "#storagedevice.1.1.batterycharging") %} StorageDevice {% /link-internal %}.
 Refer to the [Event interpretation](#event-interpretation)
 paragraph for more information.
 
