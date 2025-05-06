@@ -295,12 +295,12 @@ Security modes, subject to authentication and privileges.|
 ### In-band management of iLO 5 and 6
 
 This paragraph concerns only HPE iLO 5 and iLO 6. Refer to the
-[next paragraph](#transitioning-to-hpe-ilo-7) for [in-band management](../vnic/#in-band-management) of HPE iLO 7 and later.
+[next paragraph](#transitioning-to-hpe-ilo-7) for [in-band management](vnic/#in-band-management) of HPE iLO 7 and later.
 
 With iLO 5 and 6 in `Production`
 {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_hpe_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/#securitystate") %} security state {% /link-internal %},
 privileged OS users (i.e. root, Administrator)
-can communicate with their local iLO ([in-band management](../vnic/#in-band-management)) via the
+can communicate with their local iLO ([in-band management](vnic/#in-band-management)) via the
 [Channel Interface (CHIF)](/docs/etc/glossaryterms/)
 without supplying any credential, only
 when the `RequireHostAuthentication`
@@ -338,7 +338,7 @@ has been removed in HPE iLO 7.
 In iLO 5 and 6 based servers, regardless the value of the
 {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "ilo6_hpe_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#securitystate") %} security state {% /link-internal %}, OS users must
 supply valid credentials when willing to communicate with local iLO (in-band) via
-the [Virtual NIC](../vnic).
+the [Virtual NIC](vnic).
 
 {% admonition type="success" name="TIP" %}
 
@@ -478,7 +478,7 @@ logging session out.
 {% admonition type="info" name="NOTE" %}
 As a reminder, whatever the security state of iLO,
 a non-privileged OS user cannot access the
-local iLO via CHIF or [Virtual NIC](../vnic) without formal authentication.
+local iLO via CHIF or [Virtual NIC](vnic) without formal authentication.
 The following example illustrates this assertion.
 {% /admonition %}
 
@@ -524,8 +524,8 @@ BIOS Configuration Privilege.
 
 With the introduction of HPE iLO 7, the HPE Channel Interface ([CHIF](/docs/etc/glossaryterms.md))
 between the OS and iLO has been removed.
-As a consequence, [in-band management](../vnic/#in-band-management) of iLO 7 based servers can only occur via
-the [Virtual NIC](../vnic) (vNIC).
+As a consequence, [in-band management](vnic/#in-band-management) of iLO 7 based servers can only occur via
+the [Virtual NIC](vnic) (vNIC).
 
 Virtual NIC is more restrictive in terms of authentication than CHIF;
 Host Redfish clients must always
@@ -546,7 +546,7 @@ has also been removed.
 ### Application accounts
 
 With HPE iLO 7, the enforcement of authentication before any
-[in-band](../vnic/#in-band-management) communication is also valid for
+[in-band](vnic/#in-band-management) communication is also valid for
 applications running in the host. Host applications willing to use vNIC
 to communicate with iLO can be scripts, binary programs like
 [iLORest](https://servermanagementportal.ext.hpe.com/docs/redfishclients/ilorest-userguide)
@@ -581,7 +581,7 @@ using the credentials of an already existing iLO user.
 Upon successful identification, iLO creates the application accounts and sends back the application token that the application stores
 securely in the TPM.
 
-Then, when applications need to [in-band](../vnic/#in-band-management) communicate with iLO,
+Then, when applications need to [in-band](vnic/#in-band-management) communicate with iLO,
 they present their respective application token to the iLO
 that validates it and replies back with a Redfish session token.
 
@@ -705,7 +705,7 @@ for more detail.
 ### Installing HPE host applications
 
 With the introduction of HPE iLO 7, the installation scripts of
-HPE applications needing [in-band](../vnic/#in-band-management) access iLO have the ability
+HPE applications needing [in-band](vnic/#in-band-management) access iLO have the ability
 to create an associated application account within the underlying iLO.
 For this creation to happen, it is necessary to supply the credentials
 of an already existing iLO user, interactively or through system global
@@ -714,7 +714,7 @@ variables. Refers to the examples below.
 #### Application account privileges
 
 The following table lists the minimum privileges required by
-HPE host applications to operate seamlessly trough [in-band](../vnic/#in-band-management)
+HPE host applications to operate seamlessly trough [in-band](vnic/#in-band-management)
 communication with the underlying iLO.
 
 {% admonition type="success" name="TIP" %}
@@ -723,8 +723,8 @@ application than the minimum ones listed below,
 iLOrest will not be able to modify properties in the
 Redfish tree.
 
-Use iLOrest [out-of-band management](../vnic/#out-of-band-management) with sufficient privileges
-to modify the properties that cannot be [in-band](../vnic/#in-band-management) modified.
+Use iLOrest [out-of-band management](vnic/#out-of-band-management) with sufficient privileges
+to modify the properties that cannot be [in-band](vnic/#in-band-management) modified.
 {% /admonition %}
 
 | Host application Name | Minimum required application account privileges|
@@ -792,7 +792,7 @@ ilorest logout
 The following example shows an interactive installation of the iLOrest
 6.0.0.0 RPM package in an HPE iLO 7 based Linux operating system,
 with the creation of a application account for further easy
-[in-band management](../vnic/#in-band-management). The credentials supplied for the creation of
+[in-band management](vnic/#in-band-management). The credentials supplied for the creation of
 the application account are the ones of the user created in
 the previous example (`ilorest-appuser`).
 
@@ -889,7 +889,7 @@ Application account exists for this host application.
 {% admonition type="info" name="NOTES" %}
 
 The iLOrest `appaccount` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#appaccount-command)
-can only be used during an [in-band](../vnic/#in-band-management) session created with the help of its own application account
+can only be used during an [in-band](vnic/#in-band-management) session created with the help of its own application account
 and from an iLO 7 based (or later) operating system.
 
 {% /admonition %}
