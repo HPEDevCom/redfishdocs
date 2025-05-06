@@ -33,3 +33,5 @@
   items:
     - label: DPUs and SmartNICs
       page: smartnics.md
+    - label: Managing Apollo drive bay mapping
+      page: apolloDriveBayMapping.md
