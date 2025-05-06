@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: BIOS data model
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # The standard Redfish BIOS data model
@@ -37,7 +41,8 @@ configuration. It also includes information about
 interdependencies between settings.
 
 Registry file links are listed in the `MessageRegistryFileCollection` which
-standard [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#messageregistryfilecollection)
+standard
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#messageregistryfilecollection") %} URI {% /link-internal %}
 is `/redfish/v1/registries/`. In order to provide an easy
 reading to human beings, registry files can be localized in several languages.
 Links contained in the `MessageRegistryFileCollection` point to a location
@@ -53,23 +58,37 @@ The following example follows the different steps to retrieve the
 BIOS Attribute Registry of an HPE Gen11 server. The first step
 retrieves the value of the `AttributeRegistry` filename property.
 
+  {% tabs %}
+{% tab label="GET AttributeRegistry" %}
+
 ```text GET AttributeRegistry
 GET /redfish/v1/systems/1/bios/?$select=AttributeRegistry
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
     "AttributeRegistry": "BiosAttributeRegistryA56.v1_1_10"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The second step retrieves the corresponding link provided by the
 `MessageRegistryFileCollection`. The response body provides the list
 of available languages for this file as well as their location.
 
+  {% tabs %}
+{% tab label="GET request" %}
+
 ```text GET request
 GET /redfish/v1/Registries/BiosAttributeRegistryA56.v1_1_10
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -102,15 +121,23 @@ GET /redfish/v1/Registries/BiosAttributeRegistryA56.v1_1_10
     "Registry": "BiosAttributeRegistryA56.v1_1_10"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The last step consists of following the link to the desired language.
 The following example retrieves the English version of the Bios Attribute
 registry and prints the response headers including the `Content-Encoding`
 header. The response body of this example is in the next paragraph.
 
+  {% tabs %}
+{% tab label="GET english attribute registry" %}
+
 ```text GET english attribute registry
 GET /redfish/v1/registrystore/registries/en/biosattributeregistrya56.v1_1_10
 ```
+  
+  {% /tab %}
+{% tab label="Response header" %}
 
 ```text Response header
 HTTP/1.1 200 OK
@@ -126,7 +153,9 @@ X-Content-Type-Options: nosniff
 X-Frame-Options: sameorigin
 X-XSS-Protection: 1; mode=block
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### BIOS attribute registry structure
 
 The BIOS attribute registry contains four top-level arrays
@@ -164,24 +193,35 @@ Each BIOS attribute in the attribute registry includes:
   lengths, as well as regular expressions for string attributes.
 - other meta-data.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Attribute names/enum values cannot start with digits, per OData requirements.
 
-```json
+  {% tabs %}
+{% tab label="Example" %}
+
+```json Example
 {
 "AsrTimeoutMinutes": "TimeOut10",
 "SerialConsoleBaudRate": "Baud115200",
 }
 ```
-
-:::
+  
+  {% /tab %}
+  {% /tabs %}
+{% /admonition %}
 
 The following example retrieves the English version of the BIOS
 registry of an HPE ProLiant Gen11 system (response body truncated).
 
+  {% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET /redfish/v1/registrystore/registries/en/biosattributeregistrya56.v1_1_20
 ```
+  
+  {% /tab %}
+{% tab label="Response (truncated)" %}
 
 ```json Response (truncated)
 {
@@ -259,16 +299,21 @@ GET /redfish/v1/registrystore/registries/en/biosattributeregistrya56.v1_1_20
     ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## BIOS current and pending areas
 
 BIOS resources are located under the
-[BIOS entry point](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_bios_resourcedefns{{process.env.LATEST_FW_VERSION}}/),
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_bios_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION) %} BIOS entry point {% /link-internal %},
 part of the `ComputerSystem` data type as per the
 <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">DMTF specification</a>.
 
 The following example retrieves the BIOS end point using cURL and iLOrest
 from an HPE iLO 6 management controller.
+
+  {% tabs %}
+{% tab label="cURL request" %}
 
 ```text cURL request
 curl --insecure --location --silent \
@@ -276,12 +321,18 @@ curl --insecure --location --silent \
      'https://ilo-ip/redfish/v1/Systems/1/?$select=Bios' | \
      jq .
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```bash iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest get --json Bios --select ComputerSystem.
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -294,7 +345,9 @@ ilorest logout
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This BIOS entry point is also called the _current settings area_ or just
 the _current area_ because it contains the BIOS attribute values in the
 running system. All BIOS attributes name/value pairs that are referenced
@@ -304,9 +357,15 @@ an `Attributes` Redfish object under the BIOS end point.
 The next example retrieves the current `AdminName` BIOS attribute
 of an HPE Gen11 server.
 
+  {% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET /redfish/v1/systems/1/bios/?$select=Attributes/AdminName
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -319,7 +378,9 @@ GET /redfish/v1/systems/1/bios/?$select=Attributes/AdminName
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The BIOS entry point contains a `SettingsObject}{}` resource containing a
 link to a location called the **BIOS _Pending settings area_** or
 just **_pending area_**. In an HPE Gen11 server, this link points
@@ -349,7 +410,7 @@ the `@Redfish.Settings` property of the current BIOS configuration object.
 The following example retrieves the `@Redfish.Settings` object after a
 **successful** transfer of the BIOS settings area to the current area.
 
-:::attention Attention
+{% admonition type="danger" name="Attention" %}
 After system reset, a **successful** transfer of BIOS
 settings from the pending area to the current area results in a
 **single** element in the `Messages` array of the `@Redfish.Settings`
@@ -357,11 +418,17 @@ containing the "Success" string.
 
 This single `MessageId` element means that the global transfer process
 succeeded.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/systems/1/bios/?$select=@Redfish.Settings/Messages
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -378,11 +445,13 @@ GET /redfish/v1/systems/1/bios/?$select=@Redfish.Settings/Messages
     "@odata.type": "#Bios.v1_0_4.Bios"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the `@Redfish.Settings` object after an
 **unsuccessful** transfer of the BIOS settings area to the current area.
 
-:::attention Attention
+{% admonition type="danger" name="Attention" %}
 After a server reset, an **unsuccessful** transfer of BIOS setting
 returns **several** elements in the `Messages` array of the `@Redfish.Settings`
 object, containing the faulty attributes and the reason why they
@@ -391,11 +460,17 @@ generated an error.
 You should note a "Success" `MessageId` element mentioning
 that the global transfer went through although errors
 occurred for some attributes.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 GET /redfish/v1/systems/1/bios/?$select=@Redfish.Settings/Messages
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -421,7 +496,9 @@ GET /redfish/v1/systems/1/bios/?$select=@Redfish.Settings/Messages
     "@odata.type": "#Bios.v1_0_4.Bios"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 There are benefits to handling BIOS settings in this way:
 
 - Enables offline components (for example, BIOS) to process
@@ -449,10 +526,10 @@ attribute that requires as well, a specific method to be modified.
 Both the return to a default BIOS configuration and the change of the
 BIOS password use special POST operations called _Redfish actions_.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Redfish services may implement both BIOS Redfish actions or only one or
 zero. HPE Gen11 servers implement both.
-:::
+{% /admonition %}
 
 ### Reset Bios settings action
 
@@ -461,40 +538,60 @@ HPE Superdome Flex 280 and an HPE iLO based server using the
 `Bios.ResetBios` standard
 [Redfish action](/docs/concepts/performing_actions.md).
 
+  {% tabs %}
+{% tab label="HPE Superdome Flex 280 BIOS reset" %}
+
 ```text HPE Superdome Flex 280 BIOS reset
 POST /redfish/v1/Systems/Partition0/Bios/Actions/Bios.ResetBios
 ````
+  
+  {% /tab %}
+{% tab label="iLO 6 based server BIOS reset" %}
 
 ```text iLO 6 based server BIOS reset
 POST /redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios/
 ```
+  
+  {% /tab %}
+{% tab label="Request body" %}
 
 ```json Request body
 {
 }
 ```
-
-:::info NOTE
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
 The above example does not reset attributes and properties of
 HPE OEM BIOS related resources (i.e. `TlsConfig`, `iScsi`, `Boot`, etc.).
 Refer to the
 [HPE BIOS](/docs/redfishservices/ilos/supplementdocuments/biosdoc/#reset-bios-attributes-and-hpe-bios-resources)
 section for a method to reset all BIOS related properties,
 including HPE OEM BIOS properties.
-:::
+{% /admonition %}
 
 ### Change BIOS password  
 
 The following example shows how to modify the UEFI/BIOS password on
 systems implementing this action.
 
+  {% tabs %}
+{% tab label="Generic BIOS password change" %}
+
 ```text Generic BIOS password change
 POST {Base URI of Bios resource}/Actions/Bios.ChangePassword
 ```
+  
+  {% /tab %}
+{% tab label="iLO 6 BIOS password change" %}
 
 ```json iLO 6 BIOS password change
 POST /redfish/v1/Systems/1/Bios/Actions/Bios.ChangePassword
 ```
+  
+  {% /tab %}
+{% tab label="Request body" %}
 
 ```json Request body
 {
@@ -503,7 +600,9 @@ POST /redfish/v1/Systems/1/Bios/Actions/Bios.ChangePassword
   "NewPassword" : "NewPasswordText"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## UEFI / BIOS Boot Settings
 
 <!-- Need an introduction to Boot Settings to better

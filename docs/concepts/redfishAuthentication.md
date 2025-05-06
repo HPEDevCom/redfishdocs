@@ -1,13 +1,17 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Redfish authentication and sessions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
-## Redfish authentication and sessions
+# Redfish authentication and sessions
 
 If you perform an HTTP operation on any other resource than the root
 `/redfish/v1/` resource, you will receive an `HTTP 401 Unauthorized`
@@ -17,14 +21,23 @@ to access the resource.
 The following example shows the error displayed on a
 `GET /redfish/v1/Systems/` request when no authentication is attempted:
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 curl --include --insecure     \
      --location https://{IP}/redfish/v1/Systems/
 ```
+  
+  {% /tab %}
+{% tab label="Response code" %}
 
 ```Text Response code
 HTTP/1.1 401 Unauthorized
 ```
+  
+  {% /tab %}
+{% tab label="Response body (iLO 6)" %}
 
 ```json Response body (iLO 6)
 {
@@ -40,6 +53,9 @@ HTTP/1.1 401 Unauthorized
 }
 
 ```
+  
+  {% /tab %}
+{% tab label="Response body (Superdome Flex 280 RMC)" %}
 
 ```json Response body (Superdome Flex 280 RMC)
 {
@@ -61,12 +77,14 @@ HTTP/1.1 401 Unauthorized
   }
 }
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 HPE implements a
 [Two Factor Authentication](/docs/redfishservices/ilos/supplementdocuments/tfa/)
 OEM extension in iLO firmware.
-:::
+{% /admonition %}
 
 ## Basic authentication
 
@@ -76,19 +94,25 @@ the `/redfish/v1/Systems/` URI using cURL (with response headers), the
 HPE Redfish <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> Python library</a>
 and the <a href="https://github.com/DMTF/python-redfish-library" target="_blank">DMTF Redfish Python library</a>.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 The <a href="https://github.com/DMTF/python-redfish-library" target="blank"> DMTF Redfish Python library</a>
 and the
 <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE Redfish Python library</a>
 cannot co-exist in the same Python environment. You should
 uninstall one before installing the other one.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="cURL" %}
 
 ```Bash cURL
 curl --include --insecure     \
      --user username:password \
      --location https://{IP}/redfish/v1/Systems/
 ```
+  
+  {% /tab %}
+{% tab label="DMTF Redfish Python library" %}
 
 ```Python DMTF Redfish Python library
 # The following example uses the DMTF Redfish Python library.
@@ -128,6 +152,9 @@ print(json.dumps(RESPONSE.dict, indent=4, sort_keys=True))
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
+  
+  {% /tab %}
+{% tab label="HPE Redfish Python library" %}
 
 ```Python HPE Redfish Python library
 # The following example uses the HPE Redfish Python library.
@@ -167,20 +194,22 @@ print(json.dumps(RESPONSE.dict, indent=4, sort_keys=True))
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
-
-:::info NOTE
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
 cURL does not need a specific logout operation to delete the session opened
 in the Redfish service. However, you should always make sure Python or
 PowerShell scripts disconnect completely from the remote Management Controller.
 Management Controllers have a low limit of simultaneous connections.
 Reaching this limit prevents other connections.
-:::
+{% /admonition %}
 
 ## Session authentication
 
 For complex multi-resource operations, you should log in and establish
 a session in the Redfish service session manager object at the
-[documented URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#sessioncollection)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#sessioncollection") %} documented URI {% /link-internal %}
 `/redfish/v1/SessionService/Sessions`.
 To create such a session, POST a JSON object to the session manager.
 
@@ -196,19 +225,19 @@ HTTP response headers.
     The Management Controller allocates a new session resource describing your
     session. This is the URI that has to be DELETEd in order to log out.
 
-:::success Tips
+{% admonition type="success" name="Tips" %}
 It is a good practice to save the `Location` URI of the newly created session
 as well as the `X-Auth-Token`. This is your unique session information and
 will be needed later to issue other requests and to log out. High level
 Redfish libraries (i.e. HPE and DMTF Python Redfish libraries) save these
 two properties automatically in the Redfish object respectively at
 `REDFISH_OBJ.session_location`  and `REDFISH_OBJ.session\_key`.
-:::
+{% /admonition %}
 
 The following example creates a Redfish session using cURL,
 the DMTF Redfish Python Library and the HPE Python Library.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 The
 <a href="https://github.com/DMTF/python-redfish-library"
 target="_blank"> DMTF</a>
@@ -217,7 +246,10 @@ and the
 target="_blank"> HPE </a>
 Python Redfish libraries cannot co-exist in the same Python environment.
 They contain identical classes names with different methods.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Session creation with cURL" %}
 
 ```bash Session creation with cURL
 # The following Bash command creates a Redfish session and populates
@@ -237,6 +269,9 @@ cat data.json
     }
 
 ```
+  
+  {% /tab %}
+{% tab label="Session creation with the DMTF Library" %}
 
 ```Python Session creation with the DMTF Library
 # The following example uses the DMTF Python Redfish library
@@ -291,6 +326,9 @@ print(json.dumps(RESPONSE.dict, indent=4, sort_keys=True))
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
+  
+  {% /tab %}
+{% tab label="Session creation with the HPE library" %}
 
 ```Python Session creation with the HPE library
 # The following example uses the HPE Python Redfish library
@@ -342,9 +380,14 @@ print(json.dumps(RESPONSE.dict, indent=4, sort_keys=True))
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Examples of headers and body responses of a successful session creation
 using the Python scripts of the above example:
+
+  {% tabs %}
+{% tab label="Response Headers" %}
 
 ```text Response Headers
 Cache-Control: no-cache
@@ -361,6 +404,9 @@ X-Auth-Token: 1b6cd3e49f2ffbe54347112d7315d8fd
 X-Frame-Options: sameorigin
 X_HP-CHRP-Service-Version: 1.0.3
 ```
+  
+  {% /tab %}
+{% tab label="Response Body (iLO 6)" %}
 
 ```json Response Body (iLO 6)
 Session Key: 1b6cd3e49f2ffbe54347112d7315d8fd
@@ -402,6 +448,9 @@ Session URI: /redfish/v1/SessionService/Sessions/admin0000000063bc4f87659ddce4
     "UserName": "admin"
 }
 ```
+  
+  {% /tab %}
+{% tab label="Response Body (Superdome Flex 280)" %}
 
 ```json Response Body (Superdome Flex 280)
 {
@@ -419,7 +468,9 @@ Session URI: /redfish/v1/SessionService/Sessions/admin0000000063bc4f87659ddce4
     "UserName": "administrator"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Session management
 
 This section explains how to manually use the session location and the session
@@ -436,6 +487,9 @@ The middle part of the example includes the `X-Auth-Token` header and its
 value and retrieves the properties of the just created session
 location (`${TokenAndUrl[1]}`). The right part shows the response body of
 an iLO 6 Redfish service.
+
+  {% tabs %}
+{% tab label="Session creation with cURL" %}
 
 ```bash Session creation with cURL
 # The following Bash command creates a Redfish session and populates
@@ -454,6 +508,9 @@ cat data.json
       "Password": "<admin password>"
     }
 ```
+  
+  {% /tab %}
+{% tab label="Using a session Token with cURL" %}
 
 ```bash Using a session Token with cURL
 curl --insecure \
@@ -461,6 +518,9 @@ curl --insecure \
      "${TokenAndUrl[1]}" | \
      jq
 ```
+  
+  {% /tab %}
+{% tab label="Response Body (iLO 6)" %}
 
 ```json Response Body (iLO 6)
 {
@@ -499,7 +559,9 @@ curl --insecure \
     "UserName": "admin"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Disconnect a session
 
 Redfish services supports a limited number of simultaneous user sessions.
@@ -513,9 +575,15 @@ To disconnect a session, send a DELETE request to the session location
 user Administrator retrieves the session collection of an iLO 6 Redfish
 service and disconnect the session of user `student`.
 
+  {% tabs %}
+{% tab label="generic GET SessionCollection" %}
+
 ```text generic GET SessionCollection
 GET /redfish/v1/SessionService/Sessions/
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -547,12 +615,17 @@ GET /redfish/v1/SessionService/Sessions/
     "Members@odata.count": 2
 }
 ```
+  
+  {% /tab %}
+{% tab label="generic DELETE session request" %}
 
 ```text generic DELETE session request
 DELETE /redfish/v1/SessionService/Sessions/student0000000063bd2164790ee259/
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 If you failed to save your session location and need to delete your own
 session, the HPE iLO Redfish service implements the `MySession` link in
 the `Oem/Hpe` extension of the Session Collection URI
@@ -561,7 +634,7 @@ the `MySession` Boolean property in the Oem extension of the session members.
 
 You can use this information to identify your own session location and
 disconnect it safely using a DELETE operation.
-:::
+{% /admonition %}
 
 ## Certificate authentication
 
@@ -578,16 +651,22 @@ performing them via the iLO GUI or Redfish.
     of an HPE iLO license. It shows as well an iLOrest sequence to retrieve
     the iLO license type using two methods and the corresponding responses.
 
-    :::success TIP
+    {% admonition type="success" name="TIP" %}
     Refer to the
     [Odata query options](/docs/redfishservices/ilos/supplementdocuments/odataqueryoptions/#ilo-only-example)
     section to learn more about the `?only` option mentioned in the following
     generic GET request.
-    :::
+    {% /admonition %}
+
+  {% tabs %}
+    {% tab label="Generic GET iLO License" %}
 
     ```text Generic GET iLO License
     GET /redfish/v1/Managers/1/LicenseService/?only
     ```
+  
+  {% /tab %}
+    {% tab label="iLOrest" %}
 
     ```shell iLOrest
     ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -595,15 +674,23 @@ performing them via the iLO GUI or Redfish.
     ilorest get License --select HpeiLOLicense.
     ilorest logout
     ```
+  
+  {% /tab %}
+    {% tab label="Response body" %}
 
     ```text Response body
     License:iLO Advanced
     License=iLO Advanced
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
     The following example shows how to upload an HPE iLO license with a
     generic POST request (and associated body), an iLOrest sequence
     and then a cURL request.
+
+  {% tabs %}
+    {% tab label="Generic POST license request" %}
 
     ```text Generic POST license request
     POST /redfish/v1/Managers/1/LicenseService/
@@ -612,12 +699,18 @@ performing them via the iLO GUI or Redfish.
     "LicenseKey": "XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
     }
     ```
+  
+  {% /tab %}
+    {% tab label="iLOrest license upload" %}
 
     ```bash iLOrest license upload
     ilorest login <ilo-ip> -u <ilo-user> -p password
     ilorest ilolicense XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
     ilorest logout
     ```
+  
+  {% /tab %}
+    {% tab label="cURL license upload" %}
 
     ```bash cURL license upload
     curl --insecure -u username:password  \
@@ -625,7 +718,9 @@ performing them via the iLO GUI or Redfish.
          -X POST --data '{"LicenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"}' \
          https://{iLO-IP}/redfish/v1/Managers/1/LicenseService/ 
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 - Configure
     [NTP Server(s)](/docs/redfishservices/ilos/supplementdocuments/managingtime/#configuring-the-network-time-protocol-ntp)
     (iLO GUI: `iLO [Dedicated|Shared] Network Port` --> `SNTP`)
@@ -646,10 +741,16 @@ performing them via the iLO GUI or Redfish.
     iLOrest sequence to enable the "CAC/Smartcard Authentication" of
     an HPE iLO 6.
 
+  {% tabs %}
+    {% tab label="generic PATCH request" %}
+
     ```text generic PATCH request
     PATCH /redfish/v1/Managers/1/SecurityService/CertificateAuthentication/
     BODY: {"CertificateLoginEnabled": true}
     ```
+  
+  {% /tab %}
+    {% tab label="iLOrest" %}
 
     ```bash iLOrest
     ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -658,7 +759,9 @@ performing them via the iLO GUI or Redfish.
     ilorest get CertificateLoginEnabled
     ilorest logout
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 - Create an
     [iLO user](/docs/redfishservices/ilos/supplementdocuments/managingusers/#creating-a-new-local-user-account)
     (iLO GUI: `Administration` --> `User Administration` ;
@@ -670,10 +773,13 @@ performing them via the iLO GUI or Redfish.
     associated private key) and sign it with a local self-signed Certificate
     Authority.
 
-    :::warning Warning
+    {% admonition type="warning" name="Warning" %}
     For obvious security reasons it is not recommended to sign CSRs and
     produce certificates with a self-signed Certificate Authority.
-    :::
+    {% /admonition %}
+
+  {% tabs %}
+    {% tab label="User key and CSR generation example" %}
 
     ```bash User key and CSR generation example
     # This is a light example to generate a private key and
@@ -681,6 +787,9 @@ performing them via the iLO GUI or Redfish.
     u=student
     openssl req -new -newkey rsa:2048 -nodes -keyout ${u}.key -out ${u}.csr
     ```
+  
+  {% /tab %}
+    {% tab label="Sign user CSR with local CA" %}
 
     ```bash Sign user CSR with local CA
     # Send the just created CSR to your favorite Certificate Authority (CA)
@@ -695,18 +804,23 @@ performing them via the iLO GUI or Redfish.
                -policy policy_anything \
                -out ${u}.crt -in ${u}.csr
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 - Map the just signed user certificate with user in iLO (GUI: `Security` -->
     `Certificate Mappings` --> `Authorized Certificates` ; select new user -->
     `Authorize New Certificate` --> `Import Certificate`)
 
-    :::success TIP
+    {% admonition type="success" name="TIP" %}
     X509 certificate files contain lines of ASCII characters separated by the
     LineFeed (LF) or CarriageReturn-LineFeed (CR-LF) invisible characters.
     Those characters are not valid in Redfish POST actions and must be
     translated into respectively: `\n` and `\r\n`. You can use the following
     commands to convert X509 files with multiple lines into a suitable JSON
     body.
+
+  {% tabs %}
+    {% tab label="Stream Editor (sed)" %}
 
     ```bash Stream Editor (sed)
     sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' certfile.crt > certfile.txt
@@ -717,16 +831,24 @@ performing them via the iLO GUI or Redfish.
     # $!ba If we are not at last line, perform the following search/replace pattern
     # \r{0,1} if \r is present or not
     ```
+  
+  {% /tab %}
+    {% tab label="awk" %}
 
     ```bash awk
     dos2unix certfile.crt 
     awk '{printf "%s\\n", $0}' certfile.crt > certfile.txt
     ```
-
-    :::
+  
+  {% /tab %}
+  {% /tabs %}
+    {% /admonition %}
 
     The following example presents the generic POST request to map an iLO user
     with a signed certificate.
+
+  {% tabs %}
+    {% tab label="generic POST request" %}
 
     ```text generic POST request
     POST: /redfish/v1/AccountService/UserCertificateMapping
@@ -736,6 +858,9 @@ performing them via the iLO GUI or Redfish.
         "Fingerprint": "-----BEGIN CERTIFICATE-----\nMIIDoTCCAokCAQcwDQYJKoZIhvcNAQELBQAwgZYxCzAJBgNVBAYTAkZSMSMwIQYD\nVQQIDBpQcm92ZW5jZS1BbHBlcy1Db3RlIGQnQXp1cjEZMBcGA1UEBwwQU29waGlh\nLUFudGlwb2xpczEMMAoGA1UECgwDSFBFMRAwDgYDVQQLDAdDb21wdXRlMScwJQYD\nVQQDDB50b3lib3guZXRjLmZyLmNvbW0uaHBlY29ycC5uZXQwHhcNMjEwOTE1MTI0\nMDAwWhcNMzEwOTEzMTI0MDAwWjCBlTELMAkGA1UEBhMCRlIxEjAQBgNVBAgMCVJl\nZ2lvblN1ZDEZMBcGA1UEB.....55Ja8g\n-----END CERTIFICATE-----\n\n"
     }
     ```
+  
+  {% /tab %}
+    {% tab label="iLOrest" %}
 
     ```bash iLOrest
     ilorest rawpost MapUserCertBody.json
@@ -749,7 +874,9 @@ performing them via the iLO GUI or Redfish.
         }
     }
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 - Import the trusted CA certificate used to sign the just created
     iLO user certificate (iLO GUI: `Security` --> `CAC-SmartCard` -->
     `Import Trusted CA Certificates`)
@@ -758,10 +885,16 @@ performing them via the iLO GUI or Redfish.
     corresponding iLOrest sequence to upload a trused CA certificate
     used to sign the certificed iLO user created earlier.
 
+  {% tabs %}
+    {% tab label="generic POST request" %}
+
     ```text generic POST request
     POST /redfish/v1/Managers/1/SecurityService/CertificateAuthentication/Actions/HpeCertAuth.ImportCACertificate/
     BODY (truncated): {"Action": "HpeCertAuth.ImportCACertificate", "Certificate": "-----BEGIN CERTIFICATE-----\nMIIDazCCAlOgAwIBAgIQMYguQIQAZI5POAgAEjlMDzANBgkqhkiG9w0BAQsFADA8\nMRMwEQYKCZImiZPyLGQBGRYDbGFiMRI wEAYKCZImiZPyLGQBGRYCbGoxET  .....l4u5\n4WuYIn7HHDxiCCQExkLV\n-----END CERTIFICATE-----\n"}     
     ```
+  
+  {% /tab %}
+    {% tab label="iLOrest" %}
 
     ```bash iLOrest
     # iLOrest requires a regular X509 certificate file with LF or CR-LF line breaks
@@ -769,10 +902,15 @@ performing them via the iLO GUI or Redfish.
     ilorest certificate ca certfile.crt
     ilorest logout
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Once the above steps have been performed, it is possible to log into the
 remote iLO as certified user `student` using iLOrest or a Python script
 as shown in the following example.
+
+  {% tabs %}
+{% tab label="Certificate authentication with iLOrest" %}
 
 ```bash Certificate authentication with iLOrest
 # You can omit the --userpassphrase parameter if the --userkey file is not protected.
@@ -783,6 +921,9 @@ ilorest login ilo-hst345g11-9 --usercert student.crt --userkey student.key
 ilorest get --json   | jq -r '.Oem.Hpe.Links.MySession'
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Certificate authentication" %}
 
 ```Python Certificate authentication
 
@@ -851,6 +992,9 @@ print(json.dumps(MySession.obj, indent=4, sort_keys=True)  + "\n")
 # Logout
 REDFISHOBJ.logout()
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -890,8 +1034,10 @@ REDFISHOBJ.logout()
 }
 
 ```
-
-:::info NOTE
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
 The DMTF Python Redfish library only provides basic and session
 authentication methods.
-:::
+{% /admonition %}

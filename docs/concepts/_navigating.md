@@ -1,12 +1,17 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: false
 seo:
   title: Concepts | Navigating the Data Model
-disableLastModified: true
-toc:
-  enable: true
 ---
 
-## Navigating the Data Model
+# Navigating the Data Model
 
 The Redfish API is designed to be implemented on many different models of
 servers and other IT infrastructure devices for years to come. These devices
@@ -22,7 +27,7 @@ client would then break when the interface is implemented on a different
 type of architecture with many compute nodes, each with its own BIOS version,
 or on other vendor implementations.
 
-### Redfish 1.6 (iLO 6 v1.05) URI Templates
+## Redfish 1.6 (iLO 6 v1.05) URI Templates
 
 As of Redfish 1.6, a number of resource types have URI template
 specifications to be compatible with OpenAPI 3.0. Please see the
@@ -34,20 +39,26 @@ because a Chassis has a template of `/redfish/v1/Chassis/{ChassisId}`
 means that a client must still GET `/redfish/v1/Chassis` in order to find
 the valid values of `{ChassisId}`.
 
-### Iterating Collections
+## Iterating Collections
 
 Many operations will require you to locate the resource you wish to use.
 Most of these resources are members of "collections" (arrays of similar items).
 The method to find collections members is consistent for compute nodes,
 chassis, management processors, and many other resources in the data model.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 curl --include --insecure --location   \
     -u username:password               \
    https://{iLO}/redfish/v1/systems/ 
 ```
+  
+  {% /tab %}
+{% tab label="Example" %}
 
-```Python
+```Python Example
 import sys
 import redfish
 
@@ -73,6 +84,9 @@ sys.stdout.write("%s\n" % response)
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
+  
+  {% /tab %}
+{% tab label="JSON response example" %}
 
 ```json JSON response example
 {
@@ -87,8 +101,10 @@ REDFISH_OBJ.logout()
     ]
 }
 ```
-
-### Find a Compute Node
+  
+  {% /tab %}
+  {% /tabs %}
+## Find a Compute Node
 
 A Compute node represents a logical computer system with attributes such
 as processors, memory, BIOS, power state, firmware version, etc.
@@ -102,13 +118,19 @@ collection at `/redfish/v1/systems/`.
 You can then GET the compute node, PATCH values,
 or perform Actions.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 curl --include --insecure --location   \
       -u username:password             \
       https://{host}/redfish/v1/systems/{item}
 ```
+  
+  {% /tab %}
+{% tab label="Example" %}
 
-```python
+```python Example
 import sys
 import redfish
 
@@ -134,6 +156,9 @@ sys.stdout.write("%s\n" % response)
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
+  
+  {% /tab %}
+{% tab label="JSON response example" %}
 
 ```json JSON response example
 {
@@ -152,8 +177,10 @@ REDFISH_OBJ.logout()
     "UUID": "00000000-0000-614B-7070-610000000000"
 }
 ```
-
-### Find a Chassis
+  
+  {% /tab %}
+  {% /tabs %}
+## Find a Chassis
 
 A Chassis represents a physical or virtual container of compute resources
 with attributes such as FRU information, power supplies, temperature, etc.
@@ -164,13 +191,19 @@ Find a chassis by iterating the chassis collection at `/redfish/v1/chassis`.
 
 You can then GET the chassis, PATCH values, or perform Actions.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 curl  --include --insecure --location  \
     -u username:password               \
     https://{host}/redfish/v1/chassis/{item} 
 ```
+  
+  {% /tab %}
+{% tab label="Example" %}
 
-```python
+```python Example
 import sys
 import redfish
 
@@ -196,6 +229,9 @@ sys.stdout.write("%s\n" % response)
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
+  
+  {% /tab %}
+{% tab label="JSON response example" %}
 
 ```json JSON response example
 {
@@ -215,8 +251,10 @@ REDFISH_OBJ.logout()
     }
 }
 ```
-
-### Find the Management Processor
+  
+  {% /tab %}
+  {% /tabs %}
+## Find the Management Processor
 
 A Manager represents a management processor or Baseboard Management Card
 (BMC) that manages chassis and compute resources.  For HPE Gen10 Servers,
@@ -229,13 +267,19 @@ Find a manager by iterating the manager collection at `/redfish/v1/managers/`.
 
 You can then GET the manager, PATCH values, or perform Actions.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 curl --include --insecure --location \
   -u username:password \
    https://{host}/redfish/v1/managers/{item} 
 ```
+  
+  {% /tab %}
+{% tab label="Example" %}
 
-```python
+```python Example
 import sys
 import redfish
 
@@ -261,6 +305,9 @@ sys.stdout.write("%s\n" % response)
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
+  
+  {% /tab %}
+{% tab label="JSON response example" %}
 
 ```json JSON response example
 {
@@ -279,8 +326,10 @@ REDFISH_OBJ.logout()
     }
 }
 ```
-
-### BIOS resources and attribute registry overview
+  
+  {% /tab %}
+  {% /tabs %}
+## BIOS resources and attribute registry overview
 
 BIOS resources are formatted differently than most other resources.
 BIOS resources do conform to a schema type as all objects do. However,
@@ -291,7 +340,7 @@ to communicate some of the advanced settings such as inter-setting
 dependencies, and menu structure in json-schema. Therefore,
 BIOS uses an **Attribute Registry.**
 
-#### Attribute registry
+### Attribute registry
 
 The [BIOS current configuration resource](/docs/examples/biosexamples.md#reading-bios-current-settings)
 has a property called `AttributeRegistry`. This property indicates the name
@@ -305,7 +354,7 @@ The REST client will need to decompress the resource. This is done
 automatically in many web clients (like the Postman
 plugin).
 
-#### BIOS attribute registry structure
+### BIOS attribute registry structure
 
 The BIOS attribute registries contains three top-level arrays:
 
@@ -327,7 +376,7 @@ The BIOS attribute registries contains three top-level arrays:
   resource and parsing the object named
   `default.`
 
-#### BIOS attributes
+### BIOS attributes
 
 Each BIOS attribute in the attribute registry includes:
 
@@ -344,7 +393,7 @@ Each BIOS attribute in the attribute registry includes:
   as well as regular expressions for string attributes.
 * And other meta-data.
 
-### Changing BIOS settings and understanding @Redfish.Settings
+## Changing BIOS settings and understanding @Redfish.Settings
 
 Redfish enables UEFI BIOS configuration.
 

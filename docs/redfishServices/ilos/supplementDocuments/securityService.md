@@ -1,7 +1,7 @@
 ---
 markdown:
   toc:
-    hide: true
+    hide: false
     depth: 3
   lastUpdateBlock:
     hide: false
@@ -11,7 +11,7 @@ seo:
   title: HPE iLO security service
 ---
 
-## HPE security service
+# HPE security service
 
 {% admonition type="info" name="NOTE" %}
 It is possible that some properties or resources described

@@ -1,13 +1,17 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Concepts | Performing actions
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
-## Performing actions
+# Performing actions
 
 Redfish resources usually support HTTP GET requests to retrieve the
 current state. Modifications and deletions can be performed against
@@ -17,10 +21,16 @@ The exhaustive list of permitted requests on a given resource is in the
 `Allow` header of the GET response. The following example retrieves the
 possible actions on the BIOS **current** attributes.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 curl --insecure --silent --head --user ilo-user:password \
      'https://ilo-ip/redfish/v1/Systems/1/Bios'  | grep Allow
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u user -p password
@@ -28,18 +38,29 @@ ilorest select Bios.
 ilorest rawhead '/redfish/v1/Systems/1/Bios'  | grep Allow
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```text Response body
 Allow: GET, HEAD
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the possible actions on the
 BIOS **pending** attributes URI.
+
+  {% tabs %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --silent --head --user ilo-user:password \
      'https://ilo-ip/redfish/v1/Systems/1/Bios/Settings'  | grep Allow
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u user -p password
@@ -47,11 +68,16 @@ ilorest select Bios.
 ilorest rawhead '/redfish/v1/Systems/1/Bios/Settings'  | grep Allow
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```text Response body
 Allow: GET, HEAD, POST, PUT, PATCH
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 However, there are some resources that support other types of operations not
 easily mapped to HTTP operations. For example, a power button is not readable
 so you cannot `GET` its status. In this case, pressing the power button
@@ -77,9 +103,15 @@ with the annotation `Parameter@Redfish.AllowableValues`.
 The following example retrieves the list of possible actions from the PK
 Secure Boot Database resource of an HPE iLO 6 based server.
 
+  {% tabs %}
+{% tab label="Generic GET request" %}
+
 ```text Generic GET request
 GET /redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/PK/?$select=Actions
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure -u iloUser:password \
@@ -87,6 +119,9 @@ curl --insecure -u iloUser:password \
      --request POST --data '{"ResetKeysType": "ResetAllKeysToDefault"}' \
      https://ilo-ip//redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/PK/Actions/SecureBootDatabase.ResetKeys/  
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -105,16 +140,24 @@ curl --insecure -u iloUser:password \
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the possible actions of a
 [PLDM for RDE](/docs/redfishservices/ilos/supplementdocuments/rdesupport/)
 storage controller.
+
+  {% tabs %}
+{% tab label="cURL" %}
 
 ```text cURL
 curl --insecure --silent --location \
      'https://ilo-ip/redfish/v1/Systems/1/Storage/DE00D000/?$select=Actions'  \
      --user demopaq:password | jq
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -132,7 +175,9 @@ curl --insecure --silent --location \
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## OEM Action extensions
 
 The
@@ -147,9 +192,15 @@ with allowable parameter values.
 The following example retrieves the list of standard and HPE specific actions
 available in the `ComputerSystem` resource of an iLO based server.
 
+  {% tabs %}
+{% tab label="Generic GET request" %}
+
 ```text Generic GET request
 /redfish/v1/Systems/1/?$select=Actions, Oem/Hpe/Actions/
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 
@@ -159,6 +210,9 @@ ilorest get Actions Oem/Hpe/Actions --json
 ilorest logout
 
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -217,11 +271,16 @@ ilorest logout
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### All HPE OEM actions
 
 The following example retrieves all the HPE specific actions available
 in an HPE iLO based server using the iLOrest Redfish client.
+
+  {% tabs %}
+{% tab label="iLOrest script" %}
 
 ```Bash iLOrest script
 #!/usr/bin/bash
@@ -246,6 +305,9 @@ done
 $ilorest logout
 
 ```
+  
+  {% /tab %}
+{% tab label="Output (Truncated)" %}
 
 ```text Output (Truncated)
 Discovering data...Done
@@ -294,26 +356,40 @@ Done
 Logging session out.
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Manager HPE OEM actions
 
 The following example lists the possible HPE OEM actions against an HPE iLO 5
 (or later) management controller.
 
+  {% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET /redfish/v1/Managers/{{ManagerId}}/?$select=Oem/Hpe/Actions
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --silent --insecure --user ilo-user:password \
      'https://ilo-ip/redfish/v1/Managers/1/?$select=Oem/Hpe/Actions' | jq .
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest get Oem/Hpe/Actions --json --selector Manager.
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -357,18 +433,23 @@ ilorest logout
 }
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### HPE iLO ClearRestApiState action
 
 The following example clears the Redfish state of an HPE iLO 5 (or later)
 management controller using its OEM specific action. An iLO reset is required.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Refer to the
 [Session authentication paragraph](/docs/concepts/redfishauthentication/#session-authentication)
 to learn how to create a session token with cURL as used for the reset
 action in the following example.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic ClearRestApiState request" %}
 
 ```text Generic ClearRestApiState request
 POST /redfish/v1/Managers/1/Actions/Oem/Hpe/HpeiLO.ClearRestApiState/
@@ -377,6 +458,9 @@ Body:
 {} or 
 none
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --location --user ilo-user:password \
@@ -389,6 +473,9 @@ curl --insecure --location 'ilo-ip/redfish/v1/Managers/1/Actions/Manager.Reset/'
     "ResetType": "ForceRestart"
 }'
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u ilo-user -p password
@@ -396,6 +483,9 @@ ilorest clearrestapistate
 ilorest iloreset
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Clear API State body response" %}
 
 ```json Clear API State body response
 {
@@ -410,19 +500,24 @@ ilorest logout
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### PressAndHold HPE specific action
 
 The following example performs a **PressAndHold** HPE specific action
 on an HPE iLO based system using cURL and then iLOrest.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 As explained in the
 [Redfish error responses and messages](/docs/concepts/errorresponses/)
 section, successful responses are part of an `error` JSON object.
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="cURL" %}
 
 ```shell cURL
 iloIP="ilo-ip"
@@ -433,6 +528,9 @@ curl --insecure -u ${iloUser}:${iloPassword} \
      --request POST --data '{"PushType": "PressAndHold"}' \
      https://${iloIP}/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.PowerButton/  
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 
@@ -445,33 +543,44 @@ curl --insecure -u ${iloUser}:${iloPassword} \
 }
 
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login ilo-ip -u ilo-user -p password
 ilorest reboot PressAndHold
 ilorest logout
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Auxiliary Power Cycle HPE specific action
 
 The following example performs an HPE specific action that simulates
 the removal of the physical power cables of an HPE ProLiant or Synergy server.
 This action is sometime called **efuse**, **e-fuse** or
-[Auxiliary Power Cycle](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_computersystem_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_computersystem_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#actions") %} Auxiliary Power Cycle {% /link-internal %}.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 If the e-fuse action is sent while the server is off, iLO starts
 immediately a reset. Otherwise, a server power off is needed to
 trigger the e-fuse action.
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic POST request" %}
 
 ```text Generic POST request
 
 POST: /redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SystemReset/
 
 ```
+  
+  {% /tab %}
+{% tab label="Request body" %}
 
 ```json Request body:
 
@@ -480,6 +589,9 @@ POST: /redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SystemReset/
 }
 
 ```
+  
+  {% /tab %}
+{% tab label="Response when power is off" %}
 
 ```json Response when power is off
 {
@@ -494,6 +606,9 @@ POST: /redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SystemReset/
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Response when power is On" %}
 
 ```json Response when power is On
 {
@@ -508,27 +623,35 @@ POST: /redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SystemReset/
     }
 }
 ```
-
-:::info NOTE
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
 
 A standard computer reset example is presented in the
 [Redfish examples](/docs/examples/redfishexamples/#server-reset)
 section of this document.
 
-:::
+{% /admonition %}
 
 ### User defined temperature threshold creation
 
 The following example creates a user defined
-[temperature threshold](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions-7)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#actions-7") %} temperature threshold {% /link-internal %}
 in the inlet ambient sensor object part of the `Chassis/Thermal/Oem/Hpe`
 subtree. It is also present in the
 [Examples](/docs/examples/redfishexamples/#configuring-user-defined-temperature-threshold)
 section.
 
+  {% tabs %}
+{% tab label="Generic POST request" %}
+
 ```text Generic POST request
 POST: /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThreshold/
 ```
+  
+  {% /tab %}
+{% tab label="Request body" %}
 
 ```json Request body
 {
@@ -537,6 +660,9 @@ POST: /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThr
     "AlertType": "Warning"
 }
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -551,8 +677,10 @@ POST: /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThr
     }
 }
 ```
-
-:::info NOTES
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTES" %}
 
 1. An iLO reset is required to take this action into account.
 2. A `WarningUsertTempThreshold=40` property is created under
@@ -560,4 +688,4 @@ POST: /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThr
 the created property is `CriticalUsertTempThreshold`.
 3. An IML log record is created when the threshold is exceeded.
 
-:::
+{% /admonition %}

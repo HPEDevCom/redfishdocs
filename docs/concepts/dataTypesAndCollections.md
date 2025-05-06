@@ -1,13 +1,17 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Redfish data types and collections
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
-## Redfish data types and collections
+# Redfish data types and collections
 
 The Redfish RESTful API introduces, among other things two important concept
  discussed in this section: **Data types** and **Collections**.
@@ -37,8 +41,11 @@ The first tabulation of the following example shows the exhaustive list
 of the `EthernetInterface` URIs as they appear in the DSP0268\_2021.3 document.
 The second tabulation lists the same URIs, implemented in an HPE iLO 6
 as documented in the
-[Resource Definitions](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#ethernetinterface)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_network_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#ethernetinterface") %} Resource Definitions {% /link-internal %}
 section.
+
+  {% tabs %}
+{% tab label="Standard EthernetInterface URIs" %}
 
 ```text Standard EthernetInterface URIs
 /redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdaptersId}/NetworkDeviceFunctions/{NetworkDeviceFunctionId}/EthernetInterfaces/{EthernetInterfaceId}
@@ -49,22 +56,30 @@ section.
 /redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/EthernetInterfaces/{EthernetInterfaceId}
 /redfish/v1/Systems/{ComputerSystemId}/EthernetInterfaces/{EthernetInterfaceId}
 ```
+  
+  {% /tab %}
+{% tab label="iLO 6 documented EthernetInteface URIs" %}
 
 ```text iLO 6 documented EthernetInteface URIs
 /redfish/v1/managers/{item}/ethernetinterfaces/{item}
 /redfish/v1/systems/{item}/ethernetinterfaces/{item}
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example uses the HPE
 <a href="https://www.hpe.com/info/resttool/" target="_blank">iLOrest</a>
 tool to selects all the `EthernetInterface` data types implemented
 in a remote iLO 6 Redfish service and prints out the URIs (`@odata.id`)
 and associated type (`@odata.type`) in the second tabulation.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 You should note in the following example that both
 the `Managers` and `Systems` Redfish subtrees hold Ethernet interfaces.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="iLOrest query" %}
 
 ```shell iLOrest query
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -73,6 +88,9 @@ ilorest select
 ilorest  get "@odata.type" "@odata.id"
 ilorest logout 
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest response output" %}
 
 ```shell iLOrest response output
 Current selection: EthernetInterface.v1_4_1, EthernetInterface.v1_6_3
@@ -99,22 +117,30 @@ Current selection: EthernetInterface.v1_4_1, EthernetInterface.v1_6_3
 @odata.type=#EthernetInterface.v1_6_3.EthernetInterface
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The Redfish specification allows Redfish service providers to
 implement their specific and added values OEM data types. The list
 of HPE OEM data types implemented in iLO are described in the
-[HPE Oem extensions](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION) %} HPE Oem extensions {% /link-internal %}.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 HPE iLO based servers prepend the "Hpe" string to the
 HPE OEM resource types. See next example.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Retrieve Oem" %}
 
 ```text Retrieve Oem/Hpe data types with iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest  types | awk '/Hpe/ && !/Collection/ {print $NF}'
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest output" %}
 
 ```text iLOrest output
 HpeAutomaticCertEnrollment.v1_0_0
@@ -157,7 +183,9 @@ HpeiLOSecurityParam.v1_1_0
 HpeiLOSnmpService.v2_3_0
 HpeiSCSISoftwareInitiator.v2_0_0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Resource Collections
 
 The <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.3.pdf" target="_blank">
@@ -208,9 +236,15 @@ key containing the number of elements of the `Members` array.
 The the elements of the `Members`  array consists of URI links
 (`@odata.id`) to the members of the collection.
 
+  {% tabs %}
+{% tab label="GET request" %}
+
 ```text GET request
 GET https://{iLO}/redfish/v1/Systems/
 ```
+  
+  {% /tab %}
+{% tab label="response body" %}
 
 ```json response body
 {
@@ -225,11 +259,16 @@ GET https://{iLO}/redfish/v1/Systems/
     ]
 }
 ```
+  
+  {% /tab %}
+{% tab label="Allow response header" %}
 
 ```text Allow response header
 Allow: GET, HEAD
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The exhaustive list of standard resource collections is present in the
 <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.3.pdf" target="_blank">
 Redfish data Model specification</a>.
@@ -242,11 +281,17 @@ The following example retrieves HPE Oem extensions of an iLO 6 based
 server using the
 <a href="https://www.hpe.com/info/resttool" target="_blank">iLOrest tool</a>.
 
+  {% tabs %}
+{% tab label="iLOrest request" %}
+
 ```bash iLOrest request
 ilorest login $ilo_ip -u $ilo-user -p $password
 ilorest types | grep 'Hpe.*Collection'
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```text Output
 HpeBundleUpdateReportCollection
@@ -271,3 +316,6 @@ HpeiLOFederationPeersCollection
 HpeiLOLicenseCollection
 HpeiLOSecurityParamCollection
 ```
+  
+  {% /tab %}
+  {% /tabs %}

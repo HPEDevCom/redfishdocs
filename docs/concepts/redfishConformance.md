@@ -1,12 +1,17 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Redfish Conformance
-toc:
-  enable: false
-disableLastModified: false
 ---
 
-## Redfish Conformance
+# Redfish Conformance
 
 <!-- Need to introduce basic concepts of Redfish conformance with explicit
 references to DMTF documents

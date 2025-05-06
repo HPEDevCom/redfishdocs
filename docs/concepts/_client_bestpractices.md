@@ -1,13 +1,17 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: false
 seo:
   title: Client best practices
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: true
 ---
 
-## Client best practices
+# Client best practices
 
 When developing a client for the RESTful API, be sure to not code based upon
 assumptions that are not guaranteed. The reason avoiding these assumptions
@@ -15,7 +19,7 @@ is so important is that implementations may vary across systems and firmware
 versions, and we want your code to work consistently. Refer to
 the [Navigating the Data Model](./navigating.md) section for more details.
 
-### API architecture
+## API architecture
 
 The RESTful API is a hypermedia API by design. This is to avoid building
 in restrictive assumptions to the data model that will make it difficult
@@ -32,7 +36,7 @@ should not make assumptions about the URIs for the resource members
 of a collection. For instance, the URI of a collection member will
 NOT always be `/redfish/v1/.../collection/1`, or 2.
 
-### Traversing the data model
+## Traversing the data model
 
 Although the resources in the data model are linked together,
 because of cross link references between resources, a client may
@@ -47,7 +51,7 @@ An external reference to a resource outside the data model is
 referred to by a property called `extref`. Any resource referred
 to by `extref` should not be assumed to follow the conventions of the API.
 
-### HTTP POST to Create
+## HTTP POST to Create
 
 When POSTing to create a resource (e.g. create an account or session),
 a successful response includes a Location HTTP header indicating the
@@ -56,7 +60,7 @@ a representation of the newly created object in a JSON response body
 but may not. Do not assume the response body, but test it. It may also
 be an ExtendedError object.
 
-### HTTP Redirect
+## HTTP Redirect
 
 All clients must correctly handle HTTP redirect (e.g. 308, 301, and so on.)
 iLO 5 will use redirection as a way to alias portions of the data model

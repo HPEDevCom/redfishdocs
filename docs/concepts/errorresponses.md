@@ -1,13 +1,17 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Redfish error responses and messages
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
-## Redfish error responses and messages
+# Redfish error responses and messages
 
 Redfish error responses and messages appear in
 several places in the Redfish RESTful API:
@@ -30,7 +34,7 @@ multiple error responses in the HTTP response. .... Error responses are
 defined by an extended error resource, represented as a single JSON
 object with a property named `error` ...._
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `error` JSON object may contain the description of a successful
 response code (HTTP 200, OK). A `Success` string in an `error` object
 may seem antinomic. However, this is an OpenData requirement.
@@ -38,13 +42,19 @@ may seem antinomic. However, this is an OpenData requirement.
 The following successful PATCH request against an iLO based server
 returns an HTTP 200 code and an `error` JSON object with a single
 explicit `MessageId` containing the `Success` string.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic PATCH request" %}
 
 ```text Generic PATCH request
 PATCH: /redfish/v1/Chassis/1
 
 body: {"LocationIndicatorActive": true}
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --location --include \
@@ -54,6 +64,9 @@ curl --location --include \
      --header 'X-Auth-Token: 8e512f98d9323bee69b6cb9535e1cc4d' \
      --data-raw '{"LocationIndicatorActive": true}'
 ```
+  
+  {% /tab %}
+{% tab label="Return code and response body" %}
 
 ```text Return code and response body
 HTTP/1.1 200 OK
@@ -70,15 +83,20 @@ HTTP/1.1 200 OK
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Message responses and registries
 
 In case of an unsuccessful request (HTTP 400), Redfish returns valuable
 information in the `error` object to troubleshoot the problem. This paragraph
 uses a faulty attempt to set the location indicator LED of an iLO based
 chassis to the `Lit` value although this
-[property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_computersystem_resourcedefns{{process.env.LATEST_FW_VERSION}}/#locationindicatoractive)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_computersystem_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#locationindicatoractive") %} property {% /link-internal %}
 is a Boolean, not a string.
+
+  {% tabs %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --location --request PATCH 'ilo-ip/redfish/v1/Chassis/1' \
@@ -87,6 +105,9 @@ curl --location --request PATCH 'ilo-ip/redfish/v1/Chassis/1' \
 --header 'X-Auth-Token: 8e512f98d9323bee69b6cb9535e1cc4d' \
 --data-raw '{"LocationIndicatorActive": "Lit"}'
 ```
+  
+  {% /tab %}
+{% tab label="Return code and response body" %}
 
 ```text Return code and response body
 HTTP/1.1 400 Bad Request
@@ -107,14 +128,17 @@ HTTP/1.1 400 Bad Request
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The `error` object contains a `code` property that can be interpreted using the
-[error messages](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_FW_VERSION}}/)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION) %} error messages {% /link-internal %}
 section of this documentation. The `extendedIfo` message invites you
 to look at the `@Message.ExtendedInfo` array property.
 
 This array contains at least one `MessageId` property which can be interpreted,
-again, using the [error message](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_FW_VERSION}}/)
+again, using the
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION) %} error message {% /link-internal %}
 definitions. In this particular example the array contains only one element
 with the following message : `The value %1 for the property %2 is not valid`.
 You need to replace `%1` and `%2` in this message with the two members of the
@@ -140,15 +164,18 @@ This link contains the URI of the registry file:
 the list of all possible messages, and thus it contains one entry
 describing the `PropertyValueTypeError` message.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 In order to minimize the volume of message registry files
 embedded in the management controller, as well as on the network,
 these files are compressed. Your Redfish client need to be
 able to decompress it on the fly if needed.
-:::
+{% /admonition %}
 
 The following example retrieves the `Base.json` registry file,
 decompresses it and extracts the `PropertyValueTypeError` entry.
+
+  {% tabs %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --silent --location --output -  --compressed \
@@ -157,6 +184,9 @@ curl --silent --location --output -  --compressed \
      --header 'X-Auth-Token: 915913b46e32121630341150a1550625' | \
      jq '.Messages.PropertyValueTypeError'
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -164,6 +194,9 @@ ilorest  rawget '/redfish/v1/RegistryStore/registries/en/Base.json' 2>/dev/null 
          | jq '.Messages.PropertyValueTypeError'
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```json Output
 {
@@ -179,7 +212,9 @@ ilorest logout
   "Severity": "Warning"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Interpreting the "@Redfish.Settings" object
 
 Some external Redfish providers like the BIOS subsystem require a two
@@ -209,9 +244,12 @@ The analysis of the PATCH request response body of the pending settings
 area is similar to what has been explained in the previous paragraph:
 A `@Message.ExtendedInfo` object containing a `SystemResetRequired`
 value is returned with the following description from the
-[message registry](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_FW_VERSION}}):
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION) %} message registry {% /link-internal %}:
 _"One or more properties were changed and will not take effect until
 system is reset."_
+
+  {% tabs %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --location --request PATCH 'ilo-ip/redfish/v1/Systems/1/Bios/Settings/' \
@@ -225,6 +263,9 @@ curl --location --request PATCH 'ilo-ip/redfish/v1/Systems/1/Bios/Settings/' \
     }
 }'
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -239,9 +280,14 @@ curl --location --request PATCH 'ilo-ip/redfish/v1/Systems/1/Bios/Settings/' \
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Then, the required system reset can be easily performed with the
 iLOrest command line tool.
+
+  {% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 POST: /redfish/v1/Systems/1/Actions/ComputerSystem.Reset/
@@ -251,22 +297,33 @@ Body:
     "ResetType": "ForceRestart"
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest reboot ForceRestart
 ilorest logout
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 After system reset is performed, a GET of the current BIOS area
 returns an `@Redfish.Settings` object containing a single `MessageId`
 property with value: `Success`. This message means that all the
 properties of the PATCH request have been successfully verified and
 applied to the current settings.
 
+  {% tabs %}
+{% tab label="Generic GET request" %}
+
 ```shell Generic GET request
 GET /redfish/v1/Systems/1/Bios/ | select "@Redfish.Settings"
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -274,6 +331,9 @@ iilorest rawget '/redfish/v1/Systems/1/bios'  | \
          jq -r '{"@Redfish.Settings": ."@Redfish.Settings"}'
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -292,7 +352,9 @@ ilorest logout
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Unsuccessful example
 
 The following example performs a PATCH request with three properties
@@ -307,6 +369,9 @@ Similarly to the previous successful example, the response body contains a
 `SystemResetRequired` message stating that all the modifications have
 successfully patched the BIOS pending area.
 
+  {% tabs %}
+{% tab label="Generic PATCH request" %}
+
 ```shell Generic PATCH request
 PATCH /redfish/v1/Systems/1/Bios/
 
@@ -319,6 +384,9 @@ Body:
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -333,10 +401,15 @@ Body:
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Following the required system reset a GET request of the current BIOS area
 returns a `@Redfish.Settings` object containing several items in
 the `Messages` array.
+
+  {% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -344,6 +417,9 @@ iilorest rawget '/redfish/v1/Systems/1/bios'  | \
          jq -r '{"@Redfish.Settings": ."@Redfish.Settings", AdminName: .Attributes.AdminName}'
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -381,7 +457,9 @@ ilorest logout
   "AdminName": "Foo Bar"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The first `MessageId` contains a `Success` value informing that the analysis
 of the settings area has completed successfully. However, this does not mean
 that all the attributes in the list were valid.
