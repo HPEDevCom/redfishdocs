@@ -6,7 +6,7 @@ markdown:
   lastUpdateBlock:
     hide: false
 breadcrumbs:
-  hide: true
+  hide: false
 seo:
   title: HPE iLO security service
 ---
