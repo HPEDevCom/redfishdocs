@@ -20,6 +20,8 @@
   page: logServices.md
 - label: Managing users
   page: managingUsers.md
+- label: iLO host interface (vNIC)
+  page: vnic.md
 - label: iLO backup and restore
   page: backupAndRestore.md
 - label: Storage data models
