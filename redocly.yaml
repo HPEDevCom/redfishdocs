@@ -4,6 +4,9 @@
 #
 # Those setings can be altered in a any page in a front matter section.
     
+ignore:
+  - '**/README.md'
+  - '**/_*'
 reunite:
   ignoreLint: true
   ignoreLinkChecker: true
