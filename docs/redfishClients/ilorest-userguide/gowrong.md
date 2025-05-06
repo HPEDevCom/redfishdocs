@@ -147,12 +147,12 @@ want and/or the type that you have selected has more than one instance.
 1. Use a selector that is exclusive to the type you want.
 
 2. Verify that the type you have selected, does not have more than one instance.
-   In this case, the [filter option](../advancedusage/#filter-option) can help
+   In this case, the [filter option](advancedusage/#filter-option) can help
    you limit the results to the instance you want.
 
 This example shows that we are selecting only 1 type, but multiple instances
 are available for that type. We only want to modify or view 1 instance! We can
-use the [--filter](../advancedusage/#filter-option) option to limit to 1instance
+use the [--filter](advancedusage/#filter-option) option to limit to 1instance
 only.
 
   {% tabs %}
@@ -198,12 +198,12 @@ commits when the property is initially set, but not all possible issues can be c
 
 #### Action
 
-1. Run the [status command](../globalcommands/#status-command) to see what
+1. Run the [status command](globalcommands/#status-command) to see what
    properties have failed to commit.
 
 2. To ensure you are sending data that will be accepted by the server, obtain
    schema information for the property that failed to commit with the
-   [info command](../globalcommands/#info-command).
+   [info command](globalcommands/#info-command).
 
 3. Some properties require other properties to be set first. Refer to the
    {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION) %} iLO REST API Doc's resource definitions {% /link-internal %}
@@ -281,7 +281,7 @@ Use the -j/--json flag to distinguish between arrays and nested JSON objects.
 
 ## I need to change a property, but it's an array... How can I modify that?
 
-In this example we are only flipping the first two boot order items in the array, but we need to send the whole array, not just the modified section. You can see with the [status command](../globalcommands/#status-command) that we are changing specific array values.
+In this example we are only flipping the first two boot order items in the array, but we need to send the whole array, not just the modified section. You can see with the [status command](globalcommands/#status-command) that we are changing specific array values.
 
   {% tabs %}
 {% tab label="Example" %}
@@ -312,7 +312,7 @@ Array types must be set as a whole modified array inside brackets. ``[ ]``
 
 Set array types as a whole modified array inside brackets. ``[ ]``
 
-You can also modify lists using the [save](../globalcommands/#save-command) and [load](../globalcommands/#load-command) commands.
+You can also modify lists using the [save](globalcommands/#save-command) and [load](globalcommands/#load-command) commands.
 
 ## Will this command reboot/reset my system?
 

@@ -158,7 +158,7 @@ fully equivalent to <a href="https://github.com/HewlettPackard/python-redfish-ut
 
 {% admonition type="success" name="TIP" %}
 
-Refer to the [installation section](../installation/#installing-the-ilorest-pypi-package) for additional information.
+Refer to the [installation section](installation/#installing-the-ilorest-pypi-package) for additional information.
 
 {% /admonition %}
 
