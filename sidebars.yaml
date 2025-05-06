@@ -9,7 +9,42 @@
   selectFirstItemOnExpand: true
   items:
     - label: Introduction
-      page: docs/index.md 
+      page: docs/index.md
+    - group: Redfish concepts
+      expanded: false
+      selectFirstItemOnExpand: true
+      items:
+        - label: Redfish at a glance
+          page:  docs/concepts/index.md
+        - label: Conformance
+          page: docs/concepts/redfishConformance.md
+        - label: Getting started
+          page: docs/concepts/gettingStarted.md
+        - label: Authentication and sessions
+          page: docs/concepts/redfishAuthentication.md
+        - label: Data types and collections
+          page: docs/concepts/dataTypesAndCollections.md
+        - label: Error responses
+          page: docs/concepts/errorresponses.md
+        - label: Performing actions
+          page: docs/concepts/performing_actions.md
+        - label: BIOS data model
+          page: docs/concepts/biosdatamodel.md
+      
+      #- label: Navigating the Data Model
+      #  page: docs/concepts/navigating.md
+      
+      #- label: Client best practices
+      #  page: docs/concepts/client_bestpractices.md
+
+        - label: Secureboot Databases
+          page:  docs/concepts/securebootdatabases.md
+        - label: Event service
+          page: docs/concepts/redfishEvents.md
+        - label: Telemetry service
+          page: docs/concepts/redfishTelemetry.md
+    - label: Examples
+      page: docs/examples/redfishExamples.md
     - label: Glossary
       page: docs/etc/glossaryterms.md
 - separatorLine: true
