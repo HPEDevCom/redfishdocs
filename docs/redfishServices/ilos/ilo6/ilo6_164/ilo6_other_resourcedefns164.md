@@ -1,11 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Other resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Other resource definitions of iLO 6 v1.64
@@ -43,7 +47,7 @@ The destination of this link is a collection of user accounts (see ManagerAccoun
 
 |Link Name|Destination type|
 |---|---|
-|`Accounts`|Collection of [ManagerAccount](../ilo6_manager_resourcedefns164/#manageraccountcollection)|
+|`Accounts`|Collection of [ManagerAccount](ilo6_manager_resourcedefns164/#manageraccountcollection)|
 
 ### AccountLockoutCounterResetAfter
 
@@ -766,7 +770,7 @@ A Collection of BootOption resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[BootOption](../ilo6_other_resourcedefns164/#bootoption)|
+|`Members[]`|[BootOption](ilo6_other_resourcedefns164/#bootoption)|
 
 ### Members (array)
 
@@ -1108,7 +1112,7 @@ A Collection of Certificate resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Certificate](../ilo6_other_resourcedefns164/#certificate)|
+|`Members[]`|[Certificate](ilo6_other_resourcedefns164/#certificate)|
 
 ### Members (array)
 
@@ -1165,7 +1169,7 @@ The CertificateService schema describes a certificate service that represents th
 
 |Link Name|Destination type|
 |---|---|
-|`Links/CertificateLocations`|[CertificateLocations](../ilo6_other_resourcedefns164/#certificatelocations)|
+|`Links/CertificateLocations`|[CertificateLocations](ilo6_other_resourcedefns164/#certificatelocations)|
 
 ### CertificateLocations
 
@@ -1620,7 +1624,7 @@ A Collection of ComponentIntegrity resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[ComponentIntegrity](../ilo6_other_resourcedefns164/#componentintegrity)|
+|`Members[]`|[ComponentIntegrity](ilo6_other_resourcedefns164/#componentintegrity)|
 
 ### Members (array)
 
@@ -1881,7 +1885,7 @@ A Collection of EventDestination resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[EventDestination](../ilo6_other_resourcedefns164/#eventdestination)|
+|`Members[]`|[EventDestination](ilo6_other_resourcedefns164/#eventdestination)|
 
 ### Members (array)
 
@@ -1926,8 +1930,8 @@ The EventService resource describes the Event Service.  It represents the proper
 
 |Link Name|Destination type|
 |---|---|
-|`Subscriptions`|Collection of [EventDestination](../ilo6_other_resourcedefns164/#eventdestinationcollection)|
-|`Oem/Hpe/CACertificates`|Collection of [HpeCertificate](../ilo6_hpe_resourcedefns164/#hpecertificatecollection)|
+|`Subscriptions`|Collection of [EventDestination](ilo6_other_resourcedefns164/#eventdestinationcollection)|
+|`Oem/Hpe/CACertificates`|Collection of [HpeCertificate](ilo6_hpe_resourcedefns164/#hpecertificatecollection)|
 
 ### DeliveryRetryAttempts
 
@@ -2212,7 +2216,7 @@ A Collection of Fabric Resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Fabric](../ilo6_other_resourcedefns164/#fabric)|
+|`Members[]`|[Fabric](ilo6_other_resourcedefns164/#fabric)|
 
 ### Members (array)
 
@@ -2257,7 +2261,7 @@ The Fan schema describes a cooling fan unit for a computer system or similar dev
 
 |Link Name|Destination type|
 |---|---|
-|`Assembly`|[Assembly](../ilo6_other_resourcedefns164/#assembly)|
+|`Assembly`|[Assembly](ilo6_other_resourcedefns164/#assembly)|
 
 ### Assembly
 
@@ -2365,7 +2369,7 @@ The Collection of Fan resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Fan](../ilo6_other_resourcedefns164/#fan)|
+|`Members[]`|[Fan](ilo6_other_resourcedefns164/#fan)|
 
 ### Members (array)
 
@@ -2551,7 +2555,7 @@ A Collection of HostInterface resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HostInterface](../ilo6_other_resourcedefns164/#hostinterface)|
+|`Members[]`|[HostInterface](ilo6_other_resourcedefns164/#hostinterface)|
 
 ### Members (array)
 
@@ -2661,7 +2665,7 @@ A Collection of JsonSchemaFile resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[JsonSchemaFile](../ilo6_other_resourcedefns164/#jsonschemafile)|
+|`Members[]`|[JsonSchemaFile](ilo6_other_resourcedefns164/#jsonschemafile)|
 
 ### Members (array)
 
@@ -2768,7 +2772,7 @@ The collection of `Key` resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Key](../ilo6_other_resourcedefns164/#key)|
+|`Members[]`|[Key](ilo6_other_resourcedefns164/#key)|
 
 ### Members (array)
 
@@ -3189,7 +3193,7 @@ A Collection of LogEntry resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[LogEntry](../ilo6_other_resourcedefns164/#logentry)|
+|`Members[]`|[LogEntry](ilo6_other_resourcedefns164/#logentry)|
 
 ### Members (array)
 
@@ -3599,7 +3603,7 @@ This resource contains properties for monitoring and configuring an event log se
 
 |Link Name|Destination type|
 |---|---|
-|`Entries`|Collection of [LogEntry](../ilo6_other_resourcedefns164/#logentrycollection)|
+|`Entries`|Collection of [LogEntry](ilo6_other_resourcedefns164/#logentrycollection)|
 
 ### DateTime
 
@@ -3698,7 +3702,7 @@ A Collection of LogService resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[LogService](../ilo6_other_resourcedefns164/#logservice)|
+|`Members[]`|[LogService](ilo6_other_resourcedefns164/#logservice)|
 
 ### Members (array)
 
@@ -3743,7 +3747,7 @@ The Memory resource describes a memory module.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[MemoryMetrics](../ilo6_other_resourcedefns164/#memorymetrics)|
+|`Members[]`|[MemoryMetrics](ilo6_other_resourcedefns164/#memorymetrics)|
 
 ### AllocationAlignmentMiB
 
@@ -4823,7 +4827,7 @@ A Collection of MemoryChunks resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[MemoryChunks](../ilo6_other_resourcedefns164/#memorychunks)|
+|`Members[]`|[MemoryChunks](ilo6_other_resourcedefns164/#memorychunks)|
 
 ### Members (array)
 
@@ -4868,7 +4872,7 @@ A Collection of Memory resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Memory](../ilo6_other_resourcedefns164/#memory)|
+|`Members[]`|[Memory](ilo6_other_resourcedefns164/#memory)|
 
 ### Members (array)
 
@@ -5163,7 +5167,7 @@ A Collection of MemoryDomain resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[MemoryDomain](../ilo6_other_resourcedefns164/#memorydomain)|
+|`Members[]`|[MemoryDomain](ilo6_other_resourcedefns164/#memorydomain)|
 
 ### Members (array)
 
@@ -5307,7 +5311,7 @@ A Collection of MessageRegistryFile resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[MessageRegistryFile](../ilo6_other_resourcedefns164/#messageregistryfile)|
+|`Members[]`|[MessageRegistryFile](ilo6_other_resourcedefns164/#messageregistryfile)|
 
 ### Members (array)
 
@@ -5524,7 +5528,7 @@ A Collection of MetricDefinition resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[MetricDefinition](../ilo6_other_resourcedefns164/#metricdefinition)|
+|`Members[]`|[MetricDefinition](ilo6_other_resourcedefns164/#metricdefinition)|
 
 ### Members (array)
 
@@ -5627,7 +5631,7 @@ A Collection of MetricReport resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[MetricReport](../ilo6_other_resourcedefns164/#metricreport)|
+|`Members[]`|[MetricReport](ilo6_other_resourcedefns164/#metricreport)|
 
 ### Members (array)
 
@@ -5842,7 +5846,7 @@ A Collection of MetricReportDefinition resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[MetricReportDefinition](../ilo6_other_resourcedefns164/#metricreportdefinition)|
+|`Members[]`|[MetricReportDefinition](ilo6_other_resourcedefns164/#metricreportdefinition)|
 
 ### Members (array)
 
@@ -5887,7 +5891,7 @@ This is the schema definition for the PCIeDevice resource.  It represents the pr
 
 |Link Name|Destination type|
 |---|---|
-|`PCIeFunctions`|[PCIeFunction](../ilo6_other_resourcedefns164/#pciefunction)|
+|`PCIeFunctions`|[PCIeFunction](ilo6_other_resourcedefns164/#pciefunction)|
 
 ### AssetTag
 
@@ -6099,7 +6103,7 @@ The collection of PCIeDevice Resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[PCIeDevice](../ilo6_other_resourcedefns164/#pciedevice)|
+|`Members[]`|[PCIeDevice](ilo6_other_resourcedefns164/#pciedevice)|
 
 ### Members (array)
 
@@ -6295,7 +6299,7 @@ The collection of PCIeFunction Resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[PCIeFunction](../ilo6_other_resourcedefns164/#pciefunction)|
+|`Members[]`|[PCIeFunction](ilo6_other_resourcedefns164/#pciefunction)|
 
 ### Members (array)
 
@@ -6583,7 +6587,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 |Link Name|Destination type|
 |---|---|
-|`settings`|[Port](../ilo6_other_resourcedefns164/#port)|
+|`settings`|[Port](ilo6_other_resourcedefns164/#port)|
 
 ### @Redfish.Settings
 
@@ -8754,7 +8758,7 @@ A Collection of Port resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Port](../ilo6_other_resourcedefns164/#port)|
+|`Members[]`|[Port](ilo6_other_resourcedefns164/#port)|
 
 ### Members (array)
 
@@ -8799,10 +8803,10 @@ The Power resource describes the Power Metrics.  It represents the properties fo
 
 |Link Name|Destination type|
 |---|---|
-|`Oem/Hpe/Links/FederatedGroupCapping`|[HpeiLOFederatedGroupCapping](../ilo6_hpe_resourcedefns164/#hpeilofederatedgroupcapping)|
-|`Oem/Hpe/Links/PowerMeter`|[HpePowerMeter](../ilo6_hpe_resourcedefns164/#hpepowermeter)|
-|`Redundancy[]/RedundancySet[]`|[Power](../ilo6_other_resourcedefns164/#power)|
-|`Oem/Hpe/Links/FastPowerMeter`|[HpePowerMeter](../ilo6_hpe_resourcedefns164/#hpepowermeter)|
+|`Oem/Hpe/Links/FederatedGroupCapping`|[HpeiLOFederatedGroupCapping](ilo6_hpe_resourcedefns164/#hpeilofederatedgroupcapping)|
+|`Oem/Hpe/Links/PowerMeter`|[HpePowerMeter](ilo6_hpe_resourcedefns164/#hpepowermeter)|
+|`Redundancy[]/RedundancySet[]`|[Power](ilo6_other_resourcedefns164/#power)|
+|`Oem/Hpe/Links/FastPowerMeter`|[HpePowerMeter](ilo6_hpe_resourcedefns164/#hpepowermeter)|
 
 ### Oem.Hpe.BatteryBackedUnits (array)
 
@@ -10787,7 +10791,7 @@ A Collection of Processor resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Processor](../ilo6_other_resourcedefns164/#processor)|
+|`Members[]`|[Processor](ilo6_other_resourcedefns164/#processor)|
 
 ### Members (array)
 
@@ -10944,7 +10948,7 @@ The Pump schema describes a pump unit for a cooling system or similar device.
 
 |Link Name|Destination type|
 |---|---|
-|`Assembly`|[Assembly](../ilo6_other_resourcedefns164/#assembly)|
+|`Assembly`|[Assembly](ilo6_other_resourcedefns164/#assembly)|
 
 ### Assembly
 
@@ -11041,7 +11045,7 @@ The collection of Pump resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Pump](../ilo6_other_resourcedefns164/#pump)|
+|`Members[]`|[Pump](ilo6_other_resourcedefns164/#pump)|
 
 ### Members (array)
 
@@ -11194,7 +11198,7 @@ A Collection of Role resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Role](../ilo6_other_resourcedefns164/#role)|
+|`Members[]`|[Role](ilo6_other_resourcedefns164/#role)|
 
 ### Members (array)
 
@@ -11239,7 +11243,7 @@ This resource contains UEFI Secure Boot information. It represents properties fo
 
 |Link Name|Destination type|
 |---|---|
-|`securebootdatabases`|Collection of [SecureBootDatabase](../ilo6_other_resourcedefns164/#securebootdatabasecollection)|
+|`securebootdatabases`|Collection of [SecureBootDatabase](ilo6_other_resourcedefns164/#securebootdatabasecollection)|
 
 ### SecureBootCurrentBoot
 
@@ -11340,8 +11344,8 @@ The SecureBootDatabase schema describes a UEFI Secure Boot database used to stor
 
 |Link Name|Destination type|
 |---|---|
-|`Certificates`|Collection of [Certificate](../ilo6_other_resourcedefns164/#certificatecollection)|
-|`Signatures`|Collection of [Signature](../ilo6_other_resourcedefns164/#signaturecollection)|
+|`Certificates`|Collection of [Certificate](ilo6_other_resourcedefns164/#certificatecollection)|
+|`Signatures`|Collection of [Signature](ilo6_other_resourcedefns164/#signaturecollection)|
 
 ### Certificates
 
@@ -11397,7 +11401,7 @@ The collection of SecureBootDatabase resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[SecureBootDatabase](../ilo6_other_resourcedefns164/#securebootdatabase)|
+|`Members[]`|[SecureBootDatabase](ilo6_other_resourcedefns164/#securebootdatabase)|
 
 ### Members (array)
 
@@ -11748,7 +11752,7 @@ The collection of Sensor resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Sensor](../ilo6_other_resourcedefns164/#sensor)|
+|`Members[]`|[Sensor](ilo6_other_resourcedefns164/#sensor)|
 
 ### Members (array)
 
@@ -11837,7 +11841,7 @@ A Collection of SerialInterface resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[SerialInterface](../ilo6_other_resourcedefns164/#serialinterface)|
+|`Members[]`|[SerialInterface](ilo6_other_resourcedefns164/#serialinterface)|
 
 ### Members (array)
 
@@ -12142,8 +12146,8 @@ A Collection of Session resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Oem/Hpe/Links/MySession`|[Session](../ilo6_other_resourcedefns164/#session)|
-|`Members[]`|[Session](../ilo6_other_resourcedefns164/#session)|
+|`Oem/Hpe/Links/MySession`|[Session](ilo6_other_resourcedefns164/#session)|
+|`Members[]`|[Session](ilo6_other_resourcedefns164/#session)|
 
 ### Members (array)
 
@@ -12188,7 +12192,7 @@ The SessionService resource describes the BMC Redfish Session Service.  It repre
 
 |Link Name|Destination type|
 |---|---|
-|`Sessions`|Collection of [Session](../ilo6_other_resourcedefns164/#sessioncollection)|
+|`Sessions`|Collection of [Session](ilo6_other_resourcedefns164/#sessioncollection)|
 
 ### ServiceEnabled
 
@@ -12313,7 +12317,7 @@ The collection of Signature resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Signature](../ilo6_other_resourcedefns164/#signature)|
+|`Members[]`|[Signature](ilo6_other_resourcedefns164/#signature)|
 
 ### Members (array)
 
@@ -12519,7 +12523,7 @@ A Collection of SoftwareInventory resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[SoftwareInventory](../ilo6_other_resourcedefns164/#softwareinventory)|
+|`Members[]`|[SoftwareInventory](ilo6_other_resourcedefns164/#softwareinventory)|
 
 ### Members (array)
 
@@ -12979,7 +12983,7 @@ A Collection of Task resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Task](../ilo6_other_resourcedefns164/#task)|
+|`Members[]`|[Task](ilo6_other_resourcedefns164/#task)|
 
 ### Members (array)
 
@@ -13024,7 +13028,7 @@ The TaskService resource describes the Task service. It represents the propertie
 
 |Link Name|Destination type|
 |---|---|
-|`Tasks`|Collection of [Task](../ilo6_other_resourcedefns164/#taskcollection)|
+|`Tasks`|Collection of [Task](ilo6_other_resourcedefns164/#taskcollection)|
 
 ### CompletedTaskOverWritePolicy
 
@@ -13107,9 +13111,9 @@ Telemetry Service is supported only on Intel platform. On AMD systems, performin
 
 |Link Name|Destination type|
 |---|---|
-|`MetricReports`|Collection of [MetricReport](../ilo6_other_resourcedefns164/#metricreportcollection)|
-|`MetricReportDefinitions`|Collection of [MetricDefinition](../ilo6_other_resourcedefns164/#metricdefinitioncollection)|
-|`Triggers`|Collection of [Triggers](../ilo6_other_resourcedefns164/#triggerscollection)|
+|`MetricReports`|Collection of [MetricReport](ilo6_other_resourcedefns164/#metricreportcollection)|
+|`MetricReportDefinitions`|Collection of [MetricDefinition](ilo6_other_resourcedefns164/#metricdefinitioncollection)|
+|`Triggers`|Collection of [Triggers](ilo6_other_resourcedefns164/#triggerscollection)|
 
 ### MaxReports
 
@@ -13907,7 +13911,7 @@ This ThermalSubsystem schema contains the definition for the thermal subsystem o
 
 |Link Name|Destination type|
 |---|---|
-|`Fans`|Collection of [Fan](../ilo6_other_resourcedefns164/#fancollection)|
+|`Fans`|Collection of [Fan](ilo6_other_resourcedefns164/#fancollection)|
 
 ### Fans
 
@@ -14213,7 +14217,7 @@ A Collection of Triggers resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Triggers](../ilo6_other_resourcedefns164/#triggers)|
+|`Members[]`|[Triggers](ilo6_other_resourcedefns164/#triggers)|
 
 ### Members (array)
 
@@ -14258,10 +14262,10 @@ The UpdateService resource describes the Update Service. It represents the prope
 
 |Link Name|Destination type|
 |---|---|
-|`Oem/Hpe/InstallSets`|Collection of [HpeComponentInstallSet](../ilo6_hpe_resourcedefns164/#hpecomponentinstallsetcollection)|
-|`Oem/Hpe/ComponentRepository`|Collection of [HpeComponent](../ilo6_hpe_resourcedefns164/#hpecomponentcollection)|
-|`FirmwareInventory`|Collection of [SoftwareInventory](../ilo6_other_resourcedefns164/#softwareinventorycollection)|
-|`SoftwareInventory`|Collection of [SoftwareInventory](../ilo6_other_resourcedefns164/#softwareinventorycollection)|
+|`Oem/Hpe/InstallSets`|Collection of [HpeComponentInstallSet](ilo6_hpe_resourcedefns164/#hpecomponentinstallsetcollection)|
+|`Oem/Hpe/ComponentRepository`|Collection of [HpeComponent](ilo6_hpe_resourcedefns164/#hpecomponentcollection)|
+|`FirmwareInventory`|Collection of [SoftwareInventory](ilo6_other_resourcedefns164/#softwareinventorycollection)|
+|`SoftwareInventory`|Collection of [SoftwareInventory](ilo6_other_resourcedefns164/#softwareinventorycollection)|
 |`Oem/Hpe/UpdateTaskQueue`|Collection of [HpeComponentUpdateTask](#hpecomponentupdatetask)|
 
 ### FirmwareInventory
@@ -14890,7 +14894,7 @@ A Collection of VirtualMedia resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[VirtualMedia](../ilo6_other_resourcedefns164/#virtualmedia)|
+|`Members[]`|[VirtualMedia](ilo6_other_resourcedefns164/#virtualmedia)|
 
 ### Members (array)
 

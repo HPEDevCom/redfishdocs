@@ -1,11 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Bios resource definitions
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Bios resource definitions of iLO 6 v1.64
@@ -31,12 +35,12 @@ The Bios schema contains properties related to the BIOS Attribute Registry.  The
 
 |Link Name|Destination type|
 |---|---|
-|`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](../ilo6_hpe_resourcedefns164/#hpeserverbootsettings)|
-|`@Redfish.Settings/SettingsObject`|[Bios](../ilo6_bios_resourcedefns164/#bios)|
-|`Oem/Hpe/Links/TlsConfig`|[HpeTlsConfig](../ilo6_hpe_resourcedefns164/#hpetlsconfig)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo6_hpe_resourcedefns164/#hpebaseconfigs)|
-|`Oem/Hpe/Links/Mappings`|[HpeBiosMapping](../ilo6_hpe_resourcedefns164/#hpebiosmapping)|
-|`Oem/Hpe/Links/iScsi`|[HpeiSCSISoftwareInitiator](../ilo6_hpe_resourcedefns164/#hpeiscsisoftwareinitiator)|
+|`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](ilo6_hpe_resourcedefns164/#hpeserverbootsettings)|
+|`@Redfish.Settings/SettingsObject`|[Bios](ilo6_bios_resourcedefns164/#bios)|
+|`Oem/Hpe/Links/TlsConfig`|[HpeTlsConfig](ilo6_hpe_resourcedefns164/#hpetlsconfig)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo6_hpe_resourcedefns164/#hpebaseconfigs)|
+|`Oem/Hpe/Links/Mappings`|[HpeBiosMapping](ilo6_hpe_resourcedefns164/#hpebiosmapping)|
+|`Oem/Hpe/Links/iScsi`|[HpeiSCSISoftwareInitiator](ilo6_hpe_resourcedefns164/#hpeiscsisoftwareinitiator)|
 
 ### @Redfish.Settings
 

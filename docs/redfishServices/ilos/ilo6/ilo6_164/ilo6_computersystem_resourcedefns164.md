@@ -1,11 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Computersystem resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Computersystem resource definitions of iLO 6 v1.64
@@ -30,7 +34,7 @@ A Collection of ComputerSystem resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns164/#computersystem)|
+|`Members[]`|[ComputerSystem](ilo6_computersystem_resourcedefns164/#computersystem)|
 
 ### Members (array)
 
@@ -75,25 +79,25 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 
 |Link Name|Destination type|
 |---|---|
-|`EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns164/#ethernetinterfacecollection)|
-|`Processors/{item}/EnvironmentMetrics`|[EnvironmentMetrics](../ilo6_other_resourcedefns164/#environmentmetrics)|
+|`EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns164/#ethernetinterfacecollection)|
+|`Processors/{item}/EnvironmentMetrics`|[EnvironmentMetrics](ilo6_other_resourcedefns164/#environmentmetrics)|
 |`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice)|
-|`Links/Chassis[]`|[Chassis](../ilo6_chassis_resourcedefns164/#chassis)|
-|`Memory`|Collection of [Memory](../ilo6_other_resourcedefns164/#memorycollection)|
+|`Links/Chassis[]`|[Chassis](ilo6_chassis_resourcedefns164/#chassis)|
+|`Memory`|Collection of [Memory](ilo6_other_resourcedefns164/#memorycollection)|
 |`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](#hpeusbport)|
 |`Oem/Hpe/Links/NetworkAdapters`|HpeBaseNetworkAdapterCollection|
-|`NetworkInterfaces`|Collection of [NetworkInterface](../ilo6_network_resourcedefns164/#networkinterfacecollection)|
-|`Processors`|Collection of [Processor](../ilo6_other_resourcedefns164/#processorcollection)|
-|`Processors/{item}/ProcessorMetrics`|[ProcessorMetrics](../ilo6_other_resourcedefns164/#processormetrics)|
-|`SecureBoot`|[SecureBoot](../ilo6_other_resourcedefns164/#secureboot)|
-|`Storage`|Collection of [Storage](../ilo6_storage_resourcedefns164/#storagecollection)|
-|`Bios`|[Bios](../ilo6_bios_resourcedefns164/#bios)|
-|`LogServices`|Collection of [LogService](../ilo6_other_resourcedefns164/#logservicecollection)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns164/#ethernetinterfacecollection)|
-|`Memory/{item}/MemoryMetrics`|[MemoryMetrics](../ilo6_other_resourcedefns164/#memorymetrics)|
-|`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](../ilo6_hpe_resourcedefns164/#hpeserverpcislotcollection)|
-|`Links/ManagedBy[]`|[Manager](../ilo6_manager_resourcedefns164/#manager)|
-|`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](../ilo6_hpe_resourcedefns164/#hpeserverpcidevicecollection)|
+|`NetworkInterfaces`|Collection of [NetworkInterface](ilo6_network_resourcedefns164/#networkinterfacecollection)|
+|`Processors`|Collection of [Processor](ilo6_other_resourcedefns164/#processorcollection)|
+|`Processors/{item}/ProcessorMetrics`|[ProcessorMetrics](ilo6_other_resourcedefns164/#processormetrics)|
+|`SecureBoot`|[SecureBoot](ilo6_other_resourcedefns164/#secureboot)|
+|`Storage`|Collection of [Storage](ilo6_storage_resourcedefns164/#storagecollection)|
+|`Bios`|[Bios](ilo6_bios_resourcedefns164/#bios)|
+|`LogServices`|Collection of [LogService](ilo6_other_resourcedefns164/#logservicecollection)|
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns164/#ethernetinterfacecollection)|
+|`Memory/{item}/MemoryMetrics`|[MemoryMetrics](ilo6_other_resourcedefns164/#memorymetrics)|
+|`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](ilo6_hpe_resourcedefns164/#hpeserverpcislotcollection)|
+|`Links/ManagedBy[]`|[Manager](ilo6_manager_resourcedefns164/#manager)|
+|`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](ilo6_hpe_resourcedefns164/#hpeserverpcidevicecollection)|
 
 ### AssetTag
 

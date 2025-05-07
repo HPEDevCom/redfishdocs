@@ -1,11 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Chassis resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Chassis resource definitions of iLO 6 v1.66
@@ -30,7 +34,7 @@ A Collection of Chassis resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Chassis](../ilo6_chassis_resourcedefns166/#chassis)|
+|`Members[]`|[Chassis](ilo6_chassis_resourcedefns166/#chassis)|
 
 ### Members (array)
 
@@ -75,15 +79,15 @@ The Chassis resource describes the physical components for a system. This object
 
 |Link Name|Destination type|
 |---|---|
-|`Links/ComputerSystems[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns166/#computersystem)|
-|`ThermalSubsystem`|[ThermalSubsystem](../ilo6_other_resourcedefns166/#thermalsubsystem)|
-|`Links/ManagedBy[]`|[Manager](../ilo6_manager_resourcedefns166/#manager)|
-|`Oem/Hpe/Links/Devices`|Collection of [HpeServerDevice](../ilo6_hpe_resourcedefns166/#hpeserverdevicecollection)|
-|`Sensors`|Collection of [Sensor](../ilo6_other_resourcedefns166/#sensorcollection)|
-|`NetworkAdapters`|Collection of [NetworkAdapter](../ilo6_network_resourcedefns166/#networkadaptercollection)|
-|`Power`|[Power](../ilo6_other_resourcedefns166/#power)|
-|`Thermal`|[Thermal](../ilo6_other_resourcedefns166/#thermal)|
-|`EnvironmentMetrics`|[EnvironmentMetrics](../ilo6_other_resourcedefns166/#environmentmetrics)|
+|`Links/ComputerSystems[]`|[ComputerSystem](ilo6_computersystem_resourcedefns166/#computersystem)|
+|`ThermalSubsystem`|[ThermalSubsystem](ilo6_other_resourcedefns166/#thermalsubsystem)|
+|`Links/ManagedBy[]`|[Manager](ilo6_manager_resourcedefns166/#manager)|
+|`Oem/Hpe/Links/Devices`|Collection of [HpeServerDevice](ilo6_hpe_resourcedefns166/#hpeserverdevicecollection)|
+|`Sensors`|Collection of [Sensor](ilo6_other_resourcedefns166/#sensorcollection)|
+|`NetworkAdapters`|Collection of [NetworkAdapter](ilo6_network_resourcedefns166/#networkadaptercollection)|
+|`Power`|[Power](ilo6_other_resourcedefns166/#power)|
+|`Thermal`|[Thermal](ilo6_other_resourcedefns166/#thermal)|
+|`EnvironmentMetrics`|[EnvironmentMetrics](ilo6_other_resourcedefns166/#environmentmetrics)|
 
 ### AssetTag
 

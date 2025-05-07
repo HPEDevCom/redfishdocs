@@ -62,7 +62,7 @@ read the _Redfish versioning_ paragraph of this
 
 ### New URIs
 
-- [Assembly schema](/docs/redfishservices/ilos/ilo6/ilo6_166/ilo6_other_resourcedefns166#assembly):
+- [Assembly schema](/docs/redfishservices/ilos/ilo6/ilo6_166/ilo6_other_resourcedefns166/#assembly):
   `/redfish/v1/Chassis/{@chassisId}/NetworkAdapters/{@nicId}/Assembly` (GET).
 - [Assembly schema](/docs/redfishservices/ilos/ilo6/ilo6_166/ilo6_other_resourcedefns166/#assembly):
   `/redfish/v1/Chassis/{@chassisId}/ThermalSubsystem/Fans/{@fanId}/Assembly` (GET)

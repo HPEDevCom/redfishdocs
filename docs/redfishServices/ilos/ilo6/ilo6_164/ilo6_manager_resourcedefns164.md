@@ -1,11 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Manager resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Manager resource definitions of iLO 6 v1.64
@@ -30,7 +34,7 @@ A Collection of Manager resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Manager](../ilo6_manager_resourcedefns164/#manager)|
+|`Members[]`|[Manager](ilo6_manager_resourcedefns164/#manager)|
 
 ### Members (array)
 
@@ -76,9 +80,9 @@ There are two possible ways for Manager Reset. These are defined as `ForceRestar
 }
 `
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 iLO `GracefulRestart` works in the same way as `ForceRestart`.
-:::
+{% /admonition %}
 
 ### Resource Instances
 
@@ -90,32 +94,32 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 
 |Link Name|Destination type|
 |---|---|
-|`DedicatedNetworkPorts`|Collection of [Port](../ilo6_other_resourcedefns164/#portcollection)|
-|`EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns164/#ethernetinterfacecollection)|
-|`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](../ilo6_hpe_resourcedefns164/#hperemotesupport)|
-|`Links/ManagerForChassis[]`|[Chassis](../ilo6_chassis_resourcedefns164/#chassis)|
-|`VirtualMedia`|Collection of [VirtualMedia](../ilo6_other_resourcedefns164/#virtualmediacollection)|
-|`LogServices`|Collection of [LogService](../ilo6_other_resourcedefns164/#logservicecollection)|
-|`SecurityService/BMCHPELDevID/Certificates`|Collection of [Certificate](../ilo6_other_resourcedefns164/#certificatecollection)|
-|`Links/ManagerForServers[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns164/#computersystem)|
-|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](../ilo6_hpe_resourcedefns164/#hpeilolicensecollection)|
-|`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](../ilo6_hpe_resourcedefns164/#hpeilodatetime)|
-|`Oem/Hpe/Links/BackupRestoreService`|[HpeiLOBackupRestoreService](../ilo6_hpe_resourcedefns164/#hpeilobackuprestoreservice)|
-|`SecurityService/SystemLAK/Certificates`|Collection of [Certificate](../ilo6_other_resourcedefns164/#certificatecollection)|
-|`Links/ManagerInChassis`|[Chassis](../ilo6_chassis_resourcedefns164/#chassis)|
-|`Oem/Hpe/Links/FederationGroups`|Collection of [HpeiLOFederationGroup](../ilo6_hpe_resourcedefns164/#hpeilofederationgroupcollection)|
-|`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](../ilo6_hpe_resourcedefns164/#hpesecurityservice)|
-|`NetworkProtocol`|[ManagerNetworkProtocol](../ilo6_manager_resourcedefns164/#managernetworkprotocol)|
-|`SharedNetworkPorts`|Collection of [Port](../ilo6_other_resourcedefns164/#portcollection)|
-|`SecurityService/BMCIDevIDPCA/Certificates`|Collection of [Certificate](../ilo6_other_resourcedefns164/#certificatecollection)|
-|`SerialInterfaces`|Collection of [SerialInterface](../ilo6_other_resourcedefns164/#serialinterfacecollection)|
-|`Oem/Hpe/Links/FederationPeers`|Collection of [HpeiLOFederationPeers](../ilo6_hpe_resourcedefns164/#hpeilofederationpeerscollection)|
-|`HostInterfaces`|Collection of [HostInterface](../ilo6_other_resourcedefns164/#hostinterfacecollection)|
-|`SecurityService/BMCLAK/Certificates`|Collection of [Certificate](../ilo6_other_resourcedefns164/#certificatecollection)|
-|`Oem/Hpe/Links/EmbeddedMediaService`|[HpeiLOEmbeddedMedia](../ilo6_hpe_resourcedefns164/#hpeiloembeddedmedia)|
-|`SecurityService/BMCIAK/Certificates`|Collection of [Certificate](../ilo6_other_resourcedefns164/#certificatecollection)|
-|`SecurityService/SystemLDevID/Certificates`|Collection of [Certificate](../ilo6_other_resourcedefns164/#certificatecollection)|
-|`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](../ilo6_hpe_resourcedefns164/#hpeiloactivehealthsystem)|
+|`DedicatedNetworkPorts`|Collection of [Port](ilo6_other_resourcedefns164/#portcollection)|
+|`EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns164/#ethernetinterfacecollection)|
+|`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](ilo6_hpe_resourcedefns164/#hperemotesupport)|
+|`Links/ManagerForChassis[]`|[Chassis](ilo6_chassis_resourcedefns164/#chassis)|
+|`VirtualMedia`|Collection of [VirtualMedia](ilo6_other_resourcedefns164/#virtualmediacollection)|
+|`LogServices`|Collection of [LogService](ilo6_other_resourcedefns164/#logservicecollection)|
+|`SecurityService/BMCHPELDevID/Certificates`|Collection of [Certificate](ilo6_other_resourcedefns164/#certificatecollection)|
+|`Links/ManagerForServers[]`|[ComputerSystem](ilo6_computersystem_resourcedefns164/#computersystem)|
+|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](ilo6_hpe_resourcedefns164/#hpeilolicensecollection)|
+|`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](ilo6_hpe_resourcedefns164/#hpeilodatetime)|
+|`Oem/Hpe/Links/BackupRestoreService`|[HpeiLOBackupRestoreService](ilo6_hpe_resourcedefns164/#hpeilobackuprestoreservice)|
+|`SecurityService/SystemLAK/Certificates`|Collection of [Certificate](ilo6_other_resourcedefns164/#certificatecollection)|
+|`Links/ManagerInChassis`|[Chassis](ilo6_chassis_resourcedefns164/#chassis)|
+|`Oem/Hpe/Links/FederationGroups`|Collection of [HpeiLOFederationGroup](ilo6_hpe_resourcedefns164/#hpeilofederationgroupcollection)|
+|`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](ilo6_hpe_resourcedefns164/#hpesecurityservice)|
+|`NetworkProtocol`|[ManagerNetworkProtocol](ilo6_manager_resourcedefns164/#managernetworkprotocol)|
+|`SharedNetworkPorts`|Collection of [Port](ilo6_other_resourcedefns164/#portcollection)|
+|`SecurityService/BMCIDevIDPCA/Certificates`|Collection of [Certificate](ilo6_other_resourcedefns164/#certificatecollection)|
+|`SerialInterfaces`|Collection of [SerialInterface](ilo6_other_resourcedefns164/#serialinterfacecollection)|
+|`Oem/Hpe/Links/FederationPeers`|Collection of [HpeiLOFederationPeers](ilo6_hpe_resourcedefns164/#hpeilofederationpeerscollection)|
+|`HostInterfaces`|Collection of [HostInterface](ilo6_other_resourcedefns164/#hostinterfacecollection)|
+|`SecurityService/BMCLAK/Certificates`|Collection of [Certificate](ilo6_other_resourcedefns164/#certificatecollection)|
+|`Oem/Hpe/Links/EmbeddedMediaService`|[HpeiLOEmbeddedMedia](ilo6_hpe_resourcedefns164/#hpeiloembeddedmedia)|
+|`SecurityService/BMCIAK/Certificates`|Collection of [Certificate](ilo6_other_resourcedefns164/#certificatecollection)|
+|`SecurityService/SystemLDevID/Certificates`|Collection of [Certificate](ilo6_other_resourcedefns164/#certificatecollection)|
+|`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](ilo6_hpe_resourcedefns164/#hpeiloactivehealthsystem)|
 
 ### CommandShell
 
@@ -1954,7 +1958,7 @@ A Collection of ManagerAccount resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[ManagerAccount](../ilo6_manager_resourcedefns164/#manageraccount)|
+|`Members[]`|[ManagerAccount](ilo6_manager_resourcedefns164/#manageraccount)|
 
 ### Members (array)
 
@@ -1999,7 +2003,7 @@ The user accounts, owned by a Manager, are defined in this resource.  Changes to
 
 |Link Name|Destination type|
 |---|---|
-|`Keys`|Collection of [Key](../ilo6_other_resourcedefns164/#keycollection)|
+|`Keys`|Collection of [Key](ilo6_other_resourcedefns164/#keycollection)|
 
 ### AccountTypes (array)
 
@@ -2274,8 +2278,8 @@ iLO reset is required after the PATCH for the change to come into effect.
 
 |Link Name|Destination type|
 |---|---|
-|`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](../ilo6_hpe_resourcedefns164/#hpeilosnmpservice)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns164/#ethernetinterfacecollection)|
+|`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](ilo6_hpe_resourcedefns164/#hpeilosnmpservice)|
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns164/#ethernetinterfacecollection)|
 
 ### FQDN
 

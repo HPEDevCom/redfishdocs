@@ -1,11 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Storage resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Storage resource definitions of iLO 6 v1.64
@@ -30,7 +34,7 @@ A Collection of Storage resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Storage](../ilo6_storage_resourcedefns164/#storage)|
+|`Members[]`|[Storage](ilo6_storage_resourcedefns164/#storage)|
 
 ### Members (array)
 
@@ -75,12 +79,12 @@ Storage defines a storage subsystem and its respective properties.  A storage su
 
 |Link Name|Destination type|
 |---|---|
-|`Volumes`|Collection of [Volume](../ilo6_storage_resourcedefns164/#volumecollection)|
-|`StorageControllers/{item}/Ports`|Collection of [Port](../ilo6_other_resourcedefns164/#portcollection)|
-|`Drives[]`|[Drive](../ilo6_storage_resourcedefns164/#drive)|
-|`StorageControllers`|Collection of [StorageController](../ilo6_storage_resourcedefns164/#storagecontrollercollection)|
-|`Links/Enclosures[]`|[Chassis](../ilo6_chassis_resourcedefns164/#chassis)|
-|`Ports`|Collection of [Port](../ilo6_other_resourcedefns164/#portcollection)|
+|`Volumes`|Collection of [Volume](ilo6_storage_resourcedefns164/#volumecollection)|
+|`StorageControllers/{item}/Ports`|Collection of [Port](ilo6_other_resourcedefns164/#portcollection)|
+|`Drives[]`|[Drive](ilo6_storage_resourcedefns164/#drive)|
+|`StorageControllers`|Collection of [StorageController](ilo6_storage_resourcedefns164/#storagecontrollercollection)|
+|`Links/Enclosures[]`|[Chassis](ilo6_chassis_resourcedefns164/#chassis)|
+|`Ports`|Collection of [Port](ilo6_other_resourcedefns164/#portcollection)|
 
 ### Controllers
 
@@ -643,7 +647,7 @@ A Collection of Storage resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[StorageController](../ilo6_storage_resourcedefns164/#storagecontroller)|
+|`Members[]`|[StorageController](ilo6_storage_resourcedefns164/#storagecontroller)|
 
 ### Members (array)
 
@@ -1186,7 +1190,7 @@ A Collection of Volume resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Volume](../ilo6_storage_resourcedefns164/#volume)|
+|`Members[]`|[Volume](ilo6_storage_resourcedefns164/#volume)|
 
 ### Members (array)
 
@@ -1231,7 +1235,7 @@ The Volume resource describes a volume, virtual disk, LUN, or other logical stor
 
 |Link Name|Destination type|
 |---|---|
-|`Links/Drives[]`|[Drive](../ilo6_storage_resourcedefns164/#drive)|
+|`Links/Drives[]`|[Drive](ilo6_storage_resourcedefns164/#drive)|
 
 ### CapacityBytes
 

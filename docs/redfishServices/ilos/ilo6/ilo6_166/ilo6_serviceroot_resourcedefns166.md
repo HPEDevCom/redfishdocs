@@ -1,11 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Serviceroot resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Serviceroot resource definitions of iLO 6 v1.66
@@ -30,19 +34,19 @@ The ServiceRoot resource describes the Redfish API service root.
 
 |Link Name|Destination type|
 |---|---|
-|`Registries`|Collection of [MessageRegistryFile](../ilo6_other_resourcedefns166/#messageregistryfilecollection)|
-|`Systems`|Collection of [ComputerSystem](../ilo6_computersystem_resourcedefns166/#computersystemcollection)|
-|`Managers`|Collection of [Manager](../ilo6_manager_resourcedefns166/#managercollection)|
-|`AccountService`|[AccountService](../ilo6_other_resourcedefns166/#accountservice)|
-|`Fabrics`|Collection of [Fabric](../ilo6_other_resourcedefns166/#fabriccollection)|
-|`UpdateService`|[UpdateService](../ilo6_other_resourcedefns166/#updateservice)|
-|`ComponentIntegrity`|Collection of [ComponentIntegrity](../ilo6_other_resourcedefns166/#componentintegritycollection)|
-|`SessionService`|[SessionService](../ilo6_other_resourcedefns166/#sessionservice)|
-|`EventService`|[EventService](../ilo6_other_resourcedefns166/#eventservice)|
-|`Chassis`|Collection of [Chassis](../ilo6_chassis_resourcedefns166/#chassiscollection)|
-|`Oem/Hpe/Links/ResourceDirectory`|[HpeiLOResourceDirectory](../ilo6_hpe_resourcedefns166/#hpeiloresourcedirectory)|
-|`JsonSchemas`|Collection of [JsonSchemaFile](../ilo6_other_resourcedefns166/#jsonschemafilecollection)|
-|`Links/Sessions`|Collection of [Session](../ilo6_other_resourcedefns166/#sessioncollection)|
+|`Registries`|Collection of [MessageRegistryFile](ilo6_other_resourcedefns166/#messageregistryfilecollection)|
+|`Systems`|Collection of [ComputerSystem](ilo6_computersystem_resourcedefns166/#computersystemcollection)|
+|`Managers`|Collection of [Manager](ilo6_manager_resourcedefns166/#managercollection)|
+|`AccountService`|[AccountService](ilo6_other_resourcedefns166/#accountservice)|
+|`Fabrics`|Collection of [Fabric](ilo6_other_resourcedefns166/#fabriccollection)|
+|`UpdateService`|[UpdateService](ilo6_other_resourcedefns166/#updateservice)|
+|`ComponentIntegrity`|Collection of [ComponentIntegrity](ilo6_other_resourcedefns166/#componentintegritycollection)|
+|`SessionService`|[SessionService](ilo6_other_resourcedefns166/#sessionservice)|
+|`EventService`|[EventService](ilo6_other_resourcedefns166/#eventservice)|
+|`Chassis`|Collection of [Chassis](ilo6_chassis_resourcedefns166/#chassiscollection)|
+|`Oem/Hpe/Links/ResourceDirectory`|[HpeiLOResourceDirectory](ilo6_hpe_resourcedefns166/#hpeiloresourcedirectory)|
+|`JsonSchemas`|Collection of [JsonSchemaFile](ilo6_other_resourcedefns166/#jsonschemafilecollection)|
+|`Links/Sessions`|Collection of [Session](ilo6_other_resourcedefns166/#sessioncollection)|
 
 ### AccountService
 
