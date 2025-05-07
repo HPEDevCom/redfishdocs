@@ -59,6 +59,8 @@
       page: docs/redfishServices/ilos/ilo7/index.md
     - label: HPE iLO 6 Redfish service
       page: docs/redfishServices/ilos/ilo6/index.md
+    - label: HPE iLO 5 Redfish service
+      page: docs/redfishServices/ilos/ilo5/index.md
     - label: iLO supplement documents
       page: docs/redfishServices/ilos/supplementDocuments/index.md
 - separatorLine: true
