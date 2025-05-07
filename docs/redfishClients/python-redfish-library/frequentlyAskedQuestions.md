@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Frequently asked questions
-disableLastModified: false
-toc:
-  enable: true
-  maxDepth: 2
 ---
 
 # Frequently asked questions

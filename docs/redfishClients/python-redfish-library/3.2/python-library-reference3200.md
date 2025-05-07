@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
 title: HPE Python Redfish library
-disableLastModified: false
-toc:
- enable: true
- maxDepth: 3
 ---
 
 # HPE Python Redfish library v3.2 reference documentation

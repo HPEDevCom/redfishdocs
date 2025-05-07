@@ -26,5 +26,5 @@ read the _Redfish versioning_ paragraph of this
 
 HPE iLO 7 version 1.11.00 is the first firmware version implemented in this generation of iLO.
 Refer to the
-[Adapting from iLO 6](../ilo7_adaptation)
+[Adapting from iLO 6](ilo7_adaptation)
 documentation section for a detailed list of differences with HPE iLO 6.

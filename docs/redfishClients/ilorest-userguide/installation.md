@@ -113,6 +113,7 @@ esxcli software component remove -n ilorest-component
   
   {% /tab %}
   {% /tabs %}
+  
 ## Installing the iLOrest PyPI package
 
 PyPI package can be used on distros like MAC, Ubuntu.
@@ -123,7 +124,7 @@ The iLOrest PyPI package is an official
 ### Requirements
 
 - Python3 is required prior to the installation.
-- ARM based servers: Verify in the iLOrest [Changelog](../changelog/) section
+- ARM based servers: Verify in the iLOrest [Changelog](changelog/) section
 that the iLOrest PyPI package is supported on this architecture.
 - Absence of the
   [DMTF's Python Redfish Library](/docs/redfishclients/python-redfish-library/installationguide/#pip-install)

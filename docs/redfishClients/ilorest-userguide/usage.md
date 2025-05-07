@@ -149,7 +149,8 @@ you want to manage, follow this method:
 
   {% admonition type="success" name="TIP" %}
   For each iLO firmware, you can browse the types from
-  the [resource map](/docs/redfishservices/ilos/ilo6/ilo6_157/ilo6_resmap157/).
+  the
+  {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_resmap", $env.PUBLIC_LATEST_FW_VERSION) %} resource map {% /link-internal %}.
   {% /admonition %}
 
 2. If the above method fails, enter the property string

@@ -1,5 +1,5 @@
-# See https://redocly.com/docs/developer-portal/configuration/sidebar-nav/#Additional-sidebar
-- label: Back to Redfish® clients
+# See https://redocly.com/docs/realm/author/how-to/configure-nav/sidebar#add-multiple-sidebars
+- label: Back to Redfish clients
   href: "/docs/redfishclients"
   separatorLine: true
 
@@ -25,7 +25,7 @@
   page: frequentlyAskedQuestions.md
 - group: Version 3.2
   expanded: false
-  pages:
+  items:
   - label: Reference documentation
     page: 3.2/python-library-reference3200.md
 

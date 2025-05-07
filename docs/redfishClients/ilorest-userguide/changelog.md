@@ -68,7 +68,7 @@ This version of the iLOrest supports below operating systems
 - Fixed an issue with the `flashfwpkg` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#flashfwpkg-command).The command was not working with some directly connected drives or connected behind a storage controller.
 - Fixed an issue with the `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command). The command was not displaying the returned iLO error code when a non-existent URL was supplied as input.
 - Fixed an issue in the `login()` library
-  [function](/docs/redfishclients/python-redfish-library/3.2/python-library-reference3200/#loginauthsession)
+  [function](/docs/redfishclients/python-redfish-library/3.2/python-library-reference3200#loginauthsession)
   preventing the use of a OneView generated session key (SSO token). Refer to this [paragraph](/docs/redfishclients/python-redfish-library/examples/#session-tokens) for more information.
 
 **Enhancements:**

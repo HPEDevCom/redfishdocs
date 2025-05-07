@@ -1,16 +1,16 @@
 
 # Examples
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Successful creation, modification or deletion of a resource will usually result in a response code of 200 or 201.
 An unsuccessful attempt will likely result in a 400 error code with a more detailed error message within the body of
 the response, [‘@Message.ExtendedInfo](mailto:'@Message.ExtendedInfo)’.
-:::
+{% /admonition %}
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Examples showcasing Redfish standard properties and Actions will work for any BMC implementing Redfish.
 Any HPE OEM extensions are labeled in the examples as such.
-:::
+{% /admonition %}
 
 The [Redfish](https://github.hpe.com/intelligent-provisioning/python-redfish-library/tree/master/examples/Redfish) and
 [Legacy\_Rest](https://github.hpe.com/intelligent-provisioning/python-redfish-library/tree/master/examples/Legacy_Rest) folders
@@ -137,7 +137,10 @@ contain many examples for performing different iLO tasks using the Redfish API a
 
 Add an iLO Manager Account based on permissions (iLO 4 and iLO 5) or role ID (iLO 5).
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def add_ilo_user_account(_redfishobj, new_loginname, new_username, new_password, role_id, \
                      privilege_dict):
 resource_instances = get_resource_directory(_redfishobj)
@@ -183,12 +186,17 @@ else:
     print("Success!\n")
     print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## BIOS Revert Default
 
 Set all BIOS attributes to their respective factory default states.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def bios_revert_default(_redfishobj):
 
     bios_reset_action_uri = None
@@ -230,12 +238,17 @@ def bios_revert_default(_redfishobj):
         print("Success!\n")
         print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Change BIOS Setting
 
 Alter one ore more BIOS attributes.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def change_bios_setting(_redfishobj, bios_property, property_value, bios_password):
 
     bios_uri = None
@@ -290,12 +303,17 @@ def change_bios_setting(_redfishobj, bios_property, property_value, bios_passwor
             #bios_data = _redfishobj.get(bios_uri)
             #print(json.dumps(bios_data.dict, indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Change Temporary Boot Order
 
 Alter the temporary boot order.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def change_temporary_boot_order(_redfishobj, boottarget):
 
     systems_members_uri = None
@@ -336,12 +354,17 @@ def change_temporary_boot_order(_redfishobj, boottarget):
             print("\n\nShowing boot override target:\n\n")
             print(json.dumps(systems_members_response.dict.get('Boot'), indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Example of the Boot Object
 
 The following JSON output can be obtained first by noting the *systems_members_response* on line 42 above.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 else:
     for instance in resource_instances:
         if '#ComputerSystem.' in instance['@odata.type']:
@@ -352,10 +375,15 @@ if systems_members_response:
     print("\n\nShowing bios attributes before changes:\n\n")
     print(json.dumps(systems_members_response.dict.get('Boot'), indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The user can preview the data prior:
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "BootOptions": {
         "@odata.id": "/redfish/v1/Systems/1/BootOptions/"
@@ -408,12 +436,17 @@ The user can preview the data prior:
     ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Change Boot Order
 
 Alter the default boot order.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def change_boot_order(_redfishobj, bios_password):
 
     bios_boot_uri = None
@@ -474,12 +507,17 @@ def change_boot_order(_redfishobj, bios_password):
     else:
         sys.stderr.write("Unable to find Boot Order URI.\n")
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Clear AHS Data
 
 Clear Active Health System log data.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def clear_ahs_data(_redfishobj):
 
     active_health_system_clear_log_uri = None
@@ -523,12 +561,17 @@ def clear_ahs_data(_redfishobj):
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Clear IEL/IML Data
 
 Clear iLO event log and management log data.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def clear_ilo_event_log(_redfishobj, clear_IML_IEL):
 
 clear_log_services_uri = []
@@ -583,10 +626,15 @@ if clear_log_services_uri:
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Computer System Data
 
 The following example retrieves the `ComputerSystem` data in JSON format.
+
+  {% tabs %}
+{% tab label="Function definition" %}
 
 ```python Function definition
 def computer_details(_redfishobj):
@@ -611,6 +659,9 @@ def computer_details(_redfishobj):
     print("\n\nPrinting computer system details:\n\n")
     print(json.dumps(systems_members_response.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+{% tab label="Body Response" %}
 
 ```json Body Response
 {
@@ -939,12 +990,17 @@ def computer_details(_redfishobj):
     "UUID": "30334C44-3030-5854-3836-4E5030313231"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Configure SNMP
 
 Configure iLO Simple Network Management Protocol.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def configure_snmp(_redfishobj, read_communities, snmp_alerts):
 
     snmp_service_uri = None
@@ -983,17 +1039,22 @@ def configure_snmp(_redfishobj, read_communities, snmp_alerts):
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Enable NTP
 
 In order to configure iLO Network Time Protocol, certain settings must be in-place on the iLO Management
 NIC(s) including settings the value of the OEM/HPE object key-value pair *UseNTPServers* to *True*.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 An iLO Reset is required for the change to be applied.
-:::
+{% /admonition %}
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def enable_ntp(_redfishobj, ntp_servers):
 
     ethernet_data = {}
@@ -1050,12 +1111,17 @@ def enable_ntp(_redfishobj, ntp_servers):
             sys.stdout.write("\nShowing \'%s\' interface after changes:\n" % ethernet)
             print(json.dumps(_data, indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Enable Secure Boot
 
 Enable/Disable Secure Boot.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def enable_secure_boot(_redfishobj, secure_boot_enable):
 
     secure_boot_uri = None
@@ -1102,13 +1168,18 @@ def enable_secure_boot(_redfishobj, secure_boot_enable):
             secure_boot_data = _redfishobj.get(secure_boot_uri)
             print(json.dumps(secure_boot_data.dict, indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Expand Data
 
 JSON data is typically provided in a collapsed/compacted state. Use _$expand_ as a query string on the
 desired URI.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def expand_data(_redfishobj, expand_url="/redfish/v1/"):
 
     response = _redfishobj.get(expand_url)
@@ -1118,20 +1189,31 @@ def expand_data(_redfishobj, expand_url="/redfish/v1/"):
     sys.stdout.write('Expanded response:\n')
     sys.stdout.write('\t'+str(exp_response.dict)+'\n')
 ```
+  
+  {% /tab %}
+{% tab label="Body Response with no expansion" %}
 
 ```json Body Response with no expansion
 {'@odata.context': '/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection', '@odata.etag': 'W/"AA6D42B0"', '@odata.id': '/redfish/v1/Systems/', '@odata.type': '#ComputerSystemCollection.ComputerSystemCollection', 'Description': 'Computer Systems view', 'Name': 'Computer Systems', 'Members': [{'@odata.id': '/redfish/v1/Systems/1/'}], 'Members@odata.count': 1}
 ```
+  
+  {% /tab %}
+{% tab label="Expanded response" %}
 
 ```json Expanded response
 {'@odata.context': '/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection', '@odata.etag': 'W/"5737F79D"', '@odata.id': '/redfish/v1/Systems/', '@odata.type': '#ComputerSystemCollection.ComputerSystemCollection', 'Description': 'Computer Systems view', 'Name': 'Computer Systems', 'Members': [{'@odata.context': '/redfish/v1/$metadata#ComputerSystem.ComputerSystem', '@odata.id': '/redfish/v1/Systems/1/', '@odata.type': '#ComputerSystem.v1_10_0.ComputerSystem', 'Id': '1', 'Actions': {'#ComputerSystem.Reset': {'ResetType@Redfish.AllowableValues': ['On', 'ForceOff', 'GracefulShutdown', 'ForceRestart', 'Nmi', 'PushPowerButton'], 'target': '/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/'}}, 'AssetTag': '', 'Bios': {'@odata.id': '/redfish/v1/systems/1/bios/'}, 'BiosVersion': 'U32 v2.22 (11/13/2019)', 'Boot': {'BootOptions': {'@odata.id': '/redfish/v1/Systems/1/BootOptions/'}, 'BootOrder': ['Boot0011', 'Boot0019', 'Boot0009', 'Boot0012', 'Boot0010', 'Boot0014', 'Boot000C', 'Boot000E', 'Boot000F', 'Boot0017', 'Boot000D', 'Boot0013'], 'BootSourceOverrideEnabled': 'Once', 'BootSourceOverrideMode': 'UEFI', 'BootSourceOverrideTarget': 'Hdd', 'BootSourceOverrideTarget@Redfish.AllowableValues': ['None', 'Cd', 'Hdd', 'Usb', 'SDCard', 'Utilities', 'Diags', 'BiosSetup', 'Pxe', 'UefiShell', 'UefiHttp', 'UefiTarget'], 'UefiTargetBootSourceOverride': 'None', 'UefiTargetBootSourceOverride@Redfish.AllowableValues': ['HD(1,GPT,0940C33C-EAF1-43CD-8C8F-4426672227FE,0x800,0x4E000)/\\EFI\\sles\\shim.efi', 'HD(1,GPT,22F62F69-47E7-4334-BCE6-A0B321810BA1,0x800,0x64000)/\\EFI\\redhat\\shimx64.efi', 'PciRoot(0x0)/Pci(0x1C,0x0)/Pci(0x0,0x0)/MAC(98F2B32CB4A8,0x0)/IPv4(0.0.0.0)/Uri()', 'PciRoot(0x0)/Pci(0x1C,0x0)/Pci(0x0,0x0)/MAC(98F2B32CB4A8,0x0)/IPv4(0.0.0.0)', 'PciRoot(0x0)/Pci(0x1C,0x0)/Pci(0x0,0x0)/MAC(98F2B32CB4A8,0x0)/IPv6(0000:0000:0000:0000:0000:0000:0000:0000)/Uri()', 'PciRoot(0x0)/Pci(0x1C,0x0)/Pci(0x0,0x0)/MAC(98F2B32CB4A8,0x0)/IPv6(0000:0000:0000:0000:0000:0000:0000:0000)', 'PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x0)', 'PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x1)', 'PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x2)', 'PciRoot(0x3)/Pci(0x0,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x3)', 'PciRoot(0x0)/Pci(0x14,0x0)/USB(0xD,0x0)/USB(0x1,0x0)', 'PciRoot(0x0)/Pci(0x14,0x0)/USB(0xD,0x0)/USB(0x1,0x1)']}, 'EthernetInterfaces': {'@odata.id': '/redfish/v1/Systems/1/EthernetInterfaces/'}, 'HostName': 'localhost.americas.hpqcorp.net', 'IndicatorLED': 'Off', 'Links': {'ManagedBy': [{'@odata.id': '/redfish/v1/Managers/1/'}], 'Chassis': [{'@odata.id': '/redfish/v1/Chassis/1/'}]}, 'LogServices': {'@odata.id': '/redfish/v1/Systems/1/LogServices/'}, 'Manufacturer': 'HPE', 'Memory': {'@odata.id': '/redfish/v1/Systems/1/Memory/'}, 'MemoryDomains': {'@odata.id': '/redfish/v1/Systems/1/MemoryDomains/'}, 'MemorySummary': {'Status': {'HealthRollup': 'OK'}, 'TotalSystemMemoryGiB': 32, 'TotalSystemPersistentMemoryGiB': 0}, 'Model': 'ProLiant DL360 Gen10', 'Name': 'Computer System', 'NetworkInterfaces': {'@odata.id': '/redfish/v1/Systems/1/NetworkInterfaces/'}, 'Oem': {'Hpe': {'@odata.context': '/redfish/v1/$metadata#HpeComputerSystemExt.HpeComputerSystemExt', '@odata.type': '#HpeComputerSystemExt.v2_9_0.HpeComputerSystemExt', 'Actions': {'#HpeComputerSystemExt.PowerButton': {'PushType@Redfish.AllowableValues': ['Press', 'PressAndHold'], 'target': '/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.PowerButton/'}, '#HpeComputerSystemExt.SecureSystemErase': {'target': '/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SecureSystemErase/'}, '#HpeComputerSystemExt.SystemReset': {'ResetType@Redfish.AllowableValues': ['ColdBoot', 'AuxCycle'], 'target': '/redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SystemReset/'}}, 'AggregateHealthStatus': {'AgentlessManagementService': 'Unavailable', 'BiosOrHardwareHealth': {'Status': {'Health': 'OK'}}, 'FanRedundancy': 'Redundant', 'Fans': {'Status': {'Health': 'OK'}}, 'Memory': {'Status': {'Health': 'OK'}}, 'Network': {'Status': {'Health': 'OK'}}, 'PowerSupplies': {'PowerSuppliesMismatch': False, 'Status': {'Health': 'OK'}}, 'Processors': {'Status': {'Health': 'OK'}}, 'Storage': {'Status': {'Health': 'Warning'}}, 'Temperatures': {'Status': {'Health': 'OK'}}}, 'Bios': {'Backup': {'Date': '11/13/2019', 'Family': 'U32', 'VersionString': 'U32 v2.22 (11/13/2019)'}, 'Current': {'Date': '11/13/2019', 'Family': 'U32', 'VersionString': 'U32 v2.22 (11/13/2019)'}, 'UefiClass': 2}, 'CriticalTempRemainOff': False, 'CurrentPowerOnTimeSeconds': None, 'DeviceDiscoveryComplete': {'AMSDeviceDiscovery': 'NoAMS', 'DeviceDiscovery': 'vMainDeviceDiscoveryComplete', 'SmartArrayDiscovery': 'Complete'}, 'ElapsedEraseTimeInMinutes': 0, 'EndOfPostDelaySeconds': None, 'EstimatedEraseTimeInMinutes': 0, 'IntelligentProvisioningAlwaysOn': True, 'IntelligentProvisioningIndex': 8, 'IntelligentProvisioningLocation': 'System Board', 'IntelligentProvisioningVersion': '3.60.12', 'IsColdBooting': False, 'Links': {'HpeIpProvider': {'@odata.id': '/redfish/v1/systems/1/hpeip/'}, 'SUT': {'@odata.id': '/redfish/v1/systems/1/hpsut/'}, 'PCIDevices': {'@odata.id': '/redfish/v1/Systems/1/PCIDevices/'}, 'PCISlots': {'@odata.id': '/redfish/v1/Systems/1/PCISlots/'}, 'NetworkAdapters': {'@odata.id': '/redfish/v1/Systems/1/BaseNetworkAdapters/'}, 'SmartStorage': {'@odata.id': '/redfish/v1/Systems/1/SmartStorage/'}, 'USBPorts': {'@odata.id': '/redfish/v1/Systems/1/USBPorts/'}, 'USBDevices': {'@odata.id': '/redfish/v1/Systems/1/USBDevices/'}, 'EthernetInterfaces': {'@odata.id': '/redfish/v1/Systems/1/EthernetInterfaces/'}, 'WorkloadPerformanceAdvisor': {'@odata.id': '/redfish/v1/Systems/1/WorkloadPerformanceAdvisor/'}, 'SecureEraseReportService': {'@odata.id': '/redfish/v1/Systems/1/SecureEraseReportService/'}}, 'PCAPartNumber': '847479-001', 'PCASerialNumber': 'PVZEK0ARHA014I', 'PostDiscoveryCompleteTimeStamp': None, 'PostDiscoveryMode': None, 'PostMode': None, 'PostState': 'FinishedPost', 'PowerAllocationLimit': 500, 'PowerAutoOn': 'Restore', 'PowerOnDelay': 'Minimum', 'PowerOnMinutes': 80090, 'PowerRegulatorMode': 'OSControl', 'PowerRegulatorModesSupported': ['OSControl', 'Dynamic', 'Max', 'Min'], 'ProcessorJitterControl': {'ConfiguredFrequencyLimitMHz': 0, 'Mode': 'Disabled'}, 'SMBIOS': {'extref': '/smbios'}, 'ServerFQDN': '', 'SmartStorageConfig': [{'@odata.id': '/redfish/v1/systems/1/smartstorageconfig/'}], 'SystemROMAndiLOEraseComponentStatus': {'BIOSSettingsEraseStatus': 'Idle', 'iLOSettingsEraseStatus': 'Idle'}, 'SystemROMAndiLOEraseStatus': 'Idle', 'UserDataEraseComponentStatus': {}, 'UserDataEraseStatus': 'Idle', 'VirtualProfile': 'Inactive'}}, 'PowerState': 'On', 'ProcessorSummary': {'Count': 1, 'Model': 'Intel(R) Xeon(R) Bronze 3106 CPU @ 1.70GHz', 'Status': {'HealthRollup': 'OK'}}, 'Processors': {'@odata.id': '/redfish/v1/Systems/1/Processors/'}, 'SKU': 'DL3000GEN10', 'SecureBoot': {'@odata.id': '/redfish/v1/Systems/1/SecureBoot/'}, 'SerialNumber': 'TX86NP0121', 'Status': {'Health': 'Warning', 'HealthRollup': 'Warning', 'State': 'Enabled'}, 'Storage': {'@odata.id': '/redfish/v1/Systems/1/Storage/'}, 'SystemType': 'Physical', 'TrustedModules': [{'Oem': {'Hpe': {'@odata.context': '/redfish/v1/$metadata#HpeTrustedModuleExt.HpeTrustedModuleExt', '@odata.type': '#HpeTrustedModuleExt.v2_0_0.HpeTrustedModuleExt'}}, 'Status': {'State': 'Absent'}}], 'UUID': '30334C44-3030-5854-3836-4E5030313231'}], 'Members@odata.count': 1}
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Find iLO MAC Address
 
 Retrieve MAC Addresses for iLO Management Network Interfaces.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def find_ilo_mac_address(_redfishobj):
 
     ethernet_data = {}
@@ -1166,12 +1248,17 @@ def find_ilo_mac_address(_redfishobj):
         sys.stdout.write("iLO Network Manager Interface: \'%s\'\n" % ethernet_data[iface]['Id'])
         sys.stdout.write("\tiLO Mac Address: \'%s\'\n" % ethernet_data[iface].get('MACAddress'))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Response Example
 
 Standard response:
 
-```TEXT
+  {% tabs %}
+{% tab label="Example" %}
+
+```TEXT Example
 iLO Network Manager Interface: '1'
     iLO Mac Address: '98:F2:B3:21:7B:48'
 iLO Network Manager Interface: '2'
@@ -1179,16 +1266,21 @@ iLO Network Manager Interface: '2'
 iLO Network Manager Interface: '3'
     iLO Mac Address: '0A:CA:FE:F0:0D:04'
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Get Certificate Signing Request
 
 Obtain an iLO Certificate Signing Request for use with Secure Socket Layer (SSL)/Transport Layer Security (TLS) Certificate.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This process may take some time to complete on iLO (~5 minutes).
-:::
+{% /admonition %}
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def generate_csr(_redfishobj, csr_file, csr_properties):
 
     csr_uri = None
@@ -1247,18 +1339,24 @@ def generate_csr(_redfishobj, csr_file, csr_properties):
                     sys.stderr.write("A response error occurred, unable to access iLO "\
                                      "Extended Message Info...\n")
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Get AHS Data
 
 Obtain Active Health System Data.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 AHS data is saved to a file, the contents of which are encoded. The use of an AHS Viewer to decode and parse
 is required. Please review Active Health System Viewer Documentation for further details:
 [https://support.hpe.com/hpesc/public/docDisplay?docId=c05384164](https://support.hpe.com/hpesc/public/docDisplay?docId=c05384164)
-:::
+{% /admonition %}
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_ahs_data(_redfishobj, logfile):
 
     active_health_system_uri = None
@@ -1300,12 +1398,18 @@ def get_ahs_data(_redfishobj, logfile):
                 ahsoutput.close()
                 sys.stdout.write("AHS Data saved successfully as: \'%s\'" % logfile)
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Get Base Registries
 
 Obtain Registry Providers. Registry providers allow for the transaction of data between properties and firmware.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_base_registry(_redfishobj):
 
 registries_uri = _redfishobj.root.obj['Registries']['@odata.id']
@@ -1315,12 +1419,18 @@ if registries_uri:
     for registry in registries_members:
         sys.stdout.write("Registry URI at '%s'\n" % registry['@odata.id'])
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Get ESKM
 
 Obtain HPE Enterprise Secure Key Manager Encryption Data.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_ESKM(_redfishobj):
 
     security_service_eskm_uri = None
@@ -1348,10 +1458,16 @@ def get_ESKM(_redfishobj):
         security_service_eskm_resp = _redfishobj.get(security_service_eskm_uri)
         print(json.dumps(security_service_eskm_resp.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "@odata.context": "/redfish/v1/$metadata#HpeESKM.HpeESKM",
     "@odata.etag": "W/\"87058EB1\"",
@@ -1380,12 +1496,18 @@ def get_ESKM(_redfishobj):
     "SecondaryKeyServerPort": null
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Get iLO IP
 
 Obtain iLO Network Management Interface(s) IP Address(s).
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_ilo_ip(_redfishobj):
     ethernet_data = {}
 
@@ -1423,6 +1545,9 @@ def get_ilo_ip(_redfishobj):
             print(json.dumps(ethernet_data[ethernet_interface]['IPv4Addresses'],\
                                                                         indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
@@ -1456,7 +1581,10 @@ Showing iLO IPv4 Address Info on: /redfish/v1/Managers/1/EthernetInterfaces/2/
 Obtain iLO Network Management Interface(s) Interface Enabled states. Modify lines 34-37 to display
 relevant desired data or all key-value pairs.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_ilo_nic(_redfishobj, get_enabled):
     ethernet_data = {}
 
@@ -1494,6 +1622,9 @@ def get_ilo_nic(_redfishobj, get_enabled):
             sys.stdout.write("\n\'Interface_Enabled\': \'%s\'\n" % json.dumps(ethernet_data\
                                     [ethernet_interface][get_enabled], indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
@@ -1512,7 +1643,10 @@ Showing iLO IPv4 Address Info on: /redfish/v1/Managers/1/EthernetInterfaces/3/
 
 Obtain iLO Licensing Key Information.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_license_key(_redfishobj):
     license_uri = None
     license_data = None
@@ -1549,6 +1683,9 @@ def get_license_key(_redfishobj):
             sys.stdout.write("\n\'License Info\': \'%s\'\n" % \
             json.dumps(license_data['LicenseKey'], indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
@@ -1566,7 +1703,10 @@ Response Data will include the License Type, License Key (iLO 5) and State.
 
 List all logical drives associated with a smart array controller.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_SmartArray_LogicalDrives(_redfishobj):
 
     smartstorage_response = []
@@ -1602,6 +1742,9 @@ def get_SmartArray_LogicalDrives(_redfishobj):
                     drive_data = _redfishobj.get(drives['@odata.id']).dict
                     print(json.dumps(drive_data, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
@@ -1751,7 +1894,10 @@ Logical Drive URIs for Smart Storage Array Controller '0' :
 
 Obtain Redfish power metrics.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_powermetrics_average(_redfishobj):
 
     power_metrics_uri = None
@@ -1777,6 +1923,9 @@ def get_powermetrics_average(_redfishobj):
         print("\n\nPower Data:\n\n")
         print(json.dumps(power_metrics_data, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
@@ -1817,11 +1966,14 @@ Power Metric Data
 
 Obtain iLO Resource Directory, quick access to all [‘@odata.type](mailto:'@odata.type)’ references and respective [‘@odata.id](mailto:'@odata.id)’.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This resource is only available on iLO systems.
-:::
+{% /admonition %}
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_resource_directory(redfishobj):
 
     try:
@@ -1841,6 +1993,9 @@ def get_resource_directory(redfishobj):
 
     return resources
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
@@ -1869,7 +2024,10 @@ Snippet of Resource directory
 
 Obtain schema data.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_schema(_redfishobj):
     schema_members_uris = []
     schema_members_expanded = {}
@@ -1890,6 +2048,9 @@ def get_schema(_redfishobj):
 
     print(json.dumps(schema_members_expanded, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
@@ -2179,7 +2340,10 @@ Snippet of schema data for *HpeiLOManagerNetworkService*
 
 Obtain Smart Array controller encryption property data.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_SmartArray_EncryptionSettings(_redfishobj, desired_properties):
 
     smartstorage_response = []
@@ -2216,10 +2380,16 @@ def get_SmartArray_EncryptionSettings(_redfishobj, desired_properties):
                 sys.stdout.write("\t %s : %s\n" % (data, smartarraycontrollers[controller\
                                                                         ['@odata.id']].get(data)))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "@odata.context": "/redfish/v1/$metadata#HpeESKM.HpeESKM",
     "@odata.etag": "W/\"87058EB1\"",
@@ -2248,12 +2418,18 @@ def get_SmartArray_EncryptionSettings(_redfishobj, desired_properties):
     "SecondaryKeyServerPort": null
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Import SSL Certificate
 
 Import Secure Socket Layer Certificate.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def import_ssl(_redfishobj, ssl_file_path):
 
     https_cert_uri = None
@@ -2302,12 +2478,18 @@ def import_ssl(_redfishobj, ssl_file_path):
             print("\nImporting SSL Certificate may take a few minutes...\n "\
                   "iLO will reset with new changes.\n")
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Modify iLO Management User Account
 
 Modify a management interface user account.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def modify_ilo_user_account(_redfishobj, username_to_modify, new_loginname, new_username, \
                          new_password, role_id, privilege_dict):
 
@@ -2373,12 +2555,18 @@ def modify_ilo_user_account(_redfishobj, username_to_modify, new_loginname, new_
         print("Success!\n")
         print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
 An example Redfish response error message.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -2391,12 +2579,18 @@ An example Redfish response error message.
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Modify Virtual Media
 
 Modify a virtual media entry.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def mount_virtual_media_iso(_redfishobj, iso_url, media_type, boot_on_next_server_reset):
 
     virtual_media_uri = None
@@ -2448,12 +2642,18 @@ def mount_virtual_media_iso(_redfishobj, iso_url, media_type, boot_on_next_serve
                         print(json.dumps(resp.dict, indent=4, sort_keys=True))
                 break
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
 An example Redfish response error message following a successful modification of a user account.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -2466,12 +2666,18 @@ An example Redfish response error message following a successful modification of
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Reboot Server
 
 Reboot a server.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def reboot_server(_redfishobj):
 
     systems_members_response = None
@@ -2513,12 +2719,18 @@ def reboot_server(_redfishobj):
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
 An example Redfish response error message following a successful application of virtual media.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -2531,12 +2743,18 @@ An example Redfish response error message following a successful application of 
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Remove an iLO User Management Account
 
 Delete an iLO User Management Account
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def reboot_server(_redfishobj):
 
     systems_members_response = None
@@ -2578,12 +2796,18 @@ def reboot_server(_redfishobj):
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
 An example Redfish response error message following a successful application of virtual media.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -2596,12 +2820,18 @@ An example Redfish response error message following a successful application of 
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Reset ESKM Event log
 
 Reset Enterprise Secure Key Manager event log.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def reset_ESKM_eventlog(_redfishobj):
 
     body = dict()
@@ -2651,12 +2881,18 @@ def reset_ESKM_eventlog(_redfishobj):
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
 An example Redfish response error message following a successful reset of ESKM log.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -2669,12 +2905,18 @@ An example Redfish response error message following a successful reset of ESKM l
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Reset iLO
 
 Reset iLO BMC.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def reset_ilo(_redfishobj):
 
     managers_members_response = None
@@ -2713,12 +2955,18 @@ def reset_ilo(_redfishobj):
         print("Success!\n")
         print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
 An example Redfish response error message following a successful reset of iLO.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
 "error": {
         "@Message.ExtendedInfo": [
@@ -2731,12 +2979,18 @@ An example Redfish response error message following a successful reset of iLO.
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Sessions
 
 In the following
 <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/sessions.py" target="_blank">example</a>,
 the `sessions()` function creates a new session, prints its URI and token. Then it deletes it.
+
+  {% tabs %}
+{% tab label="Python code" %}
 
 ```Python Python code
 def sessions(_redfishobj, login_account, login_password):
@@ -2766,6 +3020,9 @@ def sessions(_redfishobj, login_account, login_password):
             sys.stderr.write("A response error occurred, unable to access iLO Extended"
                              " Message Info...")
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```Text Output
 Success!
@@ -2809,30 +3066,36 @@ Success!
 }
 
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Session tokens
 
 Session tokens can be cached and used for authentication for all subsequent calls
 as long as the session has not been terminated by the client or timed out by the server.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This is only true in production mode. Some higher security modes may require additional authentication
 techniques to be performed.
-:::
+{% /admonition %}
 
 Once a session has been created, its associated token can be used with Redfish clients
 as shown in this [paragraph](/docs/concepts/redfishauthentication/#using-a-session).
 
 The following example shows how to use a valid session token with the `python-ilorest-library`.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 If your data center is managed by HPE OneView, it is possible to create securely a
 <a href="https://developer.hpe.com/blog/the-power-of-single-sign-on-with-hpe-oneview/"
 target="_blank">single sign on (SSO) OneView token</a> and use it in a Python code,
 as shown in the following example.
-:::
+{% /admonition %}
 
-```Python
+  {% tabs %}
+{% tab label="Example" %}
+
+```Python Example
 from redfish import RedfishClient
 import sys
 
@@ -2846,13 +3109,19 @@ response = REDFISHOBJ.get("/redfish/v1/systems/1", None)
 
 sys.stdout.write("%s\n" % response)
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Session Deletion
 
 Terminating a session from the client side simply requires deletion of the session URI.
 Attempting to re-access the session results in the following response message.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -2865,6 +3134,9 @@ Attempting to re-access the session results in the following response message.
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## iLO Management NIC Data
 
@@ -2876,7 +3148,10 @@ Example of ethernet management NIC enablement/disablement. On iLO systems:
 \* *Ethernet Management Interface 3* is typically the virtual NIC interface. This is generally
 PnP with a supported Kernel/kernel virtual usb drivers.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def set_active_ilo_nic(_redfishobj):
 
     ethernet_data = {}
@@ -2938,12 +3213,18 @@ def set_active_ilo_nic(_redfishobj):
             print("Success! You will need to reset iLO for this change to take effect.\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## BIOS iSCSI
 
 Configure iSCSI (Internet Small Computer Systems Interface) for ip based network attached storage.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def set_bios_iscsi(_redfishobj, iscsi_properties):
 
     iscsi_uri = None
@@ -2990,12 +3271,18 @@ def set_bios_iscsi(_redfishobj, iscsi_properties):
                     print(json.dumps(resp.dict, indent=4, sort_keys=True))
                 break
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
 Successful modification of iSCSI data.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -3008,12 +3295,18 @@ Successful modification of iSCSI data.
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Set BIOS Password
 
 Set BIOS Password.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def set_bios_password(_redfishobj, new_password, bios_password):
 
     bios_uri = None
@@ -3057,12 +3350,18 @@ def set_bios_password(_redfishobj, new_password, bios_password):
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
 Successful modification of BIOS password.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -3075,18 +3374,24 @@ Successful modification of BIOS password.
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Set ESKM Primary Key
 
 Set HPE Enterprise Secure Key Manager Key Manager Config.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 A valid ESKM key manager config is required and is tested upon patch submission.
 An error initializing ESKM may occur if the ESKM key manager or associated required
 properties are invalid. See [‘@Message.ExtendedInfo](mailto:'@Message.ExtendedInfo)’ in the http response message.
-:::
+{% /admonition %}
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "code": "iLO.0.10.ExtendedInfo",
@@ -3097,8 +3402,11 @@ properties are invalid. See [‘@Message.ExtendedInfo](mailto:'@Message.Extended
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Example" %}
 
-```python
+```python Example
 def set_ESKM_PrimaryKeyServer(_redfishobj, primary_key_server_address, primary_key_server_port):
 
     eskm_uri = None
@@ -3144,12 +3452,18 @@ def set_ESKM_PrimaryKeyServer(_redfishobj, primary_key_server_address, primary_k
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
+  
 ## Configure Ethernet Management NIC(s)
 
 Configure Ethernet Management NIC(s) for DHCP/Static Network Addressing.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def set_ilo_static_ipv4(_redfishobj, ipv4_dict, dns_dict):
 
     ethernet_data = {}
@@ -3228,18 +3542,24 @@ def set_ilo_static_ipv4(_redfishobj, ipv4_dict, dns_dict):
         ilo_response(_redfishobj, resp)
         break
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Set iLO NTP Server Settings
 
 Configure NTP Server Settings.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The physical or shared ethernet networking adapter must be configured with *‘StaticNTPServers’:’True’*,
 if static network time protocol servers are to be used. DHCP must also be disabled. The following is an error
 message which will occur in the event DHCP is enabled while attempting to configure static NTP server entries.
-:::
+{% /admonition %}
 
-```JSON
+{% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "MessageArgs": [
         "StaticNTPServers"
@@ -3247,8 +3567,11 @@ message which will occur in the event DHCP is enabled while attempting to config
     "MessageId": "iLO.2.14.SNTPConfigurationManagedByDHCPAndIsReadOnly"
 }
 ```
+  
+{% /tab %}
+{% tab label="Example" %}
 
-```python
+```python Example
 def set_ilo_ntp_servers(_redfishobj, ntp_server_list):
 
     date_time_uri = None
@@ -3292,10 +3615,16 @@ def set_ilo_ntp_servers(_redfishobj, ntp_server_list):
             print("Printing updated NTP Servers:\n")
             print(json.dumps(ntp_data, indent=4, sort_keys=True))
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 ### Response Example
 
 Successful modification of StaticNTPServers. (Only displaying response from *iLODateTime*)
+
+{% tabs %}
+{% tab label="Example" %}
 
 > ```JSON
 > {
@@ -3310,16 +3639,22 @@ Successful modification of StaticNTPServers. (Only displaying response from *iLO
 >     }
 > }
 > ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Set Timezone
 
 Configure Network Time Protocol Time zone.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 DHCP must be disabled. The following is an error message which will occur in the event DHCP is enabled while attempting to modify the NTP timezone.
-:::
+{% /admonition %}
 
-```JSON
+{% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "MessageArgs": [
         "StaticNTPServers"
@@ -3327,8 +3662,11 @@ DHCP must be disabled. The following is an error message which will occur in the
     "MessageId": "iLO.2.14.SNTPConfigurationManagedByDHCPAndIsReadOnly"
 }
 ```
+  
+{% /tab %}
+{% tab label="Example" %}
 
-```python
+```python Example
 def set_timezone(_redfishobj, timezone):
 
     date_time_uri = None
@@ -3375,12 +3713,18 @@ def set_timezone(_redfishobj, timezone):
             print("Printing updated NTP Servers:\n")
             print(json.dumps(ntp_data, indent=4, sort_keys=True))
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 ### Response Example
 
 Successful modification of iLO timezone.
 
-```JSON
+{% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -3393,12 +3737,18 @@ Successful modification of iLO timezone.
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Configure iLO License Key
 
 Configure iLO License Key.
 
-```python
+{% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def set_license_key(_redfishobj, ilo_key):
 
     ilo_lic_uri = None
@@ -3447,12 +3797,18 @@ def set_license_key(_redfishobj, ilo_key):
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 ### Response Example Valid
 
 Successful addition/modification of iLO license key.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -3465,12 +3821,18 @@ Successful addition/modification of iLO license key.
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example Invalid
 
 An invalid iLO license key.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -3483,12 +3845,18 @@ An invalid iLO license key.
     }
 }
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 ## Server Asset Tag
 
 Configure Redfish asset tag.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def set_server_asset_tag(_redfishobj, tag):
 
     systems_members_uri = None
@@ -3531,12 +3899,18 @@ def set_server_asset_tag(_redfishobj, tag):
             sys.stdout.write("\nUpdated Asset Tag: \'%s\'\n" % _redfishobj.\
                                                     get(systems_members_uri).dict.get("AssetTag"))
 ```
+  
+  {% /tab %}
+{% /tabs %}
 
 ### Response Example
 
 Successful addition/modification of Redfish asset tag.
 
-```JSON
+{% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -3549,12 +3923,18 @@ Successful addition/modification of Redfish asset tag.
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Server UID Light
 
 Configure System Unit Identification Light as either ‘Lit’ or ‘Off’.
 
-```python
+{% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def set_uid_light(_redfishobj):
 
     body = dict()
@@ -3605,12 +3985,18 @@ def set_uid_light(_redfishobj):
             sys.stdout.write("\nUpdated Indicator LED Status: \'%s\'\n" % _redfishobj.\
                                                     get(systems_members_uri).dict['IndicatorLED'])
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
 Successful addition/modification of UID light.
 
-```JSON
+{% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -3623,12 +4009,18 @@ Successful addition/modification of UID light.
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Server Firmware Inventory
 
 List all iLO onboard device firmware.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def get_inventory_uri(_redfishobj, select):
 
     update_service_uri = None
@@ -3657,12 +4049,18 @@ def get_inventory_uri(_redfishobj, select):
         sys.stdout.write("Printing data in invetory: %s\n" % inventory_uri)
         get_inventory(_redfishobj, inventory_uri)
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example
 
 Snippet of Firmware Inventory Response.
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 [
     {
         "@odata.context": "/redfish/v1/$metadata#SoftwareInventory.SoftwareInventory",
@@ -3710,12 +4108,18 @@ Snippet of Firmware Inventory Response.
     }
 ]
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Test ESKM Connectivity
 
 Test HPE Enterprise Secure Key Manager connectivity.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def test_ESKM_connection(_redfishobj):
 
     eskm_uri = None
@@ -3761,12 +4165,18 @@ def test_ESKM_connection(_redfishobj):
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example Not Configured
 
 Response of a failed test ESKM connection action. (ESKM not properly configured)
 
-```JSON
+{% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -3779,12 +4189,18 @@ Response of a failed test ESKM connection action. (ESKM not properly configured)
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Test ESKM Connectivity
 
 Test HPE Enterprise Secure Key Manager connectivity.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def test_ESKM_connection(_redfishobj):
 
     eskm_uri = None
@@ -3830,12 +4246,18 @@ def test_ESKM_connection(_redfishobj):
             print("Success!\n")
             print(json.dumps(resp.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Response Example Not Configured
 
 Response of a failed test ESKM connection action. (ESKM not properly configured)
 
-```JSON
+  {% tabs %}
+{% tab label="Example" %}
+
+```JSON Example
 {
     "error": {
         "@Message.ExtendedInfo": [
@@ -3848,6 +4270,9 @@ Response of a failed test ESKM connection action. (ESKM not properly configured)
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Update iLO Firmware
 
@@ -3857,7 +4282,10 @@ response code; however, this only indicates iLO will separately handle both down
 the firmware update. The client will need to separately poll for status information regarding the update
 progress.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def update_ilo_firmware(_redfishobj, fw_url, tpm_flag):
 
     body = dict()
@@ -3895,6 +4323,9 @@ def update_ilo_firmware(_redfishobj, fw_url, tpm_flag):
             print("Success!\n")
             print(json.dumps(resp.obj['error']['@Message.ExtendedInfo'], indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Upload firmware to iLO Repository
 
@@ -3902,7 +4333,10 @@ Firmware can be stored and catalogued, to be
 used at a later date or in the need to recover the platform from a failure condition. An http response code
 of 200 will be supplied upon completion of a successful upload; no other extended message information is provided.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 def upload_firmware(_redfishobj, firmware_loc, update_repo=True, update_target=False):
     resource_instances = get_resource_directory(_redfishobj)
 
@@ -3949,3 +4383,6 @@ def upload_firmware(_redfishobj, firmware_loc, update_repo=True, update_target=F
     else:
         print("Upload complete!\n")
 ```
+  
+  {% /tab %}
+  {% /tabs %}

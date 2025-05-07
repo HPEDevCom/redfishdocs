@@ -954,6 +954,7 @@ Oem=
   
   {% /tab %}
   {% /tabs %}
+
 ## Detectilo command
 
 ### Syntax
@@ -965,9 +966,12 @@ Oem=
 This command returns the generation of the underlying iLO or a remote iLO.
 
 {% admonition type="info" name="NOTE" %}
-The `detectilo` command can be launched without being formerly logged into a specific iLO (local or remote). The reason is because the `ManagerType` [property](/docs/redfishservices/ilos/ilo5/ilo5_309/ilo5_serviceroot_resourcedefns309/) is part of the `ServiceRoot` Redfish schema that does not require any [authentication](/docs/concepts/redfishauthentication/#redfish-authentication-and-sessions).
-{% /admonition %}
+The `detectilo` command can be launched without being formerly logged into a specific iLO (local or remote). The reason is because the `ManagerType`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_serviceroot_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION) %} property {% /link-internal %}
+is part of the `ServiceRoot` Redfish schema that does not require any [authentication](/docs/concepts/redfishauthentication/#redfish-authentication-and-sessions).
 
+
+{% /admonition %}
 
 ### Parameters
 

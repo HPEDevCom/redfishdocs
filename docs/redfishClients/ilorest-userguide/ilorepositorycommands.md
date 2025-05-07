@@ -227,8 +227,11 @@ with supplied firmware package.
 - **--tpmover**
 
 Include this parameter to set the
-`TPMOverride` [property](/docs/redfishservices/ilos/ilo6/ilo6_157/ilo6_hpe_resourcedefns157/#tpmoverride)
+`TPMOverride`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "/#tpmoverride") %} property {% /link-internal %}
 to `true` and pass the `TPMOverrideFlag` in on the associated flash operations.
+
+
 
 - **--update_srs**
 

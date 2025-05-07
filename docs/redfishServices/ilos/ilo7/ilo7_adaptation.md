@@ -52,7 +52,7 @@ Not sure it is a good idea to mention its removal.
 ### HPE Automatic Certificate Enrollment (SCEP)
 
 The `HpeAutomaticCertEnrollment` schema
-([SCEP](/docs/redfishServices/ilos/supplementdocuments/securityservice/#automatic-certificate-enrollment))
+([SCEP](/docs/redfishservices/ilos/supplementdocuments/securityservice#automatic-certificate-enrollment))
 has been removed from iLO 7 version 1.11.00.
 Only manual certification enrolment is supported in iLO 7 version 1.11.00
 and later versions, unless formal re-introduction notification

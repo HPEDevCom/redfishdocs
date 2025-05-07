@@ -1,9 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: HPE Python Redfish library
-disableLastModified: false
-toc:
-  enable: false
 ---
 
 <!--
@@ -20,11 +25,11 @@ which includes the [HPE iLO RESTful API](/docs).
 The library is the platform on which the
 [HPE iLOrest tool](/docs/redfishclients/ilorest-userguide/) was built on.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 HPE iLOrest sources are accessible on <a href="https://github.com/HewlettPackard/python-redfish-utility" target="_blank">GitHub</a>.
 Online [documentation](/docs/redfishclients/ilorest-userguide)
 is also freely available.
-:::
+{% /admonition %}
 
 The library can connect **remotely** to any
 BMC that implements a Redfish API via HTTPS or
