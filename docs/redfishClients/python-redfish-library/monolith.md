@@ -176,13 +176,15 @@ AttributeError: 'NoneType' object has no attribute 'dict'
 Any response without a json response will return an `AttributeError`
 {% /admonition %}
 
-For a full list of options in `load`, refer to the [resource documentation](/docs/redfishclients/python-redfish-library/3.2/python-library-reference{{process.env.LATEST_PYTHON_LIBRARY_VERSION}}/).
+For a full list of options in `load`, refer to the
+{% link-internal href=concat("/docs/redfishclients/python-redfish-library/3.2/python-library-reference", $env.PUBLIC_LATEST_PYTHON_LIBRARY_VERSION) %} resource documentation {% /link-internal %}.
 
 ## RmcApp Usage
 
 The RmcApp class is a convenience class that combines the client, compatibility, validation, caching, and monolith into one class. RmcApp supplies functions for easily interacting with a server and monolith.
 
-For full functionality refer to the reference paragraph of the [RmcApp](/docs/redfishclients/python-redfish-library/3.2/python-library-reference{{process.env.LATEST_PYTHON_LIBRARY_VERSION}}/).
+For full functionality refer to the reference paragraph of the
+{% link-internal href=concat("/docs/redfishclients/python-redfish-library/3.2/python-library-reference", $env.PUBLIC_LATEST_PYTHON_LIBRARY_VERSION) %} RmcApp {% /link-internal %}.
 
 ### Creating the RmcApp class
 

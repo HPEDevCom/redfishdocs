@@ -61,7 +61,9 @@ Creation of a Redfish object instance is done using the `RedfishClient` class in
 
 `RedfishClient` takes as parameters iLO hostname/IP address, username, password, and other optional arguments.
 
-For a full list of optional arguments refer to the [Reference documentation](/docs/redfishclients/python-redfish-library/3.2/python-library-reference{{process.env.LATEST_PYTHON_LIBRARY_VERSION}}/#redfishrestv1) section.
+For a full list of optional arguments refer to the
+{% link-internal href=concat("/docs/redfishclients/python-redfish-library/3.2/python-library-reference", $env.PUBLIC_LATEST_PYTHON_LIBRARY_VERSION, "#redfishrestv1") %} Reference documentation {% /link-internal %}
+section.
 
   {% tabs %}
 {% tab label="Example" %}
@@ -264,7 +266,9 @@ The formatted Response body (Truncated for size):
   
   {% /tab %}
   {% /tabs %}
-A full description of the Response Object is available in the [reference documentation](/docs/redfishclients/python-redfish-library/3.2/python-library-reference{{process.env.LATEST_PYTHON_LIBRARY_VERSION}}/#redfishrestcontainers) section.
+A full description of the Response Object is available in the
+{% link-internal href=concat("/docs/redfishclients/python-redfish-library/3.2/python-library-reference", $env.PUBLIC_LATEST_PYTHON_LIBRARY_VERSION, "#redfishrestcontainers") %} reference documentation {% /link-internal %}
+section.
 
 ## Other HTTP requests
 

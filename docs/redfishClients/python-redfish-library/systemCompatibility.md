@@ -13,12 +13,16 @@ seo:
 
 # System Compatibility
 
-Compatibility can be hard to maintain if you have many different systems with different firmware versions and system generations on each of them. [gen_compat](/docs/redfishclients/python-redfish-library/3.2/python-library-reference{{process.env.LATEST_PYTHON_LIBRARY_VERSION}}/) tries to help alleviate the headaches associated with this. It can automatically detect what type of system you are using and provide useful string values of key property keys, paths, types, and Booleans to check what the system type is.
+Compatibility can be hard to maintain if you have many different systems with different firmware versions and system generations on each of them.
+{% link-internal href=concat("/docs/redfishclients/python-redfish-library/3.2/python-library-reference", $env.PUBLIC_LATEST_PYTHON_LIBRARY_VERSION) %} gen_compat {% /link-internal %}
+tries to help alleviate the headaches associated with this. It can automatically detect what type of system you are using and provide useful string values of key property keys, paths, types, and Booleans to check what the system type is.
 
 A compatibility class is automatically created as part of an RmcApp class.
 
 {% admonition type="info" name="NOTE" %}
-While currently `gen_compat` only specifically supports HPE iLO systems, the [Definevalstenplus](/docs/redfishclients/python-redfish-library/3.2/python-library-reference{{process.env.LATEST_PYTHON_LIBRARY_VERSION}}/) class defines are mostly Redfish standard values. `gen_compat` can also easily be extended to provide strings for any system type.
+While currently `gen_compat` only specifically supports HPE iLO systems, the
+{% link-internal href=concat("/docs/redfishclients/python-redfish-library/3.2/python-library-reference", $env.PUBLIC_LATEST_PYTHON_LIBRARY_VERSION) %} Definevalstenplus {% /link-internal %}
+class defines are mostly Redfish standard values. `gen_compat` can also easily be extended to provide strings for any system type.
 {% /admonition %}
 
 ## Creating a Compatibility Class
