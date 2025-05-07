@@ -1,11 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Manager resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Manager resource definitions of iLO 5 v3.07
@@ -30,7 +34,7 @@ A Collection of Manager resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[Manager](../ilo5_manager_resourcedefns307/#manager)|
+|`Members[]`|[Manager](ilo5_manager_resourcedefns307/#manager)|
 
 ### Members (array)
 
@@ -76,9 +80,9 @@ POST /redfish/v1/Managers/1/Actions/Manager.Reset/
 }
 `
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 iLO `GracefulRestart` works in the same way as `ForceRestart`.
-:::
+{% /admonition %}
 
 ### Resource Instances
 
@@ -90,24 +94,24 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 
 |Link Name|Destination type|
 |---|---|
-|`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](../ilo5_hpe_resourcedefns307/#hpeilodatetime)|
-|`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](../ilo5_hpe_resourcedefns307/#hperemotesupport)|
-|`Links/ManagerForChassis[]`|[Chassis](../ilo5_chassis_resourcedefns307/#chassis)|
-|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](../ilo5_hpe_resourcedefns307/#hpeilolicensecollection)|
-|`VirtualMedia`|Collection of [VirtualMedia](../ilo5_other_resourcedefns307/#virtualmediacollection)|
-|`LogServices`|Collection of [LogService](../ilo5_other_resourcedefns307/#logservicecollection)|
-|`Links/ManagerInChassis`|[Chassis](../ilo5_chassis_resourcedefns307/#chassis)|
-|`EthernetInterfaces`|Collection of [EthernetInterface](../ilo5_network_resourcedefns307/#ethernetinterfacecollection)|
-|`Links/ManagerForServers[]`|[ComputerSystem](../ilo5_computersystem_resourcedefns307/#computersystem)|
-|`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](../ilo5_hpe_resourcedefns307/#hpeiloactivehealthsystem)|
-|`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](../ilo5_hpe_resourcedefns307/#hpesecurityservice)|
-|`SerialInterfaces`|Collection of [SerialInterface](../ilo5_other_resourcedefns307/#serialinterfacecollection)|
-|`NetworkProtocol`|[ManagerNetworkProtocol](../ilo5_manager_resourcedefns307/#managernetworkprotocol)|
-|`Oem/Hpe/Links/FederationPeers`|Collection of [HpeiLOFederationPeers](../ilo5_hpe_resourcedefns307/#hpeilofederationpeerscollection)|
-|`HostInterfaces`|Collection of [HostInterface](../ilo5_other_resourcedefns307/#hostinterfacecollection)|
-|`Oem/Hpe/Links/EmbeddedMediaService`|[HpeiLOEmbeddedMedia](../ilo5_hpe_resourcedefns307/#hpeiloembeddedmedia)|
-|`Oem/Hpe/Links/FederationGroups`|Collection of [HpeiLOFederationGroup](../ilo5_hpe_resourcedefns307/#hpeilofederationgroupcollection)|
-|`Oem/Hpe/Links/BackupRestoreService`|[HpeiLOBackupRestoreService](../ilo5_hpe_resourcedefns307/#hpeilobackuprestoreservice)|
+|`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](ilo5_hpe_resourcedefns307/#hpeilodatetime)|
+|`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](ilo5_hpe_resourcedefns307/#hperemotesupport)|
+|`Links/ManagerForChassis[]`|[Chassis](ilo5_chassis_resourcedefns307/#chassis)|
+|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](ilo5_hpe_resourcedefns307/#hpeilolicensecollection)|
+|`VirtualMedia`|Collection of [VirtualMedia](ilo5_other_resourcedefns307/#virtualmediacollection)|
+|`LogServices`|Collection of [LogService](ilo5_other_resourcedefns307/#logservicecollection)|
+|`Links/ManagerInChassis`|[Chassis](ilo5_chassis_resourcedefns307/#chassis)|
+|`EthernetInterfaces`|Collection of [EthernetInterface](ilo5_network_resourcedefns307/#ethernetinterfacecollection)|
+|`Links/ManagerForServers[]`|[ComputerSystem](ilo5_computersystem_resourcedefns307/#computersystem)|
+|`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](ilo5_hpe_resourcedefns307/#hpeiloactivehealthsystem)|
+|`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](ilo5_hpe_resourcedefns307/#hpesecurityservice)|
+|`SerialInterfaces`|Collection of [SerialInterface](ilo5_other_resourcedefns307/#serialinterfacecollection)|
+|`NetworkProtocol`|[ManagerNetworkProtocol](ilo5_manager_resourcedefns307/#managernetworkprotocol)|
+|`Oem/Hpe/Links/FederationPeers`|Collection of [HpeiLOFederationPeers](ilo5_hpe_resourcedefns307/#hpeilofederationpeerscollection)|
+|`HostInterfaces`|Collection of [HostInterface](ilo5_other_resourcedefns307/#hostinterfacecollection)|
+|`Oem/Hpe/Links/EmbeddedMediaService`|[HpeiLOEmbeddedMedia](ilo5_hpe_resourcedefns307/#hpeiloembeddedmedia)|
+|`Oem/Hpe/Links/FederationGroups`|Collection of [HpeiLOFederationGroup](ilo5_hpe_resourcedefns307/#hpeilofederationgroupcollection)|
+|`Oem/Hpe/Links/BackupRestoreService`|[HpeiLOBackupRestoreService](ilo5_hpe_resourcedefns307/#hpeilobackuprestoreservice)|
 
 ### CommandShell
 
@@ -1605,7 +1609,7 @@ A Collection of ManagerAccount resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[ManagerAccount](../ilo5_manager_resourcedefns307/#manageraccount)|
+|`Members[]`|[ManagerAccount](ilo5_manager_resourcedefns307/#manageraccount)|
 
 ### Members (array)
 
@@ -1865,8 +1869,8 @@ iLO reset is required after the PATCH for the change to come into effect.
 
 |Link Name|Destination type|
 |---|---|
-|`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](../ilo5_hpe_resourcedefns307/#hpeilosnmpservice)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo5_network_resourcedefns307/#ethernetinterfacecollection)|
+|`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](ilo5_hpe_resourcedefns307/#hpeilosnmpservice)|
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo5_network_resourcedefns307/#ethernetinterfacecollection)|
 
 ### FQDN
 

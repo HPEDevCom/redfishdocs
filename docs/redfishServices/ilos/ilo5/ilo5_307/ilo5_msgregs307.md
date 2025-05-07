@@ -1,10 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: iLO 5 v307 Error messages
-toc:
-  enable: false
-disableLastModified: false
 ---
 
 # Response message definitions of iLO 5 v3.07

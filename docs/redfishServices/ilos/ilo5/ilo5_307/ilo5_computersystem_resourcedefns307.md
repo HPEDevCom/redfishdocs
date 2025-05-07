@@ -1,11 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Computersystem resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Computersystem resource definitions of iLO 5 v3.07
@@ -30,7 +34,7 @@ A Collection of ComputerSystem resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[ComputerSystem](../ilo5_computersystem_resourcedefns307/#computersystem)|
+|`Members[]`|[ComputerSystem](ilo5_computersystem_resourcedefns307/#computersystem)|
 
 ### Members (array)
 
@@ -73,24 +77,24 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 
 |Link Name|Destination type|
 |---|---|
-|`EthernetInterfaces`|Collection of [EthernetInterface](../ilo5_network_resourcedefns307/#ethernetinterfacecollection)|
+|`EthernetInterfaces`|Collection of [EthernetInterface](ilo5_network_resourcedefns307/#ethernetinterfacecollection)|
 |`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice)|
-|`Links/Chassis[]`|[Chassis](../ilo5_chassis_resourcedefns307/#chassis)|
-|`Memory`|Collection of [Memory](../ilo5_other_resourcedefns307/#memorycollection)|
+|`Links/Chassis[]`|[Chassis](ilo5_chassis_resourcedefns307/#chassis)|
+|`Memory`|Collection of [Memory](ilo5_other_resourcedefns307/#memorycollection)|
 |`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](#hpeusbport)|
-|`Oem/Hpe/Links/NetworkAdapters`|Collection of [HpeBaseNetworkAdapter](../ilo5_hpe_resourcedefns307/#hpebasenetworkadaptercollection)|
-|`Oem/Hpe/SmartStorageConfig[]`|[SmartStorageConfig](../ilo5_other_resourcedefns307/#smartstorageconfig)|
-|`Processors`|Collection of [Processor](../ilo5_other_resourcedefns307/#processorcollection)|
-|`SecureBoot`|[SecureBoot](../ilo5_other_resourcedefns307/#secureboot)|
-|`Storage`|Collection of [Storage](../ilo5_storage_resourcedefns307/#storagecollection)|
-|`Bios`|[Bios](../ilo5_bios_resourcedefns307/#bios)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo5_network_resourcedefns307/#ethernetinterfacecollection)|
-|`LogServices`|Collection of [LogService](../ilo5_other_resourcedefns307/#logservicecollection)|
-|`Oem/Hpe/Links/SmartStorage`|[HpeSmartStorage](../ilo5_hpe_resourcedefns307/#hpesmartstorage)|
-|`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](../ilo5_hpe_resourcedefns307/#hpeserverpcislotcollection)|
-|`NetworkInterfaces`|Collection of [NetworkInterface](../ilo5_network_resourcedefns307/#networkinterfacecollection)|
-|`Links/ManagedBy[]`|[Manager](../ilo5_manager_resourcedefns307/#manager)|
-|`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](../ilo5_hpe_resourcedefns307/#hpeserverpcidevicecollection)|
+|`Oem/Hpe/Links/NetworkAdapters`|Collection of [HpeBaseNetworkAdapter](ilo5_hpe_resourcedefns307/#hpebasenetworkadaptercollection)|
+|`Oem/Hpe/SmartStorageConfig[]`|[SmartStorageConfig](ilo5_other_resourcedefns307/#smartstorageconfig)|
+|`Processors`|Collection of [Processor](ilo5_other_resourcedefns307/#processorcollection)|
+|`SecureBoot`|[SecureBoot](ilo5_other_resourcedefns307/#secureboot)|
+|`Storage`|Collection of [Storage](ilo5_storage_resourcedefns307/#storagecollection)|
+|`Bios`|[Bios](ilo5_bios_resourcedefns307/#bios)|
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo5_network_resourcedefns307/#ethernetinterfacecollection)|
+|`LogServices`|Collection of [LogService](ilo5_other_resourcedefns307/#logservicecollection)|
+|`Oem/Hpe/Links/SmartStorage`|[HpeSmartStorage](ilo5_hpe_resourcedefns307/#hpesmartstorage)|
+|`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](ilo5_hpe_resourcedefns307/#hpeserverpcislotcollection)|
+|`NetworkInterfaces`|Collection of [NetworkInterface](ilo5_network_resourcedefns307/#networkinterfacecollection)|
+|`Links/ManagedBy[]`|[Manager](ilo5_manager_resourcedefns307/#manager)|
+|`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](ilo5_hpe_resourcedefns307/#hpeserverpcidevicecollection)|
 
 ### AssetTag
 

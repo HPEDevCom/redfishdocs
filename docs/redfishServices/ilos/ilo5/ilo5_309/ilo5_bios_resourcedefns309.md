@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Bios resource definitions
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Bios resource definitions of iLO 5 v3.09
@@ -31,13 +35,13 @@ Bios contains properties surrounding a BIOS Attribute Registry (where the system
 
 |Link Name|Destination type
 |---|---|
-|`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](../ilo5_hpe_resourcedefns309/#hpeserverbootsettings)|
+|`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](ilo5_hpe_resourcedefns309/#hpeserverbootsettings)|
 |`Oem/Hpe/Links/ScalablePmem`|[HpeScalablePmem](#hpescalablepmem)|
-|`@Redfish.Settings/SettingsObject`|[Bios](../ilo5_bios_resourcedefns309/#bios)|
-|`Oem/Hpe/Links/TlsConfig`|[HpeTlsConfig](../ilo5_hpe_resourcedefns309/#hpetlsconfig)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo5_hpe_resourcedefns309/#hpebaseconfigs)|
-|`Oem/Hpe/Links/Mappings`|[HpeBiosMapping](../ilo5_hpe_resourcedefns309/#hpebiosmapping)|
-|`Oem/Hpe/Links/iScsi`|[HpeiSCSISoftwareInitiator](../ilo5_hpe_resourcedefns309/#hpeiscsisoftwareinitiator)|
+|`@Redfish.Settings/SettingsObject`|[Bios](ilo5_bios_resourcedefns309/#bios)|
+|`Oem/Hpe/Links/TlsConfig`|[HpeTlsConfig](ilo5_hpe_resourcedefns309/#hpetlsconfig)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo5_hpe_resourcedefns309/#hpebaseconfigs)|
+|`Oem/Hpe/Links/Mappings`|[HpeBiosMapping](ilo5_hpe_resourcedefns309/#hpebiosmapping)|
+|`Oem/Hpe/Links/iScsi`|[HpeiSCSISoftwareInitiator](ilo5_hpe_resourcedefns309/#hpeiscsisoftwareinitiator)|
 
 ### AttributeRegistry
 

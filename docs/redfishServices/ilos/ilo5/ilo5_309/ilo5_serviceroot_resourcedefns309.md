@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Serviceroot resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Serviceroot resource definitions of iLO 5 v3.09
@@ -30,17 +34,17 @@ The ServiceRoot resource describes the Redfish API service root.
 
 |Link Name|Destination type
 |---|---|
-|`Registries`|Collection of [MessageRegistryFile](../ilo5_other_resourcedefns309/#messageregistryfilecollection)|
-|`Managers`|Collection of [Manager](../ilo5_manager_resourcedefns309/#managercollection)|
-|`AccountService`|[AccountService](../ilo5_other_resourcedefns309/#accountservice)|
-|`JsonSchemas`|Collection of [JsonSchemaFile](../ilo5_other_resourcedefns309/#jsonschemafilecollection)|
-|`UpdateService`|[UpdateService](../ilo5_other_resourcedefns309/#updateservice)|
-|`Oem/Hpe/Links/ResourceDirectory`|[HpeiLOResourceDirectory](../ilo5_hpe_resourcedefns309/#hpeiloresourcedirectory)|
-|`SessionService`|[SessionService](../ilo5_other_resourcedefns309/#sessionservice)|
-|`EventService`|[EventService](../ilo5_other_resourcedefns309/#eventservice)|
-|`Chassis`|Collection of [Chassis](../ilo5_chassis_resourcedefns309/#chassiscollection)|
-|`Systems`|Collection of [ComputerSystem](../ilo5_computersystem_resourcedefns309/#computersystemcollection)|
-|`Links/Sessions`|Collection of [Session](../ilo5_other_resourcedefns309/#sessioncollection)|
+|`Registries`|Collection of [MessageRegistryFile](ilo5_other_resourcedefns309/#messageregistryfilecollection)|
+|`Managers`|Collection of [Manager](ilo5_manager_resourcedefns309/#managercollection)|
+|`AccountService`|[AccountService](ilo5_other_resourcedefns309/#accountservice)|
+|`JsonSchemas`|Collection of [JsonSchemaFile](ilo5_other_resourcedefns309/#jsonschemafilecollection)|
+|`UpdateService`|[UpdateService](ilo5_other_resourcedefns309/#updateservice)|
+|`Oem/Hpe/Links/ResourceDirectory`|[HpeiLOResourceDirectory](ilo5_hpe_resourcedefns309/#hpeiloresourcedirectory)|
+|`SessionService`|[SessionService](ilo5_other_resourcedefns309/#sessionservice)|
+|`EventService`|[EventService](ilo5_other_resourcedefns309/#eventservice)|
+|`Chassis`|Collection of [Chassis](ilo5_chassis_resourcedefns309/#chassiscollection)|
+|`Systems`|Collection of [ComputerSystem](ilo5_computersystem_resourcedefns309/#computersystemcollection)|
+|`Links/Sessions`|Collection of [Session](ilo5_other_resourcedefns309/#sessioncollection)|
 
 ### AccountService
 

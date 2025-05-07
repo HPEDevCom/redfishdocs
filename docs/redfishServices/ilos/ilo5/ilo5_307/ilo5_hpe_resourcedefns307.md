@@ -1,11 +1,15 @@
 ---
 excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Hpe resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Hpe resource definitions of iLO 5 v3.07
@@ -486,7 +490,7 @@ A Collection of HpeBaseNetworkAdapter resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeBaseNetworkAdapter](../ilo5_hpe_resourcedefns307/#hpebasenetworkadapter)|
+|`Members[]`|[HpeBaseNetworkAdapter](ilo5_hpe_resourcedefns307/#hpebasenetworkadapter)|
 
 ### Members (array)
 
@@ -617,8 +621,8 @@ The HpeCertAuth resource describes the BMC certificate based authentication feat
 
 |Link Name|Destination type|
 |---|---|
-|`CACertificates`|Collection of [HpeCertificate](../ilo5_hpe_resourcedefns307/#hpecertificatecollection)|
-|`Links/UserCertificateMapping`|Collection of [HpeiLOAccountCertificateMap](../ilo5_hpe_resourcedefns307/#hpeiloaccountcertificatemapcollection)|
+|`CACertificates`|Collection of [HpeCertificate](ilo5_hpe_resourcedefns307/#hpecertificatecollection)|
+|`Links/UserCertificateMapping`|Collection of [HpeiLOAccountCertificateMap](ilo5_hpe_resourcedefns307/#hpeiloaccountcertificatemapcollection)|
 
 ### CACertificates
 
@@ -807,7 +811,7 @@ A Collection of HpeCertificate resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeCertificate](../ilo5_hpe_resourcedefns307/#hpecertificate)|
+|`Members[]`|[HpeCertificate](ilo5_hpe_resourcedefns307/#hpecertificate)|
 
 ### Members (array)
 
@@ -1056,7 +1060,7 @@ A Collection of HpeComponent resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeComponent](../ilo5_hpe_resourcedefns307/#hpecomponent)|
+|`Members[]`|[HpeComponent](ilo5_hpe_resourcedefns307/#hpecomponent)|
 
 ### Members (array)
 
@@ -1281,7 +1285,7 @@ A Collection of HpeComponentInstallSet resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeComponentInstallSet](../ilo5_hpe_resourcedefns307/#hpecomponentinstallset)|
+|`Members[]`|[HpeComponentInstallSet](ilo5_hpe_resourcedefns307/#hpecomponentinstallset)|
 
 ### Members (array)
 
@@ -1571,7 +1575,7 @@ A Collection of HpeComponentUpdateTaskQueue resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeComponentUpdateTask](../ilo5_hpe_resourcedefns307/#hpecomponentupdatetask)|
+|`Members[]`|[HpeComponentUpdateTask](ilo5_hpe_resourcedefns307/#hpecomponentupdatetask)|
 
 ### Members (array)
 
@@ -2039,7 +2043,7 @@ A Collection of HpeInvalidImage resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeInvalidImage](../ilo5_hpe_resourcedefns307/#hpeinvalidimage)|
+|`Members[]`|[HpeInvalidImage](ilo5_hpe_resourcedefns307/#hpeinvalidimage)|
 
 ### Members (array)
 
@@ -2083,8 +2087,8 @@ The schema definition for Key Management Service configuration.
 
 |Link Name|Destination type|
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeKmsConfig](../ilo5_hpe_resourcedefns307/#hpekmsconfig)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo5_hpe_resourcedefns307/#hpebaseconfigs)|
+|`@Redfish.Settings/SettingsObject`|[HpeKmsConfig](ilo5_hpe_resourcedefns307/#hpekmsconfig)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo5_hpe_resourcedefns307/#hpebaseconfigs)|
 
 ### @Redfish.Settings
 
@@ -2291,7 +2295,7 @@ A Collection of HpeMaintenanceWindow resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeMaintenanceWindow](../ilo5_hpe_resourcedefns307/#hpemaintenancewindow)|
+|`Members[]`|[HpeMaintenanceWindow](ilo5_hpe_resourcedefns307/#hpemaintenancewindow)|
 
 ### Members (array)
 
@@ -3507,7 +3511,7 @@ HpeRemoteSupport enables management of HPE Remote Support configuration on iLO 5
 
 |Link Name|Destination type|
 |---|---|
-|`ServiceEventLogs`|Collection of [LogEntry](../ilo5_other_resourcedefns307/#logentrycollection)|
+|`ServiceEventLogs`|Collection of [LogEntry](ilo5_other_resourcedefns307/#logentrycollection)|
 
 ### ConnectModel
 
@@ -3812,7 +3816,7 @@ A Collection of HpeSNMPAlertDestination resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeSNMPAlertDestination](../ilo5_hpe_resourcedefns307/#hpesnmpalertdestination)|
+|`Members[]`|[HpeSNMPAlertDestination](ilo5_hpe_resourcedefns307/#hpesnmpalertdestination)|
 
 ### Members (array)
 
@@ -3943,7 +3947,7 @@ A Collection of HpeSNMPUsers resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeSNMPUser](../ilo5_hpe_resourcedefns307/#hpesnmpuser)|
+|`Members[]`|[HpeSNMPUser](ilo5_hpe_resourcedefns307/#hpesnmpuser)|
 
 ### Members (array)
 
@@ -4101,7 +4105,7 @@ A Collection of HpeSecureEraseReport resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeSecureEraseReport](../ilo5_hpe_resourcedefns307/#hpesecureerasereport)|
+|`Members[]`|[HpeSecureEraseReport](ilo5_hpe_resourcedefns307/#hpesecureerasereport)|
 
 ### Members (array)
 
@@ -4144,7 +4148,7 @@ The HpeSecureEraseReportService resource describes the properties of the Secure 
 
 |Link Name|Destination type|
 |---|---|
-|`Links/SecureEraseReportEntries`|Collection of [HpeSecureEraseReport](../ilo5_hpe_resourcedefns307/#hpesecureerasereportcollection)|
+|`Links/SecureEraseReportEntries`|Collection of [HpeSecureEraseReport](ilo5_hpe_resourcedefns307/#hpesecureerasereportcollection)|
 
 ### EraseInitiatedBy
 
@@ -4188,13 +4192,13 @@ The HpeSecurityService resource describes the properties for management of the s
 
 |Link Name|Destination type|
 |---|---|
-|`Links/SSO`|[HpeiLOSSO](../ilo5_hpe_resourcedefns307/#hpeilosso)|
-|`Links/SecurityParams`|Collection of [HpeiLOSecurityParam](../ilo5_hpe_resourcedefns307/#hpeilosecurityparamcollection)|
-|`Links/AutomaticCertificateEnrollment`|[HpeAutomaticCertEnrollment](../ilo5_hpe_resourcedefns307/#hpeautomaticcertenrollment)|
-|`Links/HttpsCert`|[HpeHttpsCert](../ilo5_hpe_resourcedefns307/#hpehttpscert)|
-|`Links/CertAuth`|[HpeCertAuth](../ilo5_hpe_resourcedefns307/#hpecertauth)|
-|`Links/ESKM`|[HpeESKM](../ilo5_hpe_resourcedefns307/#hpeeskm)|
-|`Links/SecurityDashboard`|[HpeiLOSecurityDashboard](../ilo5_hpe_resourcedefns307/#hpeilosecuritydashboard)|
+|`Links/SSO`|[HpeiLOSSO](ilo5_hpe_resourcedefns307/#hpeilosso)|
+|`Links/SecurityParams`|Collection of [HpeiLOSecurityParam](ilo5_hpe_resourcedefns307/#hpeilosecurityparamcollection)|
+|`Links/AutomaticCertificateEnrollment`|[HpeAutomaticCertEnrollment](ilo5_hpe_resourcedefns307/#hpeautomaticcertenrollment)|
+|`Links/HttpsCert`|[HpeHttpsCert](ilo5_hpe_resourcedefns307/#hpehttpscert)|
+|`Links/CertAuth`|[HpeCertAuth](ilo5_hpe_resourcedefns307/#hpecertauth)|
+|`Links/ESKM`|[HpeESKM](ilo5_hpe_resourcedefns307/#hpeeskm)|
+|`Links/SecurityDashboard`|[HpeiLOSecurityDashboard](ilo5_hpe_resourcedefns307/#hpeilosecuritydashboard)|
 
 ### CurrentCipher
 
@@ -5304,8 +5308,8 @@ The schema definition of the server UEFI Boot Order resource.
 
 |Link Name|Destination type|
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeServerBootSettings](../ilo5_hpe_resourcedefns307/#hpeserverbootsettings)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo5_hpe_resourcedefns307/#hpebaseconfigs)|
+|`@Redfish.Settings/SettingsObject`|[HpeServerBootSettings](ilo5_hpe_resourcedefns307/#hpeserverbootsettings)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo5_hpe_resourcedefns307/#hpebaseconfigs)|
 
 ### @Redfish.Settings
 
@@ -5456,8 +5460,8 @@ The schema definition for Server Configuration Lock configuration.
 
 |Link Name|Destination type|
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeServerConfigLock](../ilo5_hpe_resourcedefns307/#hpeserverconfiglock)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo5_hpe_resourcedefns307/#hpebaseconfigs)|
+|`@Redfish.Settings/SettingsObject`|[HpeServerConfigLock](ilo5_hpe_resourcedefns307/#hpeserverconfiglock)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo5_hpe_resourcedefns307/#hpebaseconfigs)|
 
 ### @Redfish.Settings
 
@@ -5718,7 +5722,7 @@ HpeServerDevice represents physical server devices including part information.  
 
 |Link Name|Destination type|
 |---|---|
-|`DeviceInstances[]`|[HpeServerPciDevice](../ilo5_hpe_resourcedefns307/#hpeserverpcidevice)|
+|`DeviceInstances[]`|[HpeServerPciDevice](ilo5_hpe_resourcedefns307/#hpeserverpcidevice)|
 
 ### DeviceInstances (array)
 
@@ -5894,7 +5898,7 @@ A Collection of HpeServerDevice resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeServerDevice](../ilo5_hpe_resourcedefns307/#hpeserverdevice)|
+|`Members[]`|[HpeServerDevice](ilo5_hpe_resourcedefns307/#hpeserverdevice)|
 
 ### Members (array)
 
@@ -6165,7 +6169,7 @@ A Collection of HpeServerPCISlot resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeServerPCISlot](../ilo5_hpe_resourcedefns307/#hpeserverpcislot)|
+|`Members[]`|[HpeServerPCISlot](ilo5_hpe_resourcedefns307/#hpeserverpcislot)|
 
 ### Members (array)
 
@@ -6464,7 +6468,7 @@ A Collection of HpeServerPciDevice resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeServerPciDevice](../ilo5_hpe_resourcedefns307/#hpeserverpcidevice)|
+|`Members[]`|[HpeServerPciDevice](ilo5_hpe_resourcedefns307/#hpeserverpcidevice)|
 
 ### Members (array)
 
@@ -6507,8 +6511,8 @@ The HpeSmartStorage resource describes the properties of the HPE Smart Storage c
 
 |Link Name|Destination type|
 |---|---|
-|`Links/HostBusAdapters`|Collection of [HpeSmartStorageHostBusAdapter](../ilo5_hpe_resourcedefns307/#hpesmartstoragehostbusadaptercollection)|
-|`Links/ArrayControllers`|Collection of [HpeSmartStorageArrayController](../ilo5_hpe_resourcedefns307/#hpesmartstoragearraycontrollercollection)|
+|`Links/HostBusAdapters`|Collection of [HpeSmartStorageHostBusAdapter](ilo5_hpe_resourcedefns307/#hpesmartstoragehostbusadaptercollection)|
+|`Links/ArrayControllers`|Collection of [HpeSmartStorageArrayController](ilo5_hpe_resourcedefns307/#hpesmartstoragearraycontrollercollection)|
 
 ### Status
 
@@ -6531,10 +6535,10 @@ The HpeSmartStorageArrayController resource describes the properties of the HPE 
 
 |Link Name|Destination type|
 |---|---|
-|`Links/PhysicalDrives`|Collection of [HpeSmartStorageDiskDrive](../ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
-|`Links/LogicalDrives`|Collection of [HpeSmartStorageLogicalDrive](../ilo5_hpe_resourcedefns307/#hpesmartstoragelogicaldrivecollection)|
-|`Links/StorageEnclosures`|Collection of [HpeSmartStorageStorageEnclosure](../ilo5_hpe_resourcedefns307/#hpesmartstoragestorageenclosurecollection)|
-|`Links/UnconfiguredDrives`|Collection of [HpeSmartStorageDiskDrive](../ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
+|`Links/PhysicalDrives`|Collection of [HpeSmartStorageDiskDrive](ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
+|`Links/LogicalDrives`|Collection of [HpeSmartStorageLogicalDrive](ilo5_hpe_resourcedefns307/#hpesmartstoragelogicaldrivecollection)|
+|`Links/StorageEnclosures`|Collection of [HpeSmartStorageStorageEnclosure](ilo5_hpe_resourcedefns307/#hpesmartstoragestorageenclosurecollection)|
+|`Links/UnconfiguredDrives`|Collection of [HpeSmartStorageDiskDrive](ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
 
 ### AdapterType
 
@@ -7554,7 +7558,7 @@ A Collection of HpeSmartStorageArrayController resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeSmartStorageArrayController](../ilo5_hpe_resourcedefns307/#hpesmartstoragearraycontroller)|
+|`Members[]`|[HpeSmartStorageArrayController](ilo5_hpe_resourcedefns307/#hpesmartstoragearraycontroller)|
 
 ### Members (array)
 
@@ -8081,7 +8085,7 @@ A Collection of HpeSmartStorageDiskDrive resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeSmartStorageDiskDrive](../ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrive)|
+|`Members[]`|[HpeSmartStorageDiskDrive](ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrive)|
 
 ### Members (array)
 
@@ -8124,7 +8128,7 @@ The HpeSmartStorageHostBusAdapter resource describes the properties of the HPE S
 
 |Link Name|Destination type|
 |---|---|
-|`Links/Drives`|Collection of [HpeSmartStorageDiskDrive](../ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
+|`Links/Drives`|Collection of [HpeSmartStorageDiskDrive](ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
 
 ### FirmwareVersion
 
@@ -8225,7 +8229,7 @@ A Collection of HpeSmartStorageHostBusAdapter resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeSmartStorageHostBusAdapter](../ilo5_hpe_resourcedefns307/#hpesmartstoragehostbusadapter)|
+|`Members[]`|[HpeSmartStorageHostBusAdapter](ilo5_hpe_resourcedefns307/#hpesmartstoragehostbusadapter)|
 
 ### Members (array)
 
@@ -8268,9 +8272,9 @@ The HpeSmartStorageLogicalDrive resource describes the properties of the HPE Sma
 
 |Link Name|Destination type|
 |---|---|
-|`Links/StandbySpareDrives`|Collection of [HpeSmartStorageDiskDrive](../ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
-|`Links/ActiveSpareDrives`|Collection of [HpeSmartStorageDiskDrive](../ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
-|`Links/DataDrives`|Collection of [HpeSmartStorageDiskDrive](../ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
+|`Links/StandbySpareDrives`|Collection of [HpeSmartStorageDiskDrive](ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
+|`Links/ActiveSpareDrives`|Collection of [HpeSmartStorageDiskDrive](ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
+|`Links/DataDrives`|Collection of [HpeSmartStorageDiskDrive](ilo5_hpe_resourcedefns307/#hpesmartstoragediskdrivecollection)|
 
 ### AccelerationMethod
 
@@ -8703,7 +8707,7 @@ A Collection of HpeSmartStorageLogicalDrive resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeSmartStorageLogicalDrive](../ilo5_hpe_resourcedefns307/#hpesmartstoragelogicaldrive)|
+|`Members[]`|[HpeSmartStorageLogicalDrive](ilo5_hpe_resourcedefns307/#hpesmartstoragelogicaldrive)|
 
 ### Members (array)
 
@@ -8941,7 +8945,7 @@ A Collection of HpeSmartStorageStorageEnclosure resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeSmartStorageStorageEnclosure](../ilo5_hpe_resourcedefns307/#hpesmartstoragestorageenclosure)|
+|`Members[]`|[HpeSmartStorageStorageEnclosure](ilo5_hpe_resourcedefns307/#hpesmartstoragestorageenclosure)|
 
 ### Members (array)
 
@@ -8985,8 +8989,8 @@ The schema definition for TLS configuration.
 
 |Link Name|Destination type|
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeTlsConfig](../ilo5_hpe_resourcedefns307/#hpetlsconfig)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo5_hpe_resourcedefns307/#hpebaseconfigs)|
+|`@Redfish.Settings/SettingsObject`|[HpeTlsConfig](ilo5_hpe_resourcedefns307/#hpetlsconfig)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo5_hpe_resourcedefns307/#hpebaseconfigs)|
 
 ### @Redfish.Settings
 
@@ -9284,7 +9288,7 @@ A Collection of HpeUSBDevices resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeUSBDevice](../ilo5_hpe_resourcedefns307/#hpeusbdevice)|
+|`Members[]`|[HpeUSBDevice](ilo5_hpe_resourcedefns307/#hpeusbdevice)|
 
 ### Members (array)
 
@@ -9459,7 +9463,7 @@ A Collection of HpeUSBPorts resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeUSBPort](../ilo5_hpe_resourcedefns307/#hpeusbport)|
+|`Members[]`|[HpeUSBPort](ilo5_hpe_resourcedefns307/#hpeusbport)|
 
 ### Members (array)
 
@@ -9580,7 +9584,7 @@ A Collection of HpeWorkloadPerformanceAdvisor resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeWorkloadPerformanceAdvisor](../ilo5_hpe_resourcedefns307/#hpeworkloadperformanceadvisor)|
+|`Members[]`|[HpeWorkloadPerformanceAdvisor](ilo5_hpe_resourcedefns307/#hpeworkloadperformanceadvisor)|
 
 ### Members (array)
 
@@ -9667,7 +9671,7 @@ A Collection of HpeiLOAccountCertificateMap resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeiLOAccountCertificateMap](../ilo5_hpe_resourcedefns307/#hpeiloaccountcertificatemap)|
+|`Members[]`|[HpeiLOAccountCertificateMap](ilo5_hpe_resourcedefns307/#hpeiloaccountcertificatemap)|
 
 ### Members (array)
 
@@ -9951,7 +9955,7 @@ A Collection of HpeiLOBackupFile resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeiLOBackupFile](../ilo5_hpe_resourcedefns307/#hpeilobackupfile)|
+|`Members[]`|[HpeiLOBackupFile](ilo5_hpe_resourcedefns307/#hpeilobackupfile)|
 
 ### Members (array)
 
@@ -10063,7 +10067,7 @@ The HpeiLODateTime resource describes the properties for managing the BMC data a
 
 |Link Name|Destination type|
 |---|---|
-|`Links/EthernetNICs`|Collection of [EthernetInterface](../ilo5_network_resourcedefns307/#ethernetinterfacecollection)|
+|`Links/EthernetNICs`|Collection of [EthernetInterface](ilo5_network_resourcedefns307/#ethernetinterfacecollection)|
 
 ### ConfigurationSettings
 
@@ -10413,7 +10417,7 @@ A Collection of HpeiLOFederationGroup resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeiLOFederationGroup](../ilo5_hpe_resourcedefns307/#hpeilofederationgroup)|
+|`Members[]`|[HpeiLOFederationGroup](ilo5_hpe_resourcedefns307/#hpeilofederationgroup)|
 
 ### Members (array)
 
@@ -10521,7 +10525,7 @@ A Collection of HpeiLOFederationPeers resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeiLOFederationPeers](../ilo5_hpe_resourcedefns307/#hpeilofederationpeers)|
+|`Members[]`|[HpeiLOFederationPeers](ilo5_hpe_resourcedefns307/#hpeilofederationpeers)|
 
 ### Members (array)
 
@@ -10701,7 +10705,7 @@ A Collection of HpeiLOFrus resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeiLOFrus](../ilo5_hpe_resourcedefns307/#hpeilofrus)|
+|`Members[]`|[HpeiLOFrus](ilo5_hpe_resourcedefns307/#hpeilofrus)|
 
 ### Members (array)
 
@@ -11217,7 +11221,7 @@ A Collection of HpeiLOLicense resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeiLOLicense](../ilo5_hpe_resourcedefns307/#hpeilolicense)|
+|`Members[]`|[HpeiLOLicense](ilo5_hpe_resourcedefns307/#hpeilolicense)|
 
 ### Members (array)
 
@@ -11798,7 +11802,7 @@ The HpeiLOSecurityDashboard resource describes the BMC security dashboard.
 
 |Link Name|Destination type|
 |---|---|
-|`SecurityParameters`|[HpeiLOSecurityParam](../ilo5_hpe_resourcedefns307/#hpeilosecurityparam)|
+|`SecurityParameters`|[HpeiLOSecurityParam](ilo5_hpe_resourcedefns307/#hpeilosecurityparam)|
 
 ### OverallSecurityStatus
 
@@ -11948,7 +11952,7 @@ A Collection of HpeiLOSecurityParam resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|[HpeiLOSecurityParam](../ilo5_hpe_resourcedefns307/#hpeilosecurityparam)|
+|`Members[]`|[HpeiLOSecurityParam](ilo5_hpe_resourcedefns307/#hpeilosecurityparam)|
 
 ### Members (array)
 
@@ -11991,7 +11995,7 @@ The HpeiLOSnmpService resource describes the properties for managing the SNMP co
 |Link Name|Destination type|
 |---|---|
 |`SNMPUsers`|Collection of [HpeSNMPUser](#hpesnmpuser)|
-|`SNMPAlertDestinations`|Collection of [HpeSNMPAlertDestination](../ilo5_hpe_resourcedefns307/#hpesnmpalertdestinationcollection)|
+|`SNMPAlertDestinations`|Collection of [HpeSNMPAlertDestination](ilo5_hpe_resourcedefns307/#hpesnmpalertdestinationcollection)|
 
 ### AlertDestinationAssociations (array)
 
@@ -12366,8 +12370,8 @@ There are no parameters for this action.
 
 |Link Name|Destination type|
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeiSCSISoftwareInitiator](../ilo5_hpe_resourcedefns307/#hpeiscsisoftwareinitiator)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo5_hpe_resourcedefns307/#hpebaseconfigs)|
+|`@Redfish.Settings/SettingsObject`|[HpeiSCSISoftwareInitiator](ilo5_hpe_resourcedefns307/#hpeiscsisoftwareinitiator)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo5_hpe_resourcedefns307/#hpebaseconfigs)|
 
 ### @Redfish.Settings
 

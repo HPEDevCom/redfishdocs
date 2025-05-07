@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Other resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Other resource definitions of iLO 5 v3.09
@@ -45,7 +49,7 @@ The destination of this link is a collection of user accounts (see ManagerAccoun
 
 |Link Name|Destination type
 |---|---|
-|`Accounts`|Collection of [ManagerAccount](../ilo5_manager_resourcedefns309/#manageraccountcollection)|
+|`Accounts`|Collection of [ManagerAccount](ilo5_manager_resourcedefns309/#manageraccountcollection)|
 
 ### AccountLockoutCounterResetAfter
 
@@ -647,7 +651,7 @@ A Collection of BootOption resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[BootOption](../ilo5_other_resourcedefns309/#bootoption)|
+|`Members[]`|[BootOption](ilo5_other_resourcedefns309/#bootoption)|
 
 ### Members (array)
 
@@ -920,7 +924,7 @@ A Collection of Certificate resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Certificate](../ilo5_other_resourcedefns309/#certificate)|
+|`Members[]`|[Certificate](ilo5_other_resourcedefns309/#certificate)|
 
 ### Members (array)
 
@@ -977,7 +981,7 @@ The CertificateService schema describes a certificate service that represents th
 
 |Link Name|Destination type
 |---|---|
-|`Links/CertificateLocations`|[CertificateLocations](../ilo5_other_resourcedefns309/#certificatelocations)|
+|`Links/CertificateLocations`|[CertificateLocations](ilo5_other_resourcedefns309/#certificatelocations)|
 
 ### CertificateLocations
 
@@ -1246,7 +1250,7 @@ A Collection of EventDestination resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[EventDestination](../ilo5_other_resourcedefns309/#eventdestination)|
+|`Members[]`|[EventDestination](ilo5_other_resourcedefns309/#eventdestination)|
 
 ### Members (array)
 
@@ -1290,8 +1294,8 @@ The EventService resource describes the Event Service.  It represents the proper
 
 |Link Name|Destination type
 |---|---|
-|`Subscriptions`|Collection of [EventDestination](../ilo5_other_resourcedefns309/#eventdestinationcollection)|
-|`Oem/Hpe/CACertificates`|Collection of [HpeCertificate](../ilo5_hpe_resourcedefns309/#hpecertificatecollection)|
+|`Subscriptions`|Collection of [EventDestination](ilo5_other_resourcedefns309/#eventdestinationcollection)|
+|`Oem/Hpe/CACertificates`|Collection of [HpeCertificate](ilo5_hpe_resourcedefns309/#hpecertificatecollection)|
 
 ### DeliveryRetryAttempts
 
@@ -1554,7 +1558,7 @@ A Collection of Fabric Resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Fabric](../ilo5_other_resourcedefns309/#fabric)|
+|`Members[]`|[Fabric](ilo5_other_resourcedefns309/#fabric)|
 
 ### Members (array)
 
@@ -1734,7 +1738,7 @@ A Collection of HostInterface resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HostInterface](../ilo5_other_resourcedefns309/#hostinterface)|
+|`Members[]`|[HostInterface](ilo5_other_resourcedefns309/#hostinterface)|
 
 ### Members (array)
 
@@ -1839,7 +1843,7 @@ A Collection of JsonSchemaFile resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[JsonSchemaFile](../ilo5_other_resourcedefns309/#jsonschemafile)|
+|`Members[]`|[JsonSchemaFile](ilo5_other_resourcedefns309/#jsonschemafile)|
 
 ### Members (array)
 
@@ -2233,7 +2237,7 @@ A Collection of LogEntry resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[LogEntry](../ilo5_other_resourcedefns309/#logentry)|
+|`Members[]`|[LogEntry](ilo5_other_resourcedefns309/#logentry)|
 
 ### Members (array)
 
@@ -2613,7 +2617,7 @@ This resource contains properties for monitoring and configuring an event log se
 
 |Link Name|Destination type
 |---|---|
-|`Entries`|Collection of [LogEntry](../ilo5_other_resourcedefns309/#logentrycollection)|
+|`Entries`|Collection of [LogEntry](ilo5_other_resourcedefns309/#logentrycollection)|
 
 ### DateTime
 
@@ -2707,7 +2711,7 @@ A Collection of LogService resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[LogService](../ilo5_other_resourcedefns309/#logservice)|
+|`Members[]`|[LogService](ilo5_other_resourcedefns309/#logservice)|
 
 ### Members (array)
 
@@ -3747,7 +3751,7 @@ A Collection of MemoryChunks resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[MemoryChunks](../ilo5_other_resourcedefns309/#memorychunks)|
+|`Members[]`|[MemoryChunks](ilo5_other_resourcedefns309/#memorychunks)|
 
 ### Members (array)
 
@@ -3790,7 +3794,7 @@ A Collection of Memory resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Memory](../ilo5_other_resourcedefns309/#memory)|
+|`Members[]`|[Memory](ilo5_other_resourcedefns309/#memory)|
 
 ### Members (array)
 
@@ -4059,7 +4063,7 @@ A Collection of MemoryDomain resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[MemoryDomain](../ilo5_other_resourcedefns309/#memorydomain)|
+|`Members[]`|[MemoryDomain](ilo5_other_resourcedefns309/#memorydomain)|
 
 ### Members (array)
 
@@ -4164,7 +4168,7 @@ A Collection of MessageRegistryFile resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[MessageRegistryFile](../ilo5_other_resourcedefns309/#messageregistryfile)|
+|`Members[]`|[MessageRegistryFile](ilo5_other_resourcedefns309/#messageregistryfile)|
 
 ### Members (array)
 
@@ -4370,7 +4374,7 @@ A Collection of MetricDefinition resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[MetricDefinition](../ilo5_other_resourcedefns309/#metricdefinition)|
+|`Members[]`|[MetricDefinition](ilo5_other_resourcedefns309/#metricdefinition)|
 
 ### Members (array)
 
@@ -4469,7 +4473,7 @@ A Collection of MetricReport resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[MetricReport](../ilo5_other_resourcedefns309/#metricreport)|
+|`Members[]`|[MetricReport](ilo5_other_resourcedefns309/#metricreport)|
 
 ### Members (array)
 
@@ -4673,7 +4677,7 @@ A Collection of MetricReportDefinition resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[MetricReportDefinition](../ilo5_other_resourcedefns309/#metricreportdefinition)|
+|`Members[]`|[MetricReportDefinition](ilo5_other_resourcedefns309/#metricreportdefinition)|
 
 ### Members (array)
 
@@ -4717,7 +4721,7 @@ This is the schema definition for the PCIeDevice resource.  It represents the pr
 
 |Link Name|Destination type
 |---|---|
-|`PCIeFunctions`|[PCIeFunction](../ilo5_other_resourcedefns309/#pciefunction)|
+|`PCIeFunctions`|[PCIeFunction](ilo5_other_resourcedefns309/#pciefunction)|
 
 ### AssetTag
 
@@ -4915,7 +4919,7 @@ The collection of PCIeDevice Resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[PCIeDevice](../ilo5_other_resourcedefns309/#pciedevice)|
+|`Members[]`|[PCIeDevice](ilo5_other_resourcedefns309/#pciedevice)|
 
 ### Members (array)
 
@@ -5101,7 +5105,7 @@ The collection of PCIeFunction Resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[PCIeFunction](../ilo5_other_resourcedefns309/#pciefunction)|
+|`Members[]`|[PCIeFunction](ilo5_other_resourcedefns309/#pciefunction)|
 
 ### Members (array)
 
@@ -5373,7 +5377,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Port](../ilo5_other_resourcedefns309/#port)|
+|`Members[]`|[Port](ilo5_other_resourcedefns309/#port)|
 
 ### @Redfish.Settings
 
@@ -7300,7 +7304,7 @@ A Collection of NetworkPort resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Port](../ilo5_other_resourcedefns309/#port)|
+|`Members[]`|[Port](ilo5_other_resourcedefns309/#port)|
 
 ### Members (array)
 
@@ -7344,10 +7348,10 @@ The Power resource describes the Power Metrics.  It represents the properties fo
 
 |Link Name|Destination type
 |---|---|
-|`Oem/Hpe/Links/FederatedGroupCapping`|[HpeiLOFederatedGroupCapping](../ilo5_hpe_resourcedefns309/#hpeilofederatedgroupcapping)|
-|`Oem/Hpe/Links/PowerMeter`|[HpePowerMeter](../ilo5_hpe_resourcedefns309/#hpepowermeter)|
-|`Redundancy[]/RedundancySet[]`|[Power](../ilo5_other_resourcedefns309/#power)|
-|`Oem/Hpe/Links/FastPowerMeter`|[HpePowerMeter](../ilo5_hpe_resourcedefns309/#hpepowermeter)|
+|`Oem/Hpe/Links/FederatedGroupCapping`|[HpeiLOFederatedGroupCapping](ilo5_hpe_resourcedefns309/#hpeilofederatedgroupcapping)|
+|`Oem/Hpe/Links/PowerMeter`|[HpePowerMeter](ilo5_hpe_resourcedefns309/#hpepowermeter)|
+|`Redundancy[]/RedundancySet[]`|[Power](ilo5_other_resourcedefns309/#power)|
+|`Oem/Hpe/Links/FastPowerMeter`|[HpePowerMeter](ilo5_hpe_resourcedefns309/#hpepowermeter)|
 
 ### Oem.Hpe.BatteryBackedUnits (array)
 
@@ -8870,7 +8874,7 @@ A Collection of Processor resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Processor](../ilo5_other_resourcedefns309/#processor)|
+|`Members[]`|[Processor](ilo5_other_resourcedefns309/#processor)|
 
 ### Members (array)
 
@@ -9016,7 +9020,7 @@ A Collection of Role resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Role](../ilo5_other_resourcedefns309/#role)|
+|`Members[]`|[Role](ilo5_other_resourcedefns309/#role)|
 
 ### Members (array)
 
@@ -9180,7 +9184,7 @@ A Collection of SerialInterface resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[SerialInterface](../ilo5_other_resourcedefns309/#serialinterface)|
+|`Members[]`|[SerialInterface](ilo5_other_resourcedefns309/#serialinterface)|
 
 ### Members (array)
 
@@ -9464,8 +9468,8 @@ A Collection of Session resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Oem/Hpe/Links/MySession`|[Session](../ilo5_other_resourcedefns309/#session)|
-|`Members[]`|[Session](../ilo5_other_resourcedefns309/#session)|
+|`Oem/Hpe/Links/MySession`|[Session](ilo5_other_resourcedefns309/#session)|
+|`Members[]`|[Session](ilo5_other_resourcedefns309/#session)|
 
 ### Members (array)
 
@@ -9509,7 +9513,7 @@ The SessionService resource describes the BMC Redfish Session Service.  It repre
 
 |Link Name|Destination type
 |---|---|
-|`Sessions`|Collection of [Session](../ilo5_other_resourcedefns309/#sessioncollection)|
+|`Sessions`|Collection of [Session](ilo5_other_resourcedefns309/#sessioncollection)|
 
 ### ServiceEnabled
 
@@ -9558,7 +9562,7 @@ Smart Storage Configuration Schema
 
 |Link Name|Destination type
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[SmartStorageConfig](../ilo5_other_resourcedefns309/#smartstorageconfig)|
+|`@Redfish.Settings/SettingsObject`|[SmartStorageConfig](ilo5_other_resourcedefns309/#smartstorageconfig)|
 
 ### Actions (array)
 
@@ -10509,7 +10513,7 @@ A Collection of SoftwareInventory resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[SoftwareInventory](../ilo5_other_resourcedefns309/#softwareinventory)|
+|`Members[]`|[SoftwareInventory](ilo5_other_resourcedefns309/#softwareinventory)|
 
 ### Members (array)
 
@@ -10553,7 +10557,7 @@ The Switch schema contains properties that describe a fabric switch.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|Collection of [Port](../ilo5_other_resourcedefns309/#portcollection)|
+|`Members[]`|Collection of [Port](ilo5_other_resourcedefns309/#portcollection)|
 
 ### DomainID
 
@@ -10945,7 +10949,7 @@ A Collection of Task resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Task](../ilo5_other_resourcedefns309/#task)|
+|`Members[]`|[Task](ilo5_other_resourcedefns309/#task)|
 
 ### Members (array)
 
@@ -10989,7 +10993,7 @@ The TaskService resource describes the Task service. It represents the propertie
 
 |Link Name|Destination type
 |---|---|
-|`Tasks`|Collection of [Task](../ilo5_other_resourcedefns309/#taskcollection)|
+|`Tasks`|Collection of [Task](ilo5_other_resourcedefns309/#taskcollection)|
 
 ### CompletedTaskOverWritePolicy
 
@@ -11071,9 +11075,9 @@ Telemetry Service is supported only on Intel platform. On AMD systems, performin
 
 |Link Name|Destination type
 |---|---|
-|`MetricReports`|Collection of [MetricReport](../ilo5_other_resourcedefns309/#metricreportcollection)|
-|`MetricReportDefinitions`|Collection of [MetricDefinition](../ilo5_other_resourcedefns309/#metricdefinitioncollection)|
-|`Triggers`|Collection of [Triggers](../ilo5_other_resourcedefns309/#triggerscollection)|
+|`MetricReports`|Collection of [MetricReport](ilo5_other_resourcedefns309/#metricreportcollection)|
+|`MetricReportDefinitions`|Collection of [MetricDefinition](ilo5_other_resourcedefns309/#metricdefinitioncollection)|
+|`Triggers`|Collection of [Triggers](ilo5_other_resourcedefns309/#triggerscollection)|
 
 ### MaxReports
 
@@ -11925,7 +11929,7 @@ A Collection of Triggers resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Triggers](../ilo5_other_resourcedefns309/#triggers)|
+|`Members[]`|[Triggers](ilo5_other_resourcedefns309/#triggers)|
 
 ### Members (array)
 
@@ -11969,10 +11973,10 @@ The UpdateService resource describes the Update Service. It represents the prope
 
 |Link Name|Destination type
 |---|---|
-|`Oem/Hpe/InstallSets`|Collection of [HpeComponentInstallSet](../ilo5_hpe_resourcedefns309/#hpecomponentinstallsetcollection)|
-|`Oem/Hpe/ComponentRepository`|Collection of [HpeComponent](../ilo5_hpe_resourcedefns309/#hpecomponentcollection)|
-|`FirmwareInventory`|Collection of [SoftwareInventory](../ilo5_other_resourcedefns309/#softwareinventorycollection)|
-|`SoftwareInventory`|Collection of [SoftwareInventory](../ilo5_other_resourcedefns309/#softwareinventorycollection)|
+|`Oem/Hpe/InstallSets`|Collection of [HpeComponentInstallSet](ilo5_hpe_resourcedefns309/#hpecomponentinstallsetcollection)|
+|`Oem/Hpe/ComponentRepository`|Collection of [HpeComponent](ilo5_hpe_resourcedefns309/#hpecomponentcollection)|
+|`FirmwareInventory`|Collection of [SoftwareInventory](ilo5_other_resourcedefns309/#softwareinventorycollection)|
+|`SoftwareInventory`|Collection of [SoftwareInventory](ilo5_other_resourcedefns309/#softwareinventorycollection)|
 |`Oem/Hpe/UpdateTaskQueue`|Collection of [HpeComponentUpdateTask](#hpecomponentupdatetask)|
 
 ### FirmwareInventory
@@ -12571,7 +12575,7 @@ A Collection of VirtualMedia resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[VirtualMedia](../ilo5_other_resourcedefns309/#virtualmedia)|
+|`Members[]`|[VirtualMedia](ilo5_other_resourcedefns309/#virtualmedia)|
 
 ### Members (array)
 

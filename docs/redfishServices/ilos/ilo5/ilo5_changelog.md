@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: iLO 5 changelog
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Changelog
@@ -139,7 +143,7 @@ read the _Redfish versioning_ paragraph of this
 
 - Consistent `EthernetInterface` naming schema across device types.
 
-:::info Note
+{% admonition type="info" name="Note" %}
 
 The URI of the members of the computer system `EthernetInterface` collection
 can be represented with this notation:
@@ -164,7 +168,7 @@ Their corresponding `{@nicId}` is represented:
 - at slot 1 in the range: 13-76
 - at slot 2 in the range: 77-140
 
-:::
+{% /admonition %}
 
 ### HTTP Methods - Additions and Deprecations
 
@@ -283,26 +287,26 @@ Their corresponding `{@nicId}` is represented:
 
 - `redfish/v1/Fabrics/{@fabricId}/Switches/{@switchId}/Ports/{@PortId}` (GET,PATCH,POST) - `#Port.v1_9_0.Port`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 `Fabrics` resource contains properties describing a simple fabric consisting of one or more switches with zero or more endpoints, and zero or more zones. Each `Fabrics` is involved in routing a data packet from routers from one end to other end.
-:::
+{% /admonition %}
 
 The following new URIs are subjective to Storage Enclosures being present on the server.
 
 - `redfish/v1/Chassis/{@ChassisId}`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 - `@ChassisId` can be of the format `DE******` or a number ranging from 2-10 depending on if the Enclosure supports Redfish-Device-Enablement or Direct Attached respectively.
 - `Chassis/1` represents RackMount chassis.
-:::
+{% /admonition %}
 
 - `redfish/v1/Chassis/{@ChassisId}/Drives` (GET) - `#DriveCollection.DriveCollection`
 
 - `redfish/v1/Chassis/{@ChassisId}/Drives/{@DrivesId}` (GET,PATCH,POST) - `#Drive.v1_14_0.Drive`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 `Drives` is present only for `Chassis` resource that represent a Storage Enclosure.
-:::
+{% /admonition %}
 
 ### HTTP Methods - Additions and Deprecations
 
@@ -392,9 +396,9 @@ The following new URIs are subjective to Storage Enclosures being present on the
 
 - `redfish/v1/TelemetryService/MetricReportDefinitions/`: The following collection members are added `CPUUtil`, `MemoryBusUtil`, `IOBusUtil`, `CPUICUtil`, `JitterCount`, `PowerMetrics`, `AvgCPUXFreq` and `CPUXPower`. 
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 X depends on number of sockets. Range of X lies between 0 to 3.
-:::
+{% /admonition %}
 
 - `redfish/v1/TelemetryService/MetricDefinitions/`: The following collection members are added `AverageConsumedWatts`, `MinConsumedWatts`, `MaxConsumedWatts`, `AmbTemp`, `Cap`, `CpuCapLim`,`CpuMax`, `CpuPwrSavLim`, `CpuWatts`, `DimmWatts`, `GpuWatts`, `PrMode`, `PunCap` and `UnachCap`.
 
@@ -617,9 +621,9 @@ iLO 5 v2.72 supports enabling and disabling of HTTP and HTTPS ports separately u
 
 No URIs deprecated for this release.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
  From iLO 5 2.72 release, HPE `Insight Online direct connect` is deprecated. HPE supports only `Insight Remote Support central connect`. If you are using HPE `Insight Online direct connect`, HPE recommends to unregister `Insight Online direct connect` and register with `Insight Remote Support central connect`. For more information, refer to the `HPE embedded remote support section` of the <a href="https://www.hpe.com/support/ilo5-ug-en" target="_blank">HPE iLO 5 2.72 User Guide</a>.
-:::
+{% /admonition %}
 
 `#HpeRemoteSupport.v2_6_0.HpeRemoteSupport`
 
@@ -650,9 +654,9 @@ No changes have been made to supported Redfish Actions for this release.
 - `#ComputerSystem.v1_10_0.ComputerSystem` updated to `#ComputerSystem.v1_13_0.ComputerSystem`
   - Added a `BootProgress{}` object providing information about [Data Processing Units (DPUs) and SmartNIC](/docs/redfishservices/ilos/supplementdocuments/smartnics/) devices visible under the `/redfish/v1/Systems/{item}` with `item > 1`. An example of such device is <a href="https://www.hpe.com/psnow/doc/a50001239enw" target="_blank">Pensando</a> devices.
   - Added `Oem.Hpe.AvailableSystemCapabilities (array)`: `AvailableSystemCapabilities` is an array that indicates SmartNIC DPU supports to OS-triggered DPC with the supported value `OStriggeredDPC`.
-    :::info NOTE
+    {% admonition type="info" name="NOTE" %}
         The `BootProgress{}` object is not populated in the main `ComputerSystem` member under `/redfish/v1/Systems/1`.
-    :::
+    {% /admonition %}
   - Added `Oem.Hpe.BootProgress`: The property includes `OemResetReason` (the Smart NIC Device Operating system Oem reset reason) and `ResetReason` (the Smart NIC Device Operating system reset reason).
   - Added `Oem.Hpe.EnabledSystemCapabilities (array)`: `EnabledSystemCapabilities` is an array that indicates SmartNIC DPU supports to OS-triggered DPC with the supported value `OStriggeredDPC`.
   - Added `Oem.Hpe.IntegrationConfig`: `OsReadyTimeout` is the property of type `integer` and `Read Only` set to `false`.
@@ -684,6 +688,9 @@ No changes have been made to supported Redfish Actions for this release.
 - `#HpeComputerSystemExt.v2_11_0.HpeComputerSystemExt`
   - From iLO 5 v2.72, the `Links` to the `PCIDevices` is an array and no longer an object.
 
+  {% tabs %}
+  {% tab label="Before iLO 5 v2" %}
+
   ```json Before iLO 5 v2.72
     "Oem": {
             "Hpe": {
@@ -695,6 +702,9 @@ No changes have been made to supported Redfish Actions for this release.
             }
           },
   ```
+  
+  {% /tab %}
+  {% tab label="From iLO 5 v2" %}
 
   ```json From iLO 5 v2.72 onwards
       "Oem": {
@@ -709,7 +719,9 @@ No changes have been made to supported Redfish Actions for this release.
               }
       }, 
   ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### RDE support changes
 
 Added Redfish Device Enablement ([RDE](/docs/redfishservices/ilos/supplementdocuments/rdesupport/#redfish-device-enablement-rde-support)) support for the following URIs and HTTP methods:
