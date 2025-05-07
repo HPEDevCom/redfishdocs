@@ -71,4 +71,6 @@
       page: docs/redfishClients/index.md
     - label: HPE iLOrest user guide
       page: docs/redfishClients/ilorest-userguide/index.md
+    - label: HPE Python Redfish library
+      page: docs/redfishClients/python-redfish-library/index.md
 - separatorLine: true

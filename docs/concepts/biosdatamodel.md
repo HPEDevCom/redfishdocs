@@ -34,7 +34,7 @@ in specific schemas called **Registries**.
 
 The BIOS URI entry point (`/redfish/v1/Systems/{ComputerSystemId}/Bios`)
 contains the `AttributeRegistry`
-[property](/docs/redfishservices/ilos/ilo6/ilo6_159/ilo6_bios_resourcedefns159/#attributeregistry).
+[property](/docs/redfishservices/ilos/ilo7/ilo7_111/ilo7_bios_resourcedefns111/#attributeregistry).
 This property indicates the name
 and version of a registry file that defines the properties in the BIOS
 configuration. It also includes information about
