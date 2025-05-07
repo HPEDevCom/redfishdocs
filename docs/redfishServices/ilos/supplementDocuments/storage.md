@@ -33,7 +33,7 @@ using its own database of storage controller resources and properties,
 populated during Pre-OS tasks (POST).
 
 For more information on HPE RDE support changes and limitations, refer to the
-[Redfish Device Enablement (RDE) support](../rdesupport/) section.
+[Redfish Device Enablement (RDE) support](rdesupport/) section.
 
 For updated information on the Redfish resources, corresponding URIs, and
 supported HTTP methods towards storage controllers implementing PLDM for

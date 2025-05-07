@@ -575,7 +575,7 @@ the corresponding interface in the host is configured as a DHCP client.
 Redfish clients [authentication](/docs/concepts/redfishauthentication/#redfish-authentication-and-sessions)
 (basic or session based) is always required to access iLO resources via vNIC, regardless the type
 of user (privileged or standard) sending the Redfish requests and the
-[security state](../securityservice/#ilo-security-state) of the iLO.
+[security state](securityservice/#ilo-security-state) of the iLO.
 
 {% admonition type="success" name="TIP" %}
 Read the

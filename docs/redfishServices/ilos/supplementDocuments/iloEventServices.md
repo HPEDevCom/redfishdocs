@@ -19,7 +19,7 @@ section. It contains some specificities of its implementation
 in HPE iLO 5 and HPE iLO 6 management controllers.
 
 Information concerning iLO events is also present in the
-[iLO Telemetry](../ilotelemetryservice) section.
+[iLO Telemetry](ilotelemetryservice) section.
 
 ## HPE iLO 5 Event service
 
@@ -125,7 +125,7 @@ POST /redfish/v1/EventService/Subscriptions/
   {% /tab %}
   {% /tabs %}
 {% admonition type="success" name="TIP" %}
-Refer to the [Telemetry Service](../ilotelemetryservice) for examples
+Refer to the [Telemetry Service](ilotelemetryservice) for examples
 explaining how to receive periodical metric report events.
 {% /admonition %}
 

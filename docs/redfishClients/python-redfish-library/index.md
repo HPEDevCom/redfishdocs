@@ -42,7 +42,7 @@ and local support for the Legacy HPE iLO RESTful API that was the
 starting point for the DMTF Redfish standard.
 
 For more information on the HPE iLO RESTful API and Redfish
-see the [API overview](/docs/redfishservices/ilos/).
+see the [API overview](/docs/redfishservices).
 
 ## HPE Legacy Rest API
 
