@@ -5,14 +5,15 @@
 # to the new format:
 # {% link-internal href=concat("/docs/path/", $env.PUBLIC_VAR, "/#fragment",) %} text {% /link-internal %}
 #
-# Version 0.28
+# In addition, it updates relative links like "../iloN_" to the new format: "iloN_"
+
+# Version 0.30
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
 cd $rootDir/docs/_scripts
 
 mdFileList=$(find $rootDir -type f -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/README.md" -not -path "*/.github/*")
-#mdFileList="$rootDir/docs/internallinks.md ../redfishServices/ilos/supplementDocuments/tfa.md ../redfishServices/ilos/supplementDocuments/backupAndRestore.md ../redfishServices/ilos/supplementDocuments/logServices.md"
 #mdFileList="../redfishServices/ilos/supplementDocuments/backupAndRestore.md ../redfishServices/ilos/supplementDocuments/logServices.md" 
 
 # Example of a target string:
@@ -23,6 +24,9 @@ for file in $mdFileList
 do
   echo "Processing file $file"
   dos2unix $file &> /dev/null
+
+  # Remove relative links like "../iloN_" to the new format: "iloN_"
+  sed -i 's?(../\(ilo[5-9]\)?(\1?g' $file
 
   if grep -q "^[ ]\+\[.*LATEST.*)" $file; then
     echo -e "***Warning***: file contains spaces before the link. Need to process it manually."
