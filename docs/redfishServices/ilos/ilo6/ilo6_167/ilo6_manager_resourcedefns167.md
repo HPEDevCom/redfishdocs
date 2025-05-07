@@ -33,7 +33,7 @@ A Collection of Manager resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Manager](../ilo6_manager_resourcedefns167/#manager)|
+|`Members[]`|[Manager](ilo6_manager_resourcedefns167/#manager)|
 
 ### Members (array)
 
@@ -95,26 +95,26 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 
 |Link Name|Destination type
 |---|---|
-|`SharedNetworkPorts`|Collection of [Port](../ilo6_other_resourcedefns167/#portcollection)|
-|`DedicatedNetworkPorts`|Collection of [Port](../ilo6_other_resourcedefns167/#portcollection)|
-|`Oem/Hpe/Links/EmbeddedMediaService`|[HpeiLOEmbeddedMedia](../ilo6_hpe_resourcedefns167/#hpeiloembeddedmedia)|
-|`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](../ilo6_hpe_resourcedefns167/#hperemotesupport)|
-|`Links/ManagerForChassis[]`|[Chassis](../ilo6_chassis_resourcedefns167/#chassis)|
-|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](../ilo6_hpe_resourcedefns167/#hpeilolicensecollection)|
-|`VirtualMedia`|Collection of [VirtualMedia](../ilo6_other_resourcedefns167/#virtualmediacollection)|
-|`LogServices`|Collection of [LogService](../ilo6_other_resourcedefns167/#logservicecollection)|
-|`Links/ManagerInChassis`|[Chassis](../ilo6_chassis_resourcedefns167/#chassis)|
-|`EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns167/#ethernetinterfacecollection)|
-|`Links/ManagerForServers[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns167/#computersystem)|
-|`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](../ilo6_hpe_resourcedefns167/#hpeiloactivehealthsystem)|
-|`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](../ilo6_hpe_resourcedefns167/#hpesecurityservice)|
-|`SerialInterfaces`|Collection of [SerialInterface](../ilo6_other_resourcedefns167/#serialinterfacecollection)|
-|`NetworkProtocol`|[ManagerNetworkProtocol](../ilo6_manager_resourcedefns167/#managernetworkprotocol)|
-|`Oem/Hpe/Links/FederationPeers`|Collection of [HpeiLOFederationPeers](../ilo6_hpe_resourcedefns167/#hpeilofederationpeerscollection)|
-|`HostInterfaces`|Collection of [HostInterface](../ilo6_other_resourcedefns167/#hostinterfacecollection)|
-|`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](../ilo6_hpe_resourcedefns167/#hpeilodatetime)|
-|`Oem/Hpe/Links/FederationGroups`|Collection of [HpeiLOFederationGroup](../ilo6_hpe_resourcedefns167/#hpeilofederationgroupcollection)|
-|`Oem/Hpe/Links/BackupRestoreService`|[HpeiLOBackupRestoreService](../ilo6_hpe_resourcedefns167/#hpeilobackuprestoreservice)|
+|`SharedNetworkPorts`|Collection of [Port](ilo6_other_resourcedefns167/#portcollection)|
+|`DedicatedNetworkPorts`|Collection of [Port](ilo6_other_resourcedefns167/#portcollection)|
+|`Oem/Hpe/Links/EmbeddedMediaService`|[HpeiLOEmbeddedMedia](ilo6_hpe_resourcedefns167/#hpeiloembeddedmedia)|
+|`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](ilo6_hpe_resourcedefns167/#hperemotesupport)|
+|`Links/ManagerForChassis[]`|[Chassis](ilo6_chassis_resourcedefns167/#chassis)|
+|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](ilo6_hpe_resourcedefns167/#hpeilolicensecollection)|
+|`VirtualMedia`|Collection of [VirtualMedia](ilo6_other_resourcedefns167/#virtualmediacollection)|
+|`LogServices`|Collection of [LogService](ilo6_other_resourcedefns167/#logservicecollection)|
+|`Links/ManagerInChassis`|[Chassis](ilo6_chassis_resourcedefns167/#chassis)|
+|`EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns167/#ethernetinterfacecollection)|
+|`Links/ManagerForServers[]`|[ComputerSystem](ilo6_computersystem_resourcedefns167/#computersystem)|
+|`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](ilo6_hpe_resourcedefns167/#hpeiloactivehealthsystem)|
+|`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](ilo6_hpe_resourcedefns167/#hpesecurityservice)|
+|`SerialInterfaces`|Collection of [SerialInterface](ilo6_other_resourcedefns167/#serialinterfacecollection)|
+|`NetworkProtocol`|[ManagerNetworkProtocol](ilo6_manager_resourcedefns167/#managernetworkprotocol)|
+|`Oem/Hpe/Links/FederationPeers`|Collection of [HpeiLOFederationPeers](ilo6_hpe_resourcedefns167/#hpeilofederationpeerscollection)|
+|`HostInterfaces`|Collection of [HostInterface](ilo6_other_resourcedefns167/#hostinterfacecollection)|
+|`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](ilo6_hpe_resourcedefns167/#hpeilodatetime)|
+|`Oem/Hpe/Links/FederationGroups`|Collection of [HpeiLOFederationGroup](ilo6_hpe_resourcedefns167/#hpeilofederationgroupcollection)|
+|`Oem/Hpe/Links/BackupRestoreService`|[HpeiLOBackupRestoreService](ilo6_hpe_resourcedefns167/#hpeilobackuprestoreservice)|
 
 ### CommandShell
 
@@ -1956,7 +1956,7 @@ A Collection of ManagerAccount resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[ManagerAccount](../ilo6_manager_resourcedefns167/#manageraccount)|
+|`Members[]`|[ManagerAccount](ilo6_manager_resourcedefns167/#manageraccount)|
 
 ### Members (array)
 
@@ -2001,7 +2001,7 @@ The user accounts, owned by a Manager, are defined in this resource.  Changes to
 
 |Link Name|Destination type
 |---|---|
-|`Keys`|Collection of [Key](../ilo6_other_resourcedefns167/#keycollection)|
+|`Keys`|Collection of [Key](ilo6_other_resourcedefns167/#keycollection)|
 
 ### AccountTypes (array)
 
@@ -2278,8 +2278,8 @@ iLO reset is required after the PATCH for the change to come into effect.
 
 |Link Name|Destination type
 |---|---|
-|`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](../ilo6_hpe_resourcedefns167/#hpeilosnmpservice)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns167/#ethernetinterfacecollection)|
+|`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](ilo6_hpe_resourcedefns167/#hpeilosnmpservice)|
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns167/#ethernetinterfacecollection)|
 
 ### FQDN
 

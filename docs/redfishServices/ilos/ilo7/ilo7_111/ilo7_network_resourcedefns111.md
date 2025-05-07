@@ -33,7 +33,7 @@ A Collection of NetworkAdapter resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkAdapter](../ilo7_network_resourcedefns111/#networkadapter)|
+|`Members[]`|[NetworkAdapter](ilo7_network_resourcedefns111/#networkadapter)|
 
 ### Members (array)
 
@@ -101,7 +101,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 |Link Name|Destination type
 |---|---|
-|`ports`|Collection of [Port](../ilo7_other_resourcedefns111/#portcollection)|
+|`ports`|Collection of [Port](ilo7_other_resourcedefns111/#portcollection)|
 
 ### @Redfish.Settings
 
@@ -1327,7 +1327,7 @@ A Collection of NetworkDeviceFunction resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkDeviceFunction](../ilo7_network_resourcedefns111/#networkdevicefunction)|
+|`Members[]`|[NetworkDeviceFunction](ilo7_network_resourcedefns111/#networkdevicefunction)|
 
 ### Members (array)
 
@@ -1378,7 +1378,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 |Link Name|Destination type
 |---|---|
-|`settings`|[NetworkDeviceFunction](../ilo7_network_resourcedefns111/#networkdevicefunction)|
+|`settings`|[NetworkDeviceFunction](ilo7_network_resourcedefns111/#networkdevicefunction)|
 
 ### @Redfish.Settings
 
@@ -2107,7 +2107,7 @@ A Collection of NetworkInterface resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkInterface](../ilo7_network_resourcedefns111/#networkinterface)|
+|`Members[]`|[NetworkInterface](ilo7_network_resourcedefns111/#networkinterface)|
 
 ### Members (array)
 
@@ -2171,7 +2171,7 @@ A NetworkInterface contains references linking NetworkAdapter, Port, and Network
 
 |Link Name|Destination type
 |---|---|
-|`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](../ilo7_network_resourcedefns111/#networkdevicefunctioncollection)|
+|`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](ilo7_network_resourcedefns111/#networkdevicefunctioncollection)|
 
 ### NetworkDeviceFunctions
 
@@ -2204,7 +2204,7 @@ A Collection of EthernetInterface resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[EthernetInterface](../ilo7_network_resourcedefns111/#ethernetinterface)|
+|`Members[]`|[EthernetInterface](ilo7_network_resourcedefns111/#ethernetinterface)|
 
 ### Members (array)
 

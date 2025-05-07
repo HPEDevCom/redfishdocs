@@ -330,8 +330,8 @@ The HpeCertAuth resource describes the BMC certificate based authentication feat
 
 |Link Name|Destination type
 |---|---|
-|`CACertificates`|Collection of [HpeCertificate](../ilo7_hpe_resourcedefns111/#hpecertificatecollection)|
-|`Links/UserCertificateMapping`|Collection of [HpeiLOAccountCertificateMap](../ilo7_hpe_resourcedefns111/#hpeiloaccountcertificatemapcollection)|
+|`CACertificates`|Collection of [HpeCertificate](ilo7_hpe_resourcedefns111/#hpecertificatecollection)|
+|`Links/UserCertificateMapping`|Collection of [HpeiLOAccountCertificateMap](ilo7_hpe_resourcedefns111/#hpeiloaccountcertificatemapcollection)|
 
 ### CACertificates
 
@@ -533,7 +533,7 @@ A Collection of HpeCertificate resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeCertificate](../ilo7_hpe_resourcedefns111/#hpecertificate)|
+|`Members[]`|[HpeCertificate](ilo7_hpe_resourcedefns111/#hpecertificate)|
 
 ### Members (array)
 
@@ -796,7 +796,7 @@ A Collection of HpeComponent resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeComponent](../ilo7_hpe_resourcedefns111/#hpecomponent)|
+|`Members[]`|[HpeComponent](ilo7_hpe_resourcedefns111/#hpecomponent)|
 
 ### Members (array)
 
@@ -1045,7 +1045,7 @@ A Collection of HpeComponentInstallSet resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeComponentInstallSet](../ilo7_hpe_resourcedefns111/#hpecomponentinstallset)|
+|`Members[]`|[HpeComponentInstallSet](ilo7_hpe_resourcedefns111/#hpecomponentinstallset)|
 
 ### Members (array)
 
@@ -1372,7 +1372,7 @@ A Collection of HpeComponentUpdateTaskQueue resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeComponentUpdateTask](../ilo7_hpe_resourcedefns111/#hpecomponentupdatetask)|
+|`Members[]`|[HpeComponentUpdateTask](ilo7_hpe_resourcedefns111/#hpecomponentupdatetask)|
 
 ### Members (array)
 
@@ -1954,7 +1954,7 @@ A Collection of HpeInvalidImage resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeInvalidImage](../ilo7_hpe_resourcedefns111/#hpeinvalidimage)|
+|`Members[]`|[HpeInvalidImage](ilo7_hpe_resourcedefns111/#hpeinvalidimage)|
 
 ### Members (array)
 
@@ -2000,8 +2000,8 @@ The schema definition for Key Management Service configuration.
 
 |Link Name|Destination type
 |---|---|
-|`settings`|[HpeKmsConfig](../ilo7_hpe_resourcedefns111/#hpekmsconfig)|
-|`Oem/Hpe/Links/baseconfigs`|[HpeBaseConfigs](../ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
+|`settings`|[HpeKmsConfig](ilo7_hpe_resourcedefns111/#hpekmsconfig)|
+|`Oem/Hpe/Links/baseconfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
 
 ### @Redfish.Settings
 
@@ -2219,7 +2219,7 @@ A Collection of HpeMaintenanceWindow resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeMaintenanceWindow](../ilo7_hpe_resourcedefns111/#hpemaintenancewindow)|
+|`Members[]`|[HpeMaintenanceWindow](ilo7_hpe_resourcedefns111/#hpemaintenancewindow)|
 
 ### Members (array)
 
@@ -2523,7 +2523,7 @@ HpeRemoteSupport enables management of HPE Remote Support configuration on iLO 5
 
 |Link Name|Destination type
 |---|---|
-|`ServiceEventLogs`|Collection of [LogEntry](../ilo7_other_resourcedefns111/#logentrycollection)|
+|`ServiceEventLogs`|Collection of [LogEntry](ilo7_other_resourcedefns111/#logentrycollection)|
 
 ### ConnectModel
 
@@ -2850,7 +2850,7 @@ A Collection of HpeSNMPAlertDestination resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeSNMPAlertDestination](../ilo7_hpe_resourcedefns111/#hpesnmpalertdestination)|
+|`Members[]`|[HpeSNMPAlertDestination](ilo7_hpe_resourcedefns111/#hpesnmpalertdestination)|
 
 ### Members (array)
 
@@ -2989,7 +2989,7 @@ A Collection of HpeSNMPUsers resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeSNMPUser](../ilo7_hpe_resourcedefns111/#hpesnmpuser)|
+|`Members[]`|[HpeSNMPUser](ilo7_hpe_resourcedefns111/#hpesnmpuser)|
 
 ### Members (array)
 
@@ -3155,7 +3155,7 @@ A Collection of HpeSecureEraseReport resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeSecureEraseReport](../ilo7_hpe_resourcedefns111/#hpesecureerasereport)|
+|`Members[]`|[HpeSecureEraseReport](ilo7_hpe_resourcedefns111/#hpesecureerasereport)|
 
 ### Members (array)
 
@@ -3200,7 +3200,7 @@ The HpeSecureEraseReportService resource describes the properties of the Secure 
 
 |Link Name|Destination type
 |---|---|
-|`Links/SecureEraseReportEntries`|Collection of [HpeSecureEraseReport](../ilo7_hpe_resourcedefns111/#hpesecureerasereportcollection)|
+|`Links/SecureEraseReportEntries`|Collection of [HpeSecureEraseReport](ilo7_hpe_resourcedefns111/#hpesecureerasereportcollection)|
 
 ### EraseInitiatedBy
 
@@ -3246,19 +3246,19 @@ The HpeSecurityService resource describes the properties for management of the s
 
 |Link Name|Destination type
 |---|---|
-|`SystemLDevID`|Collection of [Certificate](../ilo7_other_resourcedefns111/#certificatecollection)|
-|`Links/HttpsCert`|[HpeHttpsCert](../ilo7_hpe_resourcedefns111/#hpehttpscert)|
-|`BMCHPELDevID`|Collection of [Certificate](../ilo7_other_resourcedefns111/#certificatecollection)|
-|`Links/SSO`|[HpeiLOSSO](../ilo7_hpe_resourcedefns111/#hpeilosso)|
-|`BMCIDevIDPCA`|Collection of [Certificate](../ilo7_other_resourcedefns111/#certificatecollection)|
-|`BMCLAK`|Collection of [Certificate](../ilo7_other_resourcedefns111/#certificatecollection)|
-|`Links/SecurityParams`|Collection of [HpeiLOSecurityParam](../ilo7_hpe_resourcedefns111/#hpeilosecurityparamcollection)|
-|`Links/AutomaticCertificateEnrollment`|[HpeAutomaticCertEnrollment](../ilo7_hpe_resourcedefns111/#hpeautomaticcertenrollment)|
-|`BMCIAK`|Collection of [Certificate](../ilo7_other_resourcedefns111/#certificatecollection)|
-|`SystemLAK`|Collection of [Certificate](../ilo7_other_resourcedefns111/#certificatecollection)|
-|`Links/CertAuth`|[HpeCertAuth](../ilo7_hpe_resourcedefns111/#hpecertauth)|
-|`Links/ESKM`|[HpeESKM](../ilo7_hpe_resourcedefns111/#hpeeskm)|
-|`Links/SecurityDashboard`|[HpeiLOSecurityDashboard](../ilo7_hpe_resourcedefns111/#hpeilosecuritydashboard)|
+|`SystemLDevID`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`Links/HttpsCert`|[HpeHttpsCert](ilo7_hpe_resourcedefns111/#hpehttpscert)|
+|`BMCHPELDevID`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`Links/SSO`|[HpeiLOSSO](ilo7_hpe_resourcedefns111/#hpeilosso)|
+|`BMCIDevIDPCA`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`BMCLAK`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`Links/SecurityParams`|Collection of [HpeiLOSecurityParam](ilo7_hpe_resourcedefns111/#hpeilosecurityparamcollection)|
+|`Links/AutomaticCertificateEnrollment`|[HpeAutomaticCertEnrollment](ilo7_hpe_resourcedefns111/#hpeautomaticcertenrollment)|
+|`BMCIAK`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`SystemLAK`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`Links/CertAuth`|[HpeCertAuth](ilo7_hpe_resourcedefns111/#hpecertauth)|
+|`Links/ESKM`|[HpeESKM](ilo7_hpe_resourcedefns111/#hpeeskm)|
+|`Links/SecurityDashboard`|[HpeiLOSecurityDashboard](ilo7_hpe_resourcedefns111/#hpeilosecuritydashboard)|
 
 ### BMCHPELDevID
 
@@ -3661,8 +3661,8 @@ The schema definition of the server UEFI Boot Order resource.
 
 |Link Name|Destination type
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeServerBootSettings](../ilo7_hpe_resourcedefns111/#hpeserverbootsettings)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
+|`@Redfish.Settings/SettingsObject`|[HpeServerBootSettings](ilo7_hpe_resourcedefns111/#hpeserverbootsettings)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
 
 ### @Redfish.Settings
 
@@ -3823,8 +3823,8 @@ The schema definition for Server Configuration Lock configuration.
 
 |Link Name|Destination type
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeServerConfigLock](../ilo7_hpe_resourcedefns111/#hpeserverconfiglock)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
+|`@Redfish.Settings/SettingsObject`|[HpeServerConfigLock](ilo7_hpe_resourcedefns111/#hpeserverconfiglock)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
 
 ### @Redfish.Settings
 
@@ -4100,7 +4100,7 @@ HpeServerDevice represents physical server devices including part information.  
 
 |Link Name|Destination type
 |---|---|
-|`DeviceInstances[]`|[HpeServerPciDevice](../ilo7_hpe_resourcedefns111/#hpeserverpcidevice)|
+|`DeviceInstances[]`|[HpeServerPciDevice](ilo7_hpe_resourcedefns111/#hpeserverpcidevice)|
 
 ### ComponentIntegrityStatus
 
@@ -4306,7 +4306,7 @@ A Collection of HpeServerDevice resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeServerDevice](../ilo7_hpe_resourcedefns111/#hpeserverdevice)|
+|`Members[]`|[HpeServerDevice](ilo7_hpe_resourcedefns111/#hpeserverdevice)|
 
 ### Members (array)
 
@@ -4607,7 +4607,7 @@ A Collection of HpeServerPCISlot resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeServerPCISlot](../ilo7_hpe_resourcedefns111/#hpeserverpcislot)|
+|`Members[]`|[HpeServerPCISlot](ilo7_hpe_resourcedefns111/#hpeserverpcislot)|
 
 ### Members (array)
 
@@ -4938,7 +4938,7 @@ A Collection of HpeServerPciDevice resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeServerPciDevice](../ilo7_hpe_resourcedefns111/#hpeserverpcidevice)|
+|`Members[]`|[HpeServerPciDevice](ilo7_hpe_resourcedefns111/#hpeserverpcidevice)|
 
 ### Members (array)
 
@@ -4984,8 +4984,8 @@ The schema definition for TLS configuration.
 
 |Link Name|Destination type
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeTlsConfig](../ilo7_hpe_resourcedefns111/#hpetlsconfig)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
+|`@Redfish.Settings/SettingsObject`|[HpeTlsConfig](ilo7_hpe_resourcedefns111/#hpetlsconfig)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
 
 ### @Redfish.Settings
 
@@ -5305,7 +5305,7 @@ A Collection of HpeUSBDevices resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeUSBDevice](../ilo7_hpe_resourcedefns111/#hpeusbdevice)|
+|`Members[]`|[HpeUSBDevice](ilo7_hpe_resourcedefns111/#hpeusbdevice)|
 
 ### Members (array)
 
@@ -5490,7 +5490,7 @@ A Collection of HpeUSBPorts resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeUSBPort](../ilo7_hpe_resourcedefns111/#hpeusbport)|
+|`Members[]`|[HpeUSBPort](ilo7_hpe_resourcedefns111/#hpeusbport)|
 
 ### Members (array)
 
@@ -5617,7 +5617,7 @@ A Collection of HpeWorkloadPerformanceAdvisor resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeWorkloadPerformanceAdvisor](../ilo7_hpe_resourcedefns111/#hpeworkloadperformanceadvisor)|
+|`Members[]`|[HpeWorkloadPerformanceAdvisor](ilo7_hpe_resourcedefns111/#hpeworkloadperformanceadvisor)|
 
 ### Members (array)
 
@@ -5709,7 +5709,7 @@ A Collection of HpeiLOAccountCertificateMap resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeiLOAccountCertificateMap](../ilo7_hpe_resourcedefns111/#hpeiloaccountcertificatemap)|
+|`Members[]`|[HpeiLOAccountCertificateMap](ilo7_hpe_resourcedefns111/#hpeiloaccountcertificatemap)|
 
 ### Members (array)
 
@@ -6148,7 +6148,7 @@ A Collection of HpeiLOBackupFile resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeiLOBackupFile](../ilo7_hpe_resourcedefns111/#hpeilobackupfile)|
+|`Members[]`|[HpeiLOBackupFile](ilo7_hpe_resourcedefns111/#hpeilobackupfile)|
 
 ### Members (array)
 
@@ -6267,7 +6267,7 @@ The HpeiLODateTime resource describes the properties for managing the BMC data a
 
 |Link Name|Destination type
 |---|---|
-|`Links/EthernetNICs`|Collection of [EthernetInterface](../ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
+|`Links/EthernetNICs`|Collection of [EthernetInterface](ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
 
 ### ConfigurationSettings
 
@@ -6584,7 +6584,7 @@ A Collection of HpeiLOFrus resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeiLOFrus](../ilo7_hpe_resourcedefns111/#hpeilofrus)|
+|`Members[]`|[HpeiLOFrus](ilo7_hpe_resourcedefns111/#hpeilofrus)|
 
 ### Members (array)
 
@@ -7155,7 +7155,7 @@ A Collection of HpeiLOLicense resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeiLOLicense](../ilo7_hpe_resourcedefns111/#hpeilolicense)|
+|`Members[]`|[HpeiLOLicense](ilo7_hpe_resourcedefns111/#hpeilolicense)|
 
 ### Members (array)
 
@@ -7324,7 +7324,7 @@ A Collection of RunningSoftwareInventory resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeiLORunningSoftwareInventory](../ilo7_hpe_resourcedefns111/#hpeilorunningsoftwareinventory)|
+|`Members[]`|[HpeiLORunningSoftwareInventory](ilo7_hpe_resourcedefns111/#hpeilorunningsoftwareinventory)|
 
 ### Members (array)
 
@@ -7874,7 +7874,7 @@ The HpeiLOSecurityDashboard resource describes the BMC security dashboard.
 
 |Link Name|Destination type
 |---|---|
-|`SecurityParameters`|[HpeiLOSecurityParam](../ilo7_hpe_resourcedefns111/#hpeilosecurityparam)|
+|`SecurityParameters`|[HpeiLOSecurityParam](ilo7_hpe_resourcedefns111/#hpeilosecurityparam)|
 
 ### OverallSecurityStatus
 
@@ -8031,7 +8031,7 @@ A Collection of HpeiLOSecurityParam resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[HpeiLOSecurityParam](../ilo7_hpe_resourcedefns111/#hpeilosecurityparam)|
+|`Members[]`|[HpeiLOSecurityParam](ilo7_hpe_resourcedefns111/#hpeilosecurityparam)|
 
 ### Members (array)
 
@@ -8077,7 +8077,7 @@ The HpeiLOSnmpService resource describes the properties for managing the SNMP co
 |Link Name|Destination type
 |---|---|
 |`SNMPUsers`|Collection of [HpeSNMPUser](#hpesnmpuser)|
-|`SNMPAlertDestinations`|Collection of [HpeSNMPAlertDestination](../ilo7_hpe_resourcedefns111/#hpesnmpalertdestinationcollection)|
+|`SNMPAlertDestinations`|Collection of [HpeSNMPAlertDestination](ilo7_hpe_resourcedefns111/#hpesnmpalertdestinationcollection)|
 
 ### AlertDestinationAssociations (array)
 
@@ -8480,8 +8480,8 @@ There are no parameters for this action.
 
 |Link Name|Destination type
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeiSCSISoftwareInitiator](../ilo7_hpe_resourcedefns111/#hpeiscsisoftwareinitiator)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
+|`@Redfish.Settings/SettingsObject`|[HpeiSCSISoftwareInitiator](ilo7_hpe_resourcedefns111/#hpeiscsisoftwareinitiator)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
 
 ### @Redfish.Settings
 

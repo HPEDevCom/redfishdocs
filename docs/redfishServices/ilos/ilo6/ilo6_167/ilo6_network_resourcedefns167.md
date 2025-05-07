@@ -33,7 +33,7 @@ A Collection of NetworkAdapter resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkAdapter](../ilo6_network_resourcedefns167/#networkadapter)|
+|`Members[]`|[NetworkAdapter](ilo6_network_resourcedefns167/#networkadapter)|
 
 ### Members (array)
 
@@ -101,8 +101,8 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 |Link Name|Destination type
 |---|---|
-|`ports`|Collection of [Port](../ilo6_other_resourcedefns167/#portcollection)|
-|`assembly`|[Assembly](../ilo6_other_resourcedefns167/#assembly)|
+|`ports`|Collection of [Port](ilo6_other_resourcedefns167/#portcollection)|
+|`assembly`|[Assembly](ilo6_other_resourcedefns167/#assembly)|
 
 ### @Redfish.Settings
 
@@ -1333,7 +1333,7 @@ A Collection of NetworkDeviceFunction resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkDeviceFunction](../ilo6_network_resourcedefns167/#networkdevicefunction)|
+|`Members[]`|[NetworkDeviceFunction](ilo6_network_resourcedefns167/#networkdevicefunction)|
 
 ### Members (array)
 
@@ -1384,7 +1384,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 |Link Name|Destination type
 |---|---|
-|`settings`|[NetworkDeviceFunction](../ilo6_network_resourcedefns167/#networkdevicefunction)|
+|`settings`|[NetworkDeviceFunction](ilo6_network_resourcedefns167/#networkdevicefunction)|
 
 ### @Redfish.Settings
 
@@ -2103,7 +2103,7 @@ A Collection of NetworkInterface resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkInterface](../ilo6_network_resourcedefns167/#networkinterface)|
+|`Members[]`|[NetworkInterface](ilo6_network_resourcedefns167/#networkinterface)|
 
 ### Members (array)
 
@@ -2167,7 +2167,7 @@ A NetworkInterface contains references linking NetworkAdapter, Port, and Network
 
 |Link Name|Destination type
 |---|---|
-|`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](../ilo6_network_resourcedefns167/#networkdevicefunctioncollection)|
+|`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](ilo6_network_resourcedefns167/#networkdevicefunctioncollection)|
 
 ### NetworkDeviceFunctions
 
@@ -2200,7 +2200,7 @@ A Collection of EthernetInterface resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[EthernetInterface](../ilo6_network_resourcedefns167/#ethernetinterface)|
+|`Members[]`|[EthernetInterface](ilo6_network_resourcedefns167/#ethernetinterface)|
 
 ### Members (array)
 

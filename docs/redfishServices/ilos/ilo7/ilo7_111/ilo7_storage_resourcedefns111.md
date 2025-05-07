@@ -33,7 +33,7 @@ A Collection of Storage resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Storage](../ilo7_storage_resourcedefns111/#storage)|
+|`Members[]`|[Storage](ilo7_storage_resourcedefns111/#storage)|
 
 ### Members (array)
 
@@ -78,11 +78,11 @@ Storage defines a storage subsystem and its respective properties.  A storage su
 
 |Link Name|Destination type
 |---|---|
-|`Volumes`|Collection of [Volume](../ilo7_storage_resourcedefns111/#volumecollection)|
-|`Controllers`|Collection of [StorageController](../ilo7_storage_resourcedefns111/#storagecontrollercollection)|
-|`Links/Enclosures[]`|[Chassis](../ilo7_chassis_resourcedefns111/#chassis)|
-|`StorageControllers`|Collection of [StorageController](../ilo7_storage_resourcedefns111/#storagecontrollercollection)|
-|`Drives[]`|[Drive](../ilo7_storage_resourcedefns111/#drive)|
+|`Volumes`|Collection of [Volume](ilo7_storage_resourcedefns111/#volumecollection)|
+|`Controllers`|Collection of [StorageController](ilo7_storage_resourcedefns111/#storagecontrollercollection)|
+|`Links/Enclosures[]`|[Chassis](ilo7_chassis_resourcedefns111/#chassis)|
+|`StorageControllers`|Collection of [StorageController](ilo7_storage_resourcedefns111/#storagecontrollercollection)|
+|`Drives[]`|[Drive](ilo7_storage_resourcedefns111/#drive)|
 
 ### Controllers
 
@@ -678,7 +678,7 @@ A Collection of Storage resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[StorageController](../ilo7_storage_resourcedefns111/#storagecontroller)|
+|`Members[]`|[StorageController](ilo7_storage_resourcedefns111/#storagecontroller)|
 
 ### Members (array)
 
@@ -723,7 +723,7 @@ The StorageController schema describes a storage controller and its properties. 
 
 |Link Name|Destination type
 |---|---|
-|`ports`|Collection of [Port](../ilo7_other_resourcedefns111/#portcollection)|
+|`ports`|Collection of [Port](ilo7_other_resourcedefns111/#portcollection)|
 
 ### AssetTag
 
@@ -1226,7 +1226,7 @@ A Collection of Volume resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Volume](../ilo7_storage_resourcedefns111/#volume)|
+|`Members[]`|[Volume](ilo7_storage_resourcedefns111/#volume)|
 
 ### Members (array)
 
@@ -1270,7 +1270,7 @@ The Volume resource describes a volume, virtual disk, LUN, or other logical stor
 
 |Link Name|Destination type
 |---|---|
-|`Links/Drives[]`|[Drive](../ilo7_storage_resourcedefns111/#drive)|
+|`Links/Drives[]`|[Drive](ilo7_storage_resourcedefns111/#drive)|
 
 ### CapacityBytes
 

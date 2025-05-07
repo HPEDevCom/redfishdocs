@@ -31,7 +31,7 @@ A Collection of ComputerSystem resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns167/#computersystem)|
+|`Members[]`|[ComputerSystem](ilo6_computersystem_resourcedefns167/#computersystem)|
 
 ### Members (array)
 
@@ -76,22 +76,22 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 
 |Link Name|Destination type
 |---|---|
-|`EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns167/#ethernetinterfacecollection)|
+|`EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns167/#ethernetinterfacecollection)|
 |`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice)|
-|`Links/Chassis[]`|[Chassis](../ilo6_chassis_resourcedefns167/#chassis)|
-|`Memory`|Collection of [Memory](../ilo6_other_resourcedefns167/#memorycollection)|
+|`Links/Chassis[]`|[Chassis](ilo6_chassis_resourcedefns167/#chassis)|
+|`Memory`|Collection of [Memory](ilo6_other_resourcedefns167/#memorycollection)|
 |`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](#hpeusbport)|
 |`Oem/Hpe/Links/NetworkAdapters`|HpeBaseNetworkAdapterCollection|
-|`NetworkInterfaces`|Collection of [NetworkInterface](../ilo6_network_resourcedefns167/#networkinterfacecollection)|
-|`Processors`|Collection of [Processor](../ilo6_other_resourcedefns167/#processorcollection)|
-|`SecureBoot`|[SecureBoot](../ilo6_other_resourcedefns167/#secureboot)|
-|`Storage`|Collection of [Storage](../ilo6_storage_resourcedefns167/#storagecollection)|
-|`Bios`|[Bios](../ilo6_bios_resourcedefns167/#bios)|
-|`LogServices`|Collection of [LogService](../ilo6_other_resourcedefns167/#logservicecollection)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns167/#ethernetinterfacecollection)|
-|`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](../ilo6_hpe_resourcedefns167/#hpeserverpcislotcollection)|
-|`Links/ManagedBy[]`|[Manager](../ilo6_manager_resourcedefns167/#manager)|
-|`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](../ilo6_hpe_resourcedefns167/#hpeserverpcidevicecollection)|
+|`NetworkInterfaces`|Collection of [NetworkInterface](ilo6_network_resourcedefns167/#networkinterfacecollection)|
+|`Processors`|Collection of [Processor](ilo6_other_resourcedefns167/#processorcollection)|
+|`SecureBoot`|[SecureBoot](ilo6_other_resourcedefns167/#secureboot)|
+|`Storage`|Collection of [Storage](ilo6_storage_resourcedefns167/#storagecollection)|
+|`Bios`|[Bios](ilo6_bios_resourcedefns167/#bios)|
+|`LogServices`|Collection of [LogService](ilo6_other_resourcedefns167/#logservicecollection)|
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns167/#ethernetinterfacecollection)|
+|`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](ilo6_hpe_resourcedefns167/#hpeserverpcislotcollection)|
+|`Links/ManagedBy[]`|[Manager](ilo6_manager_resourcedefns167/#manager)|
+|`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](ilo6_hpe_resourcedefns167/#hpeserverpcidevicecollection)|
 
 ### AssetTag
 

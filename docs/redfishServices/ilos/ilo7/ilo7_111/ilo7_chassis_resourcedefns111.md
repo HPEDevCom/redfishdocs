@@ -33,7 +33,7 @@ A Collection of Chassis resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Chassis](../ilo7_chassis_resourcedefns111/#chassis)|
+|`Members[]`|[Chassis](ilo7_chassis_resourcedefns111/#chassis)|
 
 ### Members (array)
 
@@ -78,15 +78,15 @@ The Chassis resource describes the physical components for a system. This object
 
 |Link Name|Destination type
 |---|---|
-|`Links/ComputerSystems[]`|[ComputerSystem](../ilo7_computersystem_resourcedefns111/#computersystem)|
-|`ThermalSubsystem`|[ThermalSubsystem](../ilo7_other_resourcedefns111/#thermalsubsystem)|
-|`Links/ManagedBy[]`|[Manager](../ilo7_manager_resourcedefns111/#manager)|
-|`Oem/Hpe/Links/Devices`|Collection of [HpeServerDevice](../ilo7_hpe_resourcedefns111/#hpeserverdevicecollection)|
-|`Sensors`|Collection of [Sensor](../ilo7_other_resourcedefns111/#sensorcollection)|
-|`NetworkAdapters`|Collection of [NetworkAdapter](../ilo7_network_resourcedefns111/#networkadaptercollection)|
-|`Power`|[Power](../ilo7_other_resourcedefns111/#power)|
-|`Thermal`|[Thermal](../ilo7_other_resourcedefns111/#thermal)|
-|`EnvironmentMetrics`|[EnvironmentMetrics](../ilo7_other_resourcedefns111/#environmentmetrics)|
+|`Links/ComputerSystems[]`|[ComputerSystem](ilo7_computersystem_resourcedefns111/#computersystem)|
+|`ThermalSubsystem`|[ThermalSubsystem](ilo7_other_resourcedefns111/#thermalsubsystem)|
+|`Links/ManagedBy[]`|[Manager](ilo7_manager_resourcedefns111/#manager)|
+|`Oem/Hpe/Links/Devices`|Collection of [HpeServerDevice](ilo7_hpe_resourcedefns111/#hpeserverdevicecollection)|
+|`Sensors`|Collection of [Sensor](ilo7_other_resourcedefns111/#sensorcollection)|
+|`NetworkAdapters`|Collection of [NetworkAdapter](ilo7_network_resourcedefns111/#networkadaptercollection)|
+|`Power`|[Power](ilo7_other_resourcedefns111/#power)|
+|`Thermal`|[Thermal](ilo7_other_resourcedefns111/#thermal)|
+|`EnvironmentMetrics`|[EnvironmentMetrics](ilo7_other_resourcedefns111/#environmentmetrics)|
 
 ### AssetTag
 

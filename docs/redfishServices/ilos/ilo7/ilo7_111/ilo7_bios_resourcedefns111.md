@@ -34,12 +34,12 @@ The Bios schema contains properties related to the BIOS Attribute Registry.  The
 
 |Link Name|Destination type
 |---|---|
-|`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](../ilo7_hpe_resourcedefns111/#hpeserverbootsettings)|
-|`@Redfish.Settings/SettingsObject`|[Bios](../ilo7_bios_resourcedefns111/#bios)|
-|`Oem/Hpe/Links/TlsConfig`|[HpeTlsConfig](../ilo7_hpe_resourcedefns111/#hpetlsconfig)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](../ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
-|`Oem/Hpe/Links/Mappings`|[HpeBiosMapping](../ilo7_hpe_resourcedefns111/#hpebiosmapping)|
-|`Oem/Hpe/Links/iScsi`|[HpeiSCSISoftwareInitiator](../ilo7_hpe_resourcedefns111/#hpeiscsisoftwareinitiator)|
+|`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](ilo7_hpe_resourcedefns111/#hpeserverbootsettings)|
+|`@Redfish.Settings/SettingsObject`|[Bios](ilo7_bios_resourcedefns111/#bios)|
+|`Oem/Hpe/Links/TlsConfig`|[HpeTlsConfig](ilo7_hpe_resourcedefns111/#hpetlsconfig)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
+|`Oem/Hpe/Links/Mappings`|[HpeBiosMapping](ilo7_hpe_resourcedefns111/#hpebiosmapping)|
+|`Oem/Hpe/Links/iScsi`|[HpeiSCSISoftwareInitiator](ilo7_hpe_resourcedefns111/#hpeiscsisoftwareinitiator)|
 
 ### @Redfish.Settings
 

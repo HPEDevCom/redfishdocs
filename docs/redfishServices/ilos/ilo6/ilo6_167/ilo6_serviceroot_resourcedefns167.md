@@ -34,19 +34,19 @@ The ServiceRoot resource describes the Redfish API service root.
 
 |Link Name|Destination type
 |---|---|
-|`Registries`|Collection of [MessageRegistryFile](../ilo6_other_resourcedefns167/#messageregistryfilecollection)|
-|`Systems`|Collection of [ComputerSystem](../ilo6_computersystem_resourcedefns167/#computersystemcollection)|
-|`Managers`|Collection of [Manager](../ilo6_manager_resourcedefns167/#managercollection)|
-|`AccountService`|[AccountService](../ilo6_other_resourcedefns167/#accountservice)|
-|`Fabrics`|Collection of [Fabric](../ilo6_other_resourcedefns167/#fabriccollection)|
-|`UpdateService`|[UpdateService](../ilo6_other_resourcedefns167/#updateservice)|
-|`ComponentIntegrity`|Collection of [ComponentIntegrity](../ilo6_other_resourcedefns167/#componentintegritycollection)|
-|`SessionService`|[SessionService](../ilo6_other_resourcedefns167/#sessionservice)|
-|`EventService`|[EventService](../ilo6_other_resourcedefns167/#eventservice)|
-|`Chassis`|Collection of [Chassis](../ilo6_chassis_resourcedefns167/#chassiscollection)|
-|`Oem/Hpe/Links/ResourceDirectory`|[HpeiLOResourceDirectory](../ilo6_hpe_resourcedefns167/#hpeiloresourcedirectory)|
-|`JsonSchemas`|Collection of [JsonSchemaFile](../ilo6_other_resourcedefns167/#jsonschemafilecollection)|
-|`Links/Sessions`|Collection of [Session](../ilo6_other_resourcedefns167/#sessioncollection)|
+|`Registries`|Collection of [MessageRegistryFile](ilo6_other_resourcedefns167/#messageregistryfilecollection)|
+|`Systems`|Collection of [ComputerSystem](ilo6_computersystem_resourcedefns167/#computersystemcollection)|
+|`Managers`|Collection of [Manager](ilo6_manager_resourcedefns167/#managercollection)|
+|`AccountService`|[AccountService](ilo6_other_resourcedefns167/#accountservice)|
+|`Fabrics`|Collection of [Fabric](ilo6_other_resourcedefns167/#fabriccollection)|
+|`UpdateService`|[UpdateService](ilo6_other_resourcedefns167/#updateservice)|
+|`ComponentIntegrity`|Collection of [ComponentIntegrity](ilo6_other_resourcedefns167/#componentintegritycollection)|
+|`SessionService`|[SessionService](ilo6_other_resourcedefns167/#sessionservice)|
+|`EventService`|[EventService](ilo6_other_resourcedefns167/#eventservice)|
+|`Chassis`|Collection of [Chassis](ilo6_chassis_resourcedefns167/#chassiscollection)|
+|`Oem/Hpe/Links/ResourceDirectory`|[HpeiLOResourceDirectory](ilo6_hpe_resourcedefns167/#hpeiloresourcedirectory)|
+|`JsonSchemas`|Collection of [JsonSchemaFile](ilo6_other_resourcedefns167/#jsonschemafilecollection)|
+|`Links/Sessions`|Collection of [Session](ilo6_other_resourcedefns167/#sessioncollection)|
 
 ### AccountService
 

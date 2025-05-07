@@ -33,7 +33,7 @@ A Collection of Manager resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Manager](../ilo7_manager_resourcedefns111/#manager)|
+|`Members[]`|[Manager](ilo7_manager_resourcedefns111/#manager)|
 
 ### Members (array)
 
@@ -95,23 +95,23 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 
 |Link Name|Destination type
 |---|---|
-|`DedicatedNetworkPorts`|Collection of [Port](../ilo7_other_resourcedefns111/#portcollection)|
-|`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](../ilo7_hpe_resourcedefns111/#hpeilodatetime)|
-|`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](../ilo7_hpe_resourcedefns111/#hperemotesupport)|
-|`Links/ManagerForChassis[]`|[Chassis](../ilo7_chassis_resourcedefns111/#chassis)|
-|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](../ilo7_hpe_resourcedefns111/#hpeilolicensecollection)|
-|`VirtualMedia`|Collection of [VirtualMedia](../ilo7_other_resourcedefns111/#virtualmediacollection)|
-|`LogServices`|Collection of [LogService](../ilo7_other_resourcedefns111/#logservicecollection)|
-|`Links/ManagerInChassis`|[Chassis](../ilo7_chassis_resourcedefns111/#chassis)|
-|`EthernetInterfaces`|Collection of [EthernetInterface](../ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
-|`Links/ManagerForServers[]`|[ComputerSystem](../ilo7_computersystem_resourcedefns111/#computersystem)|
-|`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](../ilo7_hpe_resourcedefns111/#hpeiloactivehealthsystem)|
-|`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](../ilo7_hpe_resourcedefns111/#hpesecurityservice)|
+|`DedicatedNetworkPorts`|Collection of [Port](ilo7_other_resourcedefns111/#portcollection)|
+|`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](ilo7_hpe_resourcedefns111/#hpeilodatetime)|
+|`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](ilo7_hpe_resourcedefns111/#hperemotesupport)|
+|`Links/ManagerForChassis[]`|[Chassis](ilo7_chassis_resourcedefns111/#chassis)|
+|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](ilo7_hpe_resourcedefns111/#hpeilolicensecollection)|
+|`VirtualMedia`|Collection of [VirtualMedia](ilo7_other_resourcedefns111/#virtualmediacollection)|
+|`LogServices`|Collection of [LogService](ilo7_other_resourcedefns111/#logservicecollection)|
+|`Links/ManagerInChassis`|[Chassis](ilo7_chassis_resourcedefns111/#chassis)|
+|`EthernetInterfaces`|Collection of [EthernetInterface](ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
+|`Links/ManagerForServers[]`|[ComputerSystem](ilo7_computersystem_resourcedefns111/#computersystem)|
+|`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](ilo7_hpe_resourcedefns111/#hpeiloactivehealthsystem)|
+|`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](ilo7_hpe_resourcedefns111/#hpesecurityservice)|
 |`SerialInterfaces`|SerialInterfaceCollection|
-|`NetworkProtocol`|[ManagerNetworkProtocol](../ilo7_manager_resourcedefns111/#managernetworkprotocol)|
-|`HostInterfaces`|Collection of [HostInterface](../ilo7_other_resourcedefns111/#hostinterfacecollection)|
-|`SharedNetworkPorts`|Collection of [Port](../ilo7_other_resourcedefns111/#portcollection)|
-|`Oem/Hpe/Links/BackupRestoreService`|[HpeiLOBackupRestoreService](../ilo7_hpe_resourcedefns111/#hpeilobackuprestoreservice)|
+|`NetworkProtocol`|[ManagerNetworkProtocol](ilo7_manager_resourcedefns111/#managernetworkprotocol)|
+|`HostInterfaces`|Collection of [HostInterface](ilo7_other_resourcedefns111/#hostinterfacecollection)|
+|`SharedNetworkPorts`|Collection of [Port](ilo7_other_resourcedefns111/#portcollection)|
+|`Oem/Hpe/Links/BackupRestoreService`|[HpeiLOBackupRestoreService](ilo7_hpe_resourcedefns111/#hpeilobackuprestoreservice)|
 
 ### CommandShell
 
@@ -1961,7 +1961,7 @@ A Collection of ManagerAccount resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[ManagerAccount](../ilo7_manager_resourcedefns111/#manageraccount)|
+|`Members[]`|[ManagerAccount](ilo7_manager_resourcedefns111/#manageraccount)|
 
 ### Members (array)
 
@@ -2006,7 +2006,7 @@ The user accounts, owned by a Manager, are defined in this resource.  Changes to
 
 |Link Name|Destination type
 |---|---|
-|`Keys`|Collection of [Key](../ilo7_other_resourcedefns111/#keycollection)|
+|`Keys`|Collection of [Key](ilo7_other_resourcedefns111/#keycollection)|
 
 ### AccountTypes (array)
 
@@ -2283,8 +2283,8 @@ iLO reset is required after the PATCH for the change to come into effect.
 
 |Link Name|Destination type
 |---|---|
-|`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](../ilo7_hpe_resourcedefns111/#hpeilosnmpservice)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
+|`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](ilo7_hpe_resourcedefns111/#hpeilosnmpservice)|
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
 
 ### FQDN
 
