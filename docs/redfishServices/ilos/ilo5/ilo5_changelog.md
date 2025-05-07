@@ -2,7 +2,7 @@
 markdown:
   toc:
     hide: false
-    depth: 3
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:

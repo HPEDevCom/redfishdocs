@@ -64,7 +64,10 @@ The only required header for a GET operation is the authorization (`X-Auth-Token
 
 As part of the transition from HP to HPE, and due to the Redfish requirement that the Oem section name reflect an owned IANA name, all OEM section names are changed from **Hp** to **Hpe**.
 
-```json > iLO 4
+{% tabs %}
+{% tab label="iLO 4" %}
+
+```json iLO 4
 {
   "Oem": {
     "Hp": {
@@ -74,7 +77,7 @@ As part of the transition from HP to HPE, and due to the Redfish requirement tha
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLO 5" %}
 
 ```json iLO 5
@@ -89,6 +92,7 @@ As part of the transition from HP to HPE, and due to the Redfish requirement tha
   
   {% /tab %}
   {% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 Client code should look for dependencies upon the "Hp" property and also handle "Hpe"
 {% /admonition %}
@@ -112,7 +116,7 @@ The pre-Redfish property `HealthRollUp` is removed in iLO 5 and `HealthRollup` i
 Client code should make sure any dependencies upon the pre-Redfish `HealthRollUp` property is replaced by Redfish-standard `HealthRollup`
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLO 4" %}
 
 ```json iLO 4
@@ -126,7 +130,7 @@ Client code should make sure any dependencies upon the pre-Redfish `HealthRollUp
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLO 5" %}
 
 ```json iLO 5
@@ -141,6 +145,7 @@ Client code should make sure any dependencies upon the pre-Redfish `HealthRollUp
   
   {% /tab %}
   {% /tabs %}
+
 ## Error and Response Changes
 
 HTTP Operation responses in iLO 5 are Redfish conformant and pre-Redfish properties are removed.
@@ -149,7 +154,7 @@ HTTP Operation responses in iLO 5 are Redfish conformant and pre-Redfish propert
 Client code should verify that it handles Redfish conformant `ExtendedInfo` responses
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLO 4 (without the Redfish conformant OData" %}
 
 ```json iLO 4 (without the Redfish conformant OData-Version header)
@@ -172,7 +177,7 @@ Client code should verify that it handles Redfish conformant `ExtendedInfo` resp
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLO 5" %}
 
 ```json iLO 5
@@ -191,6 +196,7 @@ Client code should verify that it handles Redfish conformant `ExtendedInfo` resp
   
   {% /tab %}
   {% /tabs %}
+
 ## POST Actions
 
 In Redfish, an `Actions` property informs the client which actions are supported on a resource and how to invoke them.
@@ -253,6 +259,7 @@ iLO 4 contained a pre-Redfish form of this with `"AvailableActions"`.  This is n
   
   {% /tab %}
   {% /tabs %}
+
 ### Invoking Actions
 
   {% tabs %}
@@ -272,7 +279,7 @@ POST /rest/v1/Systems/1
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Generic iLO 5 action request" %}
 
 ```text Generic iLO 5 action request
@@ -288,8 +295,9 @@ POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 The URI of the POST matches the `"target"` property in `"Actions"`.
 {% /admonition %}
@@ -336,14 +344,14 @@ Using the rules above, iLO 5 supports `$expand` in this way:
 
 #### iLO 5 `$expand` example
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET Chassis collection request" %}
 
 ```text Generic GET Chassis collection request
 GET /redfish/v1/Chassis (a collection without `$expand` query option)
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -364,14 +372,14 @@ GET /redfish/v1/Chassis (a collection without `$expand` query option)
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Generic expanded request" %}
 
 ```text Generic expanded request
 GET /redfish/v1/Chassis?$expand=.
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body (abbreviated)" %}
 
 ```json Response body (abbreviated)
@@ -406,22 +414,23 @@ GET /redfish/v1/Chassis?$expand=.
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### iLO 5 only query option
 
 iLO 5 1.40 and later supports the `only` query parameter documented in the Redfish API specification. This query parameter is ignored except on collections with only one member. Examples include the `ComputerSystemCollection`, `ChassisCollection`, and `ManagerCollection`.
 
 #### iLO 5 `only` example
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic only request" %}
 
 ```text Generic only request
 GET /redfish/v1/Chassis?only
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body (abbreviated)" %}
 
 ```json Response body (abbreviated)
@@ -435,8 +444,9 @@ GET /redfish/v1/Chassis?only
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### iLO 5 $filter query option
 
 The [odata.org](https://www.odata.org/getting-started/basic-tutorial/#queryData) official site defines the `$filter` query as the following:
@@ -449,14 +459,14 @@ Six logical operators (Equals, Not Equals, Greater Than...) can be applied to th
 
 The following example retrieves the `iLO Dedicated Network Interface` properties of an iLO 5
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/Managers/1/EthernetInterfaces?$filter=Name eq 'Manager Dedicated Network Interface'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body (abbreviated)" %}
 
 ```json Response body (abbreviated)
@@ -493,8 +503,9 @@ GET /redfish/v1/Managers/1/EthernetInterfaces?$filter=Name eq 'Manager Dedicated
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example filters IML entries by key:
 
   {% tabs %}
@@ -584,18 +595,19 @@ GET /redfish/v1/Systems/1/LogServices/IML/Entries?$filter=Oem.Hpe.Severity eq 'R
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example filters IML entries by date:
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/Systems/1/LogServices/IML/Entries?$filter=Created gt '2022-03-05T07:49:50Z'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -645,6 +657,7 @@ GET /redfish/v1/Systems/1/LogServices/IML/Entries?$filter=Created gt '2022-03-05
   
   {% /tab %}
   {% /tabs %}
+
 ### iLO 5 $count query option
 
 The `$count` system query option allows clients to request a count of the matching resources included with the resources in the response.
@@ -677,6 +690,7 @@ GET /redfish/v1/systems/1/logservices/SL/Entries?$count=true
   
   {% /tab %}
   {% /tabs %}
+
 ### iLO 5 $top and $skip query options
 
 The `$top` system query option requests the number of items in the queried collection to be included in the result. The `$skip` query option requests the number of items in the queried collection that are to be skipped and not included in the result.
@@ -739,8 +753,8 @@ GET /redfish/v1/Systems/1/LogServices/IML/Entries?$top=10
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 The following example skips 18 entries and prints the last 10 entries when `Members@odata.count` is 28:
 
   {% tabs %}
@@ -794,6 +808,7 @@ GET /redfish/v1/Systems/1/LogServices/IML/Entries?$skip=18
   
   {% /tab %}
   {% /tabs %}
+
 ## iLO 5 Data Model Changes
 
 {% admonition type="info" name="NOTE" %}
@@ -953,6 +968,7 @@ The existing HPE-specific TrustedModules (TPM) sub-object is replaced with the n
   
   {% /tab %}
   {% /tabs %}
+
 #### SecureBoot Link
 
 The link to the `SecureBoot` resource is added as defined in Redfish in place of the existing HPE-specific link. Refer to the [SecureBoot](#secureboot) section for more details.
@@ -986,6 +1002,7 @@ The link to the `SecureBoot` resource is added as defined in Redfish in place of
   
   {% /tab %}
   {% /tabs %}
+
 #### Bios
 
 The link to the Bios resource is added as defined in Redfish in place of the existing HPE-specific OEM link. Refer to the [UEFI BIOS](#uefi-bios) section for more details.
@@ -1019,6 +1036,7 @@ The link to the Bios resource is added as defined in Redfish in place of the exi
   
   {% /tab %}
   {% /tabs %}
+
 #### Other
 
 The following properties have been removed in iLO 5 for Redfish conformance:
@@ -1091,6 +1109,7 @@ Redfish moves the system-specific BIOS attributes from the top level of the reso
   
   {% /tab %}
   {% /tabs %}
+
 ##### Reset Bios Settings (NEW)
 
 UEFI BIOS Supports a new POST Action to reset settings.
@@ -1124,6 +1143,7 @@ POST /redfish/v1/Systems/1/Bios/Settings/Actions/Bios.ResetBios/
   
   {% /tab %}
   {% /tabs %}
+
 ##### Change BIOS Password (NEW)
 
 UEFI BIOS Supports a new Redfish POST Action to change the BIOS password.
@@ -1161,6 +1181,7 @@ POST /redfish/v1/Systems/1/Bios/Settings/Actions/Bios.ChangePassword/
   
   {% /tab %}
   {% /tabs %}
+
 ##### Settings Result Report
 
 The result of applying new settings is Redfish conformant in iLO 5.
@@ -1218,6 +1239,7 @@ The result of applying new settings is Redfish conformant in iLO 5.
   
   {% /tab %}
   {% /tabs %}
+
 ##### Changes to BIOS Attribute Enum Values
 
 Attribute names/enum values cannot start with digits, per OData requirements.
@@ -1244,6 +1266,7 @@ Attribute names/enum values cannot start with digits, per OData requirements.
   
   {% /tab %}
   {% /tabs %}
+
 ##### Redfish conformant HPE Links
 
 With a Redfish conformant BIOS resource structure, some HPE-specific links are moved into an HPE specific section.
@@ -1305,6 +1328,7 @@ With a Redfish conformant BIOS resource structure, some HPE-specific links are m
   
   {% /tab %}
   {% /tabs %}
+
 #### Bios Attribute Registry
 
 All BIOS attribute registry resources have switched from HP OEM type (HpBiosAttributeRegistrySchema.1.2.1) to Redfish standard object (AttributeRegistry.v1_0_0).
@@ -1378,7 +1402,7 @@ The `HpSecureBoot` status and configuration resource has been replaced with the 
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLO 5" %}
 
 ```json iLO 5
@@ -1404,22 +1428,23 @@ The `HpSecureBoot` status and configuration resource has been replaced with the 
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 An action exists to reset keys. The `ResetKeysType` value can be the following:
 
 - `DeleteAllKeys`
 - `ResetAllKeysToDefault`
 - `DeletePK`
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic Reset of Secure Boot keys" %}
 
 ```text Generic Reset of Secure Boot keys
 POST /redfish/v1/Systems/1/SecureBoot/Actions/SecureBoot.ResetKeys/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Request body" %}
 
 ```json Request body
@@ -1428,8 +1453,9 @@ POST /redfish/v1/Systems/1/SecureBoot/Actions/SecureBoot.ResetKeys/
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### Memory and NVDIMM Support
 
 iLO 5 replaces iLO 4's `HpMemory` DIMM information with the Redfish conformant `Memory` schema.
@@ -1479,6 +1505,7 @@ iLO 5 replaces `HostCorrelation` with `Oem/Hpe/HostOS` which is available if Age
   
   {% /tab %}
   {% /tabs %}
+
 ### Managers
 
 The following properties have been replaced in the `Manager` iLO 5 resource type (`/redfish/v1/Managers/1`) for Redfish conformance:
@@ -1494,7 +1521,9 @@ All of the replacement properties are also implemented in iLO 4 2.30 and later.
 
 #### iLO 5 Security State
 
-iLO 5 features a new `Securitystate` setting readable and settable via the REST API in the  [HpeSecurityService](/docs/redfishservices/ilos/ilo5/ilo5_278/ilo5_hpe_resourcedefns278/#hpesecurityservice).
+iLO 5 features a new `SecurityState` setting readable and settable via the REST API.
+Refer to the [iLO Security State](/docs/redfishservices/ilos/supplementdocuments/securityservice/#ilo-security-state)
+for more detail.
 
 You may PATCH these settings, but iLO 5 enforces strict limitations on how security states can transition. Any unsupported transition results in an error.
 
@@ -1513,7 +1542,6 @@ iLO 4 allowed anonymous access to the iLO RESTful API over the local channel int
 iLO 5 limits access to the local interface in HighSecurity, FIPS, and SuiteB modes to authorized users only. In Production mode, anonymous access remains identical to iLO 4.
 
 When performing local BIOS configuration changes, the following conditions apply:
-
 
 |Local REST Access|No BIOS Password|BIOS Password Set|
 |-------------------------|--------------------------|---------------------------|
@@ -1663,6 +1691,7 @@ The main difference in the `SchemaFile` and `JsonSchemaFile` is the change from 
   
   {% /tab %}
   {% /tabs %}
+
 ### On-Service Message Registries
 
 Message Registries available in the service conform to Redfish.
@@ -1790,6 +1819,7 @@ An event can indicate that it is in one or more of the following categories:
   
   {% /tab %}
   {% /tabs %}
+
 ### EventService (/redfish/v1/EventService/)
 
 The following properties are removed for Redfish conformance:
