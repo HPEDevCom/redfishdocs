@@ -35,6 +35,7 @@ navbar:
     - label: Redfish standard
       href: https://www.dmtf.org/standards/redfish
       external: true
+
 products:
   iLO7:
     name: HPE iLO 7
@@ -42,13 +43,15 @@ products:
   iLO6:
     name: HPE iLO 6
     folder: docs/redfishServices/ilos/ilo6
+  iLO5:
+    name: HPE iLO 5
+    folder: docs/redfishServices/ilos/ilo5
   SupDocs:
     name: iLO Supplement documents
     folder: docs/redfishServices/ilos/supplementDocuments
   iLOrest:
     name: HPE iLOrest
     folder: docs/redfishClients/ilorest-userguide
-  
 
 markdown:
   toc:
@@ -56,6 +59,7 @@ markdown:
     hide: true
   lastUpdatedBlock:
     hide: true
+
 logo:
   image: images/hpe.svg
   link: /
