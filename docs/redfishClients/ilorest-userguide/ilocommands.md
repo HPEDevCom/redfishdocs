@@ -2141,8 +2141,9 @@ Awaiting results of firmware integrity check....
 Scan Result: OK
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## Iloaccounts Command
 
 ### Syntax
@@ -2154,11 +2155,11 @@ Scan Result: OK
 Adds/deletes an iLO account on the currently logged in server
 and modifies iLO account privileges.
 
-- **LOGINNAME:**  The account name, not used to login.
-- **USERNAME:** The account username name, used to login.
-- **PASSWORD:**  The account password, used to login.
-- **Id:** The number associated with an iLO user account.
-- **PRIVILEGES:**
+- **LOGINNAME**:  The account name or description, not used to login.
+- **USERNAME**: The account username name, used to login.
+- **PASSWORD**:  The account password, used to login.
+- **Id**: The number associated with an iLO user account to be modified.
+- **PRIVILEGES**: Comma separated list of integers supplied to the `--addprivs=` option:
   - 1: Login
   - 2: Remote Console
   - 3: User Config
@@ -2166,43 +2167,27 @@ and modifies iLO account privileges.
   - 5: Virtual Media
   - 6: Virtual Power and Reset
 
-- **iLO 5 added privileges:**
+- **iLO 5 added privileges**:
   - 7: Host NIC Config
   - 8: Host Bios Config
   - 9: Host Storage Config
   - 10: System Recovery Config
 
-- **Roles:**
+- **Roles**: Possible roles to supply to the `--role` option.
   - Administrator
   - ReadOnly
   - Operator
 
 {% admonition type="info" name="NOTE" %}
-By default, only login privilege is added to the newly created
-account with role "ReadOnly" in iLO 5 and no privileges in iLO 4.
-To modify these privileges, you can remove properties that would
-be set by using -`-removeprivs` or you can directly set which privileges are
-given using `--addprivs`.
-{% /admonition %}
 
-{% admonition type="info" name="NOTE" %}
+- Make sure the order of arguments is correct. The
+  parameters are extracted based on their position in the arguments list.
 
-Please make sure the order of arguments is correct. The
-parameters are extracted based on their position in the arguments list.
-Only privileges available to the logged in account can be set to the new
-account.
-{% /admonition %}
+- By default, only login privilege is added to the newly created
+  account with role "ReadOnly" in iLO 5 and no privileges in iLO 4.
 
-{% admonition type="info" name="NOTES" %}
+- Account credentials are case-sensitive.
 
-Account credentials are case-sensitive.
-
-{% /admonition %}
-
-{% admonition type="info" name="NOTE" %}
-
-Redfish sessions created with an application account don't have the `UserConfigPriv` [privilege](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-account-privileges).
-As a result, iLO accounts cannot be added, modified, or deleted within these sessions.  
 {% /admonition %}
 
 {% admonition type="success" name="TIP" %}
@@ -2211,8 +2196,16 @@ When executing the command `iloaccounts add` in a
 Linux machine, an escape character needs to be
 added before special characters of the password.
 
-Example: `iloaccount add rest rest 12iso\$help`
+Example with password "12iso$help" : `iloaccount add rest rest 12iso\$help`
 
+{% /admonition %}
+
+{% admonition type="warning" name="Warning" %}
+Redfish sessions created with an
+[application account](/docs/redfishservices/ilos/supplementdocuments/securityservice#application-accounts)
+don't have the `UserConfigPriv`
+[privilege](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-account-privileges).
+As a result, iLO accounts cannot be added, modified, or deleted within these sessions.  
 {% /admonition %}
 
 ### Parameters
@@ -2276,13 +2269,13 @@ command is completed. Using this flag when not logged in will have no effect.
 
 ### Examples
 
-To list the current iLO accounts on the system and their information,
+To list the current iLO accounts with their respective information,
 run the command without arguments.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
-```shell Example
+```shell List all iLO accounts
 ilorest iloaccounts
 Discovering data...Done
 iLO Account info:
@@ -2304,17 +2297,17 @@ SystemRecoveryConfigPriv=True
 
 ```
   
-  {% /tab %}
-  {% /tabs %}
-To add an iLO account include the `add` argument with the new
-account `USERNAME`, `LOGINNAME`, and `PASSWORD`.
-To optionally specify privileges at creation, 
-use the `--addprivs` option with numbers from the privilege list.
+{% /tab %}
+{% /tabs %}
 
-  {% tabs %}
-{% tab label="Example" %}
+To add an iLO account include the `add` command with the new
+account `USERNAME`, `LOGINNAME`, and `PASSWORD`,
+and optionally specify the privileges or role.
 
-```shell Example
+{% tabs %}
+{% tab label="Add iLO user with privileges" %}
+
+```shell
 ilorest iloaccounts add USERNAME ACCOUNTNAME PASSWORD --addprivs 1,4,7
 [201] The operation completed successfully.
 ilorest iloaccounts
@@ -2349,16 +2342,22 @@ LoginPriv=True
 SystemRecoveryConfigPriv=False
 
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% tab label="Add iLO user with role" %}
+
+ilorest iloaccount add "Admin Account" admin PASSWORD --role Administrator
+
+{% /tab %}
+{% /tabs %}
+
 To modify an iLO account's privileges include the `modify` argument,
 the `Id` or the `Username` of the account to modify, and include the
 `--addprivs` and/or `--removeprivs` options with numbers from the privilege
 list.
 
   {% tabs %}
-{% tab label="Example" %}
+{% tab label="iLO user modification" %}
 
 ```shell Example
 ilorest iloaccounts

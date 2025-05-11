@@ -11,7 +11,7 @@ breadcrumbs:
   hide: true
 ---
 
-## Managing iLO Users
+# Managing iLO Users
 
 {% admonition type="info" name="NOTE" %}
 It is possible that some properties or resources described in this section
@@ -29,6 +29,11 @@ User account modifications require Redfish clients to be
 authenticated with the "Administer User Accounts" privilege
 (`UserConfigPriv` in the Redfish `ManagerAccount`
 {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.privileges") %} resource type {% /link-internal %}
+
+{% admonition type="success" name="TIP:" %}
+Managing iLO users with iLOrest is described in this
+[documentation section](/docs/redfishclients/ilorest-userguide/ilocommands#iloaccounts-command).
+{% /admonition %}
 
 ## The Account Service
 
@@ -109,6 +114,7 @@ curl --insecure --silent --location -u ilo-user:password   \
   
   {% /tab %}
   {% /tabs %}
+
 ## Local user administration
 
 HPE iLO holds a local user database enabling consistent user management
@@ -119,7 +125,7 @@ the URIs of the local user accounts.
 
 {% admonition type="success" name="TIP:" %}
 Refer to this
-[documentation section](/docs/redfishclients/ilorest-userguide/ilocommands/#examples-11)
+[documentation section](/docs/redfishclients/ilorest-userguide/ilocommands#iloaccounts-command)
 of iLO user management with iLOrest.
 {% /admonition %}
 
