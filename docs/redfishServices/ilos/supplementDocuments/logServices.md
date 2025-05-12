@@ -7,7 +7,8 @@ breadcrumbs:
   hide: true
 markdown:
   toc:
-    hide: true
+    hide: false
+    depth: 2
   lastUpdatedBlock:
     hide: false
 ---
@@ -359,7 +360,7 @@ clear the Alert Event Logs. Individual Alert Event Logs can be accessed by
 performing GET on
 `/redfish/v1/Systems/1/LogServices/Event/Entries/{@entriesId}`.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="GET Event entry" %}
 
 ```text GET Event entry
@@ -401,8 +402,9 @@ GET /redfish/v1/Systems/1/LogService/Event/Entries/24
   }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### Clearing Alert Event Log through Redfish Action
 
 To completely clear all Alert Event Logs, perform POST toward
@@ -536,3 +538,78 @@ ilorest -d serverlogs --selectlog=AHS --downloadallahs
   {% /tabs %}
 For a full Redfish example click here:
 <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ahs_data.py" target="_blank">get\_ahs\_data.py</a>
+
+## Air Filter record
+
+Some HPE servers like the HPE DL145 Gen11 embed
+an air filter that has to be replaced periodically. The iLO
+of those servers automatically generates reminder records
+in the Integrated Management Log (IML).
+By default, HPE iLO reminds you to replace the air filter
+with an early and critical IMLs at 85 and 90 days of
+Power-On operation respectively.
+The examples of HPE iLO generating IMLs are as follows:
+
+{% tabs %}
+{% tab label="Early reminder log entry" %}
+
+```text Early reminder
+The air filter installed in the server has now operated for 85 days and will
+reach its maximum usage limit for a highly particulate environments in 5 days.
+To ensure optimal performance, it is advised that you inspect the air filter
+and replace it, if necessary.
+```
+
+{% /tab %}
+{% tab label="Critical reminder log entry" %}
+
+```text Critical reminder
+The air filter installed in the server has now operated for 90 days and has
+reached its maximum usage limit for a highly particulate environment. To ensure
+optimal performance, it is advised that you inspect the air filter and
+replace it if necessary.
+```
+
+{% /tab %}
+{% /tabs %}
+
+Use the following Redfish action to set custom durations for these reminder IMLs:
+
+{% tabs %}
+{% tab label="POST action" %}
+
+```text POST action
+POST /redfish/v1/managers/1/actions/Oem/Hpe/HpeiLO.TriggerFilterChangeTimer
+```
+
+{% /tab %}
+{% tab label="Payload" %}
+
+```json Payload
+{
+  "RemainingDaysForEarlyReminder": <integer 25-175 (default: 85)>,
+  "RemainingDaysForCriticalReminder": <integer 30-180 (default: 90)>
+}
+```
+
+{% /tab %}
+{% /tabs %}
+
+The request parameters such as `RemainingDaysForEarlyReminder` and
+`RemainingDaysForCriticalReminder` specifies duration of the
+`FinishedPost`
+[operation](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_computersystem_resourcedefns167/#oemhpepoststate)
+after which the early warning and
+critical warning reminders are respectively logged.
+
+The power-on duration of a system tracks the operating time of a
+server, against the set duration for a notification, only when the
+server POST (Power On Self Test) is complete.
+
+{% admonition type="info" name="NOTE" %}
+HPE iLO checks for a system uptime every 24 hours to determine the 
+expired reminders. Expect a delay of about 0-24 hours to receive a
+notification in the IML log after the server has completed the
+power-on durations set using the `RemainingDaysForEarlyReminder`
+and `RemainingDaysForCriticalReminder` parameters.
+{% /admonition %}

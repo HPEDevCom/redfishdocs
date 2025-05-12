@@ -26,6 +26,49 @@ For a better understanding of the conformance to the DMTF Redfish,
 read the _Redfish versioning_ paragraph of this
 <a href="https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/" target="_blank">article</a>.
 
+## iLO 6 v1.68 new features and changes
+
+### New URIs
+
+- [PortMetrics schema](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#portmetrics):
+  `/redfish/v1/chassis/{@chassisId}/networkadapters/{@nicId}/ports/{@portId}/portmetrics` (GET).
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### HTTP methods - additions and deprecations
+
+- No HTTP methods changed across these releases.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to the supported Redfish Actions for this release.
+
+### Schema updates
+
+- `Chassis.v1_25_1.Chassis`:
+    Added `EnvironmentMetrics`
+    [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_chassis_resourcedefns168/#environmentmetrics).
+- `ComponentIntegrity.v1_3_0.ComponentIntegrity`:
+    Added `Oem.Hpe.HardwareData` and `Oem.Hpe.TcgEventLog`
+    [properties](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#componentintegrity).
+- `EthernetInterface.v1_12_1.EthernetInterface`:
+    Added `DNSOverRA` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_network_resourcedefns168/#ethernetinterface).
+- `EnvironmentMetrics.v1_3_2.EnvironmentMetrics`:
+    Added `PowerWatts` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#powerwatts).
+- `EventDestination.v1_13_0.EventDestination` updated to [version v1\_14\_0](/docs/redfishservices/ilos/ilo6/ilo6_168/       ilo6_other_resourcedefns168/#subscriptiontype).
+    Added the following properties: `SyslogTLS`, `SyslogUDP`.
+    For more information, see [Syslog subscription](/docs/redfishservices/ilos/supplementdocuments/iloeventservices/#syslog-subscription).
+- `HpeEventService.v2_2_0.HpeEventService`:
+    Added `SubscriptionType` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#subscriptiontype).
+- `HpeNetworkAdapter.v1_10_1.HpeNetworkAdapter`:
+    Added `PrimaryBootLoaderVersion` and `ChipVersion` [objects](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_network_resourcedefns168/#networkadapter).
+- `HpeiLOSnmpService.v2_4_1.HpeiLOSnmpService`:
+    Removed DES (Data Encryption Standard) from the [definition](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_hpe_resourcedefns168/#privacyprotocol).
+- `Port.v1_12_0.Port`:
+    Added few SFP [properties](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#sfp).
+
 ## iLO 6 v1.67 new features and changes
 
 ### New URIs
