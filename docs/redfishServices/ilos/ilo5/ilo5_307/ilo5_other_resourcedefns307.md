@@ -591,16 +591,6 @@ Member of [BootOption.v1\_0\_1.BootOption](#bootoption)
 |Type|string or null|
 |Read Only|True|
 
-### BootOptionEnabled
-
-Member of [BootOption.v1\_0\_1.BootOption](#bootoption)
-
-| | |
-|---|---|
-|Description|A flag that shows if the Boot Option is enabled.|
-|Type|boolean or null|
-|Read Only|False|
-
 ### BootOptionReference
 
 Member of [BootOption.v1\_0\_1.BootOption](#bootoption)

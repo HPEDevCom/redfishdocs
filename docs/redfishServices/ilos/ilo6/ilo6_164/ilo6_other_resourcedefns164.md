@@ -710,17 +710,6 @@ Member of [BootOption.v1\_0\_1.BootOption](#bootoption)
 |Read Only|True|
 |Added|iLO6 1.05|
 
-### BootOptionEnabled
-
-Member of [BootOption.v1\_0\_1.BootOption](#bootoption)
-
-| | |
-|---|---|
-|Description|A flag that shows if the Boot Option is enabled.|
-|Type|boolean or null|
-|Read Only|False|
-|Added|iLO6 1.05|
-
 ### BootOptionReference
 
 Member of [BootOption.v1\_0\_1.BootOption](#bootoption)
