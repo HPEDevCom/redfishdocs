@@ -12,7 +12,9 @@
 
 # ToDo:
 #        * Test that the $InputFiles variable is not empty !
+#        * Convert the outputs into Reunite/Realm/Markdoc format
 
+# version 0.1
 
 # Local Variables
 InputFiles=$(ls ${WorkingDirectory}/_${iLOGen}_resourcedefns${iLOVersion}.*)
@@ -106,8 +108,13 @@ for file in $OutputFiles ; do
   for collection in $collectionList ; do
     echo "  Processing ${collection}Collection"
     collectionIsIn=$(awk '/ '${collection}$'/ {print $1}' $TmpFile | sort -u)
-    # Replace string 'Collection of [${collection}](#collection)' with 'Collection of [.*](../filename/#collectioncollection'   
-    sed -i -e "s?\(^|.*|Collection of \[${collection}\](\)\(#.*\))|?\1../${collectionIsIn%.*}/\2collection)|?" $file &> /dev/null
+    # Replace string 'Collection of [${collection}](#collection)' with 'Collection of [.*](filename/#collectioncollection'  (Reunite/Realm)
+    # or with 'Collection of [.*](../filename/#collectioncollection' (Redocly/Workflows)
+    if [ $RedoclyRealm == true ] ; then
+      sed -i -e "s?\(^|.*|Collection of \[${collection}\](\)\(#.*\))|?\1${collectionIsIn%.*}/\2collection)|?" $file &> /dev/null
+    else
+      sed -i -e "s?\(^|.*|Collection of \[${collection}\](\)\(#.*\))|?\1../${collectionIsIn%.*}/\2collection)|?" $file &> /dev/null
+    fi
     ret="$?"
     if [ ! "${ret}" == "0" ] ; then
        echo "Problem with sed command"
@@ -122,7 +129,11 @@ for file in $OutputFiles ; do
     echo "  Processing ${resource} resource"
     resourceIsIn=$(awk '/ '${resource}$'/ {print $1}' $TmpFile2 | sort -u)
     # Replace string '[${resource}](#${resource})' with '[${resource}](../filename/#resource'  
-    sed -i -e "s?\(^|.*|\[${resource}\](\)\(#.*\))|?\1../${resourceIsIn%.*}/\2)|?" $file &> /dev/null
+    if [ $RedoclyRealm == true ] ; then
+      sed -i -e "s?\(^|.*|\[${resource}\](\)\(#.*\))|?\1${resourceIsIn%.*}/\2)|?" $file &> /dev/null
+    else
+      sed -i -e "s?\(^|.*|\[${resource}\](\)\(#.*\))|?\1../${resourceIsIn%.*}/\2)|?" $file &> /dev/null
+    fi
     ret="$?"
     if [ ! "${ret}" == "0" ] ; then
        echo "Problem with sed command"

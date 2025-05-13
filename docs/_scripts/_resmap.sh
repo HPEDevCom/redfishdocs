@@ -79,9 +79,11 @@ for type in $TypeList ; do
 # 1. from [ServiceRoot](#serviceroot-v1_13_0-serviceroot) to [ServiceRoot](../${iLOGen}_other_resourcedefns105/#serviceroot).
 # 2. from: "|Collection of [Certificate](#certificate-v1.0.0_certificate)" to "|Collection of [Certificate](#certificatecollection)"
 
-sed -i -e "s?\(|\[${type}\]\)(\(#.*\)-\(v.*\)-\(.*\))?\1(../${IsIn}/\2)?"                            \
-       -e "s?\(|Collection of \[${type}\]\)(\(#.*\)-\(v.*\)-\(.*\))?\1(../${IsIn}/\2collection)?"    \
-    $OutputFile
+if [ $RedoclyRealm == false ] ; then
+  sed -i -e "s?\(|\[${type}\]\)(\(#.*\)-\(v.*\)-\(.*\))?\1(../${IsIn}/\2)?"                         \
+      -e "s?\(|Collection of \[${type}\]\)(\(#.*\)-\(v.*\)-\(.*\))?\1(../${IsIn}/\2collection)?"    \
+      $OutputFile
+fi
 done
 
 # Fix Oem/Hpe collections that don't follow the schema/schemacollection paradigm.

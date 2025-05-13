@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# Version 0.96
+# Version 0.97
 
 # Script name: _script_wrapper.sh 
 # This script is a wrapper to the other scripts contained in this folder, except
@@ -38,18 +38,19 @@
 # Note: The following $scriptList variable is ordered. Don't modify this order!
 # scriptList="_lintFiles.sh"
 scriptList="_split_resourcedefns.sh _resourcedefns.sh _resmap.sh _msgregs.sh _excludeFromSearch.sh _lintFiles.sh"
+#scriptList="_split_resourcedefns.sh _resourcedefns.sh"
 required_executables="dos2unix sed awk"
 
 # Don't forget to update the following variables to process the right iLO version !
 
 export ilogen="iLO 6"
-export iLOFwVersion=1.67
+export iLOFwVersion=1.68
 
 export iLOGen=$(echo ${ilogen,,} | tr -d ' ')
 export iLOVersion=$(echo $iLOFwVersion | tr -d '.')
 
 #export RepoLocation="C:/api_redocly/hpe-ilo-redocly"
-export RepoLocation="C:/api_redocly/hpe-ilo-redocly"
+export RepoLocation="/cygdrive/c/Git-repo/ProtoRedfishDocs"
 export WorkingDirectory="$RepoLocation/docs/redfishServices/ilos/${iLOGen}/${iLOGen}_${iLOVersion}"
 
 export ResourcesFile_bck="${WorkingDirectory}/_raw_${iLOGen}_resourcedefns${iLOVersion}.md-bck"
@@ -86,6 +87,27 @@ case $answer in
     ;;
 esac
 
+# 
+# Need to know if we are formatting file for Redocly/Workflows
+# or for Redocly/Realm/Reunite
+#
+
+answer="N"
+bold=$(tput bold)
+normal=$(tput sgr0)
+echo -n "Are we in a Redocly/Realm/Reunite environment (y|N) ?  "
+IFS= read -r answer
+case $answer in
+  yes|y|Y*)
+    echo "Great... Let's adjust the environment"
+    export RedoclyRealm="true"
+    ;;
+  *)
+    echo -e "Awesome... Let's continue"
+    export RedoclyRealm="false"
+    ;;
+esac
+
 #
 ### Environment preparation
 #
@@ -117,6 +139,10 @@ for f in ${ResourcesFile} ${ResmapFile} ${MsgRegistryFile}; do
   cp ${f}-bck $f 
   dos2unix $f &> /dev/null
 done
+
+# Delete the "^### BootOptionEnabled" section (9 lines) from the resource file,
+# if PR 306 has not been merged (https://github.com/HewlettPackard/hpe-ilo-redocly/pull/306)
+sed -i '/^### BootOptionEnabled/,+9d'  ${ResourcesFile}
 
 # Build the list of all resource types identified as second level headers (^##) in the resourcedefns Slate file.
 export TypeList=$(awk '/^## / {print $NF}' $ResourcesFile | cut -d'.' -f 1 | sort -u)

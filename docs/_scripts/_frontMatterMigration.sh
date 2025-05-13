@@ -5,8 +5,9 @@
 #
 #  ToDo:
 #  - Investigate the insertion breadcrumbs with decent prefix, and not just the label
+#  - Should be incorporated in _resourcedefns.sh and _resmap.sh
 #
-# Version 0.64
+# Version 0.65
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"

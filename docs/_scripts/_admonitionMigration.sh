@@ -3,8 +3,10 @@
 # This script updates Redocly/Workflows admonitions
 # into Reunite/Realm admonitions.
 #
-#
-# Version 0.31
+# ToDo
+#     * Investigate if this script should be incorporated
+#       in a script called by _script_wrapper.sh 
+# Version 0.32
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"

@@ -10,7 +10,11 @@
 
 # This script MUST be launched by _script_wrapper.sh, which contains 
 # suitable configuration variables.
+# 
+# ToDo
+#     * Adapt to Reunite/Realm/Markdoc
 
+# version 0.1
 
 # Local Variables
 InputFile=$MsgRegistryFile
