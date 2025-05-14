@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# Version 0.97
+# Version 0.98
 
 # Script name: _script_wrapper.sh 
 # This script is a wrapper to the other scripts contained in this folder, except
@@ -28,7 +28,8 @@
 #          
 
 # ToDo:
-#        * Include `events.md` when possible
+#       * Include `events.md` when possible
+#       * Remove the oldest version of firmware to keep only the last 5 versions
 #        
 
 #
@@ -38,7 +39,6 @@
 # Note: The following $scriptList variable is ordered. Don't modify this order!
 # scriptList="_lintFiles.sh"
 scriptList="_split_resourcedefns.sh _resourcedefns.sh _resmap.sh _msgregs.sh _excludeFromSearch.sh _lintFiles.sh"
-#scriptList="_split_resourcedefns.sh _resourcedefns.sh"
 required_executables="dos2unix sed awk"
 
 # Don't forget to update the following variables to process the right iLO version !
@@ -65,6 +65,7 @@ export MsgRegistryFile="${WorkingDirectory}/_raw_${iLOGen}_msgregs${iLOVersion}.
 
 export TmpFile="/tmp/TmpFile"   ; rm $TmpFile &> /dev/null
 export TmpFile2="/tmp/TmpFile2" ; rm $TmpFile2 &> /dev/null
+export keepOldVersions=5 # Number of old versions to keep in the repo
 
 #
 ## Need validation of the iLO Generation and firmware version to process
@@ -206,5 +207,11 @@ rm $ResourcesFile $OtherResourcesFile                                           
 rm $ResmapFile $MsgRegistryFile                                                    &> /dev/null
 rm $WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md  &> /dev/null
 rm $WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*     &> /dev/null
+
+# Count the number of firmware versions documented
+cd $WorkingDirectory/..
+
+# Remove the oldest version of firmware to keep only the last 5 versions
+
 
 exit 0

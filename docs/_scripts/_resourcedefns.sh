@@ -35,6 +35,7 @@ for file in $InputFiles ; do
         ;;
       *serviceroot)
         hideToc=true
+        ;;
       *)
         maxTocDepth=2
         hideToc=false
