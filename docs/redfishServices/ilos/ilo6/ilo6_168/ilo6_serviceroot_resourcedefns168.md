@@ -1,22 +1,22 @@
 ---
-excludeFromSearch: true
+seo:
+  title: Serviceroot resource definitions
 markdown:
   toc:
-    hide: false
+    hide: true
     depth: 2
   lastUpdateBlock:
     hide: false
-  breadcrumbs:
-    hide: true
-seo:
-  title: Serviceroot resource definitions
+breadcrumbs:
+  hide: false
 ---
 
-# Serviceroot resource definitions of iLO 6 v1.67
+# Serviceroot resource definitions of iLO 6 v1.68
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
+
 
 ## ServiceRoot
 
@@ -32,21 +32,21 @@ The ServiceRoot resource describes the Redfish API service root.
 
 ### Links to other Resources
 
-|Link Name|Destination type|
+|Link Name|Destination type
 |---|---|
-|`Registries`|Collection of [MessageRegistryFile](ilo6_other_resourcedefns167/#messageregistryfilecollection)|
-|`Systems`|Collection of [ComputerSystem](ilo6_computersystem_resourcedefns167/#computersystemcollection)|
-|`Managers`|Collection of [Manager](ilo6_manager_resourcedefns167/#managercollection)|
-|`AccountService`|[AccountService](ilo6_other_resourcedefns167/#accountservice)|
-|`Fabrics`|Collection of [Fabric](ilo6_other_resourcedefns167/#fabriccollection)|
-|`UpdateService`|[UpdateService](ilo6_other_resourcedefns167/#updateservice)|
-|`ComponentIntegrity`|Collection of [ComponentIntegrity](ilo6_other_resourcedefns167/#componentintegritycollection)|
-|`SessionService`|[SessionService](ilo6_other_resourcedefns167/#sessionservice)|
-|`EventService`|[EventService](ilo6_other_resourcedefns167/#eventservice)|
-|`Chassis`|Collection of [Chassis](ilo6_chassis_resourcedefns167/#chassiscollection)|
-|`Oem/Hpe/Links/ResourceDirectory`|[HpeiLOResourceDirectory](ilo6_hpe_resourcedefns167/#hpeiloresourcedirectory)|
-|`JsonSchemas`|Collection of [JsonSchemaFile](ilo6_other_resourcedefns167/#jsonschemafilecollection)|
-|`Links/Sessions`|Collection of [Session](ilo6_other_resourcedefns167/#sessioncollection)|
+|`Registries`|Collection of [MessageRegistryFile](ilo6_other_resourcedefns168/#messageregistryfilecollection)|
+|`Systems`|Collection of [ComputerSystem](ilo6_computersystem_resourcedefns168/#computersystemcollection)|
+|`Managers`|Collection of [Manager](ilo6_manager_resourcedefns168/#managercollection)|
+|`AccountService`|[AccountService](ilo6_other_resourcedefns168/#accountservice)|
+|`Fabrics`|Collection of [Fabric](ilo6_other_resourcedefns168/#fabriccollection)|
+|`UpdateService`|[UpdateService](ilo6_other_resourcedefns168/#updateservice)|
+|`ComponentIntegrity`|Collection of [ComponentIntegrity](ilo6_other_resourcedefns168/#componentintegritycollection)|
+|`SessionService`|[SessionService](ilo6_other_resourcedefns168/#sessionservice)|
+|`EventService`|[EventService](ilo6_other_resourcedefns168/#eventservice)|
+|`Chassis`|Collection of [Chassis](ilo6_chassis_resourcedefns168/#chassiscollection)|
+|`Oem/Hpe/Links/ResourceDirectory`|[HpeiLOResourceDirectory](ilo6_hpe_resourcedefns168/#hpeiloresourcedirectory)|
+|`JsonSchemas`|Collection of [JsonSchemaFile](ilo6_other_resourcedefns168/#jsonschemafilecollection)|
+|`Links/Sessions`|Collection of [Session](ilo6_other_resourcedefns168/#sessioncollection)|
 
 ### AccountService
 

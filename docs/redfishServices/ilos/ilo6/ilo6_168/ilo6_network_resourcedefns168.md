@@ -1,25 +1,24 @@
 ---
-excludeFromSearch: true
+seo:
+  title: Network resource definitions
 markdown:
   toc:
     hide: false
     depth: 2
   lastUpdateBlock:
     hide: false
-  breadcrumbs:
-    hide: true
-seo:
-  title: Network resource definitions
+breadcrumbs:
+  hide: false
 ---
 
-# Network resource definitions of iLO 6 v1.67
+# Network resource definitions of iLO 6 v1.68
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-## NetworkAdapterCollection
 
+## NetworkAdapterCollection
 `@odata.type: "#NetworkAdapterCollection.NetworkAdapterCollection"`
 
 A Collection of NetworkAdapter resource instances.
@@ -32,9 +31,9 @@ A Collection of NetworkAdapter resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type|
+|Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkAdapter](ilo6_network_resourcedefns167/#networkadapter)|
+|`Members[]`|[NetworkAdapter](ilo6_network_resourcedefns168/#networkadapter)|
 
 ### Members (array)
 
@@ -90,6 +89,7 @@ A NetworkAdapter represents the physical network adapter capable of connecting t
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
 
+
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -99,10 +99,10 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 ### Links to other Resources
 
-|Link Name|Destination type|
+|Link Name|Destination type
 |---|---|
-|`ports`|Collection of [Port](ilo6_other_resourcedefns167/#portcollection)|
-|`assembly`|[Assembly](ilo6_other_resourcedefns167/#assembly)|
+|`ports`|Collection of [Port](ilo6_other_resourcedefns168/#portcollection)|
+|`assembly`|[Assembly](ilo6_other_resourcedefns168/#assembly)|
 
 ### @Redfish.Settings
 
@@ -637,6 +637,17 @@ Member of [NetworkAdapter.v1\_11\_0.NetworkAdapter](#networkadapter)
 |Type|string or null|
 |Read Only|True|
 |Added|iLO6 1.05|
+
+### Oem.Hpe.ChipVersion
+
+Member of [NetworkAdapter.v1\_11\_0.NetworkAdapter](#networkadapter)
+
+| | |
+|---|---|
+|Description|This represents the chipset family and part type of the current x100 device|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO6 1.68|
 
 ### Oem.Hpe.Controllers (array)
 
@@ -1201,6 +1212,17 @@ Member of [NetworkAdapter.v1\_11\_0.NetworkAdapter](#networkadapter)
 Member of [NetworkAdapter.v1\_11\_0.NetworkAdapter](#networkadapter)
 See the Redfish standard schema and specification for information on common Status object.
 
+### Oem.Hpe.PrimaryBootLoaderVersion
+
+Member of [NetworkAdapter.v1\_11\_0.NetworkAdapter](#networkadapter)
+
+| | |
+|---|---|
+|Description|PBL version number of the x100 device|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO6 1.68|
+
 ### Oem.Hpe.RedfishConfiguration
 
 Member of [NetworkAdapter.v1\_11\_0.NetworkAdapter](#networkadapter)
@@ -1287,6 +1309,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 ### Actions
 
+
 **NetworkAdapter.ResetSettingsToDefault**
 Member of [NetworkAdapter.v1\_11\_0.NetworkAdapter](#networkadapter)
 There are no parameters for this action.
@@ -1316,9 +1339,7 @@ There are no parameters for this action.
 **HpeNetworkAdapter.FlushConfigurationToNVM**
 Member of [NetworkAdapter.v1\_11\_0.NetworkAdapter](#networkadapter)
 There are no parameters for this action.
-
 ## NetworkDeviceFunctionCollection
-
 `@odata.type: "#NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection"`
 
 A Collection of NetworkDeviceFunction resource instances.
@@ -1332,9 +1353,9 @@ A Collection of NetworkDeviceFunction resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type|
+|Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkDeviceFunction](ilo6_network_resourcedefns167/#networkdevicefunction)|
+|`Members[]`|[NetworkDeviceFunction](ilo6_network_resourcedefns168/#networkdevicefunction)|
 
 ### Members (array)
 
@@ -1371,6 +1392,7 @@ A Network Device Function represents a logical interface exposed by the network 
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
 
+
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -1382,9 +1404,9 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 ### Links to other Resources
 
-|Link Name|Destination type|
+|Link Name|Destination type
 |---|---|
-|`settings`|[NetworkDeviceFunction](ilo6_network_resourcedefns167/#networkdevicefunction)|
+|`settings`|[NetworkDeviceFunction](ilo6_network_resourcedefns168/#networkdevicefunction)|
 
 ### @Redfish.Settings
 
@@ -2089,7 +2111,6 @@ Member of [NetworkDeviceFunction.v1\_8\_0.NetworkDeviceFunction](#networkdevicef
 |Added|iLO6 1.05|
 
 ## NetworkInterfaceCollection
-
 `@odata.type: "#NetworkInterfaceCollection.NetworkInterfaceCollection"`
 
 A Collection of NetworkInterface resource instances.
@@ -2102,9 +2123,9 @@ A Collection of NetworkInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type|
+|Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkInterface](ilo6_network_resourcedefns167/#networkinterface)|
+|`Members[]`|[NetworkInterface](ilo6_network_resourcedefns168/#networkinterface)|
 
 ### Members (array)
 
@@ -2166,9 +2187,9 @@ A NetworkInterface contains references linking NetworkAdapter, Port, and Network
 
 ### Links to other Resources
 
-|Link Name|Destination type|
+|Link Name|Destination type
 |---|---|
-|`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](ilo6_network_resourcedefns167/#networkdevicefunctioncollection)|
+|`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](ilo6_network_resourcedefns168/#networkdevicefunctioncollection)|
 
 ### NetworkDeviceFunctions
 
@@ -2186,7 +2207,6 @@ Member of [NetworkInterface.v1\_2\_0.NetworkInterface](#networkinterface)
 See the Redfish standard schema and specification for information on common Status object.
 
 ## EthernetInterfaceCollection
-
 `@odata.type: "#EthernetInterfaceCollection.EthernetInterfaceCollection"`
 
 A Collection of EthernetInterface resource instances.
@@ -2200,9 +2220,9 @@ A Collection of EthernetInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type|
+|Link Name|Destination type
 |---|---|
-|`Members[]`|[EthernetInterface](ilo6_network_resourcedefns167/#ethernetinterface)|
+|`Members[]`|[EthernetInterface](ilo6_network_resourcedefns168/#ethernetinterface)|
 
 ### Members (array)
 
@@ -2239,7 +2259,7 @@ The EthernetInterface resource describes a single, logical ethernet interface or
 
 {% admonition type="info" name="Note" %}
 
-The URI of the members of the computer system `EthernetInterface` collection can be represented with this notation:
+The URI of the members of the computer system `EthernetInterface` collection can be represented with this notation: 
 `/redfish/v1/Systems/{@systemId}/EthernetInterfaces/{@nicId}`.
 
 Starting with iLO 6 firmware version 1.58, the `{@nicId}` naming schema is consistent across device types.
@@ -2257,6 +2277,7 @@ It is a string containing one or more characters in the range: [0-9], with the f
   - at slot 1 in the range: 13-76
   - at slot 2 in the range: 77-140
 {% /admonition %}
+
 
 ### Resource Instances
 
@@ -3093,6 +3114,16 @@ Member of [EthernetInterface.v1\_12\_1.EthernetInterface](#ethernetinterface)
 |Type|boolean|
 |Read Only|False|
 |Added|iLO6 1.05|
+
+**Oem.Hpe.IPv6.DNSOverRA**
+Member of [EthernetInterface.v1\_12\_1.EthernetInterface](#ethernetinterface)
+
+| | |
+|---|---|
+|Description|An indication of whether the interface uses Router Advertised DNS servers.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO6 1.68|
 
 **Oem.Hpe.IPv6.DNSServers (array)**
 Member of [EthernetInterface.v1\_12\_1.EthernetInterface](#ethernetinterface)
