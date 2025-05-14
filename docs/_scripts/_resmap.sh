@@ -15,7 +15,7 @@
 # ToDo:
 #     * test return codes of important commands (i.e. sed)
 
-# version: 0.5
+# version: 0.51
 
 # Local Variables
 ResourceFiles=$(ls ${WorkingDirectory}/${iLOGen}_*_resourcedef*.md)
@@ -26,7 +26,8 @@ OutputFile="${WorkingDirectory}/${iLOGen}_resmap${iLOVersion}.md"
 dos2unix $InputFile
 
 # The following SEO variable contains Redocly front-end matter directives
-SEO="---
+if [ RedoclyRealm == "false" ] ; then
+  SEO="---
 seo:
   title: ${ilogen} version ${iLOFwVersion} Resource map
 toc:
@@ -34,6 +35,22 @@ toc:
 disableLastModified: false
 ---\n
 "
+else
+  SEO="---
+seo:
+  title: ${ilogen} version ${iLOFwVersion} Resource map
+markdown:
+  toc:
+    hide: true
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
+---\n
+"
+fi
+
 Header1Title="# Resource map of ${ilogen} v${iLOFwVersion}\n\n"
 FileDescription="The following table lists HPE iLO Redfish resource types and their associated URIs.\
 \n\n\
@@ -76,12 +93,16 @@ for type in $TypeList ; do
 
 
 #  The following sed command modifies links/fragments pointing to the resource definition files:
-# 1. from [ServiceRoot](#serviceroot-v1_13_0-serviceroot) to [ServiceRoot](../${iLOGen}_other_resourcedefns105/#serviceroot).
-# 2. from: "|Collection of [Certificate](#certificate-v1.0.0_certificate)" to "|Collection of [Certificate](#certificatecollection)"
+# 1. from [ServiceRoot](#serviceroot-v1_13_0-serviceroot) to [ServiceRoot](../${iLOGen}_other_resourcedefns105/#serviceroot). NOTE: "../" must be removed in Reunite/Realm/Markdoc.
+# 2. from: "|Collection of [Certificate](#certificate-v1.0.0_certificate)" to "|Collection of [Certificate](../${iLOGen}_other_resourcedefns105/#certificatecollection)"
 
 if [ $RedoclyRealm == false ] ; then
   sed -i -e "s?\(|\[${type}\]\)(\(#.*\)-\(v.*\)-\(.*\))?\1(../${IsIn}/\2)?"                         \
       -e "s?\(|Collection of \[${type}\]\)(\(#.*\)-\(v.*\)-\(.*\))?\1(../${IsIn}/\2collection)?"    \
+      $OutputFile
+else
+  sed -i -e "s?\(|\[${type}\]\)(\(#.*\)-\(v.*\)-\(.*\))?\1(${IsIn}/\2)?"                         \
+      -e "s?\(|Collection of \[${type}\]\)(\(#.*\)-\(v.*\)-\(.*\))?\1(${IsIn}/\2collection)?"    \
       $OutputFile
 fi
 done

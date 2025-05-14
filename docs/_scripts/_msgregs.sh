@@ -14,13 +14,14 @@
 # ToDo
 #     * Adapt to Reunite/Realm/Markdoc
 
-# version 0.1
+# version 0.11
 
 # Local Variables
 InputFile=$MsgRegistryFile
 OutputFile="${WorkingDirectory}/${iLOGen}_msgregs${iLOVersion}.md"
 
 # The following SEO variable contains Redocly front-end matter directives
+if [ RedoclyRealm == "false" ] ; then
 SEO="---
 seo:
   title: ${ilogen} v${iLOVersion} Error messages
@@ -29,6 +30,23 @@ toc:
 disableLastModified: false
 ---\n
 "
+else
+SEO="---
+seo:
+  title: ${ilogen} v${iLOVersion} Error messages
+markdown:
+  toc:
+    hide: true
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
+---\n
+"
+fi
+
+
 Header1Title="# Response message definitions of ${ilogen} v${iLOFwVersion}\n\n"
 
 FileDescription="This section is a reference for the defined message registry entries in HPE ${ilogen} version ${iLOFwVersion}. \

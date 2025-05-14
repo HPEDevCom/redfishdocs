@@ -39,6 +39,8 @@
           page: ilo6_168/ilo6_other_resourcedefns168.md        
         #- label: Event definitions
         #  page: docs/ilos/ilo6168/ilo6_events168.md
+    - label: Error messages
+      page: ilo6_168/ilo6_msgregs168.md
 
 - group: iLO 6 v1.67 Reference documents
   expanded: false
@@ -70,6 +72,8 @@
           page: ilo6_167/ilo6_other_resourcedefns167.md        
         #- label: Event definitions
         #  page: docs/ilos/ilo6167/ilo6_events167.md
+    - label: Error messages
+      page: ilo6_167/ilo6_msgregs167.md
 - group: iLO 6 v1.66 Reference documents
   expanded: false
   items:
@@ -100,6 +104,8 @@
           page: ilo6_166/ilo6_other_resourcedefns166.md        
         #- label: Event definitions
         #  page: docs/ilos/ilo6166/ilo6_events166.md
+    - label: Error messages
+      page: ilo6_166/ilo6_msgregs166.md
 - group: iLO 6 v1.64 Reference documents
   expanded: false
   items:
@@ -130,3 +136,5 @@
           page: ilo6_164/ilo6_other_resourcedefns164.md        
         #- label: Event definitions
         #  page: docs/ilos/ilo6164/ilo6_events164.md
+    - label: Error messages
+      page: ilo6_164/ilo6_msgregs164.md

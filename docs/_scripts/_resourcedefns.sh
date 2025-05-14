@@ -14,7 +14,7 @@
 #        * Test that the $InputFiles variable is not empty !
 #        * Convert the outputs into Reunite/Realm/Markdoc format
 
-# version 0.1
+# version 0.11
 
 # Local Variables
 InputFiles=$(ls ${WorkingDirectory}/_${iLOGen}_resourcedefns${iLOVersion}.*)
@@ -33,8 +33,11 @@ for file in $InputFiles ; do
       *bios)
         maxTocDepth=3
         ;;
+      *serviceroot)
+        hideToc=true
       *)
         maxTocDepth=2
+        hideToc=false
         ;;
   esac
     
@@ -43,7 +46,8 @@ for file in $InputFiles ; do
   OutputFiles="${OutputFiles} $(basename ${OutputFile})"
 
   # The following SEO variable contains Redocly front end matter directives
-  SEO="---
+  if [ RedoclyRealm == "false" ] ; then
+    SEO="---
 seo:
   title: ${ResourceType^} resource definitions
 toc:
@@ -52,6 +56,23 @@ toc:
 disableLastModified: false
 ---\n
 "
+  else
+    SEO="---
+seo:
+  title: ${ResourceType^} resource definitions
+markdown:
+  toc:
+    hide: $hideToc
+    depth: $maxTocDepth
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
+---\n
+"
+  fi
+
+
   Header1Title="# ${ResourceType^} resource definitions of ${ilogen} v${iLOFwVersion}\n\n"
   FileDescription="For each data type provided by the HPE ilO Redfish service, \
 find below its description including the list of possible instances (URIs), \
@@ -144,9 +165,9 @@ for file in $OutputFiles ; do
   done
   echo  "Done"
   echo -e "*******************************************\n\n"                   
-  done
+done
 
-echo "Cleanup" 
+echo "Cleanup temp files" 
 rm $TmpFile $TmpFile2 &> /dev/null
 
 # Need to investigate how to return an exit code if problem above...

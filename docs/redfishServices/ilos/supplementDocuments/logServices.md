@@ -484,9 +484,10 @@ iLO 6 based server.
     }
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 Once you have identified the location of the AHS file, perform a GET to
 location with the following query parameters to define the download time
 range and embed customer case information:
@@ -511,14 +512,14 @@ download which can be saved to a file.
 The following example retrieves the entire AHS log from an
 HPE iLO 6 based server.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 GET /redfish/v1/managers/1/activehealthsystem
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -526,16 +527,17 @@ curl --insecure --location --user <ilo-user>:password \
      https://<ilo-ip>//redfish/v1/managers/1/activehealthsystem
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest -d serverlogs --selectlog=AHS --downloadallahs  
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 For a full Redfish example click here:
 <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ahs_data.py" target="_blank">get\_ahs\_data.py</a>
 
