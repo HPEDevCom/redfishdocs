@@ -36,7 +36,7 @@ curl --include --insecure     \
 HTTP/1.1 401 Unauthorized
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body (iLO 6)" %}
 
 ```json Response body (iLO 6)
@@ -54,7 +54,7 @@ HTTP/1.1 401 Unauthorized
 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body (Superdome Flex 280 RMC)" %}
 
 ```json Response body (Superdome Flex 280 RMC)
@@ -231,7 +231,7 @@ as well as the `X-Auth-Token`. This is your unique session information and
 will be needed later to issue other requests and to log out. High level
 Redfish libraries (i.e. HPE and DMTF Python Redfish libraries) save these
 two properties automatically in the Redfish object respectively at
-`REDFISH_OBJ.session_location`  and `REDFISH_OBJ.session\_key`.
+`REDFISH_OBJ.session_location`  and `REDFISH_OBJ.session_key`.
 {% /admonition %}
 
 The following example creates a Redfish session using cURL,
@@ -248,7 +248,7 @@ Python Redfish libraries cannot co-exist in the same Python environment.
 They contain identical classes names with different methods.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Session creation with cURL" %}
 
 ```bash Session creation with cURL
@@ -270,7 +270,7 @@ cat data.json
 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Session creation with the DMTF Library" %}
 
 ```Python Session creation with the DMTF Library
@@ -327,7 +327,7 @@ print(json.dumps(RESPONSE.dict, indent=4, sort_keys=True))
 REDFISH_OBJ.logout()
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Session creation with the HPE library" %}
 
 ```Python Session creation with the HPE library
@@ -381,12 +381,13 @@ print(json.dumps(RESPONSE.dict, indent=4, sort_keys=True))
 REDFISH_OBJ.logout()
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 Examples of headers and body responses of a successful session creation
 using the Python scripts of the above example:
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Response Headers" %}
 
 ```text Response Headers
@@ -405,7 +406,7 @@ X-Frame-Options: sameorigin
 X_HP-CHRP-Service-Version: 1.0.3
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response Body (iLO 6)" %}
 
 ```json Response Body (iLO 6)
@@ -449,7 +450,7 @@ Session URI: /redfish/v1/SessionService/Sessions/admin0000000063bc4f87659ddce4
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response Body (Superdome Flex 280)" %}
 
 ```json Response Body (Superdome Flex 280)
@@ -469,8 +470,9 @@ Session URI: /redfish/v1/SessionService/Sessions/admin0000000063bc4f87659ddce4
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## Session management
 
 This section explains how to manually use the session location and the session
@@ -488,7 +490,7 @@ value and retrieves the properties of the just created session
 location (`${TokenAndUrl[1]}`). The right part shows the response body of
 an iLO 6 Redfish service.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Session creation with cURL" %}
 
 ```bash Session creation with cURL
@@ -509,7 +511,7 @@ cat data.json
     }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Using a session Token with cURL" %}
 
 ```bash Using a session Token with cURL
@@ -519,7 +521,7 @@ curl --insecure \
      jq
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response Body (iLO 6)" %}
 
 ```json Response Body (iLO 6)
@@ -560,8 +562,9 @@ curl --insecure \
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### Disconnect a session
 
 Redfish services supports a limited number of simultaneous user sessions.
@@ -575,14 +578,14 @@ To disconnect a session, send a DELETE request to the session location
 user Administrator retrieves the session collection of an iLO 6 Redfish
 service and disconnect the session of user `student`.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="generic GET SessionCollection" %}
 
 ```text generic GET SessionCollection
 GET /redfish/v1/SessionService/Sessions/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -616,15 +619,16 @@ GET /redfish/v1/SessionService/Sessions/
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="generic DELETE session request" %}
 
 ```text generic DELETE session request
 DELETE /redfish/v1/SessionService/Sessions/student0000000063bd2164790ee259/
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="success" name="TIP" %}
 If you failed to save your session location and need to delete your own
 session, the HPE iLO Redfish service implements the `MySession` link in
@@ -658,14 +662,14 @@ performing them via the iLO GUI or Redfish.
     generic GET request.
     {% /admonition %}
 
-  {% tabs %}
+    {% tabs %}
     {% tab label="Generic GET iLO License" %}
 
     ```text Generic GET iLO License
     GET /redfish/v1/Managers/1/LicenseService/?only
     ```
   
-  {% /tab %}
+    {% /tab %}
     {% tab label="iLOrest" %}
 
     ```shell iLOrest
@@ -675,7 +679,7 @@ performing them via the iLO GUI or Redfish.
     ilorest logout
     ```
   
-  {% /tab %}
+    {% /tab %}
     {% tab label="Response body" %}
 
     ```text Response body
@@ -1037,6 +1041,7 @@ REDFISHOBJ.logout()
   
   {% /tab %}
   {% /tabs %}
+  
 {% admonition type="info" name="NOTE" %}
 The DMTF Python Redfish library only provides basic and session
 authentication methods.

@@ -65,7 +65,7 @@ export MsgRegistryFile="${WorkingDirectory}/_raw_${iLOGen}_msgregs${iLOVersion}.
 
 export TmpFile="/tmp/TmpFile"   ; rm $TmpFile &> /dev/null
 export TmpFile2="/tmp/TmpFile2" ; rm $TmpFile2 &> /dev/null
-export keepOldVersions=2 # Number of old versions to keep in the repo
+export keepOldVersions=5 # Number of old versions to keep in the repo
 
 #
 ## Need validation of the iLO Generation and firmware version to process
