@@ -6,7 +6,7 @@
 # ToDo
 #     * Investigate if this script should be incorporated
 #       in a script called by _script_wrapper.sh 
-# Version 0.32
+# Version 0.33
 
  
 rootDir="/Git-Repo/ProtoRedfishDocs"
@@ -20,7 +20,8 @@ do
   echo Processing $file
   dos2unix $file &> /dev/null
   
-  # Fix typos
+  # Fix potential typos. ToDo: need to fix when there
+  # is a space (or more) after the third colon.
   sed -i -E  \
     's/::::/:::/g' $file   
   # Fix admonition syntax. 

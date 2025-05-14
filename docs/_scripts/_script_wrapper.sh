@@ -144,6 +144,18 @@ done
 # if PR 306 has not been merged (https://github.com/HewlettPackard/hpe-ilo-redocly/pull/306)
 sed -i '/^### BootOptionEnabled/,+9d'  ${ResourcesFile}
 
+# Move admonitions to Markdoc format if in Redocly/Realm/Reunite environment
+if [ "$RedoclyRealm" == "true" ] ; then
+  # Fix potential typos. ToDo: need to fix when there
+  # is a space (or more) after the third colon.
+  sed -i -E  \
+    's/::::/:::/g' $ResourcesFile  $ResmapFile $MsgRegistryFile
+  # Fix admonition syntax. 
+  sed -i -E  \
+    's/:::([^ ]+) ([^ ]+)/{% admonition type="\1" name="\2" %}/g ; s?::: *$?{% /admonition %}?g' \
+    $ResourcesFile $ResmapFile $MsgRegistryFile
+fi
+ 
 # Build the list of all resource types identified as second level headers (^##) in the resourcedefns Slate file.
 export TypeList=$(awk '/^## / {print $NF}' $ResourcesFile | cut -d'.' -f 1 | sort -u)
 
