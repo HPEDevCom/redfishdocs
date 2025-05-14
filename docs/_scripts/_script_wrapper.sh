@@ -65,7 +65,7 @@ export MsgRegistryFile="${WorkingDirectory}/_raw_${iLOGen}_msgregs${iLOVersion}.
 
 export TmpFile="/tmp/TmpFile"   ; rm $TmpFile &> /dev/null
 export TmpFile2="/tmp/TmpFile2" ; rm $TmpFile2 &> /dev/null
-export keepOldVersions=5 # Number of old versions to keep in the repo
+export keepOldVersions=2 # Number of old versions to keep in the repo
 
 #
 ## Need validation of the iLO Generation and firmware version to process
@@ -208,10 +208,46 @@ rm $ResmapFile $MsgRegistryFile                                                 
 rm $WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md  &> /dev/null
 rm $WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*     &> /dev/null
 
-# Count the number of firmware versions documented
+# Identify and count the number of firmware versions documented
 cd $WorkingDirectory/..
+iLOVersions="$(ls -d ${iLOGen}_??? | sort -u)"
+NbiLOVersions=$(echo $iLOVersions | wc -w)
+iLOVersions=($iLOVersions)  # convert to array
 
-# Remove the oldest version of firmware to keep only the last 5 versions
+if [ "$RedoclyRealm" == "false" ] ; then
+exit 0
+fi
 
+# Remove the oldest versions of firmware to keep only the last N versions
+# Keep the "_raw*bck" files, just in case...
+nbOfVersionsToRemove=$((NbiLOVersions - keepOldVersions))
+index=$((nbOfVersionsToRemove - 1)) 
+
+i=0
+sidebarsFile="${iLOGen}.sidebars.yaml"
+if [ ! -f $sidebarsFile ] ; then
+  echo -e "\nWARNING: $sidebarsFile not found. No update done."
+  exit 0
+fi
+
+# Cleanup only if we are processing the last version
+lastVersionIndex=$(( ${#iLOVersions[@]} - 1 ))
+lastVersion=${iLOVersions[$lastVersionIndex]}
+
+if [ ! "${iLOGen}_${iLOVersion}" == "${lastVersion}" ] ; then
+  echo -e "\nNo version cleanup needed. We are not processing the last version."
+  exit 0
+fi
+
+while [ $i -le $index ] ; do
+  echo -e "\nRemoving formatted files in ${iLOVersions[$i]} directory"
+  rm -f ${iLOVersions[$i]}/${iLOGen}_*.md &> /dev/null
+  echo -e "\nUpdating $sidebarsFile"
+  startPattern=$(echo "v${iLOVersions[$i]##*_}"  | sed 's/^v\(.\)/v\1./g' )
+  startPattern="group: $ilogen $startPattern Reference documents"
+  endPattern="page: ${iLOVersions[0]}.${iLOGen}_msgregs${iLOVersion}.md"
+  sed -i "/$startPattern/,/$endPattern/d" $sidebarsFile
+  i=$((i + 1))
+done
 
 exit 0
