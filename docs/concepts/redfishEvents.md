@@ -388,7 +388,7 @@ POST /redfish/v1/EventService/Actions/EventService.SubmitTestEvent
 When an event occurs in a server, a `MessageId` property is associated to it.
 Its value is a message reference
 (i.e. `iLOResourceEvents.x.y.DrvArrLogDrvErasing`) described in the
-{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION, "#iloresourceevents70drvarrlogdrverasing") %} message registry {% /link-internal %}.
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION, "#iloresourceevents.7.0.drvarrlogdrverasing") %} message registry {% /link-internal %}.
 Only event destinations containing the message registry prefix of the
 `MessageId` property are notified. Upon reception, they can consult the related
 message registry file to get more detail and optionally resolution actions.
@@ -408,7 +408,7 @@ the `MessageId` property is `iLOResourceEvents`. A GET of
 `/redfish/v1/RegistryStore/registries/en/iLOResourceEvents.json`.
 A GET of this URI retrieves the entire message registry. This file contains
 an entry for the `DrvArrLogDrvErasing`
-{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION, "#iloresourceevents70drvarrlogdrverasing") %} error message {% /link-internal %}.
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION, "#iloresourceevents.7.0.drvarrlogdrverasing") %} error message {% /link-internal %}.
 
 Refer to the [Error responses](/docs/concepts/errorresponses/)
 section for more information on this subject.

@@ -401,7 +401,7 @@ When TFA is enabled and the Microsoft Active Directory user credentials
 are provided in the body of a
 [session creation](/docs/concepts/redfishauthentication/#session-authentication)
 request, a `OneTimePasscodeSent`
-{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION) %} response message {% /link-internal %}
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION, "/#base.1.18.onetimepasscodesent") %} response message {% /link-internal %}
 is returned and an One Time Password (OTP) is sent to the configured
 Microsoft Active Directory user email.
 
