@@ -155,7 +155,7 @@ GET /redfish/v1/EventService/Subscriptions/{item}/
   {% /tabs %}
 
 The `RegistryPrefixes`
-{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#registryprefixes-array") %} property {% /link-internal %}
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#registryprefixes-array-1") %} property {% /link-internal %}
 is a list of message registry prefixes to subscribe to. They correspond to the
 prefix of the
 {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION) %} error messages {% /link-internal %}
@@ -170,14 +170,14 @@ paragraph for more information.
 The following example retrieves the list of possible RegistryPrefixes
 from an HPE iLO 6.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/EventService/?$select=RegistryPrefixes
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -186,7 +186,7 @@ ilorest get RegistryPrefixes --json --selector EventService.
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -205,19 +205,20 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example retrieves the list of event subscriptions
 from an HPE iLO 6.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 GET /redfish/v1/EventService/Subscriptions/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -237,8 +238,9 @@ GET /redfish/v1/EventService/Subscriptions/
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example shows an event subscription with specific `HttpHeaders`
 and `Context`  properties. The `HttpHeaders` property contains a list of HTTP
 headers that the Redfish service will use when sending events to the event
@@ -256,14 +258,14 @@ The `Context` property is a string that will be part of the event sent to the
 listener. With this information the listener could dispatch the event to a
 specific service able to act accordingly.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 POST /redfish/v1/EventService/Subscriptions/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Subscription request body" %}
 
 ```json Subscription request body
@@ -283,7 +285,7 @@ POST /redfish/v1/EventService/Subscriptions/
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Subscription detail" %}
 
 ```json Subscription detail
@@ -322,8 +324,9 @@ POST /redfish/v1/EventService/Subscriptions/
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="success" name="TIP" %}
 More event examples are presented in the HPE
 [iLO specific supplement documents](/docs/redfishservices/ilos/supplementdocuments/iloeventservices/).
@@ -338,14 +341,14 @@ all the subscription destinations having `iLOResourceEvents`
 in its `RegistryPrefixes` list. Refer to the
 [next paragraph](#event-interpretation) for the interpretation of this event.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generirc POST test event" %}
 
 ```text Generirc POST test event
 POST /redfish/v1/EventService/Actions/EventService.SubmitTestEvent
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Test event body" %}
 
 ```json Test event body
@@ -360,7 +363,7 @@ POST /redfish/v1/EventService/Actions/EventService.SubmitTestEvent
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -377,14 +380,15 @@ POST /redfish/v1/EventService/Actions/EventService.SubmitTestEvent
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## Event interpretation
 
 When an event occurs in a server, a `MessageId` property is associated to it.
 Its value is a message reference
-(i.e. `iLOResourceEvents.1.3.DrvArrLogDrvErasing`) described in the
-{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION, "#iloresourceevents13drvarrlogdrverasing") %} message registry {% /link-internal %}.
+(i.e. `iLOResourceEvents.x.y.DrvArrLogDrvErasing`) described in the
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION, "#iloresourceevents70drvarrlogdrverasing") %} message registry {% /link-internal %}.
 Only event destinations containing the message registry prefix of the
 `MessageId` property are notified. Upon reception, they can consult the related
 message registry file to get more detail and optionally resolution actions.
@@ -404,7 +408,7 @@ the `MessageId` property is `iLOResourceEvents`. A GET of
 `/redfish/v1/RegistryStore/registries/en/iLOResourceEvents.json`.
 A GET of this URI retrieves the entire message registry. This file contains
 an entry for the `DrvArrLogDrvErasing`
-{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION, "#iloresourceevents13drvarrlogdrverasing") %} error message {% /link-internal %}.
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION, "#iloresourceevents70drvarrlogdrverasing") %} error message {% /link-internal %}.
 
 Refer to the [Error responses](/docs/concepts/errorresponses/)
 section for more information on this subject.

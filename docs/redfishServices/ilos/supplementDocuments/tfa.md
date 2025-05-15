@@ -37,14 +37,14 @@ Prior to the TFA enablement the following pre-requisites are mandatory:
     have a valid email address configured within Microsoft Active Directory.
 - HPE iLO must be properly configured for sending mails via the SMTP
   configured server. Refer to the
-  {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#oem.hpe.alertmailenabled") %} Manager Network Protocol {% /link-internal %}
+  {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.alertmailenabled") %} Manager Network Protocol {% /link-internal %}
   section for the different properties related to the mail
   and alert configuration.
 
 The following example shows a typical iLO Microsoft Active Directory
 configuration suitable for TFA.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -53,7 +53,7 @@ LDAP/ServiceAddresses, LDAP/ServiceEnabled, Oem/Hpe/DirectorySettings,
 ActiveDirectory
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -63,7 +63,7 @@ ilorest get LDAP/LDAPService LDAP/ServiceAddresses LDAP/ServiceEnabled Oem/Hpe/D
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -122,8 +122,8 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 The following example shows a typical iLO mail subsystem configuration
 suitable for TFA.
 
@@ -134,7 +134,7 @@ Microsoft Active Directory server needed for TFA. However, it can be used
 to test and validate the connectivity to the SMTP server.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -146,7 +146,7 @@ Oem/Hpe/AlertMailSMTPSecureEnabled, Oem/Hpe/AlertMailSMTPPort,
 Oem/Hpe/AlertMailSMTPAuthUser
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -156,7 +156,7 @@ ilorest get Oem/Hpe/AlertMailSenderDomain Oem/Hpe/AlertMailSMTPServer Oem/Hpe/Al
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -181,12 +181,12 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 The following example verifies that a Microsoft Active Directory user
 is properly configured (with a valid e-mail address) for TFA.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="PowerShell request" %}
 
 ```PowerShell PowerShell request
@@ -194,7 +194,7 @@ PS C:> Get-ADUser -Filter "Name -eq 'ilo_admin'" -SearchBase "DC=lj,DC=lab"
 -Properties "mail" -Server dc.lj.lab -Credential lj\francois
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```PowerShell Body response
@@ -212,13 +212,14 @@ Surname           :
 UserPrincipalName : ilo_admin@lj.lab
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 If the `mail` property of a Microsoft Active Directory user is empty,
 trying to log into iLO with this username, returns a `409 Conflict` status
 error with a "MailNotConfigured"
-{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_ILO6_FW_VERSION) %} error response {% /link-internal %}.
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION) %} error response {% /link-internal %}.
 {% /admonition %}
 
 ## Enabling Two Factor Authentication
@@ -227,22 +228,22 @@ To enable TFA in an HPE iLO management controller, the above pre-requisites
 must be met and the following actions must be performed in that order:
 
 1. Set
-   {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#oem.hpe.smtpfortfaenabled") %} SMTPForTFAEnabled {% /link-internal %}
+   {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.smtpfortfaenabled") %} SMTPForTFAEnabled {% /link-internal %}
    to `true`
 2. Set
-   {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "#oem.hpe.twofactorauth") %} TwoFactorAuth {% /link-internal %}
+   {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.twofactorauth") %} TwoFactorAuth {% /link-internal %}
    to `Enabled`
 
 The following example configures `SMTPForTFAEnabled` for TFA:
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 PATCH redfish/v1/Managers/1/NetworkProtocol
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body request" %}
 
 ```json Body request
@@ -255,7 +256,7 @@ PATCH redfish/v1/Managers/1/NetworkProtocol
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -265,7 +266,7 @@ ilorest set Oem/Hpe/SMTPForTFAEnabled=true --commit
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -280,18 +281,19 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example configures `TwoFactorAuth` for TFA:
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 PATCH /redfish/v1/AccountService
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body request" %}
 
 ```json Body request
@@ -304,7 +306,7 @@ PATCH /redfish/v1/AccountService
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -314,7 +316,7 @@ ilorest set Oem/Hpe/TwoFactorAuth=Enabled --commit
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -329,8 +331,9 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 
 - Attempting to authenticate a Microsoft Active Directory user
@@ -352,7 +355,7 @@ performs a GET toward the `AccountService` URI. The request is successful with
 a local account (Administrator), but fails with a Microsoft
 Active Directory username.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Basic auth. request of local user" %}
 
 ```shell Basic auth. request of local user
@@ -360,7 +363,7 @@ curl  -ksu Administrator:"AdminPassword"  -X GET  https://ilo-ip/redfish/v1/Acco
 "Enabled"
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Basic auth. request of a Directory user" %}
 
 ```shell Basic auth. request of a Directory user
@@ -389,8 +392,8 @@ X-XSS-Protection: 1; mode=block
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ## Creating a User Session with TFA
 
@@ -398,18 +401,18 @@ When TFA is enabled and the Microsoft Active Directory user credentials
 are provided in the body of a
 [session creation](/docs/concepts/redfishauthentication/#session-authentication)
 request, a `OneTimePasscodeSent`
-{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_ILO6_FW_VERSION) %} response message {% /link-internal %}
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_FW_VERSION) %} response message {% /link-internal %}
 is returned and an One Time Password (OTP) is sent to the configured
 Microsoft Active Directory user email.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic Session creation" %}
 
 ```text Generic Session creation
 POST /redfish/v1/Sessions
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body request" %}
 
 ```json Body request
@@ -419,7 +422,7 @@ POST /redfish/v1/Sessions
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -439,8 +442,8 @@ POST /redfish/v1/Sessions
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 To perform the TFA the Redfish client needs to get the OTP from the mail
 sent to the Microsoft Active Directory user and provide it in the payload
@@ -448,14 +451,14 @@ of a second POST request toward `/redfish/v1/Sessions` as a `Token` property,
 along with the Microsoft Active Directory user credentials. The Token is a
 six digit positive non-zero integer value.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic POST request" %}
 
 ```text Generic POST request
 POST /redfish/v1/Sessions
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body request" %}
 
 ```json Body request
@@ -466,7 +469,7 @@ POST /redfish/v1/Sessions
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -495,5 +498,5 @@ POST /redfish/v1/Sessions
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
