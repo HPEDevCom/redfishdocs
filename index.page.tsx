@@ -3,80 +3,30 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { ArrowRightIcon, Button } from '@redocly/theme';
-import { CardWithCode } from './@theme/components/CardWithCode/CardWithCode';
 import { Card } from '@redocly/theme/markdoc/components/Cards/Card';
 import { Cards } from '@redocly/theme/markdoc/components/Cards/Cards';
-
-const code = `curl -X POST \\
-  https://api.warp.com/warp/v1/time/set \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{"time": "+1s"}'
-`;
 
 export default function HomePage() {
   return (
     <div>
       <HeroContainer>
         <HeroBg />
-        {/* <Image srcSet={`${require('./images/grid.svg')} light, ${require('./images/grid-dark.svg')} dark`} /> */}
-        <h1>Time Travel API</h1>
-        <p>Bend Time with the First API for Time Travel</p>
-        <Button size="large" variant="primary" tone="brand" to="/guides/quickstart">
+        <h1>HPE server management with Redfish</h1>
+        <p>Redfish® is a standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC).</p>
+        <Button size="large" variant="primary" tone="brand" to="/docs">
           Get started
         </Button>
-        <CardWithCode
-          title="Quickstart"
-          description="Set up your environment and make your first call to warp you one second into the future."
-          code={code}
-        />
       </HeroContainer>
       <Container>
-        <h3>Accelerate Your Development with the Power of Time</h3>
-        <p>
-          Warp is the groundbreaking API that allows you to navigate, manipulate, and control time. Whether you need to
-          fix critical mistakes, explore alternative histories, or ensure future success, Warp gives you the tools to do
-          so with precision and safety.
-        </p>
-      </Container>
-      <Container>
-        <h3>Key Features</h3>
-        <Feature>
-          <ArrowRightIcon />
-          <p>Time Navigation: Move backward, forward, or pause time with pinpoint accuracy.</p>
-        </Feature>
-        <Feature>
-          <ArrowRightIcon />
-          <p>Temporal Anchoring: Set fixed points in time to safely experiment and return to.</p>
-        </Feature>
-        <Feature>
-          <ArrowRightIcon />
-          <p>Event Manipulation: Modify past events, influence future outcomes, or create alternate timelines.</p>
-        </Feature>
-        <Feature>
-          <ArrowRightIcon />
-          <p>Safety Protocols: Built-in safeguards to prevent paradoxes and unintended consequences.</p>
-        </Feature>
-        <br />
-        <ButtonContainer>
-          <Button size="large" to="/guides/quickstart">
-            Get started with Warp
-          </Button>
-          <Button size="large" to="/guides">
-            Explore documentation
-          </Button>
-        </ButtonContainer>
-      </Container>
-
-      <Container>
-        <h3>Featured Missions</h3>
         <Cards>
-          <Card title="The Lost Invention" to="/tutorials/lost-invention">
-            Retrieve Nikola Tesla's lost blueprint before it's destroyed in a mysterious fire.
+          <Card title="Guides" to="/docs">
+            Access learning material and best practices for working with HPE Redfish® APIs. Browse this section to better understand the basic Redfish concepts and review generic examples.
           </Card>
-          <Card title="The Missing Mathematician" to="/tutorials/missing-mathematician">
-            Ensure that Katherine Johnson stays on the path that will lead her to NASA and a pivotal role in space
-            exploration.
+          <Card title="Services" to="/docs/redfishservices">
+            Explore and integrate with HPE Redfish® services like the ones implemented in the different HPE iLO generations.
+          </Card>
+          <Card title="Clients" to="/docs/redfishclients">
+            Find Redfish client documentation that assist in compliance to API standards like the HPE iLOrest tool.
           </Card>
         </Cards>
       </Container>
@@ -85,11 +35,8 @@ export default function HomePage() {
         <ContactUsSection>
           <h3>Need help?</h3>
           <ButtonContainer>
-            <Button variant="outlined" size="large">
-              Join our community
-            </Button>
-            <Button variant="outlined" size="large">
-              Read the docs
+            <Button variant="outlined" size="large" to="https://developer.hpe.com">
+              Join the HPE developer community
             </Button>
           </ButtonContainer>
         </ContactUsSection>
@@ -115,21 +62,21 @@ const HeroBg = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(${require('./images/background.svg')});
+    background-image: url(${require('./images/banner.jpg')});
     background-size: cover;
-    filter: blur(60px);
-    opacity: 0.7;
+    //filter: blur(60px);
+    opacity: 1.0;
   }
-  &:after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-image: url(${require('./images/grid.svg')});
-    opacity: 0.2;
-    .dark & {
-      background-image: url(${require('./images/grid-dark.svg')});
-    }
+  //&:after {
+    //content: '';
+    //position: absolute;
+    //inset: 0;
+    //background-size: cover;
+    //background-image: url(${require('./images/grid.svg')});
+    //opacity: 0.2;
+    //.dark & {
+      //background-image: url(${require('./images/grid-dark.svg')});
+    //}
   }
 `;
 
@@ -150,21 +97,21 @@ const HeroContainer = styled.div`
   }
 
   h1 {
-    color: var(--color-magenta-5);
-    text-align: center;
-    font-size: 92px;
-    font-weight: 700;
+    color: var(--text-color-primary);
+    text-align: left;
+    font-size: 40px;
+    font-weight: 800;
     line-height: 102px;
     letter-spacing: 1px;
     margin-bottom: 24px;
-    margin: 160px 0 24px 0;
+    margin: 80px 0 24px 0;
   }
 
   > p {
     color: var(--text-color-primary);
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 28px;
     margin: 0 0 24px 0;
   }
@@ -199,23 +146,6 @@ const Container = styled.div`
   }
 `;
 
-const Feature = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-
-  svg {
-    height: 16px;
-    width: 16px;
-    margin-top: 6px; // Aligns the icon with the first line of text
-    flex-shrink: 0; // Prevents the icon from shrinking
-    path {
-      fill: var(--color-persian-green-6);
-    }
-  }
-  margin-bottom: var(--spacing-sm);
-`;
-
 const ButtonContainer = styled.div`
   display: flex;
   gap: var(--spacing-xs);
@@ -233,5 +163,5 @@ const ContactUsSection = styled.div`
   gap: var(--spacing-xs);
   h3 {
     margin: 0;
-  }
-`;
+    }
+    `;

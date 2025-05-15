@@ -1,0 +1,41 @@
+- label: Back to Redfish services
+  href: /docs/redfishservices
+- separatorLine: true
+
+- separator: HPE iLO 7 Redfish service
+- label: Overview
+  page: index.md
+- label: Adapting from iLO 6
+  page: ilo7_adaptation.md
+- label: Changelog
+  page: ilo7_changelog.md
+- group: iLO 7 v1.11 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents Overview
+      page: ilo7_111/index.md
+    - label: Resource map
+      page: ilo7_111/ilo7_resmap111.md
+    - group: Resource definitions
+      expanded: false
+      items:
+        - label: ServiceRoot
+          page: ilo7_111/ilo7_serviceroot_resourcedefns111.md
+        - label: Bios
+          page: ilo7_111/ilo7_bios_resourcedefns111.md
+        - label: Manager
+          page: ilo7_111/ilo7_manager_resourcedefns111.md
+        - label: ComputerSystem
+          page: ilo7_111/ilo7_computersystem_resourcedefns111.md
+        - label: Chassis
+          page: ilo7_111/ilo7_chassis_resourcedefns111.md
+        - label: Network
+          page: ilo7_111/ilo7_network_resourcedefns111.md
+        - label: Storage
+          page: ilo7_111/ilo7_storage_resourcedefns111.md
+        - label: HPE Oem extensions
+          page: ilo7_111/ilo7_hpe_resourcedefns111.md
+        - label: Other resource definitions 
+          page: ilo7_111/ilo7_other_resourcedefns111.md
+    - label: Error messages
+      page: ilo7_111/ilo7_msgregs111.md
