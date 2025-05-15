@@ -21,3 +21,11 @@ RESTful APIs implemented in HPE hardware.
 
 Choose your path from the left navigation menus or continue to browse to the
 next page using the link located in bottom right corner of this page.
+
+Latest iLO Generation : {% $env.PUBLIC_LATEST_ILO_GEN_VERSION %}
+
+Current REDOCLY_ENV:  {% $env.REDOCLY_ENV %}
+
+Public Redocly branch:  {% $env.PUBLIC_REDOCLY_BRANCH_NAME %}
+
+
