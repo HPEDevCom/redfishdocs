@@ -66,6 +66,11 @@ logo:
   altText: 'HPE server Management with Redfish'
 sidebar:
   hide: false
+metadataGlobs:
+  'docs/concepts/**':
+    redocly_category: Redfish concepts
+  'docs/redfishClients/ilorest-userguide/**':
+    redocly_category: iLOrest
 search:
   engine: typesense
   filters: 
