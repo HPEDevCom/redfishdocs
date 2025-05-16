@@ -67,17 +67,12 @@ logo:
 sidebar:
   hide: false
 metadataGlobs:
-  'docs/concepts/**':
-    redocly_category: Redfish concepts
-  'docs/redfishClients/ilorest-userguide/**':
+  'concepts/**':
+    redocly_category: Concepts
+  'ilorest-userguide/**':
     redocly_category: iLOrest
 search:
   engine: typesense
-  filters: 
-    facets: 
-      - name: Custom
-        field: redocly_category 
-        type: select 
   hide: false
   shortcuts: 
     - /
