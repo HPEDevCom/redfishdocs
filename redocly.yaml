@@ -9,7 +9,7 @@ ignore:
   - '**/_*'
 reunite:
   ignoreLint: true
-  ignoreLinkChecker: true
+  ignoreLinkChecker: false
 scripts:
   head:
     - src: './scripts/ucep-loader.js'
@@ -67,8 +67,10 @@ logo:
 sidebar:
   hide: false
 metadataGlobs:
-  'docs/**':
-    redocly_category: Product
+  'docs/concepts/**':
+    redocly_category: Category
+  'docs/redfishClients/ilorest-userguide/**':
+    redocly_category: iLOrest
 search:
   engine: typesense
   hide: false
@@ -78,6 +80,6 @@ search:
     hide: true
   filters:
     facets:
-      - name: Product
+      - name: Category
         field: redocly_category
-        type: select
+        type: multi-select
