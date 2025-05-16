@@ -18,7 +18,7 @@ search:
     hide: true
   filters:
     facets:
-      - name: Products
+      - name: Category
         field: redocly_category
         type: multi-select
 
