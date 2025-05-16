@@ -5,7 +5,7 @@
 # Those setings can be altered in a any page in a front matter section.
     
 search:
-  engine: typesense
+  engine: flexsearch
   hide: false
   shortcuts: 
     - /
