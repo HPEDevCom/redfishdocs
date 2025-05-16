@@ -68,8 +68,13 @@ sidebar:
   hide: false
 search:
   engine: typesense
+  filters: 
+    facets: 
+      - name: Custom
+        field: redocly_category 
+        type: select 
   hide: false
   shortcuts: 
     - /
   ai: 
-    hide: false
+    hide: true
