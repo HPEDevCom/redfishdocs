@@ -13,9 +13,9 @@ search:
     hide: true
 
 metadataGlobs:
-  '/docs/concepts/**':
+  'docs/**':
     redocly_category: Concepts
-  '/docs/redfishClients/ilorest-userguide/**':
+  '/docs/redfishclients/ilorest-userguide/**':
     redocly_category: iLOrest
 
 ignore:
