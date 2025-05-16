@@ -1,4 +1,6 @@
 ---
+metadata: 
+  doc_section: iLOrest
 markdown:
   toc:
     hide: false

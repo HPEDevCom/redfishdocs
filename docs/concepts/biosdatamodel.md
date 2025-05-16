@@ -1,4 +1,6 @@
 ---
+metadata: 
+  redocly_category: Custom
 markdown:
   toc:
     hide: false

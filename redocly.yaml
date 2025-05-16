@@ -6,7 +6,7 @@
     
 metadataGlobs:
   'docs/concepts/**':
-    doc_section: Concepts
+    redocly_category: Concepts
   'docs/redfishClients/ilorest-userguide/**':
     doc_section: iLOrest
 search:
@@ -21,7 +21,9 @@ search:
       - name: Products
         field: doc_section
         type: multi-select
-        isTop: true
+      - name: Custom
+        field: redocly_category
+        type: multi-select
 
 ignore:
   - '**/README.md'
