@@ -67,9 +67,9 @@ logo:
 sidebar:
   hide: false
 search:
-  engine: flexsearch
+  engine: Typesense
   hide: false
   shortcuts: 
     - /
   ai: 
-    hide: true
+    hide: false
