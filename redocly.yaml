@@ -76,9 +76,8 @@ search:
     - /
   ai: 
     hide: true
-  filters:
-    facets:
-      - name: Product
-        field: redocly_category
-        type: select
-        isTop: true
+  facets:
+    - name: Product
+      field: redocly_category
+      type: select
+      isTop: true
