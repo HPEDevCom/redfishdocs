@@ -9,7 +9,7 @@ markdown:
     depth: 2
   lastUpdatedBlock:
     hide: true
-  breadcrumbs:
+breadcrumbs:
     hide: true
 ---
 
