@@ -15,12 +15,12 @@ search:
 metadataGlobs:
   'docs/redfishServices/ilos/ilo7/**':
     redocly_category: iLO 7
-  'docs/redfish/Services/ilos/ilo6/**':
+  'docs/redfishServices/ilos/ilo6/**':
     redocly_category: iLO 6
   'docs/redfishServices/ilos/ilo5/**':
     redocly_category: iLO 5
-  'docs/redfishServices/ilos/supplementdocuments/**':
-    redocly_category: Supplement documents
+  'docs/redfishServices/ilos/supplementDocuments/**':
+    redocly_category: iLO Supplement documents
   'docs/concepts/**':
     redocly_category: Redfish concepts
   'docs/redfishClients/ilorest-userguide/**':
