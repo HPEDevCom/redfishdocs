@@ -4,11 +4,6 @@
 #
 # Those setings can be altered in a any page in a front matter section.
     
-metadataGlobs:
-  '/docs/concepts/**':
-    redocly_category: Concepts
-  '/docs/redfishClients/ilorest-userguide/**':
-    redocly_category: iLOrest
 search:
   engine: typesense
   hide: false
@@ -16,7 +11,13 @@ search:
     - /
   ai: 
     hide: true
-  
+
+metadataGlobs:
+  '/docs/concepts/**':
+    redocly_category: Concepts
+  '/docs/redfishClients/ilorest-userguide/**':
+    redocly_category: iLOrest
+
 ignore:
   - '**/README.md'
   - '**/_*'
