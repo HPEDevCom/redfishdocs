@@ -68,7 +68,7 @@ sidebar:
   hide: false
 metadataGlobs:
   'docs/**':
-    redocly_category: docs
+    redocly_category: Product
 search:
   engine: typesense
   hide: false
@@ -76,8 +76,8 @@ search:
     - /
   ai: 
     hide: true
-  facets:
-    - name: Product
-      field: redocly_category
-      type: select
-      isTop: true
+  filters:
+    facets:
+      - name: Product
+        field: redocly_category
+        type: select
