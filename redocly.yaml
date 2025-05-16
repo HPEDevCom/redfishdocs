@@ -59,21 +59,12 @@ navbar:
       external: true
 
 products:
-  iLO7:
-    name: HPE iLO 7
-    folder: docs/redfishServices/ilos/ilo7
-  iLO6:
-    name: HPE iLO 6
-    folder: docs/redfishServices/ilos/ilo6
-  iLO5:
-    name: HPE iLO 5
-    folder: docs/redfishServices/ilos/ilo5
-  SupDocs:
-    name: iLO Supplement documents
-    folder: docs/redfishServices/ilos/supplementDocuments
-  iLOrest:
-    name: HPE iLOrest
-    folder: docs/redfishClients/ilorest-userguide
+  iLORedfishServices:
+    name: HPE iLO RedfishServices
+    folder: docs/redfishServices/ilos
+  HpeRedfishClients:
+    name: HPE RedfishClients
+    folder: docs/redfishClients
 
 markdown:
   toc:
