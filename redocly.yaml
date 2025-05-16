@@ -4,6 +4,24 @@
 #
 # Those setings can be altered in a any page in a front matter section.
     
+metadataGlobs:
+  'docs/concepts/**':
+    redocly_category: Products
+  'docs/redfishClients/ilorest-userguide/**':
+    redocly_category: Products
+search:
+  engine: typesense
+  hide: false
+  shortcuts: 
+    - /
+  ai: 
+    hide: true
+  filters:
+    facets:
+      - name: Products
+        field: redocly_category
+        type: multi-select
+
 ignore:
   - '**/README.md'
   - '**/_*'
@@ -66,20 +84,3 @@ logo:
   altText: 'HPE server Management with Redfish'
 sidebar:
   hide: false
-metadataGlobs:
-  'docs/concepts/**':
-    redocly_category: Category
-  'docs/redfishClients/ilorest-userguide/**':
-    redocly_category: iLOrest
-search:
-  engine: typesense
-  hide: false
-  shortcuts: 
-    - /
-  ai: 
-    hide: true
-  filters:
-    facets:
-      - name: Category
-        field: redocly_category
-        type: multi-select
