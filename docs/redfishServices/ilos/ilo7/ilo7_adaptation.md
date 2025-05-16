@@ -5,8 +5,8 @@ sidebar:
   hide: false
 markdown:
   toc:
-    hide: true
-    depth: 3
+    hide: false
+    depth: 2
   lastUpdatedBlock:
     hide: true
 ---
