@@ -67,10 +67,10 @@ logo:
 sidebar:
   hide: false
 metadataGlobs:
-  'concepts/**':
+  'docs/concepts/**':
     redocly_category: Concepts
-  'ilorest-userguide/**':
-    redocly_category: iLOrest
+  'docs/**':
+    redocly_category: docs
 search:
   engine: typesense
   hide: false
@@ -78,3 +78,8 @@ search:
     - /
   ai: 
     hide: true
+  filters:
+    facets:
+      - name: Category
+        field: redocly_category
+        type: multi-select
