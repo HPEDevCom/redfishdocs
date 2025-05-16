@@ -67,8 +67,6 @@ logo:
 sidebar:
   hide: false
 metadataGlobs:
-  'docs/concepts/**':
-    redocly_category: Concepts
   'docs/**':
     redocly_category: docs
 search:
@@ -80,6 +78,7 @@ search:
     hide: true
   filters:
     facets:
-      - name: Category
+      - name: Product
         field: redocly_category
-        type: multi-select
+        type: select
+        isTop: true
