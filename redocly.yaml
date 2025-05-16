@@ -21,6 +21,7 @@ search:
       - name: Products
         field: doc_section
         type: multi-select
+        isTop: true
 
 ignore:
   - '**/README.md'
