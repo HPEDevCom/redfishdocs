@@ -8,7 +8,7 @@ metadataGlobs:
   'docs/concepts/**':
     redocly_category: Concepts
   'docs/redfishClients/ilorest-userguide/**':
-    doc_section: iLOrest
+    redocly_category: iLOrest
 search:
   engine: typesense
   hide: false
@@ -16,15 +16,7 @@ search:
     - /
   ai: 
     hide: true
-  filters:
-    facets:
-      - name: Products
-        field: doc_section
-        type: multi-select
-      - name: Custom
-        field: redocly_category
-        type: multi-select
-
+  
 ignore:
   - '**/README.md'
   - '**/_*'
