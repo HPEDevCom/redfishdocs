@@ -13,8 +13,16 @@ search:
     hide: true
 
 metadataGlobs:
+  'docs/redfishServices/ilos/ilo7/**':
+    redocly_category: iLO 7
+  'docs/redfish/Services/ilos/ilo6/**':
+    redocly_category: iLO 6
+  'docs/redfishServices/ilos/ilo5/**':
+    redocly_category: iLO 5
+  'docs/redfishServices/ilos/supplementdocuments/**':
+    redocly_category: Supplement documents
   'docs/concepts/**':
-    redocly_category: Concepts
+    redocly_category: Redfish concepts
   'docs/redfishClients/ilorest-userguide/**':
     redocly_category: iLOrest
 
