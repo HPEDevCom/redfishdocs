@@ -6,9 +6,9 @@
     
 metadataGlobs:
   'docs/concepts/**':
-    redocly_category: Products
+    redocly_category: Concepts
   'docs/redfishClients/ilorest-userguide/**':
-    redocly_category: Products
+    redocly_category: iLOrest
 search:
   engine: typesense
   hide: false
