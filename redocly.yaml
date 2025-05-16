@@ -67,7 +67,7 @@ logo:
 sidebar:
   hide: false
 search:
-  engine: Typesense
+  engine: typesense
   hide: false
   shortcuts: 
     - /
