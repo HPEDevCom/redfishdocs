@@ -16,9 +16,9 @@ Original doc sources: https://github.com/HewlettPackard/python-ilorest-library/t
 Original rendered doc: https://hewlettpackard.github.io/python-ilorest-library/API-Overview.html 
 -->
 
-# HPE Python Redfish® library
+# HPE Python Redfish library
 
-The <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank">HPE Python Redfish® library</a>
+The <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank">HPE Python Redfish library</a>
 is built for interacting with systems that implement the
 <a href="https://redfish.dmtf.org/" target="_blank">Redfish API</a>,
 which includes the [HPE iLO RESTful API](/docs).

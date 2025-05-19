@@ -75,4 +75,42 @@
       page: docs/redfishClients/ilorest-userguide/index.md
     - label: HPE Python Redfish library
       page: docs/redfishClients/python-redfish-library/index.md
+
 - separatorLine: true
+- group: More references and material
+  expanded: false
+  items:
+    - label: Overview
+      page: docs/references_and_material/index.md
+    - label: Why is Redfish different...
+      href: 'https://developer.hpe.com/blog/why-is-redfish%C2%AE-different-from-other-rest-apis-part-1/'
+      external: true
+    - label: Overview of PLDM for RDE
+      href: 'https://developer.hpe.com/blog/overview-of-the-platform-level-data-model-for-redfish%C2%AE-device-enablement-standard/'
+      external: true
+    - label: Benefits of PLDM for Firmware Update
+      href: 'https://developer.hpe.com/blog/benefits-of-the-platform-level-data-model-for-firmware-update-standard/'
+      external: true
+    - label: Master the Redfish Server States
+      href: 'https://developer.hpe.com/blog/master-the-redfish-server-states-to-improve-your-monitoring-and-manageme/'
+      external: true
+    - label: HPE firmware updates
+      href: 'https://developer.hpe.com/blog/hpe-firmware-updates-part-1-file-types-and-smart-components/'
+      external: true
+    - label: Massive parallel management
+      href: 'https://developer.hpe.com/blog/massive-parallel-management-with-ilorest-on-linux/'
+      external: true
+    - label: Managing iLO sessions
+      href: 'https://developer.hpe.com/blog/managing-ilo-sessions-with-redfish/'
+      external: true
+
+    - label: Developer guide part 1
+      href: 'https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/'
+      external: true
+    - label: Developer guide Part 2
+      href: 'https://developer.hpe.com/blog/getting-started-with-the-redfish-api-part-2/'
+      external: true
+
+    - label: And much more....
+      href: 'https://developer.hpe.com/search/?term=redfish'
+      external: true

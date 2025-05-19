@@ -46,8 +46,11 @@ links:
 seo:
   title: HPE server management with Redfish
   description: Redfish is a standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC)
+
 navbar:
   items:
+    - label: Home
+      page: /
     - label: Guides
       page: docs/index.md
     - label: Services
@@ -73,9 +76,10 @@ markdown:
   lastUpdatedBlock:
     hide: true
 
-logo:
-  image: images/hpe.svg
-  link: /
-  altText: 'HPE server Management with Redfish'
+#logo:
+  #image: images/hpe.svg
+  #link: /
+  #altText: 'HPE server Management with Redfish'
+
 sidebar:
   hide: false
