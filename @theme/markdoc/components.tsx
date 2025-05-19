@@ -2,6 +2,22 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+export function LinkInternal({ children, href }: { children: React.ReactNode; href: string }) {
+  return (
+    <a href={href}>
+      {children}
+    </a>
+  );
+}
+
+export function LinkExternal({ children, href }: { children: React.ReactNode; href: string }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+}
+
 export function Split({ children }: { children: React.ReactNode[] }) {
   const childs = React.Children.toArray(children);
   const hrIndex = childs.findIndex(child => React.isValidElement(child) && child.type === 'hr');

@@ -1,0 +1,44 @@
+- label: Back to Redfish clients
+  href: /docs/redfishclients
+- separatorLine: true
+
+- separator: iLOrest user guide
+- label: Overview
+  page: index.md
+- label: Changelog
+  page: changelog.md
+- label: Installation
+  page: installation.md
+- label: Using HPE iLOrest
+  page: usage.md
+- label: Error Codes
+  page: errors.md
+
+- group: Commands
+  expanded: false
+  items:
+    - label: Global commands and optional arguments
+      page: globalcommands.md
+    - label: BIOS Commands
+      page: bioscommands.md
+    - label: iLO Commands
+      page: ilocommands.md
+    - label: iLO Repository Commands
+      page: ilorepositorycommands.md
+    - label: Storage controller Commands
+      page: smartarraycommands.md
+    - label: Persistent Memory Commands
+      page: persistentmemorycommands.md
+    - label: Raw Commands
+      page: rawcommands.md
+
+- label: Advanced Options
+  page: advancedusage.md
+- label: Use Case Examples and Macro Commands
+  page: examplecommandsscripts.md
+- label: When things go wrong
+  page: gowrong.md
+- label: Support and other resources
+  page: support.md
+- label: Known Issues 
+  page: knownissues.md
