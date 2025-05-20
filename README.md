@@ -4,15 +4,19 @@ excludeFromSearch: true
 
 # hpe-ilo-redocly
 
-This <a href="https://github.com/HewlettPackard/hpe-ilo-redocly" target="_blank">hpe-ilo-redocly</a> private repository contains the sources of the [HPE Redfish documentation portal](https://servermanagementportal.ext.hpe.com/). It is linked to the <a href="https://app.cloud.redocly.com/" target="_blank">Redocly / Reunite /Realm application</a>. The Redocly application nicely renders `.md` and OpenAPI files contained in this repo using specific configuration files. 
+This <a href="https://github.com/HewlettPackard/hpe-ilo-redocly" target="_blank">hpe-ilo-redocly</a> private repository contains the sources of the [HPE Redfish documentation portal](https://servermanagementportal.ext.hpe.com/). It is linked to the <a href="https://app.cloud.redocly.com/" target="_blank">Redocly/Realm application</a>. The Redocly/Realm application consists of a complete documentation environment to renders `.md` and OpenAPI files contained in this repo using specific configuration files.
 
-Read the <a href="https://redocly.com/docs/realm" target="_blank">Redocly/Realm documentation</a> for more information, including the migration from the
+You need an account to be able to access the Redocly/Realm platform.
+
+Read the <a href="https://redocly.com/docs/realm" target="_blank">Redocly/Realm documentation</a> for more information, including the <a href="https://redocly.com/docs/realm/get-started/migrate-from-legacy-portal" target="_blank">migration</a> from the
 legacy Redocly/Workflows product.
 
 The structure of this repository is designed to reach the following goals:
 
-* Ability to render multiple Redfish services (i.e. iLO) with and Redfish clients (i.e. iLOrest) documentation.
+* Ability to render multiple Redfish services (i.e. iLO, CSUS3200) and Redfish clients (i.e. iLOrest, Python/PowerShell libraries) documentation.
 * Ability to render multiple versions of a specific Redfish service (i.e. iLO 6 v1.10, iLO 7 v1.11.00, iLOrest 6.0.0...)
+
+> NOTE: To minimize the portal size, the number of iLO firmware versions is limited. Refer to the `keepOldVersions` variable in the [_script_wrapper.sh](/docs/_scripts/_script_wrapper.sh) for more detail.
 
 Table of contents
 
@@ -30,58 +34,36 @@ Table of contents
 
 ## Repository structure
 
-A typical Redocly portal structure is explained in the <a href="https://redocly.com/docs/developer-portal/guides/organizing-files/" target="_blank"> Redocly documentation</a>. Our Redfish portal structure is slightly different to cope with Grommet. Then, most of the documents are posted under the `docs` directory while Redocly's example post them under the `developer-portal` folder.
+A typical Redocly/Realm portal structure is explained in the <a href="https://redocly.com/docs/realm/author/concepts/project-structure" target="_blank"> Realm documentation</a>. Our Redfish portal structure may be slightly different to cope with Grommet. Then, the documents are posted under the `docs` directory.
 
 | File or folder name | Description | Comments |
 | ---- | ---- | ---- |
 |`_components`, `_override`, `components`, `scripts`, `static` | Grommet and Redocly folders | **NOTE** A `docs/_script` folder exists and contains scripts to be used during the rendering process. |
 | `theme.ts`, `grommet-theme.json` | Look and feel directives | |
 | `images` | Folder containing images | |
-| `siteConfig.yaml` | Main Portal configuration file | Contains global directives |
-| `packages.json` | Everything needed to build the portal | Among other things, it contains the local development web portal TCP port (3001), the scripts invocation to build the portal and the Redocly portal version.
-| `index.mdx` | Portal entry page design | Mixture of Markdown, JavaScript and React directives |
-| `openapi` | Folder containing OpenAPI/swagger documents | |
+| `redocly.yaml` | Portal configuration file | Contains global directives |
+| `packages.json` | Everything needed to build the portal | Among other things, it contains the start command of the local portal with TCP default port 4000. |
+| `index.page.tsx` | Portal entry page design | Mixture of Markdown, JavaScript and React directives |
 | `sidebars.yaml` | Left pane hierarchical menus | Define sections pointers to `.md` and `.yaml` documents |
-| `docs` | Document folder sources and rendering scripts. | The structure of the this folder tries to reflect the `sidebars.yaml` structure. |
+| `docs` | Document/content folder sources and rendering scripts. | The structure of the this folder tries to reflect the `sidebars.yaml` structure. |
 
 **NOTE**: `.yaml` files MUST be in the UNIX format
 (Unicode text, UTF-8 text with LF terminators). Use the `dos2unix`
 tool to force to the UNIX file format. Windows/DOS format
-(CRLF line terminators) will result with build errors.
+(CRLF line terminators) may result with build errors.
 
-**NOTE**: Markdown files not prefixed with an `_` char are processed by the Redocly engine even if not mentioned in `sidebars.yaml`. Markdown files prefixed with an `_` char are not processed by the Redocly engine. To completely avoid any processing on a specific  `.md` fie, you have to comment out its reference in `sidebars.yaml` AND add the `-` prefix to the file name.
+**NOTE**: Markdown files prefixed with an `_` char are note processed by the Redocly engine even if not mentioned in `sidebars.yaml`. Markdown files prefixed with an `_` char are not processed by the Redocly engine. Refer to the `ignore` directive in the `redocly.yaml` configuration file.
 
-Some files cannot be prefixed with the `_` char, like `README.md` files. Just prepend a `exclude: true` front matter surrounded with `---` lines.
-
-Unlike Slate which concatenates all the MD files listed in the `source/index.html.md` file before the rendering process, Redocly renders individual MD files sequentially as they appear in the `sidebars.yaml` file. This is an important difference because hrefs are not just fragments but can be relative URIs.
-
-As an example, in the `resmap.md` file of Slate, the markdown URI corresponding to the collection of chassis is the fragment: `[Chassis](#chassis-v1_10_2-chassis)`.
-
-In Redocly, the same URI is coded with a relative URI and fragment: `[Chassis](../ilo6_chassis_resourcedefns/#chassis)`.
-
-**NOTE**: The above fragment does not include `-v1_10_2-chassis` suffix. The reason is because this suffix would appear in the Table of Content (TOC) on the right side of the main display pane. Since the TOC is very narrow, the rendering with the suffix takes more than a line and is, somehow not pretty.
-
-The removal of the suffix as well as the insertion of the correct URI/fragment is performed in the `docs/_scripts` folder.
-
-TBD: need an example in iLOrest userguide /TBD
+To exclude files from the search engine, include directive `excludeFromSearch: true` in the <a href="https://redocly.com/docs/realm/config/front-matter-config" target="_blank">front matter</a> section of the desired files.
 
 ## Redocly markdown
 
-Redocly `.md` files follow the <a href="https://spec.commonmark.org/current/" target="_blank">CommonMark</a> markdown specs which are slightly different from the <a href="https://github.com/slatedocs/slate" target="_blank">Slate</a> doc generator.
-
-### Generic rendering
-
-An important difference between Redocly and Slate markdown syntax, is the inline code text. Slate supports surrounding three backticks (```code text```) while Redocly only supports single backticks (`code text`).
-
-Concerning italics, Redocly markdown syntax supports both surrounding `*` or `_` chars. The later can be a problem for data type strings. As an example, in both iLO and iLOrest docs, `#Storage.v1_10_1.Storage` is incorrectly rendered #Storage.v1*10*1.Storage. For a correct rendering, the `_` chars must be escaped like this: `#Storage.v1\_10\_1.Storage`.
-
-In addition, error return codes of iLOrest are wrongly rendered (i.e. RIS*ILO*CHIF*ACCESS*DENIED_ERROR instead of RIS_ILO_CHIF_ACCESS_DENIED_ERROR).
-
-The `siteConfig.yaml` and MD files support an `seo` [section](https://redocly.com/docs/developer-portal/configuration/siteconfig/seo/) containing directives for enabling/disabling features like the table of content (toc). This section is called "front matter" in MD files. The `siteConfig.yaml` file contains the default values that can be overwritten in front matter sections.
+Redocly `.md` files are processed by a <a href="https://redocly.com/learn/markdoc" target="_blank">Markdoc engine</a>. It is slightly different from the
+<a href="https://spec.commonmark.org/current/" target="_blank">CommonMark</a> markdown used by the Redocly/Workflows.
 
 ### Admonitions
 
-Markdown files support <a href="https://redocly.com/docs/developer-portal/guides/markdown/#admonitions" target="_blank"> admonitions</a>. This feature provides a way to distinguish info, warnings, danger, attention and success text. The syntax is:
+Markdown files support <a href="https://redocly.com/docs/realm/get-started/migrate-from-legacy-portal#change-admonition-syntax" target="_blank"> admonitions</a>. This feature provides a way to distinguish info, warnings, danger, attention and success text. The Markdoc syntax is:
 
 ```text
 {% admonition type="keyword" name="Optional" %} text
@@ -92,10 +74,6 @@ Pick keyword from the list: info, success, warning, danger, attention
 ### External links
 
 To ease navigation, external links should use the HTML anchor `href` syntax in order to open a new tab with the external link. The syntax is: `<a href="https://some.external.link" target="_blank">String</a>`.
-
-The port of manually generated from Slate to Redocly is performed manually. The [README.md](./docs/README.md) file in the `docs` folder contains a table with the status of this port for each file of the project.
-
-The port of automatically generated files (`resmap.md`, `resourcedefns.md` and `msgregs.md`) is performed by scripts in the `docs/_scripts` folder. Those scripts have to be launched manually. See the [README.md](./docs/README.md) file for more information.
 
 ### Global environment variables
 
@@ -108,9 +86,9 @@ Then, you can reference those variables in the `.md` files with the following sy
 As an example, the content of `.env` is:
 
 ```shell
-PUBLIC_LATEST_ILO_GEN_VERSION=ilo6
-PUBLIC_LATEST_FW_VERSION=167
-PUBLIC_LATEST_ILO6_FW_VERSION=167
+PUBLIC_LATEST_ILO_GEN_VERSION=ilo7
+PUBLIC_LATEST_FW_VERSION=111
+PUBLIC_LATEST_ILO6_FW_VERSION=168
 PUBLC_LATEST_ILO7_FW_VERSION=111
 PUBLIC_LATEST_ILO5_FW_VERSION=309
 PUBLIC_LATEST_PYTHON_LIBRARY_VERSION=3200
@@ -124,7 +102,7 @@ With the above definitions, the following Markdoc tag:
 
 `/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_hpe_resourcedefns167#hpeilobackuprestoreservice`
 
-The use of those firmware variables ensures that hrefs links and fragments present the markdown files always point to the most appropriate firmware revision section.
+The use of those firmware variables ensures that hrefs links and fragments present in markdown files always point to the most appropriate firmware revision section.
 
 ## File folder naming scheme
 
@@ -134,7 +112,7 @@ The following table defines the rules for an iLO of generation `G` and firmware 
 
 > NOTE: To avoid file/folder case problems in such CI/CD infra, mixing Operating Systems (Linux/Windows/PowerShell/Cygwin) and applications as Service(GitHub/Redocly), it is wise to follow a strict strategy concerning the case of alphabetic chars: LOWER case ONLY.
 
-> NOTE: Redocly naming scheme for file names and properties is a bit different, as it allows an upper case letter as a separator for each sub words except the first one. Examples: `siteConfig.yaml` or `disableLastModified`.
+> NOTE: Redocly naming scheme for file names and properties is a bit different, as it allows an upper case letter as a separator for each sub words except the first one. Examples: `redocly.yaml` or `lastUpdateBlock`.
 
 | File or folder description | Location | Example | Comment |
 | ---- | ---- | ---- | ---- |
@@ -145,16 +123,12 @@ The following table defines the rules for an iLO of generation `G` and firmware 
 
 ## Redocly rendering processes
 
-There are two possibilities to trigger the rendering of a Redocly portal:
+There are two possibilities to trigger the rendering of a Redocly/Realm portal:
 
-1. A local rendering manual process happening in your laptop. This process renders the portal in a local web server accessible via a TCP port defined in the `package.json` file (`scripts.start = redocly-portal develop -p 3001` property).
-2. The automatic Redocly workflow happening in the GitHub repository of the portal, upon Pull Request creations and commits. See below for more detail.
+1. A local rendering manual process happening in your laptop. This process renders the portal in a local web server on port 4000 by default. Refer to the <a href="https://redocly.com/docs/cli" target="_blank">documentation</a> to install the Redocly/CLI on your laptop. Then, run `redocly preview [--port=<portNumber>]` and connect your favorite browser to `http://localhost:<portNumber>`
+2. The automatic Redocly/Realm workflow. See below for more detail.
 
-**NOTE**: Until the automatic generation of `resmap.md`, `resourcedefns.md` and `msgregs.md` with Redocly MD,  those files MUST be processed by the `docs/_scripts` before any rendering process.
-
-### Local rendering
-
-The local rendering process is faster than the automatic process to see the result of modifications. It is triggered by the start of Nodejs/yarn scripts in the laptop. However, this process is not bullet proofed and sometimes, errors happen, requiring a complete restart of the process. See [Appendix](#appendix) for installation and start tips. The size of the files to be rendered may break the process if too heavy. A `resourcedefns.md` with 40000+ lines may fail while the same file with 15000 lines succeeds.
+**NOTE**: When deploying the documentation of a new iLO firmware version, don't forget to launch the `docs/_scripts/_script_wrapper.sh` to generate `resmap.md`, `resourcedefns.md` and `msgregs.md` files.
 
 ### Automatic Redocly workflow
 
@@ -179,7 +153,7 @@ During the automatic Redocly workflow, you can only view the a "wait" logo or th
 
 ### Link Checker
 
-Redocly embeds a link checker that can be enabled/disabled in the `siteConfig.yaml` file, in the `linkChecker` <a href="https://redocly.com/docs/developer-portal/configuration/siteconfig/link-checker/#usage" target="_blank">directive</a>. Note that this link checker adds time to the rendering process. Moreover, if the `severity` is set to `error`, the entire build is considered unsuccessful and cannot be not deployed in case of error. A `severity` of `warning` does not prevent the publication.
+Redocly/Realm embeds a link checker that can be enabled/disabled in the `redocly.yaml` file, with the `ignoreLinkChecker` boolean <a href="https://redocly.com/docs/developer-portal/configuration/siteconfig/link-checker/#usage" target="_blank">directive</a>. Note that this link checker adds time to the rendering process. Moreover, if the `severity` is set to `error`, the entire build is considered unsuccessful and cannot be not deployed in case of error. A `severity` of `warning` does not prevent the publication.
 
 ## Review and publication processes
 
@@ -217,40 +191,7 @@ The above `push` command creates a Pull Request in the <a href="https://github.c
 
 ### Setup for local rendering
 
-The local rendering process requires `nodejs`, and `yarn`. Here are tips to setup this environment on a Windows/Cygwin laptop.
-
-* The <a href="https://nodejs.org/en/download/" target="_blank">nodejs</a> for  Windows **LTS** version can be installed safely.
-
->**NOTE:** You may need to create a `C:\Windows\Installer` folder to avoid an error with code `2755`.
-
-* Install `yarn` from `$HOME` in a Cygwin/MinTTY terminal:
-
-  `cd ~`
-  `npm install --location=global yarn` # `nm` comes with `nodejs`.
-
-* Cleanup and install required modules in your local repo clone:
-  
-  `cd CloneOfPrivate-hpe-ilo-redocly`
-
-  `rm -r node_modules/* .yarn .yarnrc.yml yarn.lock` # to make sure the place is clean.
-
-  `npm install`
-
-* Start the local rendering process:
-  
-  `yarn start`
-
-* If no errors, connect your favorite browser to the non-secure HTTP URL: `http://localhost:4000`
-
-### Caveats
-
-In a perfect world, modifications to markdown files triggers an automatic local re-rendering of the modified file. However, often it generates errors related to the modified files and a restart of the web server is necessary:
-
-`Ctrl-C` # to kill the local web server
-
-`yarn start`
-
-In addition, you may encounter an `RangeError: Maximum call stack size exceeded` error. This may be related to a too big `resourcedefns.md` file. A workaround is to truncate this file with 16000 lines during the development phase and push the original file upstream when done. Not ideal !
+TBD
 
 ### Guidelines to convert from Workflows
 

@@ -1,3 +1,6 @@
+// This HPE script wraps the Redocly/Realm portal with
+// HPE required page header and footer.
+
 function getCookie(cookiename) {
   const cookiestring = `; ${document.cookie}`;
 
