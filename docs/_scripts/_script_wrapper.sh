@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# Version 0.98
+# Version 0.99
 
 # Script name: _script_wrapper.sh 
 # This script is a wrapper to the other scripts contained in this folder, except
@@ -44,7 +44,7 @@ required_executables="dos2unix sed awk"
 # Don't forget to update the following variables to process the right iLO version !
 
 export ilogen="iLO 6"
-export iLOFwVersion=1.68
+export iLOFwVersion=1.66
 
 export iLOGen=$(echo ${ilogen,,} | tr -d ' ')
 export iLOVersion=$(echo $iLOFwVersion | tr -d '.')
@@ -223,7 +223,6 @@ fi
 nbOfVersionsToRemove=$((NbiLOVersions - keepOldVersions))
 index=$((nbOfVersionsToRemove - 1)) 
 
-i=0
 sidebarsFile="${iLOGen}.sidebars.yaml"
 if [ ! -f $sidebarsFile ] ; then
   echo -e "\nWARNING: $sidebarsFile not found. No update done."
@@ -239,6 +238,7 @@ if [ ! "${iLOGen}_${iLOVersion}" == "${lastVersion}" ] ; then
   exit 0
 fi
 
+i=0
 while [ $i -le $index ] ; do
   echo -e "\nRemoving formatted files in ${iLOVersions[$i]} directory"
   rm -f ${iLOVersions[$i]}/${iLOGen}_*.md &> /dev/null
@@ -249,5 +249,13 @@ while [ $i -le $index ] ; do
   sed -i "/$startPattern/,/$endPattern/d" $sidebarsFile
   i=$((i + 1))
 done
+
+# Removal of the internal links Changelog file to avoid broken links.
+# Note: awk is used to search for lines between @startPattern and 
+# the next "## iLO n new"
+startPattern="## ${ilogen} v${iLOFwVersion} new"
+endPattern="$(awk -v sp="$startPattern" -v ig="## $ilogen new" '$0 ~ sp {found=1; next} found && $0 ~ ig {print; found=0}' ${iLOGen}_changelog.md)"
+sed -i "/$startPattern/,/$endPattern/ s/\[\(.*\)\](.*)/\1/g" ${iLOGen}_changelog.md
+
 
 exit 0

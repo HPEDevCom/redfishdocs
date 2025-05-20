@@ -82,8 +82,8 @@ ilorest logout
 /redfish/v1/systems/1/bios/oem/hpe/iscsi/
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ## BiosDefaults command
 
@@ -192,7 +192,7 @@ local mode.
 Changes are not applied until the system is reset.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Reset of Bios attributes to factory default" %}
 
 ```shell Reset of Bios attributes to factory default
@@ -202,7 +202,7 @@ The operation completed successfully.
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Reset of Bios attributes to user defaults" %}
 
 ```shell Reset of Bios attributes to user defaults
@@ -213,14 +213,15 @@ The operation completed successfully.
 ilorest logout
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example simultaneously logs in to the server at the provided URL
 (`--url`) with the provided username (`-u`) and password (`-p`).
 It sets the Bios attributes back to default settings, then reboots
 (`--reboot`) the server to apply the changes.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -230,8 +231,9 @@ The operation completed successfully.
 The operation completed successfully.
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## Bootorder command
 
 ### Syntax
@@ -341,7 +343,7 @@ Run without arguments to view the current persistent boot order,
 continuous and one time boot options, and continuous and one
 time boot UEFI options.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -379,8 +381,9 @@ Continuous and one time boot uefi options:
 5. HD.EmbRAID.1.2 (Embedded RAID 1 : HPE Smart Array P408i-a SR Gen10 - Size:1.7 TiB Port:P1I Bay:1 Box:3)
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 List numbers associated with the `Current Persistent Boot Order`
 list to set a new boot order. Any numbers left off of the new
 list will be added to the end. Using the previous examples
@@ -389,7 +392,7 @@ Current Persistent Boot Order, this command will place
 at the top in that order. The commit flag will commit
 the changes, otherwise changes are not saved.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -415,15 +418,16 @@ Current Persistent Boot Order:
 ...
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 Use partial string matching to set a boot order
 independent of the current boot order. All boot
 options not listed will be added to the end of the boot order.
 This command will set All v4 NICs first, followed by
 all hard drives, followed by Generic.USB.1.1, then committing the results.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -447,13 +451,14 @@ Current Persistent Boot Order:
 ...
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 Change the one time boot order using the `--onetimeboot`
 option. Specify a option to boot to from
 the `Continuous and one time boot options` list.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -462,13 +467,14 @@ Committing changes...
 The operation completed successfully.
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 Change the continuous boot order using the `--continuousboot` option.
 Specify a option to boot to from the `Continuous and one time boot options`
 list.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -477,12 +483,13 @@ Committing changes...
 The operation completed successfully.
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 To turn off any continuous or one-time boot options that have
 been configured, use the `--disablebootflag` option.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -491,8 +498,9 @@ Committing changes...
 The operation completed successfully.
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## iSCSIConfig command
 
 ### Syntax
@@ -588,7 +596,7 @@ Using the `iscsiconfig` command without any options will
 display the current ISCSI configuration, including ISCSI
 initiator name and currently configured boot entries.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -603,13 +611,14 @@ Available iSCSI Boot Network Interfaces:
 [4] Embedded LOM 1 Port 4 : HPE Ethernet 1Gb 4-port 331i Adapter - NIC
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 Use the list flag to retrieve the current configured iscsi boot attempts.
 If none are configured, then all sections will have a message
 stating **Not Added**.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -638,7 +647,7 @@ specifying which iSCSI Network Interface to attempt a boot from.
 This command will add a boot attempt from option [2] in
 the `Available iSCSI Boot Network Interfaces` list.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -689,14 +698,15 @@ Current iSCSI Attempts:
 ]
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 Modify properties for boot attempts by outputting them to a file,
 editing the file, then apply the changes with
 the `--modify` option. You must include the `--list`
 option with the `-f` option to write to a file.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -706,12 +716,13 @@ iLOrest > iscsiconfig --modify output.txt
 One or more properties were changed and will not take effect until system is reset.
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 To delete an iSCSI attempt use the `--delete` option,
 specifying which attempt to delete.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -779,8 +790,9 @@ Current iSCSI Attempts:
 ]
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## Setpassword command
 
 #### Syntax
@@ -840,7 +852,7 @@ To set a new password, include the new password and the current password.
 When setting a bios or power on password with no previous password set,
 `OLD_PASSWORD` must be set to `None` signifying no password.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -850,12 +862,13 @@ setpassword --newpassword newpass1 --currentpassword
 The operation completed successfully.
 ```
   
-  {% /tab %}
-  {% /tabs %}
-When setting a bios or power on password back to nothing, `NEW_PASSWORD`
-must be set to `""`.
+{% /tab %}
+{% /tabs %}
 
-  {% tabs %}
+When setting a bios or power on password back to nothing, `NEW_PASSWORD`
+must be set to `None`.
+
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -865,11 +878,12 @@ setpassword --newpassword None --currentpassword newpass1
 The operation completed successfully.
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 To set the power on password, include the `--poweron` option.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -877,5 +891,5 @@ iLOrest > setpassword --newpassword newpassword --currentpassword None --poweron
 The operation completed successfully.
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}

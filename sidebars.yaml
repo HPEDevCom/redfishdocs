@@ -75,6 +75,8 @@
       page: docs/redfishClients/ilorest-userguide/index.md
     - label: HPE Python Redfish library
       page: docs/redfishClients/python-redfish-library/index.md
+    - label: Scripting Tools for Windows PowerShell
+      page: docs/redfishClients/powershellCmdlets/index.md
 
 - separatorLine: true
 - group: More references and material

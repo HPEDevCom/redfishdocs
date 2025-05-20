@@ -61,13 +61,15 @@ navbar:
       href: https://www.dmtf.org/standards/redfish
       external: true
 
-products:
-  iLORedfishServices:
-    name: HPE iLO RedfishServices
-    folder: docs/redfishServices/ilos
-  HpeRedfishClients:
-    name: HPE RedfishClients
-    folder: docs/redfishClients
+# Commenting out the product section. It introduces
+# a difficult to detect filter, in the search bar. 
+#products:
+  #iLORedfishServices:
+    #name: HPE iLO RedfishServices
+    #folder: docs/redfishServices/ilos
+  #HpeRedfishClients:
+    #name: HPE RedfishClients
+    #folder: docs/redfishClients
 
 markdown:
   toc:
@@ -76,10 +78,10 @@ markdown:
   lastUpdatedBlock:
     hide: true
 
-#logo:
-  #image: images/hpe.svg
-  #link: /
-  #altText: 'HPE server Management with Redfish'
+logo:
+  image: images/hpe.svg
+  link: /
+  altText: 'HPE server Management with Redfish'
 
 sidebar:
   hide: false
