@@ -191,9 +191,19 @@ The above `push` command creates a Pull Request in the <a href="https://github.c
 
 ### Setup for local rendering
 
-TBD
+Follow the <a href="https://redocly.com/docs/cli" target="_blank">documentation</a> steps to install the Redocly/CLI tool
+on your laptop. When done, using a CMD.exe or PowerShell terminal, change directory to your local Redocly repository,
+and launch `redocly preview`. This command starts a local web server on port 4000 (by default).
 
-### Guidelines to convert from Workflows
+With a Web browser, connect to this local web server (http://localhost:4000) to view in real time the
+modifications performed in the content files, using your favorite IDE (i.e. Visual Studio Code).
+
+>NOTE: As of the writing of this file, the splash screen of the portal is mis-rendered. However, all
+other pages are Ok, including the search engine.
+
+When editing is done, commit your changes upstream.
+
+### Guidelines to convert from Redocly/Workflows
 
 This section provides some Markdown differences between Redocly/Workflows and Redocly/Realm.
 While Redocly/Workflows Markdown pages are based upon
@@ -205,9 +215,8 @@ Most of the updates in the following table comes from the Workflows to Realm
 <a href="https://redocly.com/docs/realm/get-started/migrate-from-legacy-portal"
 target="_blank">migration documentation section</a>.
 
-In order to help for a smooth migration, Redocly proposes a
-<a herf="https://github.com/redocly-demo/migrate-portal/blob/main/bin.ts#L795"
-target="_blank">migration script</a>.
+>NOTE: Most of the steps to convert files from Redocly/Workflows to Realm
+have been automated in scripts of the `docs/_scripts` folder.
 
 | Description | Redocly/Workflows | Reunite/Realm |
 | ---- | ---- | ---- |
