@@ -116,7 +116,7 @@ The following example retrieves the `GlobalComponentIntegrity`
 and the `ComponentIntegrityPolicy` properties. The response body
 shows respective values as `Enabled` and `HaltBootOnSPDMFailure`.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="generic GET request" %}
 
 ```text generic GET request
@@ -124,7 +124,7 @@ GET /redfish/v1/Managers/1/SecurityService/?$select=GlobalComponentIntegrity,
 ComponentIntegrityPolicy
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```bash iLOrest
@@ -134,7 +134,7 @@ ilorest get --json GlobalComponentIntegrity ComponentIntegrityPolicy
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -147,9 +147,10 @@ ilorest logout
     "GlobalComponentIntegrity": "Enabled"
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 A system with the `GlobalComponentIntegrity` enabled and the
 `ComponentIntegrityPolicy` set to `HaltBootOnSPDMFailure` returns a
 `ComponentIntegrity` collection similar to one in the following example.
@@ -161,7 +162,7 @@ A system with the `GlobalComponentIntegrity` enabled and the
 GET /redfish/v1/ComponentIntegrity/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -171,7 +172,7 @@ ilorest get --json
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -197,9 +198,10 @@ ilorest logout
 }
 
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ## Component Integrity Policy
 
 The `ComponentIntegrityPolicy` property, part of the `HpeSecurityService`
@@ -220,14 +222,14 @@ property to `HaltBootOnSPDMFailure`.
 A system reset is required to fully validate the modification.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic PATCH request" %}
 
 ```text Generic PATCH request
 PATCH /redfish/v1/Managers/1/SecurityService/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body request" %}
 
 ```json Body request
@@ -236,7 +238,7 @@ PATCH /redfish/v1/Managers/1/SecurityService/
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -246,7 +248,7 @@ ilorest set ComponentIntegrityPolicy="HaltBootOnSPDMFailure" --commit
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -262,19 +264,20 @@ ilorest logout
     }
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 The following example retrieves the collection of SPDM capable devices.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/ComponentIntegrity/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -283,7 +286,7 @@ ilorest get --json --select ComponentIntegrityCollection
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -303,9 +306,10 @@ ilorest logout
   "Name": "Component Integrity Collection"
 }
 ````
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 The following example retrieves the details of a storage controller
 successfully verified by the SPDM protocol.
 
@@ -314,7 +318,7 @@ The response body contains a hash (measurement) of the four subcomponents
 of this device.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET request" %}
 
 ```text Generic GET request
@@ -331,7 +335,7 @@ ilorest get --json
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -384,9 +388,10 @@ ilorest logout
   "TargetComponentURI": "/redfish/v1/Systems/1/Storage/DE040000"
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="success" name="TIP" %}
 You can map the component URI (i.e. `/redfish/v1/ComponentIntegrity/0`)
 with its device URI using the `TargetComponentURI`
@@ -419,7 +424,7 @@ corresponds to the concatenation of the four measurements mentioned in
 the previous example.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -434,7 +439,7 @@ ComponentIntegrity.SPDMGetSignedMeasurements/
 {}
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -450,7 +455,7 @@ ilorest rawpost FetchComponentIntegrityMeasurements.json  --response --silent | 
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -461,9 +466,10 @@ ilorest logout
     "Version": "1.0"
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 The following example specifies a valid 64 hexadecimal digits
 `Nonce` parameter in the body of the action POST request.
 
@@ -484,7 +490,7 @@ ComponentIntegrity.SPDMGetSignedMeasurements/
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -502,7 +508,7 @@ ilorest rawpost FetchComponentIntegrityMeasurements.json  --response --silent | 
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -513,9 +519,9 @@ ilorest logout
     "Version": "1.0"
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
 The following example specifies an invalid `Nonce` parameter with 32
 characters in the body of the POST action to retrieve the measurements.
 
@@ -526,7 +532,7 @@ The `Nonce` property is an hexadecimal encoded set of bytes
 returned in the next example.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -534,7 +540,7 @@ POST /redfish/v1/ComponentIntegrity/0/Actions/
 ComponentIntegrity.SPDMGetSignedMeasurements/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body request" %}
 
 ```json Body request
@@ -543,7 +549,7 @@ ComponentIntegrity.SPDMGetSignedMeasurements/
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -562,9 +568,10 @@ ComponentIntegrity.SPDMGetSignedMeasurements/
     }
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ### Fetching TPM measurements
 
 HPE iLO represents a TPM with two members (TPM-0, TPM-1)
@@ -864,9 +871,10 @@ ilorest rawget /redfish/v1/ComponentIntegrity/TPM-0
     "TargetComponentURI": "/redfish/v1/Managers/1"
 }
 ```
-  
+
 {% /tab %}
 {% /tabs %}
+
 The following example retrieves the properties of the TPM-1 (iLO firmware)
 component, including each PCR measurements.
 
@@ -928,9 +936,10 @@ GET redfish/v1/ComponentIntegrity/TPM-1
     "TargetComponentURI": "/redfish/v1/Managers/1"
 }
 ```
-  
-  {% /tab %}
+
+{% /tab %}
 {% /tabs %}
+
 The following example fetches the PCR measurements from the `TPM-1`
 component member. The payload of this request is described in
 the following table:
@@ -954,7 +963,7 @@ provided, HPE iLO creates the nonce internally.
 use it: Sending multiple POST requests don't retrieve same measurement !
 bug or feature ? -->
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -962,7 +971,7 @@ POST /redfish/v1/ComponentIntegrity/TPM-1/Actions/
 ComponentIntegrity.TPMGetSignedMeasurements
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body request" %}
 
 ```json Body request
@@ -972,7 +981,7 @@ ComponentIntegrity.TPMGetSignedMeasurements
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -980,9 +989,10 @@ ComponentIntegrity.TPMGetSignedMeasurements
     "SignedMeasurements": "AAABAD9vDO/oGeWW6RJPCRxmLBkpJ767v1amDy1Ut0OLxTR7ILROSYZBAd6EH3Oa9WXNQq/eaS+1k0E2EQHOQ0Ricr1lp8c0y9Siauh4idcNrHUYMGQCMEjJtIdUlD7nNVf1cmsrBEIOGYGxBrv1mABReI6NsqFsU9r2MEvqD4C4CnMEessuTgIwIr13AuMDKXojzdKtc/eLa1RiQ+huggaYnt9Kz66Ke7aOMQpYsc2qKARy/Vx5C7r/"
 }
 ```
-  
-  {% /tab %}
+
+{% /tab %}
 {% /tabs %}
+
 Same example using iLOrest:
 
   {% tabs %}
@@ -1002,7 +1012,7 @@ ilorest rawpost --silent --response GetTPM-1-Measurements.json | jq
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -1011,5 +1021,5 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% /tabs %}

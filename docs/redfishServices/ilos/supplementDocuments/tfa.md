@@ -121,9 +121,10 @@ ilorest logout
     }
 }
 ```
-  
+
 {% /tab %}
 {% /tabs %}
+
 The following example shows a typical iLO mail subsystem configuration
 suitable for TFA.
 
@@ -180,9 +181,10 @@ ilorest logout
     }
 }
 ```
-  
+
 {% /tab %}
 {% /tabs %}
+
 The following example verifies that a Microsoft Active Directory user
 is properly configured (with a valid e-mail address) for TFA.
 

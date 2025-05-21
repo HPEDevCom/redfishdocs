@@ -70,7 +70,7 @@ Deletecomp example commands:
 
 To delete firmware by file name run the command with the file name as an argument. You can also delete multiple files by file name.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -78,12 +78,13 @@ iLOrest > deletecomp ilo5_137.bin
 The operation completed successfully.
 Deleted ilo5_137.bin
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 To delete firmware by Id run the command with the file Ids as arguments. You can also delete a single file by Id.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -93,21 +94,22 @@ Deleted 30d2d7fa
 The operation completed successfully.
 Deleted b5a00edc
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
 To delete all firmware on the iLO repository run the command and include the `--all` option.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
 iLOrest > deletecomp --all
 The operation completed successfully.
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ## Downloadcomp Command
 
 ### Syntax
@@ -163,7 +165,7 @@ Optionally include the logout flag to log out of the server after this command i
 
 To download a file run this command specifying the `file path` of the firmware.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -173,9 +175,10 @@ Downloading component, this may take a while...
 Download complete
 0 hour(s) 1 minute(s) 36 second(s)
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="warning" name="Warning" %}
 
 - The output directory and files in that directory must be set to writable.
@@ -274,9 +277,10 @@ eInventory/29/', '/redfish/v1/UpdateService/FirmwareInventory/30/']}"
 Creating task: "Update-460148"
 The operation completed successfully.
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ### Login Parameters
 
 The following parameters can be included to login to a server in the same line
@@ -308,7 +312,7 @@ is completed. Using this flag when not logged in will have no effect.
 To upload firmware and flash (or stage for a flash) run the command with
 the `.fwpkg` file.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -320,13 +324,13 @@ Waiting for iLO UpdateService to finish processing the component
 0 hour(s) 1 minute(s) 28 second(s)
 Firmware has successfully been flashed and a reboot is required for this firmware to take effect.
 ```
-  
+
   {% /tab %}
   {% /tabs %}
 To skip checks for something blocking firmware updates also include
 the `--ignorechecks` option.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example

@@ -55,7 +55,7 @@ and an action
 SLs. Individual SLs can be accessed by performing `GET` on
 `/redfish/v1/Systems/1/LogServices/SL/Entries/{@SlId}`.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -63,7 +63,7 @@ SLs. Individual SLs can be accessed by performing `GET` on
        https://{iLO}/redfish/v1/systems/1/logservices/sl/entries/3
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -102,8 +102,9 @@ SLs. Individual SLs can be accessed by performing `GET` on
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### Clearing SLs through Redfish Action
 
 To completely clear all SLs, perform `POST` on
@@ -144,7 +145,7 @@ and an action `LogService.ClearLog` to clear the IMLs. Individual IMLs can
 be accessed by performing `GET` on
 `/redfish/v1/Systems/1/LogServices/IML/Entries/{Id}`.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -152,7 +153,7 @@ be accessed by performing `GET` on
 https://{iLO}/redfish/v1/systems/1/logservices/iml/entries/{Id}
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -188,9 +189,9 @@ https://{iLO}/redfish/v1/systems/1/logservices/iml/entries/{Id}
             "Severity": "OK"
         }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
 ### Repairing IMLs through Redfish PATCH
 
 To manually mark an IML event as repaired, perform a `PATCH` on
@@ -203,14 +204,14 @@ When events are manually marked as repaired, SNMP or REST alerts are
 not notified.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Repair event request" %}
 
 ```text Repair event request
 PATCH /redfish/v1/systems/1/logservices/iml/entries/{ImlId}
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body" %}
 
 ```json Body
@@ -222,9 +223,10 @@ PATCH /redfish/v1/systems/1/logservices/iml/entries/{ImlId}
     }
 }
 ```
-  
+
   {% /tab %}
   {% /tabs %}
+
 ### Clearing IMLs through Redfish Action
 
 To completely clear all IMLs, perform `POST` on
@@ -261,7 +263,7 @@ and an action
 to clear the IELs. Individual IELs can be accessed by performing
 `GET` on `/redfish/v1/Managers/1/LogServices/IEL/Entries/{@IelId}`.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -269,7 +271,7 @@ to clear the IELs. Individual IELs can be accessed by performing
   https://{iLO}/redfish/v1/managers/1/logservices/iel/entries/{IelId}
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -304,9 +306,10 @@ to clear the IELs. Individual IELs can be accessed by performing
     "Severity": "OK"
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ### Clearing IELs through Redfish Action
 
 To completely clear all IELs, perform `POST` on
@@ -367,7 +370,7 @@ performing GET on
 GET /redfish/v1/Systems/1/LogService/Event/Entries/24
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -455,14 +458,14 @@ Perform a GET of the `HpeiLOActiveHealthSystem` resource and look for the
 to time ranges. The following example retrieves this object from an
 iLO 6 based server.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="GET request" %}
 
 ```text GET request
 /redfish/v1/Managers/1/ActiveHealthSystem/?$select=Links
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -615,3 +618,4 @@ notification in the IML log after the server has completed the
 power-on durations set using the `RemainingDaysForEarlyReminder`
 and `RemainingDaysForCriticalReminder` parameters.
 {% /admonition %}
+

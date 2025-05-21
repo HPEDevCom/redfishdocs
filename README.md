@@ -153,7 +153,7 @@ During the automatic Redocly workflow, you can only view the a "wait" logo or th
 
 ### Link Checker
 
-Redocly/Realm embeds a link checker that can be enabled/disabled in the `redocly.yaml` file, with the `ignoreLinkChecker` boolean <a href="https://redocly.com/docs/developer-portal/configuration/siteconfig/link-checker/#usage" target="_blank">directive</a>. Note that this link checker adds time to the rendering process. Moreover, if the `severity` is set to `error`, the entire build is considered unsuccessful and cannot be not deployed in case of error. A `severity` of `warning` does not prevent the publication.
+Redocly/Realm embeds a link checker that can be enabled/disabled in the `redocly.yaml` file, with the `ignoreLinkChecker` Boolean <a href="https://redocly.com/docs/developer-portal/configuration/siteconfig/link-checker/#usage" target="_blank">directive</a>. Note that this link checker adds time to the rendering process. Moreover, if the `severity` is set to `error`, the entire build is considered unsuccessful and cannot be not deployed in case of error. A `severity` of `warning` does not prevent the publication.
 
 ## Review and publication processes
 

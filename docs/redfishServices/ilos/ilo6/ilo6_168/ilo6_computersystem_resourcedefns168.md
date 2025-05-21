@@ -2101,7 +2101,7 @@ The type of reset.
 
 |Value|Description|
 |---|---|
-|GracefulRestart|Shut down gracefully and restart the system.|
+|GracefulRestart|Instead of doing the graceful restart, the server does a force restart.|
 |GracefulShutdown|Shut down gracefully and power off.|
 |PowerCycle|Power cycle the unit.|
 |On|Turn on the unit.|
