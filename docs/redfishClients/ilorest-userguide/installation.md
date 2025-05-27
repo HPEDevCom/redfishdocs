@@ -51,6 +51,12 @@ or install the PyPI package as instructed in the next paragraph.
 server's OS. For remote management (out-of-band), install the
 package on a laptop or server that has network access
 to the managed server network.
+{% admonition type="success" name="Tip" %}
+Follow these
+[instructions](/docs/redfishservices/ilos/supplementdocuments/securityservice#installing-hpe-host-applications)
+to install iLOrest in Gen12/iLO 7 systems.
+{%/admonition %}
+
 - Linux only: Most Linux operating systems have `/tmp`
 mounted with `noexec` by default.
 Before running HPE iLOrest, the file systems table must be
@@ -154,7 +160,6 @@ The above commands install two packages:
 Use the following command to completely uninstall the package:
 
 `pip uninstall ilorest python-ilorest-library`
-
 
 ## Starting the RESTful Interface Tool
 
