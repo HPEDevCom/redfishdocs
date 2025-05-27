@@ -14,13 +14,19 @@ function getCookie(cookiename) {
     }
     } return null;
  }
-
+ 
 var observer = new MutationObserver(function() {
   if (document.body) {
     const headerElement = document.createElement('header');
     headerElement.className = 'header';
     headerElement.id = 'header';
+    // Translate the headerElement to a negative z-index to ensure it appears behind all other elements
+    headerElement.style.transform = 'translateZ(-100%)';
+    headerElement.style.zIndex = '-1';
+    headerElement.style.position = 'fixed';
     document.body.prepend(headerElement);
+    //console.log('Header element created and prepended to body.');
+    //console.log(headerElement);
 
     const footerElement = document.createElement('footer');
     footerElement.className = 'footer';

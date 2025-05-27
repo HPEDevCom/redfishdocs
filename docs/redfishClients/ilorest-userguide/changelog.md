@@ -21,6 +21,21 @@ The latest iLOrest packages can be freely downloaded from
 
 A <a href="https://pypi.org/project/ilorest" target="_blank">PyPI</a> project is also available.
 
+## Version 6.1.0.0
+
+**Fixes:**
+
+- Fixed issues with `ServerInfo` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#serverinfo-command) where `prossesorID` was not getting populated in the response and `--fans` was not giving correct result when `--json` is supplied, also corrected an issue where the option `--software` was returning generic error.
+- Fixed an issue with `firmwareupdate` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#firmwareupdate-command) where the URL with mix of uppercase and lowercase where not getting flashed.
+- Fixed issues with the `set` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#set-command) where the setting of `WorkLoadProfile` , `ThermalCooling` where not working.
+- Fixed issues with the `get` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command) where `NetworkAdapter` property was returning wrong response, also fixed the issue where `ComponentIntegrity` was not including `TPM` info.
+- Corrected an issue with logging mechanism where errors where getting printed twice on stdout.
+
+**Enhancements:**
+
+- Enabled support for accepting PIN as `activationkey` for the `computeopsmanagement` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#computeopsmanagement-command)
+- Enhanced `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command) to not cache anything and not to construct monolith.
+
 ## Version 6.0.0.0
 
 **What's New:**

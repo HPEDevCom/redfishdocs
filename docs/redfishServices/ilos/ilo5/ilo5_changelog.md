@@ -22,6 +22,10 @@ For a better understanding of the conformance to the DMTF Redfish,
 read the _Redfish versioning_ paragraph of this
 <a href="https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/" target="_blank">article</a>.
 
+## iLO 5 3.13 new features and changes
+
+- No features are introduced or modified in this release.
+
 ## iLO 5 3.11 new features and changes
 
 - No features are introduced or modified in this release.

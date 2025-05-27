@@ -81,7 +81,12 @@ POST /redfish/v1/Managers/1/Actions/Manager.Reset/
 `
 
 {% admonition type="info" name="NOTE" %}
-iLO `GracefulRestart` works in the same way as `ForceRestart`.
+
+- iLO `GracefulRestart` works in the same way as `ForceRestart`.
+- Depending on the operating system and other factors, `GracefulShutdown`
+  may not perform a graceful shutdown. Hewlett Packard Enterprise
+  recommends using operating system commands to complete a graceful shutdown.
+  
 {% /admonition %}
 
 ### Resource Instances
