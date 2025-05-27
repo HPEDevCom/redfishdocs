@@ -67,17 +67,6 @@ const HeroBg = styled.div`
     //filter: blur(60px);
     opacity: 1.0;
   }
-  //&:after {
-    //content: '';
-    //position: absolute;
-    //inset: 0;
-    //background-size: cover;
-    //background-image: url(${require('./images/grid.svg')});
-    //opacity: 0.2;
-    //.dark & {
-      //background-image: url(${require('./images/grid-dark.svg')});
-    //}
-  }
 `;
 
 const HeroContainer = styled.div`
