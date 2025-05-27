@@ -25,13 +25,32 @@ var observer = new MutationObserver(function() {
     headerElement.style.zIndex = '-1';
     headerElement.style.position = 'relative';
     document.body.prepend(headerElement);
-    //console.log('Header element created and prepended to body.');
-    //console.log(headerElement);
 
     const footerElement = document.createElement('footer');
     footerElement.className = 'footer';
     footerElement.id = 'footer';   
-    document.body.append(footerElement);    
+    document.body.append(footerElement); 
+
+  // Add CSS dynamically to style the footer
+  // Failure to do so will result in the footer being 
+  // positioned just below the header :-(
+  const style = document.createElement('style');
+  style.innerHTML = `
+    html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px; // With 20px it hides properly the "Need help?" button
+    }
+  `;
+  document.head.appendChild(style);
 
     // check for redocly_idp_id_token 
     const name = 'redocly_idp_id_token'
