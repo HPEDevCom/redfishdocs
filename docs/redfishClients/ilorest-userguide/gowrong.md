@@ -41,15 +41,15 @@ iLOrest return code: 0
   {% /tab %}
   {% /tabs %}
 
-#### Symptom
+### Symptom
 
 I am unable to see return codes in the output.
 
-#### Cause
+### Cause
 
 The verbose global flag (-v,--verbose) is not being used.
 
-#### Action
+### Action
 
 Use the verbose global flag (-v,--verbose), which will output more
 information including return codes.
@@ -94,11 +94,11 @@ Body Response of /redfish/v1/: {"@odata.con...
   {% /tab %}
   {% /tabs %}
 
-#### Symptom
+### Symptom
 
 I am unable to see what iLOrest is sending to iLO.
 
-#### Cause
+### Cause
 
 The debug global flag (-d, --debug) is not being used.
 
@@ -133,16 +133,16 @@ iLOrest return code: 0
   {% /tab %}
   {% /tabs %}
 
-#### Symptom
+### Symptom
 
 I am getting more data than what I would like.
 
-#### Cause
+### Cause
 
 You are not using a selector that is exclusive to the type you
 want and/or the type that you have selected has more than one instance.
 
-#### Action
+### Action
 
 1. Use a selector that is exclusive to the type you want.
 
@@ -187,16 +187,16 @@ iLOrest return code: 0
 
 ## I can set a property, but the commit is failing
 
-#### Symptom
+### Symptom
 
 The commit is failing, even though I can set a property.
 
-#### Cause
+### Cause
 
 This issue can happen for multiple reasons. The API tries to catch issues with
 commits when the property is initially set, but not all possible issues can be caught.
 
-#### Action
+### Action
 
 1. Run the [status command](globalcommands/#status-command) to see what
    properties have failed to commit.
@@ -265,17 +265,17 @@ iLOrest return code: 0
   {% /tab %}
   {% /tabs %}
 
-#### Symptom
+### Symptom
 
 It is difficult to tell the difference between arrays and nested JSON objects
 from the get/list output.
 
-#### Cause
+### Cause
 
 The get/list output does not distinguish between nested JSON objects and arrays.
 They both look similar in the output.
 
-#### Action
+### Action
 
 Use the -j/--json flag to distinguish between arrays and nested JSON objects.
 
@@ -316,18 +316,18 @@ You can also modify lists using the [save](globalcommands/#save-command) and [lo
 
 ## Will this command reboot/reset my system?
 
-#### Symptom
+### Symptom
 
 Some commands will reboot the system.
 
-#### Cause
+### Cause
 
 Some commands will reboot the system because the reboot is required
 to complete the process.
 Other commands will tell you to reboot the system using
 the `--reboot`  flag.
 
-#### Action
+### Action
 
 {% admonition type="warning" name="Warning" %}
 Please read the help for any warnings or notes specific to each command.
@@ -389,15 +389,207 @@ you attempt to flash or upload iLO 5 firmware v2.10 or later to the system.
 
 This section outlines the steps to take when logging into an iLO 7 (or later) via the [Virtual NIC](/docs/redfishservices/ilos/supplementdocuments/vnic/) fails.
 
-#### Symptom
+### Symptom
 
-You are unable to log in to the server using the virtual NIC and receive the error: 
+You are unable to log in to the server using the virtual NIC and receive the error:
 *Unable to access iLO using virtual NIC.Please ensure virtual NIC is enabled in iLO.Ensure that virtual NIC in the host OS is configured properly. Refer to documentation for more information. iLOrest return code: [142](/docs/redfishclients/ilorest-userguide/errors/)*.
 
-#### Cause
+### Cause
 
 The virtual NIC is not enabled on the server you are attempting to log in to.
 
-#### Action
+### Action
+
 Use `-vv login` to get the exact [error return code](/docs/redfishclients/ilorest-userguide/errors/).
 Refer to the *Virtual NIC* section in the <a href="https://www.hpe.com/info/ilo/docs" target="_blank">iLO User Guide</a>
+
+## iLOrest application account creation fails
+
+This section is related to iLO 7 (or later) based servers and
+[in-band](/docs/redfishservices/ilos/supplementdocuments/vnic#in-band-management)
+management. It outlines the steps to take when the iLOrest
+[application account](/docs/redfishservices/ilos/supplementdocuments/securityservice#installing-hpe-host-applications)
+cannot be created during its installation (i.e. `rpm -ivh`) or during a
+[manual creation](/docs/redfishservices/ilos/supplementdocuments/securityservice#managing-application-accounts).
+
+{% admonition type="info" name="NOTES" %}
+
+- The methodology presented in this section can be adapted to other host applications (i.e. AMS).
+- Only ilo users with the `UserConfigPriv`
+  [privilege](/docs/redfishservices/ilos/supplementdocuments/managingusers#roles-and-privileges)
+  can manage application accounts.
+  The following example retrieves the value of the `UserConfigPriv`
+  {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.privileges") %} property {% /link-internal %}
+  using iLOrest.
+  
+  ```shell
+   list Oem/Hpe/Privileges/UserConfigPriv --select ManagerAccount. --filter UserName=ilorest-appuser --json
+
+   {
+      "Oem": {
+        "Hpe": {
+          "Privileges": {
+          "UserConfigPriv": true
+          }
+        }
+      }
+    }
+
+  ```
+
+{% /admonition %}
+
+### Symptom
+
+During iLOrest installation or when creating the iLOrest application account
+on an iLO 7 (or later) based OS server, the following messages are returned:
+
+{% tabs %}
+{% tab label="iLOrest installation" %}
+
+```shell
+ILO_USERNAME="ilorest-appuser" ILO_PASSWORD="password" rpm -ivh ilorest-6.0.0.0-29.x86_64.rpm
+warning: ilorest-6.0.0.0-29.x86_64.rpm: Header V4 RSA/SHA256 Signature, key ID 26c2b797: NOKEY
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:ilorest-6.0.0.0-29               ################################# [100%]
+Environment variable ILO_USERNAME and ILO_PASSWORD are set and non-empty.
+
+....
+
+Failed to create the application account. The application will still work but requires iLO credentials.
+To create application account after installation, use the command: 'ilorest appaccount create -u <username> -p <password>'
+
+```
+
+{% /tab %}
+{% tab label="Appaccount creation" %}
+
+```shell
+ilorest -v appaccount create --self  -u ilorest-appuser -p password
+ERROR   : Failed to save account in TPM.
+ERROR   : SavinginTPMError: Failed to save the app account in TPM. Please execute the appaccount delete command with the same host application information and attempt to create the app account again.
+Alternatively, you can use the --no_app_account option in the Login Command to log in using your iLO user account credentials.
+
+ERROR   : Failed to save the app account in TPM. Please execute the appaccount delete command with the same host application information and attempt to create the app account again.
+Alternatively, you can use the --no_app_account option in the Login Command to log in using your iLO user account credentials.
+
+iLORest return code: 147
+
+```
+
+{% /tab %}
+{% /tabs %}
+
+In addition to the above symptom, a deletion of the application account fails with a
+[return code](/docs/redfishclients/ilorest-userguide/errors)
+of [143].
+
+```shell
+ilorest -v appaccount delete --self
+ERROR   : NoAppAccountError: The application account you are trying to delete does not exist.
+
+ERROR   : The application account you are trying to delete does not exist.
+
+iLORest return code: 143
+
+```
+
+### Cause
+
+The iLOrest application account is present in the Redfish tree but the
+associated application token is not present in the TPM (iLOrest
+[error](http://localhost:4000/docs/redfishclients/ilorest-userguide/errors) 143).
+This can be verified with iLOrest in-band or out-of-band, or with cURL,
+as shown in the following examples.
+
+{% tabs %}
+{% tab label="in-band iLOrest" %}
+
+```shell
+# Vedify that the iLOrest application account exists
+ilorest login --no_app_account -u ilorest-appuser -p password
+ilorest list @odata.id  --select HpeiLOAppAccount. --refresh --filter HostAppName=iLORest
+@odata.id=/redfish/v1/AccountService/Oem/Hpe/AppAccounts/65606/
+ilorest logout 
+
+```
+
+{% /tab %}
+{% tab label="out-of-band iLOrest" %}
+
+```shell
+ilorest login $ilo_ip -u ilorest-appuser -p password
+ilorest list @odata.id  --select HpeiLOAppAccount. --refresh --filter HostAppName=iLORest
+@odata.id=/redfish/v1/AccountService/Oem/Hpe/AppAccounts/65606/
+ilorest logout
+```
+
+{% /tab %}
+{% tab label="cURL" %}
+
+```shell
+curl --insecure --location --silent \
+     -u ilorest-appuser:password         \
+     https://$ilo_ip/redfish/v1/AccountService/Oem/Hpe/AppAccounts | \
+     jq -r '.Members[] | ."@odata.id"'
+     /redfish/v1/AccountService/Oem/Hpe/AppAccounts/65606
+```
+
+{% /tab %}
+{% /tabs %}
+
+### Action
+
+Manually delete the application account using iLOrest or cURL.
+
+The following examples show how to delete the iLOrest application account using
+iLOrest and then cURL.
+
+{% tabs %}
+{% tab label="iLOrest (in-band)" %}
+
+```shell
+ilorest login --no_app_account -u ilorest-appuser -p password
+ilorest -vv rawdelete "/redfish/v1/AccountService/Oem/Hpe/AppAccounts/65606/"
+ilorest logout
+
+```
+
+{% /tab %}
+{% tab label="iLOrest (out-of-band)" %}
+
+```shell
+
+ilorest login $ilo_ip -u ilorest-appuser -p password
+ilorest -vv rawdelete "/redfish/v1/AccountService/Oem/Hpe/AppAccounts/65606/"
+HTTP Response Code: [200]
+MessageId: Base.1.18.AccountRemoved
+Description: The operation completed successfully.
+Message: The operation completed successfully.
+Resolution:
+iLORest return code: 0
+
+ilorest logout
+```
+
+{% /tab %}
+{% tab label="cURL" %}
+
+```shell
+
+curl --insecure --location --silent \
+     -u ilorest-appuser:password         \
+     -X DELETE  \
+     https://$ilo_ip/redfish/v1/AccountService/Oem/Hpe/AppAccounts/65606/ | \
+     jq '.'
+
+```
+
+{% /tab %}
+{% /tabs %}
+
+At this point, both the iLOrest application account and associated application token have been removed.
+You can either re-create them manually (`ilorest appaccount create --self`) or un-install/re-install
+iLOrest.
