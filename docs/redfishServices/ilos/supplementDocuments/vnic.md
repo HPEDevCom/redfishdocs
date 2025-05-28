@@ -30,7 +30,7 @@ its external network interface (i.e. iLO dedicated network interface).
 The following example opens an out-of-band Redfish session using ilOrest
 and cURL (Basic authentication).
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest out" %}
 
 ```shell iLOrest out-of-band session
@@ -42,7 +42,7 @@ ilorest get FirmwareVersion --select Manager. --json
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL out" %}
 
 ```shell cURL out-of-band session
@@ -52,8 +52,9 @@ cURL --insecure --silent --location -u ilo-user:password  \
 "iLO 6 v1.67"
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### In-band management
 
 By definition, "in-band" or "local" management refers
@@ -92,7 +93,7 @@ CHIF on an iLO 6 based server in
 privileged user `root`. The second tabulation forces the opening of a
 Redfish session via the Virtual NIC.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="in" %}
 
 ```shell in-band CHIF session
@@ -106,7 +107,7 @@ ilorest logout
 exit
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="in" %}
 
 ```shell in-band vNIC session
@@ -122,8 +123,9 @@ SecurityState=Production
 ilorest logout
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="success" name="TIPS" %}
 
 - Generic Redfish clients like cURL, PowerShell, Postman don't have the ability
@@ -145,7 +147,7 @@ or from the Hpe OEM extension of the `Manager`
 The following example retrieves these properties from those two locations,
 using iLOrest and cURL.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET of vNIC status" %}
 
 ```text Generic GET of vNIC status
@@ -154,7 +156,7 @@ or
 2. GET /redfish/v1/Managers/1/?$select=Oem/Hpe/VirtualNICEnabled
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -180,7 +182,7 @@ ilorest get Oem/Hpe/VirtualNicEnabled --select Manager. --json
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -205,15 +207,16 @@ curl --insecure --silent --location -u ilo-user:password \
      jq '.'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### Enabling/disabling the Virtual NIC
 
 The Virtual NIC may be enabled/disabled in HPE iLO either though the iLO Web GUI
 or by a Redfish request. An iLO reset is required for this
 change to fully take effect.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="PATCH request URIs" %}
 
 ```text PATCH request URIs
@@ -224,7 +227,7 @@ PATCH /redfish/v1/Managers/1/HostInterfaces/1
 PATCH /redfish/v1/Managers/1
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Requests body" %}
 
 ```json Requests body
@@ -241,7 +244,7 @@ PATCH /redfish/v1/Managers/1
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -258,7 +261,7 @@ PATCH /redfish/v1/Managers/1
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -275,8 +278,9 @@ ilorest iloreset
 # Comment: No need to logout after iLO reset.
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="success" name="TIP" %}
 Search for string "Virtual NIC" in the <a href="https://www.hpe.com/support/ilo6"
 target="_blank">iLO User Guide</a>
@@ -301,7 +305,7 @@ URI via the
 `HostInterfaceCollection`
 {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hostinterfacecollection") %} collection {% /link-internal %}.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -316,7 +320,7 @@ ilorest list Members --select HostInterfaceCollection. --json
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -328,12 +332,13 @@ curl --insecure --silent --location -u ilo-user:password \
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example retrieves the `State` and the vNIC's Ethernet URI
 using the `HostInterface` URI found in previous example.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -346,7 +351,7 @@ ilorest list InterfaceEnabled ManagerEthernetInterface --select HostInterface.  
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -361,12 +366,13 @@ curl --insecure --silent --location -u ilo-user:password    \
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example retrieves the vNIC Ethernet properties
 using the URI found in previous example.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -408,7 +414,7 @@ ilorest get --select EthernetInterface. --filter Id=3 --json
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -462,19 +468,20 @@ curl --insecure --silent --location -u ilo-user:password \
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The iLO Virtual NIC configuration can be retrieved with a GET request
 from the `EthernetInterfaceCollection` resource type:
 
-  {% tabs %}
+{% tabs %}
 {% tab label="GET vNIC configuration" %}
 
 ```text GET vNIC configuration
 GET /redfish/v1/Managers/1/EthernetInterfaces/?$filter=Name eq 'Manager Virtual Network Interface'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest request 1" %}
 
 ```shell iLOrest request 1
@@ -483,7 +490,7 @@ ilorest get --select EthernetInterface --filter Name="Manager Virtual*" --json
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest request 2" %}
 
 ```shell iLOrest request 2
@@ -493,7 +500,7 @@ ilorest rawget /redfish/v1/Managers/1/EthernetInterfaces/$Filter
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response" %}
 
 ```json Response
@@ -554,8 +561,9 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## Using the Virtual NIC
 
 When enabled in both the server operating system and in iLO, software running

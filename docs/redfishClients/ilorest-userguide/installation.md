@@ -19,15 +19,18 @@ seo:
 
 The requirements for the managed server are as follows:
 
-- Local management: Gen9 or greater server with a Windows OS or
+- Local/[in-band](/docs/redfishservices/ilos/supplementdocuments/vnic#in-band-management)
+  management: Gen9 or greater server with a Windows OS or
   Linux OS installed.
   
 <!-- What about RHEL 9 and ARM based servers ? -->
 - Supported Operating Systems for local management:
   Windows 2022, 2019, 2016, RHEL 8.x, 9.x, 9.x ARM64,
   SUSE 15SPx, 12SP3, MAC, Debian 9, 10, 10 ARM64.
-- Remote management: HPE Gen9 or later servers with
+- Remote/[out-of-band](/docs/redfishservices/ilos/supplementdocuments/vnic#out-of-band-management)
+  management: HPE Gen9 or later servers with
   or without an OS installed.
+- HPE iLO 7: 1.11 or later.
 - HPE iLO 6: 1.05 or later.
 - HPE iLO 5: 1.20 or later.
 - On a Linux systems, the `/tmp` folder must be configured
@@ -51,6 +54,12 @@ or install the PyPI package as instructed in the next paragraph.
 server's OS. For remote management (out-of-band), install the
 package on a laptop or server that has network access
 to the managed server network.
+{% admonition type="success" name="Tip" %}
+Follow these
+[instructions](/docs/redfishservices/ilos/supplementdocuments/securityservice#installing-hpe-host-applications)
+to install iLOrest in Gen12/iLO 7 systems.
+{%/admonition %}
+
 - Linux only: Most Linux operating systems have `/tmp`
 mounted with `noexec` by default.
 Before running HPE iLOrest, the file systems table must be
@@ -154,7 +163,6 @@ The above commands install two packages:
 Use the following command to completely uninstall the package:
 
 `pip uninstall ilorest python-ilorest-library`
-
 
 ## Starting the RESTful Interface Tool
 
