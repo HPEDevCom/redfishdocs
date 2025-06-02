@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 2
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: false
 seo:
   title: Using iLOrest, the RESTful Interface tool
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: true
 ---
 
 ## Using the RESTful Interface Tool

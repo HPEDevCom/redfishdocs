@@ -1,13 +1,17 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Getting started
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
-## Getting started
+# Getting started
 
 Hewlett Packard Enterprise implements a Redfish RESTful API service in most of
 its compute nodes and servers (ProLiant, Synergy compute nodes, Edgeline,
@@ -51,21 +55,27 @@ Dats types are divided in two classes:
 - Regular data types: contain resources, property values and links
   to other data resources.
 
-:::info INFO
+{% admonition type="info" name="INFO" %}
 Data types prefixed with `Hpe` are HPE added value extensions to the DMTF
 Redfish specification.
-:::
+{% /admonition %}
 
 The following example retrieves the
-[ChassisCollection](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_chassis_resourcedefns{{process.env.LATEST_FW_VERSION}}/#chassiscollection)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_chassis_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#chassiscollection") %} ChassisCollection {% /link-internal %}
 data type of an HPE Synergy computer node. Among other properties,
 the response body contains an `@odata.type` key and a `Members` array with
 two items pointing to the URI of the members. It contains as well a `@odata.id`
 with the URI of the resource.
 
+{% tabs %}
+{% tab label="generic GET request" %}
+
 ```text generic GET request
 GET /redfish/v1/Chassis/
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -86,20 +96,29 @@ GET /redfish/v1/Chassis/
     "Members@odata.count": 2
 }
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 The following example retrieves the properties of the _enclosurechassis_
 URI found in the previous example. From the response body, we learn that
 this resource belongs to the
-[Chassis](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/ilo6_chassis_resourcedefns{{process.env.LATEST_ILO6_FW_VERSION}}/#chassis)
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_chassis_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/#chassis") %} Chassis {% /link-internal %}
 data type.
 
 We learn as well that it contains an `Oem.Hpe` object of type
 `HpeServerChassis` containing HPE specific properties not part
 of <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">DMTF schemas</a>.
 
+{% tabs %}
+{% tab label="GET request" %}
+
 ```text GET request
 GET /redfish/v1/Chassis/enclosurechassis
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -134,20 +153,29 @@ GET /redfish/v1/Chassis/enclosurechassis
     }
 }
 ```
+  
+{% /tab %}
+{% /tabs %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 The data type list of HPE iLO based servers can be easily obtained with the
 `types` command of the
 <a href="https://www.hpe.com/info/resttool" target="_blank">iLOrest</a>
 free command line tool.ss
+
+{% tabs %}
+{% tab label="GET data types with iLOrest" %}
 
 ```shell GET data types with iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p <password>
 ilorest types
 ilorest logout
 ```
+  
+{% /tab %}
+{% /tabs %}
 
-:::
+{% /admonition %}
 
 ## Adapting from pre-Redfish and pre-HPE
 
@@ -160,13 +188,12 @@ Access to the `/rest/v1/x` URI pattern results in HTTP 308 redirect to
 `/redfish/v1/x/`. Additionally, access to `/redfish/v1/x` redirects
 to `/redfish/v1/x/`.
 
-:::warning Warning
-
+{% admonition type="warning" name="Warning" %}
 Redfish client code should access the iLO RESTful API starting
 at `/redfish/v1/` and should handle for HTTP 308 redirect. As an
 example, the cURL utility provides the `--location (-L)` parameter
 for this purpose.
-:::
+{% /admonition %}
 
 ### OData-Version HTTP Header Requirements
 
@@ -233,12 +260,18 @@ using the
 <a href="https://www.hpe.com/info/resttool" target="_blank">iLOrest</a>
 REST client tool.
 
+{% tabs %}
+{% tab label="iLOrest request" %}
+
 ```text iLOrest request
 ilorest login <ilo-synergy-ip> -u <ilo-user> -p <password>
 ilorest select Chassis
 ilorest get --json --filter ChassisType="Enclosure"
 ilorest logout 
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -274,6 +307,9 @@ ilorest logout
 }
 
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 ### Examples with cURL
 
@@ -290,16 +326,19 @@ cURL flag to bypass the validation of the HTTPS certificate.
 The GET operation is performed against the `/redfish/v1/`
 URI (with a trailing slash).
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The Redfish root endpoint (`/redfish/v1/`) does not require authentication.
-:::
+{% /admonition %}
 
-:::success Tip
+{% admonition type="success" name="Tip" %}
 You can use the `--location` (`-L`) cURL option to follow HTTP redirect
 responses. If a new version of the Redfish service changes URI locations
 for various items, it can indicate to the Redfish client where the new
 location is and automatically follow the new link.
-:::
+{% /admonition %}
+
+{% tabs %}
+{% tab label="cURL (insecure)" %}
 
 ```shell cURL (insecure)
 curl --include --insecure --location \
@@ -311,6 +350,9 @@ where
     --insecure bypasses TLS/SSL certification verification
     --location follows HTTP redirect
 ```
+  
+{% /tab %}
+{% tab label="cURL (secure)" %}
 
 ```shell cURL (secure)
 curl --include --location --cacert /tmp/CaCert.crt  https://ilo-ip/redfish/v1/
@@ -323,6 +365,9 @@ where
       Certificate Authority who signed the
       remote management controller's certificate
 ```
+  
+{% /tab %}
+{% tab label="iLO Response body (truncated)" %}
 
 ```json iLO Response body (truncated)
 {
@@ -390,7 +435,9 @@ where
   "Vendor": "HPE"
 }
 ```
-
+  
+{% /tab %}
+{% /tabs %}
 The output of the previous example is formatted in
 JSON (JavaScript Object Notation).
 
@@ -408,17 +455,20 @@ property name conflicts or ridiculously long property names. It also allows
 the use identical blocks of JSON in many places in the data model,
 like status.
 
-:::warning NOTE
+{% admonition type="warning" name="NOTE" %}
 It is possible to receive an `error` JSON object from a successful
 operation. See example below.
 
 The Redfish protocol is OData conformant. This conformance implies
 the use of an `error` JSON block even for successful requests.
-:::
+{% /admonition %}
 
 The following example sets the next reboot of a remote server to stop
 at the UEFI Shell. The PATCH request is successful (200 OK) and the response
 body contains an `error` JSON object mentioning a successful message Id.
+
+{% tabs %}
+{% tab label="PATCH request" %}
 
 ```shell PATCH request
 curl --insecure --include --location \
@@ -431,6 +481,9 @@ curl --insecure --include --location \
            "BootSourceOverrideEnabled": "Once"}
       }'
 ```
+  
+{% /tab %}
+{% tab label="Successful response headers" %}
 
 ```text Successful response headers
 HTTP/1.1 200 OK
@@ -444,6 +497,9 @@ X-Content-Type-Options: nosniff
 X-Frame-Options: sameorigin
 X-XSS-Protection: 1; mode=block
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -458,6 +514,9 @@ X-XSS-Protection: 1; mode=block
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Python and Ansible
 
@@ -510,7 +569,7 @@ target="blank">DMTF Redfish Python library</a>,
 <a href="https://github.com/HewlettPackard/python-ilorest-library"
 target="_blank">HPE Redfish Python library</a>.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 The
 <a href="https://github.com/DMTF/python-redfish-library"
 target="blank"> DMTF Redfish Python library</a>
@@ -520,7 +579,7 @@ target="_blank"> HPE Redfish Python library</a>
 cannot co-exist in the same Python environment. You should uninstall
 one before installing the other one or use a specific
 environment for each of them.
-:::
+{% /admonition %}
 
 The class constructor of both Python Redfish libraries takes the Redfish
 service hostname/IP address, login username, and password or valid certificate
@@ -536,9 +595,15 @@ Refer to the
 [Authentication and sessions](/docs/concepts/redfishauthentication/)
 section for other authentication methods.
 
+{% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET /redfish/v1/Systems/1/
 ```
+  
+{% /tab %}
+{% tab label="HPE Python Redfish Library" %}
 
 ```Python HPE Python Redfish Library
 
@@ -597,6 +662,9 @@ print(json.dumps(RESPONSE.dict, indent=4, sort_keys=True))
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
+  
+{% /tab %}
+{% tab label="DMTF Python Redfish Library" %}
 
 ```Python DMTF Python Redfish Library
 # -*- coding: utf-8 -*-
@@ -641,6 +709,9 @@ print(json.dumps(RESPONSE.dict, indent=4, sort_keys=True))
 # Logout of the current session
 REDFISH_OBJ.logout()
 ```
+  
+{% /tab %}
+{% tab label="Response (Truncated)" %}
 
 ```json Response (Truncated)
 {
@@ -709,6 +780,9 @@ REDFISH_OBJ.logout()
 }
 
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 In addition to the above Python Redfish libraries,the
 <a href="https://github.com/DMTF/Redfish-Ansible-Playbooks"

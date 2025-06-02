@@ -1,20 +1,25 @@
 ---
+excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Computersystem resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Computersystem resource definitions of iLO 6 v1.66
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ComputerSystemCollection
+
 `@odata.type: "#ComputerSystemCollection.ComputerSystemCollection"`
 
 A Collection of ComputerSystem resource instances.
@@ -27,9 +32,9 @@ A Collection of ComputerSystem resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns166/#computersystem)|
+|`Members[]`|[ComputerSystem](ilo6_computersystem_resourcedefns166/#computersystem)|
 
 ### Members (array)
 
@@ -72,24 +77,24 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns166/#ethernetinterfacecollection)|
+|`EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns166/#ethernetinterfacecollection)|
 |`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice)|
-|`Links/Chassis[]`|[Chassis](../ilo6_chassis_resourcedefns166/#chassis)|
-|`Memory`|Collection of [Memory](../ilo6_other_resourcedefns166/#memorycollection)|
+|`Links/Chassis[]`|[Chassis](ilo6_chassis_resourcedefns166/#chassis)|
+|`Memory`|Collection of [Memory](ilo6_other_resourcedefns166/#memorycollection)|
 |`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](#hpeusbport)|
 |`Oem/Hpe/Links/NetworkAdapters`|HpeBaseNetworkAdapterCollection|
-|`NetworkInterfaces`|Collection of [NetworkInterface](../ilo6_network_resourcedefns166/#networkinterfacecollection)|
-|`Processors`|Collection of [Processor](../ilo6_other_resourcedefns166/#processorcollection)|
-|`SecureBoot`|[SecureBoot](../ilo6_other_resourcedefns166/#secureboot)|
-|`Storage`|Collection of [Storage](../ilo6_storage_resourcedefns166/#storagecollection)|
-|`Bios`|[Bios](../ilo6_bios_resourcedefns166/#bios)|
-|`LogServices`|Collection of [LogService](../ilo6_other_resourcedefns166/#logservicecollection)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns166/#ethernetinterfacecollection)|
-|`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](../ilo6_hpe_resourcedefns166/#hpeserverpcislotcollection)|
-|`Links/ManagedBy[]`|[Manager](../ilo6_manager_resourcedefns166/#manager)|
-|`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](../ilo6_hpe_resourcedefns166/#hpeserverpcidevicecollection)|
+|`NetworkInterfaces`|Collection of [NetworkInterface](ilo6_network_resourcedefns166/#networkinterfacecollection)|
+|`Processors`|Collection of [Processor](ilo6_other_resourcedefns166/#processorcollection)|
+|`SecureBoot`|[SecureBoot](ilo6_other_resourcedefns166/#secureboot)|
+|`Storage`|Collection of [Storage](ilo6_storage_resourcedefns166/#storagecollection)|
+|`Bios`|[Bios](ilo6_bios_resourcedefns166/#bios)|
+|`LogServices`|Collection of [LogService](ilo6_other_resourcedefns166/#logservicecollection)|
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns166/#ethernetinterfacecollection)|
+|`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](ilo6_hpe_resourcedefns166/#hpeserverpcislotcollection)|
+|`Links/ManagedBy[]`|[Manager](ilo6_manager_resourcedefns166/#manager)|
+|`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](ilo6_hpe_resourcedefns166/#hpeserverpcidevicecollection)|
 
 ### AssetTag
 
@@ -2083,11 +2088,9 @@ Member of [ComputerSystem.v1\_18\_0.ComputerSystem](#computersystem)
 
 ### Actions
 
-
 **ComputerSystem.Reset**
 Member of [ComputerSystem.v1\_18\_0.ComputerSystem](#computersystem)
 This action resets the system.
-
 
 **Parameters:**
 
@@ -2097,7 +2100,7 @@ The type of reset.
 
 |Value|Description|
 |---|---|
-|GracefulRestart|Shut down gracefully and restart the system.|
+|GracefulRestart|Instead of doing the graceful restart, the server does a force restart.|
 |GracefulShutdown|Shut down gracefully and power off.|
 |PowerCycle|Power cycle the unit.|
 |On|Turn on the unit.|

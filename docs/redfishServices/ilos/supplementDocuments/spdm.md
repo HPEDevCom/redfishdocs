@@ -1,19 +1,23 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: iLO and the SPDM
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 ## iLO and the Security Protocol and Data Model (SPDM)
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The Security Protocol and Data Model (SPDM) has been implemented in
 iLO 6 version 1.10 and later. Previous versions of HPE iLO don't implement
 this standard.
-:::
+{% /admonition %}
 
 The Security Protocol and Data Model (SPDM) enables zero trust between the
 server management controller and option cards. It uses the
@@ -53,9 +57,9 @@ the following resources:
 
 - [Global Component Integrity](#global-component-integrity-property)
 - [Component Integrity Policy](#component-integrity-policy)
-- [Security Dashboard Security Parameter](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilosecuritydashboard)
+- {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeilosecuritydashboard") %} Security Dashboard Security Parameter {% /link-internal %}
 - Device
-    [Component Integrity Enablement](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#componentintegrityenabled) (Boolean)
+  {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#componentintegrityenabled") %} Component Integrity Enablement {% /link-internal %} (Boolean)
 - Device Component Integrity policy
 - [Certificate Management](/docs/redfishservices/ilos/supplementdocuments/securityservice/)
     (`Import`, `Revoke`, `Delete` and `View`) <!-- It would be nice to explain which iLO certificate URIs are related to Component Integrity. The problem is that iLO does not provide the /redfish/v1/Managers/1/SecurityPolicy/SPDM mentioned in DSP2046 ! -->
@@ -70,7 +74,7 @@ Graphical User Interface.
 ## Global Component Integrity property
 
 The `GlobalComponentIntegrity` from the `HpeSecurityService`
-[resource](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesecurityservice)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpesecurityservice") %} resource {% /link-internal %}
 defaults to `disabled` as not all components are expected to support
 SPDM. If you enable `GlobalComponentIntegrity`, HPE iLO authenticates
 all applicable components in the server using SPDM. Every applicable
@@ -87,7 +91,7 @@ See
 https://github.hpe.com/intelligent-provisioning/python-restful-interface-tool/issues/834
 -->
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - When `GlobalComponentIntegrity` is set to `Disabled`
     the `ComponentIntegrityCollection` contains `0` members.
@@ -95,7 +99,7 @@ https://github.hpe.com/intelligent-provisioning/python-restful-interface-tool/is
     `ComponentIntegrityCollection` contains a member for each
     applicable component (i.e. PCI slots, NVMe, etc).
 
-:::
+{% /admonition %}
 
 <!-- In the following sentence, it would be nice to provide a link with all
 possible reasons why a verification is unsuccessful -->
@@ -104,7 +108,7 @@ Components which verified unsuccessfully contain additional details
 explaining why (such as unsupported, missing root CA, unsupported algorithm,
 etc). Any component type that is non-authentic or unsupported changes the
 `OverallSecurityStatus` to `Risk` (property of the `HpeiLOSecurityDashboard`
-[data type](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilosecuritydashboard)).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeilosecuritydashboard") %} data type {% /link-internal %}.
 
 ### Examples
 
@@ -112,10 +116,16 @@ The following example retrieves the `GlobalComponentIntegrity`
 and the `ComponentIntegrityPolicy` properties. The response body
 shows respective values as `Enabled` and `HaltBootOnSPDMFailure`.
 
+{% tabs %}
+{% tab label="generic GET request" %}
+
 ```text generic GET request
 GET /redfish/v1/Managers/1/SecurityService/?$select=GlobalComponentIntegrity,
 ComponentIntegrityPolicy
 ```
+  
+{% /tab %}
+{% tab label="iLOrest" %}
 
 ```bash iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -123,6 +133,9 @@ ilorest select HpeSecurityService.
 ilorest get --json GlobalComponentIntegrity ComponentIntegrityPolicy
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -135,13 +148,22 @@ ilorest logout
 }
 ```
 
+{% /tab %}
+{% /tabs %}
+
 A system with the `GlobalComponentIntegrity` enabled and the
 `ComponentIntegrityPolicy` set to `HaltBootOnSPDMFailure` returns a
 `ComponentIntegrity` collection similar to one in the following example.
 
+  {% tabs %}
+{% tab label="Generic GET request" %}
+
 ```Shell Generic GET request
 GET /redfish/v1/ComponentIntegrity/
 ```
+  
+{% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -149,6 +171,9 @@ ilorest select ComponentIntegrityCollection
 ilorest get --json 
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -174,10 +199,13 @@ ilorest logout
 
 ```
 
+{% /tab %}
+{% /tabs %}
+
 ## Component Integrity Policy
 
 The `ComponentIntegrityPolicy` property, part of the `HpeSecurityService`
-[resource](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesecurityservice),
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpesecurityservice") %} resource {% /link-internal %},
 controls the system boot policy based on the SPDM authentication
 results of the devices in the server. The two policies are:
 
@@ -190,19 +218,28 @@ results of the devices in the server. The two policies are:
 The following example changes the `ComponentIntegrityPolicy`
 property to `HaltBootOnSPDMFailure`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 A system reset is required to fully validate the modification.
-:::
+{% /admonition %}
+
+{% tabs %}
+{% tab label="Generic PATCH request" %}
 
 ```text Generic PATCH request
 PATCH /redfish/v1/Managers/1/SecurityService/
 ```
+  
+{% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
   "ComponentIntegrityPolicy": "HaltBootOnSPDMFailure"
 }
 ```
+  
+{% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -210,6 +247,9 @@ ilorest select HpeSecurityService.
 ilorest set ComponentIntegrityPolicy="HaltBootOnSPDMFailure" --commit
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -225,17 +265,29 @@ ilorest logout
 }
 ```
 
+{% /tab %}
+{% /tabs %}
+
 The following example retrieves the collection of SPDM capable devices.
+
+{% tabs %}
+{% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/ComponentIntegrity/
 ```
+  
+{% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest get --json --select ComponentIntegrityCollection
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -255,17 +307,26 @@ ilorest logout
 }
 ````
 
+{% /tab %}
+{% /tabs %}
+
 The following example retrieves the details of a storage controller
 successfully verified by the SPDM protocol.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The response body contains a hash (measurement) of the four subcomponents
 of this device.
-:::
+{% /admonition %}
+
+{% tabs %}
+{% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/ComponentIntegrity/0/
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -273,6 +334,9 @@ ilorest select ComponentIntegrity.
 ilorest get --json
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -325,11 +389,14 @@ ilorest logout
 }
 ```
 
-:::success TIP
+{% /tab %}
+{% /tabs %}
+
+{% admonition type="success" name="TIP" %}
 You can map the component URI (i.e. `/redfish/v1/ComponentIntegrity/0`)
 with its device URI using the `TargetComponentURI`
 (i.e. `/redfish/v1/Systems/1/Storage/DE040000` )
-:::
+{% /admonition %}
 
 ## Fetching component integrity measurements
 
@@ -351,20 +418,29 @@ The following example fetches the component integrity measurements of
 the storage controller used in the previous example. The optional
 `Nonce` parameter is not provided in this example.
 
-:::success Tip
+{% admonition type="success" name="Tip" %}
 The `SignedMeasurements` value in the body response of the next example,
 corresponds to the concatenation of the four measurements mentioned in
 the previous example.
-:::
+{% /admonition %}
+
+{% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 POST /redfish/v1/ComponentIntegrity/0/Actions/
 ComponentIntegrity.SPDMGetSignedMeasurements/
 ```
+  
+  {% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {}
 ```
+  
+{% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 cat FetchComponentIntegrityMeasurements.json
@@ -378,6 +454,9 @@ ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest rawpost FetchComponentIntegrityMeasurements.json  --response --silent | jq
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -388,19 +467,31 @@ ilorest logout
 }
 ```
 
+{% /tab %}
+{% /tabs %}
+
 The following example specifies a valid 64 hexadecimal digits
 `Nonce` parameter in the body of the action POST request.
+
+  {% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 POST /redfish/v1/ComponentIntegrity/0/Actions/
 ComponentIntegrity.SPDMGetSignedMeasurements/
 ```
+  
+  {% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
     "Nonce": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadddddddddddddddddddddd"
 }
 ```
+  
+{% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 cat FetchComponentIntegrityMeasurements.json
@@ -416,6 +507,9 @@ ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest rawpost FetchComponentIntegrityMeasurements.json  --response --silent | jq
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -426,26 +520,37 @@ ilorest logout
 }
 ```
 
+{% /tab %}
+{% /tabs %}
 The following example specifies an invalid `Nonce` parameter with 32
 characters in the body of the POST action to retrieve the measurements.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 The `Nonce` property is an hexadecimal encoded set of bytes
 (^[0-9a-fA-F]{64}$). As such, 64 characters are needed to obtain a
 32 byte string. Providing less characters (i.e. 32) triggers the error
 returned in the next example.
-:::
+{% /admonition %}
+
+{% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 POST /redfish/v1/ComponentIntegrity/0/Actions/
 ComponentIntegrity.SPDMGetSignedMeasurements/
 ```
+  
+{% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
     "Nonce": "0123456789abcdef0123456789abcdef"
 }
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -463,6 +568,9 @@ ComponentIntegrity.SPDMGetSignedMeasurements/
     }
 }
 ```
+
+{% /tab %}
+{% /tabs %}
 
 ### Fetching TPM measurements
 
@@ -501,26 +609,32 @@ with BIOS Redfish attributes.
         (`TpmVisibility` Bios attribute)
   - `TPM UEFI Option ROM Measurement` must be set to `Enabled`
         (`TpmUefiOpromMeasuring` Bios attribute)
-            <!-- SME need to validate this assertion -->
   - `Current TPM State` must be set to `Present and Enabled`
         (`TpmState` Bios attribute).
   - In the `Current TPM 2.0 Active PCRs` field select
         `SHA256 and SHA384` (`TpmActivePcrs` Bios attribute).
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Inability to meet any of the above prerequisites results in the
-[error message](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_ILO6_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_msgregs{{process.env.LATEST_ILO6_FW_VERSION}}/) `HashAlgNotSupported`
-:::
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_msgregs", $env.PUBLIC_LATEST_ILO6_FW_VERSION) %} error message {% /link-internal %}
+`HashAlgNotSupported`
+{% /admonition %}
 
 The following example retrieves the required Bios attribute values.
 Refer to this [section](/docs/examples/redfishexamples/#update-of-a-bios-attribute)
 to modify a BIOS Redfish attribute.
+
+{% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest get TpmState TpmActivePcrs TpmUefiOpromMeasuring TpmVisibility  --json
 ilorest 
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -531,17 +645,29 @@ ilorest
 }
 
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 The following example retrieves the properties of the TPM-0
 (OS) component, including each PCR measurements.
 
+{% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET /redfish/v1/ComponentIntegrity/TPM-0
 ```
+  
+{% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest rawget /redfish/v1/ComponentIntegrity/TPM-0
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -746,12 +872,21 @@ ilorest rawget /redfish/v1/ComponentIntegrity/TPM-0
 }
 ```
 
+{% /tab %}
+{% /tabs %}
+
 The following example retrieves the properties of the TPM-1 (iLO firmware)
 component, including each PCR measurements.
+
+{% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 GET redfish/v1/ComponentIntegrity/TPM-1
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -802,6 +937,9 @@ GET redfish/v1/ComponentIntegrity/TPM-1
 }
 ```
 
+{% /tab %}
+{% /tabs %}
+
 The following example fetches the PCR measurements from the `TPM-1`
 component member. The payload of this request is described in
 the following table:
@@ -816,19 +954,25 @@ while the NOTE below says: "uses the provided nonce to sign the PCR"
      Which definition is right ??
  -->
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 HPE iLO uses the provided nonce to sign the PCR. If the nonce value is not
 provided, HPE iLO creates the nonce internally.
-:::
+{% /admonition %}
 
 <!-- Need to explain the Body response of the following example and how to
 use it: Sending multiple POST requests don't retrieve same measurement !
 bug or feature ? -->
 
+{% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 POST /redfish/v1/ComponentIntegrity/TPM-1/Actions/
 ComponentIntegrity.TPMGetSignedMeasurements
 ```
+  
+{% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
@@ -836,6 +980,9 @@ ComponentIntegrity.TPMGetSignedMeasurements
     "Nonce": "0123456789abcdef0123456789abcdef"
 }
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -843,7 +990,13 @@ ComponentIntegrity.TPMGetSignedMeasurements
 }
 ```
 
+{% /tab %}
+{% /tabs %}
+
 Same example using iLOrest:
+
+  {% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 cat GetTPM-1-Measurements.json
@@ -858,9 +1011,15 @@ ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest rawpost --silent --response GetTPM-1-Measurements.json | jq
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
     "SignedMeasurements": "AAABAD9vDO/oGeWW6RJPCRxmLBkpJ767v1amDy1Ut0OLxTR7ILROSYZBAd6EH3Oa9WXNQq/eaS+1k0E2EQHOQ0Ricr1lp8c0y9Siauh4idcNrHUYMGQCMEjJtIdUlD7nNVf1cmsrBEIOGYGxBrv1mABReI6NsqFsU9r2MEvqD4C4CnMEessuTgIwIr13AuMDKXojzdKtc/eLa1RiQ+huggaYnt9Kz66Ke7aOMQpYsc2qKARy/Vx5C7r/"
 }
 ```
+  
+{% /tab %}
+{% /tabs %}

@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: false
 seo:
   title: Managing Apollo Drive Bay mapping
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: true
 ---
 
 ## Managing Apollo Drive Bay Mapping
@@ -12,13 +16,13 @@ disableLastModified: true
 The HPE Apollo 2000 System with the HPE Apollo r2800 Chassis (including the
 Storage Expander Backplane) supports 24 SFF HPE SmartDrives. The SFF drive
 
-:::warning CAUTION
+{% admonition type="warning" name="CAUTION" %}
 Changing the drive bay mapping configuration might cause data loss or data
 corruption. For example, consider a configuration with drive bays two through
 seven assigned to node 1, with the drives configured as a RAID0 volume. Data
 corruption might occur if you change the drive bay mapping so that the
 configured drives are no longer available.
-:::
+{% /admonition %}
 
 ## Prerequisites
 
@@ -33,9 +37,15 @@ associated with each server host port. Before you change the drive bay
 mapping, HPE recommends using the following REST API to view and understand
 the PortNumber mapping:
 
+  {% tabs %}
+{% tab label="GET request" %}
+
 ```text GET request
 GET /redfish/v1/Chassis/1/AccHddService
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -63,12 +73,20 @@ GET /redfish/v1/Chassis/1/AccHddService
     ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Getting current and pending drive bay mapping
+
+  {% tabs %}
+{% tab label="GET request" %}
 
 ```text GET request
 GET /redfish/v1/Chassis/1/AccHddService/zone
 ```
+  
+  {% /tab %}
+{% tab label="response Body" %}
 
 ```json response Body
 {
@@ -97,14 +115,19 @@ GET /redfish/v1/Chassis/1/AccHddService/zone
     }
 }
 ```
-
-:::info NOTE
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
 The value `PortNumber` null indicates that a drive bay is not assigned.
-:::
+{% /admonition %}
 
 The `PendingZoneConfiguration` JSON object displays the pending drive bay
 mapping configuration. This configuration will not be applied until all
 nodes remain powered off for at least 5 seconds.
+
+  {% tabs %}
+{% tab label="PendingZoneConfiguration example" %}
 
 ```json PendingZoneConfiguration example
 {
@@ -134,10 +157,12 @@ nodes remain powered off for at least 5 seconds.
     }
 }
 ```
-
-:::info NOTE
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
 The value PortNumber null indicates that a drive bay is not assigned.
-:::
+{% /admonition %}
 
 ## Configuring drive bay mapping
 
@@ -152,9 +177,15 @@ This action returns a response indicating that all server nodes
 in the chassis must remain powered off for at least 5 seconds
 for the changes to take effect.
 
+  {% tabs %}
+{% tab label="POST request" %}
+
 ```text POST request
 POST /redfish/v1/Chassis/1/AccHddService/Zone/Actions/HpeServerAccHddZone.ConfigureZone
 ```
+  
+  {% /tab %}
+{% tab label="POST Body" %}
 
 ```json POST Body
 {
@@ -194,6 +225,9 @@ POST /redfish/v1/Chassis/1/AccHddService/Zone/Actions/HpeServerAccHddZone.Config
     ]
 }
 ```
+  
+  {% /tab %}
+{% tab label="Response Body" %}
 
 ```json Response Body
 {
@@ -208,7 +242,9 @@ POST /redfish/v1/Chassis/1/AccHddService/Zone/Actions/HpeServerAccHddZone.Config
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Setting drive bay mapping to the default configuration
 
 The default configuration divides the 24 SFF drive bays by the number
@@ -223,13 +259,22 @@ configuration. This action returns a response indicating that all server
 nodes in the chassis must remain powered off for at least 5 seconds
 for the changes to take effect.
 
+  {% tabs %}
+{% tab label="POST request" %}
+
 ```text POST request
 POST /redfish/v1/Chassis/1/AccHddService/Zone/Actions/HpeServerAccHddZone.LoadDefault
 ```
+  
+  {% /tab %}
+{% tab label="POST Body" %}
 
 ```json POST Body
 {}
 ```
+  
+  {% /tab %}
+{% tab label="response Body" %}
 
 ```json response Body
 {
@@ -244,3 +289,6 @@ POST /redfish/v1/Chassis/1/AccHddService/Zone/Actions/HpeServerAccHddZone.LoadDe
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}

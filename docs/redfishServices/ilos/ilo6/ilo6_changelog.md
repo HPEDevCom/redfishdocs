@@ -1,10 +1,18 @@
 ---
 seo:
   title: iLO 6 changelog
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
+breadcrumbs:
+  hide: true
+sidebar:
+  hide: false
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdatedBlock:
+    hide: false
+  breadcrumbs:
+    hide: true
 ---
 
 # Changelog
@@ -17,6 +25,81 @@ and the schemas implemented by iLO 6 adhere to the DMTF Redfish schema bundle
 For a better understanding of the conformance to the DMTF Redfish,
 read the _Redfish versioning_ paragraph of this
 <a href="https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/" target="_blank">article</a>.
+
+## iLO 6 v1.68 new features and changes
+
+### New URIs
+
+- [PortMetrics schema](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#portmetrics):
+  `/redfish/v1/chassis/{@chassisId}/networkadapters/{@nicId}/ports/{@portId}/portmetrics` (GET).
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### HTTP methods - additions and deprecations
+
+- No HTTP methods changed across these releases.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to the supported Redfish Actions for this release.
+
+### Schema updates
+
+- `Chassis.v1_25_1.Chassis`:
+    Added `EnvironmentMetrics`
+    [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_chassis_resourcedefns168/#environmentmetrics).
+- `ComponentIntegrity.v1_3_0.ComponentIntegrity`:
+    Added `Oem.Hpe.HardwareData` and `Oem.Hpe.TcgEventLog`
+    [properties](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#componentintegrity).
+- `EthernetInterface.v1_12_1.EthernetInterface`:
+    Added `DNSOverRA` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_network_resourcedefns168/#ethernetinterface).
+- `EnvironmentMetrics.v1_3_2.EnvironmentMetrics`:
+    Added `PowerWatts` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#powerwatts).
+- `EventDestination.v1_13_0.EventDestination` updated to [version v1\_14\_0](/docs/redfishservices/ilos/ilo6/ilo6_168/       ilo6_other_resourcedefns168/#subscriptiontype).
+    Added the following properties: `SyslogTLS`, `SyslogUDP`.
+    For more information, see [Syslog subscription](/docs/redfishservices/ilos/supplementdocuments/iloeventservices/#syslog-subscription).
+- `HpeEventService.v2_2_0.HpeEventService`:
+    Added `SubscriptionType` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#subscriptiontype).
+- `HpeNetworkAdapter.v1_10_1.HpeNetworkAdapter`:
+    Added `PrimaryBootLoaderVersion` and `ChipVersion` [objects](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_network_resourcedefns168/#networkadapter).
+- `HpeiLOSnmpService.v2_4_1.HpeiLOSnmpService`:
+    Removed DES (Data Encryption Standard) from the [definition](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_hpe_resourcedefns168/#privacyprotocol).
+- `Port.v1_12_0.Port`:
+    Added few SFP [properties](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#sfp).
+
+## iLO 6 v1.67 new features and changes
+
+### New URIs
+
+- [Certificate schema](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_other_resourcedefns167/#certificate):
+  `/redfish/v1/systems/{@systemId}/storage/{@storageId}/controllers/{@controllerId}/certificates/` (GET)
+- [Certificate schema](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_other_resourcedefns167/#certificate):
+  `redfish/v1/Systems/{@systemId}/Storage/{@storageId}/Controllers/{@ControllerId}/Certificates/{@CertificateId}` (GET)
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### HTTP methods - additions and deprecations
+
+- No HTTP methods changed across these releases.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to the supported Redfish Actions for this release.
+
+### Schema updates
+
+- `ComponentIntegrity.v1_2_3.ComponentIntegrity` updated to
+  [version v1\_3\_0](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_other_resourcedefns167/#componentintegrity).
+- [ComputerSystem.v1_18_0.ComputerSystem](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_computersystem_resourcedefns167/#bootprogress): The`Read Only` for
+  `BootProgress.LastState` and `BootProgress.LastBootTimeSeconds` property is updated to `TRUE`.
+- `HpeiLOLicense.v2_3_0.HpeiLOLicense` updated to
+  [version v2\_5\_0](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_hpe_resourcedefns167/#hpeilolicense).
+- `StorageController.v1_0_0.StorageController` updated to
+  [version v1\_9\_0](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_storage_resourcedefns167/#storagecontroller).
 
 ## iLO 6 v1.66 new features and changes
 
@@ -144,6 +227,12 @@ read the _Redfish versioning_ paragraph of this
 - `ComputerSystem.v1_18_0.ComputerSystem`
   - Added `Oem.Hpe.DeviceDiscoveryComplete.ServerFirmwareInventoryComplete`
     [property](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_computersystem_resourcedefns164/#oemhpedevicediscoverycomplete)
+  - `BootProgress.LastState`: The last boot progress state. Supported
+    values: `None`, `PrimaryProcessorInitializationStarted`,
+    `BusInitializationStarted`, `MemoryInitializationStarted`,
+    `SecondaryProcessorInitializationStarted`, `PCIResourceConfigStarted`,
+    `SystemHardwareInitializationComplete`, `SetupEntered`, `OSBootStarted`,
+    `OSRunning`, `OEM`.
 - `Manager.v1_5_1.Manager` updated to
   [version 1\_19\_1](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_manager_resourcedefns164/#manager)
   - Added the `DedicatedNetworkPorts` [link](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_manager_resourcedefns164/#dedicatednetworkports)
@@ -187,15 +276,8 @@ read the _Redfish versioning_ paragraph of this
 
 - `ComputerSystem.v1_17_0.ComputerSystem` is updated to
   `ComputerSystem.v1_18_0.ComputerSystem`:
-  - `BootProgress`: This object shall contain the last boot progress state and time.
   - `BootProgress.LastBootTimeSeconds`: The number of seconds the system spent
      booting to the OS during the last boot.
-  - `BootProgress.LastState`: The last boot progress state. Supported
-    values: `None`, `PrimaryProcessorInitializationStarted`,
-    `BusInitializationStarted`, `MemoryInitializationStarted`,
-    `SecondaryProcessorInitializationStarted`, `PCIResourceConfigStarted`,
-    `SystemHardwareInitializationComplete`, `SetupEntered`, `OSBootStarted`,
-    `OSRunning`, `OEM`.
 - `ServiceRoot.v1_13_0.ServiceRoot`:
   - Added `Manager[{item}].ComputeOpsManagementSupport` property:
     Indicates if the HPE Compute Ops Management (COM) is
@@ -227,22 +309,36 @@ read the _Redfish versioning_ paragraph of this
   - `/redfish/v1/TelemetryService/MetricReportDefinitions/{@MetricReportDefinitionId}`
   - `/redfish/v1/TelemetryService/MetricReports/{@MetricReportId}`
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
-The methods returned by the payload of a `GET` against `/redfish/v1/resourcedirectory` are
+The methods returned by the response of a `GET` against `/redfish/v1/resourcedirectory` are
 incorrect for a few of the URIs. The methods that returned the `405 Method Not Allowed`
 error are removed from those URIs.
 
 The `POST` method is removed from allowed methods if the URI is not a collection URI or a
 non-RDE URI.
   
-:::
+{% /admonition %}
 
 #### Examples
 
-In HPE iLO 6 1.61, before removing the `POST` method:
+The following example returns the response of a GET
+request from an iLO 6 1.61 and 1.62. The `POST` method
+of the Manager schema, visible
+in version 1.61 has been removed in 1.62.
 
-```json POST payload
+{% tabs %}
+{% tab label="Generic request" %}
+
+```text
+GET /redfish/v1/resourcedirectory
+```
+
+{% /tab %}
+{% tab label="Before removing POST" %}
+
+```json
+    ...
     {"@odata.id": "/redfish/v1/Managers/1",
     "@odata.type": "#Manager.v1_5_1.Manager",
     "ETag": "W/\"4AE67964\"",
@@ -252,11 +348,14 @@ In HPE iLO 6 1.61, before removing the `POST` method:
       "POST",
       "PATCH"
                 ]}
+    ...
 ```
+  
+{% /tab %}
+{% tab label="After removing POST" %}
 
-In HPE iLO 6 1.62, after removing the `POST` method:
-
-``` json
+```json
+    ...
     {"@odata.id": "/redfish/v1/Managers/1",
     "@odata.type": "#Manager.v1_5_1.Manager",
     "ETag": "W/\"4AE67964\"",
@@ -265,7 +364,11 @@ In HPE iLO 6 1.62, after removing the `POST` method:
       "HEAD",
       "PATCH"
             ]}
+    ...
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Deprecated URIs
 
@@ -492,7 +595,7 @@ In HPE iLO 6 1.62, after removing the `POST` method:
 
 - Consistent `EthernetInterface` naming schema across device types.
 
-:::info Note
+{% admonition type="info" name="Note" %}
 
 The URI of the members of the computer system `EthernetInterface`
 can be represented with this notation:
@@ -517,7 +620,7 @@ Their corresponding `{@nicId}` is represented:
 - at slot 1 in the range: 13-76
 - at slot 2 in the range: 77-140
 
-:::
+{% /admonition %}
 
 ### HTTP methods - additions and deprecations
 
@@ -534,16 +637,28 @@ HPE iLO supports connecting to HPE Compute Ops Management (COM) using the `Activ
 - Onboarding HPE iLO to COM is possible with both the COM `ActivationKey` or HPE GreenLake Workspace ID.
   Refer to the following example:
   
+  {% tabs %}
+  {% tab label="Action to onboard HPE iLO to COM" %}
+
   ```text Action to onboard HPE iLO to COM
       POST: /redfish/v1/Managers/1/Actions/Oem/Hpe/EnableCloudConnect
   ```
   
+  {% /tab %}
+  {% /tabs %}
+  
+  {% tabs %}
+  {% tab label="Body 1" %}
+
   ```json Body 1
     {
       "ActivationKey" : "<Activation Key>",
       "OverrideManager" : true
     }
   ```
+  
+  {% /tab %}
+  {% tab label="Body 2" %}
 
   ```json Body 2
     {
@@ -551,7 +666,9 @@ HPE iLO supports connecting to HPE Compute Ops Management (COM) using the `Activ
       "OverrideManager" : true
     }
   ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 - Rename of property:
   To view the HPE GreenLake account ID to which an HPE iLO is connected to the
   COM, the property `ActivationKey` under URI-`/redfish/v1/Managers/1/` is
@@ -713,27 +830,27 @@ HPE iLO supports connecting to HPE Compute Ops Management (COM) using the `Activ
 
 - `redfish/v1/Fabrics/{@fabricId}/Switches/{@switchId}/Ports/{@PortId}` (GET, POST) - `#Port.v1_9_0.Port`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 `Fabrics` resource contains properties describing a simple fabric consisting of one or more switches with zero or more endpoints, and zero or more zones. Each `Fabrics` is involved in routing a data packet from routers from one end to other end.
-:::
+{% /admonition %}
 
 The following new URIs are subjective to Storage Enclosures being present on the server.
 
 - `redfish/v1/Chassis/{@ChassisId}`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - `@ChassisId` can be of the format `DE******` or a number ranging from 2-10 depending on if the Enclosure supports Redfish-Device-Enablement or Direct Attached respectively.
 - `Chassis/1` represents RackMount chassis.
-:::
+{% /admonition %}
 
 - `redfish/v1/Chassis/{@ChassisId}/Drives` (GET) - `#DriveCollection.DriveCollection`
 
 - `redfish/v1/Chassis/{@ChassisId}/Drives/{@DrivesId}` (GET,PATCH,POST) - `#Drive.v1_14_0.Drive`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 `Drives` is present only for `Chassis` resource that represents a Storage Enclosure.
-:::
+{% /admonition %}
 
 ### HTTP methods - additions and deprecations
 
@@ -826,9 +943,9 @@ The following new URIs are subjective to Storage Enclosures being present on the
 
 - `redfish/v1/TelemetryService/MetricReportDefinitions/`: The following collection members are added `CPUUtil`, `MemoryBusUtil`, `IOBusUtil`, `CPUICUtil`, `JitterCount`, `PowerMetrics`, `AvgCPUXFreq` and `CPUXPower`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 X depends on the number of sockets. The range of X lies between 0 to 3.
-:::
+{% /admonition %}
 
 - `redfish/v1/TelemetryService/MetricDefinitions/`: The following collection members are added `AverageConsumedWatts`, `MinConsumedWatts`, `MaxConsumedWatts`, `AmbTemp`, `Cap`, `CpuCapLim`,`CpuMax`, `CpuPwrSavLim`, `CpuWatts`, `DimmWatts`, `GpuWatts`, `PrMode`, `PunCap` and `UnachCap`.
 
@@ -1167,8 +1284,10 @@ The following resource instances are added in this schema:
   - Added `Signatures`: A link to the collection of signatures contained in the UEFI Secure Boot database.
   - Added `Actions`:
     - `SecureBootDatabase.ResetKeys`: Action to perform reset of the Secure Boot Database Keys.
-  - Added `Parameters`:<ul>
-    - Added `ResetKeysType (string)` (the parameter specifies what type of reset action to perform). The values are `DeleteAllKeys` (delete all Secure Boot Database keys on next boot) and `ResetAllKeysToDefault` (reset to default Secure Boot Database keys on next boot).</ul></br>
+  - Added `Parameters`:
+  <ul>
+    - Added `ResetKeysType (string)` (the parameter specifies what type of reset action to perform). The values are `DeleteAllKeys` (delete all Secure Boot Database keys on next boot) and `ResetAllKeysToDefault` (reset to default Secure Boot Database keys on next boot).
+  </ul></br>
 The following resource instances are added in this schema:
 
   - `/redfish/v1/Systems/{@systemsId}/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId}` (GET, DELETE)
@@ -1225,7 +1344,8 @@ No changes have been made to supported Redfish Actions for this release.
 ### Schema updates
 
 - `#Certificate.v1_1_0.Certificate` updated to `#Certificate.v1_6_0.Certificate`
-  - Added `Issuer` and `Subject`: <ul>
+  - Added `Issuer` and `Subject`:
+  
     - `City`: The city or locality of the organization of the entity.
     - `CommonName`: The fully qualified domain name of the entity.
     - `Country`: The country of the organization of the entity.
@@ -1233,48 +1353,68 @@ No changes have been made to supported Redfish Actions for this release.
     - `Email`: The email address of the contact within the organization of the entity.
     - `Organization`: The name of the organization of the entity.
     - `OrganizationalUnit`: The name of the unit or division of the organization of the entity.
-    - `State`: The state, province, or region of the organization of the entity.</ul>
+    - `State`: The state, province, or region of the organization of the entity.
 
 - `#Chassis.v1_10_2.Chassis` updated to `#Chassis.v1_19_2.Chassis`
+  
   - Deprecated `IndicatorLED`
   - Added `Oem.Hpe.IndicatorLED`: The state of the indicator LED. Following are the supported values: `Null`, `Lit`, `Blinking` and `Off`. This is a fall back provided for clients who want to continue using `IndicatorLED`.
   - Added `LocationIndicatorActive`: An indicator allowing an operator to physically locate this resource. This property replaces `IndicatorLED`and is in-line with the updated DMTF schema.
   - Added `EnvironmentalClass`: The ASHRAE Environmental Class for the chassis. Following are the supported values: A2 - ASHRAE Environmental Class 'A2', A3 - ASHRAE Environmental Class 'A3', and A4 - ASHRAE Environmental Class 'A4'.
-  - Added `Location.PartLocation`:<ul>
+  - Added `Location.PartLocation`:
+
     - `LocationOrdinalValue`: The number that represents the location of the part.  If LocationType is `slot` and this unit is in slot 2, the LocationOrdinalValue is 2.
     - `LocationType`: The location types for PartLocation. Following are the supported values: `Null`, `Slot`, `Bay`, `Connection`, `Socket`, and `Embedded`.
     - `Orientation`: The orientation for the ordering of the part location ordinal value. Following are the supported values: `Null`, `FrontToBack`, `BackToFront`, `TopToBottom`, `BottomToTop`, `LeftToRight`, and `RightToLeft`.
     - `Reference`: The reference area for the location of the part. Following are the supported values: `Null`, `Top`, `Bottom`, `Front`, `Rear`, `Left`, `Right`, and `Middle`.
-    - `ServiceLabel`: The label of the part location, such as a silk-screened name or a printed label. </ul>
-  - Added `Location.Placement`: <ul>
+    - `ServiceLabel`: The label of the part location, such as a silk-screened name or a printed label.
+
+  - Added `Location.Placement`:
+
     - `AdditionalInfo`: Area designation or other additional info.
     - `Rack`: The name of a rack location within a row.
     - `RackOffset`: The vertical location of the item, in terms of RackOffsetUnits.
     - `RackOffsetUnits`: The type of rack unit in use. Following are the supported values: `Null`, `OpenU` (a rack unit that is equal to 1.89 inches (48 mm)), and `EIA_310` (a rack unit that is equal to 1.75 inches (44.45 mm).
-    - `Row`: The name of the row.</ul>
-  - Added `CpuMezzProgrammableLogicDevice` to  `Oem.Hpe.Firmware`: The firmware version of the CPLD (System Programmable Logic Device).
+    - `Row`: The name of the row.
+
+  - Added `CpuMezzProgrammableLogicDevice` to `Oem.Hpe.Firmware`: The firmware version of the CPLD (System Programmable Logic Device).
   - Added `Oem.Hpe.TelcoModeEnabled`: This property indicates if Telco mode is enabled on the server.
 
 - `#ComputerSystem.v1_10_0.ComputerSystem` updated to `#ComputerSystem.v1_17_0.ComputerSystem`
   - Deprecated `IndicatorLED`
   - Added `Oem.Hpe.IndicatorLED`: The state of the indicator LED. Following are the supported values: `Null`, `Lit`, `Blinking` and `Off`. This is a fall back added for clients that want to continue to use `IndicatorLED`
   - Added `LocationIndicatorActive`: An indicator allowing an operator to physically locate this resource. This property replaces `IndicatorLED`and is in-line with the updated DMTF schema.
-  - Added `BootProgress`: <ul>
-    - `LastState`: SmartNIC device operating system status. Following are the supported values: `OSBootStarted`, `OSRunning` and `OEM`.
-    - `OemLastState`: SmartNIC device operating system OEM status. Following are the supported values: `OSServicesReady`, `OSServicesOffline`, `OSHalting` and `OSHalted`. </ul>
+  - Added `BootProgress`:
+
+    - `OemLastState`: SmartNIC device operating system OEM status. Following are the supported values: `OSServicesReady`, `OSServicesOffline`, `OSHalting` and `OSHalted`.
+
   - Added `Oem.Hpe.AvailableSystemCapabilities`: Indicates SmartNIC DPU supports OS-triggered DPC. `OSTriggeredDPC` is the supported value.
-  - Added `Oem.Hpe.BootProgress`: <ul>
-    - Added `OemResetReason`: The Smart NIC Device Operating system OEM reset reason. Following are the supported values: `Unknown`, `OSNormal`, `BMCNormal`, `OSCrash`, `HWWatchdog` and `Thermal`.
-    - Added `ResetReason`: The Smart NIC Device Operating system reset reason. Following are the supported values: `OEM`, `Unknown`, `OSNormal`, `BMCNormal`, `OSCrash`, `HWWatchdog` and `Thermal`. </ul>
+  - Added `Oem.Hpe.BootProgress`:
+
+    - Added `OemResetReason`: The Smart NIC Device Operating system OEM reset
+      reason. Following are the supported values: `Unknown`, `OSNormal`,
+      `BMCNormal`, `OSCrash`, `HWWatchdog` and `Thermal`.
+    - Added `ResetReason`: The Smart NIC Device Operating system reset reason.
+      Following are the supported values: `OEM`, `Unknown`, `OSNormal`, `BMCNormal`,
+      `OSCrash`, `HWWatchdog` and `Thermal`.
+
+    - Added `BootProgress.OemLastState`: This object shall contain the last
+      boot progress state and time. It
+     provides information about
+     [Data Processing Units (DPUs) and SmartNIC](/docs/redfishservices/ilos/supplementdocuments/smartnics/)
+     devices visible under the `/redfish/v1/Systems/{item}` with `item > 1`.
+     An example of such device is <a href="https://www.hpe.com/psnow/doc/a50001239enw" target="_blank">Pensando</a> devices.
   - Added `Oem.Hpe.EnabledSystemCapabilities`: Indicates that SmartNIC DPU supports OS-triggered DPC. `OSTriggeredDPC` is the supported value.
   - Added `OsReadyTimeout` to `Oem.Hpe.IntegrationConfig`.
   - Added `Kernel.Version` to  `Oem.Hpe.OperatingSystem`: SmartNIC device operating system kernel version.
   - `SystemType`: The type of computer system that this resource represents. `DPU` is added to the supported values.
-  - Added `ComputerSystem.SetSimpleUpdateStatus`: Added the following Parameters: <ul>
+  - Added `ComputerSystem.SetSimpleUpdateStatus`: Added the following Parameters:
+
     - `Message (string)`: Message to be displayed
     - `TaskState (string)`: TaskState identifies the type of action to be performed. Following are the supported values: `New`, `Starting`, `Running`,`Suspended`,`Interrupted`,`Pending`, `Stopping`, `Completed`, `Killed`,`Exception` and `Service`.
     - `PercentComplete (integer)`: Percentage of task complete.
-    - `TaskStatus (string)`: Current status of the ongoing task. Following are the supported values: `Ok`, `Warning` and `Critical`. </ul>
+    - `TaskStatus (string)`: Current status of the ongoing task. Following are the supported values: `Ok`, `Warning` and `Critical`.
+
   
 - `#Drive.v1_7_0.Drive` upgraded to `Drive.v1_14_0.Drive`
   - Deprecated `IndicatorLED`
@@ -1287,17 +1427,21 @@ No changes have been made to supported Redfish Actions for this release.
 - `#HpeSecurityService.v2_3_1.HpeSecurityService`
   - Added `ComponentIntegrityPolicy`: `NoPolicy` and `HaltBootOnSPDMFailure` are the supported values.
   - Added `GlobalComponentIntegrity`: `Enabled` and `Disabled` are the supported values.
-  - Added the following to `TrustedOSSecurity`:<ul>
+  - Added the following to `TrustedOSSecurity`:
+
     - `EnableBackgroundScan`: Enables or disables background scan of host OS software.
     - `LastScanResult`: Health of the host after the last scan done by Trusted OS Security scan engine. Following are the supported values: `OK`, `Critical`, `Unknown`.
     - `LastScanTime`: The time stamp of the last Trusted OS Security scan.
     - `OnIntegrityFailure`: Sets the policy for how the Trusted OS Security check handles integrity failures. Following are the supported values: `NoAction`, `Alert`, `PowerOff`, `PowerOffForce`,`Reset`, `ForceNMI` .
-    - `ScanEverySeconds`: Sets the interval between Trusted OS Security scans in second increments.</ul>
+    - `ScanEverySeconds`: Sets the interval between Trusted OS Security scans in second increments.
+
 
 - `#HpeServerDevice.v2_1_0.HpeServerDevice`
-  - Added `FirmwareVersion`: <ul>
+  - Added `FirmwareVersion`:
+
     - `ComponentName`: Name of GPU cores
-    - `VersionString`: Version String of GPU cores </ul>
+    - `VersionString`: Version String of GPU cores
+
 
 - `#LogService.v1_0_0.LogService` updated to `LogService.v1_1_0.LogService`
   - Added `DateTime`: The current date and time, with UTC offset, that the Log Service uses to set or read time.
@@ -1312,23 +1456,30 @@ No changes have been made to supported Redfish Actions for this release.
   - Added the value `DDR5` to the supported values in `MemoryDeviceType`.
 
 - `#NetworkAdapter.v1_5_0.NetworkAdapter` upgraded to `#NetworkAdapter.v1_9_0.NetworkAdapter`
-  - Added `Location.PartLocation`: <ul>
+  - Added `Location.PartLocation`:
+
     - `LocationOrdinalValue`: The number that represents the location of the part.  If LocationType is `slot` and this unit is in slot 2, the LocationOrdinalValue is 2.
     - `LocationType`: The location types for PartLocation. Following are the supported values: `Null`, `Slot`, `Bay`,`Connector`,`Socket`and `Embedded`.
     - `Orientation`: The orientation for the ordering of the part location ordinal value. Following are the supported values: `Null`, `FrontToBack`,`BackToFront`,`TopToBottom`,`BottomToTop`, `LeftToRight` and `RightToLeft`.
     - `Reference`: The reference area for the location of the part. Following are the supported values: `Null`, `Top`,`Bottom`,`Front`,`Rear`, `Left`,`Right` and `Middle`.
-    - `ServiceLabel`: The label of the part location, such as a silk-screened name or a printed label. </ul>
-  - Added `Location.Placement`: <ul>
+    - `ServiceLabel`: The label of the part location, such as a silk-screened name or a printed label.
+
+  - Added `Location.Placement`:
+
     - `AdditionalInfo`: Area designation or other additional info.
     - `Rack`: The name of a rack location within a row.
     - `RackOffset`: The vertical location of the item, in terms of RackOffsetUnits.
     - `RackOffsetUnits`: The type of rack unit in use. Following are the supported values: `Null`, `OpenU` and `EIA_310`.
-    - `Row`: The name of the row. </ul>
-  - Added `Oem.Hpe.FcPorts`: is an array containing elements of: <ul>
+    - `Row`: The name of the row.
+
+  - Added `Oem.Hpe.FcPorts`: is an array containing elements of:
+
     - `PortNumber`: Port Number
     - `WWNN`: World Wide Node Name
-    - `WWPN`: World Wide Port Name </ul>
-  - Added `Oem.Hpe.PhysicalPorts`: <ul>
+    - `WWPN`: World Wide Port Name
+
+  - Added `Oem.Hpe.PhysicalPorts`:
+
     - `BadReceives`: A count of frames that were received by the adapter but which had an error.  This counter is the sum of mib items `cpqNicIfPhysAdapterAlignmentErrors`, `cpqNicIfPhysAdapterFCSErrors`, `cpqNicIfPhysAdapterFrameTooLongs`, and `cpqNicIfPhysAdapterInternalMacReceiveErrors`. If this counter increments frequently, check the more detailed error statistics and take appropriate action.
     - `BadTransmits`: A count of frames that were not transmitted by the adapter because of an error.  This counter is the sum of MIB items cpqNicIfPhysAdapterDeferredTransmissions, cpqNicIfPhysAdapterLateCollisions, cpqNicIfPhysAdapterExcessiveCollisions, cpqNicIfPhysAdapterCarrierSenseErrors, and cpqNicIfPhysAdapterInternalMacTransmitErrors. If this counter increments frequently, check the more detailed error statistics and take appropriate action.
     - `FullDuplex`: Full-duplex data transmission means that data can be transmitted in both directions on a signal carrier at the same time.
@@ -1340,24 +1491,28 @@ No changes have been made to supported Redfish Actions for this release.
     - `SpeedMbps`: An estimate of the current bandwidth of the interface in Megabits per second.  For interfaces which do not vary in bandwidth or for those where no accurate estimation can be made, this object contains the nominal bandwidth.
     - `StructuredName`: PCI device structured name in UTF-8 format (e.g. 'NIC.LOM.1.1' - see PCIDevices in `/rest/v1/Systems/x/PCIDevices`)
     - `Team`: If a port is configured for NIC teaming, the name of the configured link between the physical ports that form a logical network adapter. This value is displayed for system NICs only (embedded and stand-up).
-    - `UEFIDevicePath`: UEFIDevice Path for correlation purposes.</ul>
-
+    - `UEFIDevicePath`: UEFIDevice Path for correlation purposes.
+  
 - `#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction` updated to `#NetworkDeviceFunction.v1_8_0.NetworkDeviceFunction`
 
 - `#PCIeDevice.v1_4_0.PCIeDevice` updated to `#PCIeDevice.v1_5_0.PCIeDevice`
-  - Added `Oem.Hpe.FirmwareVersion`:<ul>
+  - Added `Oem.Hpe.FirmwareVersion`:
+
     - `ComponentName`: Name of GPU cores
-    - `VersionString`: Version string of GPU cores</ul>
+    - `VersionString`: Version string of GPU cores
+
 
 - `#Port.v1_5_0.Port` updated to `#Port.v1_6_1.Port`
   - Added `AssociatedWorldWideNames`to `FibreChannel`
   
 - `#Power.v1_3_0.Power`
-  - Added `Oem.Hpe.Domains`:<ul>
+  - Added `Oem.Hpe.Domains`:
+
     - `DomainName`: Power Supply Domain Name. Following values are supported: `System` and `GPU`.
     - `HighEfficiencyMode`: The redundant power supply mode that will be used when redundant power supplies are configured. The following values are supported: `Null`, `Auto`, `Balanced`, `Even`, `Odd` and `NoSupport`.
     - `PowerSupplies`: `PowerSupplies` is an array containing elements of: `PowerSupplies[{item}].@odata.id`
-    - `PowerSupplyRedundancy`: This indicates if the Power Supply is redundant or not. Following values are supported: `Redundant`, `NonRedundant`, `FailedRedundant` and `Unknown`.</ul>
+    - `PowerSupplyRedundancy`: This indicates if the Power Supply is redundant or not. Following values are supported: `Redundant`, `NonRedundant`, `FailedRedundant` and `Unknown`.
+
   - `Oem.Hpe.HighEfficiencyMode`: Added `NoSupport` to supported values.
   - Added  `PowerSupplies.Oem.Hpe.Domain`: This indicates the domain of the specific power supply. Following values are supported: `System` and `GPU`.
   - `Oem.Hpe.HighEfficiencyMode`: `NoSupport` added as a supported value.

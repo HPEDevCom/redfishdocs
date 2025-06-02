@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Cmdlets examples
-disableLastModified: false
-toc:
-  enable: true
-  maxDepth: 2
 ---
 
 
@@ -29,10 +33,10 @@ are available in the
 <a href="https://github.com/HewlettPackard/PowerShell-ProLiant-SDK"
 target="_blank">Hewlett Packard GitHub repository</a>.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Use `[System.GC]::Collect()` to optimize client system memory
 consumption during script execution.
-:::
+{% /admonition %}
 
 ## Using the Find-HPEiLO Cmdlet
 
@@ -47,9 +51,9 @@ a data center, or perhaps determining what firmware versions exist.
 The information is returned as a single object or as an array of objects
 of iLOs found.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 If a comma is included in the range, double quotes are required. PowerShell interprets a comma (,) as a list separator. Without double quotes ("), part of what should be a string is interpreted by PowerShell as a number. The operation of combined ranges is defined as creating a combination of each subnet address with each other subnet.
-:::
+{% /admonition %}
 
 Use the following syntax for specifying the range parameter:
 
@@ -61,15 +65,15 @@ Use the following syntax for specifying the range parameter:
 | `"10.20.30,29.93,103"` | Specifies four discrete addresses: `10.20.30.93`, `10.20.30.103`, `10.20.29.93`, and `10.20.29.103` |
 | `"10.20.30,29.93-103"` | Specifies two ranges of eleven addresses: `10.20.30.93` through `10.20.30.103` and `10.20.29.93` through `10.20.29.103` |
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The default value for the Timeout parameter is 30 seconds.
 If the timeout value is not long enough for iLOs to respond,
 try using a Timeout parameter with a larger value.
-:::
+{% /admonition %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 To monitor the operation of the Find-HPEiLO cmdlet, use the Verbose parameter.
-:::
+{% /admonition %}
 
 ```PowerShell Example 1
 PS C:\> Find-HPEiLO 10.20.30.1

@@ -1,147 +1,400 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
 seo:
   title: Managing iLO users
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
+breadcrumbs:
+  hide: true
 ---
 
 ## Managing iLO Users
 
-:::info NOTE
-
+{% admonition type="info" name="NOTE" %}
 It is possible that some properties or resources described in this section
 are not implemented in HPE iLO 4 and iLO 5.
+{% /admonition %}
 
-:::
+HPE iLO supports:
 
-iLO supports both local user authentication as well as directory
-authentication.
-
+* Local user authentication
+* Directory authentication
 * Role based local user administration via Redfish
 * Directory Authentication configuration via Redfish
 
-All user account modifications require the Redfish client to be
+User account modifications require Redfish clients to be
 authenticated with the "Administer User Accounts" privilege
-(`UserConfigPriv` in the Redfish `ManagerAccount` resource type)
+(`UserConfigPriv` in the Redfish `ManagerAccount`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.privileges") %} resource type {% /link-internal %}
 
-## Local User Administration
+{% admonition type="success" name="TIP:" %}
+Managing iLO users with iLOrest is described in this
+[documentation section](/docs/redfishclients/ilorest-userguide/ilocommands#iloaccounts-command).
+{% /admonition %}
 
-HPE iLO has a local user database enabling consistent user management
-for all interfaces including the Web interface (GUI) as well as the
-Redfish API. The HPE iLO local user accounts are managed in the
-AccountService (`/redfish/v1/AccountService`). An `Accounts` collection
-in the AccountService enables clients to create, modify, or remove
-local user accounts.
+## The Account Service
 
-```text GET request
-GET /redfish/v1/AccountService/Accounts/
-```
+The iLO user management service is described in the `AccountService`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#accountservice") %} subsystem {% /link-internal %}.
+This subsystem contains the capabilities of the service (i.e. Active Directory, LDAP) as well the
+URIs of various resources like the entry point of the local account database.
 
-```json Response body
+The following example retrieves the local user account and
+application accounts URIs from the `AccountService`.
+
+{% admonition type="info" name="NOTE" %}
+Application accounts have been introduced with
+[HPE iLO 7](/docs/redfishservices/ilos/supplementdocuments/securityservice/#transitioning-to-hpe-ilo-7).
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="iLOrest" %}
+
+```shell iLOrest
+ilorest login ilo-ip -u ilo-user -p password
+ilorest list Accounts Oem/Hpe/AppAccounts --select AccountService. --json
 {
-    "@odata.context": "/redfish/v1/$metadata#ManagerAccountCollection.ManagerAccountCollection",
-    "@odata.etag": "W/\"21C260DB\"",
-    "@odata.id": "/redfish/v1/AccountService/Accounts/",
-    "@odata.type": "#ManagerAccountCollection.ManagerAccountCollection",
-    "Description": "iLO User Accounts",
-    "Name": "Accounts",
-    "Members": [
-        {
-            "@odata.id": "/redfish/v1/AccountService/Accounts/1/"
-        }
-    ],
-    "Members@odata.count": 1
+  "Accounts": {
+    "@odata.id": "/redfish/v1/AccountService/Accounts/"
+  },
+  "Oem": {
+    "Hpe": {
+      "AppAccounts": {
+        "@odata.id": "/redfish/v1/AccountService/Oem/Hpe/AppAccounts/"
+      }
+    }
+  }
+}
+
+ilorest logout
+```
+  
+  {% /tab %}
+{% tab label="cURL(1)" %}
+
+```shell cURL(1)
+curl --insecure --silent --location -u ilo-user:password   \
+     https://ilo-ip/redfish/v1/AccountService     | \
+     jq '.Accounts, .Oem.Hpe.AppAccounts'
+{
+  "@odata.id": "/redfish/v1/AccountService/Accounts"
+}
+{
+  "@odata.id": "/redfish/v1/AccountService/Oem/Hpe/AppAccounts"
 }
 ```
+  
+  {% /tab %}
+{% tab label="cURL(2)" %}
 
+```json cURL(2)
+curl --insecure --silent --location -u ilo-user:password   \
+     'https://ilo-ip/redfish/v1/AccountService/?%24select=Accounts%2C%20Oem/Hpe/AppAccounts' | \
+     jq '.'
+{
+  "@odata.context": "/redfish/v1/$metadata#AccountService.AccountService",
+  "@odata.etag": "W/\"985003737\"",
+  "@odata.id": "/redfish/v1/AccountService/",
+  "@odata.type": "#AccountService.v1_15_0.AccountService",
+  "Accounts": {
+    "@odata.id": "/redfish/v1/AccountService/Accounts/"
+  },
+  "Oem": {
+    "Hpe": {
+      "AppAccounts": {
+        "@odata.id": "/redfish/v1/AccountService/Oem/Hpe/AppAccounts/"    
+      }
+    }
+  }
+}
+```
+  
+  {% /tab %}
+  {% /tabs %}
+
+## Local user administration
+
+HPE iLO holds a local user database enabling consistent user management
+for all interfaces including the Web interface (GUI) as well as the
+Redfish API. Refer to the example of the
+[previous paragraph](#the-account-service) to retrieve
+the URIs of the local user accounts.
+
+{% admonition type="success" name="TIP:" %}
+Refer to this
+[documentation section](/docs/redfishclients/ilorest-userguide/ilocommands#iloaccounts-command)
+of iLO user management with iLOrest.
+{% /admonition %}
+
+The following example lists the URIs of local iLO users and application accounts.
+
+  {% tabs %}
+{% tab label="Generic GET requests" %}
+
+```text Generic GET requests
+GET /redfish/v1/AccountService/Accounts/
+and
+GET /redfish/v1/AccountService/Oem/Hpe/AppAccounts
+```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
+
+```shell iLOrest
+ilorest login ilo-ip -u ilo-user -p password
+ilorest list Members --select ManagerAccountCollection --json
+[
+  {
+    "Members": [
+      {
+        "@odata.id": "/redfish/v1/AccountService/Accounts/65536/"
+      },
+      {
+        "@odata.id": "/redfish/v1/AccountService/Accounts/65544/"
+      },
+      {
+        "@odata.id": "/redfish/v1/AccountService/Accounts/65545/"
+      },
+      {
+        "@odata.id": "/redfish/v1/AccountService/Accounts/65546/"
+      },
+      {
+        "@odata.id": "/redfish/v1/AccountService/Accounts/65547/"
+      }
+    ]
+  },
+  {
+    "Members": [
+      {
+        "@odata.id": "/redfish/v1/AccountService/Oem/Hpe/AppAccounts/65605/"
+      },
+      {
+        "@odata.id": "/redfish/v1/AccountService/Oem/Hpe/AppAccounts/65606/"
+      }
+    ]
+  }
+]
+
+
+ilorest logout
+```
+  
+  {% /tab %}
+{% tab label="cURL" %}
+
+```shell cURL
+curl --insecure --silent --location -u ilo-user:password   \
+     https://ilo-ip/redfish/v1/AccountService/Accounts     | \
+     jq '.'
+{
+  "@odata.context": "/redfish/v1/$metadata#ManagerAccountCollection.ManagerAccountCollection",
+  "@odata.etag": "W/\"144846794\"",
+  "@odata.id": "/redfish/v1/AccountService/Accounts",
+  "@odata.type": "#ManagerAccountCollection.ManagerAccountCollection",
+  "Description": "iLO User Accounts",
+  "Name": "Accounts",
+  "Members": [
+    {
+      "@odata.id": "/redfish/v1/AccountService/Accounts/65536"
+    },
+    {
+      "@odata.id": "/redfish/v1/AccountService/Accounts/65544"
+    },
+    {
+      "@odata.id": "/redfish/v1/AccountService/Accounts/65545"
+    },
+    {
+      "@odata.id": "/redfish/v1/AccountService/Accounts/65546"
+    },
+    {
+      "@odata.id": "/redfish/v1/AccountService/Accounts/65547"
+    }
+  ],
+  "Members@odata.count": 5
+}
+
+curl --insecure --silent --location -u ilo-user:password   \
+     https://ilo-ip/redfish/v1/AccountService/Oem/Hpe/AppAccounts     | \
+     jq '.'
+{
+  "@odata.context": "/redfish/v1/$metadata#ManagerAccountCollection.ManagerAccountCollection",
+  "@odata.etag": "W/\"1459770610\"",
+  "@odata.id": "/redfish/v1/AccountService/Oem/Hpe/AppAccounts",
+  "@odata.type": "#ManagerAccountCollection.ManagerAccountCollection",
+  "Description": "iLO Application Accounts",
+  "Name": "Application Accounts",
+  "Members": [
+    {
+      "@odata.id": "/redfish/v1/AccountService/Oem/Hpe/AppAccounts/65605"
+    },
+    {
+      "@odata.id": "/redfish/v1/AccountService/Oem/Hpe/AppAccounts/65606"
+    }
+  ],
+  "Members@odata.count": 2
+}
+
+```
+  
+  {% /tab %}
+  {% /tabs %}
 A local user account consists of a user name, password, and a set
-of privileges. The `RoleId` describes one of three defined Redfish
-roles based upon assigned privileges. The `Oem/Hpe/LoginName` property
+of privileges. The `RoleId`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#roleid") %} property {% /link-internal %}
+describes one of three defined Redfish
+roles based upon assigned privileges. The `Oem/Hpe/LoginName`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#roleid") %} property {% /link-internal %}
 is a description of the account.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Due to a terminology mismatch between the Redfish standard and historical
-iLO products, the Properties for `UserName` and `LoginName` are reversed
-in Redfish vs. the HPE iLO Web interface:
-:::
+iLO products, the properties for `UserName` and `LoginName` are reversed
+in Redfish vs. the HPE iLO Web interface. The following table provides
+a detailed description of each property in the different contexts.
 
 |Redfish Property|GUI Term|Description|Example|
 |---|---|---|---|
 |`UserName`|Login Name|The user identity string used with a password to log into iLO|jsmith|
 |`Oem/Hpe/LoginName`|User Name|The descriptive name of the user|Jane Smith - Director of IT|
 
+{% /admonition %}
+
+The following example retrieves the properties of iLO user
+with `UserName` equal to `jsmith`.
+
+  {% tabs %}
+{% tab label="GET account properties" %}
+
 ```text GET account properties
-GET /redfish/v1/AccountService/Accounts/1/
+GET /redfish/v1/AccountService/Accounts/?$filter=UserName eq 'jsmith'
 ```
+  
+  {% /tab %}
+{% tab label="ilOrest" %}
+
+```shell ilOrest
+ilorest login ilo-ip -u ilo-user -p password
+ilorest list --select ManagerAccount. --filter UserName=jsmith --json
+ilorest logout
+```
+  
+  {% /tab %}
+{% tab label="cURL" %}
+
+```shell cURL
+curl --insecure --silent --location -u ilo-user:password \
+     https://ilo-ip/redfish/v1/AccountService/Accounts/?%24filter=UserName%20eq%20'jsmith' | \
+     jq '.' 
+```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
-    "@odata.context": "/redfish/v1/$metadata#ManagerAccount.ManagerAccount",
-    "@odata.etag": "W/\"D9DF9F68\"",
-    "@odata.id": "/redfish/v1/AccountService/Accounts/1/",
-    "@odata.type": "#ManagerAccount.v1_1_3.ManagerAccount",
-    "Id": "1",
-    "Description": "iLO User Account",
-    "Links": {
+  "@odata.context": "/redfish/v1/$metadata#ManagerAccountCollection.ManagerAccountCollection",
+  "@odata.etag": "W/\"2314145909\"",
+  "@odata.id": "/redfish/v1/AccountService/Accounts/",
+  "@odata.type": "#ManagerAccountCollection.ManagerAccountCollection",
+  "Description": "iLO User Accounts",
+  "Name": "Accounts",
+  "Members": [
+    {
+      "@odata.context": "/redfish/v1/$metadata#ManagerAccount.ManagerAccount",
+      "@odata.id": "/redfish/v1/AccountService/Accounts/65543/",
+      "@odata.type": "#ManagerAccount.v1_12_1.ManagerAccount",
+      "Id": "65543",
+      "AccountTypes": [
+        "WebUI"
+      ],
+      "Description": "iLO User Account",
+      "Enabled": true,
+      "Keys": {
+        "@odata.id": "/redfish/v1/AccountService/Accounts/65543/Keys/"
+      },
+      "Links": {
         "Role": {
-            "@odata.id": "/redfish/v1/AccountService/Roles/Administrator/"
+          "@odata.id": "/redfish/v1/AccountService/Roles/Operator/"
         }
-    },
-    "Name": "User Account",
-    "Oem": {
+      },
+      "Name": "User Account",
+      "Oem": {
         "Hpe": {
-            "@odata.context": "/redfish/v1/$metadata#HpeiLOAccount.HpeiLOAccount",
-            "@odata.type": "#HpeiLOAccount.v2_2_0.HpeiLOAccount",
-            "LoginName": "Jane Smith - Director of IT",
-            "Privileges": {
-                "HostBIOSConfigPriv": true,
-                "HostNICConfigPriv": true,
-                "HostStorageConfigPriv": true,
-                "LoginPriv": true,
-                "RemoteConsolePriv": true,
-                "SystemRecoveryConfigPriv": true,
-                "UserConfigPriv": true,
-                "VirtualMediaPriv": true,
-                "VirtualPowerAndResetPriv": true,
-                "iLOConfigPriv": true
-            },
-            "ServiceAccount": false
+          "@odata.context": "/redfish/v1/$metadata#HpeiLOAccount.HpeiLOAccount",
+          "@odata.type": "#HpeiLOAccount.v2_2_0.HpeiLOAccount",
+          "LoginName": "Jane Smith - Director of IT",
+          "Privileges": {
+            "HostBIOSConfigPriv": true,
+            "HostNICConfigPriv": true,
+            "HostStorageConfigPriv": true,
+            "LoginPriv": true,
+            "RemoteConsolePriv": true,
+            "SystemRecoveryConfigPriv": false,
+            "UserConfigPriv": false,
+            "VirtualMediaPriv": true,
+            "VirtualPowerAndResetPriv": true,
+            "iLOConfigPriv": false
+          },
+          "ServiceAccount": false
         }
-    },
-    "Password": null,
-    "RoleId": "Administrator",
-    "UserName": "jsmith"
+      },
+      "Password": null,
+      "PasswordChangeRequired": false,
+      "RoleId": "Operator",
+      "UserName": "jsmith"
+    }
+  ],
+  "Members@odata.count": 1
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
+`Password` is always shown as `null` even though it is a
+PATCHable property.
+{% /admonition %}
 
-:::info NOTE
-`Password` is always shown as `null` even though it is PATCHable
-with a new password
-:::
+### Roles and privileges
 
-### Roles and Privileges
-
-iLO uses a set of privileges assigned to each user account to grant and
-restrict access to features. iLO's privileges are:
+HPE iLO uses a
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.privileges") %} set {% /link-internal %}
+of `Privileges` assigned to each user account to grant and
+restrict access to features. HPE iLO privileges are:
 
 |Redfish|iLO Web Interface (GUI)|
 |---|---|
-|LoginPriv|Login
-|RemoteConsolePriv|Remote Console
-|VirtualPowerAndResetPriv|Virtual Power and Reset
-|VirtualMediaPriv|Virtual Media
-|HostBIOSConfigPriv|Host BIOS
-|iLOConfigPriv|Configure iLO Settings
-|UserConfigPriv|Administer User Accounts
-|HostNICConfigPriv|Host NIC
-|HostStorageConfigPriv|Host Storage
-|SystemRecoveryConfigPriv|Recovery Set
+|LoginPriv|Login|
+|RemoteConsolePriv|Remote Console|
+|VirtualPowerAndResetPriv|Virtual Power and Reset|
+|VirtualMediaPriv|Virtual Media|
+|HostBIOSConfigPriv|Host BIOS|
+|iLOConfigPriv|Configure iLO Settings|
+|UserConfigPriv|Administer User Accounts|
+|HostNICConfigPriv|Host NIC|
+|HostStorageConfigPriv|Host Storage|
+|SystemRecoveryConfigPriv|Recovery Set|
+
+#### Application accounts
+
+Application accounts have been introduced with HPE Gen12 servers including an iLO 7.
+These accounts and associated application token allow host based applications
+(i.e. AMS, iSUT, SUM, iLOrest) to get authenticated for in-band communication,
+by the iLO Redfish service
+without requiring any human being intervention for supplying iLO credentials.
+
+Refer to the
+[Transitioning to HPE iLO 7](/docs/redfishservices/ilos/supplementdocuments/securityservice/#transitioning-to-hpe-ilo-7)
+section for more detail on those specific accounts.
 
 #### Roles
 
-You can use `RoleId` to create users with specific starting privileges.
+You can use `RoleId`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#roleid") %} property {% /link-internal %}
+to create users with specific starting privileges.
 
 On a GET of the local user account, `RoleId` is synthesized based upon
 the enabled privileges. iLO does not store a separate `RoleId` value.
@@ -156,9 +409,15 @@ The following example sets all iLO privileges as long as the account
 performing the operation already has sufficient privileges to grant
 these privileges.
 
+  {% tabs %}
+{% tab label="Account role configuration" %}
+
 ```text Account role configuration
 PATCH /redfish/v1/AccountService/Accounts/{accountId}
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -172,7 +431,9 @@ PATCH /redfish/v1/AccountService/Accounts/{accountId}
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Privileges granted on Local Account Creation by RoleId
 
 |RoleId|Privileges|
@@ -201,9 +462,15 @@ The following example creates a user account `jsmith` with the default
 `Oem/Hpe/LoginName` defaults to the provided `UserName` unless it
 is specifically specified.
 
+  {% tabs %}
+{% tab label="User creation" %}
+
 ```text User creation
 POST /redfish/v1/AccountService/Accounts/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -211,14 +478,22 @@ POST /redfish/v1/AccountService/Accounts/
     "Password": "passwordexample"
 }
 ```
-
-:::info NOTE
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
 Each local user account must have a unique `UserName`.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Get account properties" %}
 
 ```text Get account properties
 GET /redfish/v1/AccountService/Accounts/{accountId}
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -259,15 +534,23 @@ GET /redfish/v1/AccountService/Accounts/{accountId}
     "UserName": "jsmith"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Creating a new Account using a RoleId
 
 You may specify a `RoleId` with a new user account, as shown in
 the following example.
 
+  {% tabs %}
+{% tab label="Account creation with RoleId" %}
+
 ```text Account creation with RoleId
 POST /redfish/v1/AccountService/Accounts/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -276,13 +559,21 @@ POST /redfish/v1/AccountService/Accounts/
     "RoleId": "Operator"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To retrieve the just created account, perform a GET operation
 like in the following example.
+
+  {% tabs %}
+{% tab label="Retrieve account properties" %}
 
 ```text Retrieve account properties
 GET /redfish/v1/AccountService/Accounts/{accountId}
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -323,16 +614,20 @@ GET /redfish/v1/AccountService/Accounts/{accountId}
     "UserName": "jsmith"
 }
 ```
-
-### Creating a new Account with specific Privileges
+  
+  {% /tab %}
+  {% /tabs %}
+### Creating a new account with specific privileges
 
 You may also create a local user with specific privileges.
 
+  {% tabs %}
+{% tab label="Create user with specific privileges" %}
+
 ```text Create user with specific privileges
 POST /redfish/v1/AccountService/Accounts/
-```
 
-```json Body
+Payload:
 {
     "UserName": "jsmith",
     "Password": "passwordexample",
@@ -348,12 +643,38 @@ POST /redfish/v1/AccountService/Accounts/
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
+```json iLOrest
+ilorest login ilo-ip -u ilo-user -p password
+ilorest iloaccounts add jsmith "Jane Smit - Director of IT" passwordexample --addprivs 1,5,6
+ilorest logout
+```
+  
+  {% /tab %}
+  {% /tabs %}
 This results in the following new local user account:
+
+  {% tabs %}
+{% tab label="Retrieve account properties" %}
 
 ```text Retrieve account properties
 GET /redfish/v1/AccountService/Accounts/{accountId}
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
+
+```shell iLOrest
+ilorest login ilo-ip -u ilo-user -p password
+ilorest list --select ManagerAccount. --filter UserName=jsmith --json
+ilorest logout
+```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -373,7 +694,7 @@ GET /redfish/v1/AccountService/Accounts/{accountId}
         "Hpe": {
             "@odata.context": "/redfish/v1/$metadata#HpeiLOAccount.HpeiLOAccount",
             "@odata.type": "#HpeiLOAccount.v2_2_0.HpeiLOAccount",
-            "LoginName": "Director of IT",
+            "LoginName": "Jane Smith - Director of IT",
             "Privileges": {
                 "HostBIOSConfigPriv": false,
                 "HostNICConfigPriv": false,
@@ -394,8 +715,10 @@ GET /redfish/v1/AccountService/Accounts/{accountId}
     "UserName": "jsmith"
 }
 ```
-
-:::success Info
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="Info" %}
 Several Python examples have been posted in the GitHub repository
 of the HPE Redfish library.
 
@@ -406,7 +729,7 @@ of the HPE Redfish library.
 * <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/remove_account.py"
     target="_blank">Remove user account</a>
 
-:::
+{% /admonition %}
 
 ### Modifying a Local User Account
 
@@ -426,9 +749,15 @@ The following properties are modifiable on an existing local user account:
 Local user account privileges may be modified with a PATCH to the URI of the
 desired `ManagerAccount` resource, as shown in the example below.
 
+  {% tabs %}
+{% tab label="PATCH user account" %}
+
 ```text PATCH user account
 PATCH /redfish/v1/AccountService/Accounts/{accountId}/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -442,18 +771,29 @@ PATCH /redfish/v1/AccountService/Accounts/{accountId}/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Changing Roles
+
+  {% tabs %}
+{% tab label="PATCH roles" %}
 
 ```text PATCH roles
 PATCH /redfish/v1/AccountService/Accounts/{accountId}/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
     "RoleId": "Operator"
 }
 ```
+  
+  {% /tab %}
+{% tab label="Successfull response body " %}
 
 ```json Successfull response body 
 {
@@ -468,22 +808,32 @@ PATCH /redfish/v1/AccountService/Accounts/{accountId}/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Changing Password
 
 Local user account passwords may be modified with a PATCH to the URI of the
 desired `ManagerAccount` resource, as shown in the example below.
 
+  {% tabs %}
+{% tab label="User password modification" %}
+
 ```text User password modification
 PATCH /redfish/v1/AccountService/Accounts/{accountId}/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
     "Password": "newpassword"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Enabling and Disabling User Accounts
 
 The property `Enabled`, listed under the URI
@@ -497,9 +847,15 @@ you will not be able to login and access iLO.
 
 Perform `GET`on the URI `redfish/v1/AccountService/Accounts/{AccountId}`
 
+  {% tabs %}
+{% tab label="GET view enabled account" %}
+
 ```text GET view enabled account
 GET redfish/v1/AccountService/Accounts/{AccountId}
 ```
+  
+  {% /tab %}
+{% tab label="GET response" %}
 
 ```json GET response
 {
@@ -542,19 +898,30 @@ GET redfish/v1/AccountService/Accounts/{AccountId}
     "UserName": "admin"
 } 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 A local user account can be enabled or disabled with a PATCH to the URI
 of desired `ManagerAccount` resource, as shown in the example below.
+
+  {% tabs %}
+{% tab label="setting Enabled property" %}
 
 ```text setting Enabled property
 PATCH redfish/v1/AccountService/Accounts/{AccountId}
 ```
+  
+  {% /tab %}
+{% tab label="PATCH Payload" %}
 
 ```json PATCH Payload
 {
     "Enabled": true
 }
 ```
+  
+  {% /tab %}
+{% tab label="PATCH Response" %}
 
 ```json PATCH Response
 {
@@ -569,22 +936,27 @@ PATCH redfish/v1/AccountService/Accounts/{AccountId}
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Default iLO factory account
 
 When HPE iLO is reset to factory defaults using
 [iLOrest](https://servermanagementportal.ext.hpe.com/docs/redfishclients/ilorest-userguide/ilocommands/#factorydefaults-command)`factorydefaults`, the
-[Redfish action](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#actions") %} Redfish action {% /link-internal %}
 or using the System Utilities/iLO Configuration Utility menu, all user
 setting data are erased. Default credentials are required to access
 HPE iLO after a factory reset.
 
 The following example sets default HPE iLO
-[username](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpedefaultusername)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.defaultusername") %} username {% /link-internal %}
 and
-[password](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpedefaultpassword)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.defaultpassword") %} password {% /link-internal %}
 after an iLO factory reset
-[action](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#actions") %} action {% /link-internal %}.
+
+  {% tabs %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --silent --user <ilo-user>:password \
@@ -597,6 +969,9 @@ curl --insecure --silent --user <ilo-user>:password \
             "DefaultPassword": "DefaultFactoryPassword" }}
                 }'
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -606,90 +981,208 @@ ilorest set Oem/Hpe/DefaultPassword="DefaultFactoryPassword"
 ilorest commit
 ilorest logout
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Removing a Local User Account
 
 A local user account can be removed with a DELETE to the URI of desired
 `ManagerAccount` resource, as shown in the example below.
 
+  {% tabs %}
+{% tab label="User removal" %}
+
 ```text User removal
  DELETE /redfish/v1/AccountService/Accounts/{accountId}/
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Directory Authentication
 
-### Enabling or Disabling Local User Accounts
+### Local users authentication
 
-The following example disables all local user accounts.
+The following example disables local users authentication.
 
-```text Enable/Disable user
+{% admonition type="info" name="NOTE" %}
+Disabling local user authentication is not allowed when both Directory
+Authentication AND Kerberos Authentication are disabled.
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic request" %}
+
+```text Generic request
 PATCH /redfish/v1/AccountService/
-```
 
-```json Body for disabling a user
+Payload:
 {
     "LocalAccountAuth": "Disabled"
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
-```json Body for enabling a user
-{
-    "LocalAccountAuth": "Enabled"
-}
+```json iLOrest
+ilorest login ilo-ip -u ilo-user -p password
+ilorest set LocalAccountAuth=Disabled --select AccountService. --commit
+ilorest logout
 ```
-
-:::info NOTE
-Disabling local user accounts is not allowed if both Directory
-Authentication and Kerberos Authentication are disabled.
-:::
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
+Use the `Enabled` value in the above example
+to enable local users authentication.
+{% /admonition %}
 
 ### Configuring Active Directory Authentication
 
-```text Active Directory configuration.
+The following example enables authentication by a Microsoft Active Directory
+service using default standard port `636`.
+
+  {% tabs %}
+{% tab label="Generic Request" %}
+
+```text Generic Request
 PATCH /redfish/v1/AccountService/
 ```
+  
+  {% /tab %}
+{% tab label="Active Directory authentication " %}
 
-```json Body for default Active Directory server port (636)
+```json Active Directory authentication - Default port
 {
     "LDAP": {
+        "AccountProviderType": "ActiveDirectoryService",
         "ServiceEnabled": true,
         "ServiceAddresses": [
-            "<Active Directory Server host name>"
+            "<Active Directory FQDN>"
         ]
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
+The following example enables authentication by a Microsoft Active Directory
+using a custom TCP/UDP port.
 
-```json Body for custom Active Directory server port
+{% admonition type="success" name="NOTE" %}
+In order to use a custom port for directory authentication,
+you need first to send a PATCH request with the custom
+port mentioned in the `ServiceAddresses[]` array, as
+shown in step 1 of the below example.
+
+Then, you have to remove the custom port and send the PATCH
+request again as mentioned in step 2 below.
+
+The first step populates the `Oem.Hpe.DirectorySettings.LdapServerPort` read-only property,
+but keeps the port number in the `ServiceAddresses[]` array, which makes it redundant.
+
+The second step removes the redundant port number in the
+`ServiceAddresses[]` array.
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic Request" %}
+
+```text Generic Request
+PATCH /redfish/v1/AccountService/
+```
+  
+  {% /tab %}
+{% tab label="Step 1" %}
+
+```json Step 1
 {
     "LDAP": {
+        "AccountProviderType": "ActiveDirectoryService",
         "ServiceEnabled": true,
         "ServiceAddresses": [
-            "<Active Directory Server host name>:4646"
+            "<Active Directory FQDN>:4646"
         ]
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Step 2" %}
 
-### Configuring LDAP Authentication
+```json Step 2
+{
+    "LDAP": {
+        "AccountProviderType": "ActiveDirectoryService",
+        "ServiceEnabled": true,
+        "ServiceAddresses": [
+            "<Active Directory FQDN>"
+        ]
+    }
+}
+```
+  
+  {% /tab %}
+  {% /tabs %}
+### Configuring generic LDAP Authentication
 
-```text LDAP configuration
+The following example enables authentication by a generic LDAP
+service using the default TCP/UDP port `636`.
+
+  {% tabs %}
+{% tab label="Generic LDAP configuration request" %}
+
+```text Generic LDAP configuration request
 PATCH /redfish/v1/AccountService/
 ```
+  
+  {% /tab %}
+{% tab label="Default LDAP server port 636" %}
 
-```json Body for default LDAP server port (636)
+```json Default LDAP server port 636
 {
     "LDAP": {
         "AccountProviderType": "LDAPService",
         "ServiceEnabled": true,
         "ServiceAddresses": [
-            "<LDAP Server host name>"
+            "<LDAP FQDN>"
         ]
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
+The following example enables authentication by a generic LDAP service
+using a custom TCP/UDP port.
 
-```json Body for custom LDAP server port
+{% admonition type="success" name="NOTE" %}
+In order to use a custom port for directory authentication,
+you need first to send a PATCH request with the custom
+port mentioned in the `ServiceAddresses[]` array, as
+shown in step 1 of the below example.
+
+Then, you have to remove the custom port and send the
+request again as mentioned in step 2 below.
+
+The first step populates the `Oem.Hpe.DirectorySettings.LdapServerPort` read-only property,
+but keeps this port number in the `ServiceAddresses[]` array.
+
+The second step removes the redundant port number in the
+`ServiceAddresses[]` array.
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic LDAP configuration request" %}
+
+```text Generic LDAP configuration request
+PATCH /redfish/v1/AccountService/
+```
+  
+  {% /tab %}
+{% tab label="Step 1" %}
+
+```json Step 1: custom generic LDAP port
 {
     "LDAP": {
         "AccountProviderType": "LDAPService",
@@ -700,14 +1193,37 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Step 2" %}
 
-### Disable Active Directory and LDAP Authentication (Generic LDAP)
+```json Step 2: custom generic LDAP port
+{
+    "LDAP": {
+        "AccountProviderType": "LDAPService",
+        "ServiceEnabled": true,
+        "ServiceAddresses": [
+            "<LDAP Server host name>"
+        ]
+    }
+}
+```
+  
+  {% /tab %}
+  {% /tabs %}
+### Disable Active Directory and generic LDAP Authentication
+
+  {% tabs %}
+{% tab label="Disabling Active Directory and LDAP" %}
 
 ```text Disabling Active Directory and LDAP
 PATCH /redfish/v1/AccountService/
 ```
+  
+  {% /tab %}
+{% tab label="Body 1" %}
 
-```json Body
+```json Body 1
 {
     "LDAP": {
         "AccountProviderType": "ActiveDirectoryService",
@@ -715,12 +1231,32 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body 2" %}
 
-### Enable and Configure HPE Extended Schema Authentication (for Active Directory only)
+```json Body 2
+{
+    "LDAP": {
+        "AccountProviderType": "LDAPService",
+        "ServiceEnabled": false,
+    }
+}
+```
+  
+  {% /tab %}
+  {% /tabs %}
+### Enable and configure HPE Extended Schema Authentication (Active Directory only)
+
+  {% tabs %}
+{% tab label="HPE extended Schema authentication (AD only)" %}
 
 ```text HPE extended Schema authentication (AD only)
 PATCH /redfish/v1/AccountService/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -742,7 +1278,9 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Add User Search Contexts
 
 The following example shows two possibilities to add user search contexts
@@ -750,9 +1288,15 @@ The first one (Body 1) adds two new User Search Contexts, with no already
 existing User Search Context present. The second one (Body 2) adds a new
 User Search Context, with two existing User Search Contexts present.
 
+  {% tabs %}
+{% tab label="Add User Search contexts" %}
+
 ```text Add User Search contexts
 PATCH /redfish/v1/AccountService/
 ```
+  
+  {% /tab %}
+{% tab label="Body 1" %}
 
 ```json Body 1
 {
@@ -768,6 +1312,9 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body 2" %}
 
 ```json Body 2
 {
@@ -784,7 +1331,9 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Delete User Search Contexts
 
 The following example shows two possibilities to delete User Search Contexts.
@@ -796,9 +1345,15 @@ and keep the ones to be retained.
 
 The second one (Body 2) deletes all User Search Contexts.
 
+  {% tabs %}
+{% tab label="Delate User Search Contexts" %}
+
 ```text Delate User Search Contexts
 PATCH /redfish/v1/AccountService/
 ```
+  
+  {% /tab %}
+{% tab label="Body 1" %}
 
 ```json Body 1
 {
@@ -814,6 +1369,9 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body 2" %}
 
 ```json Body 2
 {
@@ -828,12 +1386,20 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Import LDAP Server CA Certificate
+
+  {% tabs %}
+{% tab label="Import LDAP Server CA certificate" %}
 
 ```text Import LDAP Server CA certificate
 POST /redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -843,12 +1409,20 @@ POST /redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/
 Ow==\n-----END CERTIFICATE-----\n"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### View LDAP Server CA Certificate Status
+
+  {% tabs %}
+{% tab label="LDAP Server CA Certificate Status" %}
 
 ```text LDAP Server CA Certificate Status
 GET /redfish/v1/AccountService/?$select=Oem/Hpe/DirectorySettings/LdapCaCertificateLoaded`
 ```
+  
+  {% /tab %}
+{% tab label="Response Body" %}
 
 ```json Response Body
 {
@@ -865,16 +1439,24 @@ GET /redfish/v1/AccountService/?$select=Oem/Hpe/DirectorySettings/LdapCaCertific
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### View LDAP Server CA Certificate Details
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The LDAP provider supports a single certificate
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="LDAP Server CA certificate details" %}
 
 ```text LDAP Server CA certificate details
 GET /redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{certId}/
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -891,17 +1473,25 @@ GET /redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/{certI
     "ValidNotBefore": "2015-03-17T00:00:00Z"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Add new Directory Groups (No Existing Groups)
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 "Administrator" and "Operator" are predefined Redfish RoleIds. "LDAP" can
 also be used instead of "ActiveDirectory".
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Add new directory Groups" %}
 
 ```text Add new directory Groups
 PATCH /redfish/v1/AccountService/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -919,12 +1509,20 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### View Directory Groups
+
+  {% tabs %}
+{% tab label="View Directory Groups" %}
 
 ```text View Directory Groups
 GET /redfish/v1/AccountService/?$select=LDAP/RemoteRoleMapping, ActiveDirectory/RemoteRoleMapping`
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -958,7 +1556,9 @@ GET /redfish/v1/AccountService/?$select=LDAP/RemoteRoleMapping, ActiveDirectory/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Add New Directory Groups to Existing Groups
 
 In the following example, assume that two directory groups are already
@@ -967,9 +1567,15 @@ values for the existing directory groups in the payload. Add an additional
 group "TestGroup3" with "ReadOnly" Redfish Role. "LDAP can also be used
 instead of "ActiveDirectory".
 
+  {% tabs %}
+{% tab label="Add New Directory groups to existing groups" %}
+
 ```text Add New Directory groups to existing groups
 PATCH /redfish/v1/AccountService/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -991,7 +1597,9 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Delete Directory Groups
 
 In the following example, assume you have three existing directory groups,
@@ -1000,13 +1608,19 @@ exclude it from the payload and keep the ones to be retained. "LDAP" can
 also be used instead of "ActiveDirectory". It shows how to delete
 one/multiple Directory Groups (Body 1) or all Directory Groups (Body 2).
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 "LDAP" can also be used instead of "ActiveDirectory"
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Delete Directory Groups" %}
 
 ```text Delete Directory Groups
 PATCH /redfish/v1/AccountService/
 ```
+  
+  {% /tab %}
+{% tab label="Body 1" %}
 
 ```json Body 1
 {
@@ -1024,6 +1638,9 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body 2" %}
 
 ```json Body 2
 {
@@ -1034,12 +1651,20 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### View Directory Group Privileges
+
+  {% tabs %}
+{% tab label="Retrieve Roles collection" %}
 
 ```text Retrieve Roles collection
 GET /redfish/v1/AccountService/Roles/
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -1069,10 +1694,16 @@ GET /redfish/v1/AccountService/Roles/
     "Members@odata.count": 5
 }
 ```
+  
+  {% /tab %}
+{% tab label="GET specific Directory Group privileges" %}
 
 ```text GET specific Directory Group privileges
 GET /redfish/v1/AccountService/Roles/{directoryGroupId}/
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -1109,7 +1740,9 @@ GET /redfish/v1/AccountService/Roles/{directoryGroupId}/
     "RoleId": "dirgroup4c6c827762dd20dc530c52ef"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Modify Directory Group Privileges
 
 Sample Body 1 (Update AssignedPrivileges):
@@ -1117,9 +1750,15 @@ Sample Body 1 (Update AssignedPrivileges):
 Sample Body 2 (Update OemPrivileges):
     Add/Remove the privileges in the OemPrivileges[] array.
 
+  {% tabs %}
+{% tab label="Add" %}
+
 ```text Add/Remove privileges
 PATCH /redfish/v1/AccountService/Roles/{directoryGroupId}/
 ```
+  
+  {% /tab %}
+{% tab label="Body 1" %}
 
 ```json Body 1
 {
@@ -1130,6 +1769,9 @@ PATCH /redfish/v1/AccountService/Roles/{directoryGroupId}/
     ]
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body 2" %}
 
 ```json Body 2
 {
@@ -1141,12 +1783,20 @@ PATCH /redfish/v1/AccountService/Roles/{directoryGroupId}/
     ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Enable, Configure, Disable Kerberos Authentication
+
+  {% tabs %}
+{% tab label="Configure Kerberos" %}
 
 ```text Configure Kerberos
 PATCH /redfish/v1/AccountService/
 ```
+  
+  {% /tab %}
+{% tab label="Body for Disable" %}
 
 ```json Body for Disable
 {
@@ -1155,6 +1805,9 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body for Enable realm" %}
 
 ```json Body for Enable realm
 {
@@ -1166,6 +1819,9 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body with custom KDC server port" %}
 
 ```json Body with custom KDC server port
 {
@@ -1177,29 +1833,48 @@ PATCH /redfish/v1/AccountService/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Import Kerberos Keytab File
+
+  {% tabs %}
+{% tab label="Import Keytab file" %}
 
 ```text Import Keytab file
 POST /redfish/v1/AccountService/Actions/Oem/Hpe/HpeiLOAccountService.ImportKerberosKeytab/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
     "ImportUri": "http://<URI of keytab file>"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Start Directory Test
+
+  {% tabs %}
+{% tab label="Directory test" %}
 
 ```text Directory test
 POST on /redfish/v1/AccountService/DirectoryTest/Actions/HpeDirectoryTest.StartTest/
 ```
+  
+  {% /tab %}
+{% tab label="Body 1" %}
 
 ```json Body 1
 {
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body 2" %}
 
 ```json Body 2
 {
@@ -1207,6 +1882,9 @@ POST on /redfish/v1/AccountService/DirectoryTest/Actions/HpeDirectoryTest.StartT
     "TestUserPassword": "TestPassword1"
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body 3" %}
 
 ```json Body 3
 {
@@ -1216,23 +1894,39 @@ POST on /redfish/v1/AccountService/DirectoryTest/Actions/HpeDirectoryTest.StartT
     "DirectoryAdminPassword": "AdminPassword"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Stop Directory Test
+
+  {% tabs %}
+{% tab label="Stop tests" %}
 
 ```text Stop tests
 POST /redfish/v1/AccountService/DirectoryTest/Actions/HpeDirectoryTest.StopTest/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### View Directory Test Result
+
+  {% tabs %}
+{% tab label="View test results" %}
 
 ```text View test results
 GET /redfish/v1/AccountService/DirectoryTest/
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -1304,3 +1998,6 @@ GET /redfish/v1/AccountService/DirectoryTest/
     ]
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}

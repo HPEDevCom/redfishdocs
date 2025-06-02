@@ -1,20 +1,25 @@
 ---
+excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Chassis resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Chassis resource definitions of iLO 6 v1.66
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ChassisCollection
+
 `@odata.type: "#ChassisCollection.ChassisCollection"`
 
 A Collection of Chassis resource instances.
@@ -27,9 +32,9 @@ A Collection of Chassis resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[Chassis](../ilo6_chassis_resourcedefns166/#chassis)|
+|`Members[]`|[Chassis](ilo6_chassis_resourcedefns166/#chassis)|
 
 ### Members (array)
 
@@ -72,17 +77,17 @@ The Chassis resource describes the physical components for a system. This object
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Links/ComputerSystems[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns166/#computersystem)|
-|`ThermalSubsystem`|[ThermalSubsystem](../ilo6_other_resourcedefns166/#thermalsubsystem)|
-|`Links/ManagedBy[]`|[Manager](../ilo6_manager_resourcedefns166/#manager)|
-|`Oem/Hpe/Links/Devices`|Collection of [HpeServerDevice](../ilo6_hpe_resourcedefns166/#hpeserverdevicecollection)|
-|`Sensors`|Collection of [Sensor](../ilo6_other_resourcedefns166/#sensorcollection)|
-|`NetworkAdapters`|Collection of [NetworkAdapter](../ilo6_network_resourcedefns166/#networkadaptercollection)|
-|`Power`|[Power](../ilo6_other_resourcedefns166/#power)|
-|`Thermal`|[Thermal](../ilo6_other_resourcedefns166/#thermal)|
-|`EnvironmentMetrics`|[EnvironmentMetrics](../ilo6_other_resourcedefns166/#environmentmetrics)|
+|`Links/ComputerSystems[]`|[ComputerSystem](ilo6_computersystem_resourcedefns166/#computersystem)|
+|`ThermalSubsystem`|[ThermalSubsystem](ilo6_other_resourcedefns166/#thermalsubsystem)|
+|`Links/ManagedBy[]`|[Manager](ilo6_manager_resourcedefns166/#manager)|
+|`Oem/Hpe/Links/Devices`|Collection of [HpeServerDevice](ilo6_hpe_resourcedefns166/#hpeserverdevicecollection)|
+|`Sensors`|Collection of [Sensor](ilo6_other_resourcedefns166/#sensorcollection)|
+|`NetworkAdapters`|Collection of [NetworkAdapter](ilo6_network_resourcedefns166/#networkadaptercollection)|
+|`Power`|[Power](ilo6_other_resourcedefns166/#power)|
+|`Thermal`|[Thermal](ilo6_other_resourcedefns166/#thermal)|
+|`EnvironmentMetrics`|[EnvironmentMetrics](ilo6_other_resourcedefns166/#environmentmetrics)|
 
 ### AssetTag
 
@@ -1390,7 +1395,6 @@ ThermalSubsystem is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **HpeServerChassis.DisableMCTPOnServer**
 Member of [Chassis.v1\_25\_1.Chassis](#chassis)
 There are no parameters for this action.
@@ -1402,7 +1406,6 @@ There are no parameters for this action.
 **HpeServerChassis.ModifyEnclosureChassisFru**
 Member of [Chassis.v1\_25\_1.Chassis](#chassis)
 The action to modify field of enclosure chassis FRU.
-
 
 **Parameters:**
 

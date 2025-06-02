@@ -14,3 +14,6 @@
 *.editorconfig
 *node_modules/
 *node_modules-ori/
+.vscode/*
+Blog.txt
+package-lock.json

@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Global commands and optional arguments
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Global commands and optional arguments
@@ -34,7 +38,7 @@ Use the provided directory as the location to cache data instead of the default.
 The location of default cache directory depends on the operating system
 hosting HPE iLOrest. Use `ilorest --help` to discover its location.
 
-**-v**
+**-v, --verbose**
 
 Display verbose information. The `--verbose` option provides a brief
 response message from iLO.
@@ -57,23 +61,37 @@ iLO HTTP and the iLO Channel Interface Driver response messages:
 
 The following example shows extended verbosity:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 HTTP Response Code: [400]
 MessageId: iLO.2.8.PropertyNotWritableOrUnknown
 Description: The request included a value for a  read-only or unknown property.
 Message: The property "NTPServers" is a read-only property and cannot be assigned a value, or not valid for this resource.
 Resolution: If the operation did not complete, remove the property from the request body and resubmit the request.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 **-d, --debug**
 
 The debug option provides a timestamp of all transmit and response activity
 with iLO to a file called `iLORest.log`.
 This file is saved in the folder where from you launched the tool.
 
+{% admonition type="success" name="TIP" %}
+Use the debug mode when you have difficulties to write your own Redfish client
+in Python or another language. The debug option can help you
+understand how to perform specific requests.
+{% /admonition %}
+
 The following example shows the content of the `iLORest.log` file:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 2020-06-05 14:20:39,266 INFO    : Not using CA certificate.
 2020-06-05 14:20:39,267 INFO    : Initializing no proxy.
 2020-06-05 14:20:39,267 DEBUG : HTTP REQUEST: GET
@@ -98,6 +116,12 @@ Headers:
 
 Body Response of /redfish/v1/: {"@odata.context":"/redfish/v1/$metadata#ServiceRoot.ServiceRoot","@odata.etag":"W/\"16CA421D\"","@odata.id":"/redfish/v1/","@odata.type":"#ServiceRoot.v1_5_1.ServiceRoot","Id":"RootService","AccountService":{"@odata.id":"/redfish/v1/AccountService/"},"Chassis":{"@odata.id":"/redfish/v1/Chassis/"},"EventService":{"@odata.id":"/redfish/v1/EventService/"},"JsonSchemas":{"@odata.id":"/redfish/v1/JsonSchemas/"},"Links":{"Sessions":{"@odata.id":"/redfish/v1/SessionService/Sessions/"}},"Managers":{"@odata.id":"/redfish/v1/Managers/"},"Name":"HPE RESTful Root Service","Oem":{"Hpe":{"@odata.context":"/redfish/v1/$metadata#HpeiLOServiceExt.HpeiLOServiceExt","@odata.type":"#HpeiLOServiceExt.v2_3_0.HpeiLOServiceExt","Links":{"ResourceDirectory":{"@odata.id":"/redfish/v1/ResourceDirectory/"}},"Manager":[{"DefaultLanguage":"en","FQDN":"ILOMXQ849018N.americas.hpqcorp.net","HostName":"ILOMXQ849018N","Languages":[{"Language":"en","TranslationName":"English","Version":"2.10"}],"ManagerFirmwareVersion":"2.10","ManagerType":"iLO 5","Status":{"Health":"OK"}}],"Moniker":{"ADVLIC":"iLO Advanced","BMC":"iLO","BSYS":"BladeSystem","CLASS":"Baseboard Management Controller","FEDGRP":"DEFAULT","IPROV":"Intelligent Provisioning","PRODABR":"iLO","PRODFAM":"Integrated Lights-Out","PRODGEN":"iLO 5","PRODNAM":"Integrated Lights-Out 5","PRODTAG":"HPE iLO 5","STDLIC":"iLO Standard","SUMABR":"SUM","SUMGR":"Smart Update Manager","SYSFAM":"ProLiant","VENDABR":"HPE","VENDNAM":"Hewlett Packard Enterprise","WWW":"www.hpe.com","WWWAHSV":"www.hpe.com/servers/ahsv","WWWBMC":"www.hpe.com/info/ilo","WWWDOC":"www.hpe.com/support/ilo-docs","WWWERS":"www.hpe.com/services/getconnected","WWWGLIS":"reserved for liconf URI","WWWIOL":"www.hpe.com/info/insightonline","WWWLIC":"www.hpe.com/info/ilo","WWWLML":"www.hpe.com/support","WWWPASS":"www.hpe.com/support/hpesc","WWWPRV":"www.hpe.com/info/privacy","WWWQSPEC":"www.hpe.com/info/qs","WWWRESTDOC":"www.hpe.com/support/restfulinterface/docs","WWWSUP":"www.hpe.com/support/ilo5","WWWSWLIC":"www.hpe.com/software/SWLicensing"},"Sessions":{"CertCommonName":"ILOMXQ849018N.americas.hpqcorp.net","CertificateLoginEnabled":false,"KerberosEnabled":false,"LDAPAuthLicenced":true,"LDAPEnabled":false,"LocalLoginEnabled":true,"LoginFailureDelay":0,"LoginHint":{"Hint":"POST to /Sessions to login using the following JSON object:","HintPOSTData":{"Password":"password","UserName":"username"}},"SecurityOverride":false,"ServerName":""},"System":[{"Status":{"Health":"OK"}}],"Time":"2020-06-05T19:21:15Z"}},"Product":"ProLiant DL360 Gen10","ProtocolFeaturesSupported":{"ExpandQuery":{"ExpandAll":false,"Levels":true,"Links":false,"MaxLevels":1,"NoLinks":true},"FilterQuery":true,"OnlyMemberQuery":true,"SelectQuery":false},"RedfishVersion":"1.6.0","Registries":{"@odata.id":"/redfish/v1/Registries/"},"SessionService":{"@odata.id":"/redfish/v1/SessionService/"},"Systems":{"@odata.id":"/redfish/v1/Systems/"},"Tasks":{"@odata.id":"/redfish/v1/TaskService/"},"TelemetryService":{"@odata.id":"/redfish/v1/TelemetryService/"},"UUID":"d3372204-1b09-54ea-9aa0-88940c369d59","UpdateService":{"@odata.id":"/redfish/v1/UpdateService/"},"Vendor":"HPE"}
 ```
+  
+  {% /tab %}
+  {% /tabs %}
+**--nostdoutlog**
+
+Disable debug logs to stdout.
 
 :::success TIP
 If you have difficulties to write your own Redfish client
@@ -131,17 +155,9 @@ Use the provided proxy for communication.
 Use this flag if you wish to enable Redfish only compliance. It is enabled by
 default in systems with iLO 5 and above.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 The `--redfish` global option is **only** required for HPE iLO 4.
-:::
-
-**--latestschema**
-
-Optionally use the latest schema files instead of the default present in iLO.
-
-:::info NOTE
-Might cause errors in some data retrieval due to difference in schema versions.
-:::
+{% /admonition %}
 
 ## Global commands
 
@@ -167,9 +183,9 @@ Displays command-line syntax and help menus for individual commands. Use this co
 
 Supplying a command to `help` displays the help message corresponding to the given command, as well as the options relating to that particular command.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 If no command is provided, the `help` command lists and provides a brief description of all available commands.
-:::
+{% /admonition %}
 
 - **-h, --help**
 
@@ -183,41 +199,60 @@ Use the provided configuration file instead of the default one.
 
 Use the provided directory as the location to cache data (default location: `C:\Users\USERNAME\AppData\Roaming\.ilorest`).
 
-#### Examples
+#### Example
 
-```text
-iLOrest > help
-usage: iLOrest [GLOBAL OPTIONS] [COMMAND] [COMMAND ARGUMENTS] [COMMAND OPTIONS]
+The following example uses the iLOrest
+[script mode](/docs/redfishclients/ilorest-userguide/usage/#scriptable-mode)
+to display embedded help.
 
-HPE iLOrest is a command-line or interactive interface that allows users to
-manage Hewlett Packard Enterprise products that take advantage of RESTful APIs.
+  {% tabs %}
+{% tab label="Example" %}
+
+```text Example
+ilorest help
+usage: iLORest [GLOBAL OPTIONS] [COMMAND] [COMMAND ARGUMENTS] [COMMAND OPTIONS]
+
+iLOrest is a command-line or interactive interface that allows users to manage Hewlett Packard Enterprise products that take advantage of RESTful APIs.
 
 In order to view or manage a system you must first login. You can login using
 the login command or during execution of any other command.
 From here you can run any other commands. To learn more about specific commands,
 run `ilorest COMMAND -h`.
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
-  -c FILE, --config FILE
-                        Use the provided configuration file instead of the default one.
-  --cache-dir PATH      Use the provided directory as the location to cache data (default location: C:\Users\kallur\AppData\Roaming\.iLOrest)
-  -v, --verbose         Display verbose information (with increasing level). '-v': Level 1, Logging, Stdout, Stderr. '-vv': Level 2, Extends Level 1 with slightly
-                        elaborated iLO and HTTP response message. '-vvv': Level3, Extends Level 2 with message id, validation class, message text with embedded args,
-                        and possible resolution/mitigation for iLO responses. High detailed HTTP responses. **NOTE 1**: Some responses may only contain limited
-                        information from the source.**NOTE 4**: Default level is 0.
+  --config FILE         Use the provided configuration file instead of the default one.
+  --cache-dir PATH      Use the provided directory as the location to cache data (default location: /root/.iLORest)
+  -v, --verbose         Display verbose information (with increasing level). '-v': Level 1, Logging, Stdout, Stderr. '-vv': Level 2, Extends Level 1 with slightly elaborated iLO and HTTP
+                        response message. '-vvv': Level3, Extends Level 2 with message id, validation class, message text with embedded args, and possible resolution/mitigation for iLO
+                        responses. Includes HTTP responses. **NOTE 1**: Some responses may only contain limited information from the source.**NOTE 2**: Default level is 0.
   -d, --debug           Display debug information.
   --logdir PATH         Use the provided directory as the location for log file.
+  --nostdoutlog         Disable debug logs to stdout.
   --nocache             During execution the application will temporarily store data only in memory.
   --nologo              Include to block copyright and logo.
   --toolbar             Show toolbar at the bottom.
+  --notab               Disable tab complete.
   --redfish             Use this flag if you wish to to enable Redfish only compliance. It is enabled by default in systems with iLO5 and above.
-  --latestschema        Optionally use the latest schema instead of the one requested by the file. Note: May cause errors in some data retrieval due to difference in
-                        schema versions.
+  --latestschema        Optionally use the latest schema instead of the one requested by the file. Note: May cause errors in some data retrieval due to difference in schema versions.
+  --useproxy URL        Use the provided proxy for communication.
   --redirectconsole [REDIRECT CONSOLE]
                         Optionally include this flag to redirect stdout/stderr console.
 
-BIOS COMMANDS
+Examples:
+
+The following is the standard flow of commands to view system data.
+        The first example is each command run individually:
+
+        ilorest login
+        ilorest select Bios.
+        ilorest get
+
+        The second is the list of all of the commands run at once. First locally, then remotely.
+        ilorest get --select Bios.
+        ilorest get --select Bios. --url <iLO IP> -u <iLO Username> -p <iLO Password>
+
+BIOS_COMMANDS
 biosdefaults              - Set the currently logged in server to default BIOS settings.
 bootorder                 - Displays and sets the current boot order.
 iscsiconfig               - Displays and configures the current iscsi settings.
@@ -225,6 +260,7 @@ setpassword               - Sets the admin password and power-on password
 
 COMMANDS
 commit                    - Applies all the changes made during the current session.
+detectilo                 - Retrieves the iLO generation of the server.
 get                       - Displays the current value(s) of a property(ies) within a selected type.
 info                      - Displays detailed information about a property within a selected type.
 list                      - Displays the current value(s) of a property(ies) within a selected type including reserved properties.
@@ -241,7 +277,8 @@ types                     - Displays all selectable types within the currently l
 exit                      - Exits from the interactive shell.
 help                      - Displays command line syntax and help menus for individual commands. Example: help login
 
-PERSISTENT MEMORY COMMANDS
+
+PERSISTENT_MEMORY_COMMANDS
 provisionpmm              - Applies specified configuration to PMM.
 applypmmconfig            - Applies a pre-defined configuration to PMM.
 clearpmmpendingconfig     - Clear pending config tasks
@@ -250,7 +287,7 @@ showpmm                   - Display information about Persistent Memory modules.
 showpmmpendingconfig      - Shows the pending configuration for PMM.
 showrecommendedpmmconfig  - Show Recommended Configuration
 
-RAW COMMANDS
+RAW_COMMANDS
 rawdelete                 - Raw form of the DELETE command.
 rawget                    - Raw form of the GET command.
 rawhead                   - Raw form of the HEAD command.
@@ -258,17 +295,24 @@ rawpatch                  - Raw form of the PATCH command.
 rawpost                   - Raw form of the POST command.
 rawput                    - Raw form of the PUT command.
 
-SMART ARRAY COMMANDS
+SMART_ARRAY_COMMANDS
 clearcontrollerconfig     - Clears smart array controller configuration.
-createlogicaldrive        - Creates a new logical drive on the selected controller.
-deletelogicaldrive        - Deletes logical drives from the selected controller.
+createvolume              - Creates a new volume on the selected controller.
+deletevolume              - Deletes volumes from the selected controller.
 drivesanitize             - Erase/Sanitize physical drive(s)
 factoryresetcontroller    - Factory resets a controller by index or location.
-smartarray                - Discovers all storage controllers installed in the server and managed by the SmartStorage.
+storagecontroller         - Discovers all storage controllers installed in the server and managed by the SmartStorage.
 
-iLO COMMANDS
+SMART_NIC_COMMANDS
+smartnic                  - Discovers all pensando nic installed in the server
+
+iLO_COMMANDS
+appaccount                - Creates/Deletes application account, Checks the existence of an application account, Provides details on all app accounts present in the server.
 certificate               - Command for importing both iLO and login authorization certificates as well as generating iLO certificate signing requests (CSR)
+
+channelinterface          - Reset CHIF on the current logged in server.
 clearrestapistate         - Clears the persistent state of the REST API. Some portions of the API may not be available until after the server reboots.
+computeopsmanagement      - Enables the server to be discovered, monitored and managed through ComputeOpsManagement
 directory                 - Update directory settings, add/delete directory roles, and test directory settings on the currently logged in server.
 disableilofunctionality   - disables iLO's accessibility via the network and resets iLO. WARNING: This should be used with caution as it will render iLO unable to respond to further network operations (including REST operations) until iLO is re-enabled using the RBSU menu.
 eskm                      - Command for all ESKM available actions.
@@ -276,24 +320,26 @@ ethernet                  - Command for configuring Ethernet Management Controll
 factorydefaults           - Resets iLO to factory defaults. WARNING: user data will be removed use with caution.
 fwintegritycheck          - Perform a firmware integrity check on the currently logged in server.
 firmwareupdate            - Perform a firmware update on the currently logged in server.
+ipprofiles                - This is used to manage hpeipprofile data store.
 iloaccounts               - Views/Adds/deletes/modifies an iLO account on the currently logged in server.
 backuprestore             - Backup and restore iLO to a server using a .bak file.
 ilofederation             - Adds / deletes an iLO federation group on the currently logged in server.
 ilolicense                - Adds an iLO license key to the currently logged in server.
 iloreset                  - Reset iLO on the current logged in server.
-ipprofiles                - This is used to manage hpeipprofile data store.
 onebuttonerase            - Performs One Button Erase on a system.
 reboot                    - Reboot operations for the current logged in server.
 sendtest                  - Command for sending various tests to iLO.
 serverclone               - Creates a JSON formatted clone file of a system's iLO, Bios, and SSA configuration which can be duplicated onto other systems. User editable JSON file can be manipulated to modify settings before being loaded onto another machine.
+serverconfiglock          - The BIOS feature “Server Configuration Lock” supports certain parameters,including a password. This password has a 16 to 31 character limit. “Server Configuration Lock” is not one of the special commands in iLO REST.
 serverinfo                - Shows aggregate health status and details of the currently logged in server.
-serverlogs                - Download and perform log operations.
 serverstate               - Returns the current state of the server.
+serverlogs                - Download and perform log operations.
+settwofactorauthentication - Enables the server to use Two factor authentication, monitored
 sigrecompute              - Command to recalculate the signature of the computer's configuration.
 singlesignon              - Command for all single sign on available actions.
 virtualmedia              - Command for inserting and removing virtual media.
 
-iLO REPOSITORY COMMANDS
+iLO_REPOSITORY_COMMANDS
 deletecomp                - Deletes components/binaries from the iLO Repository.
 downloadcomp              - Downloads components/binaries from the iLO Repository.
 flashfwpkg                - Flashes fwpkg components using the iLO repository.
@@ -303,53 +349,109 @@ maintenancewindow         - Manages the maintenance windows for iLO.
 makeinstallset            - Creates install sets for iLO.
 taskqueue                 - Manages the update task queue for iLO.
 uploadcomp                - Upload components/binary to the iLO Repository.
-```
 
+```
+  
+  {% /tab %}
+  {% /tabs %}
 The syntax to get help details for specific command is
 '<command> **-h** or **--help**'
 
-```shell
+The following example uses the iLOrest interactive mode
+to display the embedded help of the `login` command.
+
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
+ilorest
 iLOrest > login -h
-usage: login [-h] [--url URL] [--sessionid SESSIONID] [-u USER] [-p PASSWORD] [--biospassword BIOSPASSWORD] [--https HTTPS_CERT]
-             [--includelogs] [--path PATH] [--force-vnic] [--logout]
-             [--selector SELECTOR]
+usage: login [-h] [--wait_for_otp] [--sessionid SESSIONID] [-u USER] [-p PASSWORD] [-o LOGIN_OTP] [--biospassword BIOSPASSWORD] [--https HTTPS_CERT] [--usercert USER_CERTIFICATE]
+             [--userkey USER_ROOT_CA_KEY] [--userpassphrase USER_ROOT_CA_PASSWORD] [--includelogs] [--path PATH] [--force_vnic] [--logout] [--selector SELECTOR] [--no_app_account]
+             [--hostappid HOSTAPPID] [--hostappname HOSTAPPNAME] [--salt SALT] [--use_chif]
 
 To login remotely run using iLO url and iLO credentials
-        example: login <;iLO url/hostname>; -u <;iLO username>; -p <;iLO password>;
+        example: login <iLO url/hostname> -u <iLO username> -p <iLO password>
 
         To login on a local server run without arguments
         example: login
 
+        In iLO 5 and iLO 6 based servers, use `--force_vnic` and iLO credentials to start an
+        [in-band](/docs/redfishservices/ilos/supplementdocuments/vnic/#in-band-management)
+        session via the Virtual NIC instead of the [CHIF](/docs/etc/glossaryterms/).
+        example: login --force_vnic -u iLO-user -p password
+
+        {% admonition type="info" name="NOTE" %}
+        The `--force_vnic` parameter is not relevant in iLO 7 based
+        servers (and later) because the CHIF between the OS and
+        the iLO has been
+        [removed](/docs/redfishservices/ilos/supplementdocuments/securityservice/#transitioning-to-hpe-ilo-7).
+        {% /admonition %}
+
+Login using OTP can be done in 2 ways.
+
+         To login implicitly, use the tag --wait_for_otp.
+                example: login -u <iLO username> -p <iLO password> --wait_for_otp
+
+         To login explicitly, use the tag -o/--otp and enter OTP after.
+                example: login -u <iLO username> -p <iLO password> -o <iLO OTP>
+
         NOTE: A [URL] can be specified with an IPv4, IPv6, or hostname address.
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
+  --wait_for_otp        Optionally include this flag to implicitly wait for OTP.
   --selector SELECTOR   Optionally include this flag to select a type to run the current command on. Use this flag when you wish to select a type without entering another command, or if you wish to work with a type that is different from the one you currently have selected.
+  --no_app_account
+                        Include this parameter in order to login to iLO 7 and later with credentials and not application account.
 
 LOGIN OPTIONS:
   Options for logging in to a system.
 
-  --url URL             Use the provided iLO URL to login.
   --sessionid SESSIONID
                         Use the provided sessionid to login.
   -u USER, --user USER  If you are not logged in yet, including this flag along with the
                         password and URL flags can be used to login to a server in the same command.
   -p PASSWORD, --password PASSWORD
                         Use the provided iLO password to log in.
+  -o LOGIN_OTP, --otp LOGIN_OTP
+                        Use the provided iLO OTP to log in.
   --biospassword BIOSPASSWORD
                         Select this flag to input a BIOS password. Include this
                         flag if second-level BIOS authentication is needed for the command to execute.
                         This option is only used on Gen 9 systems.
   --https HTTPS_CERT    Use the provided CA bundle or SSL certificate with your login to
                         connect securely to the system in remote mode. This flag has no effect in local mode.
+  --usercert USER_CERTIFICATE
+                        Specify a user certificate file path for certificate based authentication
+                        with iLO.
+                        **NOTE**: Inclusion of this argument will force certficate based
+                        authentication. A root user certificate authority key or bundle will be required.
+  --userkey USER_ROOT_CA_KEY
+                        Specify a user root ca key file path for certificate based certificate
+                        authentication with iLO. **NOTE 1**: Inclusion of this argument will force certficate based
+                        authentication. A root user certificate authority key or bundle will be required.
+                        **NOTE 2**: Inclusion of this argument will force certificate based authentication.
+                        A user certificate will be required.
+                        **NOTE 3**: A user will be prompted for a password if the root certificate authority key
+                        is encrypted and '-certpass/--userrootcapassword' is omitted.
+  --userpassphrase USER_ROOT_CA_PASSWORD
+                        Optionally specify a user root ca key file password for encrypted
+                        user root certificate authority keys. **NOTE 1**: Inclusion of this argument will force
+                        certficate based authentication. A root user certificate authority key or
+                        bundle will be required. **NOTE 2**: The user will be prompted for a password
+                        if the user root certificate authority key requires a password
   --includelogs         Optionally include logs in the data retrieval process.
   --path PATH           Optionally set a starting point for data collection during login.
                         If you do not specify a starting point, the default path will be /redfish/v1/.
                         Note: The path flag can only be specified at the time of login.
-                        Warning: Only for advanced users, and generally not needed for normal operations.  
+                        Warning: Only for advanced users, and generally not needed for normal operations.
+  --force_vnic          Force login through iLO Virtual NIC. **NOTE** iLO 5 required
   --logout              Logout after the completion of the command.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Login Command
 
 #### Syntax
@@ -359,17 +461,19 @@ LOGIN OPTIONS:
 #### Description
 
 Connects to a server, establishes a secure session, and discovers data from
-HPE iLO. If you are logging in to a local server, run the command without
-arguments. If you are not logging in to a local server,
-supply the URL argument along with the user and password options.
+HPE iLO.
 
-:::info NOTE
-Authentication is not performed in the security `production` (default) mode.
-If a username and password are included then the configuration will default
-to an internal, unauthenticated administrative level privileged user account.
-[Higher security modes](/docs/redfishclients/ilorest-userguide/highsecurity/),
-if configured, require a valid iLO management username and password to connect.
-:::
+{% admonition type="success" name="TIP" %}
+
+Refer to the
+[in-band management](/docs/redfishservices/ilos/supplementdocuments/vnic/#in-band-management)
+paragraph for detailed local login examples.
+
+{% /admonition %}
+
+{% admonition type="info" name="NOTE" %}
+In band communication with iLO via the [Virtual NIC](/docs/redfishservices/ilos/supplementdocuments/vnic/) (vNIC), requires this interface to be enabled in both iLO and the operating system. Refer to this [section](/docs/redfishservices/ilos/supplementdocuments/securityservice/#transitioning-to-hpe-ilo-7) to benefit from a seamless authentication of in-band management on iLO 7 based servers.
+{% /admonition %}
 
 Login using certificate authentication has following requirements:  
 
@@ -381,17 +485,42 @@ Login using certificate authentication has following requirements:
 - Add root CA certificate to iLO
 - Map user CA certificate to target iLO management user
 
-#### Usage in Other Commands
+#### Usage with other commands
 
-Login remotely with basic authentication as part of other commands by
-including the `--url`, (`-u`, `--user`), and (`-p`, `--password`) flags.
-Optionally include the `--https` flag to validate the SSL certificate when
-logging in.
+In [out-of-band](/docs/redfishservices/ilos/supplementdocuments/vnic/#out-of-band-management)
+(remote) contexts, most of the iLOrest commands allow the opening of a
+[Redfish session](/docs/concepts/redfishauthentication/#redfish-authentication-and-sessions)
+and the execution of the command using a single iLOrest invocation, using
+`--url`, `--user`, and `--password` flags. Optionally include the `--https` flag to validate the SSL certificate along with.
 
-Locally you will be logged in automatically unless running in a high security
-mode. Refer to the [Higher security modes](/docs/redfishclients/ilorest-userguide/highsecurity/)
-for more information.
+{% admonition type="success" name="TIP" %}
 
+Failure to formerly logout after using an iLOrest (or another Redfish client)
+may saturate iLO with sessions and prevent other clients to login.
+
+You can use the standalone `logout` [command](#logout-command)
+or append the `--logout` parameter as shown in the next example.
+
+{% /admonition %}
+
+The following one line example logs into a remote iLO, retrieves its firmware version and logs out.
+
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
+
+ilorest get FirmwareVersion --selector Manager. --url ilo-ip --user ilo-user --password password --json --logout
+{
+  "FirmwareVersion": "1.12.00 Mar 28 2025"
+}
+Logging session out.
+Logging session out.
+
+```
+  
+  {% /tab %}
+  {% /tabs %}
 #### Parameters
 
 - **URL**
@@ -402,11 +531,11 @@ Connect to the server located at the provided URL.
 
 Including the help flag will display help for the command.
 
-- **-u User**
+- **-u, --user User**
 
 Connect to the server as the provided user.
 
-- **-p Password**
+- **-p, --password Password**
 
 Connect to the server with the password corresponding to the given user.
 
@@ -424,14 +553,14 @@ during implicit login. Refer to the
 [TFA section](/docs/redfishservices/ilos/supplementdocuments/tfa/)
 for more detail.
 
-:::info NOTE
+{% admonition type="success" name="TIP" %}
 
 In Linux, if password contains '!' (exclamation), then enclose the password
 with single quotation ('). Also, if the password includes special characters,
 then escape these characters with '\' (backslash).
 Eg: if the password is `test#123`, then type the password as `test\\#123`.
 
-:::
+{% /admonition %}
 
 - **--sessionid**
 
@@ -442,20 +571,20 @@ Connect to the server with the already known `sessionid`.
 Specify a user certificate file path for certificate based
 authentication with iLO.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The user private key is required.
-:::
+{% /admonition %}
 
 - **--userkey UserCertKey**
 
 Specify a user private key file path for certificate based authentication
 with iLO.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 If the user private key is password protected, but not included with
 `--userpassphrase`, then Urllib3 will automatically request the
 password on the command line.
-:::
+{% /admonition %}
 
 - **--userpassphrase UserPassphrase**
 
@@ -463,20 +592,27 @@ Optionally specify a user key file password for a password protected user key.
 
 - **--force_vnic**
 
-:::info NOTE
-Option to force login through iLO Virtual NIC.
-<b>Virtual NIC to be enabled in iLO.</b>
-NOTE: iLO 5 or later is required.
-:::  
+Option to force login through
+[iLO Virtual NIC](/docs/redfishservices/ilos/supplementdocuments/vnic/)
+in iLO 5 and iLO 6
+[in-band](/docs/redfishservices/ilos/supplementdocuments/vnic/#in-band-management)
+(local) management contexts.
+
+{% admonition type="info" name="NOTE" %}
+
+The in-band default communication path of HPE iLO 7 based servers and later is vNIC.
+Hence, this parameter cannot be used on such platforms.
+{% /admonition %}
+
 
 - **--includelogs**
 
 Optionally choose to set the **includelogs** flag. Doing so will include logs.
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--selector=SELECTOR**
 
@@ -490,103 +626,176 @@ is different from the one you currently have selected.
 Optionally set a starting point for data collection. If you do not specify a
 starting point, the default path will be `/rest/v1`.
 
-:::info NOTE:
+{% admonition type="info" name="NOTE:" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but includes
 your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 - **--biospassword=BIOSPASSWORD**
 
 Select this flag to input a BIOS password. Include this flag if second-level
 BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option is only used on HPE Gen 9 systems.
-:::
+{% /admonition %}
+
+- **--no\_app\_account**  
+
+  This option forces in-band management login (via the [Virtual NIC](/docs/redfishservices/ilos/supplementdocuments/vnic/)) with username and password to bypass the use of the application account on iLO 7 based servers. Refer to the [application account](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-accounts) section for detail.
 
 #### Examples
 
-To login remotely, with basic authentication, supply the URL, username, and
-password for the server.
 
-```shell
+To open a remote Redfish [session](/docs/concepts/redfishauthentication/#redfish-authentication-and-sessions),
+supply the URL, username, and
+password for the remote HPE iLO.
+
+
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login xx.xx.xx.xx -u username -p password
 Discovering data...Done
 ```
-
-To login remotely, with Certificate, supply the URL, user certificate, user
+  
+  {% /tab %}
+  {% /tabs %}
+To open a remote Redfish [session](/docs/concepts/redfishauthentication/#redfish-authentication-and-sessions),
+using certificates (instead of user/password credentials), supply the URL, user certificate, user
 key and user passphrase to the server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login xx.xx.xx.xx --usercert cert.pem --userkey userkey.pem --userpassphrase password
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In the following example, the `--select` option has been included so that
 the `Bios` type is selected once the user is logged in. You can prove that
 the `Bios` type has indeed been selected when we enter the `select` command
 alone.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login xx.xx.xx.xx -u username -p password --select Bios.
 Discovering data...Done
-iLOrest > select
+ilorest select
 Current selection: Bios.v1_0_0
 ```
-
-An IPv4, IPv6, or hostname can be specified. IPv6 should use the following
+  
+  {% /tab %}
+  {% /tabs %}
+IPv4, IPv6 addresses, or fully qualified hostnames can be specified. IPv6 addresses should use the following
 format.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login [xxxx::xxxx:xxxx:xxxx:xxxx] -u username -p password
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In the following example, a SSL certificate is included to validate the
 HTTPS connection
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login system.domain.net -u username -p password --https \path\to\SSLcert.crt
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In the following example, the URL, username, and password information are
 not specified on the command line nor in the configuration file.
-This syntax attempts to login locally in the server's iLO via the HPE
-internal Channel Interface (CHIF). Credential are not required when
-the `login` command is issued by a privileged user toward an iLO in
-security `Production` mode.
-[Higher security modes](/docs/redfishclients/ilorest-userguide/highsecurity/)
-require valid credentials.
 
-```shell
+This syntax attempts to login locally in the server's iLO 5 or iLO 6 via the HPE
+internal Channel Interface
+([CHIF](/docs/etc/glossaryterms/)) or via the Virtual NIC when the server's
+iLO is iLO 7 or later, and when iLOrest has been installed with the creation
+of an application account. Refer to the
+[Transitioning to HPE iLO 7](/docs/redfishservices/ilos/supplementdocuments/securityservice/#transitioning-to-hpe-ilo-7)
+documentation section for more information.
+
+
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login
 Discovering data...Done
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
-For Virtual NIC local login, use `--force_vnic` and username and password
-options.
+In iLO 5 and iLO 6 contexts, you can force the use of the
+[Virtual NIC](/docs/redfishservices/ilos/supplementdocuments/vnic/)
+communication path with
+the `--force_vnic` flag and username and password credentials.
 
-```shell
+
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login --force_vnic -u username -p password
 Discovering data...Done
 ```
+  
+  {% /tab %}
+  {% /tabs %}
+The following example forces the use of iLO 7 user credentials instead of the default [application account](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-accounts) mechanism, to create a session based in-band communication. This example is valid only in iLO 7 based servers (and later)
+
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
+iLOrest > login --no_app_account -u username -p password
+Attempt to login with Vnic...
+Discovering data...Done
+```
+  
+  {% /tab %}
+  {% /tabs %}
 
 #### To login using OTP
+
+  {% tabs %}
+{% tab label="Explicit OTP login" %}
 
 ```shell Explicit OTP login
 iLOrest > login -u ilo-username -p password -o 987654
 Discovering data...Done
 ```
+  
+  {% /tab %}
+{% tab label="Implicit OTP login" %}
+
 ```shell Implicit OTP login
 iLOrest > login -u username -p password --wait_for_otp
 One Time Passcode Sent to registered email.
 Enter OTP: 234567
 Discovering data...Done
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Types Command
 
 #### Syntax
@@ -604,11 +813,11 @@ those schemas. Version information is `major.minor.errata`
 (i.e. `SystemRoot.0.9.5`).
 Major versions are not backward compatible, but everything else is.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Refer to the
-[HPE iLO resource map](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_resmap{{process.env.LATEST_FW_VERSION}}/)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_resmap", $env.PUBLIC_LATEST_FW_VERSION) %} HPE iLO resource map {% /link-internal %}
 for a the list and location of all the possible types.
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -647,9 +856,9 @@ gave to login.
 Optionally choose to set the **includelogs** flag. Doing so will include logs
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -659,12 +868,12 @@ Refer to the
 [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but includes
 your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 #### Examples
 
@@ -674,7 +883,10 @@ available [types](/docs/concepts/datatypesandcollections/)
 it returns the full type name (not the simplified one).
 See example below.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login ilo-ip -u username -p password
 Discovering data...Done
 iLOrest > types
@@ -690,12 +902,17 @@ EthernetInterface.v1_4_1
 EthernetInterfaceCollection
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following command simultaneously logs in to the server at the provided URL
 with the provided username and password, and lists all the available types
 that you can select. The full list has been truncated here for space.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > types --url xx.xx.xx.xx -u username -p password
 Discovering data...Done
 Type options:
@@ -710,12 +927,17 @@ EthernetInterface.v1_4_1
 EthernetInterfaceCollection
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Adding the `--fulltypes` option returns the full type name instead
 of the simplified versions. This is only available against Redfish
 conformant services.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > types --fulltypes
 Type options:
 #AccountService.v1_3_0.AccountService
@@ -730,7 +952,9 @@ Type options:
 #EventDestinationCollection.EventDestinationCollection
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Select Command
 
 #### Syntax
@@ -763,7 +987,7 @@ parameter; run `command --help` to see available options.
 
 Refer to the `get` [examples](#examples-6) for more detail.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 The selection of the following data types points to their
 [pending/settings area](https://servermanagementportal.ext.hpe.com/docs/concepts/biosdatamodel/#bios-current-and-pending-areas)
 
@@ -790,7 +1014,7 @@ Use a `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#exa
 to retrieve the current properties of the above data types.
 The URIs of the above data types can be quickly determined with the first example in this
 [section](/docs/redfishclients/ilorest-userguide/bioscommands/#bios-commands).
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -808,9 +1032,9 @@ Including the help flag will display help for the command.
 Select this flag to input a BIOS password. Include this flag if second-level
 BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option is only used on Gen 9 systems.
-:::
+{% /admonition %}
 
 #### Login Parameters
 
@@ -838,9 +1062,9 @@ gave to login.
 Optionally choose to set the **includelogs** flag. Doing so will include logs
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -850,12 +1074,12 @@ Refer to the
 [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but
 includes your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 #### Examples
 
@@ -863,7 +1087,10 @@ The following example is for a didactic purpose only. It does not have
 any practical use case. It selects all types containing string `em`, regardless the
 case:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest select em
 
 ilorest select
@@ -877,19 +1104,26 @@ HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection,
 HpeRemoteSupport.v2_6_0, MemoryDomainCollection.MemoryDomainCollection,
 TelemetryService.v1_0_0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example simultaneously logs in to a remote iLO at the provided URL
 with the provided username and password
 and selects the `ComputerSystem.` type.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem. --url xx.xx.xx.xx -u username -p password
 Discovering data...Done
 
 iLOrest > select
 Current selection: ComputerSystem.v1_4_0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In the previous example, the trailing dot (`.`) of the selected type
 excludes the `ComputerSystemCollection` type.
 
@@ -897,7 +1131,10 @@ Excluding the collection associated with a type can be useful
 to avoid retrieving properties belonging to both types (i.e. `Name`)
 as shown in the next example.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest list Name @odata.id --json --select ComputerSystem
 [
   {
@@ -911,34 +1148,47 @@ ilorest list Name @odata.id --json --select ComputerSystem
 ]
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example shows how to select all `Bios` subsystems or only `Bios`
 by excluding the HPE OEM
 <a href="https://developer.hpe.com/blog/why-is-redfish%C2%AE-different-from-other-rest-apis-part-1/#oem-extensions"
 target="_blank">extensions</a>.
+
+  {% tabs %}
+{% tab label="Select all Bios subsystems" %}
 
 ```shell Select all Bios subsystems
 iLOrest > select Bios
 iLOrest > select
 Current selection: HpeBiosMapping.v2_0_0, Bios.v1_0_0
 ```
+  
+  {% /tab %}
+{% tab label="Select only Bios subsystem" %}
 
 ```shell Select only Bios subsystem
 iLOrest > select Bios.
 iLOrest > select
 Current selection: Bios.v1_0_0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example selects all versions of the standard `Drive` data type,
 excluding legacy HPE `SmartStorage` types (they contain a "v2" string) and lists the URIs
 of the drives in the system.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Systems containing [PLDM](/docs/etc/glossaryterms/#glossary)
 capable devices may have several type versions:
 One version implemented in the management controller (iLO) and
 versions implemented within the devices.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Drive types selection" %}
 
 ```shell Drive types selection
 ilorest select drive.v1
@@ -947,6 +1197,9 @@ Current selection: Drive.v1_14_0, Drive.v1_16_0
 
 ilorest  list  "@odata.id"  --json
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```json Output
 [
@@ -991,11 +1244,16 @@ ilorest  list  "@odata.id"  --json
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 iLOrest caches data once a type has been selected for the first time.
 To refresh a type with the most up to date information use the `--refresh` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem.
 iLOrest > get Oem/Hpe/PowerOnMinutes
 Oem=
@@ -1008,14 +1266,19 @@ Oem=
      Hpe=
           PowerOnMinutes=814089
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 Use the `select <type> --refresh` command to delete/remove changed
 settings that have not been [committed](#commit-command), as shown in
 the next example.
-:::
+{% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest set LocationIndicatorActive=True
 Added the following patch:
 {
@@ -1034,7 +1297,9 @@ Padbol# ilorest status
 No changes found
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### List Command
 
 #### Syntax
@@ -1051,7 +1316,7 @@ Run without any argument, `list` displays the value(s) of all the properties of 
 [data type](/docs/concepts/datatypesandcollections/), including
 [reserved properties](#reserved-properties). The output can be in human-readable or JSON format.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - Supplying a list of nonexistent properties in the selected
 type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
@@ -1063,7 +1328,7 @@ type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
 - Identical property values of similar objects are only printed once.
 
 Refer to the [example](#examples-4) section below for illustration.
-:::
+{% /admonition %}
 
 ##### Reserved properties
 
@@ -1073,17 +1338,23 @@ The term **_reserved properties_** refers to "meta properties" like `@odata.*` o
 The `list` command displays reserved properties, while the `get`
 [command](#get-command) does not.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 As the list of reserved properties is evolving over time, it is not possible to provide
 the exhaustive list. However, you can get an idea of that list by comparing the output
 of the `list` and the `get` commands against the `Manager` data type as shown in
 the next example.
 
+  {% tabs %}
+{% tab label="list and get Manager properties" %}
+
 ```shell list and get Manager properties
 ilorest list --json --select Manager. > listManager.json
 ilorest get  --json --select Manager. > getManager.json
 ```
+  
+  {% /tab %}
+{% tab label="Output difference (truncated)" %}
 
 ```shell Output difference (truncated)
 diff listManager.json getManager.json
@@ -1122,8 +1393,10 @@ diff listManager.json getManager.json
 <         },
 ...
 ```
-
-:::
+  
+  {% /tab %}
+  {% /tabs %}
+{% /admonition %}
 
 #### Parameters
 
@@ -1132,7 +1405,7 @@ diff listManager.json getManager.json
 Supplying a property or a list of properties causes `list` to display the
 current value for that particular property or properties.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - Supplying a list of nonexistent properties in the selected
 type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
@@ -1145,7 +1418,7 @@ type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
 - Identical property values of similar objects are only printed once.
 
 Refer to the [example](#examples-4) section below for illustration.
-:::
+{% /admonition %}
 
 - **-h, --help**
 
@@ -1197,9 +1470,9 @@ to login.
 Optionally choose to set the **includelogs** flag. Doing so will include
 logs in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -1208,12 +1481,12 @@ starting point, the default path will be `/redfish/v1/`.
 Refer to the [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but includes
 your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -1224,6 +1497,9 @@ command is completed. You need to be logged in to use this flag.
 
 The following example lists all the properties of the `Bios` data type, in human readable
 and JSON formats.
+
+  {% tabs %}
+{% tab label="Interactive human readable (truncated)" %}
 
 ```shell Interactive human readable (truncated)
 iLOrest > select Bios.
@@ -1240,6 +1516,9 @@ AdminEmail=""
 AdminName=""
 ...
 ```
+  
+  {% /tab %}
+{% tab label="JSON format (truncated)" %}
 
 ```json JSON format (truncated)
 iLOrest > select ComputerSystem.
@@ -1274,44 +1553,59 @@ iLOrest > list --json
       "Hdd",
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To return specific properties or sub-properties value, include them as arguments.
 If the property you want to return is a sub-property add them in the form
 `Property/Sub-property`.
 
-:::success Best Practice
+{% admonition type="success" name="Best Practice" %}
 Although iLOrest arguments are not case-sensitive, it is a
 best practice to respect the case sensitivity of arguments. You may
 have to use Redfish clients that request the respect of the case.
-:::
+{% /admonition %}
 
 The following example retrieves three properties from the `ComputerSystem`
 [type](/docs/concepts/datatypesandcollections/).
 The `AssetTag` property exists, but has an empty value ("").
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > list @odata.id Boot/BootSourceOverrideMode AssetTag --select ComputerSystem.
 @odata.id=/redfish/v1/Systems/1/
 AssetTag=""
 Boot=
       BootSourceOverrideMode=UEFI
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example tries retrieves a non-existing property (verbose mode)
 in the `ComputerSystem` type.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest -vv list foo --select ComputerSystem.
 Selected option(s): #ComputerSystem.v1_17_0.ComputerSystem
 
 Error: No get contents found for selected type.
 iLORest return code: 6
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example asks, in verbose mode, for the values of an existing
 (`PowerState`) and a non-existing (`foo`) properties in the `ComputerSystem.` subsystem.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest -vv list PowerState foo --select ComputerSystem. --json
 Selected option(s): #ComputerSystem.v1_17_0.ComputerSystem
 {
@@ -1320,12 +1614,17 @@ Selected option(s): #ComputerSystem.v1_17_0.ComputerSystem
 iLORest return code: 0
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example selects the `Bios` data type before
 asking, in verbose mode, for the values of properties belonging to another
 data type (`Memory.`). As a consequence, iLOrest returns an error.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest select Bios.
 ilorest -v list CapacityMiB Name Vend --json
 
@@ -1334,17 +1633,25 @@ Selected option(s): #Bios.v1_0_0.Bios
 Error: No get contents found for selected type.
 iLORest return code: 6
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example selects the `Bios.` type
 and then switches to the `Memory.` type to retrieve
 the values of three properties. However, one of
 them (`Vend`) is not spelled correctly. As a result,
 only valid properties are returned.
 
+  {% tabs %}
+{% tab label="Incorrect property" %}
+
 ```shell Incorrect property
 ilorest select Bios.
 ilorest -v list CapacityMiB Name Vend --json --select Memory.
 ```
+  
+  {% /tab %}
+{% tab label="Output (truncated)" %}
 
 ```json Output (truncated)
 Selected option(s): #Memory.v1_7_1.Memory
@@ -1369,12 +1676,17 @@ Selected option(s): #Memory.v1_7_1.Memory
 ]
 iLORest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the value of the `CapacityMiB`
 property in the `Memory.` subsystem. Several memory slots are populated with identical DIMMs (32768 MiB),
 but not all of them. In this case, iLOrest returns only two values: `0` and `32768`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest list CapacityMiB --json --select Memory.
 [
   {
@@ -1385,13 +1697,18 @@ ilorest list CapacityMiB --json --select Memory.
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the values of the `CapacityMiB` and `Name`
 properties in the `Memory.` subsystem. The `Name` value is different
 for each and every DIMM slot, populated or not. Hence the output displays
 both values for each memory slot. Output is truncated.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest list CapacityMiB Name --json --select Memory.
 [
   {
@@ -1418,7 +1735,9 @@ ilorest list CapacityMiB Name --json --select Memory.
 ]
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Info Command
 
 #### Syntax
@@ -1445,15 +1764,6 @@ than the one already selected.
 - **-h, --help**
 
 Including the `--help` parameter displays help for the command.
-
-- **--latestschema**
-
-Optionally use the latest schema files instead of the default present in iLO.
-
-:::warning Warning
-This might cause errors in some data retrieval due to differences
-in the schema's organizational structure between versions.
-:::
 
 - **-j, --json**
 
@@ -1487,9 +1797,9 @@ to login.
 Optionally choose to set the **includelogs** flag. Doing so will include logs
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -1497,13 +1807,13 @@ Optionally set a starting point for data collection. If you do not specify a
 starting point, the default path will be `/redfish/v1/`.
 Refer to the [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option) for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are already
 logged into the server, the `path` flag will not change the path. If you are
 entering a command that is not the `login`
 command, but includes your login information,
 you can still specify the path flag there.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -1516,7 +1826,10 @@ Without any supplied property, `info` lists all
 available options in the selected [type](/docs/concepts/datatypesandcollections/).
 In the next example, the full list is truncated.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select Bios.
 iLOrest > info
 Info options:
@@ -1530,12 +1843,17 @@ AdminOtherInfo
 AdminPhone
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This following example simultaneously logs into a remote Redfish service at the provided
 URL (`--url`) with the provided username (`-u`) and password (`-p`),
 selects the `Power.` type, and displays the `PowerSupplies` property information.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > info PowerSupplies -u username -p password --url xx.xx.xx.xx --select Power.
 Discovering data...Done
 
@@ -1563,10 +1881,15 @@ SUB-PROPERTIES
     LineInputVoltageType, Oem, PowerSupplyType, LineInputVoltage,
     FirmwareVersion, Manufacturer
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Multiple properties belonging to the `VirtualMedia` type are specified in the next example.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select VirtualMedia.
 iLOrest > info Image WriteProtected
 
@@ -1611,11 +1934,16 @@ READ-ONLY
 POSSIBLE VALUES
     True or False
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Any Sub-Properties shown in an info response can be queried in the same form
 as `set`, `list`, and `get`: `Property/Sub-property`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem.
 iLOrest > info Boot
 
@@ -1662,7 +1990,9 @@ TYPE
 READ-ONLY
     False
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Get Command
 
 #### Syntax
@@ -1678,7 +2008,7 @@ Run without any argument, `get`displays the value(s) of all the propertie(s) of 
 [data type](/docs/concepts/datatypesandcollections/) excluding
 [reserved properties](#reserved-properties). The output can be in human-readable or JSON format.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - Supplying a list of nonexistent properties in the selected
 type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
@@ -1691,7 +2021,7 @@ type returns [iLOrest error](/docs/redfishclients/ilorest-userguide/errors/) 6:
 - Identical property values of similar objects are only printed once.
 
 Refer to the [example](#examples-6) section below for illustration.
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -1756,9 +2086,9 @@ you gave to login.
 Optionally choose to set the **includelogs** flag. Doing so will include
 logs in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -1767,12 +2097,12 @@ starting point, the default path will be `/redfish/v1/`.
 Refer to the
 [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option) for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but includes
 your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -1785,13 +2115,16 @@ Using `get` without any property returns the values of all
 the properties in the selected
 type. In the following example, the output is truncated.
 
-:::success Best Practice
+{% admonition type="success" name="Best Practice" %}
 Although iLOrest arguments are not case-sensitive, it is a
 best practice to respect the case sensitivity of arguments. You may
 have to use Redfish clients that request the respect of the case.
-:::
+{% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select Bios.
 iLOrest > get
 AcpiHpet=Enabled
@@ -1804,41 +2137,61 @@ AdminOtherInfo=""
 AdminPhone=""
 ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example prints the value of a property belonging
 to the type selected in the previous example (`Bios.`)
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > get AdminName
 AdminName=Jason E
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This command simultaneously logs in to a remote iLO at the provided URL (`--url`)
 with the provided username (-u) and password (-p), selects the `Bios.`
 type, and the `get` command is used to retrieve the `BootOrderPolicy`
 property of `Bios.`
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > get BootOrderPolicy --url xx.xx.xx.xx -u username -p password --select Bios.
 Discovering data...Done
 BootOrderPolicy=RetryIndefinitely
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Because the `--logout` parameter is included in the next example,
 the user is logged out of the remote
 Redfish service after the `get` command is performed.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem.
 iLOrest > get AssetTag --logout
 AssetTag=""
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieve multiple property and sub-property values,
 using the `/` separator.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem.
 iLOrest > get MemorySummary
 MemorySummary=
@@ -1854,9 +2207,14 @@ MemorySummary=
                        HealthRollup=OK
                TotalSystemMemoryGiB=32
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 You can use the `noreadonly` flag to narrow down your results
 to only retrieve properties that are writeable.
+
+  {% tabs %}
+{% tab label="All properties" %}
 
 ```shell All properties
 iLOrest > select ComputerSystem.
@@ -1880,6 +2238,9 @@ Boot=
       BootSourceOverrideEnabled=Disabled
 ...
 ```
+  
+  {% /tab %}
+{% tab label="Writeable only properties" %}
 
 ```shell Writeable only properties
 iLOrest > get --noreadonly --select ComputerSystem.
@@ -1903,12 +2264,17 @@ Oem=
           PostDiscoveryMode=None
           PowerRegulatorMode=OSControl
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example selects the `Bios` data type before
 asking, in verbose mode, for the values of properties belonging to another
 data type (`Memory.`). As a consequence, iLOrest returns an error.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest select Bios.
 ilorest -v get CapacityMiB Name Vend --json
 
@@ -1917,16 +2283,24 @@ Selected option(s): #Bios.v1_0_0.Bios
 Error: No get contents found for selected type.
 iLORest return code: 6
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example selects the `Bios.` type
 and then switches to the `Memory.` type to retrieve
 the values of three properties. However, one of
 them (`Vend`) is not spelled correctly.
 
+  {% tabs %}
+{% tab label="Incorrect property" %}
+
 ```shell Incorrect property
 ilorest select Bios.
 ilorest -v get CapacityMiB Name Vend --json --select Memory.
 ```
+  
+  {% /tab %}
+{% tab label="Output (truncated)" %}
 
 ```json Output (truncated)
 Selected option(s): #Memory.v1_7_1.Memory
@@ -1951,12 +2325,17 @@ Selected option(s): #Memory.v1_7_1.Memory
 ]
 iLORest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the value of the `CapacityMiB`
 property in the `Memory.` subsystem. Several memory slots are populated with identical DIMMs (32768 MiB),
 but not all of them. In this case, iLOrest returns only two values: `0` and `32768`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest get CapacityMiB --json --select Memory.
 [
   {
@@ -1967,11 +2346,16 @@ ilorest get CapacityMiB --json --select Memory.
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the value of the `CapacityMiB` and `Name`
 properties in the `Memory.` subsystem. The `Name` value is different
 for each and every DIMM slot, populated or not. Hence the output displays
 both values for each memory slot.
+
+  {% tabs %}
+{% tab label="Truncated output" %}
 
 ```shell Truncated output
 ilorest get CapacityMiB Name --json --select Memory.
@@ -1999,17 +2383,19 @@ ilorest get CapacityMiB Name --json --select Memory.
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Set Command
 
 #### Syntax
 
 `set [Property=Value] [Path] [Optional Parameters]`
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The syntax formats used to set properties can be tricky if not done correctly.
 See the following examples to illustrate how the syntax works.
-:::
+{% /admonition %}
 
 - `set AdminName=John`
 
@@ -2045,17 +2431,17 @@ This is **incorrect** syntax, and will not be correctly reflected on the server.
 Changes the value of a property in a currently selected type.
 Multiple properties can be set simultaneously.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 <b>Read-only</b> and <b>System-unique</b> properties like Serial Numbers
 and ProductId are skipped, and remaining continue to be set.
-:::
-:::info NOTE
+{% /admonition %}
+{% admonition type="info" name="NOTE" %}
 If <b>System-unique</b> properties need to be set, use `--uniqueoverride`
 option.
-:::
-:::warning Warning
+{% /admonition %}
+{% admonition type="warning" name="Warning" %}
 The changes set will be reflected on the server only after committing them.
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -2081,21 +2467,12 @@ Optionally set a filter value for a filter attribute. This uses the provided
 filter for the currently selected type. Refer to the
 [Filter Option](/docs/redfishclients/ilorest-userguide/advancedusage/#filter-option) for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
  Use this flag to narrow down your results. For example, selecting a common
  type might return multiple objects that are all of that type.
  If you want to modify the properties of only one of those objects,
  use the filter flag to narrow down results based on properties.
-:::
-
-- **--latestschema**
-
-Optionally use the latest schema files instead of the default present in iLO.
-
-:::warning Warning
-This might cause errors in some data retrieval due to differences in the
-schema’s organizational structure between versions.
-:::
+{% /admonition %}
 
 - **--commit**
 
@@ -2108,9 +2485,9 @@ next time the server is started.
 Select this flag to input a BIOS password. Include this flag if second-level
 BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option is only used on Gen 9 systems.
-:::
+{% /admonition %}
 
 - **--reboot=REBOOT**
 
@@ -2147,9 +2524,9 @@ to login. Use the provided iLO password corresponding to the username you gave t
 Optionally choose to set the **includelogs** flag. Doing so will include logs
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -2159,12 +2536,12 @@ Refer to the
 [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login` command, but
 includes your login information, you can still specify the path flag there.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -2173,20 +2550,23 @@ is completed. You need to be logged in to use this flag.
 
 #### Examples
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Arguments are not case-sensitive.
-:::
+{% /admonition %}
 
 You can set multiple properties from the same type simultaneously. Add quotes
 around the property and value to add spaces in the value.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Even though the `get` command shows **ServiceName** is set to **ExampleService**
 and **AdminName** set to **Jason E**, the `commit` command must
 be performed next for the changes to be updated on the server.
-:::
+{% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select Bios.
 iLOrest > get AdminName ServiceName
 AdminName=""
@@ -2196,23 +2576,33 @@ iLOrest > get AdminName ServiceName
 AdminName=Jason E
 ServiceName=ExampleService
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This command simultaneously logs in to the server at the provided URL
 (`--url`) with the provided username (`-u`) and password (`-p`),
 and then selects the `Bios.` type. The `set` command is used to set
 the `AdminName` property to `Jason E`, and the commit flag has
 been added to apply the changes to the server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > set "AdminName=Jason E" --url xx.xx.xx.xx -u username -p password --select Bios. --commit
 Discovering data...Done
 Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To revert your changes on a type you can use the refresh flag.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select Bios.
 iLOrest > get AdminName
 AdminName=Jason E
@@ -2223,7 +2613,9 @@ iLOrest > select Bios. --refresh
 iLOrest > get AdminName
 AdminName=Jason E
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Save Command
 
 #### Syntax
@@ -2267,7 +2659,7 @@ filter for the currently selected type. Refer to the
 [Filter Option](/docs/redfishclients/ilorest-userguide/advancedusage/#filter-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this flag to narrow down your results. For example, selecting a common
 type might return multiple objects that are all of that type.
 If you want to modify the properties of only one of those objects,
@@ -2275,7 +2667,7 @@ use the filter flag to narrow down results based on properties.
 
 Refer to the [example](/docs/redfishclients/ilorest-userguide/globalcommands/#examples-8)
 section below for an example.
-:::
+{% /admonition %}
 
 - **-j, --json**
 
@@ -2312,9 +2704,9 @@ to login.
 Optionally choose to set the **includelogs** flag. Doing so will include logs
 in the data retrieval process.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Use this option to limit long login times.
-:::
+{% /admonition %}
 
 - **--path=PATH**
 
@@ -2323,13 +2715,13 @@ starting point, the default path will be `/redfish/v1/`.
 Refer to the [Path Option](/docs/redfishclients/ilorest-userguide/advancedusage/#path-option)
 for more information.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `path` flag can only be specified at the time of login, so if you are
 already logged into the server, the `path` flag will not change the path.
 If you are entering a command that is not the `login`
 command, but includes your login information, you can still specify the path
 flag there.
-:::
+{% /admonition %}
 
 - **--logout**
 
@@ -2342,7 +2734,7 @@ In the following example, iLOrest logs into a remote iLO,
 selects the `Bios.` subsystem and saves its configuration
 into the default `ilorest.json` file.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 A `--select Bios.` selection points to its
 [pending/settings area](/docs/concepts/biosdatamodel/#bios-current-and-pending-areas)
 
@@ -2369,7 +2761,10 @@ Use a `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#exa
 
 The URIs of the above data types can be quickly determined with the first example in this
 [section](/docs/redfishclients/ilorest-userguide/bioscommands/#bios-commands).
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Saving Bios configuration" %}
 
 ```shell Saving Bios configuration
 iLOrest > save --select Bios. --url xx.xx.xx.xx -u username -p password
@@ -2377,6 +2772,9 @@ Discovering data...Done
 Saving configuration...
 Configuration saved to: ilorest.json
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```json Output
 [
@@ -2417,35 +2815,47 @@ Configuration saved to: ilorest.json
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Use the `--multisave` option to specify multiple types to save in a single
 file. This file can be sent to load in order to load multiple types with
 a single command. All type strings are delimited by a ','.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > save --multisave Bios.,ComputerSystem.
 Discovering data...Done
 Saving configuration...
 Configuration saved to: ilorest.json
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example simultaneously logs in to the server at the provided URL
 (`--url`) with the provided username (`-u`) and password (`-p`),
 selects the `Bios.` type, saves the JSON response to a file called
 `BiosInfo.json` in the current local directory, and then logs out.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > save --select Bios. --url xx.xx.xx.xx -u username -p password -f BiosInfo.json --logout
 Discovering data...Done
 Saving configuration...
 Configuration saved to: BiosInfo.json
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example saves the configuration of the iLO shared network port.
 Use `Name="Manager Dedicated*` to retrieve the iLO dedicated network port configuration.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The following example excludes IPv4 and IPv6 information for security reasons.
 
@@ -2459,17 +2869,22 @@ to retrieve the configuration of ethernet interfaces (manager and system), inclu
 Use the `ethernet --network-ipv4` to modify the iLO IP network
 configuration.
 
-:::
+{% /admonition %}
 
-:::info TIP
+{% admonition type="info" name="TIP" %}
 
 
-:::
+{% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest save --selector EthernetInterface. --filter Name="Manager Shared*" -f SaveSharedPort.json --json
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Load Command
 
 #### Syntax
@@ -2484,7 +2899,7 @@ Otherwise, you can point this command to use any file you specify.
 Use this function to change the properties of a type to new values.
 This command uploads the new values of the type’s properties to the server.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - By default and in order to avoid unwanted communication interruptions
   to the ilO Dedicated Network Port, the `load` command skips modifications
@@ -2498,7 +2913,7 @@ Refer to these
 [examples](/docs/redfishclients/ilorest-userguide/examplecommandsscripts/#set-ilo-networking-properties)
 to change the IP iLO network configuration.
 
-:::
+{% /admonition %}
 
 #### Parameters
 
@@ -2511,23 +2926,14 @@ Including the help flag will display help for the command.
 Use this flag if you wish to use a different filename than the default one.
 The default filename is `ilorest.json`.
 
-- **--latestschema**
-
-Optionally use the latest schema files instead of the default present in iLO.
-
-:::warning Warning
-This might cause errors in some data retrieval due to differences in the
-schema’s organizational structure between versions.
-:::
-
 - **--biospassword=BIOSPASSWORD**
 
 Select this flag to input a BIOS password. Include this flag if second-level
 BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option is only used on Gen 9 systems.
-:::
+{% /admonition %}
 
 - **--uniqueoverride**
 
@@ -2577,39 +2983,52 @@ is completed. You need to be logged in to use this flag.
 
 #### Examples
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Refer to this
 [section](http://localhost:3000/docs/redfishclients/ilorest-userguide/examplecommandsscripts/#configure-ilo-ip-addresses)
 for an example using the `--force_network_config` parameter.
-:::
+{% /admonition %}
 
 If no filename is supplied with the (`-f`, `--filename`) option, the `load` command looks for a
 file named `ilorest.json` in the current working directory.
 Save will automatically select the required type to make changes.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > load
 Loading configuration...
 Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This command simultaneously logs in to the server at the provided URL
 (`--url`) with the provided username (`-u`) and password (`-p`)
 and load a file from the current working directory called `biosconfig.json`.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > load --url xx.xx.xx.xx -u username -p password -f biosconfig.json
 Discovering data...Done
 Loading configuration...
 Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This is the multi-server configuration setup. You must pass in a multi-server
 file in the following format.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > load -m mpfilename.txt -f biosconfig.json
 Discovering data...Done
 Loading configuration for multiple servers...
@@ -2620,7 +3039,9 @@ Loading Configuration for xx.xx.xx.xx : SUCCESS
 Loading Configuration for xx.xx.xx.xy : SUCCESS
 All servers have been successfully configured.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 All servers are configured concurrently. Because the filename tag is included,
 it searches for the file called `biosconfig.json` and loads that information
 to the servers. If no values have changed, the load process is complete.
@@ -2628,13 +3049,18 @@ If any property values have changed, the changes are committed and the
 user is logged out of the server. Logs of the entire process are then
 stored in the same location as the iLOrest logs.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 --url 10.0.0.100 -u username -p password
 --url 10.0.0.101 -u username -p password
 --url 10.0.0.102 -u username -p password
 --url 10.0.0.103 -u username -p password
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Status Command
 
 #### Syntax
@@ -2658,7 +3084,10 @@ Including the help flag will display help for the command.
 The status command shows changes to be committed. The status command shows
 all pending changes, including changes for different types.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > status
 Current changes found:
 Bios.v1_0_0(/redfish/v1/systems/1/bios/settings/) (Currently selected)
@@ -2666,10 +3095,15 @@ Bios.v1_0_0(/redfish/v1/systems/1/bios/settings/) (Currently selected)
 ComputerSystem.v1_4_0(/redfish/v1/Systems/1/)
         AssetTag=newtag
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Once changes are committed they no longer show in status.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > status
 Current changes found:
 Bios.v1_0_0(/redfish/v1/systems/1/bios/settings/) (Currently selected)
@@ -2683,7 +3117,9 @@ The operation completed successfully.
 iLOrest > status
 No changes found
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Commit Command
 
 #### Syntax
@@ -2713,9 +3149,9 @@ Including the help flag will display help for the command.
 Select this flag to input a BIOS password. Include this flag if second-level
 BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This option is only used on Gen 9 systems.
-:::
+{% /admonition %}
 
 - **--reboot=REBOOT**
 
@@ -2728,7 +3164,10 @@ run `help reboot`.
 
 Commit all pending changes made by set by running the `commit` command.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select ComputerSystem.
 iLOrest > set AssetTag=newtag
 iLOrest > select Bios.
@@ -2738,17 +3177,22 @@ Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 If you do not commit before logging out changes will be lost.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 You must commit changes before logging out or settings will not be updated on
 the server.
 
-:::
+{% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > select Bios.
 iLOrest > get AdminName
 AdminName=Chelsea K
@@ -2761,21 +3205,28 @@ iLOrest > get AdminName --select Bios.
 Discovering data...Done
 AdminName=Chelsea K
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Commit after running other commands by using the
 `--commit` option. This command simultaneously logs in to the server at the
 provided URL (`--url`) with the provided username (`-u`, `--user`) and password
 (`-p`, `--password`), selects the `ComputerSystem.` type, sets
 `AssetTag` to `""`, commits the change, and logs-out.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > set AssetTag="" --url xx.xx.xx.xx -u username -p password --selector ComputerSystem. --commit --logout
 Discovering data...Done
 Committing changes...
 The operation completed successfully.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Logout Command
 
 #### Syntax
@@ -2802,21 +3253,31 @@ Including the help flag will display help for the command.
 
 Use the logout command to end the session and disconnect from the server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login xx.xx.xx.xx -u username -p password
 Discovering data...Done
 iLOrest > logout
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Logout from another command using the `--logout` option.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > get AssetTag --select ComputerSystem. --logout
 AssetTag=""
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Exit Command
 
 #### Syntax
@@ -2838,8 +3299,14 @@ Including the help flag will display help for the command.
 
 This command exits the interactive shell.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > exit
 Logging session out.
 Bye for now
 ```
+  
+  {% /tab %}
+  {% /tabs %}

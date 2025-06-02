@@ -1,10 +1,16 @@
 ---
 seo:
-  title: Smart NICs
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
+  title: DPUs and Smart NICs
+breadcrumbs:
+  hide: true
+sidebar:
+  hide: false
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdatedBlock:
+    hide: false
 ---
 
 # DPUs and SmartNICs
@@ -22,7 +28,7 @@ are presented in this paragraph.
 ### Properties
 
 The Nokia Cloud RAN SmartNIC card is modeled in the Redfish tree as a
-[Network Adapter](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#networkadapter)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_network_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#networkadapter") %} Network Adapter {% /link-internal %}
 contained in the main Chassis subsystem (`/redfish/v1/Chassis/1`).
 
 #### Getting properties
@@ -31,10 +37,16 @@ The following example retrieves the properties of a
 Nokia Cloud RAN SmartNIC card from the `NetworkAdapter` subsystem, including `Status/Health`
 and `BootStage`.
 
+  {% tabs %}
+{% tab label="GET Nokia Network Adapter properties" %}
+
 ```text GET Nokia Network Adapter properties
 GET '/redfish/v1/Chassis/1/NetworkAdapters/?$expand=.' | \
      jq '.Members[] | select (.Name | contains("RAN Inline"))'
 ```
+  
+  {% /tab %}
+{% tab label="Nokia Network Adapter output" %}
 
 ```json Nokia Network Adapter output
 {
@@ -148,17 +160,25 @@ GET '/redfish/v1/Chassis/1/NetworkAdapters/?$expand=.' | \
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 As a PCIe device, the Nokia Cloud RAN SmartNIC card is a member of the
-[PCIeDevice Collection](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#pciedevicecollection)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#pciedevicecollection") %} PCIeDevice Collection {% /link-internal %}
 of the main chassis.
 
 The following example retrieves the PCIe properties of a Nokia Cloud RAN SmartNIC card.
+
+  {% tabs %}
+{% tab label="GET Nokia PICe properties" %}
 
 ```text GET Nokia PICe properties
 GET /redfish/v1/Chassis/1/PCieDevices/?$expand=.' | \
     jq '.Members[] | select (.Name | contains("RAN Inline"))'  
 ```
+  
+  {% /tab %}
+{% tab label="Nokia PCIe properties output" %}
 
 ```json Nokia PCIe properties output
 {
@@ -183,15 +203,24 @@ GET /redfish/v1/Chassis/1/PCieDevices/?$expand=.' | \
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The firmware properties of the Nokia Cloud RAN SmartNIC card can be retrieved from the
-Firmware Inventory URI of the `SoftwareInventory` [schema](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#softwareinventory)
+Firmware Inventory URI of the `SoftwareInventory`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#softwareinventory") %} schema {% /link-internal %}
 as shown in the following example.
 
-``` text GET firmware properties
+{% tabs %}
+  {% tab label="GET firmware properties" %}
+
+```text GET firmware properties
 GET /redfish/v1/UpdateService/FirmwareInventory/?$expand=. | \
     jq '.Members[] | select(.Name | contains("Nokia Cloud"))'
 ```
+  
+  {% /tab %}
+{% tab label="firmware output" %}
 
 ```json firmware output
   {
@@ -217,27 +246,36 @@ GET /redfish/v1/UpdateService/FirmwareInventory/?$expand=. | \
     "Version": "SDK12.24.06"
   }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 #### Setting properties
 
 Writeable properties can be modified with a PATCH request
 against the `NetworkAdapter/{item}`
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#resource-instances-1).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_network_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#resource-instances-1") %} URI {% /link-internal %}.
 The following example configures the Nokia SmartNIC card to boot from a specific Bank.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Property modification are effective immediately after
 a successful PATCH request (no server restart required).
-:::
+{% /admonition %}
 
 The `BootBankSelected` property supports the following values:
 
 - `Bank1`
 - `Bank2`
 
+{% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 PATCH /redfish/v1/Chassis/1/NetworkAdapters/{item}/
 ```
+  
+{% /tab %}
+{% tab label="Boot Bank Payload" %}
 
 ```json Boot Bank Payload
 {
@@ -250,6 +288,9 @@ PATCH /redfish/v1/Chassis/1/NetworkAdapters/{item}/
   }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -264,13 +305,21 @@ PATCH /redfish/v1/Chassis/1/NetworkAdapters/{item}/
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example configures two OEM specific properties with
 a PATCH request.
+
+  {% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 PATCH /redfish/v1/Chassis/1/NetworkAdapters/{item}
 ```
+  
+  {% /tab %}
+{% tab label="Oem payload" %}
 
 ```json Oem payload
 {
@@ -284,6 +333,9 @@ PATCH /redfish/v1/Chassis/1/NetworkAdapters/{item}
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="BodyResponse" %}
 
 ```json BodyResponse
 {
@@ -298,15 +350,23 @@ PATCH /redfish/v1/Chassis/1/NetworkAdapters/{item}
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Sensors
 
 Power information can be retrieved from the `Power` subsystem, under the main
 chassis, as shown in the following example.
 
+  {% tabs %}
+{% tab label="GET Nokia Power" %}
+
 ```text GET Nokia Power
 GET /redfish/v1/Chassis/1/Power | jq '.Voltages'
 ```
+  
+  {% /tab %}
+{% tab label="Nokia Power output" %}
 
 ```json Nokia Power output
 {
@@ -362,14 +422,22 @@ GET /redfish/v1/Chassis/1/Power | jq '.Voltages'
     ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Temperature information can be retrieved from the `Thermal` subsystem, under the main chassis,
 as shown in the following example.
+
+  {% tabs %}
+{% tab label="GET Nokia Temperatures" %}
 
 ```text GET Nokia Temperatures
 GET  /redfish/v1/Chassis/1/Thermal | \
      jq '.Temperatures[] | select(.Name | contains("RNIC"))'
 ```
+  
+  {% /tab %}
+{% tab label="Nokia Temp output" %}
 
 ```json Nokia Temp output
     {
@@ -493,7 +561,9 @@ GET  /redfish/v1/Chassis/1/Thermal | \
         "UpperThresholdNonCritical": 75
     }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Actions
 
 The Nokia Cloud RAN SmartNIC card supports several
@@ -503,13 +573,22 @@ Among them are `ColdReset` and `WarmReset`. Send a POST request to
 their respective target with a `null` payload. You should receive a Success
 message in return.  
 
+  {% tabs %}
+{% tab label="POST ColdReset" %}
+
 ```text POST ColdReset
 POST /redfish/v1/Chassis/1/NetworkAdapters/DA000000/Actions/Oem/Hpe/HpeNetworkAdapter.ColdReset
 ```
+  
+  {% /tab %}
+{% tab label="POST WarmReset" %}
 
 ```text POST WarmReset
 POST /redfish/v1/Chassis/1/NetworkAdapters/DA000000/Actions/Oem/Hpe/HpeNetworkAdapter.WarmReset
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
   {
@@ -524,3 +603,6 @@ POST /redfish/v1/Chassis/1/NetworkAdapters/DA000000/Actions/Oem/Hpe/HpeNetworkAd
     }
   }
 ```
+  
+  {% /tab %}
+  {% /tabs %}

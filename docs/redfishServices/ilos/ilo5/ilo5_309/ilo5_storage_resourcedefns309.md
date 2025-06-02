@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Storage resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Storage resource definitions of iLO 5 v3.09
@@ -29,7 +33,7 @@ A Collection of Storage resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Storage](../ilo5_storage_resourcedefns309/#storage)|
+|`Members[]`|[Storage](ilo5_storage_resourcedefns309/#storage)|
 
 ### Members (array)
 
@@ -72,11 +76,11 @@ Storage defines a storage subsystem and its respective properties.  A storage su
 
 |Link Name|Destination type
 |---|---|
-|`Volumes`|Collection of [Volume](../ilo5_storage_resourcedefns309/#volumecollection)|
-|`StorageControllers`|Collection of [StorageController](../ilo5_storage_resourcedefns309/#storagecontrollercollection)|
-|`Links/Enclosures[]`|[Chassis](../ilo5_chassis_resourcedefns309/#chassis)|
-|`Ports`|Collection of [Port](../ilo5_other_resourcedefns309/#portcollection)|
-|`Drives[]`|[Drive](../ilo5_storage_resourcedefns309/#drive)|
+|`Volumes`|Collection of [Volume](ilo5_storage_resourcedefns309/#volumecollection)|
+|`StorageControllers`|Collection of [StorageController](ilo5_storage_resourcedefns309/#storagecontrollercollection)|
+|`Links/Enclosures[]`|[Chassis](ilo5_chassis_resourcedefns309/#chassis)|
+|`Ports`|Collection of [Port](ilo5_other_resourcedefns309/#portcollection)|
+|`Drives[]`|[Drive](ilo5_storage_resourcedefns309/#drive)|
 
 ### Controllers
 
@@ -569,7 +573,7 @@ A Collection of Storage resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[StorageController](../ilo5_storage_resourcedefns309/#storagecontroller)|
+|`Members[]`|[StorageController](ilo5_storage_resourcedefns309/#storagecontroller)|
 
 ### Members (array)
 
@@ -1076,7 +1080,7 @@ A Collection of Volume resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Volume](../ilo5_storage_resourcedefns309/#volume)|
+|`Members[]`|[Volume](ilo5_storage_resourcedefns309/#volume)|
 
 ### Members (array)
 
@@ -1118,7 +1122,7 @@ The Volume resource describes a volume, virtual disk, LUN, or other logical stor
 
 |Link Name|Destination type
 |---|---|
-|`Links/Drives[]`|[Drive](../ilo5_storage_resourcedefns309/#drive)|
+|`Links/Drives[]`|[Drive](ilo5_storage_resourcedefns309/#drive)|
 
 ### CapacityBytes
 

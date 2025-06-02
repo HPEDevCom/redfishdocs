@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Network resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Network resource definitions of iLO 5 v3.09
@@ -29,7 +33,7 @@ A Collection of NetworkAdapter resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkAdapter](../ilo5_network_resourcedefns309/#networkadapter)|
+|`Members[]`|[NetworkAdapter](ilo5_network_resourcedefns309/#networkadapter)|
 
 ### Members (array)
 
@@ -808,7 +812,7 @@ A Collection of NetworkDeviceFunction resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkDeviceFunction](../ilo5_network_resourcedefns309/#networkdevicefunction)|
+|`Members[]`|[NetworkDeviceFunction](ilo5_network_resourcedefns309/#networkdevicefunction)|
 
 ### Members (array)
 
@@ -857,7 +861,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 |Link Name|Destination type
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[NetworkDeviceFunction](../ilo5_network_resourcedefns309/#networkdevicefunction)|
+|`@Redfish.Settings/SettingsObject`|[NetworkDeviceFunction](ilo5_network_resourcedefns309/#networkdevicefunction)|
 
 ### @Redfish.Settings
 
@@ -1557,7 +1561,7 @@ A Collection of NetworkInterface resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkInterface](../ilo5_network_resourcedefns309/#networkinterface)|
+|`Members[]`|[NetworkInterface](ilo5_network_resourcedefns309/#networkinterface)|
 
 ### Members (array)
 
@@ -1618,7 +1622,7 @@ A NetworkInterface contains references linking NetworkAdapter, NetworkPort, and 
 
 |Link Name|Destination type
 |---|---|
-|`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](../ilo5_network_resourcedefns309/#networkdevicefunctioncollection)|
+|`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](ilo5_network_resourcedefns309/#networkdevicefunctioncollection)|
 
 ### NetworkDeviceFunctions
 
@@ -1656,7 +1660,7 @@ A Collection of EthernetInterface resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[EthernetInterface](../ilo5_network_resourcedefns309/#ethernetinterface)|
+|`Members[]`|[EthernetInterface](ilo5_network_resourcedefns309/#ethernetinterface)|
 
 ### Members (array)
 
@@ -1689,7 +1693,7 @@ Member of EthernetInterfaceCollection.EthernetInterfaceCollection
 
 The EthernetInterface resource describes a single, logical ethernet interface or network interface controller (NIC).
 
-:::info Note
+{% admonition type="info" name="Note" %}
 
 The URI of the members of the computer system `EthernetInterface` collection can be represented with this notation: 
 `/redfish/v1/Systems/{@systemId}/EthernetInterfaces/{@nicId}`.
@@ -1708,7 +1712,7 @@ It is a string containing one or more characters in the range: [0-9], with the f
   Their corresponding `{@nicId}` is represented:
   - at slot 1 in the range: 13-76
   - at slot 2 in the range: 77-140
-:::
+{% /admonition %}
 
 
 ### Resource Instances
@@ -2757,7 +2761,7 @@ A Collection of NetworkPort resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[NetworkPort](../ilo5_network_resourcedefns309/#networkport)|
+|`Members[]`|[NetworkPort](ilo5_network_resourcedefns309/#networkport)|
 
 ### Members (array)
 
@@ -2806,7 +2810,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 |Link Name|Destination type
 |---|---|
-|`@Redfish.Settings/SettingsObject`|[NetworkPort](../ilo5_network_resourcedefns309/#networkport)|
+|`@Redfish.Settings/SettingsObject`|[NetworkPort](ilo5_network_resourcedefns309/#networkport)|
 
 ### @Redfish.Settings
 

@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Raw commands
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Raw commands
@@ -14,7 +18,7 @@ that can be used through the RESTful Interface Tool.
 The commands in this section are the equivalents of HTTP
 RESTful **PATCH, GET, POST, PUT, DELETE**, and **HEAD**.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Before performing a `PATCH`, `POST` `PUT` or `DELETE` request against a specific URI,
 it is a good practice to verify this URI accepts such a request. This can be easily done
@@ -25,10 +29,16 @@ header, or a `rawhead` like mentioned in the
 The following example lists the allowed operations against the
 `/redfish/v1/Systems/1`  URI.
 
+  {% tabs %}
+{% tab label="rawget" %}
+
 ```shell rawget
 ilorest rawget --getheaders "/redfish/v1/Systems/1" | jq '.Allow'
 "GET, HEAD, PATCH"
 ```
+  
+  {% /tab %}
+{% tab label="rawhead" %}
 
 ```shell rawhead
 ilorest rawhead "/redfish/v1/Systems/1" |  jq '{"Allow": .Allow'}
@@ -37,8 +47,10 @@ ilorest rawhead "/redfish/v1/Systems/1" |  jq '{"Allow": .Allow'}
 }
 
 ```
-
-:::
+  
+  {% /tab %}
+  {% /tabs %}
+{% /admonition %}
 
 ## RawDelete Command
 
@@ -96,11 +108,16 @@ command is completed. Using this flag when not logged in will have no effect.
 
 To directly delete a URI run the command specifying a URI to delete.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > rawdelete /redfish/v1/AccountService/Accounts/3/
 The account was removed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## RawGet Command
 
 ### Syntax
@@ -202,6 +219,9 @@ The following example retrieves the properties of the `ComputerSystem`
 [data type](/docs/concepts/datatypesandcollections/#data-types),
 without and with the `--silent` parameter.
 
+  {% tabs %}
+{% tab label="Without " %}
+
 ```shell Without --silent option
 ilorest  rawget /redfish/v1/Systems/1
 iLORest : RESTful Interface Tool version 5.1.0.0
@@ -233,6 +253,9 @@ Copyright (c) 2014-2024 Hewlett Packard Enterprise Development LP
   "BiosVersion": "A55 v1.62 (05/22/2024)",
   ...
 ```
+  
+  {% /tab %}
+{% tab label="With " %}
 
 ```shell With --silent option
 ilorest  rawget --silent /redfish/v1/Systems/1
@@ -262,10 +285,15 @@ ilorest  rawget --silent /redfish/v1/Systems/1
   "BiosVersion": "A55 v1.62 (05/22/2024)",
   ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The next example uses the `-f, --filename` option to
 save the iLO Dedicated Network port configuration
  in a specific file instead of standard output (stdout).
+
+  {% tabs %}
+{% tab label="Redirect output to file" %}
 
 ```shell Redirect output to file
 ilorest rawget "/redfish/v1/Managers/1/EthernetInterfaces/1" -f ManagerDedicatedPort.json
@@ -274,6 +302,9 @@ Copyright (c) 2014-2024 Hewlett Packard Enterprise Development LP
 --------------------------------------------------------------------------------
 Results written out to 'ManagerDedicatedPort.json'.
 ```
+  
+  {% /tab %}
+{% tab label="File content (truncated)" %}
 
 ```json File content (truncated)
 {
@@ -318,11 +349,16 @@ Results written out to 'ManagerDedicatedPort.json'.
   ],
     ...
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Use the `--expand` flag to expand collection URIs and display
 properties of collection members. The first tabulation of the
 next example retrieves the `ChassisCollection` member list. The
 second tabulation expands all members.
+
+  {% tabs %}
+{% tab label="Collapsed chassis collection" %}
 
 ```shell Collapsed chassis collection
 ilorest rawget /redfish/v1/Chassis
@@ -347,6 +383,9 @@ Copyright (c) 2014-2024 Hewlett Packard Enterprise Development LP
   "Name": "Computer System Chassis"
 }
 ```
+  
+  {% /tab %}
+{% tab label="Expanded Chassis collection (truncated output)" %}
 
 ```shell Expanded Chassis collection (truncated output)
 ilorest rawget --expand /redfish/v1/Chassis
@@ -386,9 +425,14 @@ Copyright (c) 2014-2024 Hewlett Packard Enterprise Development LP
 }
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the current area of the `HpeServerConfigLock` data type
 from an iLO 6 and an iLO 5.
+
+  {% tabs %}
+{% tab label="iLO 6" %}
 
 ```shell iLO 6
 ilorest --nologo rawget /redfish/v1/Systems/1/Bios/Oem/Hpe/Serverconfiglock
@@ -441,6 +485,9 @@ ilorest --nologo rawget /redfish/v1/Systems/1/Bios/Oem/Hpe/Serverconfiglock
   "ServerConfigLockTransportAudit": null
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLO 5" %}
 
 ```shell iLO 5
 ilorest --nologo rawget /redfish/v1/Systems/1/Bios/Serverconfiglock
@@ -492,7 +539,9 @@ ilorest --nologo rawget /redfish/v1/Systems/1/Bios/Serverconfiglock
   "ServerConfigLockTransport": null
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## RawHead Command
 
 ### Syntax
@@ -570,7 +619,10 @@ containing the result of the `rawhead` command.
 To directly read the head values of a URI run the command specifying
 a URI query.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > rawhead /redfish/v1/Systems/1/
 [200] The operation completed successfully.
 {
@@ -584,7 +636,9 @@ iLOrest > rawhead /redfish/v1/Systems/1/
   "X-Frame-Options": "sameorigin"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## RawPatch Command
 
 ### Syntax
@@ -599,14 +653,19 @@ Use this command to perform an HTTP RESTful Patch request.
 
 Filename parameter example:
 
-```json
+  {% tabs %}
+{% tab label="Example" %}
+
+```json Example
 {
   "/redfish/v1/path/to/resource1": {"json1": "body1"},
   "/redfish/v1/path/to/resource2": {"json2": "body2"},
   "...": "..."
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 - **Filename**
 
 Filename containing the patch payload(s).
@@ -641,9 +700,9 @@ Usage: --headers=HEADER:VALUE,HEADER:VALUE
 Use this flag to supply a BIOS password. Include this flag if
 second-level BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This flag is used only on iLO 4 systems and not required on iLO 5 and later systems.
-:::
+{% /admonition %}
 
 - **--service**
 
@@ -687,11 +746,17 @@ The following example uses the companion file `rawpatch.json` to patch
 the `AssetTag` property of the `/redfish/v1/Systems/1` URI. Then, it
 refreshes the iLOrest cache with the updated values of `ComputerSystem.` selector.
 
+  {% tabs %}
+{% tab label="Commands" %}
+
 ```shell Commands
 ilorest rawpatch rawpatch.json
 ilorest get AssetTag --select ComputerSystem.v --refresh
 AssetTag=NewAssetTag
 ```
+  
+  {% /tab %}
+{% tab label="rawpatch file" %}
 
 ```json rawpatch file
 {
@@ -701,9 +766,14 @@ AssetTag=NewAssetTag
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example disables IPv6
 settings and performs an iLO reset to take the modification into account.
+
+  {% tabs %}
+{% tab label="Command" %}
 
 ```shell Command
 ilorest rawpatch rawpatch.json
@@ -711,6 +781,9 @@ ilorest rawpatch rawpatch.json
 ilorest iloreset
 A management processor reset is in progress.
 ```
+  
+  {% /tab %}
+{% tab label="Companion file" %}
 
 ```json Companion file
 {
@@ -728,12 +801,14 @@ A management processor reset is in progress.
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example configures the Manager Dedicated Network port with
 a static IPv4 and disables DHCPv4. Then resets the iLO to take modifications
 into account.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 
 Upon reset, open sessions (GUI, rest) are closed abruptly. You need to reconnect using the
 network information present in the `rawpatch` companion file.
@@ -745,12 +820,18 @@ Refer to these
 before changing your iLO IP configuration or, potentially
 recover from a misconfiguration.
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Set static IPv4" %}
 
 ```shell Set static IPv4
 ilorest rawpatch StaticIPv4.json
 ilorest iloreset
 ```
+  
+  {% /tab %}
+{% tab label="StaticIPv4" %}
 
 ```shell StaticIPv4.json file
 cat StaticIPv4.json
@@ -774,7 +855,9 @@ cat StaticIPv4.json
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## RawPost Command
 
 ### Syntax
@@ -789,14 +872,19 @@ Use this command to perform an HTTP RESTful POST command.
 
 Example Filename parameter JSON file below:
 
-```json
+  {% tabs %}
+{% tab label="Example" %}
+
+```json Example
 {
   "/redfish/v1/path/to/resource1": {"json1": "body1"},
   "/redfish/v1/path/to/resource2": {"json2": "body2"},
   "...": "..."
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 - **Filename**
 
 Include the filename to send a post from the data included in this input file.
@@ -871,9 +959,15 @@ None
 The following example performs a `ComputerSystem.Reset`
 [action](https://servermanagementportal.ext.hpe.com/docs/concepts/performing_actions/).
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest rawpost rawpost.json
 ```
+  
+  {% /tab %}
+{% tab label="rawpost payload" %}
 
 ```json rawpost payload
 {
@@ -883,7 +977,9 @@ ilorest rawpost rawpost.json
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## RawPut Command
 
 ### Syntax
@@ -898,14 +994,19 @@ Use this command to perform an HTTP RESTful PUT command.
 
 Example input file below:
 
-```json
+  {% tabs %}
+{% tab label="Example" %}
+
+```json Example
 {
   "/redfish/v1/path/to/resource1": {"json1": "body1"},
   "/redfish/v1/path/to/resource2": {"json2": "body2"},
   "...": "..."
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 - **Filename**
 
 Supply a filename containing the payload of the `PUT` request.
@@ -938,10 +1039,10 @@ This is helpful when you want to parse the output with a tool like `jq`.
 Select this flag to input a BIOS password. Include this flag if
 second-level BIOS authentication is needed for the command to execute.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This flag is used only on iLO 4 systems. It is not required
 on iLO 5 and later systems.
-:::
+{% /admonition %}
 
 - **--service**
 
@@ -988,10 +1089,16 @@ None
 The following example sends a `PUT` request to the
 Bios settings area, in order to reset it to its defaults.
 
+  {% tabs %}
+{% tab label="rawput command" %}
+
 ```shell rawput command
 ilorest rawput put.json
 One or more properties were changed and will not take effect until system is reset.
 ```
+  
+  {% /tab %}
+{% tab label="rawput payload" %}
 
 ```json rawput payload
 {
@@ -1003,3 +1110,6 @@ One or more properties were changed and will not take effect until system is res
   }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}

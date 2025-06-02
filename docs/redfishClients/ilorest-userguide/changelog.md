@@ -1,10 +1,17 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
+  prefixItems:
+    - page: changelog.md
+      label: Clients / iLOrest user guide
 seo:
   title: iLOrest changelog
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # HPE iLOrest changelog
@@ -13,6 +20,55 @@ The latest iLOrest packages can be freely downloaded from
 <a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest" target="_blank">GitHub</a>.
 
 A <a href="https://pypi.org/project/ilorest" target="_blank">PyPI</a> project is also available.
+
+## Version 6.1.0.0
+
+**Fixes:**
+
+- Fixed issues with `ServerInfo` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#serverinfo-command) where `prossesorID` was not getting populated in the response and `--fans` was not giving correct result when `--json` is supplied, also corrected an issue where the option `--software` was returning generic error.
+- Fixed an issue with `firmwareupdate` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#firmwareupdate-command) where the URL with mix of uppercase and lowercase where not getting flashed.
+- Fixed issues with the `set` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#set-command) where the setting of `WorkLoadProfile` , `ThermalCooling` where not working.
+- Fixed issues with the `get` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command) where `NetworkAdapter` property was returning wrong response, also fixed the issue where `ComponentIntegrity` was not including `TPM` info.
+- Corrected an issue with logging mechanism where errors where getting printed twice on stdout.
+
+**Enhancements:**
+
+- Enabled support for accepting PIN as `activationkey` for the `computeopsmanagement` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#computeopsmanagement-command)
+- Enhanced `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command) to not cache anything and not to construct monolith.
+
+## Version 6.0.0.0
+
+**What's New:**
+
+- Enabled the iLO 7 support.
+- `appaccount` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#appaccount-command) is introduced which lets the user to manage the [application accounts](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-accounts) in iLO. This command may only be used locally, in iLO 7 based servers.
+- `channelinterface` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#channelinterface-command) is introduced with option `reset` which would let the user to reset all [CHIF](/docs/etc/glossaryterms/) channels. This command is valid only when logged in iLO 5 or 6 only.
+- `detectilo` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#detectilo-command) is introduced which lets the user know the iLO generation of the currently logged in server.
+
+**Fixes:**
+
+- Fixed issues with `createvolume` [command](/docs/redfishclients/ilorest-userguide/smartarraycommands/#createvolume-command-former-createlogicaldrive-command) options `quickdrive` and `customedrive` related issues w.r.t iLO 5 and `IOPerfModeEnabled` related issue w.r.t iLO 6. Also fixed the issue of extra or incorrect drives getting filtered while creation. 
+- Fixed an issue with `ServerInfo`[command](/docs/redfishclients/ilorest-userguide/ilocommands/#serverinfo-command) where `prossesorID` was not getting populated in the response.
+- Fixed an issue with `firmwareupdate` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#firmwareupdate-command) where the .lpk component was not getting flashed.
+- Fixed an issue with the `save` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#save-command) where the `selector` HpeBiosMapping did not return desired result.
+- Fixed issues with the `storagecontroller`[command](/docs/redfishclients/ilorest-userguide/smartarraycommands/#storagecontroller-command-former-smartarray-command) where the options `save` and `load` did not save or load anything. Also fixed an issue where the options `state` did not return any response.
+
+**Enhancements:**
+
+- Enhanced the `flashfwpkg` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#flashfwpkg-command) to support decoupled metadata structure for FWPKG components.
+- Enhanced `login` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#login-command) with new option `no_app_account` which would let the user to perform login operation without application account [application account](/docs/redfishservices/ilos/supplementdocuments/securityservice/#application-accounts) via VNIC.
+
+**Operating Systems:**
+
+This version of the iLOrest supports below operating systems
+
+- Microsoft Windows Server 2025
+- Microsoft Windows Server 2022
+- Microsoft Windows Server 2019
+- Red Hat Enterprise Linux 9 Server
+- Red Hat Enterprise Linux 8 Server
+- SUSE Linux Enterprise Server 15
+- VMWare ESXi v8.0
 
 ## Version 5.3.0.0
 
@@ -27,7 +83,7 @@ A <a href="https://pypi.org/project/ilorest" target="_blank">PyPI</a> project is
 - Fixed an issue with the `flashfwpkg` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#flashfwpkg-command).The command was not working with some directly connected drives or connected behind a storage controller.
 - Fixed an issue with the `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command). The command was not displaying the returned iLO error code when a non-existent URL was supplied as input.
 - Fixed an issue in the `login()` library
-  [function](/docs/redfishclients/python-redfish-library/3.2/python-library-reference3200/#loginauthsession)
+  [function](/docs/redfishclients/python-redfish-library/3.2/python-library-reference3200#loginauthsession)
   preventing the use of a OneView generated session key (SSO token). Refer to this [paragraph](/docs/redfishclients/python-redfish-library/examples/#session-tokens) for more information.
 
 **Enhancements:**
@@ -98,12 +154,14 @@ where AHS download in Intelligent Provisioning environment was failing.
 
 - Enhanced the `serverclone`
 [command](/docs/redfishclients/ilorest-userguide/ilocommands/#serverclone-command)
-to check the [server power state](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_computersystem_resourcedefns{{process.env.LATEST_FW_VERSION}}/#powerstate)
+to check the
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_computersystem_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "/#powerstate") %} server power state {% /link-internal %}
 before issuing a reboot.
+
 - Availability of an <a href="https://pypi.org/project/ilorest" target="_blank">iLOrest PyPI package</a>.
 fully equivalent to <a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest" target="_blank">other iLOrest packages</a>.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - Python3 is required prior to the installation.
 - The iLOrest PyPI package cannot coexist with the
@@ -111,13 +169,13 @@ fully equivalent to <a href="https://github.com/HewlettPackard/python-redfish-ut
 - This version supports only x86_64 systems.
 - Support on ARM based systems will be announced in a future release.
 
-:::
+{% /admonition %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
-Refer to the [installation section](../installation/#installing-the-ilorest-pypi-package) for additional information.
+Refer to the [installation section](installation/#installing-the-ilorest-pypi-package) for additional information.
 
-:::
+{% /admonition %}
 
 ## Version 4.9.0.0
 

@@ -12,7 +12,9 @@
 
 # ToDo:
 #        * Test that the $InputFiles variable is not empty !
+#        * Convert the outputs into Reunite/Realm/Markdoc format
 
+# version 0.11
 
 # Local Variables
 InputFiles=$(ls ${WorkingDirectory}/_${iLOGen}_resourcedefns${iLOVersion}.*)
@@ -31,8 +33,12 @@ for file in $InputFiles ; do
       *bios)
         maxTocDepth=3
         ;;
+      *serviceroot)
+        hideToc=true
+        ;;
       *)
         maxTocDepth=2
+        hideToc=false
         ;;
   esac
     
@@ -41,7 +47,8 @@ for file in $InputFiles ; do
   OutputFiles="${OutputFiles} $(basename ${OutputFile})"
 
   # The following SEO variable contains Redocly front end matter directives
-  SEO="---
+  if [ RedoclyRealm == "false" ] ; then
+    SEO="---
 seo:
   title: ${ResourceType^} resource definitions
 toc:
@@ -50,6 +57,23 @@ toc:
 disableLastModified: false
 ---\n
 "
+  else
+    SEO="---
+seo:
+  title: ${ResourceType^} resource definitions
+markdown:
+  toc:
+    hide: $hideToc
+    depth: $maxTocDepth
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
+---\n
+"
+  fi
+
+
   Header1Title="# ${ResourceType^} resource definitions of ${ilogen} v${iLOFwVersion}\n\n"
   FileDescription="For each data type provided by the HPE ilO Redfish service, \
 find below its description including the list of possible instances (URIs), \
@@ -106,8 +130,13 @@ for file in $OutputFiles ; do
   for collection in $collectionList ; do
     echo "  Processing ${collection}Collection"
     collectionIsIn=$(awk '/ '${collection}$'/ {print $1}' $TmpFile | sort -u)
-    # Replace string 'Collection of [${collection}](#collection)' with 'Collection of [.*](../filename/#collectioncollection'   
-    sed -i -e "s?\(^|.*|Collection of \[${collection}\](\)\(#.*\))|?\1../${collectionIsIn%.*}/\2collection)|?" $file &> /dev/null
+    # Replace string 'Collection of [${collection}](#collection)' with 'Collection of [.*](filename/#collectioncollection'  (Reunite/Realm)
+    # or with 'Collection of [.*](../filename/#collectioncollection' (Redocly/Workflows)
+    if [ $RedoclyRealm == true ] ; then
+      sed -i -e "s?\(^|.*|Collection of \[${collection}\](\)\(#.*\))|?\1${collectionIsIn%.*}/\2collection)|?" $file &> /dev/null
+    else
+      sed -i -e "s?\(^|.*|Collection of \[${collection}\](\)\(#.*\))|?\1../${collectionIsIn%.*}/\2collection)|?" $file &> /dev/null
+    fi
     ret="$?"
     if [ ! "${ret}" == "0" ] ; then
        echo "Problem with sed command"
@@ -122,7 +151,11 @@ for file in $OutputFiles ; do
     echo "  Processing ${resource} resource"
     resourceIsIn=$(awk '/ '${resource}$'/ {print $1}' $TmpFile2 | sort -u)
     # Replace string '[${resource}](#${resource})' with '[${resource}](../filename/#resource'  
-    sed -i -e "s?\(^|.*|\[${resource}\](\)\(#.*\))|?\1../${resourceIsIn%.*}/\2)|?" $file &> /dev/null
+    if [ $RedoclyRealm == true ] ; then
+      sed -i -e "s?\(^|.*|\[${resource}\](\)\(#.*\))|?\1${resourceIsIn%.*}/\2)|?" $file &> /dev/null
+    else
+      sed -i -e "s?\(^|.*|\[${resource}\](\)\(#.*\))|?\1../${resourceIsIn%.*}/\2)|?" $file &> /dev/null
+    fi
     ret="$?"
     if [ ! "${ret}" == "0" ] ; then
        echo "Problem with sed command"
@@ -133,9 +166,9 @@ for file in $OutputFiles ; do
   done
   echo  "Done"
   echo -e "*******************************************\n\n"                   
-  done
+done
 
-echo "Cleanup" 
+echo "Cleanup temp files" 
 rm $TmpFile $TmpFile2 &> /dev/null
 
 # Need to investigate how to return an exit code if problem above...

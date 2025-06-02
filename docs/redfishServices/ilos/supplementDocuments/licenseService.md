@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: iLO License service
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 ## iLO License service
@@ -12,9 +16,10 @@ disableLastModified: false
 The iLO License service is an OEM Redfish
 [data type](/docs/concepts/datatypesandcollections/#data-types)
 composed of the
-[collection service](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilolicensecollection)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeilolicensecollection") %} collection service {% /link-internal %}
 and the
-[service](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilolicense) itself.
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeilolicense") %} service {% /link-internal %}
+itself.
 
 Refer to the
 <a href="https://www.hpe.com/support/ilo6">iLO Licensing Guide</a>
@@ -24,27 +29,33 @@ This section provides examples for managing the iLO license featuring cURL
 and iLOrest with its built-in `ilolicense`
 [macro command](/docs/redfishclients/ilorest-userguide/ilocommands/#ilolicense-command).
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 By default (i.e. factory defaults), iLO contains a license with empty
 properties. Hence the number of members in the `HpeiLOLicenseCollection`
 is one. This number never increments.
-:::
+{% /admonition %}
 
 ## View iLO license properties
 
 The following example retrieves the license properties of an
 iLO 6 based server.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 The iLO license collection can have only one license. Hence, you can use the
 `?only`
 [query parameter](/docs/redfishservices/ilos/supplementdocuments/odataqueryoptions/)
 to expand the only member of the collection
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET {{iloURI}}/redfish/v1/Managers/1/LicenseService/?only
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --silent --location                                                          \
@@ -52,6 +63,9 @@ curl --silent --location                                                        
      --request GET https://${bmc_ip}/redfish/v1/Managers/1/LicenseService/?only | \
      jq .
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -118,14 +132,22 @@ curl --silent --location                                                        
     "Name": "iLO License"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 iLOrest features the macro `ilolicense` command for managing the iLO license.
+
+  {% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest ilolicense
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```shell Output
 Id:1
@@ -176,20 +198,25 @@ LicenseTier:ADV
 LicenseType:Internal
 Name:iLO License
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Installing an iLO license
 
 To install a license for the first time or to renew/upgrade/downgrade a
 license, use a POST request to the `HpeiLOLicense` service
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_resmap{{process.env.LATEST_FW_VERSION}}/).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_resmap", $env.PUBLIC_LATEST_FW_VERSION) %} URI {% /link-internal %}.
 This operation overrides the currently installed license.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 A successful iLO license installation returns a 201 HTTP code as well as the
 OpenData `error` object containing the successful `Base.*.Created` Message Id.
 Although receiving the `error` object may be confusing for a successful
 operation, it is fully compliant with the Redfish specification.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic request and body" %}
 
 ```text Generic request and body
 POST /redfish/v1/Managers/1/LicenseService/
@@ -197,6 +224,9 @@ POST /redfish/v1/Managers/1/LicenseService/
 Body: 
 {"LicenseKey": "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"}
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 bmc_ip="ilo-ip"
@@ -233,32 +263,46 @@ X-XSS-Protection: 1; mode=block
     ]
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest ilolicense --install xxxxx-xxxxx-xxxxx-xxxxx-xxxxx
 ilorest logout
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 A Python example using the HPE Python Redfish library is available in the
 <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/set_license_key.py" target="_blank">HPE GitHub repository</a>.
-:::
+{% /admonition %}
 
 ## Uninstalling an iLO license
 
 When you uninstall the iLO license, the `HpeiLOLicenseCollection` data type
 still contains one member, but this only member has mostly empty fields.
 
+  {% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 DELETE  /redfish/v1/Managers/1/LicenseService/1/
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest ilolicense uninstall
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --silent --location --header 'X-Auth-Token: 460eba169821e0ab389705269b3cb441' --request DELETE https://ilo-hst345g11-9/redfish/v1/Managers/1/LicenseService/1/ | jq .
@@ -275,3 +319,6 @@ curl --silent --location --header 'X-Auth-Token: 460eba169821e0ab389705269b3cb44
     ]
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}

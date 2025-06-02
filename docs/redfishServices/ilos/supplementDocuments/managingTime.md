@@ -1,20 +1,24 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Managing time in iLO
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 ## Managing Time in iLO
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 It is possible that some properties or resources described in this section
 are not implemented in iLO 4 and iLO 5.
 
-:::
+{% /admonition %}
 
 iLO obtains the date and time from one of several sources and is not
 manually configurable.
@@ -35,9 +39,15 @@ The configurable iLO time/date related configuration properties are:
 Current date and time of iLO is available in the main `Manager`
 resource at `/redfish/v1/Managers/{id}`
 
+  {% tabs %}
+{% tab label="Generic GET date" %}
+
 ```text Generic GET date/time
 GET /redfish/v1/Managers/{id}/?$select=DateTime, DateTimeLocalOffset
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 # The following iLOrest command logs into a remote iLO, selects the 
@@ -50,6 +60,9 @@ ilorest --nologo get --json DateTime DateTimeLocalOffset  \
         --user user --password password                   \
         --logout
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -57,7 +70,9 @@ ilorest --nologo get --json DateTime DateTimeLocalOffset  \
   "DateTimeLocalOffset": "-06:00"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Date/Time Service Resource
 
 A link exists in `/redfish/v1/Managers/{id}` to the iLO Date/Time Service.
@@ -73,9 +88,15 @@ The available time zones are listed in the `TimeZoneList` property. Take note
 of the `Index` value of the time zone you wish iLO to be configured with.
 Then `PATCH` the `TimeZone.Index` property:
 
+  {% tabs %}
+{% tab label="Time zone configuration" %}
+
 ```text Time zone configuration
 PATCH /redfish/v1/Managers/{id}/DateTime
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -84,7 +105,9 @@ PATCH /redfish/v1/Managers/{id}/DateTime
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 If the operation is successful, iLO responds with `HTTP 200 OK`
 and `ResetRequired`. An iLO reset is required for date and time
 operations to be applied. After a successful PATCH the
@@ -94,6 +117,9 @@ effect until iLO is reset.
 
 The following example illustrates this behavior using the iLOrest
 command line tool. Only relevant output is shown.
+
+  {% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login ilo-ip -u user -p password
@@ -143,7 +169,9 @@ ilorest get --json TimeZone/Index ConfigurationSettings
 
 ilorest logout
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 If the time zone is configured to be managed by DHCP, iLO responds with
 `HTTP 400` and `SNTPConfigurationManagedByDHCPAndIsReadOnly`
 (see Using DHCP Supplied Time Settings).
@@ -154,9 +182,15 @@ The current configured Network Time Protocol (NTP) servers are available
 in the `HpeiLODateTime` resource type at
 `/redfish/v1/Managers/{id}/DateTime`.
 
+  {% tabs %}
+{% tab label="Generic GET NTP servers request" %}
+
 ```text Generic GET NTP servers request
 GET /redfish/v1/Managers/{id}/DateTime/?$select=NTPServers
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 # The following iLOrest commands logs in a remote Redfish service,
@@ -169,6 +203,9 @@ ilorest select HpeiLODateTime.
 ilorest get --json NTPServers
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -178,13 +215,21 @@ ilorest logout
     ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 If NTP is not being managed by DHCP, you may PATCH server addresses
 into the `StaticNTPServers` array as shown in the following example.
+
+  {% tabs %}
+{% tab label="NTP servers PATCH URI" %}
 
 ```text NTP servers PATCH URI
 PATCH /redfish/v1/Managers/{id}/DateTime
 ```
+  
+  {% /tab %}
+{% tab label="Body (one NTP server)" %}
 
 ```json Body (one NTP server)
 {
@@ -193,6 +238,9 @@ PATCH /redfish/v1/Managers/{id}/DateTime
     ]
 }
 ```
+  
+  {% /tab %}
+{% tab label="Body (two NTP servers)" %}
 
 ```json Body (two NTP servers)
 {
@@ -202,25 +250,30 @@ PATCH /redfish/v1/Managers/{id}/DateTime
     ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 If the operation is successful, iLO responds with `HTTP 200 OK` and
 `Success`. After a successful PATCH the `ConfigurationSettings` property
 contains `Current` indicating that the new settings have have been taken
 into account.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 To empty the NTP servers list, PATCH with the following body:
 
 `{"StaticNTPServers": ["",""]}`
-:::
+{% /admonition %}
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 If you empty the NTP servers list, an iLO reset is required to take
 the modification into account.
-:::
+{% /admonition %}
 
 The following example is an iLOrest sequence of commands to set one or two
 NTP servers. The first example shows how to verify the new settings.
+
+  {% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest: Empty the NTP servers list
 ilorest login ilo-ip -u user -p password
@@ -228,6 +281,9 @@ ilorest select HpeiLODateTime.
 ilorest set StaticNTPServers=["",""]  --commit
 ilorest reset
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest: Set one NTP server
 ilorest login ilo-ip -u user -p password
@@ -237,6 +293,9 @@ ilorest select  HpeiLODateTime. --refresh
 ilorest get -j NTPServers ConfigurationSettings
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest: Set two NTP servers.
 ilorest login ilo-ip -u user -p password
@@ -246,12 +305,14 @@ ilorest select  HpeiLODateTime. --refresh
 ilorest get -j NTPServers ConfigurationSettings
 ilorest logout
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 If you receive a `400 bad request` response code with the
 `ArrayPropertyOutOfBound` error message, you should empty the NTP servers
 list, reset the iLO and resubmit your query.
-:::
+{% /admonition %}
 
 If the time zone is configured to be managed by DHCP, iLO responds
 with `HTTP 400` and `SNTPConfigurationManagedByDHCPAndIsReadOnly`.

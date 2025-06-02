@@ -1,10 +1,16 @@
 ---
 seo:
   title: Log services
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
+sidebar:
+  hide: false
+breadcrumbs:
+  hide: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdatedBlock:
+    hide: false
 ---
 
 ## Log services
@@ -19,16 +25,16 @@ different types:
 - [Alert Event Log](#alert-event-log).
 
 These logs are part of the standard Redfish
-[LogServiceCollection](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#logservicecollection)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "/#logservicecollection") %} LogServiceCollection {% /link-internal %}
 and spanning over the following URIs:
 
 - `/redfish/v1/Systems/1/LogServices` (IML, SL, Alert Event Log)
 - `/redfish/v1/Managers/1/LogServices` (IEL)
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Several log query filtering examples are present in the
 [Odata Query section](/docs/redfishservices/ilos/supplementdocuments/odataqueryoptions/)
-:::
+{% /admonition %}
 
 ## Security Logs
 
@@ -49,10 +55,16 @@ and an action
 SLs. Individual SLs can be accessed by performing `GET` on
 `/redfish/v1/Systems/1/LogServices/SL/Entries/{@SlId}`.
 
+{% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 > curl --insecure --location    \
        https://{iLO}/redfish/v1/systems/1/logservices/sl/entries/3
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -89,16 +101,19 @@ SLs. Individual SLs can be accessed by performing `GET` on
     "Severity": "Warning"
 }
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 ### Clearing SLs through Redfish Action
 
 To completely clear all SLs, perform `POST` on
 `https://{iLOIP}/redfish/v1/systems/1/logservices/sl/Actions/LogService.ClearLog`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Cleared SLs are available in the server
 [AHS](#the-active-health-system-log) logs.
-:::
+{% /admonition %}
 
 ## Integrated Management Log
 
@@ -130,10 +145,16 @@ and an action `LogService.ClearLog` to clear the IMLs. Individual IMLs can
 be accessed by performing `GET` on
 `/redfish/v1/Systems/1/LogServices/IML/Entries/{Id}`.
 
+{% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 > curl --insecure --location   /
 https://{iLO}/redfish/v1/systems/1/logservices/iml/entries/{Id}
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
         {
@@ -169,6 +190,8 @@ https://{iLO}/redfish/v1/systems/1/logservices/iml/entries/{Id}
         }
 ```
 
+{% /tab %}
+{% /tabs %}
 ### Repairing IMLs through Redfish PATCH
 
 To manually mark an IML event as repaired, perform a `PATCH` on
@@ -176,14 +199,20 @@ To manually mark an IML event as repaired, perform a `PATCH` on
 This is only supported on events that are of severity `Caution` or
 `Critical`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 When events are manually marked as repaired, SNMP or REST alerts are
 not notified.
-:::
+{% /admonition %}
+
+{% tabs %}
+{% tab label="Repair event request" %}
 
 ```text Repair event request
 PATCH /redfish/v1/systems/1/logservices/iml/entries/{ImlId}
 ```
+  
+{% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -195,15 +224,18 @@ PATCH /redfish/v1/systems/1/logservices/iml/entries/{ImlId}
 }
 ```
 
+  {% /tab %}
+  {% /tabs %}
+
 ### Clearing IMLs through Redfish Action
 
 To completely clear all IMLs, perform `POST` on
 `https://{iLOIP}/redfish/v1/systems/1/logservices/iml/Actions/LogService.ClearLog`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Cleared IMLs are available in the server
 [AHS](#the-active-health-system-log) logs.
-:::
+{% /admonition %}
 
 ## iLO Event Log
 
@@ -231,10 +263,16 @@ and an action
 to clear the IELs. Individual IELs can be accessed by performing
 `GET` on `/redfish/v1/Managers/1/LogServices/IEL/Entries/{@IelId}`.
 
+{% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 > curl --insecure --location \
   https://{iLO}/redfish/v1/managers/1/logservices/iel/entries/{IelId}
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -269,15 +307,18 @@ to clear the IELs. Individual IELs can be accessed by performing
 }
 ```
 
+{% /tab %}
+{% /tabs %}
+
 ### Clearing IELs through Redfish Action
 
 To completely clear all IELs, perform `POST` on
 `https://{iLOIP}/redfish/v1/managers/1/logservices/iel/Actions/LogService.ClearLog`.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Cleared IELs are still present in the server
 [AHS](#the-active-health-system-log) logs.
-:::
+{% /admonition %}
 
 ## Alert Event Log
 
@@ -322,9 +363,15 @@ clear the Alert Event Logs. Individual Alert Event Logs can be accessed by
 performing GET on
 `/redfish/v1/Systems/1/LogServices/Event/Entries/{@entriesId}`.
 
+{% tabs %}
+{% tab label="GET Event entry" %}
+
 ```text GET Event entry
 GET /redfish/v1/Systems/1/LogService/Event/Entries/24
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -357,16 +404,19 @@ GET /redfish/v1/Systems/1/LogService/Event/Entries/24
     "Severity": "Critical"
   }
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 ### Clearing Alert Event Log through Redfish Action
 
 To completely clear all Alert Event Logs, perform POST toward
 `https://{iLOIP}/redfish/v1/Systems/1/LogServices/Event/Actions/LogService.ClearLog/`.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Read the [RESTful Events](/docs/concepts/redfishevents/) section for more
 information on Redfish Events.
-:::
+{% /admonition %}
 
 ## The Active Health System Log
 
@@ -400,7 +450,7 @@ for more information on the AHS log.
 Active Health System (AHS) data may be accessed by first discovering
 the resource of type `HpeiLOActiveHealthSystem`. This is typically at
 `https://{iLO}/redfish/v1/managers/{item}/activehealthsystem/`. Refer to the
-[Resource Map](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_resmap{{process.env.LATEST_FW_VERSION}}/)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "/#logservicecollection") %} LogServiceCollection {% /link-internal %}
 section for confirmation of this URI.
 
 Perform a GET of the `HpeiLOActiveHealthSystem` resource and look for the
@@ -408,9 +458,15 @@ Perform a GET of the `HpeiLOActiveHealthSystem` resource and look for the
 to time ranges. The following example retrieves this object from an
 iLO 6 based server.
 
+{% tabs %}
+{% tab label="GET request" %}
+
 ```text GET request
 /redfish/v1/Managers/1/ActiveHealthSystem/?$select=Links
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -431,6 +487,9 @@ iLO 6 based server.
     }
 }
 ```
+
+{% /tab %}
+{% /tabs %}
 
 Once you have identified the location of the AHS file, perform a GET to
 location with the following query parameters to define the download time
@@ -456,19 +515,107 @@ download which can be saved to a file.
 The following example retrieves the entire AHS log from an
 HPE iLO 6 based server.
 
+{% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET /redfish/v1/managers/1/activehealthsystem
 ```
+  
+{% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --location --user <ilo-user>:password \
      https://<ilo-ip>//redfish/v1/managers/1/activehealthsystem
 ```
+  
+{% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest -d serverlogs --selectlog=AHS --downloadallahs  
 ```
 
+{% /tab %}
+{% /tabs %}
+
 For a full Redfish example click here:
 <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/get_ahs_data.py" target="_blank">get\_ahs\_data.py</a>
+
+## Air Filter record
+
+Some HPE servers like the HPE DL145 Gen11 embed
+an air filter that has to be replaced periodically. The iLO
+of those servers automatically generates reminder records
+in the Integrated Management Log (IML).
+By default, HPE iLO reminds you to replace the air filter
+with an early and critical IMLs at 85 and 90 days of
+Power-On operation respectively.
+The examples of HPE iLO generating IMLs are as follows:
+
+{% tabs %}
+{% tab label="Early reminder log entry" %}
+
+```text Early reminder
+The air filter installed in the server has now operated for 85 days and will
+reach its maximum usage limit for a highly particulate environments in 5 days.
+To ensure optimal performance, it is advised that you inspect the air filter
+and replace it, if necessary.
+```
+
+{% /tab %}
+{% tab label="Critical reminder log entry" %}
+
+```text Critical reminder
+The air filter installed in the server has now operated for 90 days and has
+reached its maximum usage limit for a highly particulate environment. To ensure
+optimal performance, it is advised that you inspect the air filter and
+replace it if necessary.
+```
+
+{% /tab %}
+{% /tabs %}
+
+Use the following Redfish action to set custom durations for these reminder IMLs:
+
+{% tabs %}
+{% tab label="POST action" %}
+
+```text POST action
+POST /redfish/v1/managers/1/actions/Oem/Hpe/HpeiLO.TriggerFilterChangeTimer
+```
+
+{% /tab %}
+{% tab label="Payload" %}
+
+```json Payload
+{
+  "RemainingDaysForEarlyReminder": <integer 25-175 (default: 85)>,
+  "RemainingDaysForCriticalReminder": <integer 30-180 (default: 90)>
+}
+```
+
+{% /tab %}
+{% /tabs %}
+
+The request parameters such as `RemainingDaysForEarlyReminder` and
+`RemainingDaysForCriticalReminder` specifies duration of the
+`FinishedPost`
+[operation](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_computersystem_resourcedefns167/#oemhpepoststate)
+after which the early warning and
+critical warning reminders are respectively logged.
+
+The power-on duration of a system tracks the operating time of a
+server, against the set duration for a notification, only when the
+server POST (Power On Self Test) is complete.
+
+{% admonition type="info" name="NOTE" %}
+HPE iLO checks for a system uptime every 24 hours to determine the 
+expired reminders. Expect a delay of about 0-24 hours to receive a
+notification in the IML log after the server has completed the
+power-on durations set using the `RemainingDaysForEarlyReminder`
+and `RemainingDaysForCriticalReminder` parameters.
+{% /admonition %}
+

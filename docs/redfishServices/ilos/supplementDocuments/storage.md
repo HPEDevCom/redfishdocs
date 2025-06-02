@@ -1,10 +1,14 @@
 ---
 seo:
   title: Storage data models
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 ---
 
 # Storage data models
@@ -29,7 +33,7 @@ using its own database of storage controller resources and properties,
 populated during Pre-OS tasks (POST).
 
 For more information on HPE RDE support changes and limitations, refer to the
-[Redfish Device Enablement (RDE) support](../rdesupport/) section.
+[Redfish Device Enablement (RDE) support](rdesupport/) section.
 
 For updated information on the Redfish resources, corresponding URIs, and
 supported HTTP methods towards storage controllers implementing PLDM for
@@ -38,7 +42,7 @@ RDE, refer to the
 target="_blank">HPE Storage Controllers Management Overview</a>
 technical whitepaper.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Redfish responses from controllers implementing PLDM for RDE depend on
 the schema versions that are supported by each device and are likely to
 vary across each device vendor/family/model. Create and delete volume
@@ -48,11 +52,11 @@ As an example, NS204 storage devices don't support the
 DELETE volume request, while SR and MR controllers do.
 Refer to the [Drive secure erase](#drive-secure-erase) paragraph below
 for an example of NS204i volume deletion.
-:::
+{% /admonition %}
 
 ## Storage requests examples
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 It is a good practice to verify that the server is powered on
 and that all the devices have been discovered before
@@ -61,14 +65,14 @@ any operation to those devices.
 As mentioned in step 1 of the
 [Drive secure erase](/docs/redfishservices/ilos/supplementdocuments/storage/#drive-secure-erase)
 procedure below, the `Oem.Hpe.DeviceDiscoveryComplete.DeviceDiscovery`
-[property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_computersystem_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpedevicediscoverycomplete)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_computersystem_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.devicediscoverycomplete") %} property {% /link-internal %}
 should be equal to `vMainDeviceDiscoveryComplete` before any operation involving storage or network devices.
 
 Refer to this
 <a href="https://developer.hpe.com/blog/master-the-redfish-server-states-to-improve-your-monitoring-and-manageme/"
 target="_blank">article</a>
 for more information concerning server states.
-:::
+{% /admonition %}
 
 ### GET requests
 
@@ -79,6 +83,9 @@ RDE devices (`DE040000` and `DE042000`) and two
 direct attached devices (`DA000005` and `DA000006`).
 
 <!-- The following example comes from ilo-lio365g11-2 -->
+
+  {% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest list Members --select StorageCollection. --json
@@ -99,6 +106,9 @@ ilorest list Members --select StorageCollection. --json
   ]
 }
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --location --silent --user $user:password  \
@@ -117,10 +127,15 @@ curl --insecure --location --silent --user $user:password  \
   "@odata.id": "/redfish/v1/Systems/1/Storage/DA000006"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the list of RDE storage devices only,
 using the iLOrest `storagecontroller`
 [command](/docs/redfishclients/ilorest-userguide/smartarraycommands/#storagecontroller-command-former-smartarray-command).
+
+  {% tabs %}
+{% tab label="ilorest storagecontroller" %}
 
 ```shell ilorest storagecontroller
 ilorest storagecontroller
@@ -130,17 +145,25 @@ List of RDE storage devices
 DE040000: HPE MR216i-o Gen11: Health OK: Enabled
 DE042000: HPE NS204i-u Gen11 Boot Controller: Health OK: Enabled
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the properties of a specific
 storage device.
 
 <!-- Following example coming from ilo-hst110g11-158 -->
+
+  {% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest list --select Storage.v \
         --filter @odata.id="/redfish/v1/Systems/1/Storage/DA000001*" \
         --json
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 iLO=<ilo-ip>
@@ -149,6 +172,9 @@ curl --insecure --location --silent --user $user:password  \
       https://$iLO/redfish/v1/Systems/1/Storage/DA000001 | \
       jq '.'
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -218,6 +244,186 @@ curl --insecure --location --silent --user $user:password  \
   ]
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
+The following example retrieves the URIs of the controllers
+attached to storage devices.
+
+<!-- The following example comes from ilo-lio365g11-2.
+     NOTE: As per Issue #1076 in the iLOrest sources GitHub
+           (https://github.hpe.com/intelligent-provisioning/python-restful-interface-tool/issues/1076)
+           iLOrest 5.2.0.0 returns only DA controllers on systems containing DE and DA devices.
+           
+           Hence, the following example is not accurate since it supposes that iLOrest returns
+           all controllers, including DE ones. It will become Ok when bug fixed.
+-->
+
+  {% tabs %}
+{% tab label="iLOrest" %}
+
+```shell iLOrest
+ilorest list members --selector=StorageControllerCollection --json
+```
+  
+  {% /tab %}
+{% tab label="cURL" %}
+
+```shell cURL
+iLO="<ilo-ip>"
+# Retrieve Storage Device URIs
+StorageDeviceList="$(curl --insecure --location --silent --user \
+                     $user:password https://$iLO/redfish/v1/Systems/1/Storage | \
+                     jq -r '.Members[] | ."@odata.id"' )"
+
+for uri in $StorageDeviceList ; do
+  curl --insecure --location --silent --user \
+       $user:password https://${iLO}${uri}/Controllers | \
+       jq '.Members[]'
+done
+```
+  
+  {% /tab %}
+{% tab label="Response body" %}
+
+```json Response body
+{
+  "@odata.id": "/redfish/v1/Systems/1/Storage/DE040000/Controllers/0"
+}
+{
+  "@odata.id": "/redfish/v1/Systems/1/Storage/DE042000/Controllers/0"
+}
+{
+  "@odata.id": "/redfish/v1/Systems/1/Storage/DA000005/Controllers/0"
+}
+{
+  "@odata.id": "/redfish/v1/Systems/1/Storage/DA000006/Controllers/0"
+}
+```
+  
+  {% /tab %}
+  {% /tabs %}
+The following example retrieves the `Status` property of a
+specific controller.
+
+  {% tabs %}
+{% tab label="ilorest" %}
+
+```shell ilorest
+ilorest get Status --select StorageController. --filter Name="HPE MR216*"  --json
+```
+  
+  {% /tab %}
+{% tab label="curl" %}
+
+```shell curl
+# Retrieve Storage Device URIs
+StorageDeviceList="$(curl --insecure --location --silent --user \
+                     $user:password https://$iLO/redfish/v1/Systems/1/Storage | \
+                     jq -r '.Members[] | ."@odata.id"' )"
+
+ControllerUris=\
+"$(\
+for uri in $StorageDeviceList ; do
+    curl --insecure --location --silent --user $user:password \
+    https://${iLO}${uri}/Controllers |        \
+    jq -r '.Members[] | ."@odata.id"'
+done \
+  )"
+````
+  
+  {% /tab %}
+{% tab label="Response body" %}
+
+```json Response body
+{
+  "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+  }
+}
+
+```
+  
+  {% /tab %}
+  {% /tabs %}
+The following example retrieves the drive list behind a
+specific RDE capable storage device and prints a few properties in
+human readable format.
+Append the `--json` attribute to get the output in JSON format.
+
+  {% tabs %}
+{% tab label="iLOrest" %}
+
+```shell iLOrest
+ilorest storagecontroller --storageid=DE040000 --physicaldrives
+
+--------------------------------------------------
+Drives on Storage DE040000
+--------------------------------------------------
+        [2:1:2]: 480GB 6G SATA SSD, Model MK000480GWXFF, Location 2:1:2, Type SSD, Serial EDB9N5464I1309H68 - 480103981056 Bytes
+        [1:1:6]: 480GB 6G SATA SSD, Model MK000480GWXFF, Location 1:1:6, Type SSD, Serial EDB9N5464I1309H63 - 480103981056 Bytes
+        [2:1:1]: 480GB 6G SATA SSD, Model MK000480GWXFF, Location 2:1:1, Type SSD, Serial EDB9N5464I1309H69 - 480103981056 Bytes
+        [2:1:3]: 480GB 6G SATA SSD, Model MK000480GWXFF, Location 2:1:3, Type SSD, Serial EDB9N5464I1309H5Q - 480103981056 Bytes
+        [2:1:4]: 480GB 6G SATA SSD, Model MK000480GWXFF, Location 2:1:4, Type SSD, Serial EDB9N5464I1309H5I - 480103981056 Bytes
+        [1:1:5]: 480GB 6G SATA SSD, Model MK000480GWXFF, Location 1:1:5, Type SSD, Serial EDB9N5464I1309H5H - 480103981056 Bytes
+        [1:1:7]: 3.84TB 32G NVMe SSD, Model VO003840KYDMV, Location 1:1:7, Type SSD, Serial S70LNE0T801822 - 3840755982336 Bytes
+        [1:1:8]: 3.84TB 32G NVMe SSD, Model VO003840KYDMV, Location 1:1:8, Type SSD, Serial S70LNE0T902775 - 3840755982336 Bytes
+```
+  
+  {% /tab %}
+{% tab label="cURL" %}
+
+```shell cURL
+# Retrieve the Drive list behind controller DE040000
+iLO=<ilo-ip>
+User=<ilo-user>
+
+DriveList=$(curl --silent --insecure --location -u $User:password \
+            https://$iLO/redfish/v1/Systems/1/Storage/DE040000 | \
+            jq '.Drives[]' | \
+            awk -F\" '{print $4}')
+
+# For each drive URI, fetch properties (output truncated)
+for d in $DriveList ; do
+  curl --silent --insecure --location -u $User:password \
+       https://${iLO}${d} | jq .
+done
+
+{
+  "@odata.etag": "\"e30afa80\"",
+  "@odata.id": "/redfish/v1/Chassis/DE040000/Drives/0",
+  "@odata.type": "#Drive.v1_17_0.Drive",
+  "Id": "0",
+  "Name": "480GB 6G SATA SSD",
+  "Status": {
+    "State": "Enabled",
+    "Health": "OK"
+  },
+  "Links": {
+    "Storage": {
+      "@odata.id": "/redfish/v1/Systems/1/Storage/DE040000"
+    },
+    "Chassis": {
+      "@odata.id": "/redfish/v1/Chassis/DE040000"
+    },
+    "Volumes@odata.count": 1,
+    "Volumes": [
+      {
+        "@odata.id": "/redfish/v1/Systems/1/Storage/DE040000/Volumes/239"
+      }
+    ]
+  },
+...
+}
+```
+  
+  {% /tab %}
+  {% /tabs %}
+The following example retrieves the drive properties of a specific drive
+
+  {% tabs %}
+{% tab label="GET Drive properties" %}
 
 The following example retrieves the URIs of the controllers
 attached to storage devices.
@@ -367,6 +573,9 @@ The following example retrieves the drive properties of a specific drive
 ```text GET Drive properties
 GET /redfish/v1/Systems/1/Storage/{item}/Drives/{item}
 ```
+  
+  {% /tab %}
+{% tab label="Response body (abbreviated)" %}
 
 ```json Response body (abbreviated)
 {
@@ -420,10 +629,16 @@ GET /redfish/v1/Systems/1/Storage/{item}/Drives/{item}
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Volume properties" %}
 
 ```text Volume properties
 GET /redfish/v1/Systems/1/Storage/{item}/Volumes/{item}
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -469,7 +684,9 @@ GET /redfish/v1/Systems/1/Storage/{item}/Volumes/{item}
     "WriteCachePolicy": "WriteThrough"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Creating Volumes
 
 Creating volumes in a storage controller supporting [PLDM for RDE](/docs/etc/glossaryterms/) in
@@ -481,18 +698,31 @@ with a GET request toward
 `/redfish/v1/Systems/1/Storage/{item}/Volumes/Capabilities`. This URI
 provides as well the possible values for each capability.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 - The `Volumes/Capabilities` URI only exists on writable storage devices.
 - You can verify that POST requests are allowed to create volumes in a
 specific storage controller by checking the `Allow` response header of a GET request
 to its Volume collection URI. Refer to the next example for detail.
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic HEAD request" %}
 
 ```text Generic HEAD request
 HEAD /redfish/v1/Systems/1/Storage/{item}/Volumes
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest request" %}
+
+```shell iLOrest request
+ilorest rawhead /redfish/v1/Systems/1/Storage/DE07A000/Volumes
+```
+  
+  {% /tab %}
+{% tab label="Response headers" %}
 
 ```shell iLOrest request
 ilorest rawhead /redfish/v1/Systems/1/Storage/DE07A000/Volumes
@@ -513,12 +743,46 @@ ilorest rawhead /redfish/v1/Systems/1/Storage/DE07A000/Volumes
 }
 
 ```
+  
+  {% /tab %}
+  {% /tabs %}
+The following example retrieves the `Volumes/Capabilities` properties of a MR408i storage.
 
-The following example retrieves the `Volume/Capabilities` properties of a MR408i storage.
+  {% tabs %}
+{% tab label="generic GET request" %}
 
 ```text generic GET request
 GET /redfish/v1/Systems/1/Storage/{item}/Volumes/Capabilities
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest commands" %}
+
+```shell iLOrest commands
+# The following commands retrieve the volume capabilities of the MR408i
+# storage device located in a Gen11 server.
+
+ilorest login <ilo-ip> -u <ilo-user> -p password
+
+# Extract the storage device ID
+ilorest --nologo storagecontroller | awk -F: '/MR408i/ {print $1}'
+DE00D000
+
+# Retrieve the URI of the volume capabilites of device DE00D000
+ilorest list @Redfish.CollectionCapabilities/Capabilities/CapabilitiesObject/@odata.id \
+                --filter @odata.id="/redfish/v1/Systems/1/Storage/DE00D000*" | \
+awk -F= '/odata.id/ {print $NF}'
+/redfish/v1/Systems/1/Storage/DE00D000/Volumes/Capabilities
+
+# List the volume capabilites of device DE00D000
+ilorest --nologo rawget --silent /redfish/v1/Systems/1/Storage/DE00D000/Volumes/Capabilities
+
+# logout
+ilorest logout
+```
+  
+  {% /tab %}
+{% tab label="Volume capabilities" %}
 
 ```shell iLOrest commands
 # The following commands retrieve the volume capabilities of the MR408i
@@ -612,14 +876,19 @@ ilorest logout
   "WriteCachePolicy@Redfish.UpdatableAfterCreate": true
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example creates a RAID1 volume in a [RDE](/docs/etc/glossaryterms/) capable
 MR storage device part of a Gen11/iLO 6 server. If you want
-to provide more parameters, consult the `Volume/Capabilities` features
+to provide more parameters, consult the `Volumes/Capabilities` features
 available for this device, as described above.
 
 <!-- Following example performed on ilo-lio365g11-2 
      NOTE: quickdrive and customdrive are not supported with iLO 6 -->
+
+  {% tabs %}
+{% tab label="Generic Volume creation" %}
 
 ```text Generic Volume creation
 POST /redfish/v1/Systems/1/Storage/{item}/Volumes
@@ -644,6 +913,9 @@ Body:
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest volume creation" %}
 
 ```shell iLOrest volume creation
 # The following command has been performed against an MR device in an iLO 6 based system
@@ -654,19 +926,30 @@ CreateVolume path and payload: /redfish/v1/Systems/1/Storage/DE040000/Volumes, {
 rives/1'}]}, 'RAIDType': 'RAID1', 'DisplayName': 'Test1'}
 Volume created successfully
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Deleting Volumes
 
 The following example deletes volume 239 in [RDE](/docs/etc/glossaryterms/) capable device `DE040000`
 part of a Gen11/iLO 6 server.
 
+  {% tabs %}
+{% tab label="Generic DELETE request" %}
+
 ```text Generic DELETE request
 DELETE /redfish/v1/Systems/1/Storage/{StorageId}/Volumes/{VolumeId}
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest volume deletion" %}
 
 ```shell iLOrest volume deletion
 ilorest deletevolume 239 --storageid=DE040000 --controller=0
 ```
+  
+  {% /tab %}
+{% tab label="curl volume deletion" %}
 
 ```shell curl volume deletion
 iLO="<ilo-ip>"
@@ -674,13 +957,15 @@ User="<iLO-user>"
 curl --silent --insecure --location -u $User:password \
      -X DELETE "https://${iLO}/redfish/v1/Systems/1/Storage/DE040000/Volumes/239"
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 
 Refer to the [Drive secure erase](#drive-secure-erase) section for deleting
 the NS204 volume.
 
-:::
+{% /admonition %}
 
 ### Drive secure erase
 
@@ -688,7 +973,7 @@ Although volume deletion is sufficient for most use cases, data is still present
 In order to erase drive data, the DMTF proposes the `Drive.SecureErase`
 [action](/docs/concepts/performing_actions/), in the `Drive` schema.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `Drive.SecureErase` action may not be visible in the drive properties
 when the drive is part a volume.
 In this case, a [volume deletion](#deleting-volumes) is necessary
@@ -696,7 +981,7 @@ before the drive secure erase operation can occur.
 
 Refer to the [previous section](#deleting-volumes) for the generic
 way for deleting volumes.
-:::
+{% /admonition %}
 
 Using the latest version of <a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest"
 target="_blank">iLOrest</a>
@@ -712,7 +997,7 @@ if you have more than one NS204 devices in your server.
 
 2. Locate NS204i storage device, volume and disks URIs.
 
-   :::success TIP
+   {% admonition type="success" name="TIP" %}
    NS204 drives are not listed in the `DriveCollection` schema.
    Their URIs are under `/redfish/v1/Sytems/1/Storage/{NS204Id}/Drives`,
    which is not in the DMTF's
@@ -721,20 +1006,23 @@ if you have more than one NS204 devices in your server.
 
    As a consequence, you'll have to extract the `Drives[]` array
    starting at the storage device URI.
-   :::
+   {% /admonition %}
 
 3. Deletion / `ResetToDefaults` of the logical volume to make the `Drive.SecureErase`
    action visible on the corresponding drives.
 
-   :::info NOTE
+   {% admonition type="info" name="NOTE" %}
    The volume URI of NS204 storage devices does not allow
    DELETE requests. It is needed to use the `ResetToDefaults` action
    for that purpose.
-   :::
+   {% /admonition %}
 
 4. Secure erase disks and restart server.
 
 <!-- Use of ilo-lio365g11-2 for those examples -->
+
+  {% tabs %}
+{% tab label="iLOrest step 1" %}
 
 ```shell iLOrest step 1
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -746,6 +1034,9 @@ while [[ "$(ilorest get --json --select ComputerSystem. --refresh | jq -r '.Oem.
      sleep 5
 done
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest step 2" %}
 
 ```shell iLOrest step 2
 # NS204 URI identification 
@@ -791,6 +1082,9 @@ ilorest list Links/Drives --select Volume.v  \
   }
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest step 3" %}
 
 ```shell iLOrest step 3
 # Delete volume / Reset to defaults
@@ -803,6 +1097,9 @@ cat DeleteNS204Volume.json
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest step 4" %}
 
 ```shell iLOrest step 4
 # Retrieve the Drive.SecureErase URI.
@@ -829,8 +1126,13 @@ ilorest reboot ForceRestart
 # Don't forget to logout
 ilorest logout
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Same as above, but with cURL
+
+  {% tabs %}
+{% tab label="cURL step 1" %}
 
 ```shell cURL step 1
 iLO="<ilo-ip>"
@@ -841,6 +1143,9 @@ while [[ "$(curl --silent --insecure --location -u $User:password https://${iLO}
      sleep 5
 done
 ```
+  
+  {% /tab %}
+{% tab label="cURL step 2" %}
 
 ```shell cURL step 2
 # NS204 URI identification
@@ -865,6 +1170,9 @@ DriveURIs=$(curl --silent --insecure --location -u $User:password \
      https://${iLO}${VolumeURI} | \
      jq -r '.Links.Drives[] | ."@odata.id"')
 ```
+  
+  {% /tab %}
+{% tab label="cURL step 3" %}
 
 ```shell cURL step 3
 # Delete volume / Reset to defaults
@@ -872,6 +1180,9 @@ curl --silent --insecure --location -u $User:password \
      -X POST "https://${iLO}/redfish/v1/Systems/1/Storage/DE042000/Actions/Storage.ResetToDefaults" \
      --data '{"ResetType": "ResetAll"}'
 ```
+  
+  {% /tab %}
+{% tab label="cURL step 4" %}
 
 ```shell cURL step 4
 # Retrieve the Drive.SecureErase URI.
@@ -901,18 +1212,28 @@ curl --silent --insecure --location -u $User:password \
        -X POST "https://${iLO}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/" \
        --data '{"ResetType": "ForceRestart"}'
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 While the secure erase process is in progress, you can monitor its progress by
-monitoring the `Operations[]` [array](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#operations-array)
-and the `Status` [property](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#status-3)
+monitoring the `Operations[]`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_storage_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#operations-array") %} array {% /link-internal %}
+and the `Status`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_storage_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#status-3") %} property {% /link-internal %}
 of the disks being erased.
 
 The following example retrieves the `Operations[]` array and the drives status property using iLOrest and cURL.
 
+  {% tabs %}
+{% tab label="iLOrest" %}
+
 ```shell iLOrest
 ilorest list  @odata.id Operations Status --filter @odata.id="/redfish/v1/Systems/1/Storage/DE042*"  --json 
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 for drive in $DriveURIs ; do
@@ -921,5 +1242,7 @@ for drive in $DriveURIs ; do
   jq '."@odata.id", .Operations[], .Status'
 done
 ```
-
-:::
+  
+  {% /tab %}
+  {% /tabs %}
+{% /admonition %}

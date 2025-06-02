@@ -1,12 +1,17 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Redfish concepts
-toc:
-  enable: false
-disableLastModified: false
 ---
 
-## Redfish® at a glance
+## Redfish at a glance
 
 As per the
 <a href="https://redfish.dmtf.org/education"

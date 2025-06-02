@@ -1,9 +1,15 @@
 ---
 seo:
   title: HPE iLO 6 documentation overview
-disableLastModified: true
-toc:
-   enable: false
+sidebar:
+  hide: false
+markdown:
+  toc:
+    hide: true
+  lastUpdatedBlock:
+    hide: true
+  breadcrumbs:
+    hide: true
 ---
 
 # HPE iLO 6 Redfish documentation overview
@@ -20,15 +26,17 @@ The [Changelog](/docs/redfishservices/ilos/ilo6/ilo6_changelog/) section contain
 
 ## Reference documents
 
-HPE iLO Redfish [reference documents](/docs/redfishservices/ilos/ilo6/ilo6_{{process.env.LATEST_ILO6_FW_VERSION}}/) contains all the needed API information related to published iLO firmware versions, for writing efficient Redfish clients.
+HPE iLO Redfish
+{% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION) %} reference documents {% /link-internal %}
+contains all the needed API information related to published iLO firmware versions, for writing efficient Redfish clients.
 
 ## Supplement documents
 
 The [supplement documents section](/docs/redfishservices/ilos/supplementdocuments/) provides useful technical information with practical examples that should work against all versions of iLO firmware (if not, it provides the exact working firmware version). As an example, the [OData query options](/docs/redfishservices/ilos/supplementdocuments/odataqueryoptions/) page explains briefly the concept of OData query options and provides examples that can be used to simplify Redfish client requests and associated response parsing.
 
-:::info INFO
+{% admonition type="info" name="INFO" %}
 Supplement documents are regularly updated. You should check the last update date in the upper left corner of the main pane of each document.
-:::
+{% /admonition %}
 
 ### Supplement documents organization
 

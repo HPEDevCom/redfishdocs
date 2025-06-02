@@ -1,15 +1,19 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: HPE Python Redfish library changelog
-disableLastModified: false
-toc:
-  enable: true
-  maxDepth: 2
 ---
 
 # Changelog for the HPE Python Redfish library
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 The HPE Python Redfish library is used by the
 [HPE iLOrest](/docs/redfishclients/ilorest-userguide/) RESTful interface tool.
@@ -19,7 +23,7 @@ For this reason, they both share the same changelog information.
 Refer to the **[iLOrest changelog](/docs/redfishclients/ilorest-userguide/changelog/)**
 for versions greater than 4.8.0.0
 
-:::
+{% /admonition %}
 
 ## Version 4.8.0.0
 

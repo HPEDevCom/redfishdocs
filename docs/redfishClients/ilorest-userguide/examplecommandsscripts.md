@@ -1,10 +1,14 @@
-﻿---
+---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Use case examples and macro commands
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Use Case Examples and Macro Commands
@@ -135,7 +139,10 @@ systems through Redfish. Legacy modes are supported for older HPRest iLO 4 syste
 |--------------------------------|------------------------------------------------------------------------------ |
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Asset_Tag.sh" target="_blank">Get\_Asset\_Tag.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Asset_Tag.bat" target="_blank">Get\_Asset\_Tag.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Get_Asset_Tag.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
@@ -144,14 +151,19 @@ Discovering data...Done
 ServerAssetTag="MySystem"
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Set the system asset tag BIOS attribute
 
 |    **Linux**                   | **Windows**                                                                   |
 |--------------------------------|------------------------------------------------------------------------------ |
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Set_Asset_Tag.sh" target="_blank">Set\_Asset\_Tag.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Set_Asset_Tag.bat" target="_blank">Set\_Asset\_Tag.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Set_Asset_Tag.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -161,14 +173,19 @@ Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Set Server Name
 
 |    **Linux**                   | **Windows**                                                                   |
 |--------------------------------|------------------------------------------------------------------------------ |
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Set_Server_Name.sh" target="_blank">Set\_Server\_Name.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Set_Server_Name.bat" target="_blank">Set\_Server\_Name.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Set_Server_Name.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -178,16 +195,18 @@ Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Changing BIOS Administrator Password
 
 The `Bios` type has two properties that both need to be used to change the administrator password, `AdminPassword` and `OldAdminPassword`. `AdminPassword` is the new password you want to change to, and `OldAdminPassword` is the current password you have.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 If there is no current password, you must include `OldAdminPassword=""`
 
-:::
+{% /admonition %}
 
 ![BIOS Password Example 1](images/BIOSPassword_1.png "BIOS Password Example 1")
 
@@ -197,17 +216,17 @@ If you perform a `get` command to find the current `AdminPassword` and `OldAdmin
 
 In order to change the administrator password, you need to set the `AdminPassword` (the new value you want) and the `OldAdminPassword` (what the admin password was before), as well as include the `–biospassword` flag if the system is iLO 4.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `biospassword` value is the same as the `OldAdminPassword` value.
-:::
+{% /admonition %}
 
 ![BIOS Password Example 3](images/BIOSPassword_3.png "BIOS Password Example 3")
 
 After you&apos;ve set the values for `AdminPassword` and `OldAdminPassword`, you need to commit your changes and reboot your server:
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 To change the administrator password, `AdminPassword` and `OldAdminPassword` must be set in the same line.
-:::
+{% /admonition %}
 
 ![BIOS Password Example 4](images/BIOSPassword_4.png "BIOS Password Example 4")
 
@@ -216,10 +235,10 @@ Then when you log into the server again, the BIOS password will have been update
 ## BIOS Boot Settings and Control
 
 The following examples demonstrate methods to alter the boot configuration of the system.
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Redfish BIOS boot settings only support UEFI (Unified Extensible Firmware Interface). Legacy options are not supported,
 but may be available through configuration of BIOS attributes.
-:::
+{% /admonition %}
 
 ### Get Current Boot Mode
 
@@ -228,7 +247,10 @@ but may be available through configuration of BIOS attributes.
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Boot_Mode.sh" target="_blank">Get\_Boot\_Mode.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Boot_Mode.bat" target="_blank">Get\_Boot\_Mode.bat</a> |
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Current_Boot_Mode.sh" target="_blank">Get\_Current\_Boot\_Mode.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Current_Boot_Mode.bat" target="_blank">Get\_Current\_Boot\_Mode.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Get_Boot_Mode.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -237,7 +259,9 @@ Discovering data...Done
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Get Default Boot Order
 
 
@@ -245,7 +269,10 @@ Logging session out.
 |---------------------------------|-----------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Persistent_Boot_Order.sh" target="_blank">Get\_Persistent\_Boot\_Order.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Persistent_Boot_Order.bat" target="_blank">Get\_Persistent\_Boot\_Order.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Get_Persistent_Boot_Order.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -262,14 +289,19 @@ PersistentBootConfigOrder=HD.SD.1.2
                            NIC.FlexLOM.1.1.IPv6
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Set Default Boot Order
 
 |    **Linux**                    | **Windows**                                                                 |
 |---------------------------------|-----------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Set_Persistent_Boot_Order.sh" target="_blank">Set\_Persistent\_Boot\_Order.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Set_Persistent_Boot_Order.bat" target="_blank">Set\_Persistent\_Boot\_Order.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Set_Persistent_Boot_Order.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -279,7 +311,9 @@ Committing changes...
 One or more properties were changed and will not take effect until system is reset.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Set One Time Boot
 
 Configure one time boot selection. A subsequent system reboot will return the boot settings to normal (property is automatically altered following POST by the BIOS provider)
@@ -288,7 +322,10 @@ Configure one time boot selection. A subsequent system reboot will return the bo
 |---------------------------------|-----------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Set_One_Time_Boot_Order.sh" target="_blank">Set\_One\_Time\_Boot\_Order.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Set_One_Time_Boot_Order.bat"  target="_blank">Set\_One\_Time\_Boot\_Order.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Set_One_Time_Boot_Order.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -299,14 +336,19 @@ Discovering data...Done
 Logging session out.
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Get Supported Boot Mode
 
 |    **Linux**                    | **Windows**                                                                 |
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Supported_Boot_Mode.sh" target="_blank">Get\_Supported\_Boot\_Mode.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Supported_Boot_Mode.bat" target="_blank">Get\_Supported\_Boot\_Mode.bat</a>|
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Get_Supported_Boot_Mode.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -363,10 +405,15 @@ POSSIBLE VALUES
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Set Boot Mode
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Set_Boot_Mode.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -376,7 +423,9 @@ Committing changes...
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Configure system boot mode.
 
 |    **Linux**                    | **Windows**                                                                 |
@@ -401,10 +450,10 @@ respectively.
 Next the `select` and `get` commands are used to retrieve the `BootSourceOverrideSupported`
 property of the `ComputerSystem` type.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 All of these operations, such as `select` and `get`,
 are already implemented in the RESTful Interface Tool.
-:::
+{% /admonition %}
 
 ![Bootorder Example 3](images/BootOrder_3.png "BootOrder example 3")
 
@@ -443,7 +492,10 @@ functionality.
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Reset_RIB.sh" target="_blank">Reset_RIB.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Reset_RIB.bat" target="_blank">Reset_RIB.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Reset_RIB.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -455,14 +507,19 @@ This process may take up to 3 minutes.
 
 A management processor reset is in progress.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Reboot the Server
 
 |    **Linux**                   | **Windows**                                                                  |
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Reset_Server.sh" target="_blank">Reset\_Server.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Reset_Server.bat" target="_blank">Reset\_Server.bat</a>|
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Reset_Server.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -474,7 +531,9 @@ Rebooting server in 3 seconds...
 The operation completed successfully.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Logging Examples
 
 iLO Logs consist of Active Health System (AHS), Integrated Event Log (IEL),
@@ -487,7 +546,10 @@ cleared to wipe the slate.
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Set_AHS_Status.sh" target="_blank">Set\_AHS\_Status.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Set_AHS_Status.bat" target="_blank">Set\_AHS\_Status.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Set_AHS_Status.bat 100.100..100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -497,14 +559,19 @@ Discovering data...Done
 Logging session out.
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Clear AHS Log
 
 |    **Linux**                   | **Windows**                                                                  |
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Clear_AHS_Data.sh" target="_blank">Clear\_AHS\_Data.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Clear_AHS_Data.bat" target="_blank">Clear\_AHS\_Data.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Clear_AHS_Data.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
@@ -513,14 +580,19 @@ Discovering data...Done
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Clear IML Log
 
 |    **Linux**                    | **Windows**                                                                |
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Clear_IML.sh" target="_blank">Clear\_IML.sh</a>|  <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Clear_IML.bat" target="_blank">Clear\_IML.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ./Clear_IML.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
@@ -529,14 +601,19 @@ Discovering data...Done
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Clear IEL Log
 
 |    **Linux**                   | **Windows**                                                                  |
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Clear_EventLog.sh" target="_blank">Clear\_EventLog.sh</a>|  <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Clear_EventLog.bat" target="_blank">Clear\_EventLog.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ./Clear_EventLog.bat 100.100.100.101 administrator password
 word
 iLOrest : RESTful Interface Tool version 3.1
@@ -547,7 +624,9 @@ Discovering data...Done
 Logging session out.
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Directory Command Examples
 
 HPE iLO based systems can be linked to domain controllers, usage of the the
@@ -558,7 +637,10 @@ are of interest:
 
 ### Get LDAP CA Certificate State
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Get_LDAP_CA_Cert_Status.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -571,14 +653,19 @@ Oem=
 Logging session out.
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Start Directory Test
 
 |    **Linux**                   | **Windows**                                                                  |
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Start_Directory_Test.sh" target="_blank">Start\_Directory\_Test.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Start_Directory_Test.bat" target="_blank">Start\_Directory\_Test.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Start_Directory_Test.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
@@ -589,14 +676,19 @@ The operation completed successfully.
 The operation completed successfully.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Directory Test Abort
 
 |    **Linux**                   | **Windows**                                                                  |
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Abort_Directory_Test.sh" target="_blank">Abort\_Directory\_Test.sh</a> |<a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Abort_Directory_Test.bat" target="_blank">Abort\_Directory\_Test.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Abort_Directory_Test.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
@@ -606,14 +698,19 @@ Discovering data...Done
 The operation completed successfully.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Directory Test Results
 
 |    **Linux**                   | **Windows**                                                                  |
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Directory_Test_Results.sh" target="_blank">Get\_Directory\_Test\_Results.sh</a> |<a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Directory_Test_Results.bat" target="_blank">Get\_Directory\_Test\_Results.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Get_Directory_Test_Results.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
@@ -673,7 +770,9 @@ Notes:
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## iLO User Management Examples
 
 HPE iLO Management Account Users are able to perform a range of operations on a
@@ -714,7 +813,10 @@ Additional privileges (and roleIDs for iLO 5 systems) can be configured.
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Add_User.sh" target="_blank">Add\_User.sh</a> |<a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Add_User.bat" target="_blank">Add\_User.bat</a>|
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Add_User.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
@@ -769,7 +871,9 @@ SystemRecoveryConfigPriv=False
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Modify User Password
 
 Reset an iLO management account password. The first example is specifically for
@@ -781,7 +885,10 @@ created account.
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Administrator_reset_pw.sh" target="_blank">Administrator\_reset\_pw.sh</a> |<a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Administrator_reset_pw.bat" target="_blank">Administrator\_reset\_pw.bat</a>|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Change_Password.sh" target="_blank">Change\_password.sh</a> |<a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Change_Password.bat" target="_blank">Change\_password.bat</a>|
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Administrator_reset_pw.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
@@ -790,7 +897,9 @@ Discovering data...Done
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Get All User Info
 
 Get all iLO management account user privileges.
@@ -799,7 +908,10 @@ Get all iLO management account user privileges.
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_User.sh" target="_blank">Get\_User.sh</a> |<a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_User.bat" target="_blank">Get\_User.bat</a>|
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Get_User.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
@@ -821,7 +933,9 @@ Oem=
                       SystemRecoveryConfigPriv=True
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Delete User
 
 Completely remove an iLO management account.
@@ -830,7 +944,10 @@ Completely remove an iLO management account.
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Delete_User.sh" target="_blank">Delete\_User.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Delete_User.bat" target="_blank">Delete\_User.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Delete_User.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2020 Hewlett Packard Enterprise Development LP
@@ -839,7 +956,9 @@ Discovering data...Done
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Federation Group Examples
 
 iLO Federation allows management of a collection of servers from a single iLO.
@@ -853,7 +972,10 @@ privileges for the group.
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Add_Federation_Group.sh" target="_blank">Add\_Federation\_Group.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Add_Federation_Group.bat" target="_blank">Add\_Federation\_Group.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Add_Federation_Group.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
@@ -891,7 +1013,9 @@ VirtualPowerAndResetPriv=False
 LoginPriv=False
 SystemRecoveryConfigPriv=False
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Get Federation Group
 
 Obtain Federation Group Privileges.
@@ -900,7 +1024,10 @@ Obtain Federation Group Privileges.
 |---------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Federation_All_Groups_Info.sh" target="_blank">Get\_Federation\_All\_Groups\_Info.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Federation_All_Groups_Info.bat " target="_blank">Get\_Federation\_All\_Groups\_Info.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Get_Federation_Group.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -920,7 +1047,9 @@ Privileges=
             SystemRecoveryConfigPriv=False
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Get Federation Multicast Options
 
 Obtain Federation Group Multicast Settings. Settings are used in broadcast for
@@ -930,7 +1059,10 @@ iLO collective control.
 |---------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Federation_Multicast_Options.sh" target="_blank">Get\_Federation\_Multicast\_Options.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Federation_Multicast_Options.bat " target="_blank">Get\_Federation\_Multicast\_Options.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Get_Federation_Multicast_Options.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -947,7 +1079,9 @@ Oem=
                             iLOFederationManagement=Enabled
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Delete a Federation Group
 
 Deletion of a Federation Group
@@ -956,7 +1090,10 @@ Deletion of a Federation Group
 |---------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Delete_Federation_Group.sh" target="_blank">Delete\_Federation\_Group.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Delete_Federation_Group.bat" target="_blank">Delete\_Federation\_Group.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Delete_Federation_Group.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
@@ -967,7 +1104,9 @@ The operation completed successfully.
 Logging session out.
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Virtual Media
 
 HPE iLO provides a method to boot from virtualized media by providing a remote
@@ -989,7 +1128,10 @@ Eject virtual media from the system.
 |---------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Eject_Virtual_Media.sh" target="_blank">Eject\_Virtual\_Media.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Eject_Virtual_Media.bat" target="_blank">Eject\_Virtual\_Media.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Eject_Virtual_Media.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014, 2019 Hewlett Packard Enterprise Development LP
@@ -998,7 +1140,9 @@ Discovering data...Done
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## iLO network configuration
 
 HPE iLO is very flexible in term of network capabilities.
@@ -1024,7 +1168,7 @@ respective documentation sections for more detail and limitation.
 The following example displays the `Name`, the URI and the status
 of the active iLO network port in JSON format.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 The following example uses the `list`
 [command](/docs/redfishclients/ilorest-userguide/globalcommands/#list-command)
@@ -1035,9 +1179,12 @@ like `@odata.id`.
 The `get` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command)
 discards such attributes.
 
-:::
+{% /admonition %}
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest list Name @odata.id Oem/Hpe/NICEnabled \
         --selector EthernetInterface.          \
@@ -1056,17 +1203,22 @@ ilorest logout
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves the IPv4 configuration
 of the active iLO network port using the `get`
 [global command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command),
 and the `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command).
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Refer the previous example to retrieve the
 URI of the iLO active network port passed to
 the `rawget` command.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="get IPv4" %}
 
 ```shell get IPv4
 alias ilorest="ilorest --nologo"
@@ -1077,6 +1229,9 @@ ilorest get DHCPv4 NameServers IPv4Addresses \
         --json
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="rawget IPv4" %}
 
 ```shell rawget IPv4
 ilorest --nologo login <ilo-ip> -u <ilo-user> -p password
@@ -1085,6 +1240,9 @@ ilorest --nologo rawget --silent /redfish/v1/Managers/1/EthernetInterfaces/1 | \
               "IPv4Addresses": .IPv4Addresses,
               "NameServers": .NameServers}'
 ```
+  
+  {% /tab %}
+{% tab label="IPv4 output" %}
 
 ```json IPv4 output
 {
@@ -1110,7 +1268,9 @@ ilorest --nologo rawget --silent /redfish/v1/Managers/1/EthernetInterfaces/1 | \
   ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Network protocols
 
 The following example runs a GitHub script to print
@@ -1121,12 +1281,18 @@ remote iLO.
 |---------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Get_Network.sh" target="_blank">Get\_Network.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Get_Network.bat" target="_blank">Get\_Network.bat</a> |
 
+  {% tabs %}
+{% tab label="Get" %}
+
 ```shell Get_Network.bat
 .\Get_Network.bat DL365G11-2-ILO.lj.lab administrator password
 iLORest : RESTful Interface Tool version 5.2.0.0
 Copyright (c) 2014-2024 Hewlett Packard Enterprise Development LP
 --------------------------------------------------------------------------------
 ```
+  
+  {% /tab %}
+{% tab label="Output (truncated)" %}
 
 ```shell Output (truncated)
 FQDN=DL365G11-2-ILO.lj.lab
@@ -1155,7 +1321,9 @@ VirtualMedia=
               ProtocolEnabled=True
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Finding iLO MAC address
 
 This paragraph proposes several examples to retrieve the MAC addresses
@@ -1164,7 +1332,7 @@ Refer to the
 [Get MAC address of a Management Controller](/docs/examples/redfishexamples/#get-mac-address-of-a-management-controller)
 paragraph for the detailed workflow of this operation.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 Although some network adapters are able to communicate with the Ethernet protocol,
 the DMTF distinguishes the `EthernetInterface`
@@ -1174,9 +1342,9 @@ from the `NetworkAdapter`
 
 This paragraph treats only the `EthernetInterface` data type.
 
-:::
+{% /admonition %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 It is also possible to retrieve MAC addresses by parsing
 the files created by the `save --selector EthernetInterface`
@@ -1184,24 +1352,30 @@ the files created by the `save --selector EthernetInterface`
 or the `ethernet save`
 [command.](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command).
 
-:::
+{% /admonition %}
 
 The following example prints the MAC address of all ethernet interfaces present in a server,
 including system/OS interfaces.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Use the `list` command if you want to print
 [reserved attributes](/docs/redfishclients/ilorest-userguide/globalcommands/#reserved-properties) like
 `@odata.id`, which contains the URI of the selected interface.
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Get all MAC addresses" %}
 
 ```shell Get all MAC addresses
 ilorest get Oem/Hpe/NICEnabled Name MACAddress \
         --selector EthernetInterface.          \
         --json
 ```
+  
+  {% /tab %}
+{% tab label="All MAC addresses output" %}
 
 ```json All MAC addresses output
 [
@@ -1245,8 +1419,13 @@ ilorest get Oem/Hpe/NICEnabled Name MACAddress \
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example prints the MAC address of iLO interfaces and their enablement.
+
+  {% tabs %}
+{% tab label="iLO MAC addresses" %}
 
 ```shell iLO MAC addresses
 alias ilorest="ilorest --nologo"
@@ -1257,6 +1436,9 @@ ilorest get Oem/Hpe/NICEnabled Name MACAddress  \
         --json
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="iLO MAC addresses output" %}
 
 ```json iLO MAC addresses output
 [
@@ -1284,10 +1466,15 @@ ilorest logout
   }
 ]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example prints the MAC address of the **active** iLO interface using the `get`
 [global command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command)
 and the `rawget` [command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command).
+
+  {% tabs %}
+{% tab label="get active MAC address" %}
 
 ```shell get active MAC address
 alias ilorest="ilorest --nologo"
@@ -1298,6 +1485,9 @@ ilorest get Oem/Hpe/NICEnabled Name MACAddress   \
         --json
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="rawget active MAC address" %}
 
 ```shell rawget active MAC address
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -1307,6 +1497,9 @@ ilorest --nologo rawget --silent /redfish/v1/Managers/1/EthernetInterfaces/1 | \
              "MACAddress": .MACAddress}'
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="MAC address output" %}
 
 ```json MAC address output
 {
@@ -1319,12 +1512,14 @@ ilorest logout
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Set iLO networking properties
 
 This section provides examples on how to change the iLO IP configuration.
 
-:::warning WARNING
+{% admonition type="warning" name="WARNING" %}
 
 A change of the iLO network IP configuration requires
 an [iLO reset](/docs/redfishclients/ilorest-userguide/ilocommands/#iloreset-command).
@@ -1332,7 +1527,7 @@ an [iLO reset](/docs/redfishclients/ilorest-userguide/ilocommands/#iloreset-comm
 A network misconfiguration will lead to an unreachable iLO after reset. Refer to the following
 paragraph for best practices before changing an iLO IP configuration.
 
-:::
+{% /admonition %}
 
 #### Network configuration best practices
 
@@ -1355,7 +1550,10 @@ regardless any IPv4 or IPv6 misconfiguration.
 The following example retrieves the MAC and the iLO SLAAC link-local addresses
 of the active iLO network port in JSON format.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest login <ilo-ip> -u <ilo-user> -p pasword
 ilorest get MACAddress IPv6Addresses/Address --select EthernetInterface. \
         --filter Oem/Hpe/NICEnabled="True"                               \
@@ -1369,8 +1567,10 @@ ilorest get MACAddress IPv6Addresses/Address --select EthernetInterface. \
   "MACAddress": "94:18:82:71:A0:7B"
 }
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 
 Given a MAC address, you can calculate and display
 the related IPv6 link local SLAAC address,
@@ -1378,12 +1578,17 @@ using the `ipv6calc`
 <a href="https://www.deepspace6.net/projects/ipv6calc.html" target="_blank">utility</a>
 and the following command:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 echo -n "fe80::" ; ipv6calc --quiet --in mac 94:18:82:71:A0:7B --out eui64
 fe80::9618:82ff:fe71:a07b
 ```
-
-:::
+  
+  {% /tab %}
+  {% /tabs %}
+{% /admonition %}
 
 To establish a connection to an IPv6 link-local address,
 you need first to log into a system connected to the
@@ -1402,12 +1607,18 @@ IPv6, by checking whether it has a link-local address
 starting with `FE80::`. Then, with iLOrest and cURL,
 it retrieves the IPv4 configuration of the remote IPv6 link-local address.
 
+{% tabs %}
+{% tab label="Checking IPv6" %}
+
 ```shell Checking IPv6
 # Retrieving IPv6 link local of interface connected to iLO target
 # network.
  ip -6 address list ens22f0 | grep -i fe80
     inet6 fe80::262:bff:fe4e:1748/64 scope link noprefixroute
 ```
+  
+{% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 # Connect to remote iLO via its IPv6 link-local address
@@ -1427,6 +1638,9 @@ ilorest get Ipv4Addresses --filter Oem/Hpe/NICEnabled="True" --json
 }
 
 ```
+  
+{% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 # Connect to remote iLO via its IPv6 link-local address
@@ -1444,20 +1658,29 @@ curl --insecure --silent --location  \
 }
 
 ```
+  
+{% /tab %}
+{% /tabs %}
 
-:::success TIPS
+{% admonition type="success" name="TIPS" %}
 
 - Most of the browsers (i.e. Chromium or Gecko based) don't support IPv6 link local addresses.
 - `SSH` supports connecting to IPv6 link local addresses, but without the `[]` wrapper notation. See next example.
 
-```shell
+{% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ssh ilo-user@FE80::9618:82FF:FE71:A07B%ens22f0 date
 ilo-user@fe80::9618:82ff:fe71:a07b%ens22f0's password:
 date
 Aug 19 2024
 ```
+  
+{% /tab %}
+{% /tabs %}
 
-:::
+{% /admonition %}
 
 #### Configure iLO IP addresses
 
@@ -1481,17 +1704,23 @@ The configuration file can be generated by the `save`
 or the `ethernet save` [iLO command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
 and then edited to set the iLO Shared Network port enabled and IPv4 properties.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 Read-only properties like `Id` are automatically and silently discarded
 during the load operation.
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="load" %}
 
 ```shell load
 ilorest load --force_network_config -f load.json
 ilorest iloreset
 ```
+  
+  {% /tab %}
+{% tab label="load" %}
 
 ```json load.json
 [
@@ -1543,13 +1772,18 @@ ilorest iloreset
 ]
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example uses the `ethernet load`
 [command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
 to configure and enable the iLO Shared network port. Then, it resets the iLO.
 The `eth.json` configuration file has been generated with the `ethernet save`
 [iLO command](/docs/redfishclients/ilorest-userguide/ilocommands/#ethernet-command)
 and then edited.
+
+  {% tabs %}
+{% tab label="Ethernet load" %}
 
 ```shell Ethernet load
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -1559,6 +1793,9 @@ NIC Interface Enabled.
 ilorest reset
 A management processor reset is in progress.
 ```
+  
+  {% /tab %}
+{% tab label="eth" %}
 
 ```json eth.json
 [
@@ -1609,8 +1846,10 @@ A management processor reset is in progress.
   }
 ]
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 All of the above IP configuration methods require an iLO reset. One possibility to verify the iLO reset
 is finished, is to test the HTTPS port connectivity (port 443 by default). You could use
 the new IP address for that test. However, if an error has been introduced during the network configuration,
@@ -1627,7 +1866,10 @@ on its IPv6 link local address, on port 443 (HTTPS).
 Once the iLO web service is back online, it tests the new IP configuration
 and exits the loop.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest login FE80::9618:82FF:FE71:A07B%ens22f0 -u <ilo-user> -p password
 ilorest iloreset
 sleep 5           # Make sure the reset is started
@@ -1644,8 +1886,10 @@ while true ; do
 done
 echo " Done"
 ```
-
-:::
+  
+  {% /tab %}
+  {% /tabs %}
+{% /admonition %}
 
 #### Setting Active iLO NIC
 
@@ -1653,27 +1897,33 @@ The following example activates the iLO shared network port using
 a `rawpatch` command against the `Oem.Hpe.NICEnabled` extension property.
 Then it resets the iLO.
 
-:::warning WARNING
+{% admonition type="warning" name="WARNING" %}
 
 The `set` global command fails to modify the iLO network configuration.
 This is why you must use a `rawpatch` command or
 a `ethernet load` command for this purpose.
 
-:::
+{% /admonition %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Use the following command to retrieve the URI of
 the iLO shared network port:
 
 `ilorest list @odata.id --filter Name="Manager Shared*" --select EthernetInterface.`
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="rawpatch" %}
 
 ```shell rawpatch
 ilorest rawpatch Payload.json
 ilorest iloreset
 ```
+  
+  {% /tab %}
+{% tab label="Payload" %}
 
 ```json Payload.json for Gen10 and later
 {
@@ -1686,6 +1936,9 @@ ilorest iloreset
      }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Payload" %}
 
 ```json Payload.json for Gen9
 {
@@ -1699,14 +1952,19 @@ ilorest iloreset
      }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example configures the iLO shared network port as active using a GitHub provide script.
 
 |    **Linux**                    | **Windows**                                                                  |
 |---------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Shared_Network_Port.sh" target="_blank">Shared\_Network\_Port.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Shared_Network_Port.bat" target="_blank">Shared\_Network\_Port.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\Shared_Network_Port.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -1715,7 +1973,9 @@ Discovering data...Done
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Updating Firmware
 
 Firmware updates can be submitted to iLO for self update or can be utilized for
@@ -1731,7 +1991,10 @@ Update a language pack component.
 |---------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Update_Language.sh" target="_blank">Update\_Language.sh</a>| <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Update_Language.bat" target="_blank">Update\_Language.bat</a> |
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ./Update_Language.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -1744,7 +2007,9 @@ Waiting for iLO UpdateService to finish processing the component
 0 hour(s) 1 minute(s) 18 second(s)
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Trusted Platform Module (TPM)
 
 ### Disabling the TPM
@@ -1764,16 +2029,19 @@ bare-metal servers, and you need to disable TPM prior to starting installation.
 
 To enable the TPM, you can set the `TpmState` to `PresentEnabled`. **See side example**.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 When you are disabling or enabling TPM, depending on the TPM chip type on the
 server, the TPM visibility might be `Tpm2Visibility` or `TpmVisibility`.
-:::
+{% /admonition %}
 
 ## Raw commands Examples
 
 ### Updating the HPE iLO license key
 
-```json
+  {% tabs %}
+{% tab label="Example" %}
+
+```json Example
 {
     "path": "/rest/v1/Managers/1/LicenseService",
     "body": {
@@ -1781,7 +2049,9 @@ server, the TPM visibility might be `Tpm2Visibility` or `TpmVisibility`.
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To update an iLO license key, use the `rawpost` command. For more information,
 refer to the
 [rawpost command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawpost-command).
@@ -1796,7 +2066,10 @@ The following is an example of the JSON to include when using the `rawdelete` co
 
 ### Deploying a Service Pack for ProLiant (SPP)
 
-```json
+  {% tabs %}
+{% tab label="Example" %}
+
+```json Example
 {
     "path": "/rest/v1/Managers/1/VirtualMedia/2",
     "body": {
@@ -1806,7 +2079,9 @@ The following is an example of the JSON to include when using the `rawdelete` co
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To deploy a SPP, use the `rawpost` command. For more information, refer to the
 [rawpost command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawpost-command).
 
@@ -1819,7 +2094,10 @@ The following is an example of the JSON to include when using the
 
 ### Selecting and getting properties from a type
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 
 :: selectget.bat [URI] [USERNAME] [PASSWORD]
 @echo off
@@ -1849,7 +2127,9 @@ ilorest.exe select Bios.
 ilorest.exe get
 pause
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This is a batch file that logs into a remote server, selects the `Bios` type,
 and gets the `BootMode` value.
 
@@ -1864,7 +2144,10 @@ This is a file-based edit mode helper for HPE iLOrest.
 3. Press any key running batch program to continue with program, uploading the
    newly edited program to the server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 :: saveload.bat [SELECTOR] [FILENAME]
 :: Specify a type with the SELECTOR tag, and
 :: save to a file called FILENAME
@@ -1888,7 +2171,9 @@ ilorest.exe save --selector=%1 --json -f %2
 pause
 ilorest.exe load -f %2
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Miscellaneous
 
 Configure iLO licensing, set unit identification lamp, hotkey configuration,
@@ -1900,7 +2185,10 @@ obtaining system power metrics, and configuring the iLO's time zone.
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/License.sh" target="_blank">License.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/License.bat" target="_blank">License.bat</a>|
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\License.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -1909,7 +2197,9 @@ Discovering data...Done
 
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### UID Control
 
 iLO based systems utilize a unit identification led which can be controlled to
@@ -1921,7 +2211,10 @@ modifies the UID light state of HPE iLO 4 and iLO 5 only. Refer to the iLO 6
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/UID_Control.sh" target="_blank">UID\_Control.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/UID_Control.bat" target="_blank">UID\_Control.bat</a>|
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 .\UID_Control.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -1937,14 +2230,19 @@ Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
 -------------------------------------------------------------------------------
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Hotkey Configuration
 
 |    **Linux**                   | **Windows**                                                                  |
 |--------------------------------|------------------------------------------------------------------------------|
 | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Linux/Hotkey_Config.sh" target="_blank">Hotkey\_Config.sh</a> | <a href="https://github.com/HewlettPackard/python-redfish-utility/blob/master/examples/Windows/Hotkey_Config.bat" target="_blank">Hotkey\_Config.bat</a>|
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ./Hotkey_Config.bat 100.100.100.101 administrator password
 iLOrest : RESTful Interface Tool version 3.1
 Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
@@ -1952,7 +2250,9 @@ Copyright (c) 2014-2020 Hewlett Packard Enterprise Development LP
 The operation completed successfully.
 Logging session out.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Setting iLO time zone
 
 ![Timezone Example 1](images/timezone1.png "Time zone example 1")
@@ -2000,11 +2300,14 @@ and/or `EncryptionUserPasswordSet`.
 Depending on the context, the life time status of SSD devices is called WearOut
 or WearStatus. Redfish has standardized this property as
 `PredictedMediaLifeLeftPercent` in the
-[Drive schema](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_storage_resourcedefns{{process.env.LATEST_FW_VERSION}}/#drive).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_storage_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#drive") %} Drive schema {% /link-internal %}.
 
 For each drive in a server, the following example retrieves its URI,
 predicted media life left percent, physical locations and the HPE legacy
 WearStatus, from an HPE iLO6 based server with firmware 1.55 and latest UBMx firmware.
+
+  {% tabs %}
+{% tab label="Retrieval of PredictedMediaLifeLeftPercent" %}
 
 ```shell Retrieval of PredictedMediaLifeLeftPercent
 
@@ -2013,6 +2316,9 @@ ilorest list "@odata.id" PredictedMediaLifeLeftPercent   \
              Oem/Hpe/WearStatus                          \
              --json --select Drive.
 ```
+  
+  {% /tab %}
+{% tab label="Output (truncated)" %}
 
 ```json Output (truncated)
 [
@@ -2122,3 +2428,6 @@ ilorest list "@odata.id" PredictedMediaLifeLeftPercent   \
   ...
 ]
 ```
+  
+  {% /tab %}
+  {% /tabs %}

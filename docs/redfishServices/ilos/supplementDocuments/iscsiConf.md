@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: false
 seo:
   title: iSCSI Software Initiator Configuration
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: true
 ---
 
 ## iSCSI Software Initiator Configuration

@@ -1,26 +1,30 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: HPE Python Redfish library installation guide
-disableLastModified: false
-toc:
-  enable: true
-  maxDepth: 3
 ---
 
 # Installation Guide
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The <a href="https://subversion.apache.org/" targert="_blank">HPE Python library</a> supports only **Python 3** (3.8 and above).  
 Note that Python 2 is already EOL on Jan 1, 2020 and support is discontinued.
-:::
+{% /admonition %}
 
 ## Pip install
 
-:::warning WARNING
+{% admonition type="warning" name="WARNING" %}
 The HPE Python Redfish library cannot coexist with the <a href="https://github.com/DMTF/python-redfish-library" target="_blank">DMTF Redfish Python library</a> in the same Python environment. To uninstall the DMTF Python library, use the following command:
 
 `pip uninstall redfish`
-:::
+{% /admonition %}
 
 ### Standard installation
 
@@ -50,20 +54,31 @@ Run the following command from the directory where you want to copy the source.
 
 After you have cloned the latest code, run the following commands:
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 cd python-ilorest-library
 python setup.py sdist --formats=zip (this will produce a .zip file)
 cd dist
 pip install python-ilorest-library-x.x.x.zip[socks]
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 A successful installation displays that `python-ilorest-library-x.x.x` its dependencies have been successfully installed.
 
 ### Building from source with SOCKS proxy support
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 cd python-ilorest-library
 python setup.py sdist --formats=zip  # this produces a .zip file
 cd dist
 pip install python-ilorest-library-x.x.x.zip[socks]
 ```
+  
+  {% /tab %}
+  {% /tabs %}

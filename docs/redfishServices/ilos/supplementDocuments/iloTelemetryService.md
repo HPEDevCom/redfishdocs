@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: iLO Telemetry service
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 ## HPE iLO Telemetry service
@@ -14,7 +18,7 @@ and iLO 6 based servers. A generic presentation of the Redfish Telemetry
 service is presented in the
 [concepts section](/docs/concepts/redfishtelemetry) of this documentation.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - HPE ilO 5 and iLO 6 implements the Redfish Telemetry service on **Intel**
     based servers **only**. AMD (Gen10, Gen11), and ARM Gen11 servers don't
@@ -22,9 +26,9 @@ service is presented in the
 - Upgrading the iLO firmware to iLO 5 2.96/iLO 6 1.51 and above
     retains the subscriptions created prior to the upgrade.
 
-:::
+{% /admonition %}
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 
 - Downgrading the iLO firmware from iLO 5 2.96/iLO 6 1.51 deletes
     existing subscriptions.
@@ -43,13 +47,13 @@ service is presented in the
     the connection is re-established, the metric reports will be streamed back
     without sending the previous reports.
 
-:::
+{% /admonition %}
 
 ## Metric report subscription
 
 Metric reports eligible for subscription are the ones listed under the Metric
 Report Definition Collection
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#metricreportdefinitioncollection)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#metricreportdefinitioncollection") %} URI {% /link-internal %}
 **and not** containing string **"Custom"** in their URI.
 The following list corresponds to the eligible metrics of
 iLO 5 2.96 and iLO 6 1.51.
@@ -82,6 +86,9 @@ reports are sent every hour to the event listener.
 The body request to subscribe for Metric Reports of an HPE iLO 5 must
 contain `MetricReport` in the `EventTypes` array property.
 
+  {% tabs %}
+{% tab label="iLO 5 Subscription request body" %}
+
 ```json iLO 5 Subscription request body
 {
     "Destination": "https://myeventreciever/eventreceiver",
@@ -112,6 +119,9 @@ contain `MetricReport` in the `EventTypes` array property.
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLO 5 Subscription detail" %}
 
 ```json iLO 5 Subscription detail
 {
@@ -192,11 +202,16 @@ contain `MetricReport` in the `EventTypes` array property.
     "SubscriptionType": "RedfishEvent"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Subscribing to iLO 6 metric reports
 
 The body request to subscribe for Metric Reports of an HPE iLO 6 must
 contain `MetricReport` in the `EventFormatType` property.
+
+  {% tabs %}
+{% tab label="iLO 6 Subscription request body" %}
 
 ```json iLO 6 Subscription request body
 {
@@ -221,6 +236,9 @@ contain `MetricReport` in the `EventFormatType` property.
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLO 6 Subscription detail" %}
 
 ```json iLO 6 Subscription detail
 {
@@ -296,7 +314,9 @@ contain `MetricReport` in the `EventFormatType` property.
 }
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Metric report definitions
 
 The streaming frequency of each metric report, is decided by the
@@ -307,9 +327,15 @@ The following example specifies that metric report `CPUUtil` has to
 be sent once a day, starting on the first of June 2023
 at one o'clock GMT.
 
+  {% tabs %}
+{% tab label="PATCH event" %}
+
 ```json PATCH event
 PATCH /redfish/v1/TelemetryService/MetricReportDefinitions/CPUUtil/
 ```
+  
+  {% /tab %}
+{% tab label="PATCH Payload" %}
 
 ```json PATCH Payload
 {
@@ -320,7 +346,9 @@ PATCH /redfish/v1/TelemetryService/MetricReportDefinitions/CPUUtil/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 `MetricReportDefinitionType` is set as `Periodic` when streaming is enabled.
 You can stop streaming specific metric reports either by not subscribing to
 it during the creation of the subscription or by configuring the
@@ -338,7 +366,7 @@ for every week’s report.
 metric report to be streamed. By default, the metric report will be
 streamed when the subscription is created.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - `PATCH` is supported only on these URIs which doesn’t contain the
     "Custom" string. A `PATCH` against a custom `MetricReportDefinitions`
@@ -346,4 +374,4 @@ streamed when the subscription is created.
 - The `PowerMetrics` metric report does not allow a `PATCH`
     on `RecurrenceInterval`.
 
-:::
+{% /admonition %}

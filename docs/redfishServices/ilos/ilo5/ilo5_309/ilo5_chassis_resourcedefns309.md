@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Chassis resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Chassis resource definitions of iLO 5 v3.09
@@ -29,7 +33,7 @@ A Collection of Chassis resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[Chassis](../ilo5_chassis_resourcedefns309/#chassis)|
+|`Members[]`|[Chassis](ilo5_chassis_resourcedefns309/#chassis)|
 
 ### Members (array)
 
@@ -72,12 +76,12 @@ The Chassis resource describes the physical components for a system. This object
 
 |Link Name|Destination type
 |---|---|
-|`Links/ComputerSystems[]`|[ComputerSystem](../ilo5_computersystem_resourcedefns309/#computersystem)|
-|`Links/ManagedBy[]`|[Manager](../ilo5_manager_resourcedefns309/#manager)|
-|`Oem/Hpe/Links/Devices`|Collection of [HpeServerDevice](../ilo5_hpe_resourcedefns309/#hpeserverdevicecollection)|
-|`NetworkAdapters`|Collection of [NetworkAdapter](../ilo5_network_resourcedefns309/#networkadaptercollection)|
-|`Power`|[Power](../ilo5_other_resourcedefns309/#power)|
-|`Thermal`|[Thermal](../ilo5_other_resourcedefns309/#thermal)|
+|`Links/ComputerSystems[]`|[ComputerSystem](ilo5_computersystem_resourcedefns309/#computersystem)|
+|`Links/ManagedBy[]`|[Manager](ilo5_manager_resourcedefns309/#manager)|
+|`Oem/Hpe/Links/Devices`|Collection of [HpeServerDevice](ilo5_hpe_resourcedefns309/#hpeserverdevicecollection)|
+|`NetworkAdapters`|Collection of [NetworkAdapter](ilo5_network_resourcedefns309/#networkadaptercollection)|
+|`Power`|[Power](ilo5_other_resourcedefns309/#power)|
+|`Thermal`|[Thermal](ilo5_other_resourcedefns309/#thermal)|
 
 ### AssetTag
 

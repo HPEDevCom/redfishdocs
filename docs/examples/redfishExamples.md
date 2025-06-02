@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Redfish examples
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Redfish examples
@@ -26,19 +30,25 @@ section of the supplement documents.
 The following example retrieves the current BIOS configuration
 of an iLO based server using cURL and Python.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 As mentioned in the
 [Getting Started](/docs/concepts/gettingstarted/) section, the
 <a href="https://github.com/DMTF/python-redfish-library" target="blank"> DMTF Redfish Python library</a>
 and the <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE Redfish Python library</a>
 cannot co-exist in the same Python environment. You should uninstall
 one before installing the other one.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure -u username:password --location \
      https://{iLO}/redfish/v1/systems/1/bios/
 ```
+  
+  {% /tab %}
+{% tab label="HPE python" %}
 
 ```python HPE python-ilorest-library
 # Make sure the DMTF redfish library is not loaded before loading
@@ -68,6 +78,9 @@ REDFISHOBJ.login()
 response = REDFISHOBJ.get("/redfish/v1/systems/1/bios/")
 print('Response: '+json.dumps(response.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+{% tab label="DMTF redfish library" %}
 
 ```python DMTF redfish library
 # Make sure the HPE python-ilorest-library library is not loaded before loading
@@ -96,6 +109,9 @@ REDFISHOBJ.login()
 response = REDFISHOBJ.get("/redfish/v1/systems/1/bios/")
 print('Response: '+json.dumps(response.dict, indent=4, sort_keys=True))
 ```
+  
+  {% /tab %}
+{% tab label="Response (truncated)" %}
 
 ```json Response (truncated)
  {
@@ -168,7 +184,9 @@ print('Response: '+json.dumps(response.dict, indent=4, sort_keys=True))
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Update of a BIOS attribute
 
 On an iLO based server, the minimum required session ID privileges
@@ -176,11 +194,14 @@ is `Configure`. The following example modifies the
 `AdminName`, `AdminEmail` and `AdminPhone` BIOS attributes on an
 iLO based server.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 When using iLOrest to set properties, you can include special characters
 (including spaces) by surrounding both the key and the value with double
 quotes.  
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -190,6 +211,9 @@ ilorest commit
 ilorest reboot ColdBoot
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure -u username:password  \
@@ -197,6 +221,9 @@ curl --insecure -u username:password  \
      --data "@data.json" \
      https://{iLO}/redfish/v1/Systems/1/bios/settings/ 
 ```
+  
+  {% /tab %}
+{% tab label="Content of data" %}
 
 ```json Content of data.json file
 {
@@ -207,7 +234,9 @@ curl --insecure -u username:password  \
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Python <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/change_bios_setting.py" target="_blank">Redfish example</a>
 
 ### BIOS UEFI Secure Boot enablement
@@ -219,6 +248,9 @@ required to enable this property.
 The following example enables Secure Boot on an iLO based server.
 The minimum required session privilege is `Configure.`
 
+  {% tabs %}
+{% tab label="iLOrest" %}
+
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest select SecureBoot.
@@ -226,6 +258,9 @@ ilorest set SecureBootEnable=True --commit
 ilorest reboot ColdBoot
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure -u username:password  \
@@ -233,11 +268,16 @@ curl --insecure -u username:password  \
      -X PATCH --data "@data.json" \
      https://{iLO}/redfish/v1/Systems/1/SecureBoot/ 
 ```
+  
+  {% /tab %}
+{% tab label="Content of the data" %}
 
 ```json Content of the data.json file
     {"SecureBootEnable":true}
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 For a full Python example click here:
 <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/enable_secure_boot.py" target="_blank">enable\_secure\_boot.py</a>
 
@@ -249,14 +289,22 @@ HPE provides
 [alternate methods](/docs/redfishservices/ilos/supplementdocuments/biosdoc/)
 with added value to achieve a similar goal.
 
+  {% tabs %}
+{% tab label="Generic POST request" %}
+
 ```text Generic POST request
 POST /redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios
 ```
+  
+  {% /tab %}
+{% tab label="Request body" %}
 
 ```json Request body
 {}
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Server reset
 
 Server power control belongs to the global `ComputerSystem` resource.
@@ -278,9 +326,15 @@ The following example resets an HPE iLO 6 based server
 using the standard Redfish method.
 The Minimum required session privilege is `Configure`.
 
+  {% tabs %}
+{% tab label="Generic GET server reset actions" %}
+
 ```text Generic GET server reset actions
 GET /redfish/v1/Systems/1/?$select=Actions
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -304,6 +358,9 @@ GET /redfish/v1/Systems/1/?$select=Actions
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="cURL ForceRestart" %}
 
 ```shell cURL ForceRestart
 curl  --insecure -u username:password  \
@@ -311,13 +368,18 @@ curl  --insecure -u username:password  \
       --request POST --data '{"ResetType": "ForceRestart"}'\
       https://{iLO}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest GracefulRestart" %}
 
 ```shell iLOrest GracefulRestart
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest boot GracefulRestart
 ilorest logout
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Management Controller reset
 
 The following example lists the
@@ -325,27 +387,39 @@ possible standard Redfish actions against an
 HPE iLO 5 (or later) management controller with
 cURL and the HPE iLOrest Redfish client.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 By design, a Management Controller reset has no impact on the
 Operating System running in the server. You can safely restart
 (abruptly or gracefully) the Management Controller while th
  Operating System is up and running.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 GET https://ilo-ip/redfish/v1/Managers/1/?$select=Actions
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --silent --user ilo-user:password  \
      --request GET 'https://ilo-ip/redfish/v1/Managers/1/?$select=Actions' | jq
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest get --json Actions --select Manager.
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -360,32 +434,37 @@ ilorest logout
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The above example returns `ForceRestart` and `GracefulRestart`
 for possible Manager Controller reset parameters,
 as mentioned in the resource definition
-[section](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#actions).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#actions") %} section {% /link-internal %}.
 Use the `GracefulRestart` value to wait for
 Management Controller running tasks to complete or to be
 gently stopped before restarting. Use `ForceRestart` to restart the
 Management Controller abruptly.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 HPE iLO does not have the possibility to stop running
 tasks before triggering its restart. As a consequence,
 the `GracefulRestart` action is implemented as a `ForceRestart`.
-:::
+{% /admonition %}
 
 The following example resets an HPE iLO 5 (or later) using the
 standard Redfish `Manager.Reset` action with cURL and the
 `ilorest iloreset` [macro-command](/docs/redfishclients/ilorest-userguide/ilocommands/#iloreset-command).
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Refer to the
 [Authentication and sessions](/docs/concepts/redfishauthentication/#session-authentication)
 to learn how to create a session token like the one used by cURL
 in the next example.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 POST /redfish/v1/Managers/1/Actions/Manager.Reset/
@@ -395,6 +474,9 @@ Body:
     "ResetType": "ForceRestart"
 }
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --location --request POST 'ilo-ip/redfish/v1/Managers/1/Actions/Manager.Reset/' \
@@ -402,13 +484,18 @@ curl --location --request POST 'ilo-ip/redfish/v1/Managers/1/Actions/Manager.Res
      --header 'X-Auth-Token: 2e6886a529d5af368d46890ff82e3ce5' \
      --data-raw '{"ResetType": "ForceRestart"}'
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest iloreset
 ilorest logout 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## GET MAC address of a Management Controller
 
 The goal of this example is to explain the workflow to retrieve
@@ -419,13 +506,13 @@ With this methodology, you should be able to write a long term
 Redfish client that works against any Redfish service implementation,
 including non-HPE.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The following methodology targets Redfish services compliant with
 version 1.6.0 or above.
 
 Redfish services compliant with earlier versions must start browsing
 the Redfish tree at `/redfish/v1`.
-:::
+{% /admonition %}
 
  The <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.4_0.pdf" target="_blank">Redfish schema specification</a>,
  provides, in table 5.2, the exhaustive list of the standard collections
@@ -456,39 +543,60 @@ GET operation toward the `ManagerCollection` URI.
 The following example provides portable methods to retrieve
 controller manager Identifiers.
 
+  {% tabs %}
+{% tab label="Generic GET request" %}
+
 ```text Generic GET request
 GET /redfish/v1/Managers
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest get Members --json --selector ManagerCollection |\
         jq -r '[.Members][][]["@odata.id"]'
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --silent --user ilo-user:password \
      https://ilo-ip/redfish/v1/Managers | \
      jq -r '[.Members][][]["@odata.id"]'
 ```
+  
+  {% /tab %}
+{% tab label="HPE iLO response" %}
 
 ```json HPE iLO response
 {
   "@odata.id": "/redfish/v1/Managers/1/"
 }
 ```
+  
+  {% /tab %}
+{% tab label="OpenBMC response" %}
 
 ```json OpenBMC response
 {
   "@odata.id": "/redfish/v1/Managers/bmc/"
 }
 ```
+  
+  {% /tab %}
+{% tab label="HPE Superdome Flex response" %}
 
 ```json HPE Superdome Flex response
 {
   "@odata.id": "/redfish/v1/Managers/RMC/"
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 Once the Manager identifier URI is discovered,
 you can list the collection of Ethernet Interfaces
@@ -497,34 +605,51 @@ attached to this particular manager:
 The following example retrieves the collection of
 Ethernet interfaces of an iLO based server.
 
+{% tabs %}
+{% tab label="Generic GET request" %}
+
 ```text Generic GET request
 GET /redfish/v1/Managers/1/EthernetInterfaces
 ```
+  
+{% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --silent --user ilo-user:password \
      https://ilo-ip/redfish/v1/Managers/1/EthernetInterfaces | \
      jq '.Members[]'
 ```
+  
+{% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest get "@odata.id" --json --select EthernetInterface. --filter "@odata.id"="/redfish/v1/Managers/*" | jq '.[]'
 ilorest logout
 ```
+  
+{% /tab %}
+{% /tabs %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 In the above iLOrest example, you have to select
 only _Managers*_ interfaces. This is because iLOrest uses
-the `EthernetInterface` [data type](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#ethernetinterface)
+the `EthernetInterface`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_network_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#ethernetinterface") %} data type {% /link-internal %}
 which owns several instances (URIs).
 
-Failure to do so retrieves also `Systems` interfaces.  
-:::
+Failure to do so retrieves also `Systems` interfaces.
+
+{% /admonition %}
 
 The last step is to identify the interface physically connected
 to the management network among the URIs discovered in the previous step.
 This can be done with the `LinkUp` property and the following pseudo code:
+
+{% tabs %}
+{% tab label="Pseudo code" %}
 
 ```text Pseudo code
 create list of Managers Ethernet interface URIs
@@ -535,6 +660,9 @@ for each interface in list ; do
 endfor
 ```
   
+{% /tab %}
+{% tab label="cURL" %}
+
 ```shell cURL
 ManagerEthernetInterfacesList=$(curl --silent --location --insecure \
     --request GET 'ilo-hst320g11-7/redfish/v1/Managers/1/EthernetInterfaces/' \
@@ -560,7 +688,10 @@ for i in $ManagerEthernetInterfacesList ; do
 done
 ```  
 
-:::info NOTE
+{% /tab %}
+{% /tabs %}
+
+{% admonition type="info" name="NOTE" %}
 It is possible that Redfish services include Host Interfaces
 (also called vNICs) in the Manager `EthernetInterfaceCollection`
 (i.e. iLO Redfish). If at least one is enabled, the above script
@@ -570,11 +701,14 @@ physical interface.
 In that case, you will have to find a property common to all your
 computer vendors and use it to filter out undesirable interfaces.
 This property could belong to the OEM extension.
-:::
+{% /admonition %}
 
 <!-- >
 Need to work on following solution with iLOrest and jq.
 The trick would be to find a suitable way to test LinkStatus with jq !
+
+  {% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -582,7 +716,9 @@ ManagerEtherInterfaces="$(ilorest get "@odata.id" --json --select EthernetInterf
 ilorest get --json Name "@odata.id"  LinkStatus MacAddress --filter "@odata.id"="/redfish/v1/Managers/*" | jq '.[]'
 ilorest logout
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 -->
 
 For a full Redfish example click here:
@@ -594,13 +730,13 @@ iLO 6 offers the possibility to configure user-defined temperature
 thresholds using a Redfish action, and resulting in IML
 log entries generation if exceeded.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 System defined temperature threshold cannot be modified.
 User defined temperature thresholds provide finer granularity
 to temperature thresholds.
 
-:::
+{% /admonition %}
 
 The following example is similar to
 [this one](/docs/concepts/performing_actions/#user-defined-temperature-threshold-creation)
@@ -608,17 +744,23 @@ in the performing actions section. It configures a user-defined temperature
 warning threshold on sensor 1 (Inlet-Ambient) of an iLO 6 based server.
 If the ambient temperature is exceeded, a warning IML entry is created.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 Replace `AlertType=Warning` with `AlertType=Critical`
 to create a `CriticalUserTempThreshold` property in the sensor entry.
 If the ambient temperature is exceeded, a warning IML entry is created.
 
-:::
+{% /admonition %}
+
+{% tabs %}
+{% tab label="Generic Action" %}
 
 ```text Generic Action
 POST /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThreshold/
 ```
+  
+{% /tab %}
+{% tab label="Request body" %}
 
 ```json Request body
 {
@@ -627,6 +769,9 @@ POST /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThre
     "AlertType": "Warning"
 }
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -641,14 +786,23 @@ POST /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThre
     }
 }
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 Once a user defined temperature threshold is created,
 it is possible to retrieve the corresponding properties as
 shown in the following example.
 
+{% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET /redfish/v1/Chassis/1/Thermal/?$select=Temperatures/Oem/Hpe/
 ```
+  
+{% /tab %}
+{% tab label="Response body (truncated)" %}
 
 ```json Response body (truncated)
 {
@@ -671,6 +825,9 @@ GET /redfish/v1/Chassis/1/Thermal/?$select=Temperatures/Oem/Hpe/
         ....
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Server Thermal Configuration
 
@@ -682,20 +839,27 @@ examples using both methods.
 ### Fan management using BIOS
 
 Fan cooling management can be performed with the
-`ThermalConfig` [BIOS attribute](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_bios_resourcedefns{{process.env.LATEST_FW_VERSION}}/#attributes).
+`ThermalConfig`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_bios_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#attributes") %} BIOS attribute {% /link-internal %}.
 
-:::info NOTE:
+{% admonition type="info" name="NOTE:" %}
 
 A reboot of the server **is required** to take
 BIOS attribute modifications, including `ThermalConfi`, into account.
 
-:::
+{% /admonition %}
+
+{% tabs %}
+{% tab label="ThermalConfig description with iLOrest" %}
 
 ```shell ThermalConfig description with iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest info ThermalConfig --select Bios
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="iLOrest output" %}
 
 ```text iLOrest output
 NAME
@@ -735,6 +899,9 @@ POSSIBLE VALUES
     MaxCooling
     EnhancedCPUCooling
 ```
+  
+{% /tab %}
+{% tab label="Set ThermalConfig with iLOrest" %}
 
 ```shell Set ThermalConfig with iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -743,22 +910,31 @@ ilorest set ThermalConfig=IncreasedCooling --select Bios --commit
 ilorest reboot ForceRestart
 ilorest logout
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 ### Fan management using Thermal
 
 Fan cooling management can also be performed
 with the `ThermalConfiguration` property.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 A reboot of the server **is not required** to take
 `Thermal` modifications into account.
 
-:::
+{% /admonition %}
+
+{% tabs %}
+{% tab label="Generic PATCH request" %}
 
 ```text Generic PATCH request
 PATCH /redfish/v1/Chassis/1/Thermal
 ```
+  
+{% /tab %}
+{% tab label="Request body" %}
 
 ```json Request body
 {
@@ -769,13 +945,19 @@ PATCH /redfish/v1/Chassis/1/Thermal
     }
 }
 ```
+  
+{% /tab %}
+{% tab label="Example" %}
 
-```shell
+```shell Example
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest select Thermal.
 ilorest get Oem/Hpe/ThermalConfiguration --json
 ilorest logout
 ```
+  
+{% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -786,11 +968,14 @@ ilorest logout
   }
 }
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 
 The possible values for the `ThermalConfiguration` property are listed in the
-[resource definition](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#oemhpethermalconfiguration) section:
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#oem.hpe.thermalconfiguration") %} resource definition {% /link-internal %}
+section:
 
 - `OptimalCooling`
 - `IncreasedCooling`
@@ -799,33 +984,42 @@ The possible values for the `ThermalConfiguration` property are listed in the
 - `AcousticMode` (Edgeline-only option.
   Prioritizes minimizing noise from the enclosure.)
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Set ThermalConfiguration with iLOrest" %}
 
 ```shell Set ThermalConfiguration with iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest set Oem/Hpe/ThermalConfiguration="EnhancedCooling" --commit
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Response body and return code" %}
 
 ```json Response body and return code
 payload {'/redfish/v1/Chassis/1/Thermal/': {'Oem': {'Hpe': {'ThermalConfiguration': 'EnhancedCooling'
 }}}}
 [200] The operation completed successfully.
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 ## Redfish iscsi configuration example
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Some examples in this section use a pseudo-code syntax for clarity.
 JSON pointer syntax is used to indicate specific properties.
-:::
+{% /admonition %}
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 The <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> DMTF Redfish Python library</a>
 and the <a href="https://github.com/HewlettPackard/python-ilorest-library" target="_blank"> HPE Redfish Python library</a>
 cannot co-exist in the same Python environment.
 You should uninstall one before installing the other one.
-:::
+{% /admonition %}
 
 Before accessing Redfish resources and properties,
 you must create an instance of `RedfishObject`.
@@ -935,6 +1129,9 @@ and you would like to edit some existing settings, and add a third source.
 
     - `PATCH {ilo-address}/redfish/v1/Systems/1/BIOS/iSCSI/Settings/`
 
+  {% tabs %}
+{% tab label="Existing example resource (truncated)" %}
+
 ```json Existing example resource (truncated)
 {
     "iSCSISources": [
@@ -958,6 +1155,9 @@ and you would like to edit some existing settings, and add a third source.
     ...
 }
 ```
+  
+  {% /tab %}
+{% tab label="PATCH workload (truncated)" %}
 
 ```json PATCH workload (truncated)
 {
@@ -976,3 +1176,6 @@ and you would like to edit some existing settings, and add a third source.
   ]
 }
 ```
+  
+{% /tab %}
+{% /tabs %}

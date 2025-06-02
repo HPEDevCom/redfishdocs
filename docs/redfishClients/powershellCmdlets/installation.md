@@ -1,10 +1,15 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: true
+excludeFromSearch: true
 seo:
   title: Installation
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: true
 ---
 
 # Installation
@@ -17,16 +22,13 @@ Install the following before installing Scripting Tools for Windows PowerShell: 
 
 1. Install <a href="https://www.microsoft.com/en-us/download/details.aspx?id=56115" target="_blank">Microsoft .NET Framework 4.7.1</a> or later.
 
-   :::info NOTE
+   {% admonition type="info" name="NOTE" %}
    Microsoft .NET Framework must be installed **before** installing Windows Management Framework.
-   :::
+   {% /admonition %}
 
 2. Install Windows Management Framework 3.0 or later (which includes PowerShell 3.0 or later).
   
    - <a href="https://www.microsoft.com/en-us/download/details.aspx?id=34595" target="_blank">Windows Management Framework 3.0</a>
-   <!-- The following link is no longer valid (Error 404). It needs to be removed.
-   - <a href="http://www.microsoft.com/en-us/download/details.aspx?id=40855" target="_blank">Windows Management Framework 4.0</a>
-   -->
    - <a href="https://www.microsoft.com/en-us/download/details.aspx?id=50395" target="_blank">Windows Management Framework 5.0</a>
    - <a href="https://www.microsoft.com/en-us/download/details.aspx?id=54616" target="_blank">Windows Management Framework 5.1</a>
 

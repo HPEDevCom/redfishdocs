@@ -1,41 +1,35 @@
-hpeRedfishMainSideBar:
-  - label: Home
-    # The following href represents the root of the GitHub Redfish Portal repo
-    # The content of this '/' page is the index.mdx.
-    href: '/'
-  - separatorLine: true
-       
-  - group: Guides
-    expanded: false
-    items:
+- label: Home
+  # The following href represents the root of the GitHub Redfish Portal repo
+  # The content of this '/' page is the index.page.tsx.
+  href: '/'
+- separatorLine: true
+
+- group: Guides
+  expanded: false
+  selectFirstItemOnExpand: true
+  items:
     - label: Introduction
       page: docs/index.md
     - group: Redfish concepts
       expanded: false
+      selectFirstItemOnExpand: true
       items:
-      - label: Redfish® at a glance
-        page:  docs/concepts/index.md
-
-      - label: Conformance
-        page: docs/concepts/redfishConformance.md
-
-      - label: Getting started
-        page: docs/concepts/gettingStarted.md
-
-      - label: Authentication and sessions
-        page: docs/concepts/redfishAuthentication.md
-
-      - label: Data types and collections
-        page: docs/concepts/dataTypesAndCollections.md
-
-      - label: Error responses
-        page: docs/concepts/errorresponses.md
-
-      - label: Performing actions
-        page: docs/concepts/performing_actions.md
-        
-      - label: BIOS data model
-        page: docs/concepts/biosdatamodel.md
+        - label: Redfish at a glance
+          page:  docs/concepts/index.md
+        - label: Conformance
+          page: docs/concepts/redfishConformance.md
+        - label: Getting started
+          page: docs/concepts/gettingStarted.md
+        - label: Authentication and sessions
+          page: docs/concepts/redfishAuthentication.md
+        - label: Data types and collections
+          page: docs/concepts/dataTypesAndCollections.md
+        - label: Error responses
+          page: docs/concepts/errorresponses.md
+        - label: Performing actions
+          page: docs/concepts/performing_actions.md
+        - label: BIOS data model
+          page: docs/concepts/biosdatamodel.md
       
       #- label: Navigating the Data Model
       #  page: docs/concepts/navigating.md
@@ -43,83 +37,82 @@ hpeRedfishMainSideBar:
       #- label: Client best practices
       #  page: docs/concepts/client_bestpractices.md
 
-      - label: Secureboot Databases
-        page:  docs/concepts/securebootdatabases.md
-      
-      - label: Event service
-        page: docs/concepts/redfishEvents.md
-      - label: Telemetry service
-        page: docs/concepts/redfishTelemetry.md
+        - label: Secureboot Databases
+          page:  docs/concepts/securebootdatabases.md
+        - label: Event service
+          page: docs/concepts/redfishEvents.md
+        - label: Telemetry service
+          page: docs/concepts/redfishTelemetry.md
     - label: Examples
       page: docs/examples/redfishExamples.md
     - label: Glossary
-      page: "docs/etc/glossaryterms.md"
-  - separatorLine: true
+      page: docs/etc/glossaryterms.md
+- separatorLine: true
 
-  # Labels with a href property (i.e. iLO services) contains a "sidebars.yaml" file in the href: location
-  # See https://redocly.com/docs/developer-portal/configuration/sidebar-nav/#Additional-sidebar  
-  - group: HPE Redfish® services
-    expanded: false
-    items:
-      - label: Overview
-        page:  docs/redfishServices/index.md
-      - label: HPE iLO 5 Redfish® service
-        href: "/docs/redfishservices/ilos/ilo5/"
-      - label: HPE iLO 6 Redfish® service
-        href: "/docs/redfishservices/ilos/ilo6/"
-      - label: Supplement documents
-        href: "/docs/redfishservices/ilos/supplementdocuments"        
-  - separatorLine: true
-  - group: HPE Redfish® clients
-    expanded: false
-    items:
-      - label: Overview
-        page:  docs/redfishClients/index.md
-      - label: HPE iLOrest user guide
-        href: "/docs/redfishclients/ilorest-userguide"
-      - label: HPE Python Redfish library
-        href: "/docs/redfishclients/python-redfish-library"
-      
-      - label: Scripting Tools for Windows PowerShell User Guide
-        href: "/docs/redfishclients/powershellcmdlets"
+- group: HPE Redfish services
+  expanded: false
+  selectFirstItemOnExpand: true
+  items:
+    - label: Overview
+      page: docs/redfishServices/index.md
+    - label: HPE iLO 7 Redfish service
+      page: docs/redfishServices/ilos/ilo7/index.md
+    - label: HPE iLO 6 Redfish service
+      page: docs/redfishServices/ilos/ilo6/index.md
+    - label: HPE iLO 5 Redfish service
+      page: docs/redfishServices/ilos/ilo5/index.md
+    - label: iLO supplement documents
+      page: docs/redfishServices/ilos/supplementDocuments/index.md
+- separatorLine: true
 
-  - separatorLine: true
-  - group: More references and material
-    expanded: false
-    items:
-      - label: Overview
-        page: docs/references_and_material/index.md
-      - label: Why is Redfish different...
-        href: 'https://developer.hpe.com/blog/why-is-redfish%C2%AE-different-from-other-rest-apis-part-1/'
-        external: true
-      - label: Overview of PLDM for RDE
-        href: 'https://developer.hpe.com/blog/overview-of-the-platform-level-data-model-for-redfish%C2%AE-device-enablement-standard/'
-        external: true
-      - label: Benefits of PLDM for Firmware Update
-        href: 'https://developer.hpe.com/blog/benefits-of-the-platform-level-data-model-for-firmware-update-standard/'
-        external: true
-      - label: Master the Redfish Server States
-        href: 'https://developer.hpe.com/blog/master-the-redfish-server-states-to-improve-your-monitoring-and-manageme/'
-        external: true
-      - label: HPE firmware updates
-        href: 'https://developer.hpe.com/blog/hpe-firmware-updates-part-1-file-types-and-smart-components/'
-        external: true
-      - label: Massive parallel management
-        href: 'https://developer.hpe.com/blog/massive-parallel-management-with-ilorest-on-linux/'
-        external: true
-      - label: Managing iLO sessions
-        href: 'https://developer.hpe.com/blog/managing-ilo-sessions-with-redfish/'
-        external: true
-      
-      
-      - label: Developer guide part 1
-        href: 'https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/'
-        external: true
-      - label: Developer guide Part 2
-        href: 'https://developer.hpe.com/blog/getting-started-with-the-redfish-api-part-2/'
-        external: true
+- group: HPE Redfish clients
+  expanded: false
+  selectFirstItemOnExpand: true
+  items:
+    - label: Overview
+      page: docs/redfishClients/index.md
+    - label: HPE iLOrest user guide
+      page: docs/redfishClients/ilorest-userguide/index.md
+    - label: HPE Python Redfish library
+      page: docs/redfishClients/python-redfish-library/index.md
+    - label: Scripting Tools for Windows PowerShell
+      page: docs/redfishClients/powershellCmdlets/index.md
 
-      - label: And much more....
-        href: 'https://developer.hpe.com/search/?term=redfish'
-        external: true
-  
+- separatorLine: true
+- group: More references and material
+  expanded: false
+  items:
+    - label: Overview
+      page: docs/references_and_material/index.md
+    - label: Why is Redfish different...
+      href: 'https://developer.hpe.com/blog/why-is-redfish%C2%AE-different-from-other-rest-apis-part-1/'
+      external: true
+    - label: Overview of PLDM for RDE
+      href: 'https://developer.hpe.com/blog/overview-of-the-platform-level-data-model-for-redfish%C2%AE-device-enablement-standard/'
+      external: true
+    - label: Benefits of PLDM for Firmware Update
+      href: 'https://developer.hpe.com/blog/benefits-of-the-platform-level-data-model-for-firmware-update-standard/'
+      external: true
+    - label: Master the Redfish Server States
+      href: 'https://developer.hpe.com/blog/master-the-redfish-server-states-to-improve-your-monitoring-and-manageme/'
+      external: true
+    - label: HPE firmware updates
+      href: 'https://developer.hpe.com/blog/hpe-firmware-updates-part-1-file-types-and-smart-components/'
+      external: true
+    - label: Massive parallel management
+      href: 'https://developer.hpe.com/blog/massive-parallel-management-with-ilorest-on-linux/'
+      external: true
+    - label: Managing iLO sessions
+      href: 'https://developer.hpe.com/blog/managing-ilo-sessions-with-redfish/'
+      external: true
+
+    - label: Developer guide part 1
+      href: 'https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/'
+      external: true
+    - label: Developer guide Part 2
+      href: 'https://developer.hpe.com/blog/getting-started-with-the-redfish-api-part-2/'
+      external: true
+
+    - label: And much more....
+      href: 'https://developer.hpe.com/search/?term=redfish'
+      external: true

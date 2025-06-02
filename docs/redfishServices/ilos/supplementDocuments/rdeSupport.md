@@ -1,20 +1,24 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: RDE support
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 # Redfish Device Enablement (RDE) support
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 It is possible that some properties or resources described in
 this section are not implemented in HPE iLO 4 and iLO 5.
 
-:::
+{% /admonition %}
 
 HPE iLO implements the
 <a href="https://developer.hpe.com/blog/overview-of-the-platform-level-data-model-for-redfish%C2%AE-device-enablement-standard/"
@@ -31,7 +35,7 @@ vendor, family or model device. When PLDM for RDE is implemented in both
 the management controller and the device, the former acts as a request
 forwarder (pass-through) between the Redfish client and the device.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 
 As `GET` responses from RDE capable devices come from the device, they
 don't contain any HPE `Oem/Hpe` section. However, they may contain OEM
@@ -40,7 +44,7 @@ sections specific to the device maker (`Oem/DeviceMaker`).
 Refer to this [paragraph](#ilo-rde-uris-and-corresponding-http-methods)
 for the Redfish URIs enabled by iLO for RDE capable devices.
 
-:::
+{% /admonition %}
 
 In the detail, RDE capable management controllers and devices may use the
 <a href="https://www.dmtf.org/documents/pmci/mctp-base-specification-130"
@@ -51,18 +55,18 @@ MCTP globally as well as on all possible device slots. Refer to the
 for managing MCTP from the GUI
 (`System Information` --> `Device Inventory` --> `Discovery`).
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 When MCTP is [globally disabled](#disable-the-mctp-globally) or if a
 [device slot](/docs/redfishservices/ilos/supplementdocuments/rdesupport/#disable-the-mctp-on-a-specific-slot)
 (PCIe, M.2, OCP...) is MCTP disabled, RDE capable devices may not be
 accessible via Redfish anymore.
-:::
+{% /admonition %}
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 It is not possible to enable MCTP on a specific device slot. A global MCTP
 factory reset is required. This action enables MCTP globally and on all
 device slots. Refer to the examples below to manage the MCTP with Redfish.
-:::
+{% /admonition %}
 
 ## MCTP management with Redfish
 
@@ -74,23 +78,40 @@ reset the MCTP.
 The following example retrieves the MCTP global status and the
 status of slot 5.
 
+  {% tabs %}
+{% tab label="MCTP global status" %}
+
 ```text MCTP global status
 GET /redfish/v1/Chassis/1/?$select=Oem/Hpe/MCTPEnabledOnServer
 ```
+  
+  {% /tab %}
+{% tab label="MCTP Specific slot status" %}
 
 ```text MCTP Specific slot status
 GET /redfish/v1/Chassis/1/devices/5/?$select=MCTPProtocolDisabled
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Disable the MCTP globally
+
+  {% tabs %}
+{% tab label="Disable the MCTP" %}
 
 ```text Disable the MCTP
 POST /redfish/v1/Chassis/1/Actions/Oem/Hpe/HpeServerChassis.DisableMCTPOnServer/
 ```
+  
+  {% /tab %}
+{% tab label="Request body" %}
 
 ```json Request body
 {}
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -105,18 +126,29 @@ POST /redfish/v1/Chassis/1/Actions/Oem/Hpe/HpeServerChassis.DisableMCTPOnServer/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Disable the MCTP on a specific slot
+
+  {% tabs %}
+{% tab label="Generic PATCH request" %}
 
 ```text Generic PATCH request
 PATCH: /redfish/v1/Chassis/{{ChassisId}}/devices/{{slotId}}/
 ```
+  
+  {% /tab %}
+{% tab label="Request body" %}
 
 ```json Request body
 {
     "MCTPProtocolDisabled": true
 }
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -131,19 +163,30 @@ PATCH: /redfish/v1/Chassis/{{ChassisId}}/devices/{{slotId}}/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### MCTP factory reset
 
 In order to globally re-enable the MCTP and all the specific slots,
 a MCTP factory reset is required.
 
+  {% tabs %}
+{% tab label="MCTP factory reset" %}
+
 ```text MCTP factory reset
 POST /redfish/v1/Chassis/1/Actions/Oem/Hpe/HpeServerChassis.FactoryResetMCTP
 ```
+  
+  {% /tab %}
+{% tab label="Request body" %}
 
 ```json Request body
 {}
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -158,8 +201,10 @@ POST /redfish/v1/Chassis/1/Actions/Oem/Hpe/HpeServerChassis.FactoryResetMCTP
     }
 }
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 
 If an MCTP factory reset returns an error (i.e. `ActionNotSupported`)
 and, the `System Information` --> `Device Inventory` --> `Recovery`
@@ -168,7 +213,7 @@ to recover with an
 [Auxiliary Power Cycle](/docs/concepts/performing_actions/#auxiliary-power-cycle-hpe-specific-action)
 (**efuse**) action.
 
-:::
+{% /admonition %}
 
 ## iLO RDE URIs and corresponding HTTP methods
 
@@ -181,7 +226,7 @@ file and look for string `RDE support changes` to get the first
 firmware version implementing RDE operations. iLO 6 implements all
 mentioned operations since version 1.05.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - iLO returns `400 Bad Request` when RDE devices take a long time to
     process and respond to `POST` requests.
@@ -190,7 +235,7 @@ mentioned operations since version 1.05.
     For example, if RDE capable storage devices supports storage volumes
     then iLO supports `POST` and `DELETE` operations.
 
-:::
+{% /admonition %}
 
 | URI | GET | HEAD | PATCH | POST | DELETE |
 |---|---|---|---|---|---|
@@ -233,33 +278,57 @@ target="_blank"> iLOrest tool</a>.
 
 ### Controller schema file location of an RDE capable storage controller
 
+  {% tabs %}
+{% tab label="iLOrest command" %}
+
 ```shell iLOrest command
 ilorest rawhead /redfish/v1/Systems/1/Storage/DE07C000 2>/dev/null | jq '.Link'
 ```
+  
+  {% /tab %}
+{% tab label="Response" %}
 
 ```Shell Response
 https://redfish.dmtf.org/schemas/Storage.v1_13_0.json
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Volume schema file location of an RDE capable logical volumes
+
+  {% tabs %}
+{% tab label="iLOrest command" %}
 
 ```shell iLOrest command
 ilorest rawhead /redfish/v1/Systems/1/Storage/DE07C000/Volumes 2>/dev/null | jq -r '.Link'
 ```
+  
+  {% /tab %}
+{% tab label="Response" %}
 
 ```Shell Response
 https://redfish.dmtf.org/schemas/VolumeCollection.json
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Network port schema file location of an RDE capable network adapter
+
+  {% tabs %}
+{% tab label="iLOrest command" %}
 
 ```shell iLOrest command
 ilorest rawhead /redfish/v1/Chassis/1/NetworkAdapters/DE080000/NetworkPorts 2>/dev/null | jq '.Link'
 ```
+  
+  {% /tab %}
+{% tab label="Response" %}
 
 ```Shell Response
 http://redfish.dmtf.org/schemas/v1/NetworkPortCollection.json
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 For more detail concerning PLDM for RDE, refer to the
 <a href="https://www.dmtf.org/content/dmtf-releases-update-pldm-redfish-device-enablement-specification" target="_blank"> DMTF RDE specification</a>.

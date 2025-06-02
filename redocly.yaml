@@ -1,0 +1,87 @@
+# This file contains the project global settings as explained
+# the Reunite documentation:
+#  https://redocly.com/docs/realm/author/concepts/reunite#project-settings
+#
+# Those setings can be altered in a any page in a front matter section.
+    
+search:
+  engine: flexsearch
+  hide: false
+  shortcuts: 
+    - /
+  ai: 
+    hide: true
+
+metadataGlobs:
+  'docs/redfishServices/ilos/ilo7/**':
+    redocly_category: iLO 7
+  'docs/redfishServices/ilos/ilo6/**':
+    redocly_category: iLO 6
+  'docs/redfishServices/ilos/ilo5/**':
+    redocly_category: iLO 5
+  'docs/redfishServices/ilos/supplementDocuments/**':
+    redocly_category: iLO Supplement documents
+  'docs/concepts/**':
+    redocly_category: Redfish concepts
+  'docs/redfishClients/ilorest-userguide/**':
+    redocly_category: iLOrest
+
+ignore:
+  - '**/README.md'
+  - '**/_*'
+reunite:
+  ignoreLint: true
+  ignoreLinkChecker: false
+scripts:
+  head:
+    - src: './scripts/ucep-loader.js'
+    - src: 'https://h50007.www5.hpe.com/hfws-static/js/framework/jquery/v-3-6-0/jquery.js'
+  body:
+    - src:  https://www.hpe.com/global/metrics/easy/basic_measurement.js
+extends:
+  - minimal
+links:
+  - href: https://fonts.googleapis.com/css2?family=VT323&display=swap
+  - href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
+seo:
+  title: HPE server management with Redfish
+  description: Redfish is a standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC)
+
+navbar:
+  items:
+    - label: Home
+      page: /
+    - label: Guides
+      page: docs/index.md
+    - label: Services
+      page: docs/redfishServices/index.md
+    - label: Clients
+      page: docs/redfishClients/index.md
+    - label: Redfish standard
+      href: https://www.dmtf.org/standards/redfish
+      external: true
+
+# Commenting out the product section. It introduces
+# a difficult to detect filter, in the search bar. 
+#products:
+  #iLORedfishServices:
+    #name: HPE iLO RedfishServices
+    #folder: docs/redfishServices/ilos
+  #HpeRedfishClients:
+    #name: HPE RedfishClients
+    #folder: docs/redfishClients
+
+markdown:
+  toc:
+    depth: 3
+    hide: true
+  lastUpdatedBlock:
+    hide: true
+
+logo:
+  image: images/hpe.svg
+  link: /
+  altText: 'HPE server Management with Redfish'
+
+sidebar:
+  hide: false

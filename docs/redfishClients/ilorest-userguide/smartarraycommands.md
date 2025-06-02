@@ -1,15 +1,19 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Storage devices commands
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Storage commands for RDE capable devices
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - This section applies for HPE Gen10 and later servers.
 - This section contains commands for managing
@@ -19,9 +23,9 @@ capable storage devices only (MR, SR, NS...).
 use the `select type/get/set` paradigm or
 [raw](/docs/redfishclients/ilorest-userguide/rawcommands/) commands.
 
-:::
+{% /admonition %}
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Properties of [PLDM for RDE](/docs/etc/glossaryterms/)
 capable devices can only be accessed
 when the discovery of all devices
@@ -34,7 +38,7 @@ or `FinishedPost`
 - `ilorest get Oem/Hpe/DeviceDiscoveryComplete/DeviceDiscovery --select ComputerSystem.`
 should return: `vMainDeviceDiscoveryComplete`
 
-:::
+{% /admonition %}
 
 ## Storagecontroller command (former smartarray command)
 
@@ -159,6 +163,9 @@ Optionally include the `--logout` parameter to log out of the server after this 
 To list RDE capable storage devices with a brief summary of their properties,
 run the `storagecontroller` command without arguments or with the `default` sub-command.
 
+  {% tabs %}
+{% tab label="Command and text output" %}
+
 ```shell Command and text output
 ilorest storagecontroller default
 ---------------------------------
@@ -169,6 +176,9 @@ DE00D000: HPE MR416i-p Gen11: Health OK: Enabled
 DE009000: HPE NS204i-u Gen11 Boot Controller: Health OK: Enabled
 DE00F000: HPE SR932i-p Gen11: Health OK: Enabled
 ```
+  
+  {% /tab %}
+{% tab label="Command and JSON output" %}
 
 ```json Command and JSON output
 ilorest storagecontroller --json
@@ -196,16 +206,24 @@ ilorest storagecontroller --json
 }
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To list selected properties
 not returned by the `default` sub-command,
 use the `list` command combined with the
 `--filter`
 [parameter](/docs/redfishclients/ilorest-userguide/advancedusage/#filter-option)
 
+  {% tabs %}
+{% tab label="List of RDE capable devices" %}
+
 ```shell List of RDE capable devices
 ilorest list @odata.type Drives@odata.count Id Name --select Storage.  --filter "Id=DE*" --json
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```json Output
 [
@@ -237,9 +255,14 @@ ilorest list @odata.type Drives@odata.count Id Name --select Storage.  --filter 
 
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves a summary of the properties of
 a specific storage device.
+
+  {% tabs %}
+{% tab label="Command and text output" %}
 
 ```shell Command and text output
 ilorest storagecontroller --storageid=DE00D000
@@ -254,6 +277,9 @@ Details of Storage DE00D000
         Number of Volumes: 2
         Number of Drives: 2
 ```
+  
+  {% /tab %}
+{% tab label="Command and JSON output" %}
 
 ```json Command and JSON output
 ilorest storagecontroller --storageid=DE00D000 --json
@@ -268,9 +294,14 @@ ilorest storagecontroller --storageid=DE00D000 --json
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example retrieves properties of controller 0 of
 a specific device.
+
+  {% tabs %}
+{% tab label="Command and text output" %}
 
 ```shell Command and text output
 ilorest storagecontroller --storageid=DE00D000 --controller=0
@@ -291,6 +322,9 @@ Status: {'State': 'Enabled', 'Health': 'OK'}
 SupportedDeviceProtocols: ['NVMe', 'SAS', 'SATA']
 SupportedControllerProtocols: ['PCIe']
 ```
+  
+  {% /tab %}
+{% tab label="Command and JSON output" %}
 
 ```json Command and JSON output
 ilorest storagecontroller --storageid=DE00D000 --controller=0 --json
@@ -318,6 +352,9 @@ ilorest storagecontroller --storageid=DE00D000 --controller=0 --json
   ]
 }
 ```
+  
+  {% /tab %}
+{% tab label="Equivalent list command" %}
 
 ```json Equivalent list command
 ilorest list --select Storage. --filter Id=DE00D000  --json
@@ -373,10 +410,15 @@ ilorest list --select Storage. --filter Id=DE00D000  --json
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example lists a summary of the properties of
 logical volumes existing in controller 0 of a
 specific storage device.
+
+  {% tabs %}
+{% tab label="Command and text output" %}
 
 ```shell Command and text output
 ilorest storagecontroller --storageid=DE00D000  --controller=0 --volumes
@@ -386,6 +428,9 @@ Volumes on Controller 0 and Storage DE00D000
         [7]: Name MR Volume 7 RAIDType None VUID 600062B214F000802D8FF4862CF27B90 Capacity 1600321314816 Bytes - Health OK
         [8]: Name MR Volume 8 RAIDType None VUID 600062B214F000802D8FF4883002995D Capacity 1600321314816 Bytes - Health OK
 ```
+  
+  {% /tab %}
+{% tab label="Command and JSON output" %}
 
 ```json Command and JSON output
 ilorest storagecontroller --storageid=DE00D000  --controller=0 --volumes --json
@@ -420,15 +465,23 @@ ilorest storagecontroller --storageid=DE00D000  --controller=0 --volumes --json
 }
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example returns selected
 properties of the volumes contained in a
 specific storage device, not present in the
 previous output.
 
+  {% tabs %}
+{% tab label="Volume selected properties" %}
+
 ```shell Volume selected properties
 ilorest list  Name @odata.id Links/Drives  --select Volume. --filter  "@odata.id=/redfish/v1/Systems/1/Storage/DE07C000/Vol*" --json
 ```
+  
+  {% /tab %}
+{% tab label="Output" %}
 
 ```json Output
 {
@@ -446,7 +499,9 @@ ilorest list  Name @odata.id Links/Drives  --select Volume. --filter  "@odata.id
   "Name": "Raid1-1"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example lists physical drive properties in a specific storage device.
 
 Location information is in the format, `ControllerPort:Box:Bay`.
@@ -456,6 +511,9 @@ Location information is in the format, `ControllerPort:Box:Bay`.
      Various errors: "ERROR: 'PhysicalLocation' or incomplete
      output with list command 
 -->
+
+  {% tabs %}
+{% tab label="Command and text output" %}
 
 ```shell Command and text output
 ilorest storagecontroller --storageid=DE00F000  --controller=0 --physicaldrives
@@ -468,6 +526,9 @@ Drives on Controller 0 and Storage DE00F000
         [2:3:4]: 900GB 12G SAS HDD, Model EH000900JXLVU, Location 2:3:4, Type HDD, Serial WAG1LW5W - 900185481216 Bytes
 
 ```
+  
+  {% /tab %}
+{% tab label="Command and JSON output" %}
 
 ```json Command and JSON output
 ilorest storagecontroller --storageid=DE00F000  --controller=0 --physicaldrives --json
@@ -513,6 +574,9 @@ ilorest storagecontroller --storageid=DE00F000  --controller=0 --physicaldrives 
 }
 
 ```
+  
+  {% /tab %}
+{% tab label="Equivalent list command (truncated)" %}
 
 ```json Equivalent list command (truncated)
 ilorest get --select Drive. --filter "Links/Storage/@odata.id=/redfish/v1/Systems/1/Storage/DE00D000" --json
@@ -581,7 +645,9 @@ ilorest get --select Drive. --filter "Links/Storage/@odata.id=/redfish/v1/System
 ]
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 <!-- Need to include examples with the state command 
      and a non null @Redfish.Settings. Need help. -->
 
@@ -717,7 +783,10 @@ To create quickly a volume, run the command with the following arguments: The ty
 <!-- The following example has been created on ilo-fdz360g10-3
      (P408i-a SR Gen10)
 -->
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 
 ilorest createvolume quickdrive RAID0 1I:1:3 HDD SAS Internal  --storageid=DE07C000 --controller=0
 
@@ -726,7 +795,9 @@ CreateVolume path and payload: /redfish/v1/Systems/1/Storage/DE07C000/Volumes,
 The operation completed successfully.
 Volume created successfully
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To create a custom volume, run the command with the following arguments:
 The type of creation as `customdrive`, the raid level,
 and the `physicaldrive` drive location. Also include the `--controller`
@@ -737,12 +808,17 @@ See the options list for possible values of these and more.
      The following example needs to be reviewed/re-tested.
 -->
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 
 ilorest createvolume customdrive Raid0 1E:1:2 --controller=1 --name=ANewVolume --spare-drives=1E:1:3 --capacityGiB=100 --legacy-boot=Primary --accelerator-type=ControllerCache --sparetye=Dedicated
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 <!--
      Need to understand if volume creation is really different
      on iLO 5 and iLO 6.
@@ -750,14 +826,19 @@ ilorest createvolume customdrive Raid0 1E:1:2 --controller=1 --name=ANewVolume -
 
 Use the following example syntax for creating a volume in an iLO 6 based server.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > login
 Discovering data...Done
 
 ilorest > createvolume volume RAID1 2:3:4,2:3:8 --DisplayName Name1 --iOPerfModeEnabled False --ReadCachePolicy ReadAhead --WriteCachePolicy ProtectedWriteBack --WriteHoleProtectionPolicy Yes --capacitygib 1000 --controller=0 --storageid=DE00C000
 ```
-
-:::info NOTE
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
 
 - If JBOD volumes are created by default in some controllers, these would be deleted when creating RAID volumes.
 - HPE iLO 6 onwards, there is no need to reboot after creating a volume.
@@ -768,7 +849,7 @@ ilorest > createvolume volume RAID1 2:3:4,2:3:8 --DisplayName Name1 --iOPerfMode
 If the drives are not present after a full reboot,
 run the results command to check for errors in the configuration.
 
-:::
+{% /admonition %}
 
 ## Deletevolume Command (former deletelogicaldrive command)
 
@@ -830,13 +911,18 @@ The following example deletes volume 239 behind controller 0 of storage id DE040
     The following example has been created on ilo-lio365g11-2
 -->
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest deletevolume --storageid=DE040000 --controller=0 239
 Are you sure you would like to continue deleting volume ESX_boot_volume? (y/n)y
 Setting volume ESX_boot_volume for deletion
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The following example forces the deletion of all volumes behind
 controller 0 of storage device DE07C0000.
 
@@ -845,11 +931,16 @@ against ilo-fdz360g10-3:
 ERROR: 'Members'
 -->
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest deletevolume --storageid=DE07C00 --controller=0 --all --force
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To delete multiple volumes by drive location include the drive location of the drive you wish to delete. Also include the `--controller` option specifying the controller to use. You can specify multiple drives as well as a comma separated list.
 
 <!-- Need a working example illustrating the above statement -->
@@ -926,18 +1017,26 @@ Optionally include the logout flag to log out of the server after this command i
 
 To sanitize a physical drive pass its drive location along with the `--controller` option to specify which controller to perform the operation on.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest > drivesanitize --controller=1 1I:3:4
 Setting physical drive 1I:3:4 for sanitization
 One or more properties were changed and will not take effect until system is reset.
 Sanitization will occur on the next system reboot.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 To sanitize multiple physical drives pass the location as a comma separated list along with the `--controller` option to specify which controller to perform the operation on.
 
 In case of iLO 6, the `--storageid` tag is mandatory.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest > drivesanitize --controller=1 1I:3:3,1I:3:2,1I:3:1
 Setting physical drive 1I:3:3 for sanitization
 Setting physical drive 1I:3:2 for sanitization
@@ -945,21 +1044,33 @@ Setting physical drive 1I:3:1 for sanitization
 One or more properties were changed and will not take effect until system is reset.
 Sanitization will occur on the next system reboot.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Use the `--status` tag to check the status of Sanitization. This is only applicable for iLO 6.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest > drivesanitize 1I:1:1 --controller=1 --storageid=DE00900 --mediatype="HDD" --status </span>
 The drive is in Sanitizing state, 25 percent complete.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Once the process is 100% complete, use the `--drivereset` tag to reset the drive. This is only applicable for iLO 6
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest > drivesanitize 1I:1:1 --controller=1 --storageid=DE00900 --mediatype="HDD" --drivereset </span>
 DriveReset path and payload: /redfish/v1/Systems/1/Storage/DE00A000/Drives/8/Actions/Drive.Reset, {"ResetType": "ForceOn"}
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Clearcontrollerconfig Command
 
 <!-- 
@@ -983,11 +1094,11 @@ Clears specific controller configuration. This command does not reset
 the entire device to factory settings. It can be used for
 reconfiguring or troubleshooting.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 <a href="https://www.hpe.com/psnow/doc/a50006146enw?from=app&section=search&isFutureVersion=true"
 target="_blank">Broadcom MegaRaid MR controllers</a>
 for Gen11 servers don't support this command.
-:::
+{% /admonition %}
 ### Parameters
 
 - **-h, --help**
@@ -1022,11 +1133,16 @@ Optionally include the logout flag to log out of the server after this command i
 
 To clear a controller configuration run the command including the `--controller` parameter specifying the controller to clear.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 ilorest clearcontrollerconfig --controller=1
 The operation completed successfully.
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Factoryresetcontroller Command
 
 <!-- 
@@ -1053,7 +1169,7 @@ Including the `--help` parameter displays help for the command.
 
 Use this parameter to select the corresponding controller.
 
-- **--reset_type RESET_TYPE**
+- **--reset\_type RESET\_TYPE**
 
 Against iLO 6 only, this parameter provides the reset type.
 Possible values are: `resetall` and `preservevolumes`.
@@ -1084,14 +1200,23 @@ Optionally include the logout flag to log out of the server after this command i
 
 ### Examples
 
+  {% tabs %}
+{% tab label="iLO 5" %}
+
 ```shell iLO 5
 ilorest factoryresetcontroller --controller=0
 FactoryReset path and payload: /redfish/v1/systems/1/smartstorageconfig/settings/, {'Actions': [{'Action': 'FactoryReset'}], 'DataGuard': 'Disabled'}
 The operation completed successfully.
 [0]: Slot 0
 ```
+  
+  {% /tab %}
+{% tab label="iLO 6" %}
 
 ```shell iLO 6
 ilorest factoryresetcontroller --storageid DE040000 --reset_type preservevolumes
 The operation completed successfully.
 ```
+  
+  {% /tab %}
+  {% /tabs %}

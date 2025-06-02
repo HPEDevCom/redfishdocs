@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Field-replaceable units
-toc:
-  enable: false
-  maxDepth: 3
-disableLastModified: false
 ---
 
 ## Compute node data
@@ -22,11 +26,17 @@ This resource includes a link to the collection of entries
 `/redfish/v1/Chassis/1/BaseFrus/`. Individual FRUs can be accessed by
 performing `GET` on `/redfish/v1/Chassis/1/BaseFrus/{@baseId}/Details`.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 curl --insecure --location         \
      --user ilo-user:password      \
      https://{iLO}/redfish/v1/Chassis/1/BaseFrus/{@baseId}/Details/
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -165,7 +175,9 @@ curl --insecure --location         \
   "Type": "HpServerFru.1.0.1"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Mezzanine FRUs
 
 The NIC and Mezzanine (Mezz) option FRU information informs Onboard
@@ -185,11 +197,17 @@ the collection of entries `/redfish/v1/Chassis/1/MezzFrus/`. Individual
 FRUs can be accessed by performing `GET` on
 `/redfish/v1/Chassis/1/MezzFrus/{@mezzId}/Details/`.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 curl --insecure --location      \
      --user ilo-user:password   \
 https://{iLO}/redfish/v1/Chassis/1/MezzFrus/{@mezzId}/Details/ 
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -365,3 +383,6 @@ https://{iLO}/redfish/v1/Chassis/1/MezzFrus/{@mezzId}/Details/
   }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}

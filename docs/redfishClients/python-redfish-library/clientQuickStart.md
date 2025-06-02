@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Client quick start
-disableLastModified: false
-toc:
-  enable: true
-  maxDepth: 2
 ---
 
 ## Client quick start
@@ -24,19 +28,24 @@ The HPE Python Redfish library provides support for communication using both rem
 
 Import the library.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 import redfish
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The very first thing that needs to be done for a RESTful request is to create a **LegacyRestClient** or **RedfishClient** object.
 
 A **RedfishClient** is for interacting with a Redfish API, and a **LegacyRestClient** is for interacting with HPE Legacy Rest API.
 
 For maximum compatibility between iLOs and other vendor hardware that implements Redfish, it is recommended to use the Redfish API whenever possible.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 HPE's Legacy Rest API is available starting in **iLO 4 2.00**. iLO 4 is Redfish conformant starting with **iLO 4 2.30**. In iLO 5 and above the iLO RESTful API is Redfish only.
-:::
+{% /admonition %}
 
 ## Creating a Remote Object
 
@@ -44,35 +53,47 @@ Creating a remote client requires including the iLO hostname or IP address and c
 
 ### Create a Redfish Object
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 _New in version 3.0.0_
 
 Creation of a Redfish object instance is done using the `RedfishClient` class instead of the `redfish_client` function.
-:::
+{% /admonition %}
 
 `RedfishClient` takes as parameters iLO hostname/IP address, username, password, and other optional arguments.
 
-For a full list of optional arguments refer to the [Reference documentation](/docs/redfishclients/python-redfish-library/3.2/python-library-reference{{process.env.LATEST_PYTHON_LIBRARY_VERSION}}/#redfishrestv1) section.
+For a full list of optional arguments refer to the
+{% link-internal href=concat("/docs/redfishclients/python-redfish-library/3.2/python-library-reference", $env.PUBLIC_LATEST_PYTHON_LIBRARY_VERSION, "#redfishrestv1") %} Reference documentation {% /link-internal %}
+section.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 REST_OBJ = redfish.RedfishClient(base_url=iLO_host, username=login_account, password=login_password)
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Create a LegacyRest Object
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 _New in version 3.0.0_
 
 Creation of a Legacy Rest object instance is done using the `LegacyRestClient` class instead of the `rest_client` function.
-:::
+{% /admonition %}
 
 `LegacyRestClient` takes as parameters iLO hostname/IP address, username, password, and other optional arguments.
 For a full list of optional arguments see `here <Reference.html#redfish.rest.v1.LegacyRestClient> TBD`_.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 REST_OBJ = redfish.LegacyRestClient(base_url=iLO_host, username=login_account, password=login_password)
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Creating a Local Object
 
 ### Requirements
@@ -98,9 +119,15 @@ Some reasons credentials may be required locally:
 * iLO is operating in a higher security mode (Such as HighSecurity).
 * Some operations require the credentials of an account with a specific privilege to complete (Even in Production security mode).
 
-```python
+{% tabs %}
+{% tab label="Example" %}
+
+```python Example
 REST_OBJ = redfish.RedfishClient()
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Create a login session
 
@@ -111,10 +138,15 @@ For `session` authentication, a session key is generated through a rest request,
 
 For `basic` authentication, the username and password is base64 encoded and sent in a header for each request. For security, session authentication is preferred.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 REST_OBJ.login(auth="session")
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Remember to call  **logout** method once the session is completed to free up sessions.
 
 ## Perform your first RESTful API GET operation
@@ -125,22 +157,36 @@ The interface is not available over open HTTP (port 80), so SSL handshake must b
 
 Perform a HTTP **GET** request by using the **get** method. A **Response** dictionary called _response_ is returned.
 
+  {% tabs %}
+{% tab label="GET request" %}
+
 ```Python GET request
 >>> response = REST_OBJ.get('/redfish/v1/systems/1')
 ```
+  
+  {% /tab %}
+{% tab label="status" %}
 
 ```Python status
  >>> response.status
  200
 ```
+  
+  {% /tab %}
+{% tab label="Response dictionary" %}
 
 ```Python Response dictionary
 >>> response.dict
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The **getheaders()** method returns a dictionary of all http response headers:
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 >>> response.getheaders()
 {'Transfer-Encoding': 'chunked', 'X_HP-CHRP-Service-Version': '1.0.3', 'ETag': 'W/"0129EA9F"',
 'Link': '</redfish/v1/SchemaStore/en/ComputerSystem.json>;
@@ -148,17 +194,28 @@ rel=describedby', 'Allow': 'GET, HEAD, POST, PATCH',
 'Cache-Control': 'no-cache', 'Date': 'Tue, 06 Aug 2019 19:42:26 GMT',
 'OData-Version': '4.0', 'X-Frame-Options': 'sameorigin', 'Content-type': 'application/json; charset=utf-8'}
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 You can also print the Response object directly:
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 >>> sys.stdout.write("%s\n" % response)
 ```
+  
+  {% /tab %}
+{% tab label="Response status" %}
 
 ```text Response status
 
 200
 ```
+  
+  {% /tab %}
+{% tab label="Response header" %}
 
 ```text Response header:
 | Transfer-Encoding chunked
@@ -172,10 +229,15 @@ You can also print the Response object directly:
 | X-Frame-Options sameorigin
 | Content-type application/json; charset=utf-8
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The formatted Response body (Truncated for size):
 
-```json
+  {% tabs %}
+{% tab label="Example" %}
+
+```json Example
 {
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.etag": "W/\"E4BDA463\"",
@@ -201,29 +263,45 @@ The formatted Response body (Truncated for size):
 }
 
 ```
-
-A full description of the Response Object is available in the [reference documentation](/docs/redfishclients/python-redfish-library/3.2/python-library-reference{{process.env.LATEST_PYTHON_LIBRARY_VERSION}}/#redfishrestcontainers) section.
+  
+  {% /tab %}
+  {% /tabs %}
+A full description of the Response Object is available in the
+{% link-internal href=concat("/docs/redfishclients/python-redfish-library/3.2/python-library-reference", $env.PUBLIC_LATEST_PYTHON_LIBRARY_VERSION, "#redfishrestcontainers") %} reference documentation {% /link-internal %}
+section.
 
 ## Other HTTP requests
 
 Other HTTP Requests **HEAD**, **PATCH**, **POST**, **DELETE**, and **PUT** are just as simple to use as **GET**.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 >>> response = REST_OBJ.head('/redfish/v1/systems/1')
 >>> response = REST_OBJ.patch('/redfish/v1/systems/1', {'AssetTag': 'newtag'})
 >>> response = REST_OBJ.post('/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/', {'ResetType': 'ForceRestart'})
 >>> response = REST_OBJ.delete(REST_OBJ.session_location)
 >>> response = REST_OBJ.put('<uri>', 'data')
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Close the login session
 
 Logout of the current session. This is only required for `session` based authentication.
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 REST_OBJ.logout()
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
+  
 ## Continued reading
 
 That's it! You're ready to perform some Redfish requests! If you are looking for more advanced topics like

@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: true
 seo:
   title: Advanced Options
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: true
 ---
 
 # Advanced Options
@@ -21,6 +25,9 @@ In the following example, we are filtering by `@odata.id`.
 By default, `--filter` attempts to match the property and
 value case insensitively, but exactly. If no matches are
 found HPE iLOrest will return an error.
+
+  {% tabs %}
+{% tab label="Successful filter" %}
 
 ```Shell Successful filter
 ilorest select EthernetInterface.
@@ -45,15 +52,23 @@ ilorest list Id @odata.id --filter "@odata.id=/redfish/v1/Managers/1/EthernetInt
 @odata.id=/redfish/v1/Managers/1/EthernetInterfaces/1/
 Id=1
 ```
+  
+  {% /tab %}
+{% tab label="Unsuccessful filter" %}
 
 ```shell Unsuccessful filter
 ilorest list Id @odata.id --filter "@Odata.id=/redfish/v1/Managers/1/"
 Unable to locate instance for 'ethernetinterface.' and filter '@odata.id=/redfish/v1/Managers/1/'
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Partial string matching is supported with the `*` character.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > list @odata.id Id --filter "@Odata.id=/redfish/v1/Managers/1/*"
 
 @odata.id=/redfish/v1/Managers/1/EthernetInterfaces/1/
@@ -62,17 +77,24 @@ Id=1
 @odata.id=/redfish/v1/Managers/1/EthernetInterfaces/2/
 Id=2
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Filter is also useful for setting properties to specific instances.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > set FullDuplex=True --filter "@odata.id=/redfish/v1/Managers/1/EthernetInterfaces/2/"
 iLOrest > status
 Current changes found:
 EthernetInterface.v1_4_1(/redfish/v1/Managers/1/EthernetInterfaces/2/) (Currently selected)
         FullDuplex=True
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Syntax
 
 --filter [FILTER\_PROPERTY=FILTER\_VALUE]
@@ -85,15 +107,18 @@ down the results. With this narrowed result, you can set
 specific instance properties, list specific
 instance properties, or get specific instance properties.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 The filter option can be used in the get, list, and set commands.
-:::
+{% /admonition %}
 
 ## Path Option
 
 To start type collection from a specific path include
 the `--path` option followed by the path to start from.
 This can limit or add new types depending on the path specified.
+
+  {% tabs %}
+{% tab label="All data types (Truncated)" %}
 
 ```shell All data types (Truncated)
 iLOrest > login xx.xx.xx.xx -u username -p password
@@ -129,6 +154,9 @@ HpeDirectoryTest.v1_0_0
 HpeESKM.v2_0_0
 ...
 ```
+  
+  {% /tab %}
+{% tab label="Data types below specific path" %}
 
 ```shell Data types below specific path
 iLOrest > login xx.xx.xx.xx -u username -p password --path /redfish/v1/systems/1/bios/
@@ -143,7 +171,9 @@ Type options:
 #HpeTlsConfig.v1_0_0.HpeTlsConfig
 #HpeiSCSISoftwareInitiator.v2_0_0.HpeiSCSISoftwareInitiator
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Syntax
 
 --path [URI]

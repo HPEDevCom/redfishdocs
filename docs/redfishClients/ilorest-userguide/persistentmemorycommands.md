@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Persistent Memory commands
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Persistent Memory Commands
@@ -31,7 +35,10 @@ Displays help on the usage of this command.
 
 Clear all pending persistent memory configuration tasks.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > clearpmmpendingconfig
 
 Deleted Task #1948
@@ -42,7 +49,9 @@ Deleted Task #1952
 Deleted Task #1953
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Persistent Memory Advanced Configuration Command
 
 ### Syntax
@@ -88,7 +97,10 @@ any prompts.
 Configure all persistent memory modules on processors
 1 and 3 to 50% Volatile with no persistent interleave regions.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > provisionpmm -m 50 -i off -pid 1,3
 
 ***WARNING: Configuration changes require reboot to take effect***
@@ -100,11 +112,16 @@ CREATE       63.19 GB    63.19 GB        3@1
 CREATE       63.19 GB    63.19 GB        3@12
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Example: Configure all installed persistent memory modules
 to 25% Volatile with persistent interleave regions.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > provisionpmm -m 25 -i on
 
 ***WARNING: Configuration changes require reboot to take effect***
@@ -116,7 +133,9 @@ CREATE       189.57 GB   63.19 GB        1@1, 1@12
 CREATE       189.57 GB   63.19 GB        2@1, 2@12
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Persistent Memory Discovery Command
 
 ### Syntax
@@ -173,7 +192,10 @@ Optionally use this flag to display output in JSON format.
 
 Show information about the physical persistent memory modules.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > showpmm --device
 
 Location        Capacity    Status    DIMMStatus    Life    FWVersion
@@ -183,10 +205,15 @@ PROC 2 DIMM 1   126.38 GB   OK        GoodInUse     100%    01.02.00.5360
 PROC 2 DIMM 12  126.38 GB   OK        GoodInUse     100%    01.02.00.5360
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Show current configuration of selected persistent memory modules.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > showpmm --pmmconfig --dimm=1@12,2@12
 
 Location        VolatileSize    PmemSize    PmemInterleaved
@@ -194,10 +221,15 @@ PROC 1 DIMM 12  126.38 GB       0.0 GB      N/A
 PROC 2 DIMM 12  126.38 GB       0.0 GB      N/A
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Show the persistent interleave regions in JSON format.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > showpmm --logical --dimm=1@12,2@12
 
 [ { 'DimmIds': '1@1, 1@12',
@@ -208,10 +240,15 @@ iLOrest > showpmm --logical --dimm=1@12,2@12
                   'Value': 252.0}}]
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Show a summary of the persistent memory resources.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > showpmm --summary
 
 TotalCapacity:  505.52 GB
@@ -219,7 +256,9 @@ TotalVolatileSize:  505.52 GB
 TotalPmemSize:  0.0 GB
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Persistent Memory Guided Configuration Command
 
 ### Syntax
@@ -254,7 +293,10 @@ Allow the user to force the configuration by automatically accepting any prompts
 
 Show a list of supported guided configurations.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > applypmmconfig --list
 
 Available Configurations:
@@ -267,10 +309,15 @@ PmemNotInterleaved
         Configure all PMMs to 100% Persistent. The Persistent memory regions are not interleaved.
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Configure all installed persistent memory modules as 100% Volatile.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > applypmmconfig --pmmconfig MemoryMode
 
 ***WARNING: Configuration changes require reboot to take effect***
@@ -280,7 +327,9 @@ CREATE       0.0 GB      252.76 GB       1@1, 1@12
 CREATE       0.0 GB      252.76 GB       2@1, 2@12
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Show Pending Configuration Command
 
 ### Syntax
@@ -305,7 +354,10 @@ Optionally use this flag to display output in JSON format.
 
 Show persistent memory configuration changes pending a reboot.
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > showpmmpendingconfig
 
 Operation    PmemSize    VolatileSize    DimmIds
@@ -317,7 +369,9 @@ CREATE       94.78 GB    31.59 GB        2@1
 CREATE       94.78 GB    31.59 GB        2@12
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Show Recommended Configuration Command
 
 ### Syntax
@@ -338,7 +392,10 @@ Displays help on the usage of this command.
 
 Show a list of recommended persistent memory configurations
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > showrecommendedpmmconfig
 
 MemoryModeTotalSize    PmemTotalSize    CacheRatio
@@ -347,7 +404,9 @@ MemoryModeTotalSize    PmemTotalSize    CacheRatio
 505 GB                 0 GB             1:3.9
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Display Security State Command
 
 ### Syntax
@@ -368,7 +427,10 @@ Displays help on the usage of this command.
 
 Displaying the Security state of dimms
 
-```shell
+  {% tabs %}
+{% tab label="Example" %}
+
+```shell Example
 iLOrest > pmmsecuritystate
 
 +-------------+----------+
@@ -385,3 +447,6 @@ iLOrest > pmmsecuritystate
 +-------------+----------+
 
 ```
+  
+  {% /tab %}
+  {% /tabs %}

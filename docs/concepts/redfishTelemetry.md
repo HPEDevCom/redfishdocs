@@ -1,10 +1,14 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
-  title: The Redfish® telemetry service
-toc:
-  enable: false
-  maxDepth: 3
-disableLastModified: false
+  title: The Redfish telemetry service
 ---
 
 ## The Redfish® telemetry service
@@ -18,13 +22,13 @@ the standard telemetry service allows clients to:
   (aggregation)._
 - _Specify trigger thresholds against a metric that is monitored (monitoring)._
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 As this service is dependent of the computer chipset (Intel, AMD, ARM...)
 it may not be present in all types of servers.
-:::
+{% /admonition %}
 
 When implemented, the telemetry entry point
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#telemetryservice)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#telemetryservice") %} URI {% /link-internal %}
 is `/redfish/v1/TelemetryService`.
 
 Metric reports can be stored locally, sent remotely or both.
@@ -36,9 +40,15 @@ Metric reports can be sent remotely toward an event listener after an
 with `EventFormatType=MetricReport`.
 The following example shows a metric report subscription toward an HPE iLO 6.
 
+  {% tabs %}
+{% tab label="Generic subscription request" %}
+
 ```text Generic subscription request
 POST /redfish/v1/EventService/Subscriptions/
 ```
+  
+  {% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
@@ -63,21 +73,29 @@ POST /redfish/v1/EventService/Subscriptions/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Subscribed metric reports can be sent to the event listener periodically
 only when `MetricReportDefinitionType` property of the metric report
 definition URI is set to `Periodic`. In the cases of `OnRequest` or `OnChange`
 streaming will be stopped. This is defined in the `MetricReportDefinitionType`
 property of the metric report definition
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#metricreportdefinition-1)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#telemetryservice") %} URI {% /link-internal %}
 for each metric report that is eligible to subscription.
 
 The following example sets the frequency of the `CPUUtil` metric report
 of an HPE iLO 6 to 1 day (P1DT), starting on a specific day and GMT time.
 
+  {% tabs %}
+ {% tab label="Generic request" %}
+
  ```json Generic request
 PATCH /redfish/v1/TelemetryService/MetricReportDefinitions/CPUUtil/
 ```
+  
+  {% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
@@ -88,7 +106,9 @@ PATCH /redfish/v1/TelemetryService/MetricReportDefinitions/CPUUtil/
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Refer to this
 [documentation section](/docs/redfishServices/ilos/supplementDocuments/iloTelemetryService.md)
 for examples and detail concerning the implementation of the

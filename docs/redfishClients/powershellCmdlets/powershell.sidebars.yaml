@@ -1,0 +1,27 @@
+# See https://redocly.com/docs/developer-portal/configuration/sidebar-nav/#Additional-sidebar
+- label: Back to Redfish clients
+  href: "/docs/redfishclients"
+  separatorLine: true
+
+- separator: Scripting Tools for Windows PowerShell
+- label: Overview
+  page: index.md
+#       - label: Changelog
+#         page: docs/redfishClients/powershellCmdlets/changelog.md
+#       - label: Installation
+#         page: docs/redfishClients/powershellCmdlets/installation.md        
+#       - group: v4.0.0.0
+#         expanded: false
+#         pages:
+#         - label: Introduction
+#           page: docs/redfishClients/powershellCmdlets/v4.0.0.0/index.md
+#         - label: iLO Cmdlets list
+#           page: docs/redfishClients/powershellCmdlets/v4.0.0.0/cmdlet-list-4.0.0.0.md
+      
+#       - label: Examples
+#         page: docs/redfishClients/powershellCmdlets/cmdlets-examples.md        
+#       - label: Troubleshooting
+#         page: docs/redfishClients/powershellCmdlets/troubleshooting.md          
+
+
+

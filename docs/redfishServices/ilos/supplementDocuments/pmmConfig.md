@@ -1,31 +1,35 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Persistent memory configuration
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 ## HPE Persistent Memory Configuration
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 It is possible that some properties or resources described in this
 section are not implemented in iLO 4 and ilo 5.
 
-:::
+{% /admonition %}
 
 Configuration of HPE Persistent Memory featuring Intel Optane Persistent
 Memory Modules (PMM) uses the Redfish `MemoryDomain`, `MemoryChunk`,
 and `TaskService` data type resources to manage goal configurations.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 Starting at version v2.5.0,
 <a href="https://www.hpe.com/info/resttool" target="_blank">iLOrest</a>
 the HPE RESTful Interface tool provides commands for inventory
 and configuration of PMMs.
-:::
+{% /admonition %}
 
 ## Concepts and Terms
 
@@ -88,10 +92,10 @@ unexpected results.
     Specify this or `MemoryChunkSizeMiB`, but not both.
     `MemoryChunkSizePercentage` is recommended.
 
-:::info Note
+{% admonition type="info" name="Note" %}
 The values specified by `MemoryChunkSizeMiB` or `MemoryChunkSizePercentage`
 must be the same across all POST requests on a given socket (Memory Domain).
-:::
+{% /admonition %}
 
 ### Example MemoryChunk POST
 
@@ -100,9 +104,15 @@ The example below is a POST body for creating a MemoryChunk using the
 and 7 will be interleaved and provisioned to 50% persistent memory
 (App Direct) mode. The remaining 50% is set to volatile (memory) mode.
 
+  {% tabs %}
+{% tab label="POST request" %}
+
 ```text POST request
 POST /redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -122,7 +132,9 @@ POST /redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks/
     ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Configuration Tasks
 
 Since the POST and DELETE modifications to the `MemoryChunks` are applied
@@ -139,9 +151,15 @@ new configuration.
 
 Example response to a MemoryChunk POST:
 
+  {% tabs %}
+{% tab label="MemoryChunk POST response header" %}
+
 ```text MemoryChunk POST response header
 Status: 202 Accepted
 ```
+  
+  {% /tab %}
+{% tab label="MemoryChunk POST response Body" %}
 
 ```json MemoryChunk POST response Body
 {
@@ -165,7 +183,9 @@ Status: 202 Accepted
     "TaskState": "New"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### POST and Task limits
 
 iLO will limit the total number of Tasks to a minimum of 192.
@@ -206,9 +226,15 @@ are listed below:
 
 3. Create new configuration: **Option 1** using MemoryChunkSizePercentage
 
+  {% tabs %}
+    {% tab label="POST request" %}
+
     ```text POST request
     POST /redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks
     ```
+  
+  {% /tab %}
+    {% tab label="Body" %}
 
     ```json Body
     {
@@ -232,12 +258,20 @@ are listed below:
         ]
     }
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 4. Create new configuration: **Option 2** using `MemoryChunkSizeMiB`
+
+  {% tabs %}
+    {% tab label="POST request" %}
 
     ```text POST request
     POST /redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks
     ```
+  
+  {% /tab %}
+    {% tab label="Body" %}
 
     ```json Body
     {
@@ -257,7 +291,9 @@ are listed below:
         ]
     }
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 5. Reboot system to apply changes staged in iLO as Tasks.
 
 ### Example 2: Reconfigure to change Memory Provisioning on Two-Socket System
@@ -302,9 +338,15 @@ on reboot. See detailed steps below:
 
 5. Create new configuration using MemoryChunkSizePercentage for A1.
 
+  {% tabs %}
+    {% tab label="POST request" %}
+
     ```text POST request
     POST /redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks
     ```
+  
+  {% /tab %}
+    {% tab label="Body" %}
 
     ```json Body
     {
@@ -323,12 +365,20 @@ on reboot. See detailed steps below:
         ]
     }
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 6. Create new configuration using MemoryChunkSizePercentage for A2.
+
+  {% tabs %}
+    {% tab label="Post request" %}
 
     ```text Post request
     POST /redfish/v1/Systems/1/MemoryDomains/PROC1MemoryDomain/MemoryChunks
     ```
+  
+  {% /tab %}
+    {% tab label="Body" %}
 
     ```json Body
     {
@@ -347,12 +397,20 @@ on reboot. See detailed steps below:
         ]
     }
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 7. Create new configuration using MemoryChunkSizePercentage for B1.
+
+  {% tabs %}
+    {% tab label="POST request" %}
 
     ```text POST request
     POST /redfish/v1/Systems/1/MemoryDomains/PROC2MemoryDomain/MemoryChunks
     ```
+  
+  {% /tab %}
+    {% tab label="Body" %}
 
     ```json Body
     {
@@ -371,12 +429,20 @@ on reboot. See detailed steps below:
         ]
     }
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 8. Create new configuration using MemoryChunkSizePercentage for B2.
+
+  {% tabs %}
+    {% tab label="POST request" %}
 
     ```text POST request
     POST /redfish/v1/Systems/1/MemoryDomains/PROC2MemoryDomain/MemoryChunks
     ```
+  
+  {% /tab %}
+    {% tab label="Body" %}
 
     ```json Body
     {
@@ -395,5 +461,7 @@ on reboot. See detailed steps below:
         ]
     }
     ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 9. Reboot system to apply changes staged in iLO as Tasks.

@@ -1,20 +1,25 @@
 ---
+excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Manager resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Manager resource definitions of iLO 6 v1.66
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ManagerCollection
+
 `@odata.type: "#ManagerCollection.ManagerCollection"`
 
 A Collection of Manager resource instances.
@@ -27,9 +32,9 @@ A Collection of Manager resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[Manager](../ilo6_manager_resourcedefns166/#manager)|
+|`Members[]`|[Manager](ilo6_manager_resourcedefns166/#manager)|
 
 ### Members (array)
 
@@ -66,7 +71,6 @@ The Manager resource describes a manager.  Examples of managers are BMCs, Enclos
 
 ### Manager.Reset
 
-
 There are two possible ways for Manager Reset. These are defined as `ForceRestart` and `GracefulRestart`.
 
 `POST /redfish/v1/Managers/1/Actions/Manager.Reset/`
@@ -76,10 +80,9 @@ There are two possible ways for Manager Reset. These are defined as `ForceRestar
 }
 `
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 iLO `GracefulRestart` works in the same way as `ForceRestart`.
-:::
-
+{% /admonition %}
 
 ### Resource Instances
 
@@ -89,28 +92,28 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`SharedNetworkPorts`|Collection of [Port](../ilo6_other_resourcedefns166/#portcollection)|
-|`DedicatedNetworkPorts`|Collection of [Port](../ilo6_other_resourcedefns166/#portcollection)|
-|`Oem/Hpe/Links/EmbeddedMediaService`|[HpeiLOEmbeddedMedia](../ilo6_hpe_resourcedefns166/#hpeiloembeddedmedia)|
-|`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](../ilo6_hpe_resourcedefns166/#hperemotesupport)|
-|`Links/ManagerForChassis[]`|[Chassis](../ilo6_chassis_resourcedefns166/#chassis)|
-|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](../ilo6_hpe_resourcedefns166/#hpeilolicensecollection)|
-|`VirtualMedia`|Collection of [VirtualMedia](../ilo6_other_resourcedefns166/#virtualmediacollection)|
-|`LogServices`|Collection of [LogService](../ilo6_other_resourcedefns166/#logservicecollection)|
-|`Links/ManagerInChassis`|[Chassis](../ilo6_chassis_resourcedefns166/#chassis)|
-|`EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns166/#ethernetinterfacecollection)|
-|`Links/ManagerForServers[]`|[ComputerSystem](../ilo6_computersystem_resourcedefns166/#computersystem)|
-|`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](../ilo6_hpe_resourcedefns166/#hpeiloactivehealthsystem)|
-|`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](../ilo6_hpe_resourcedefns166/#hpesecurityservice)|
-|`SerialInterfaces`|Collection of [SerialInterface](../ilo6_other_resourcedefns166/#serialinterfacecollection)|
-|`NetworkProtocol`|[ManagerNetworkProtocol](../ilo6_manager_resourcedefns166/#managernetworkprotocol)|
-|`Oem/Hpe/Links/FederationPeers`|Collection of [HpeiLOFederationPeers](../ilo6_hpe_resourcedefns166/#hpeilofederationpeerscollection)|
-|`HostInterfaces`|Collection of [HostInterface](../ilo6_other_resourcedefns166/#hostinterfacecollection)|
-|`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](../ilo6_hpe_resourcedefns166/#hpeilodatetime)|
-|`Oem/Hpe/Links/FederationGroups`|Collection of [HpeiLOFederationGroup](../ilo6_hpe_resourcedefns166/#hpeilofederationgroupcollection)|
-|`Oem/Hpe/Links/BackupRestoreService`|[HpeiLOBackupRestoreService](../ilo6_hpe_resourcedefns166/#hpeilobackuprestoreservice)|
+|`SharedNetworkPorts`|Collection of [Port](ilo6_other_resourcedefns166/#portcollection)|
+|`DedicatedNetworkPorts`|Collection of [Port](ilo6_other_resourcedefns166/#portcollection)|
+|`Oem/Hpe/Links/EmbeddedMediaService`|[HpeiLOEmbeddedMedia](ilo6_hpe_resourcedefns166/#hpeiloembeddedmedia)|
+|`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](ilo6_hpe_resourcedefns166/#hperemotesupport)|
+|`Links/ManagerForChassis[]`|[Chassis](ilo6_chassis_resourcedefns166/#chassis)|
+|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](ilo6_hpe_resourcedefns166/#hpeilolicensecollection)|
+|`VirtualMedia`|Collection of [VirtualMedia](ilo6_other_resourcedefns166/#virtualmediacollection)|
+|`LogServices`|Collection of [LogService](ilo6_other_resourcedefns166/#logservicecollection)|
+|`Links/ManagerInChassis`|[Chassis](ilo6_chassis_resourcedefns166/#chassis)|
+|`EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns166/#ethernetinterfacecollection)|
+|`Links/ManagerForServers[]`|[ComputerSystem](ilo6_computersystem_resourcedefns166/#computersystem)|
+|`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](ilo6_hpe_resourcedefns166/#hpeiloactivehealthsystem)|
+|`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](ilo6_hpe_resourcedefns166/#hpesecurityservice)|
+|`SerialInterfaces`|Collection of [SerialInterface](ilo6_other_resourcedefns166/#serialinterfacecollection)|
+|`NetworkProtocol`|[ManagerNetworkProtocol](ilo6_manager_resourcedefns166/#managernetworkprotocol)|
+|`Oem/Hpe/Links/FederationPeers`|Collection of [HpeiLOFederationPeers](ilo6_hpe_resourcedefns166/#hpeilofederationpeerscollection)|
+|`HostInterfaces`|Collection of [HostInterface](ilo6_other_resourcedefns166/#hostinterfacecollection)|
+|`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](ilo6_hpe_resourcedefns166/#hpeilodatetime)|
+|`Oem/Hpe/Links/FederationGroups`|Collection of [HpeiLOFederationGroup](ilo6_hpe_resourcedefns166/#hpeilofederationgroupcollection)|
+|`Oem/Hpe/Links/BackupRestoreService`|[HpeiLOBackupRestoreService](ilo6_hpe_resourcedefns166/#hpeilobackuprestoreservice)|
 
 ### CommandShell
 
@@ -1814,7 +1817,6 @@ VirtualMedia is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **Manager.Reset**
 Member of [Manager.v1\_19\_1.Manager](#manager)
 
@@ -1849,7 +1851,6 @@ There are no parameters for this action.
 Member of [Manager.v1\_19\_1.Manager](#manager)
 Resets the iLO to Factory Defaults.
 
-
 **Parameters:**
 
 **ResetType (string)**
@@ -1880,7 +1881,6 @@ There are no parameters for this action.
 Member of [Manager.v1\_19\_1.Manager](#manager)
 Action to enable cloud connect service.
 
-
 **Parameters:**
 
 **ActivationKey (string)**
@@ -1900,7 +1900,6 @@ There are no parameters for this action.
 **HpeiLO.DisableCloudConnect**
 Member of [Manager.v1\_19\_1.Manager](#manager)
 Action to disable cloud connect service.
-
 
 **Parameters:**
 
@@ -1927,7 +1926,6 @@ Indicates the extended reason for cloud connection failure. This property is set
 Member of [Manager.v1\_19\_1.Manager](#manager)
 Trigger the Air Filter change timer.
 
-
 **Parameters:**
 
 **RemainingDaysForEarlyReminder (integer)**
@@ -1937,7 +1935,9 @@ Days remaining for Air Filter change Early warning.
 **RemainingDaysForCriticalReminder (integer)**
 
 Days remaining for Air Filter change Critical warning.
+
 ## ManagerAccountCollection
+
 `@odata.type: "#ManagerAccountCollection.ManagerAccountCollection"`
 
 A Collection of ManagerAccount resource instances.
@@ -1950,9 +1950,9 @@ A Collection of ManagerAccount resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[ManagerAccount](../ilo6_manager_resourcedefns166/#manageraccount)|
+|`Members[]`|[ManagerAccount](ilo6_manager_resourcedefns166/#manageraccount)|
 
 ### Members (array)
 
@@ -1995,9 +1995,9 @@ The user accounts, owned by a Manager, are defined in this resource.  Changes to
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Keys`|Collection of [Key](../ilo6_other_resourcedefns166/#keycollection)|
+|`Keys`|Collection of [Key](ilo6_other_resourcedefns166/#keycollection)|
 
 ### AccountTypes (array)
 
@@ -2231,7 +2231,6 @@ This resource is used to obtain or modify the network services managed by this m
 
 ### Granularity to enable/disable HTTP(S) ports
 
-
 iLO 6 supports enabling/disabling the HTTP/HTTPS ports.
 
 **Disable/Enable HTTP(S) Port**:
@@ -2240,7 +2239,7 @@ iLO 6 supports enabling/disabling the HTTP/HTTPS ports.
 
 * This has been decoupled from the HTTPS port enable/disable status.
 
-**NOTE**: 
+**NOTE**:
 
 `HTTP.ProtocolEnabled` property applies to both HTTP and HTTPS. To disable iLO's HTTP & HTTPS ports, PATCH the `ProtocolEnabled` property to `false`. Note that this will affect the iLO Web and Redfish API interfaces which use these ports. For either HTTP or HTTPS ports to be enabled, the `ProtocolEnabled` property must be set to `true`.
 
@@ -2263,7 +2262,6 @@ For example, to disable HTTP port:
 
 iLO reset is required after the PATCH for the change to come into effect.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -2272,10 +2270,10 @@ iLO reset is required after the PATCH for the change to come into effect.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](../ilo6_hpe_resourcedefns166/#hpeilosnmpservice)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo6_network_resourcedefns166/#ethernetinterfacecollection)|
+|`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](ilo6_hpe_resourcedefns166/#hpeilosnmpservice)|
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns166/#ethernetinterfacecollection)|
 
 ### FQDN
 
@@ -2822,7 +2820,6 @@ Member of [ManagerNetworkProtocol.v1\_0\_0.ManagerNetworkProtocol](#managernetwo
 |Added|iLO6 1.05|
 
 ### Actions
-
 
 **HpeiLOManagerNetworkService.SendTestAlertMail**
 Member of [ManagerNetworkProtocol.v1\_0\_0.ManagerNetworkProtocol](#managernetworkprotocol)

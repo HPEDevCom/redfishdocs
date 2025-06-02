@@ -1,30 +1,34 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: BIOS TLS configuration
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 ## HTTPS Boot TLS Configuration
 
 This section describes the HPE Transport Layer Security (TLS) configuration
 of the UEFI/BIOS
-[OEM extension](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpetlsconfig).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpetlsconfig") %} OEM extension {% /link-internal %}.
 This configuration is required if you want to boot an operating system from
 remote using the HTTPS protocol.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The iLO TLS configuration is presented in the
 [Security Service](/docs/redfishservices/ilos/supplementdocuments/securityservice/)
 section.
-:::
+{% /admonition %}
 
  In iLO 6, the HPE OEM `#HpeTlsConfig` extension
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpetlsconfig)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpetlsconfig") %} URI {% /link-internal %}
 is `/redfish/v1/Systems/{id}/bios/oem/hpe/tlsconfig/`. In iLO 5 the
-[URI](/docs/redfishservices/ilos/ilo5/ilo5_{{process.env.LATEST_ILO5_FW_VERSION}}/ilo5_hpe_resourcedefns{{process.env.LATEST_ILO5_FW_VERSION}}/#hpetlsconfig)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpetlsconfig") %} URI {% /link-internal %}
 is `/redfish/v1/Systems/{id}/bios/tlsconfig/`. It is used for
 reading and setting properties. It has three resources:
 
@@ -62,7 +66,10 @@ ASCII representation (\n or \r\n):
 
 The following is an example of a CR-LF certificate in a PEM format:
 
-```Text
+  {% tabs %}
+{% tab label="Example" %}
+
+```Text Example
     -----BEGIN CERTIFICATE-----
     MIIEHTCCAwWgAwIBAgIQe8LmWgF5edKw01/avJg69DANBgkqhkiG9w0BAQsFADCB
     kTELMAkGA1UEBhMCVVMxKzApBgNVBAoTIkhld2xldHQgUGFja2FyZCBFbnRlcnBy
@@ -70,18 +77,25 @@ The following is an example of a CR-LF certificate in a PEM format:
     ...
     -----END CERTIFICATE-----
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 It should be modified to replace the CR-LF characters with their ASCII
 representation:
 
-```Text
+  {% tabs %}
+{% tab label="Example" %}
+
+```Text Example
     -----BEGIN CERTIFICATE-----\r\nMIIGxDCCBaygAwIBAgIQUkL9757013wOQ2heZMCLizANBgkqhkiG9w0BAQsFADCB\r\nkTELMAkGA1UEBhMCVVMxKzApBgNVBAo
     TIkhld2xldHQgUGFja2FyZCBFbnRlcnBy\r\naXNlIENvbXBhbnkxIDAeBgNVBAsTF0luZnJhc3RydWN0dXJlIFNlcnZpY2VzMTMw\r\n
     ...\r\n
     -----END CERTIFICATE-----
 ```
-
-:::success Tip
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="Tip" %}
 On Linux systems, you can use the following `sed` or `awk` commands to
 replace the CR-LF or LF invisible characters in a `file` with their
 ASCII representation:
@@ -93,14 +107,20 @@ or
 
 `dos2unix file`<br>
 `awk '{printf "%s\\n", $0}' file`
-:::
+{% /admonition %}
 
 Finally, the certificate needs to be PUT (only a PUT request will
 be successful) through the API:
 
+  {% tabs %}
+{% tab label="PUT request" %}
+
 ```text PUT request
 PUT /redfish/v1/Systems/{item}/bios/oem/hpe/tlsconfig/settings/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -111,6 +131,9 @@ PUT /redfish/v1/Systems/{item}/bios/oem/hpe/tlsconfig/settings/
   ]
 }
 ```
+  
+  {% /tab %}
+{% tab label="Current Settings after SystemReset" %}
 
 ```json Current Settings after SystemReset
 {
@@ -152,6 +175,9 @@ PUT /redfish/v1/Systems/{item}/bios/oem/hpe/tlsconfig/settings/
   "VerifyMode": "PEER"
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Deleting Certificates
 
@@ -159,9 +185,15 @@ When a certificate is installed, a new field is created with the Fingerprint
 of that certificate (SHA256). To remove a certificate, PUT the fingerprint
 to remove in the settings environment.
 
+  {% tabs %}
+{% tab label="PUT request" %}
+
 ```text PUT request
 PUT /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -172,22 +204,34 @@ PUT /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
   ]
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
-:::success Tip:
+{% admonition type="success" name="Tip:" %}
 You can delete more than one certificate at a time.
-:::
+{% /admonition %}
 
 ## Resetting the TLS resource to its default settings
+
+{% tabs %}
+{% tab label="PUT request" %}
 
 ```text PUT request
 PUT /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 ```
+  
+{% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
   "BaseConfig": "Default"
 }
 ```
+  
+{% /tab %}
+{% tab label="Result after reboot" %}
 
 ```json Result after reboot
 {
@@ -207,56 +251,95 @@ PUT /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
   "VerifyMode": "PEER"
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ## Examples of other changes
 
 - **Modifying Ciphers**
 
+{% tabs %}
+{% tab label="PATCH request" %}
+
 ```text PATCH request
 PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/ 
 ```
+  
+{% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
   "Ciphers": "AES128-SHA:AES256-SHA"
 }
 ```
+  
+{% /tab %}
+ {% /tabs %}
 
 - **Modifying VerifyMode**
 Possible values: PEER or NONE.
 
+{% tabs %}
+{% tab label="PATCH request" %}
+
 ```text PATCH request
 PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 ```
+  
+{% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
   "VerifyMode": "PEER"
 }    
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 - **Modifying HostnameCheck**
 Cannot be changed if `VerifyMode` is set to NONE.
 
+{% tabs %}
+{% tab label="PATCH request" %}
+
 ```text PATCH request
 PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 ```
+  
+{% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
   "HostnameCheck": "Enabled"
 }    
 ```
+  
+{% /tab %}
+{% /tabs %}
 
 - **Modifying ProtocolVersion**
 Possible values: "AUTO", "1.0", "1.1" or "1.2".
 
+{% tabs %}
+{% tab label="PATCH request" %}
+
 ```text PATCH request
 PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 ```
+  
+{% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
   "ProtocolVersion": "1.1"
 }    
 ```
+  
+{% /tab %}
+{% /tabs %}

@@ -1,24 +1,28 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: true
 seo:
   title: Network protocols
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: true
 ---
 
 ## Network protocols
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 It is possible that some properties or resources described in this
 section are not implemented in iLO 4 and iLO 5.
-:::
+{% /admonition %}
 
 This section provides information about the network protocols controlled
 by HPE iLO.
 The exhaustive list of iLO network protocols can be retrieved from the
 standard
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#managernetworkprotocol)
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#managernetworkprotocol") %} URI {% /link-internal %}
 at `/redfish/v1/Managers/1/NetworkProtocol`.
 
 ## Simple Network Management Protocol
@@ -32,28 +36,39 @@ see the REST alerts table in the
 <a href="https://www.hpe.com/support/ilo6"
 target="_blank"> iLO user guide</a>.
 
-:::success TIP
+{% admonition type="success" name="TIP" %}
 If you make a mistake in the following iLOrest examples, you can always
 delete property changes in the cache, by reloading the a fresh
 schema/data-type (`ilorest select Schema. --refresh` ):
+
+  {% tabs %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest select Schema.
 ilorest set Property="Bad Value"
 ilorest select Schema. --refresh
 ```
-
-:::
+  
+  {% /tab %}
+  {% /tabs %}
+{% /admonition %}
 
 ### SNMP enablement
 
 SNMP enablement is performed by setting the `SNMP/ProtocolEnabled` property
 to `true`  under the Redfish standard `ManagerNetworkProtocol`
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_manager_resourcedefns{{process.env.LATEST_FW_VERSION}}/#managernetworkprotocol).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_manager_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#managernetworkprotocol") %} URI {% /link-internal %}.
+
+  {% tabs %}
+{% tab label="Generic PATCH request" %}
 
 ```text Generic PATCH request
 PATCH /redfish/v1/Managers/1/NetworkProtocol
 ```
+  
+  {% /tab %}
+{% tab label="Body request" %}
 
 ```json Body request
 {
@@ -62,6 +77,9 @@ PATCH /redfish/v1/Managers/1/NetworkProtocol
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest (verbose mode)" %}
 
 ```shell iLOrest (verbose mode)
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -69,6 +87,9 @@ ilorest select ManagerNetworkProtocol
 ilorest set SNMP/ProtocolEnabled=True --commit
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest response" %}
 
 ```text iLOrest response
 Selected option(s): #ManagerNetworkProtocol.v1_0_0.ManagerNetworkProtocol
@@ -86,19 +107,27 @@ Message: The operation completed successfully.
 Resolution:
 iLOrest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### SNMPv1 enablement
 
 SNMPv1 is enabled when the `SNMPv1Enabled` key is set to `true`,
 under the `/redfish/v1/Managers/1/SnmpService` URI.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 An iLO reset is required when a PATCH request is performed on that property.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic PATCH request" %}
 
 ```text Generic PATCH request
 PATCH /redfish/v1/Managers/1/SnmpService
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -108,6 +137,9 @@ PATCH /redfish/v1/Managers/1/SnmpService
 
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest (verbose)" %}
 
 ```shell iLOrest (verbose)
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -117,6 +149,9 @@ ilorest -vv --commit
 ilorest iloreset 
 
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest response" %}
 
 ```text iLOrest response
 HTTP Response Code: [200]
@@ -126,7 +161,9 @@ Message: The operation completed successfully.
 Resolution:
 iLOrest return code: 0
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### SNMP configuration
 
 SNMPv3 configuration can only be performed when the SNMP is enabled.
@@ -143,9 +180,15 @@ The SNMP default trap port (162) can be modified with a PATCH
 request of the `OEM/Hpe/SNMPTrapPort` property under
 the `ManagerNetworkProtocol` URI.
 
+  {% tabs %}
+{% tab label="Generic PATCH request" %}
+
 ```text Generic PATCH request
 PATCH /redfish/v1/Managers/1/NetworkProtocol
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 "SNMP": {
@@ -157,6 +200,9 @@ PATCH /redfish/v1/Managers/1/NetworkProtocol
         }
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest select ManagerNetworkProtocol.
@@ -165,15 +211,23 @@ ilorest status
 ilorest commit
 ilorest iloreset
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### SNMP settings
 
 General SNMP settings can be set in under the `HpeiLOSnmpService`
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilosnmpservice).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeilosnmpservice") %} URI {% /link-internal %}.
+
+  {% tabs %}
+{% tab label="Generic PATCH request" %}
 
 ```text Generic PATCH request
 PATCH /redfish/v1/Managers/1/SnmpService
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -188,32 +242,43 @@ PATCH /redfish/v1/Managers/1/SnmpService
     ]
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest select HpeiLOSnmpService.
 ilorest set Location="My Location" Contact="Contact Name"
 ilorest set Role="My role" RoleDetail="My role details"
-ilorest set ReadCommunities/=["CommunityString1","CommunityString2","CommunityString3"]
+ilorest set ReadCommunities=["CommunityString1","CommunityString2","CommunityString3"]
 ilorest status
 ilorest commit
 ilorest iloreset
 ```
-
-:::warning Warning
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="warning" name="Warning" %}
 A space between the elements of the `ReadCommunities` array leads to the following error:
 
 `'[CommunityString1,' is not a valid setting for 'ReadCommunities', expecting an array`
-:::
+{% /admonition %}
 
 #### SNMPv3 settings
 
 Specific SNMPv3 settings can be provided under the
 `/redfish/v1/Managers/1/SnmpService`
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilosnmpservice).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeilosnmpservice") %} URI {% /link-internal %}.
+
+  {% tabs %}
+{% tab label="Generic PATCH request" %}
 
 ```text Generic PATCH request
 PATCH /redfish/v1/Managers/1/SnmpService
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -222,6 +287,9 @@ PATCH /redfish/v1/Managers/1/SnmpService
     "SNMPv3InformRetryIntervalSeconds": 15
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -231,12 +299,14 @@ ilorest status
 ilorest commit
 ilorest iloreset
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### SNMP alerts
 
 SNMP alerts properties can be set under the
 `/redfish/v1/Managers/1/SnmpService`
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilosnmpservice).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeilosnmpservice") %} URI {% /link-internal %}.
 
 The following properties have been added in `HpeiLOSnmpService` version 2.4.0:  
 
@@ -249,7 +319,7 @@ The following properties have been added in `HpeiLOSnmpService` version 2.4.0:
 - `SNMPv3TrapEnabled`: Enables/disables (Boolean) iLO to send SNMPv3
   traps to the remote management systems configured in the alert destination.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - `SNMPv1Enabled` enables both `SNMPv1RequestsEnabled` and
   `SNMPv1TrapEnabled`.
@@ -260,11 +330,17 @@ The following properties have been added in `HpeiLOSnmpService` version 2.4.0:
 - Enabling either `SNMPv1TrapEnabled` or `SNMPv3TrapEnabled`
   enables `AlertsEnabled`.
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic PATCH request" %}
 
 ```text Generic PATCH request
 PATCH /redfish/v1/Managers/1/SnmpService
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -279,6 +355,9 @@ PATCH /redfish/v1/Managers/1/SnmpService
     "PeriodicHSATrapConfig": "Disabled"
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -292,13 +371,15 @@ ilorest status
 ilorest commit
 ilorest reset
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### SNMP alert destinations
 
 Add an SNMP alert destination with a POST request in the
 `HpeSNMPAlertDestinationCollection` URI.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 - The `SNMPv1TrapEnabled` option is available when `SNMPv1TrapEnabled`
   is enabled in the SNMP Alerts section.
@@ -308,11 +389,17 @@ Add an SNMP alert destination with a POST request in the
 - The `SNMPv3Inform` option is available when at least one SNMPv3
   user is configured.
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Generic POST request" %}
 
 ```text Generic POST request
 POST redfish/v1/Managers/1/SnmpService/SNMPAlertDestinations
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -321,22 +408,30 @@ POST redfish/v1/Managers/1/SnmpService/SNMPAlertDestinations
     "TrapCommunity": "public"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### SNMPv3 users
 
 SNMPv3 users can be managed under the `HpeSNMPUsersCollection`
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpesnmpuserscollection).
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeilosnmpservice") %} URI {% /link-internal %}.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 `SNMPv3user`  is available only if the SNMP Protocol is set
 to `SNMPv3TrapEnabled` or `SNMPv3Inform`.
 
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Add SNMP user" %}
 
 ```text Add SNMP user
 POST /redfish/v1/Managers/1/SnmpService/SNMPUsers
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -348,6 +443,9 @@ POST /redfish/v1/Managers/1/SnmpService/SNMPUsers
     "UserEngineID": "0x8000000001020304"
 }
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -366,12 +464,20 @@ cat SnmpUser.json
         "UserEngineID": "0x8000000001020304" }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 View the collection of SNMPv3 users:
+
+  {% tabs %}
+{% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/Managers/1/SnmpService/SNMPUsers
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -379,6 +485,9 @@ ilorest select HpeSNMPUsersCollection.
 ilorest get --json
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -395,18 +504,29 @@ ilorest logout
 }
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 View the properties of all SNMPv3 users:
+
+  {% tabs %}
+{% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/Managers/1/SnmpService/SNMPUsers/?$expand=.
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest --silent rawget '/redfish/v1/Managers/1/SnmpService/SNMPUsers/?$expand=.'
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -443,31 +563,51 @@ ilorest logout
 
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Delete SNMP user
+
+  {% tabs %}
+{% tab label="Delete SNMP user request" %}
 
 ```text Delete SNMP user request
 DELETE /redfish/v1/Managers/1/SnmpService/SNMPUsers/2
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest rawdelete --silent --response /redfish/v1/Managers/1/SnmpService/SNMPUsers/2
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Send test alerts
 
 Test alerts can be sent to alert destinations using a POST request towards
 `HpeiLOSnmpService.SendSNMPTestAlert` under the
 `/redfish/v1/Managers/1/SnmpService`
-[URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_hpe_resourcedefns{{process.env.LATEST_FW_VERSION}}/#hpeilosnmpservice) with an empty body.
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpeilosnmpservice") %} URI {% /link-internal %}
+with an empty body.
+
+  {% tabs %}
+{% tab label="Send test alerts request" %}
 
 ```text Send test alerts request
 POST /redfish/v1/Managers/1/SnmpService/Actions/HpeiLOSnmpService.SendSNMPTestAlert/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {}
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -479,7 +619,9 @@ cat TestAlerts.json
     "/redfish/v1/Managers/1/SnmpService/Actions/HpeiLOSnmpService.SendSNMPTestAlert/": {}
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Intelligent Platform Management Interface
 
 HPE iLO is able to control the use of the Intelligent Platform Management
@@ -489,21 +631,33 @@ target="_blank">IPMI</a>) using the Redfish API.
 
 The following example retrieves the state of IPMI using cURL and iLOrest.
 
+  {% tabs %}
+{% tab label="Generic request" %}
+
 ```text Generic request
 GET /redfish/v1/Managers/1/NetworkProtocol/?$select=IPMI
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest get --selector NetworkProtocol. --json
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --silent --location -u user:password \
      'https://ilo-ip/redfish/v1/Managers/1/NetworkProtocol/?$select=IPMI' 
 
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -513,7 +667,9 @@ curl --insecure --silent --location -u user:password \
   }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Manage the KCS interface feature for HPE iLO
 
 IPMI over Keyboard Controller Style (KCS) enables management of the
@@ -522,6 +678,9 @@ Operating System (OS). It is possible to enable or disable
 KCS for iLO 6 since version 1.40.
 
 The following example enables the KCS interface using iLOrest and cURL.
+
+  {% tabs %}
+{% tab label="Generic request" %}
 
 ```text Generic request
 PATCH /redfish/v1/Managers/1/NetworkProtocol
@@ -535,6 +694,9 @@ Workload:
       }
 }
 ```
+  
+  {% /tab %}
+{% tab label="cURL" %}
 
 ```shell cURL
 curl --insecure --location --silent -u demopaq:password \
@@ -546,6 +708,9 @@ curl --insecure --location --silent -u demopaq:password \
                           "KcsEnabled": true }}
               }'
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login <ilo-ip> -u <ilo-user> -p password
@@ -553,7 +718,9 @@ ilorest get Oem/Hpe/KcsEnabled --json
 ilorest set Oem/Hpe/KcsEnabled=True --commit
 ilorest logout
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### IPMI in-band management
 
 In-band management operations can fail or be slow when
@@ -568,6 +735,9 @@ The following example disables the `KcsIpmiInterrupt` attribute in the
 HPE Bios service subsystem of an HPE iLO 6 based server.
 Then it performs a graceful restart of the server.
 
+  {% tabs %}
+{% tab label="Generic PATCH request" %}
+
 ```text Generic PATCH request
 PATCH /redfish/v1/Systems/1/Bios/Oem/Hpe/Service/Settings
 
@@ -578,6 +748,9 @@ Body:
     }
 }
 ```
+  
+  {% /tab %}
+{% tab label="Generic Graceful system restart" %}
 
 ```text Generic Graceful system restart
 POST `/redfish/v1/Systems/1/Actions/ComputerSystem.Reset/`
@@ -587,8 +760,10 @@ Body:
     "ResetType": "GracefulRestart"
 }
 ```
-
-:::success TIP
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="success" name="TIP" %}
 
 - More information concerning the HPE Bios service subsystem can be found
   in the
@@ -600,4 +775,4 @@ Body:
   [Redfish error responses and messages](/docs/concepts/errorresponses.md)
   section.
 
-:::
+{% /admonition %}

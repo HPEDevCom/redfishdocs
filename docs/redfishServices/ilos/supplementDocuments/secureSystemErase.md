@@ -1,25 +1,29 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: true
+breadcrumbs:
+  hide: false
 seo:
   title: One-button secure system erase
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: true
 ---
 
 ## Secure Erase
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 It is possible that some properties or resources
 described in this section are not implemented in iLO 4 and ilo 5.
 
-:::
+{% /admonition %}
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 Secure erase should be used with extreme caution,
 and only when a system is being decommissioned.
-:::
+{% /admonition %}
 
 The secure erase process resets iLO and deletes all licenses stored there,
 resets BIOS settings, and deletes all
@@ -29,14 +33,14 @@ The secure erase process also erases supported non-volatile storage data and
 deletes any deployment settings profiles. iLO reboots multiple times after
 the process is initiated.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 Disconnect any FCoE, iSCSI, external SAS, and Fibre Channel
 storage before using secure erase.
-:::
+{% /admonition %}
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Securely erasing the server can take up to a day to complete.
-:::
+{% /admonition %}
 
 Secure erase erases supported non-volatile storage data and returns
 the server to the manufacturing default state.
@@ -60,9 +64,9 @@ The process can take up to a day to fully erase and reset all user data.
 When you activate secure erase, iLO does not allow firmware update or
 reset operations.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 Do not perform any iLO configuration changes until this process is completed.
-:::
+{% /admonition %}
 
 ## Secure erase access methods
 
@@ -113,19 +117,25 @@ The payload for this POST includes two properties:
 | SystemRomAndiLOErase | Boolean | Reset the system BIOS settings and iLO to manufacturing defaults. It also erases the Active Health System ([AHS](/docs/redfishservices/ilos/supplementdocuments/logservices/#the-active-health-system-log)) user data in the NAND. |
 | UserDataErase | Boolean | Erase all the user data on the system including TPMs, persistent memory devices, storage controller configurations, RAID settings, and data from the hard drives attached to the system. USB and other removable media will be excluded. |
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The POST operation payload requires both the
 `SystemRomAndiLOErase` and `UserDataErase`
 parameters to be set to `true` to initiate the secure erase process.
-:::
+{% /admonition %}
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 Once you initiate this process, it cannot be undone.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="POST target" %}
 
 ```text POST target
 POST /redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SecureSystemErase/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -133,9 +143,14 @@ POST /redfish/v1/Systems/1/Actions/Oem/Hpe/HpeComputerSystemExt.SecureSystemEras
     "UserDataErase": true
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 If successful, the body of the response contains a message asking for a
 system reset.
+
+  {% tabs %}
+{% tab label="JSON response body" %}
 
 ```json JSON response body
 {
@@ -150,20 +165,30 @@ system reset.
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The Redfish client must then initiate a server reset using the
 `ComputerSystem.Reset` action resource.
+
+  {% tabs %}
+{% tab label="Computer system reset action" %}
 
 ```text Computer system reset action
 POST /redfish/v1/Systems/{id}/Actions/ComputerSystem.Reset
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
     "ResetType": "ForceRestart"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 At this point the UEFI BIOS will begin erasing configuration information.
 
 ### Monitor status of secure erase
@@ -190,11 +215,17 @@ To view the secure erase report for each of the individual drives or
 disks installed, perform `GET` on
 `/redfish/v1/sytems/1/Oem/Hpe/EraseReport/{reportId}`.
 
+  {% tabs %}
+{% tab label="cURL" %}
+
 ```shell cURL
 curl --insecure --location --include  \
      --user ilo-user:<password>       \
      https://{iLO}/redfish/v1/systems/1/Oem/Hpe/EraseReport/2
 ```
+  
+  {% /tab %}
+{% tab label="Body response" %}
 
 ```json Body response
 {
@@ -208,7 +239,9 @@ curl --insecure --location --include  \
     "EndTime"          : "2019-05-30T08:40:13Z"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Impacts to the server after secure erase completes
 
 The server will need to be re-provisioned to be used after this operation.
@@ -242,9 +275,15 @@ The server will need to be re-provisioned to be used after this operation.
 In some situations the secure erase function may return an
 HTTP 500 Internal Server Error.
 
+  {% tabs %}
+{% tab label="Response code" %}
+
 ```text Response code
 HTTP 500 Internal Server Error
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -259,14 +298,16 @@ HTTP 500 Internal Server Error
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 In the event of this error:
 
 1. Check if the installed BIOS firmware supports secure erase.
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 This feature is supported only on HPE ProLiant Gen11
 servers that have been updated with SPP version 2019.03.0 or later.
-:::
+{% /admonition %}
 2. If the system is already updated with the correct BIOS
    firmware version, then reboot the server.
    Once the system booted, execute the secure erase again

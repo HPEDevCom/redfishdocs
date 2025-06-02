@@ -1,20 +1,24 @@
 ---
+markdown:
+  toc:
+    hide: false
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: Software/Firmware update service
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
 ---
 
 ## iLO Software/Firmware update service
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 
 It is possible that some properties or resources described
 in this section are not implemented in iLO 4 and ilo 5.
 
-:::
+{% /admonition %}
 
 The Redfish standard schema package
 <a href="https://www.dmtf.org/dsp/DSP8010"
@@ -70,9 +74,15 @@ Firmware and Software inventory items are respectively located at at
 `/redfish/v1/UpdateService/FirmwareInventory/{item}`
 and `/redfish/v1/UpdateService/SoftwareInventory/{item}`.
 
+  {% tabs %}
+{% tab label="GET firmware and software inventories" %}
+
 ```text GET firmware and software inventories
 GET /redfish/v1/UpdateService/?$expand=.
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest" %}
 
 ```shell iLOrest
 ilorest login ilo-ip -u ilo-user -p password
@@ -80,6 +90,9 @@ ilorest select SoftwareInventoryCollection.
 ilorest get --json
 ilorest logout
 ```
+  
+  {% /tab %}
+{% tab label="iLOrest response body (truncated)" %}
 
 ```json iLOrest response body (truncated)
 [
@@ -135,7 +148,9 @@ ilorest logout
 ]
 
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### SimpleUpdate Action
 
 The `SimpleUpdate` action with the `ImageURI` parameter causes iLO
@@ -143,16 +158,24 @@ to fetch an image from a web server and flash it directly. Only certain
 types of images may be supplied, including iLO firmware binaries and UEFI
 firmware binaries. Smart Components are not supported.
 
+  {% tabs %}
+{% tab label="POST action" %}
+
 ```text POST action
 POST /redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate/
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
   "ImageURI": "https://192.168.1.46/kits/U32_2.68_07_14_2022.signed.flash"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### HttpPushUri
 
 The `HttpPushUri` property indicates the URI to POST a firmware component
@@ -162,7 +185,10 @@ are not supported.
 
 The POST must be of Content-Type: "multipart/form-data"
 
-```text
+  {% tabs %}
+{% tab label="Example" %}
+
+```text Example
 
 -----------------------------64062213329524
 Content-Disposition: form-data; name="sessionKey"
@@ -176,7 +202,9 @@ Content-Type: application/octet-stream
 
 <binary image>
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 iLO validates the uploaded binary image and flashes any applicable targets
 immediately. If the update is for iLO itself, iLO automatically resets at
 the end of the flash process and activates the new firmware upon restart.
@@ -190,6 +218,9 @@ Repository to updatable items from the inventory.
 
 1. Use the FirmwareInventory and SoftwareInventory data to evaluate the
     current software and firmware running on the server.
+
+  {% tabs %}
+{% tab label="pseudo" %}
 
 ```text pseudo-code
 for component in /redfish/v1/updateservice/componentrepository:
@@ -207,11 +238,13 @@ for component in /redfish/v1/updateservice/componentrepository:
                 return inventory_item, component # return correlated
 
 ```
-
-:::info NOTE
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
 iLO can render a "DeviceClass" string in cases where iLO knows specifically
 about the firmware item. Most other inventory entries omit DeviceClass.
-:::
+{% /admonition %}
 
 1. Upload new components to the iLO Repository
 2. Create or modify Install Sets to bundle multiple components in the iLO
@@ -252,6 +285,9 @@ See details on the HttpPushUri in the Update Service resource first.
 The upload process can alternatively be used to add components to the
 iLO Repository. As with update, the POST must be a multipart/form-data.
 
+  {% tabs %}
+{% tab label="Required HTTP headers" %}
+
 ```python Required HTTP headers
     # build the HTTP headers
     # 'Content-Type': 'multipart/form-data',
@@ -261,6 +297,9 @@ iLO Repository. As with update, the POST must be a multipart/form-data.
                'X-Auth-Token': sessionkey,
                'Cookie': 'sessionKey=' + sessionkey}
 ```
+  
+  {% /tab %}
+{% tab label="POST Body" %}
 
 ```json POST Body
 -----------------------------64062213329524
@@ -288,7 +327,9 @@ Content-Type: application/octet-stream
 
 <binary content of component file>
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 The new `compsig` part enables the client to push the component signature
 file with the payload.
 
@@ -308,11 +349,14 @@ may be optional.
 |**UpdateTarget**|Boolean|If true, iLO immediately flashes the binary. This is ignored and assumed false for Type C/D components.
 |**Section**|integer|Section number for huge uploads (see below) starting at 0.|
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The two free-form parameters, `ExecutionParameters` and `Configuration`
 (used by SUM to communicate to the components) are not supplied here, but
 can be PATCHed later once the components are in the Repository.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="iLO self" %}
 
 ```json iLO self-flash example
 {
@@ -321,21 +365,26 @@ can be PATCHed later once the components are in the Repository.
   "UpdateTarget": true
 }
 ```
+  
+  {% /tab %}
+{% tab label="Smart Component example" %}
 
 ```json Smart Component example
 {
   "UploadCurrentEtag": "<client-defined-string>"
 }
 ```
-
-:::info NOTE
+  
+  {% /tab %}
+  {% /tabs %}
+{% admonition type="info" name="NOTE" %}
 The iLO Repository uses filename of the components as the unique key. No two
 components can share the same filename and an upload of a file using an
 existing filename overwrites the existing file. If the existing file is
 referenced in a task or install set, it is locked and cannot be replaced.
 All HPE supplied components have version information in the filename
 to avoid any filename conflicts.
-:::
+{% /admonition %}
 
 #### Waiting for Uploads to Complete
 
@@ -355,14 +404,14 @@ repository. The client may track this progress by polling on
 
 The client should wait for `Complete` before progressing.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 * Components referenced in a task or install set are locked and cannot
   be replaced or deleted.
 
 * If iLO is updating firmware components, the `UpdateService` indicates
   `Busy`, and uploads are not possible during this time.
-:::
+{% /admonition %}
 
 #### Inventory Components in iLO Repository
 
@@ -391,20 +440,26 @@ Available data for each member includes:
 Perform a DELETE operation on the repository collection member to
 remove it from the repository.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Components referenced in a task or install set are locked and not replaceable
 or deletable.  In order to remove referenced components, any install sets or
 tasks that refer to it must first be deleted.
-:::
+{% /admonition %}
 
 #### Free Space
 
 The free and total space of the iLO Repository in bytes is available
 as part of the Repository Collection.
 
+  {% tabs %}
+{% tab label="GET Component Repository information" %}
+
 ```text GET Component Repository information
 GET /redfish/v1/UpdateService/ComponentRepository/?$select=Oem/Hpe/FreeSizeBytes, Oem/Hpe/TotalSizeBytes
 ```
+  
+  {% /tab %}
+{% tab label="Response body" %}
 
 ```json Response body
 {
@@ -420,7 +475,9 @@ GET /redfish/v1/UpdateService/ComponentRepository/?$select=Oem/Hpe/FreeSizeBytes
     }
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Correlating Components with Current Software and Firmware Version Inventory
 
 There is not a one-to-one correspondence between installed firmware or
@@ -430,7 +487,10 @@ firmware for several network controllers.
 This algorithm shows how to correlate current version inventory with
 available components:
 
-```python
+  {% tabs %}
+{% tab label="Example" %}
+
+```python Example
 for component in componentrepository:
     for inventory_item in inventory:
 
@@ -445,7 +505,9 @@ for component in componentrepository:
             if target in item.Oem.Hpe.Targets:
                 return inventory_item, component # return correlated
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ### Tasks
 
 #### Update Agents and Strong Queue Order
@@ -494,7 +556,7 @@ Create a new Task resource to schedule update tasks. POST a new task
 object to the tasks collection pointed to by
 `UpdateService` `Oem/Hpe/UpdateTaskQueue`:
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 * Each task in the task queue must have a unique `Name` property.
 * The name of each task MUST be unique because this makes the task
@@ -503,7 +565,10 @@ object to the tasks collection pointed to by
   on multiple iLO's, they have the same REST URI.
 * HPE components update all applicable targets within a system.
   For that reason, there is no ability to indicate a specific target.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Enable component to be updated by either SUM or UEFI" %}
 
 ```json Enable component to be updated by either SUM or UEFI
 {
@@ -517,6 +582,9 @@ object to the tasks collection pointed to by
   "TPMOverride": true
 }
 ```
+  
+  {% /tab %}
+{% tab label="Enables binary component to be updated by iLO" %}
 
 ```json Enables binary component to be updated by iLO
 {
@@ -528,16 +596,18 @@ object to the tasks collection pointed to by
   "Component": "<component-name>"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 This creates a new task in the `Pending` state at the end of the queue.
 If it assigned to the `Bmc` and is at the top of the queue, iLO starts
 operating on it immediately. Otherwise, the new task is operated on as
 soon as an updater runs and finds the new task.
 
-:::warning Warning
+{% admonition type="warning" name="Warning" %}
 If a TPM is installed and in use on the system, the `"TPMOverride": true`
 property must be set on the task.
-:::
+{% /admonition %}
 
 #### Creating Scheduled Tasks
 
@@ -568,7 +638,10 @@ If a client creates a Maintenance Window, this window may be specified
 
 Maintenance Window example
 
-```json
+  {% tabs %}
+{% tab label="Example" %}
+
+```json Example
 {
     "Name": "Unique Client supplied friendly name of this task item.",
     "UpdatableBy": [
@@ -579,7 +652,9 @@ Maintenance Window example
     "MaintenanceWindow": "<maintence-window-id>"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Creating Wait Tasks
 
 Wait tasks can be used to insert time between two other tasks. The
@@ -588,7 +663,10 @@ based upon the updater that needs the time.
 
 Example that causes UEFI to Wait for 30 seconds:
 
-```json
+  {% tabs %}
+{% tab label="Example" %}
+
+```json Example
 {
   "Name": "Pause 30 seconds",
   "UpdatableBy": [
@@ -598,7 +676,9 @@ Example that causes UEFI to Wait for 30 seconds:
   "WaitTimeSeconds": 30
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 `WaitTimeSeconds` can be in the range 0-3600 seconds.s
 
 #### Retiring and Removing Tasks
@@ -655,6 +735,9 @@ instead of modifying multiple tasks.
 
 POST a new object to the Maintenance Window collection:
 
+  {% tabs %}
+{% tab label="Body" %}
+
 ```json Body
 {
     "Name": "unique name of the Maintenance Window.",
@@ -662,16 +745,18 @@ POST a new object to the Maintenance Window collection:
     "Expire": "ISO 8601 Redfish-style time string after which we will automatically change state to Expired - null for no expire time"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 Any of these properties may be PATCHed to modify an existing
 Maintenance Window.
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 The `Id` property (and the URI of the item) is derived from the `Name`
 property. PATCHing `Name` is not recommended because it will change the
 `Id` and the URI of the item.
 **This can invalidate references to the item.**
-:::
+{% /admonition %}
 
 #### Referring to Maintenance Windows
 
@@ -692,17 +777,20 @@ Create a new install set resource to create Install Sets. POST a new install
 set object to the install set collection pointed to by
 `UpdateService` `Oem/Hpe/InstallSets`:
 
-:::info NOTE
+{% admonition type="info" name="NOTE" %}
 Each Install Set must have a unique `Name` property. Additionally, the name
 of each Sequence item must be unique because these become the task names when
 the install set is invoked.
-:::
+{% /admonition %}
 
 #### Creating Install Sets
 
 POST a new install set object to the install set collection:
 
-```json
+  {% tabs %}
+{% tab label="Example" %}
+
+```json Example
 {
     "Name": "unique name of the install set.",
     "IsRecovery": false,
@@ -721,7 +809,9 @@ POST a new install set object to the install set collection:
     ]
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Invoking Install Sets
 
 Install Sets are invoked by performing the `Invoke` action on the install
@@ -730,24 +820,32 @@ set member item. The Invoke action has no parameters.
 Invoking an install set causes iLO to append the task queue with new tasks,
 each corresponding to the items in the Sequence array.
 
-:::success Tip
+{% admonition type="success" name="Tip" %}
 As good practice, a client should clear the task queue before invoking an
 install set. iLO does not do this automatically because of various task
 results that might need to be preserved.
-:::
+{% /admonition %}
+
+  {% tabs %}
+{% tab label="Action" %}
 
 ```text Action
 POST /redfish/v1/updateservice/installsets/{id}/Actions/
 HpeComponentInstallSet.Invoke
 Content-Type: application/json
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
     "ClearTaskQueue": true,
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ##### Scheduled Install Sets
 
 A client may specify a time window for an Install Set.  Time is always
@@ -767,11 +865,17 @@ in the `Pending` state do not begin execution until iLO time is after
 state gets Expired. This can happen, for instance, if UEFI executes a task
 and no reboot happens during the time window.
 
+  {% tabs %}
+{% tab label="Action" %}
+
 ```text Action
 POST /redfish/v1/updateservice/installsets/{id}/Actions/
 HpeComponentInstallSet.Invoke
 Content-Type: application/json
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -780,17 +884,25 @@ Content-Type: application/json
   "Expire": "ISO 8601 Redfish-style time string after which we will automatically change state to Expired - null for no expire time"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ##### Maintenance Windows
 
 If a client creates a Maintenance Window, this window may be specified
 (by `Id`) in the Install Set `Invoke`.
+
+  {% tabs %}
+{% tab label="Action" %}
 
 ```text Action
 POST /redfish/v1/updateservice/installsets/{id}/Actions/
 HpeComponentInstallSet.Invoke
 Content-Type: application/json
 ```
+  
+  {% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -798,7 +910,9 @@ Content-Type: application/json
     "MaintenanceWindow": "<maintenence-windows-Id>"
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Removing Install Sets
 
 Install Sets are removed by performing a DELETE operation on the
@@ -842,10 +956,16 @@ URI is considered for a firmware update. Maximum supported targets are `10`.
 If `Targets` are provided in the payload, and `UpdateTarget` is set as `True`,
 the firmware updates are applied on the provided Targets.
 
+  {% tabs %}
+{% tab label="POST operation" %}
+
 ```text POST operation
 POST /redfish/v1/UpdateService/Actions/Oem/Hpe/
 HpeiLOUpdateServiceExt.AddFromUri/
 ```
+  
+  {% /tab %}
+{% tab label="POST Payload" %}
 
 ```json POST Payload
 {
@@ -860,7 +980,9 @@ HpeiLOUpdateServiceExt.AddFromUri/
 
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Install Sets
 
 `Targets` is introduced while creating install sets under the URI
@@ -868,9 +990,15 @@ HpeiLOUpdateServiceExt.AddFromUri/
 the firmware updates are applied on the provided Targets when
 the `InstallSets` are invoked.
 
+  {% tabs %}
+{% tab label="POST operation" %}
+
 ```text POST operation
 POST /redfish/v1/UpdateService/InstallSets
 ```
+  
+  {% /tab %}
+{% tab label="POST Payload " %}
 
 ```json POST Payload 
 {
@@ -895,7 +1023,9 @@ POST /redfish/v1/UpdateService/InstallSets
 
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 #### Tasks
 
 `Targets` are introduced while creating update tasks under
@@ -903,9 +1033,15 @@ the URI `/redfish/v1/UpdateService/UpdateTaskQueue`.
 If `Targets` are provided, the firmware updates are applied
 on the provided `Targets`.
 
+  {% tabs %}
+{% tab label="POST operation" %}
+
 ```text POST operation
 POST /redfish/v1/UpdateService/UpdateTaskQueue
 ```
+  
+  {% /tab %}
+{% tab label="Request Body" %}
 
 ```json Request Body
 {
@@ -919,6 +1055,9 @@ POST /redfish/v1/UpdateService/UpdateTaskQueue
 
 }
 ```
+  
+  {% /tab %}
+{% tab label="Response Body" %}
 
 ```json Response Body
 {
@@ -946,7 +1085,9 @@ POST /redfish/v1/UpdateService/UpdateTaskQueue
   "UpdatedRecoverySet": false
 }
 ```
-
+  
+  {% /tab %}
+  {% /tabs %}
 ## Firmware Verification
 
 Firmware Verification, available with the
@@ -994,9 +1135,15 @@ iLO flashes that firmware image to complete the repair.
 * Scan Interval ("`ScanEveryDays`") sets the background scan frequency
   in days. Valid values are from 1 to 365.
 
+{% tabs %}
+{% tab label="Action" %}
+
 ```text Action
 GET /redfish/v1/UpdateService/
 ```
+  
+{% /tab %}
+{% tab label="Body" %}
 
 ```json Body
 {
@@ -1013,6 +1160,9 @@ GET /redfish/v1/UpdateService/
     }
 }
 ```
+  
+  {% /tab %}
+  {% /tabs %}
 
 ### Initiating a Firmware Verification Scan
 
@@ -1022,7 +1172,13 @@ You may manually start a firmware verification scan by invoking the action
 "StartFirmwareIntegrityCheck". You must have the iLO Advanced Premium
 Security Edition license to use this feature.
 
+{% tabs %}
+{% tab label="Action" %}
+
 ```text Action
 POST /redfish/v1/UpdateService/Actions/Oem/Hpe/
 HpeiLOUpdateServiceExt.StartFirmwareIntegrityCheck
 ```
+  
+{% /tab %}
+{% /tabs %}

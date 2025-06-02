@@ -1,26 +1,33 @@
 ---
 seo:
   title: Adapting from ilo 5
-toc:
-  enable: true
-  maxDepth: 3
-disableLastModified: false
+sidebar:
+  hide: false
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdatedBlock:
+    hide: true
+breadcrumbs:
+    hide: true
 ---
 
 # Adapting from iLO 5
 
 This section is a guide to help Redfish client code adapt from the iLO 5 RESTful API to the iLO 6 RESTful API.
 
-:::info NOTES
+{% admonition type="info" name="NOTES" %}
 
 - The **DCi** [acronym](/docs/etc/glossaryterms/) mentioned below, refers to the HPE proprietary **Discovery and Configuration via iLO** protocol used between internal server devices and iLO.
 
 - The **RDE** [acronym](/docs/etc/glossaryterms/) mentioned below, refers to the DMTF's **Platform Level Data Model for Redfish Device Enablement** (PLDM for RDE) <a href="https://www.dmtf.org/dsp/DSP0218" target="_blank">specification</a>.
 
-- **DCi** and **RDE** [acronyms](/docs/etc/glossaryterms/) refer to the protocol through which adapters Redfish data is supplied to Redfish clients. Refer to the `Controllers[{item}].UnderlyingDataSource` [resource definition](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#networkadapter) for more information.
+- **DCi** and **RDE**
+[acronyms](/docs/etc/glossaryterms/) refer to the protocol through which adapters Redfish data is supplied to Redfish clients. Refer to the `Controllers[{item}].UnderlyingDataSource` resource definition for more information.
 
 - Refer to the [RDE section](/docs/redfishservices/ilos/supplementdocuments/rdesupport/#ilo-rde-uris-and-corresponding-http-methods) for information on how to identify URIs of such devices.
-:::
+{% /admonition %}
 
 ## Introduction
 
@@ -32,11 +39,17 @@ Refer to the [Conformance](/docs/concepts/redfishconformance) section for more d
 
 ### BaseNetworkAdapters deprecated
 
-From iLO 6 v1.10 onwards, the `HpeBaseNetworkAdapterCollection` URI (`/redfish/v1/Systems/1/BaseNetworkAdapters`) and underlying resources are deprecated. The corresponding properties are moved to the standard `NetworkAdapterCollection` [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#networkadaptercollection) (`/redfish/v1/Chassis/1/NetworkAdapters`).
+From iLO 6 v1.10 onwards, the `HpeBaseNetworkAdapterCollection` URI (`/redfish/v1/Systems/1/BaseNetworkAdapters`) and underlying resources are deprecated. The corresponding properties are moved to the standard `NetworkAdapterCollection`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_network_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#networkadaptercollection") %} URI {% /link-internal %}
+(`/redfish/v1/Chassis/1/NetworkAdapters`).
 
-Prior to iLO 6, the `NetworkAdapterCollection` [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#networkadaptercollection) used to list only [DCi and RDE](#adapting-from-ilo-5) NICs.
+Prior to iLO 6, the `NetworkAdapterCollection`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_network_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#networkadaptercollection") %} URI {% /link-internal %}
+NICs.
 
-For iLO 6, the `NetworkAdapterCollection` [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_network_resourcedefns{{process.env.LATEST_FW_VERSION}}/#networkadaptercollection) lists all types of Network Interface Cards (NICs) including DCi, RDE, and Non-RDE/Non-DCi (i.e. Base Network Adapters).
+For iLO 6, the `NetworkAdapterCollection`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_network_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#networkadaptercollection") %} URI {% /link-internal %}
+including DCi, RDE, and Non-RDE/Non-DCi (i.e. Base Network Adapters).
 
 In iLO 6, most of the deprecated `HpeBaseNetworkAdapter` properties are part of the DMTF's `NetworkAdapter` schema, and a few properties are `Oem/Hpe` properties under `Chassis/1/NetworkAdapters`.
 
@@ -86,7 +99,8 @@ DMTF's Network Adapters `Properties`/`Actions` are not supported for Base Networ
 
 ### NetworkPorts deprecated
 
-From iLO 6 v1.10 onwards, the `NetworkPortCollection` URI and underlying resources are deprecated. The corresponding properties are moved to the standard `PortCollection` [URI](/docs/redfishservices/ilos/{{process.env.LATEST_ILO_GEN_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_{{process.env.LATEST_FW_VERSION}}/{{process.env.LATEST_ILO_GEN_VERSION}}_other_resourcedefns{{process.env.LATEST_FW_VERSION}}/#portcollection). The DMTF Redfish standard specification has deprecated the `NetworkPort` schema with the implementation of `Port`.
+From iLO 6 v1.10 onwards, the `NetworkPortCollection` URI and underlying resources are deprecated. The corresponding properties are moved to the standard `PortCollection`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION) %} URI {% /link-internal %}. The DMTF Redfish standard specification has deprecated the `NetworkPort` schema with the implementation of `Port`.
 
 Deprecated `NetworkPorts` URIs:
 

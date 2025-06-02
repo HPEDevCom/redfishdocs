@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# Version 0.96
+# Version 0.99
 
 # Script name: _script_wrapper.sh 
 # This script is a wrapper to the other scripts contained in this folder, except
@@ -28,7 +28,8 @@
 #          
 
 # ToDo:
-#        * Include `events.md` when possible
+#       * Include `events.md` when possible
+#       * Remove the oldest version of firmware to keep only the last 5 versions
 #        
 
 #
@@ -42,14 +43,14 @@ required_executables="dos2unix sed awk"
 
 # Don't forget to update the following variables to process the right iLO version !
 
-export ilogen="iLO 5"
-export iLOFwVersion=3.09
+export ilogen="iLO 6"
+export iLOFwVersion=1.66
 
 export iLOGen=$(echo ${ilogen,,} | tr -d ' ')
 export iLOVersion=$(echo $iLOFwVersion | tr -d '.')
 
 #export RepoLocation="C:/api_redocly/hpe-ilo-redocly"
-export RepoLocation="C:/api_redocly/hpe-ilo-redocly"
+export RepoLocation="/cygdrive/c/Git-repo/ProtoRedfishDocs"
 export WorkingDirectory="$RepoLocation/docs/redfishServices/ilos/${iLOGen}/${iLOGen}_${iLOVersion}"
 
 export ResourcesFile_bck="${WorkingDirectory}/_raw_${iLOGen}_resourcedefns${iLOVersion}.md-bck"
@@ -64,6 +65,7 @@ export MsgRegistryFile="${WorkingDirectory}/_raw_${iLOGen}_msgregs${iLOVersion}.
 
 export TmpFile="/tmp/TmpFile"   ; rm $TmpFile &> /dev/null
 export TmpFile2="/tmp/TmpFile2" ; rm $TmpFile2 &> /dev/null
+export keepOldVersions=5 # Number of old versions to keep in the repo
 
 #
 ## Need validation of the iLO Generation and firmware version to process
@@ -83,6 +85,27 @@ case $answer in
     echo -e "\nEdit $0 and modify appropriate variables if needed."
     echo 'Exiting...'
     exit 11
+    ;;
+esac
+
+# 
+# Need to know if we are formatting file for Redocly/Workflows
+# or for Redocly/Realm/Reunite
+#
+
+answer="N"
+bold=$(tput bold)
+normal=$(tput sgr0)
+echo -n "Are we in a Redocly/Realm/Reunite environment (y|N) ?  "
+IFS= read -r answer
+case $answer in
+  yes|y|Y*)
+    echo "Great... Let's adjust the environment"
+    export RedoclyRealm="true"
+    ;;
+  *)
+    echo -e "Awesome... Let's continue"
+    export RedoclyRealm="false"
     ;;
 esac
 
@@ -118,6 +141,22 @@ for f in ${ResourcesFile} ${ResmapFile} ${MsgRegistryFile}; do
   dos2unix $f &> /dev/null
 done
 
+# Delete the "^### BootOptionEnabled" section (9 lines) from the resource file,
+# if PR 306 has not been merged (https://github.com/HewlettPackard/hpe-ilo-redocly/pull/306)
+sed -i '/^### BootOptionEnabled/,+9d'  ${ResourcesFile}
+
+# Move admonitions to Markdoc format if in Redocly/Realm/Reunite environment
+if [ "$RedoclyRealm" == "true" ] ; then
+  # Fix potential typos. ToDo: need to fix when there
+  # is a space (or more) after the third colon.
+  sed -i -E  \
+    's/::::/:::/g' $ResourcesFile  $ResmapFile $MsgRegistryFile
+  # Fix admonition syntax. 
+  sed -i -E  \
+    's/:::([^ ]+) ([^ ]+)/{% admonition type="\1" name="\2" %}/g ; s?::: *$?{% /admonition %}?g' \
+    $ResourcesFile $ResmapFile $MsgRegistryFile
+fi
+ 
 # Build the list of all resource types identified as second level headers (^##) in the resourcedefns Slate file.
 export TypeList=$(awk '/^## / {print $NF}' $ResourcesFile | cut -d'.' -f 1 | sort -u)
 
@@ -168,5 +207,55 @@ rm $ResourcesFile $OtherResourcesFile                                           
 rm $ResmapFile $MsgRegistryFile                                                    &> /dev/null
 rm $WorkingDirectory/_${iLOGen}_*_resourcedefns$(echo $iLOVersion | tr -d '.').md  &> /dev/null
 rm $WorkingDirectory/_${iLOGen}_resourcedefns$(echo $iLOVersion | tr -d '.').*     &> /dev/null
+
+# Identify and count the number of firmware versions documented
+cd $WorkingDirectory/..
+iLOVersions="$(ls -d ${iLOGen}_??? | sort -u)"
+NbiLOVersions=$(echo $iLOVersions | wc -w)
+iLOVersions=($iLOVersions)  # convert to array
+
+if [ "$RedoclyRealm" == "false" ] ; then
+exit 0
+fi
+
+# Remove the oldest versions of firmware to keep only the last N versions
+# Keep the "_raw*bck" files, just in case...
+nbOfVersionsToRemove=$((NbiLOVersions - keepOldVersions))
+index=$((nbOfVersionsToRemove - 1)) 
+
+sidebarsFile="${iLOGen}.sidebars.yaml"
+if [ ! -f $sidebarsFile ] ; then
+  echo -e "\nWARNING: $sidebarsFile not found. No update done."
+  exit 0
+fi
+
+# Cleanup only if we are processing the last version
+lastVersionIndex=$(( ${#iLOVersions[@]} - 1 ))
+lastVersion=${iLOVersions[$lastVersionIndex]}
+
+if [ ! "${iLOGen}_${iLOVersion}" == "${lastVersion}" ] ; then
+  echo -e "\nNo version cleanup needed. We are not processing the last version."
+  exit 0
+fi
+
+i=0
+while [ $i -le $index ] ; do
+  echo -e "\nRemoving formatted files in ${iLOVersions[$i]} directory"
+  rm -f ${iLOVersions[$i]}/${iLOGen}_*.md &> /dev/null
+  echo -e "\nUpdating $sidebarsFile"
+  startPattern=$(echo "v${iLOVersions[$i]##*_}"  | sed 's/^v\(.\)/v\1./g' )
+  startPattern="group: $ilogen $startPattern Reference documents"
+  endPattern="page: ${iLOVersions[0]}.${iLOGen}_msgregs${iLOVersion}.md"
+  sed -i "/$startPattern/,/$endPattern/d" $sidebarsFile
+  i=$((i + 1))
+done
+
+# Removal of the internal links Changelog file to avoid broken links.
+# Note: awk is used to search for lines between @startPattern and 
+# the next "## iLO n new"
+startPattern="## ${ilogen} v${iLOFwVersion} new"
+endPattern="$(awk -v sp="$startPattern" -v ig="## $ilogen new" '$0 ~ sp {found=1; next} found && $0 ~ ig {print; found=0}' ${iLOGen}_changelog.md)"
+sed -i "/$startPattern/,/$endPattern/ s/\[\(.*\)\](.*)/\1/g" ${iLOGen}_changelog.md
+
 
 exit 0

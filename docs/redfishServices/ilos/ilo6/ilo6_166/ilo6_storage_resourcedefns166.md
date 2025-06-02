@@ -1,20 +1,25 @@
 ---
+excludeFromSearch: true
+markdown:
+  toc:
+    hide: false
+    depth: 2
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: false
 seo:
   title: Storage resource definitions
-toc:
-  enable: true
-  maxDepth: 2
-disableLastModified: false
 ---
 
 # Storage resource definitions of iLO 6 v1.66
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## StorageCollection
+
 `@odata.type: "#StorageCollection.StorageCollection"`
 
 A Collection of Storage resource instances.
@@ -27,9 +32,9 @@ A Collection of Storage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[Storage](../ilo6_storage_resourcedefns166/#storage)|
+|`Members[]`|[Storage](ilo6_storage_resourcedefns166/#storage)|
 
 ### Members (array)
 
@@ -72,13 +77,13 @@ Storage defines a storage subsystem and its respective properties.  A storage su
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Volumes`|Collection of [Volume](../ilo6_storage_resourcedefns166/#volumecollection)|
-|`Controllers`|Collection of [StorageController](../ilo6_storage_resourcedefns166/#storagecontrollercollection)|
-|`Links/Enclosures[]`|[Chassis](../ilo6_chassis_resourcedefns166/#chassis)|
-|`StorageControllers`|Collection of [StorageController](../ilo6_storage_resourcedefns166/#storagecontrollercollection)|
-|`Drives[]`|[Drive](../ilo6_storage_resourcedefns166/#drive)|
+|`Volumes`|Collection of [Volume](ilo6_storage_resourcedefns166/#volumecollection)|
+|`Controllers`|Collection of [StorageController](ilo6_storage_resourcedefns166/#storagecontrollercollection)|
+|`Links/Enclosures[]`|[Chassis](ilo6_chassis_resourcedefns166/#chassis)|
+|`StorageControllers`|Collection of [StorageController](ilo6_storage_resourcedefns166/#storagecontrollercollection)|
+|`Drives[]`|[Drive](ilo6_storage_resourcedefns166/#drive)|
 
 ### Controllers
 
@@ -604,11 +609,9 @@ Volumes is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **Storage.ResetToDefaults**
 Member of [Storage.v1\_12\_0.Storage](#storage)
 This action resets the system.
-
 
 **Parameters:**
 
@@ -626,7 +629,9 @@ Link to invoke action
 **title (string)**
 
 Friendly action name
+
 ## StorageControllerCollection
+
 `@odata.type: "#StorageControllerCollection.StorageControllerCollection"`
 
 A Collection of Storage resource instances.
@@ -639,9 +644,9 @@ A Collection of Storage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[StorageController](../ilo6_storage_resourcedefns166/#storagecontroller)|
+|`Members[]`|[StorageController](ilo6_storage_resourcedefns166/#storagecontroller)|
 
 ### Members (array)
 
@@ -684,9 +689,9 @@ The StorageController schema describes a storage controller and its properties. 
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`ports`|Collection of [Port](../ilo6_other_resourcedefns166/#portcollection)|
+|`ports`|Collection of [Port](ilo6_other_resourcedefns166/#portcollection)|
 
 ### AssetTag
 
@@ -1175,6 +1180,7 @@ The following are the supported values:
 |`None`|A placement policy with no redundancy at the device level.|
 
 ## VolumeCollection
+
 `@odata.type: "#VolumeCollection.VolumeCollection"`
 
 A Collection of Volume resource instances.
@@ -1187,9 +1193,9 @@ A Collection of Volume resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[Volume](../ilo6_storage_resourcedefns166/#volume)|
+|`Members[]`|[Volume](ilo6_storage_resourcedefns166/#volume)|
 
 ### Members (array)
 
@@ -1217,6 +1223,7 @@ Member of VolumeCollection.VolumeCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
+
 ## Volume
 
 `@odata.type: "#Volume.v1_0_0.Volume"`
@@ -1231,9 +1238,9 @@ The Volume resource describes a volume, virtual disk, LUN, or other logical stor
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Links/Drives[]`|[Drive](../ilo6_storage_resourcedefns166/#drive)|
+|`Links/Drives[]`|[Drive](ilo6_storage_resourcedefns166/#drive)|
 
 ### CapacityBytes
 
@@ -2294,7 +2301,6 @@ Member of [Drive.v1\_16\_0.Drive](#drive)
 |Added|iLO6 1.05|
 
 ### Actions
-
 
 **Drive.Reset**
 Member of [Drive.v1\_16\_0.Drive](#drive)

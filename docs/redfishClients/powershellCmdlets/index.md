@@ -1,15 +1,20 @@
 ---
+markdown:
+  toc:
+    hide: true
+    depth: 3
+  lastUpdateBlock:
+    hide: false
+breadcrumbs:
+  hide: true
 seo:
   title: PowerShell Cmdlets
-disableLastModified: false
-toc:
-  enable: false
 ---
 
 # HPE Scripting Tools for Windows PowerShell
 
-The <a href="https://psnow.ext.hpe.com/doc/a00129680en_us"
-target="_blank">Scripting Tools for Windows PowerShell User Guide</a>
+The <a href="https://support.hpe.com/connect/s/product?language=en_US&kmpmoid=5440657"
+target="_blank">Scripting Tools for Windows PowerShell</a>
 can be accessed publicly from the HPE Products & Solutions Now website.
 
 <!-- This section contains instructions for using Scripting Tools for

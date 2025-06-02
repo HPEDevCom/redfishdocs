@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: List of HPE iLO Cmdlets v4.0.0.0
 disableLastModified: false

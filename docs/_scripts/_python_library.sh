@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# Version 0.30
+# Version 0.31
 
 # Script name: _python_library.sh 
 
@@ -33,7 +33,12 @@ export redoclyRepoLocation="/Git-Repo/CloneOfPrivate-hpe-ilo-redocly/"
 export h1Title="HPE Python Redfish library v${libraryShortVersion} reference documentation"
 export sectionDescription="This section describes the HPE Python Library that you can use for writing your own Redfish clients. It is an alternative to the <a href=\"https://github.com/DMTF/python-redfish-library\" target=\"_blank\">DMTF Python Redfish Library</a>\n" 
 export tempFile="${referenceFileLocation}/tmpFile"
-export seoHeader='---\nseo:\ntitle: HPE Python Redfish library\ndisableLastModified: false\ntoc:\n   enable: true\n   maxDepth: 3\n---\n'
+if [ RedoclyRealm == "false" ] ; then
+  export seoHeader='---\nseo:\ntitle: HPE Python Redfish library\ndisableLastModified: false\ntoc:\n   enable: true\n   maxDepth: 3\n---\n'
+else
+    export seoHeader='---\nseo:\ntitle: HPE Python Redfish library\nmarkdown:\n  toc:\n    hide: true\n    depth: 3\n  lastUpdateBlock:\n    hide: false\nbreadcrumbs:\n  hide: false\n---\n'
+fi
+
 
 # Make sure Sphinx and the sphinx-markdown-builder is present in the 
 # Python enviroment
