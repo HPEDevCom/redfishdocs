@@ -1,0 +1,15 @@
+# See https://redocly.com/docs/developer-portal/configuration/sidebar-nav/#Additional-sidebar
+- label: Back to Redfish services
+  href: "/docs/redfishservices"
+  separatorLine: true
+
+- separator: HPE RMC Redfish services
+- label: Overview
+  page: index.md
+- label: Changelog
+  page: rmc3200_changelog.md
+- group: RMC 3200 v1.10.342 Reference documents
+  expanded: false
+  items:
+  - label: Reference documents overview
+    page: rmc_110342/index.md

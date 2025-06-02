@@ -63,6 +63,10 @@
       page: docs/redfishServices/ilos/ilo5/index.md
     - label: iLO supplement documents
       page: docs/redfishServices/ilos/supplementDocuments/index.md
+    - label: HPE RMC 3200 Redfish service
+      page: docs/redfishServices/rmcs/rmc3200/index.md
+    - label: RMC supplement documents
+      page: docs/redfishServices/rmcs/supplementdocuments/index.md
 - separatorLine: true
 
 - group: HPE Redfish clients

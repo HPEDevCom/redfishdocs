@@ -1,0 +1,67 @@
+# See https://redocly.com/docs/developer-portal/configuration/sidebar-nav/#Additional-sidebar
+- label: Back to Redfish services
+  href: "/docs/redfishservices"
+  separatorLine: true
+
+- separator: RMC supplement documents
+  #separatorLine: true
+
+- label: Overview
+  page: index.md        
+#- group: Security
+#  expanded: false
+#  pages:
+#  - label: HPE iLO Security service
+#    page: securityService.md
+#  - label: iLO and the SPDM
+#    page: spdm.md
+#  - label: Two Factor Authentication
+#    page: tfa.md
+#  - label: HTTPS boot TLS configuration
+#    page: biosTlsConf.md
+#  - label: Secure erase
+#    page: secureSystemErase.md          
+#- label: OData query options
+#  page: odataqueryoptions.md
+#- label: HPE BIOS
+#  page: biosDoc.md
+#- label: Log services
+#  page: logServices.md
+#- label: iLO Event services
+#  page: iloEventServices.md
+#- label: iLO Telemetry service
+#  page: iloTelemetryService.md
+#- label: iLO License service
+#  page: licenseService.md
+#- label: Managing users
+#  page: managingUsers.md
+#- label: Managing time in iLO
+#  page: managingTime.md
+#- label: iLO update service
+#  page: updateService.md
+#- label: iLO Redfish host interface (vnic)
+#  page: vnic.md
+#- label: iLO backup and restore
+#  page: backupAndRestore.md
+#- label: Storage data models
+#  page: storage.md
+#- label: Redfish Device Enablement (RDE) support
+#  page: rdeSupport.md
+#- label: Network Protocols
+#  page: networkProtocols.md
+#        
+#- group: Miscellaneous supplement documents
+#  expanded: false
+#  pages:
+#  - label: Serial interface
+#    page: serialInterface.md
+#  - label: ICSI Software Initiator Configuration
+#    page: iscsiConf.md
+#  - label: Managing Apollo drive bay mapping
+#    page: apolloDriveBayMapping.md
+#  - label: Persistent memory configuration
+#    page: pmmConfig.md
+#  - label: Field Replaceable Units (FRUs)
+#    page: frus.md
+#  - label: Using HPE iLOrest
+#    page: usingHpeiLOrest.md
