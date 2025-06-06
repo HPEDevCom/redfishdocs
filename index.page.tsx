@@ -12,7 +12,7 @@ export default function HomePage() {
       <HeroContainer>
         <HeroBg />
         <h1>HPE server management with Redfish</h1>
-        <p>Redfish® is a standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC).</p>
+        <p>Redfish® is a TBD standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC).</p>
         <Button size="large" variant="primary" tone="brand" to="/docs">
           Get started
         </Button>
