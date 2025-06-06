@@ -4,6 +4,8 @@ excludeFromSearch: true
 
 # hpe-ilo-redocly
 
+TBD tests TBD
+
 This <a href="https://github.com/HewlettPackard/hpe-ilo-redocly" target="_blank">hpe-ilo-redocly</a> private repository contains the sources of the [HPE Redfish documentation portal](https://servermanagementportal.ext.hpe.com/). It is linked to the <a href="https://app.cloud.redocly.com/" target="_blank">Redocly/Realm application</a>. The Redocly/Realm application consists of a complete documentation environment to renders `.md` and OpenAPI files contained in this repo using specific configuration files.
 
 You need an account to be able to access the Redocly/Realm platform.
