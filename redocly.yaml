@@ -19,7 +19,7 @@ rbac:
     reunite-admins: write
     redfish-admins: admin
     redfish-writers: read
-    redfish-triage: read
+    redfish-triage: write
     redfish-maintainers: write
   content:
     '**':
@@ -29,11 +29,22 @@ rbac:
       redfish-writers: read
       redfish-maintainers: read
       redfish-admins: admin
+    @theme/**:
+      redfish-react-markdoc-dev: admin
+    scripts/**:
+      redfish-react-markdoc-dev: admin
+    images/**:
+      redfish-react-markdoc-dev: admin
+    package.json:
+      redfish-react-markdoc-dev: admin
     README.md:
       redfish-maintainers: maintain
     index.page.tsx:
       redfish-maintainers: maintain
+      redfish-react-markdoc-dev: admin
     sidebars.yaml:
+      redfish-maintainers: maintain
+    .env:
       redfish-maintainers: maintain
     docs/index.md:
       redfish-writers: write
