@@ -15,12 +15,12 @@ sso:
 # https://redocly.com/docs/realm/setup/concepts/roles#project-roles   
 rbac:
   reunite:
-    redocly-owners: write
-    reunite-admins: write
+    redocly-owners: admin
+    reunite-admins: admin
     redfish-admins: admin
-    redfish-writers: write
-    redfish-triage: write
-    redfish-maintainers: write
+    redfish-writers: maintain
+    redfish-triage: maintain
+    redfish-maintainers: maintain
   content:
     '**':
       anonymous: read
