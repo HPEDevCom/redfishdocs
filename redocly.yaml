@@ -20,7 +20,7 @@ rbac:
     redfish-admins: admin
     redfish-writers: read
     redfish-triage: read
-    redfish-maintainers: read
+    redfish-maintainers: write
   content:
     '**':
       anonymous: read
