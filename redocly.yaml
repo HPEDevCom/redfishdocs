@@ -3,9 +3,48 @@
 #  https://redocly.com/docs/realm/author/concepts/reunite#project-settings
 #
 # Those setings can be altered in a any page in a front matter section.
-    
+
+# RBAC doc entry point:
+# https://redocly.com/docs/realm/setup/how-to/rbac#configure-role-based-access-control-rbac
+# RBAC project roles:
+# https://redocly.com/docs/realm/setup/concepts/roles#project-roles   
+rbac:
+  reunite:
+    redocly-owners: write
+    reunite-admins: write
+    redfish-admins: admin
+    redfish-writers: read
+  content:
+    '**':
+      anonymous: read
+      authenticated: read
+      redfish-writers: read
+      redfish-admins: admin
+    docs/index.md:
+      redfish-writers: write
+    docs/README.md:
+      redfish-writers: write
+    docs/_scripts/**:
+      redfish-writers: read
+    docs/etc/**:
+      redfish-writers: write
+    docs/redfishClients/**:
+      redfish-writers: write
+    docs/redfishServices/**:
+      redfish-writers: write
+    docs/concepts/**:
+      redfish-writers: write
+    docs/references_and_material/**:
+      redfish-writers: write
+    docs/examples/**:
+      redfish-writers: write
+
+# Basic search engine: flexsearch
+# More powerfull search engine: typesense. Need to understand
+# the facet concept: https://redocly.com/docs/realm/config/search#search
 search:
-  engine: flexsearch
+  #engine: flexsearch
+  engine: typesense
   hide: false
   shortcuts: 
     - /
