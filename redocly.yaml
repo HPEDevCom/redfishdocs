@@ -20,31 +20,48 @@ rbac:
     redfish-admins: admin
     redfish-writers: read
     redfish-triage: read
+    redfish-maintainers: read
   content:
     '**':
       anonymous: read
       authenticated: read
+      redfish-triage: read
       redfish-writers: read
+      redfish-maintainers: read
       redfish-admins: admin
-      redfish-triage: triage
+    README.md:
+      redfish-maintainers: maintain
+    index.page.tsx:
+      redfish-maintainers: maintain
+    sidebars.yaml:
+      redfish-maintainers: maintain
     docs/index.md:
       redfish-writers: write
+      redfish-maintainers: maintain
     docs/README.md:
       redfish-writers: write
+      redfish-maintainers: maintain
     docs/_scripts/**:
       redfish-writers: read
+      redfish-maintainers: read
     docs/etc/**:
       redfish-writers: write
+      redfish-maintainers: maintain
     docs/redfishClients/**:
       redfish-writers: write
+      redfish-maintainers: maintain
     docs/redfishServices/**:
       redfish-writers: write
+      redfish-maintainers: maintain
     docs/concepts/**:
       redfish-writers: write
+      redfish-maintainers: maintain
     docs/references_and_material/**:
       redfish-writers: write
+      redfish-maintainers: maintain
     docs/examples/**:
       redfish-writers: write
+      redfish-maintainers: maintain
 
 # Basic search engine: flexsearch
 # More powerfull search engine: typesense. Need to understand
