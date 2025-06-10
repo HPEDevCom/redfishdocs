@@ -14,6 +14,8 @@ breadcrumbs:
 
 # Introduction to the HPE server management portal
 
+Dummy modification...
+
 Welcome to the HPE server management portal. This portal contains helpful
 information about how to interact with the
 <a href="https://www.dmtf.org/standards/redfish" target="_blank">Redfish</a>
