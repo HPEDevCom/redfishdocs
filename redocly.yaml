@@ -4,6 +4,11 @@
 #
 # Those setings can be altered in a any page in a front matter section.
 
+# SSO conf doc:
+#     https://redocly.com/docs/realm/config/sso#sso
+sso:
+  - REDOCLY
+
 # RBAC doc entry point:
 # https://redocly.com/docs/realm/setup/how-to/rbac#configure-role-based-access-control-rbac
 # RBAC project roles:
@@ -14,6 +19,7 @@ rbac:
     reunite-admins: write
     redfish-admins: admin
     redfish-writers: read
+    redfish-triage: read
   content:
     '**':
       anonymous: read
