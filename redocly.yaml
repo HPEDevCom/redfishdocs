@@ -7,6 +7,7 @@
 # SSO conf doc:
 #     https://redocly.com/docs/realm/config/sso#sso
 sso:
+  - GUEST
   - REDOCLY
 
 # RBAC doc entry point:
