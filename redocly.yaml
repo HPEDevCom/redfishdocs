@@ -229,3 +229,8 @@ logo:
 
 sidebar:
   hide: false
+
+# disable dark mode 
+colorMode:
+  hide: true
+  ignoreDetection: true 
