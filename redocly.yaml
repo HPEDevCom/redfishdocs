@@ -16,6 +16,8 @@ sso:
 # https://redocly.com/docs/realm/setup/concepts/roles#project-roles   
 rbac:
   reunite:
+    anonymous: read
+    authenticated: read
     redocly-owners: admin
     reunite-admins: admin
     redfish-admins: admin
@@ -30,11 +32,12 @@ rbac:
       redfish-writers: read
       redfish-maintainers: read
       redfish-admins: admin
-    ./@theme/**:
+    './@theme/**':
       redfish-react-markdoc-dev: admin
-    scripts/**:
+    'scripts/**':
       redfish-react-markdoc-dev: admin
-    images/**:
+    'images/**':
+      anonymous: read
       redfish-react-markdoc-dev: admin
       redfish-writers: read
       redfish-maintainers: read
@@ -43,6 +46,7 @@ rbac:
     README.md:
       redfish-maintainers: maintain
     index.page.tsx:
+      anonymous: read
       redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
     sidebars.yaml:
@@ -51,30 +55,37 @@ rbac:
       redfish-maintainers: maintain
       redfish-writers: write
     docs/index.md:
+      anonymous: read
       redfish-writers: write
       redfish-maintainers: maintain
     docs/README.md:
       redfish-writers: write
       redfish-maintainers: maintain
-    docs/_scripts/**:
+    'docs/_scripts/**':
       redfish-writers: read
       redfish-maintainers: read
-    docs/etc/**:
+    'docs/etc/**':
+      anonymous: read
       redfish-writers: write
       redfish-maintainers: maintain
-    docs/redfishClients/**:
+    'docs/redfishClients/**':
+      anonymous: read
       redfish-writers: write
       redfish-maintainers: maintain
-    docs/redfishServices/**:
+    'docs/redfishServices/**':
+      anonymous: read
       redfish-writers: write
       redfish-maintainers: maintain
-    docs/concepts/**:
+    'docs/concepts/**':
+      anonymous: read
       redfish-writers: write
       redfish-maintainers: maintain
-    docs/references_and_material/**:
+    'docs/references_and_material/**':
+      anonymous: read
       redfish-writers: write
       redfish-maintainers: maintain
-    docs/examples/**:
+    'docs/examples/**':
+      anonymous: read
       redfish-writers: write
       redfish-maintainers: maintain
 
