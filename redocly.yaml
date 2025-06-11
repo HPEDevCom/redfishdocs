@@ -21,7 +21,7 @@ rbac:
     redocly-owners: admin
     reunite-admins: admin
     redfish-admins: admin
-    redfish-maintainers: admin
+    redfish-maintainers: maintain
     redfish-writers: maintain
     redfish-triage: maintain
   content:
