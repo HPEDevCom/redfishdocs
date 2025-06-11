@@ -4,8 +4,6 @@ excludeFromSearch: true
 
 # Documents folder
 
-This is a dummy modification to test RBAC.
-
 The `docs` folder contains an `index.md` file describing the `Home` page of the Portal (Splash HPE banner and `Start Here` button). Subfolders contain an `index.md` files describing each section of the Portal as well as the related markdown files:
 
 * The [concepts](./concepts) directory contains generic Redfish concepts like authentication, Redfish conformance, navigating the data model...
