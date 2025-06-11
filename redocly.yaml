@@ -77,7 +77,6 @@ rbac:
       redfish-admins: admin
     .env:
       anonymous: none
-      authenticated: none
       redfish-writers: write
       redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
