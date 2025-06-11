@@ -8,7 +8,7 @@
 #     https://redocly.com/docs/realm/config/sso#sso
 sso:
   - GUEST
-  - REDOCLY
+  
 
 # RBAC doc entry point:
 # https://redocly.com/docs/realm/setup/how-to/rbac#configure-role-based-access-control-rbac
@@ -229,3 +229,8 @@ logo:
 
 sidebar:
   hide: false
+
+# disable dark mode 
+colorMode:
+  hide: true
+  ignoreDetection: true 
