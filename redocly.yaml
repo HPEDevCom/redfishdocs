@@ -58,6 +58,7 @@ rbac:
       anonymous: read
       redfish-writers: write
       redfish-maintainers: maintain
+      redfish-admins: admin
     docs/README.md:
       redfish-writers: write
       redfish-maintainers: maintain
@@ -68,6 +69,7 @@ rbac:
       anonymous: read
       redfish-writers: write
       redfish-maintainers: maintain
+      redfish-admins: admin
     'docs/redfishClients/**':
       anonymous: read
       redfish-writers: write
