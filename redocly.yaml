@@ -97,7 +97,6 @@ rbac:
       redfish-admins: admin
     'docs/_scripts/**':
       anonymous: none
-      authenticated: none
       redfish-writers: read
       redfish-maintainers: read
       redfish-react-markdoc-dev: read
