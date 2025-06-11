@@ -35,6 +35,8 @@ rbac:
       redfish-react-markdoc-dev: admin
     images/**:
       redfish-react-markdoc-dev: admin
+      redfish-writers: read
+      redfish-maintainers: read
     package.json:
       redfish-react-markdoc-dev: admin
     README.md:
@@ -46,6 +48,7 @@ rbac:
       redfish-maintainers: maintain
     .env:
       redfish-maintainers: maintain
+      redfish-writers: write
     docs/index.md:
       redfish-writers: write
       redfish-maintainers: maintain
