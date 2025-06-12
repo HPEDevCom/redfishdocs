@@ -14,7 +14,8 @@ breadcrumbs:
 
 # Introduction to the HPE server management portal
 
-Dummy modification...
+Dummy modification... to test adding code review comments by
+reviewers.
 
 Welcome to the HPE server management portal. This portal contains helpful
 information about how to interact with the
