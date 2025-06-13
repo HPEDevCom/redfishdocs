@@ -96,7 +96,6 @@
 |`/redfish/v1/managers/{item}/remotesupportservice/serviceeventlogs`|Collection of [LogEntry](#logentry-v1_11_0-logentry)|
 |`/redfish/v1/managers/{item}/remotesupportservice/serviceeventlogs/{item}`|[LogEntry](#logentry-v1_11_0-logentry)|
 |`/redfish/v1/managers/{item}/securityservice`|[HpeSecurityService](#hpesecurityservice-v2_7_0-hpesecurityservice)|
-|`/redfish/v1/managers/{item}/securityservice/automaticcertificateenrollment`|[HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)|
 |`/redfish/v1/managers/{item}/securityservice/bmchpeldevid/certificates`|Collection of [Certificate](#certificate-v1_6_0-certificate)|
 |`/redfish/v1/managers/{item}/securityservice/bmchpeldevid/certificates/{item}`|[Certificate](#certificate-v1_6_0-certificate)|
 |`/redfish/v1/managers/{item}/securityservice/bmciak/certificates`|Collection of [Certificate](#certificate-v1_6_0-certificate)|
@@ -124,7 +123,6 @@
 |`/redfish/v1/managers/{item}/securityservice/systemlak/certificates/{item}`|[Certificate](#certificate-v1_6_0-certificate)|
 |`/redfish/v1/managers/{item}/securityservice/systemldevid/certificates`|Collection of [Certificate](#certificate-v1_6_0-certificate)|
 |`/redfish/v1/managers/{item}/securityservice/systemldevid/certificates/{item}`|[Certificate](#certificate-v1_6_0-certificate)|
-|`/redfish/v1/managers/{item}/serialinterfaces`|SerialInterfaceCollection|
 |`/redfish/v1/managers/{item}/sharednetworkports`|Collection of [Port](#port-v1_12_0-port)|
 |`/redfish/v1/managers/{item}/sharednetworkports/{item}`|[Port](#port-v1_12_0-port)|
 |`/redfish/v1/managers/{item}/snmpservice`|[HpeiLOSnmpService](#hpeilosnmpservice-v2_4_1-hpeilosnmpservice)|
