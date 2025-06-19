@@ -1,14 +1,14 @@
 ---
+seo:
+  title: Computersystem resource definitions
 markdown:
   toc:
-    hide: true
-    depth: 3
+    hide: false
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Computersystem resource definitions
 ---
 
 # Computersystem resource definitions of iLO 7 v1.11
@@ -2130,7 +2130,7 @@ The type of reset.
 
 |Value|Description|
 |---|---|
-|GracefulRestart|Instead of performing the graceful restart, the server performs a force restart.|
+|GracefulRestart|Shut down gracefully and restart the system.|
 |GracefulShutdown|Shut down gracefully and power off.|
 |PowerCycle|Power cycle the unit.|
 |On|Turn on the unit.|

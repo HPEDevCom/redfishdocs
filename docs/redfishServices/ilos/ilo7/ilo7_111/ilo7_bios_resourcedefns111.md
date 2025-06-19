@@ -1,14 +1,14 @@
 ---
+seo:
+  title: Bios resource definitions
 markdown:
   toc:
-    hide: true
+    hide: 
     depth: 3
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Bios resource definitions
 ---
 
 # Bios resource definitions of iLO 7 v1.11
@@ -16,6 +16,7 @@ seo:
 For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
+
 
 ## Bios
 

@@ -1,14 +1,14 @@
 ---
+seo:
+  title: Other resource definitions
 markdown:
   toc:
-    hide: true
-    depth: 3
+    hide: false
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Other resource definitions
 ---
 
 # Other resource definitions of iLO 7 v1.11
@@ -49,6 +49,7 @@ The destination of this link is a collection of user accounts (see ManagerAccoun
 
 |Link Name|Destination type
 |---|---|
+|`Oem/Hpe/appaccounts`|Collection of [HpeiLOAppAccount](#hpeiloappaccount)|
 |`Accounts`|Collection of [HpeiLOAppAccount](#hpeiloappaccount)|
 
 ### AccountLockoutCounterResetAfter
@@ -1691,6 +1692,187 @@ Member of [EnvironmentMetrics.v1\_3\_2.EnvironmentMetrics](#environmentmetrics)
 |Added|iLO7 1.11|
 
 
+## EventDestination
+
+`@odata.type: "#EventDestination.v1_13_0.EventDestination"`
+
+The EventDestination resource describes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/eventservice/subscriptions/{item}`|GET PATCH DELETE |
+
+### Context
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Description|A client-supplied string that is stored with the listener destination subscription.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Destination
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Description|The URI of the destination listener service.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### EventFormatType
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Description|The content types of the message that are sent to the EventDestination.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Event`|
+|`MetricReport`|
+
+### HttpHeaders (array)
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+`HttpHeaders` is an array containing elements of:
+
+**HttpHeaders[{item}]**
+### MetricReportDefinitions (array)
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+`MetricReportDefinitions` is an array containing elements of:
+
+**MetricReportDefinitions[{item}].@odata.id**
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Oem.Hpe.DeliveryRetryAttempts
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Description|This is the number of attempts an event posting is retried before the subscription is terminated.|
+|Type|integer|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Oem.Hpe.DeliveryRetryIntervalInSeconds
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Description|This represents the number of seconds between retry attempts for sending any given Event|
+|Type|integer|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Oem.Hpe.MutualAuthenticationEnabled
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Description|This represents if the subscriber and iLO need to perform mutual authentication when an event is sent.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Oem.Hpe.RequestedMaxEventsToQueue
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Description|This represents the number of events the service should queue.|
+|Type|integer|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Oem.Hpe.RetireOldEventInMinutes
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Description|This represents the number of minutes until an event is expired.|
+|Type|integer|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Protocol
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Description|The protocol type of the event connection.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Redfish`|
+
+### RegistryPrefixes (array)
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+`RegistryPrefixes` is an array containing elements of:
+
+**RegistryPrefixes[{item}]**
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### SubscriptionType
+
+Member of [EventDestination.v1\_13\_0.EventDestination](#eventdestination)
+
+| | |
+|---|---|
+|Description|The subscription type for events.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`RedfishEvent`|
+
+
 ## EventDestinationCollection
 `@odata.type: "#EventDestinationCollection.EventDestinationCollection"`
 
@@ -1706,7 +1888,7 @@ A Collection of EventDestination resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[EventDestination](#eventdestination)|
+|`Members[]`|[EventDestination](ilo7_other_resourcedefns111/#eventdestination)|
 
 ### Members (array)
 
@@ -2414,6 +2596,72 @@ Member of HostInterfaceCollection.HostInterfaceCollection
 |Added|iLO7 1.11|
 
 
+## JsonSchemaFile
+
+`@odata.type: "#JsonSchemaFile.v1_0_4.JsonSchemaFile"`
+
+The JSON Schema File resource describes the location (URI) of a particular Redfish schema definition being implemented or referenced by a Redfish service.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/jsonschemas/{item}`|GET |
+
+### Languages (array)
+
+Member of [JsonSchemaFile.v1\_0\_4.JsonSchemaFile](#jsonschemafile)
+
+`Languages` is an array containing elements of:
+
+**Languages[{item}]**
+Member of [JsonSchemaFile.v1\_0\_4.JsonSchemaFile](#jsonschemafile)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Location (array)
+
+Member of [JsonSchemaFile.v1\_0\_4.JsonSchemaFile](#jsonschemafile)
+
+`Location` is an array containing elements of:
+
+**Location[{item}].Language**
+Member of [JsonSchemaFile.v1\_0\_4.JsonSchemaFile](#jsonschemafile)
+
+| | |
+|---|---|
+|Description|The RFC 5646 language code for this schema or registry item.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Location[{item}].Uri**
+Member of [JsonSchemaFile.v1\_0\_4.JsonSchemaFile](#jsonschemafile)
+
+| | |
+|---|---|
+|Description|Link to locally available URI for schema.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Schema
+
+Member of [JsonSchemaFile.v1\_0\_4.JsonSchemaFile](#jsonschemafile)
+
+| | |
+|---|---|
+|Description|The typename this schema describes.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+
 ## JsonSchemaFileCollection
 `@odata.type: "#JsonSchemaFileCollection.JsonSchemaFileCollection"`
 
@@ -2429,7 +2677,7 @@ A Collection of JsonSchemaFile resource instances.
 
 |Link Name|Destination type
 |---|---|
-|`Members[]`|[JsonSchemaFile](#jsonschemafile)|
+|`Members[]`|[JsonSchemaFile](ilo7_other_resourcedefns111/#jsonschemafile)|
 
 ### Members (array)
 
@@ -11548,45 +11796,6 @@ Member of SensorCollection.SensorCollection
 ### Members@odata.count
 
 Member of SensorCollection.SensorCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-
-## SerialInterfaceCollection
-`@odata.type: "#SerialInterfaceCollection.SerialInterfaceCollection"`
-
-A Collection of SerialInterface resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/serialinterfaces`|GET |
-
-### Members (array)
-
-Member of SerialInterfaceCollection.SerialInterfaceCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of SerialInterfaceCollection.SerialInterfaceCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of SerialInterfaceCollection.SerialInterfaceCollection
 
 | | |
 |---|---|

@@ -1,14 +1,14 @@
 ---
+seo:
+  title: Manager resource definitions
 markdown:
   toc:
-    hide: true
-    depth: 3
+    hide: false
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Manager resource definitions
 ---
 
 # Manager resource definitions of iLO 7 v1.11
@@ -99,7 +99,6 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 |`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](ilo7_hpe_resourcedefns111/#hpeilodatetime)|
 |`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](ilo7_hpe_resourcedefns111/#hperemotesupport)|
 |`Links/ManagerForChassis[]`|[Chassis](ilo7_chassis_resourcedefns111/#chassis)|
-|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](ilo7_hpe_resourcedefns111/#hpeilolicensecollection)|
 |`VirtualMedia`|Collection of [VirtualMedia](ilo7_other_resourcedefns111/#virtualmediacollection)|
 |`LogServices`|Collection of [LogService](ilo7_other_resourcedefns111/#logservicecollection)|
 |`Links/ManagerInChassis`|[Chassis](ilo7_chassis_resourcedefns111/#chassis)|
@@ -107,7 +106,7 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 |`Links/ManagerForServers[]`|[ComputerSystem](ilo7_computersystem_resourcedefns111/#computersystem)|
 |`Oem/Hpe/Links/ActiveHealthSystem`|[HpeiLOActiveHealthSystem](ilo7_hpe_resourcedefns111/#hpeiloactivehealthsystem)|
 |`Oem/Hpe/Links/SecurityService`|[HpeSecurityService](ilo7_hpe_resourcedefns111/#hpesecurityservice)|
-|`SerialInterfaces`|SerialInterfaceCollection|
+|`Oem/Hpe/Links/LicenseService`|Collection of [HpeiLOLicense](ilo7_hpe_resourcedefns111/#hpeilolicensecollection)|
 |`NetworkProtocol`|[ManagerNetworkProtocol](ilo7_manager_resourcedefns111/#managernetworkprotocol)|
 |`HostInterfaces`|Collection of [HostInterface](ilo7_other_resourcedefns111/#hostinterfacecollection)|
 |`SharedNetworkPorts`|Collection of [Port](ilo7_other_resourcedefns111/#portcollection)|

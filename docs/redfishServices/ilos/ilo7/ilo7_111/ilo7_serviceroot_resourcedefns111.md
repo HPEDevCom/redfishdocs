@@ -1,14 +1,14 @@
 ---
+seo:
+  title: Serviceroot resource definitions
 markdown:
   toc:
     hide: true
-    depth: 3
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Serviceroot resource definitions
 ---
 
 # Serviceroot resource definitions of iLO 7 v1.11

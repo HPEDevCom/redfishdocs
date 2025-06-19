@@ -1,14 +1,14 @@
 ---
+seo:
+  title: iLO 7 version 1.11 Resource map
 markdown:
   toc:
     hide: true
-    depth: 3
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: iLO 7 version 1.11 Resource map
 ---
 
 # Resource map of iLO 7 v1.11
@@ -82,16 +82,16 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/eventservice`|[EventService](ilo7_other_resourcedefns111/#eventservice)|
 |`/redfish/v1/eventservice/cacertificates`|Collection of [HpeCertificate](ilo7_hpe_resourcedefns111/#hpecertificatecollection)|
 |`/redfish/v1/eventservice/cacertificates/{item}`|[HpeCertificate](ilo7_hpe_resourcedefns111/#hpecertificate)|
-|`/redfish/v1/eventservice/subscriptions`|Collection of [EventDestination](#eventdestination-v1_13_0-eventdestination)|
-|`/redfish/v1/eventservice/subscriptions/{item}`|[EventDestination](#eventdestination-v1_13_0-eventdestination)|
+|`/redfish/v1/eventservice/subscriptions`|Collection of [EventDestination](ilo7_other_resourcedefns111/#eventdestinationcollection)|
+|`/redfish/v1/eventservice/subscriptions/{item}`|[EventDestination](ilo7_other_resourcedefns111/#eventdestination)|
 |`/redfish/v1/fabrics`|Collection of [Fabric](ilo7_other_resourcedefns111/#fabriccollection)|
 |`/redfish/v1/fabrics/{item}`|[Fabric](ilo7_other_resourcedefns111/#fabric)|
 |`/redfish/v1/fabrics/{item}/switches`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}`|[Switch](ilo7_other_resourcedefns111/#switch)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/ports`|Collection of [Port](ilo7_other_resourcedefns111/#portcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/ports/{item}`|[Port](ilo7_other_resourcedefns111/#port)|
-|`/redfish/v1/jsonschemas`|Collection of [JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)|
-|`/redfish/v1/jsonschemas/{item}`|[JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)|
+|`/redfish/v1/jsonschemas`|Collection of [JsonSchemaFile](ilo7_other_resourcedefns111/#jsonschemafilecollection)|
+|`/redfish/v1/jsonschemas/{item}`|[JsonSchemaFile](ilo7_other_resourcedefns111/#jsonschemafile)|
 |`/redfish/v1/managers`|Collection of [Manager](ilo7_manager_resourcedefns111/#managercollection)|
 |`/redfish/v1/managers/{item}`|[Manager](ilo7_manager_resourcedefns111/#manager)|
 |`/redfish/v1/managers/{item}/activehealthsystem`|[HpeiLOActiveHealthSystem](ilo7_hpe_resourcedefns111/#hpeiloactivehealthsystem)|
@@ -116,7 +116,6 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/managers/{item}/remotesupportservice/serviceeventlogs`|Collection of [LogEntry](ilo7_other_resourcedefns111/#logentrycollection)|
 |`/redfish/v1/managers/{item}/remotesupportservice/serviceeventlogs/{item}`|[LogEntry](ilo7_other_resourcedefns111/#logentry)|
 |`/redfish/v1/managers/{item}/securityservice`|[HpeSecurityService](ilo7_hpe_resourcedefns111/#hpesecurityservice)|
-|`/redfish/v1/managers/{item}/securityservice/automaticcertificateenrollment`|[HpeAutomaticCertEnrollment](ilo7_hpe_resourcedefns111/#hpeautomaticcertenrollment)|
 |`/redfish/v1/managers/{item}/securityservice/bmchpeldevid/certificates`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
 |`/redfish/v1/managers/{item}/securityservice/bmchpeldevid/certificates/{item}`|[Certificate](ilo7_other_resourcedefns111/#certificate)|
 |`/redfish/v1/managers/{item}/securityservice/bmciak/certificates`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
@@ -144,7 +143,6 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/managers/{item}/securityservice/systemlak/certificates/{item}`|[Certificate](ilo7_other_resourcedefns111/#certificate)|
 |`/redfish/v1/managers/{item}/securityservice/systemldevid/certificates`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
 |`/redfish/v1/managers/{item}/securityservice/systemldevid/certificates/{item}`|[Certificate](ilo7_other_resourcedefns111/#certificate)|
-|`/redfish/v1/managers/{item}/serialinterfaces`|SerialInterfaceCollection|
 |`/redfish/v1/managers/{item}/sharednetworkports`|Collection of [Port](ilo7_other_resourcedefns111/#portcollection)|
 |`/redfish/v1/managers/{item}/sharednetworkports/{item}`|[Port](ilo7_other_resourcedefns111/#port)|
 |`/redfish/v1/managers/{item}/snmpservice`|[HpeiLOSnmpService](ilo7_hpe_resourcedefns111/#hpeilosnmpservice)|

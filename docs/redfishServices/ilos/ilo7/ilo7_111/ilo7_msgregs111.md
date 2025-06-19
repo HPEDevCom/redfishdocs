@@ -1,14 +1,14 @@
 ---
+seo:
+  title: iLO 7 v111 Error messages
 markdown:
   toc:
     hide: true
-    depth: 3
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: iLO 7 v111 Error messages
 ---
 
 # Response message definitions of iLO 7 v1.11
