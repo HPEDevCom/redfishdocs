@@ -1,22 +1,18 @@
 ---
+excludeFromSearch: true
 seo:
   title: Serviceroot resource definitions
-markdown:
-  toc:
-    hide: true
-    depth: 2
-  lastUpdateBlock:
-    hide: false
-breadcrumbs:
-  hide: false
+toc:
+  enable: true
+  maxDepth: 2
+disableLastModified: false
 ---
 
 # Serviceroot resource definitions of iLO 7 v1.11
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## ServiceRoot
 
@@ -32,21 +28,21 @@ The ServiceRoot resource describes the Redfish API service root.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Registries`|Collection of [MessageRegistryFile](ilo7_other_resourcedefns111/#messageregistryfilecollection)|
-|`Systems`|Collection of [ComputerSystem](ilo7_computersystem_resourcedefns111/#computersystemcollection)|
-|`Managers`|Collection of [Manager](ilo7_manager_resourcedefns111/#managercollection)|
-|`AccountService`|[AccountService](ilo7_other_resourcedefns111/#accountservice)|
-|`Fabrics`|Collection of [Fabric](ilo7_other_resourcedefns111/#fabriccollection)|
-|`UpdateService`|[UpdateService](ilo7_other_resourcedefns111/#updateservice)|
-|`ComponentIntegrity`|Collection of [ComponentIntegrity](ilo7_other_resourcedefns111/#componentintegritycollection)|
-|`SessionService`|[SessionService](ilo7_other_resourcedefns111/#sessionservice)|
-|`EventService`|[EventService](ilo7_other_resourcedefns111/#eventservice)|
-|`Chassis`|Collection of [Chassis](ilo7_chassis_resourcedefns111/#chassiscollection)|
-|`Oem/Hpe/Links/ResourceDirectory`|[HpeiLOResourceDirectory](ilo7_hpe_resourcedefns111/#hpeiloresourcedirectory)|
-|`JsonSchemas`|Collection of [JsonSchemaFile](ilo7_other_resourcedefns111/#jsonschemafilecollection)|
-|`Links/Sessions`|Collection of [Session](ilo7_other_resourcedefns111/#sessioncollection)|
+|`Registries`|Collection of [MessageRegistryFile](../ilo7_other_resourcedefns111/#messageregistryfilecollection)|
+|`Systems`|Collection of [ComputerSystem](../ilo7_computersystem_resourcedefns111/#computersystemcollection)|
+|`Managers`|Collection of [Manager](../ilo7_manager_resourcedefns111/#managercollection)|
+|`AccountService`|[AccountService](../ilo7_other_resourcedefns111/#accountservice)|
+|`Fabrics`|Collection of [Fabric](../ilo7_other_resourcedefns111/#fabriccollection)|
+|`UpdateService`|[UpdateService](../ilo7_other_resourcedefns111/#updateservice)|
+|`ComponentIntegrity`|Collection of [ComponentIntegrity](../ilo7_other_resourcedefns111/#componentintegritycollection)|
+|`SessionService`|[SessionService](../ilo7_other_resourcedefns111/#sessionservice)|
+|`EventService`|[EventService](../ilo7_other_resourcedefns111/#eventservice)|
+|`Chassis`|Collection of [Chassis](../ilo7_chassis_resourcedefns111/#chassiscollection)|
+|`Oem/Hpe/Links/ResourceDirectory`|[HpeiLOResourceDirectory](../ilo7_hpe_resourcedefns111/#hpeiloresourcedirectory)|
+|`JsonSchemas`|Collection of [JsonSchemaFile](../ilo7_other_resourcedefns111/#jsonschemafilecollection)|
+|`Links/Sessions`|Collection of [Session](../ilo7_other_resourcedefns111/#sessioncollection)|
 
 ### AccountService
 

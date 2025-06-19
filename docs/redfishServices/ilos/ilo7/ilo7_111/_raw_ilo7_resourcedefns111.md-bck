@@ -24,6 +24,7 @@ The destination of this link is a collection of user accounts (see ManagerAccoun
 ### Links to other Resources
 |Link Name|Destination type
 |---|---|
+|```Oem/Hpe/appaccounts```|Collection of [HpeiLOAppAccount](#hpeiloappaccount-v1_0_0-hpeiloappaccount)|
 |```Accounts```|Collection of [HpeiLOAppAccount](#hpeiloappaccount-v1_0_0-hpeiloappaccount)|
 
 ### AccountLockoutCounterResetAfter
@@ -8497,6 +8498,16 @@ Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
 |Read Only|True|
 |Added|iLO7 1.11|
 
+### BootOptionEnabled
+Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
+
+| | |
+|---|---|
+|Description|A flag that shows if the Boot Option is enabled.|
+|Type|boolean or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
 ### BootOptionReference
 Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
 
@@ -12683,7 +12694,7 @@ The type of reset.
 
 |Value|Description|
 |---|---|
-|GracefulRestart|Instead of performing the graceful restart, the server performs a force restart.|
+|GracefulRestart|Shut down gracefully and restart the system.|
 |GracefulShutdown|Shut down gracefully and power off.|
 |PowerCycle|Power cycle the unit.|
 |On|Turn on the unit.|
@@ -15009,6 +15020,167 @@ Member of EthernetInterfaceCollection.EthernetInterfaceCollection
 |Read Only|True|
 |Added|iLO7 1.11|
 
+## EventDestination.v1_13_0.EventDestination
+```@odata.type: "#EventDestination.v1_13_0.EventDestination"```
+
+The EventDestination resource describes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload.
+### Resource Instances
+|Uri|HTTP Allow|
+|---|---|
+|```/redfish/v1/eventservice/subscriptions/{item}```|GET PATCH DELETE |
+
+### Context
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Description|A client-supplied string that is stored with the listener destination subscription.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Destination
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Description|The URI of the destination listener service.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### EventFormatType
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Description|The content types of the message that are sent to the EventDestination.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|```Event```|
+|```MetricReport```|
+
+### HttpHeaders (array)
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+```HttpHeaders``` is an array containing elements of:
+
+**HttpHeaders[{item}]**
+### MetricReportDefinitions (array)
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+```MetricReportDefinitions``` is an array containing elements of:
+
+**MetricReportDefinitions[{item}].@odata.id**
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Oem.Hpe.DeliveryRetryAttempts
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Description|This is the number of attempts an event posting is retried before the subscription is terminated.|
+|Type|integer|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Oem.Hpe.DeliveryRetryIntervalInSeconds
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Description|This represents the number of seconds between retry attempts for sending any given Event|
+|Type|integer|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Oem.Hpe.MutualAuthenticationEnabled
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Description|This represents if the subscriber and iLO need to perform mutual authentication when an event is sent.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Oem.Hpe.RequestedMaxEventsToQueue
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Description|This represents the number of events the service should queue.|
+|Type|integer|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Oem.Hpe.RetireOldEventInMinutes
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Description|This represents the number of minutes until an event is expired.|
+|Type|integer|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Protocol
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Description|The protocol type of the event connection.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|```Redfish```|
+
+### RegistryPrefixes (array)
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+```RegistryPrefixes``` is an array containing elements of:
+
+**RegistryPrefixes[{item}]**
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### SubscriptionType
+Member of [EventDestination.v1_13_0.EventDestination](#eventdestination-v1_13_0-eventdestination)
+
+| | |
+|---|---|
+|Description|The subscription type for events.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|```RedfishEvent```|
+
 ## EventDestinationCollection.EventDestinationCollection
 ```@odata.type: "#EventDestinationCollection.EventDestinationCollection"```
 
@@ -15650,160 +15822,6 @@ Member of HostInterfaceCollection.HostInterfaceCollection
 |Read Only|True|
 |Added|iLO7 1.11|
 
-## HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment
-```@odata.type: "#HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment"```
-
-The HpeAutomaticCertEnrollment resource describes the properties of automatic Certificate Enrollment feature support.
-### Resource Instances
-|Uri|HTTP Allow|
-|---|---|
-|```/redfish/v1/managers/{item}/securityservice/automaticcertificateenrollment```|GET PATCH |
-
-### AutomaticCertificateEnrollmentSettings
-**AutomaticCertificateEnrollmentSettings.CACertificateName**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|This is the name of imported CA(Certificate Authority) Certificate which is used to sign the SSL certificate.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**AutomaticCertificateEnrollmentSettings.CertificateEnrollmentStatus**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|Enrollment Status of SSL certificate|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|```InProgress```|Enrollment request is in progress.|
-|```Success```|Enrollment has completed successfully.|
-|```Failed```|Enrollment request has failed.|
-|```Disabled```||
-|```Unknown```|Enrollment request status is Unknown.|
-
-**AutomaticCertificateEnrollmentSettings.ChallengePassword**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|Challenge Password required to complete certificate Enrollment.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**AutomaticCertificateEnrollmentSettings.ServerUrl**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|Link to Certificate Enrollment Server.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-**AutomaticCertificateEnrollmentSettings.ServiceEnabled**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|This indicates whether this Automatic Certificate Enrollment(ACE) service is enabled.|
-|Type|boolean or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### HttpsCertCSRSubjectValue
-**HttpsCertCSRSubjectValue.City**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The city or locality where the company or organization that owns this iLO subsystem is located.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.CommonName**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The FQDN of this iLO subsystem.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.Country**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The two-character country code where the company or organization that owns this Manager subsystem is located. Eg: US|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.IncludeIP**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|Include the IP Addresses in the CSR.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.OrgName**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The name of the company or organization that owns this iLO subsystem.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.OrgUnit**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The unit within the company or organization that owns this iLO subsystem.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.State**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The state where the company or organization that owns this iLO subsystem is located.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### Actions
-
-**HpeAutomaticCertEnrollment.ImportCACertificate**
-Member of [HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)
-Imports a CA Certificate.
-
-
-**Parameters:**
-
-**Certificate (string)**
-
-Contains PEM formatted X509 certificate (Base64 encoded).
 ## HpeBaseConfigs.v2_0_0.HpeBaseConfigs
 ```@odata.type: "#HpeBaseConfigs.v2_0_0.HpeBaseConfigs"```
 ### Resource Instances
@@ -21328,7 +21346,6 @@ The HpeSecurityService resource describes the properties for management of the s
 |```BMCIDevIDPCA```|Collection of [Certificate](#certificate-v1_6_0-certificate)|
 |```BMCLAK```|Collection of [Certificate](#certificate-v1_6_0-certificate)|
 |```Links/SecurityParams```|Collection of [HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)|
-|```Links/AutomaticCertificateEnrollment```|[HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)|
 |```BMCIAK```|Collection of [Certificate](#certificate-v1_6_0-certificate)|
 |```SystemLAK```|Collection of [Certificate](#certificate-v1_6_0-certificate)|
 |```Links/CertAuth```|[HpeCertAuth](#hpecertauth-v1_1_0-hpecertauth)|
@@ -23748,6 +23765,63 @@ Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorC
 |Read Only|True|
 |Added|iLO7 1.11|
 
+## JsonSchemaFile.v1_0_4.JsonSchemaFile
+```@odata.type: "#JsonSchemaFile.v1_0_4.JsonSchemaFile"```
+
+The JSON Schema File resource describes the location (URI) of a particular Redfish schema definition being implemented or referenced by a Redfish service.
+### Resource Instances
+|Uri|HTTP Allow|
+|---|---|
+|```/redfish/v1/jsonschemas/{item}```|GET |
+
+### Languages (array)
+Member of [JsonSchemaFile.v1_0_4.JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)
+```Languages``` is an array containing elements of:
+
+**Languages[{item}]**
+Member of [JsonSchemaFile.v1_0_4.JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Location (array)
+Member of [JsonSchemaFile.v1_0_4.JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)
+```Location``` is an array containing elements of:
+
+**Location[{item}].Language**
+Member of [JsonSchemaFile.v1_0_4.JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)
+
+| | |
+|---|---|
+|Description|The RFC 5646 language code for this schema or registry item.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Location[{item}].Uri**
+Member of [JsonSchemaFile.v1_0_4.JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)
+
+| | |
+|---|---|
+|Description|Link to locally available URI for schema.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Schema
+Member of [JsonSchemaFile.v1_0_4.JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)
+
+| | |
+|---|---|
+|Description|The typename this schema describes.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
 ## JsonSchemaFileCollection.JsonSchemaFileCollection
 ```@odata.type: "#JsonSchemaFileCollection.JsonSchemaFileCollection"```
 
@@ -24783,7 +24857,6 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 |```Oem/Hpe/Links/DateTimeService```|[HpeiLODateTime](#hpeilodatetime-v2_1_0-hpeilodatetime)|
 |```Oem/Hpe/Links/RemoteSupport```|[HpeRemoteSupport](#hperemotesupport-v2_6_0-hperemotesupport)|
 |```Links/ManagerForChassis[]```|[Chassis](#chassis-v1_23_0-chassis)|
-|```Oem/Hpe/Links/LicenseService```|Collection of [HpeiLOLicense](#hpeilolicense-v2_4_1-hpeilolicense)|
 |```VirtualMedia```|Collection of [VirtualMedia](#virtualmedia-v1_3_0-virtualmedia)|
 |```LogServices```|Collection of [LogService](#logservice-v1_1_0-logservice)|
 |```Links/ManagerInChassis```|[Chassis](#chassis-v1_23_0-chassis)|
@@ -24791,7 +24864,7 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 |```Links/ManagerForServers[]```|[ComputerSystem](#computersystem-v1_18_0-computersystem)|
 |```Oem/Hpe/Links/ActiveHealthSystem```|[HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem-v2_5_0-hpeiloactivehealthsystem)|
 |```Oem/Hpe/Links/SecurityService```|[HpeSecurityService](#hpesecurityservice-v2_7_0-hpesecurityservice)|
-|```SerialInterfaces```|SerialInterfaceCollection|
+|```Oem/Hpe/Links/LicenseService```|Collection of [HpeiLOLicense](#hpeilolicense-v2_4_1-hpeilolicense)|
 |```NetworkProtocol```|[ManagerNetworkProtocol](#managernetworkprotocol-v1_0_0-managernetworkprotocol)|
 |```HostInterfaces```|Collection of [HostInterface](#hostinterface-v1_1_1-hostinterface)|
 |```SharedNetworkPorts```|Collection of [Port](#port-v1_12_0-port)|
@@ -37068,39 +37141,6 @@ Member of SensorCollection.SensorCollection
 
 ### Members@odata.count
 Member of SensorCollection.SensorCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## SerialInterfaceCollection.SerialInterfaceCollection
-```@odata.type: "#SerialInterfaceCollection.SerialInterfaceCollection"```
-
-A Collection of SerialInterface resource instances.
-### Resource Instances
-|Uri|HTTP Allow|
-|---|---|
-|```/redfish/v1/managers/{item}/serialinterfaces```|GET |
-
-### Members (array)
-Member of SerialInterfaceCollection.SerialInterfaceCollection
-```Members``` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of SerialInterfaceCollection.SerialInterfaceCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-Member of SerialInterfaceCollection.SerialInterfaceCollection
 
 | | |
 |---|---|

@@ -1,24 +1,21 @@
 ---
+excludeFromSearch: true
 seo:
   title: Computersystem resource definitions
-markdown:
-  toc:
-    hide: false
-    depth: 2
-  lastUpdateBlock:
-    hide: false
-breadcrumbs:
-  hide: false
+toc:
+  enable: true
+  maxDepth: 2
+disableLastModified: false
 ---
 
 # Computersystem resource definitions of iLO 7 v1.11
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ComputerSystemCollection
+
 `@odata.type: "#ComputerSystemCollection.ComputerSystemCollection"`
 
 A Collection of ComputerSystem resource instances.
@@ -31,9 +28,9 @@ A Collection of ComputerSystem resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[ComputerSystem](ilo7_computersystem_resourcedefns111/#computersystem)|
+|`Members[]`|[ComputerSystem](../ilo7_computersystem_resourcedefns111/#computersystem)|
 
 ### Members (array)
 
@@ -76,23 +73,23 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`EthernetInterfaces`|Collection of [EthernetInterface](ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
+|`EthernetInterfaces`|Collection of [EthernetInterface](../ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
 |`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice)|
-|`Links/Chassis[]`|[Chassis](ilo7_chassis_resourcedefns111/#chassis)|
-|`Memory`|Collection of [Memory](ilo7_other_resourcedefns111/#memorycollection)|
+|`Links/Chassis[]`|[Chassis](../ilo7_chassis_resourcedefns111/#chassis)|
+|`Memory`|Collection of [Memory](../ilo7_other_resourcedefns111/#memorycollection)|
 |`Oem/Hpe/Links/USBPorts`|Collection of [HpeUSBPort](#hpeusbport)|
-|`Processors`|Collection of [Processor](ilo7_other_resourcedefns111/#processorcollection)|
-|`NetworkInterfaces`|Collection of [NetworkInterface](ilo7_network_resourcedefns111/#networkinterfacecollection)|
-|`SecureBoot`|[SecureBoot](ilo7_other_resourcedefns111/#secureboot)|
-|`Storage`|Collection of [Storage](ilo7_storage_resourcedefns111/#storagecollection)|
-|`Bios`|[Bios](ilo7_bios_resourcedefns111/#bios)|
-|`LogServices`|Collection of [LogService](ilo7_other_resourcedefns111/#logservicecollection)|
-|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
-|`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](ilo7_hpe_resourcedefns111/#hpeserverpcislotcollection)|
-|`Links/ManagedBy[]`|[Manager](ilo7_manager_resourcedefns111/#manager)|
-|`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](ilo7_hpe_resourcedefns111/#hpeserverpcidevicecollection)|
+|`Processors`|Collection of [Processor](../ilo7_other_resourcedefns111/#processorcollection)|
+|`NetworkInterfaces`|Collection of [NetworkInterface](../ilo7_network_resourcedefns111/#networkinterfacecollection)|
+|`SecureBoot`|[SecureBoot](../ilo7_other_resourcedefns111/#secureboot)|
+|`Storage`|Collection of [Storage](../ilo7_storage_resourcedefns111/#storagecollection)|
+|`Bios`|[Bios](../ilo7_bios_resourcedefns111/#bios)|
+|`LogServices`|Collection of [LogService](../ilo7_other_resourcedefns111/#logservicecollection)|
+|`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](../ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
+|`Oem/Hpe/Links/PCISlots`|Collection of [HpeServerPCISlot](../ilo7_hpe_resourcedefns111/#hpeserverpcislotcollection)|
+|`Links/ManagedBy[]`|[Manager](../ilo7_manager_resourcedefns111/#manager)|
+|`Oem/Hpe/Links/PCIDevices`|Collection of [HpeServerPciDevice](../ilo7_hpe_resourcedefns111/#hpeserverpcidevicecollection)|
 
 ### AssetTag
 
@@ -2116,11 +2113,9 @@ Member of [ComputerSystem.v1\_18\_0.ComputerSystem](#computersystem)
 
 ### Actions
 
-
 **ComputerSystem.Reset**
 Member of [ComputerSystem.v1\_18\_0.ComputerSystem](#computersystem)
 This action resets the system.
-
 
 **Parameters:**
 

@@ -1,14 +1,14 @@
 ---
+seo:
+  title: Hpe resource definitions
 markdown:
   toc:
-    hide: true
-    depth: 3
+    hide: false
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Hpe resource definitions
 ---
 
 # Hpe resource definitions of iLO 7 v1.11
@@ -18,166 +18,6 @@ For each data type provided by the HPE ilO Redfish service, find below its descr
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
 
-## HpeAutomaticCertEnrollment
-
-`@odata.type: "#HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment"`
-
-The HpeAutomaticCertEnrollment resource describes the properties of automatic Certificate Enrollment feature support.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/securityservice/automaticcertificateenrollment`|GET PATCH |
-
-### AutomaticCertificateEnrollmentSettings
-
-**AutomaticCertificateEnrollmentSettings.CACertificateName**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|This is the name of imported CA(Certificate Authority) Certificate which is used to sign the SSL certificate.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**AutomaticCertificateEnrollmentSettings.CertificateEnrollmentStatus**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|Enrollment Status of SSL certificate|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`InProgress`|Enrollment request is in progress.|
-|`Success`|Enrollment has completed successfully.|
-|`Failed`|Enrollment request has failed.|
-|`Disabled`||
-|`Unknown`|Enrollment request status is Unknown.|
-
-**AutomaticCertificateEnrollmentSettings.ChallengePassword**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|Challenge Password required to complete certificate Enrollment.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**AutomaticCertificateEnrollmentSettings.ServerUrl**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|Link to Certificate Enrollment Server.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-**AutomaticCertificateEnrollmentSettings.ServiceEnabled**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|This indicates whether this Automatic Certificate Enrollment(ACE) service is enabled.|
-|Type|boolean or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### HttpsCertCSRSubjectValue
-
-**HttpsCertCSRSubjectValue.City**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The city or locality where the company or organization that owns this iLO subsystem is located.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.CommonName**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The FQDN of this iLO subsystem.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.Country**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The two-character country code where the company or organization that owns this Manager subsystem is located. Eg: US|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.IncludeIP**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|Include the IP Addresses in the CSR.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.OrgName**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The name of the company or organization that owns this iLO subsystem.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.OrgUnit**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The unit within the company or organization that owns this iLO subsystem.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**HttpsCertCSRSubjectValue.State**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-
-| | |
-|---|---|
-|Description|The state where the company or organization that owns this iLO subsystem is located.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### Actions
-
-
-**HpeAutomaticCertEnrollment.ImportCACertificate**
-Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
-Imports a CA Certificate.
-
-
-**Parameters:**
-
-**Certificate (string)**
-
-Contains PEM formatted X509 certificate (Base64 encoded).
 ## HpeBaseConfigs
 
 `@odata.type: "#HpeBaseConfigs.v2_0_0.HpeBaseConfigs"`
@@ -1859,3793 +1699,6 @@ The unit within the company or organization that owns this iLO subsystem.
 **State (string)**
 
 The state where the company or organization that owns this iLO subsystem is located.
-## HpeInvalidImage
-
-`@odata.type: "#HpeInvalidImage.v1_0_0.HpeInvalidImage"`
-
-The HpeInvalidImage resource describes the properties of an invalid firmware image detected and preserved from a computer system.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/updateservice/invalidimagerepository/{item}`|GET PATCH DELETE |
-
-### Created
-
-Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
-
-| | |
-|---|---|
-|Description|ISO 8601 time string indicating when this image was added to the NAND.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-### DeviceClass
-
-Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
-
-| | |
-|---|---|
-|Description|Device type GUID from iLO secure flash header|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Filename
-
-Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
-
-| | |
-|---|---|
-|Description|The unique filename of the image.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Filepath
-
-Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
-
-| | |
-|---|---|
-|Description|Path of file on the USB LUN if the repo is mounted as USB.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ImageUri
-
-Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
-
-| | |
-|---|---|
-|Description|URI of the image binary.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### SizeBytes
-
-Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
-
-| | |
-|---|---|
-|Description|Size of the image file in bytes.|
-|Type|integer or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeInvalidImageCollection
-`@odata.type: "#HpeInvalidImageCollection.HpeInvalidImageCollection"`
-
-A Collection of HpeInvalidImage resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/updateservice/invalidimagerepository`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeInvalidImage](ilo7_hpe_resourcedefns111/#hpeinvalidimage)|
-
-### Members (array)
-
-Member of HpeInvalidImageCollection.HpeInvalidImageCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeInvalidImageCollection.HpeInvalidImageCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeInvalidImageCollection.HpeInvalidImageCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeKmsConfig
-
-`@odata.type: "#HpeKmsConfig.v1_0_0.HpeKmsConfig"`
-
-The schema definition for Key Management Service configuration.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/bios/kmsconfig`|GET |
-|`/redfish/v1/systems/{item}/bios/kmsconfig/settings`|GET PATCH |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`settings`|[HpeKmsConfig](ilo7_hpe_resourcedefns111/#hpekmsconfig)|
-|`Oem/Hpe/Links/baseconfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
-
-### @Redfish.Settings
-
-Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
-See the Redfish standard schema and specification for information on common @Redfish properties.
-
-### DeleteUnusedEncryptionKeys
-
-Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
-
-| | |
-|---|---|
-|Description|Removes unused encryption keys.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Disabled`|Do not removed unused encryption keys.|
-|`Enabled`|Remove unused encryption keys.|
-
-### EncryptableDevices (array)
-
-Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
-
-`EncryptableDevices` is an array containing elements of:
-
-**EncryptableDevices[{item}].DeviceName**
-Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
-
-| | |
-|---|---|
-|Description|Name of the encryptable device.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**EncryptableDevices[{item}].EncryptionAction**
-Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
-
-| | |
-|---|---|
-|Description|Devices can take two types of action for encrypting namely, enable and disable. If user would like to modify the Passphrase, then User can opt to change encryption|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Enable`|Enable Encryption for the device.|
-|`Disable`|Disable Encryption for the device.|
-|`Change`|Modify the Encryption Passphrase.|
-|`Unlock`|Unlock the Encrypted device.|
-|`Undefined`|Encryption action is Undefined.|
-
-**EncryptableDevices[{item}].EncryptionPhrase**
-Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
-
-| | |
-|---|---|
-|Description|Encryption Passphrase would show up if the device is encrypted and be modified as well.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**EncryptableDevices[{item}].EncryptionStatus**
-Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
-
-| | |
-|---|---|
-|Description|Encryption status of the device.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`EncryptionStatusUnknown`|Device is encrypted, but Passphrase is unknown.|
-|`Encrypted`|Device is Encrypted.|
-|`Decrypted`|Device is Unencrypted.|
-
-**EncryptableDevices[{item}].PassphraseType**
-Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
-
-| | |
-|---|---|
-|Description|Passphrase can be either entered manually or auto generated|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Auto`|Passphrase is generated from the system.|
-|`Manual`|Passphrase is entered manually.|
-
-### KeyManagementType
-
-Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
-
-| | |
-|---|---|
-|Description|Key Management Type.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Disabled`|Key Management is Disabled|
-|`Local`|Key Management Type is Local|
-|`Remote`|Key Management Type is Remote|
-
-### OpalBlockSid
-
-Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
-
-| | |
-|---|---|
-|Description|TCG Block SID.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Disabled`|Disable TCG Block SID feature.|
-|`Enabled`|Enable TCG Block SID feature.|
-
-## HpeMaintenanceWindow
-
-`@odata.type: "#HpeMaintenanceWindow.v1_0_1.HpeMaintenanceWindow"`
-
-The HpeMaintenanceWindow resource describes the properties for managing the time window for a software or firmware update task or install set.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/updateservice/maintenancewindows/{item}`|GET PATCH DELETE |
-
-### Created
-
-Member of [HpeMaintenanceWindow.v1\_0\_1.HpeMaintenanceWindow](#hpemaintenancewindow)
-
-| | |
-|---|---|
-|Description|ISO-time of maintenance window creation (by whomever created this thing)|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-### Expire
-
-Member of [HpeMaintenanceWindow.v1\_0\_1.HpeMaintenanceWindow](#hpemaintenancewindow)
-
-| | |
-|---|---|
-|Description|ISO 8601 Redfish-style time string after which we will automatically change state to Expired - null for no expire time|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-### Modified
-
-Member of [HpeMaintenanceWindow.v1\_0\_1.HpeMaintenanceWindow](#hpemaintenancewindow)
-
-| | |
-|---|---|
-|Description|ISO-time of last maintenance window item update by updater (not client)|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-### StartAfter
-
-Member of [HpeMaintenanceWindow.v1\_0\_1.HpeMaintenanceWindow](#hpemaintenancewindow)
-
-| | |
-|---|---|
-|Description|ISO 8601 Redfish-style time string of earliest execution.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-## HpeMaintenanceWindowCollection
-`@odata.type: "#HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection"`
-
-A Collection of HpeMaintenanceWindow resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/updateservice/maintenancewindows`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeMaintenanceWindow](ilo7_hpe_resourcedefns111/#hpemaintenancewindow)|
-
-### Members (array)
-
-Member of HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpePowerMeter
-
-`@odata.type: "#HpePowerMeter.v2_1_0.HpePowerMeter"`
-
-The HpePowerMeter resource contains the computer system power history logged by the BMC.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/chassis/{item}/power/fastpowermeter`|GET |
-|`/redfish/v1/chassis/{item}/power/powermeter`|GET |
-
-### Average
-
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Average power across all samples, over the last 24 hours.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Maximum
-
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Maximum power across all samples, taken from the 24 hour history.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Minimum
-
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Minimum power across all samples, taken from the 24 hour history.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### PowerDetail (array)
-
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-`PowerDetail` is an array containing elements of:
-
-**PowerDetail[{item}].AmbTemp**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Ambient temperature, in degrees Celsius.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].Average**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Average power in Watts over the sample time.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].Cap**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|The applicable power cap in Watts at the time of this power sample.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].CpuAvgFreq**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|CPU average frequency in MHz.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].CpuCapLim**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Measures the effect of the power cap on performance in percent.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].CpuMax**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|The percentage of time the CPU spent in its maximum power mode.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].CpuPwrSavLim**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Measures the effect of CPU Power Regulator state switching on performance in percent.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].CpuUtil**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|CPU utilization in percent.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].CpuWatts**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|The power consumed by the system CPUs in Watts.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].DimmWatts**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|The power consumed by the system memory DIMMs in Watts.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].FanWatts**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|The power consumed by the system fan(s) in Watts.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].GpuWatts**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|The power consumed by the GPU(s) in Watts. This will be 0 if no GPUs are installed or if the drivers are not loaded.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].Minimum**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Minimum power in Watts over the sample time.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].Peak**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Peak power in Watts over the sample time.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].PrMode**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Power Regulator mode, which can be OS Control, Static High, Static Low or Dynamic.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Null`|A value is temporarily unavailable|
-|`dyn`|Dynamic Mode - CPU power regulation is managed dynamically by the firmware.|
-|`min`|Minimum Mode - CPU power regulation is configured to save as much power as possible at the possible expense of performance.|
-|`max`|Maximum Mode - CPU power regulation is configured for maximum performance at the possible expense of power efficiency.|
-|`osc`|OS Control Mode - CPU power regulation is managed by the Operating System.|
-
-**PowerDetail[{item}].PunCap**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|If true, CPU performance is being penalized by the current power cap.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**PowerDetail[{item}].Time**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Time at which the power sample detail was captured.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-**PowerDetail[{item}].UnachCap**
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|If true, the configured power cap could not be achieved due to system power requirements.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Samples
-
-Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
-
-| | |
-|---|---|
-|Description|Number of samples in the array.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeRemoteSupport
-
-`@odata.type: "#HpeRemoteSupport.v2_6_0.HpeRemoteSupport"`
-
-The HpeRemoteSupport resource describes the properties for management of HPE Embedded Report Support.
-
-This resource type was added in iLO 5 1.20
-
-HpeRemoteSupport enables management of HPE Remote Support configuration on iLO 5.
-
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/remotesupportservice`|GET PATCH |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`ServiceEventLogs`|Collection of [LogEntry](ilo7_other_resourcedefns111/#logentrycollection)|
-
-### ConnectModel
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|The Remote Support connect model type.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`DirectConnect`|
-|`CentralConnect`|
-
-### DataCollectionFrequencyInDays
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|The frequency of data collection in days. This is applicable only when the server is registered using Direct Connect.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DestinationPort
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|The port number of the Insight Remote Support server. This is applicable for Central Connect only. |
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DestinationURL
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|The host name or IP address of the Remote Support server. This is applicable for Central Connect only.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DirectConnectRegistrationIsCompleted
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|Step 2 of Direct Connect Registration completion status.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ExternalAgentName
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|This indicates the name of external Remote Support agent.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### HpePassportPassword
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|HPE Passport Account Password.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### HpePassportUserId
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|HPE Passport Account Id.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### LastTransmissionDate
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|The last transmission date.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-### LastTransmissionError
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|The last transmission error.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### LastTransmissionType
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|The last transmission type. |
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`ActiveHealthSystemData`|
-|`L2DataCollection`|
-|`Registration`|
-|`Deregistration`|
-|`ServiceEvent`|
-|`NoTransmission`|
-|`Null`|
-
-### MaintenanceModeEnabled
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|This indicates if the server is in Maintenance Mode or not.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### MaintenanceTimeLeftInMinutes
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|This indicates the time remaining in minutes for the server to be in the maintenance mode.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ProxySettings
-
-**ProxySettings.Password**
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|Password for web proxy server authentication. |
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**ProxySettings.Port**
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|Port number on which to communicate with the web proxy server. |
-|Type|integer or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**ProxySettings.Url**
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|Web proxy server host name or IP address.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-|Format|url|
-
-**ProxySettings.Username**
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|Username for web proxy server authentication. |
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### RemoteSupportEnabled
-
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-| | |
-|---|---|
-|Description|This indicates if the Remote Support Service is available or not. |
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ServiceEventLogs
-
-A reference to the collection of service event logs.
-ServiceEventLogs is a link (`"@odata.id": URI`) to another resource.
-
-### Actions
-
-
-**HpeRemoteSupport.RegisterDeviceToRemoteSupport**
-Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
-
-**Parameters:**
-
-**WebProxyUrl (string)**
-
-Web proxy server host name or IP address when connecting using Direct Connect. 
-
-**DestinationUrl (string)**
-
-The host name or IP address of the Remote Support server. This is applicable for Central Connect only.
-## HpeSNMPAlertDestination
-
-`@odata.type: "#HpeSNMPAlertDestination.v2_0_0.HpeSNMPAlertDestination"`
-
-The HpeSNMPAlertDestination resource describes the properties for SNMP Alert Destinations.  The alert destination configuration up to 8 remote management systems that receive SNMP alerts from the BMC.
-
-This resource type was added in iLO 5 1.20
-
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/snmpservice/snmpalertdestinations/{item}`|GET PATCH DELETE |
-
-### AlertDestination
-
-Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
-
-| | |
-|---|---|
-|Description|The IP address or FQDN of remote management system that receive SNMP alerts.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### SNMPAlertProtocol
-
-Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
-
-| | |
-|---|---|
-|Description|Indicate the SNMP protocol associated with the AlertDestination.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`SNMPv1Trap`|Indicate SNMPv1 trap is enabled for the destination.|
-|`SNMPv3Trap`|Indicate SNMPv3 trap is enabled for the destination. Needs to fill the SecurityName as well.|
-|`SNMPv3Inform`|Indicate SNMPv3 Inform is enabled for the destination. Needs to fill the SecurityName as well.|
-|`Null`|A value is temporarily unavailable|
-
-### SNMPv3User
-
-SNMPv3 User associated with the destination when SNMP alert protocol is SNMPv3trap.
-SNMPv3User is a link (`"@odata.id": URI`) to another resource.
-
-### SecurityName
-
-Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
-
-| | |
-|---|---|
-|Description|Provides the SNMPv3 security name associated with SNMPv3trap or SNMPv3Inform set on SNMPAlertProtocol.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### TrapCommunity
-
-Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
-
-| | |
-|---|---|
-|Description|The configured SNMPv1 trap community string.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-## HpeSNMPAlertDestinationCollection
-`@odata.type: "#HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection"`
-
-A Collection of HpeSNMPAlertDestination resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/snmpservice/snmpalertdestinations`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeSNMPAlertDestination](ilo7_hpe_resourcedefns111/#hpesnmpalertdestination)|
-
-### Members (array)
-
-Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeSNMPUser
-
-`@odata.type: "#HpeSNMPUser.v2_1_1.HpeSNMPUser"`
-
-The HpeSNMPUser resource describes the properties for SNMP support.  SNMPv3 supports the User-based Security Model (USM). With this model,security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.
-
-This resource type was added in iLO 5 1.20
-
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/snmpservice/snmpusers/{item}`|GET PATCH DELETE |
-
-### AuthPassphrase
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|Sets the passphrase to use for sign operations. Enter a value of 8 to 49 characters.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### AuthProtocol
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|Sets the message digest algorithm to use for encoding the authorization passphrase. The message digest is calculated over an appropriate portion of an SNMP message, and is included as part of the message sent to the recipient.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`MD5`|Indicate Message Digest Algorithm.|
-|`SHA`|Indicate Secure Hash Algorithm.|
-|`SHA256`|Indicate SHA256 Algorithm.|
-
-### PrivacyPassphrase
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|Sets the passphrase to use for encrypt operations. Enter a value of 8 to 49 characters.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### PrivacyProtocol
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|Sets the encryption algorithm to use for encoding the privacy passphrase. A portion of an SNMP message is encrypted before transmission.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`AES`|Indicate Advanced Encryption Standard Algorithm.|
-
-### SecurityName
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|The user profile name. Enter an alphanumeric string of 1 to 32 characters.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### UserEngineID
-
-Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
-
-| | |
-|---|---|
-|Description|The UserEngineID is combined with the SecurityName to create a SNMPv3 user for each manager. It is only used for creating remote accounts used with INFORM messages. If this property is not set then INFORM message will be sent with default or iLO configured engine ID. This value must be a hexadecimal string with an even number of 10 to 64 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-## HpeSNMPUsersCollection
-`@odata.type: "#HpeSNMPUsersCollection.HpeSNMPUsersCollection"`
-
-A Collection of HpeSNMPUsers resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/snmpservice/snmpusers`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeSNMPUser](ilo7_hpe_resourcedefns111/#hpesnmpuser)|
-
-### Members (array)
-
-Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeSecureEraseReport
-
-`@odata.type: "#HpeSecureEraseReport.v1_1_0.HpeSecureEraseReport"`
-
-The HpeSecureEraseReport resource describes the secure erase status and the other details of the devices during the secure system erase operation.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/secureerasereportservice/secureerasereportentries/{item}`|GET |
-
-### DeviceIdentifier
-
-Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
-
-| | |
-|---|---|
-|Description|This represents the unique identifier for the device in the system like it's physical location or the exact device path etc.,|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceType
-
-Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
-
-| | |
-|---|---|
-|Description|This indicates the device type being securely erased.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`SATADrives`|This indicates the device type is SATA drive|
-|`NVMeDrives`|This indicates the device type is NVMe drive|
-|`NVDIMM`|This indicates the device type is NVDIMM/Persistent Memory|
-|`TPM`|This indicates the device type is TPM (Trusted Platform Module)|
-|`UEFIStore`|This indicates the device type is UEFI Store|
-|`NAND`|This indicates the device type is Embedded NAND Flash|
-|`NVRAM`|This indicates the device type is NVRAM (Battery backed SRAM)|
-|`PCIControllers`|This indicates the device type is PCI Controllers|
-
-### EraseEndTime
-
-Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
-
-| | |
-|---|---|
-|Description|The date and time of the end of secure erase operation, ISO8601 Redfish-style time|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-### EraseStartTime
-
-Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
-
-| | |
-|---|---|
-|Description|The date and time of the start of secure erase operation, ISO8601 Redfish-style time|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-### EraseStatus
-
-Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
-
-| | |
-|---|---|
-|Description|Indicates the secure erase status of the individual components|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Idle`|Indicates Secure System Erase is not started|
-|`Initiated`|Indicates Secure System Erase process is started|
-|`InProgress`|Indicates Secure System Erase process is under progress|
-|`CompletedWithSuccess`|Indicates Secure System Erase process has been completed with no errors|
-|`CompletedWithErrors`|Indicates Secure System Erase process has been completed with some errors|
-|`Failed`|Indicates Secure System Erase process has failed|
-
-### EraseType
-
-Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
-
-| | |
-|---|---|
-|Description|This indicates the NIST SP800-88 Rev.1 (National Institute of Standards and Technology) approved techniques to sanitize a particular media or device.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Purge`|This indicates that Purge technique is used to sanitize the device.|
-|`Clear`|This indicates that Clear technique is used to sanitize the device.|
-
-### SerialNumber
-
-Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
-
-| | |
-|---|---|
-|Description|This represents the serial number of the device being erased.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeSecureEraseReportCollection
-`@odata.type: "#HpeSecureEraseReportCollection.HpeSecureEraseReportCollection"`
-
-A Collection of HpeSecureEraseReport resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/secureerasereportservice/secureerasereportentries`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeSecureEraseReport](ilo7_hpe_resourcedefns111/#hpesecureerasereport)|
-
-### Members (array)
-
-Member of HpeSecureEraseReportCollection.HpeSecureEraseReportCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeSecureEraseReportCollection.HpeSecureEraseReportCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeSecureEraseReportCollection.HpeSecureEraseReportCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeSecureEraseReportService
-
-`@odata.type: "#HpeSecureEraseReportService.v1_0_0.HpeSecureEraseReportService"`
-
-The HpeSecureEraseReportService resource describes the properties of the Secure Erase Report feature.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/secureerasereportservice`|GET POST |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Links/SecureEraseReportEntries`|Collection of [HpeSecureEraseReport](ilo7_hpe_resourcedefns111/#hpesecureerasereportcollection)|
-
-### EraseInitiatedBy
-
-Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hpesecureerasereportservice)
-
-| | |
-|---|---|
-|Description|This indicates the user name who initiated the secure system erase process.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ServerSerialNumber
-
-Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hpesecureerasereportservice)
-
-| | |
-|---|---|
-|Description|This represents the server serial number.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Actions
-
-
-**HpeSecureEraseReportService.DeleteSecureEraseReport**
-Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hpesecureerasereportservice)
-There are no parameters for this action.
-## HpeSecurityService
-
-`@odata.type: "#HpeSecurityService.v2_7_0.HpeSecurityService"`
-
-The HpeSecurityService resource describes the properties for management of the security configuration of the BMC.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/securityservice`|GET POST PATCH |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`SystemLDevID`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
-|`Links/HttpsCert`|[HpeHttpsCert](ilo7_hpe_resourcedefns111/#hpehttpscert)|
-|`BMCHPELDevID`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
-|`Links/SSO`|[HpeiLOSSO](ilo7_hpe_resourcedefns111/#hpeilosso)|
-|`BMCIDevIDPCA`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
-|`BMCLAK`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
-|`Links/SecurityParams`|Collection of [HpeiLOSecurityParam](ilo7_hpe_resourcedefns111/#hpeilosecurityparamcollection)|
-|`Links/AutomaticCertificateEnrollment`|[HpeAutomaticCertEnrollment](ilo7_hpe_resourcedefns111/#hpeautomaticcertenrollment)|
-|`BMCIAK`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
-|`SystemLAK`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
-|`Links/CertAuth`|[HpeCertAuth](ilo7_hpe_resourcedefns111/#hpecertauth)|
-|`Links/ESKM`|[HpeESKM](ilo7_hpe_resourcedefns111/#hpeeskm)|
-|`Links/SecurityDashboard`|[HpeiLOSecurityDashboard](ilo7_hpe_resourcedefns111/#hpeilosecuritydashboard)|
-
-### BMCHPELDevID
-
-**BMCHPELDevID.Certificates**
-This is a reference to a collection of certificates used for BMC LDevId HPE by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### BMCIAK
-
-**BMCIAK.Certificates**
-This is a reference to a collection of certificates used for BMC IAK by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### BMCIDevIDPca
-
-**BMCIDevIDPca.Certificates**
-This is a reference to a collection of certificates used for BMC IDevId PCA by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### BMCLAK
-
-**BMCLAK.Certificates**
-This is a reference to a collection of certificates used for BMC LAK by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### ComponentIntegrityPolicy
-
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`NoPolicy`|
-|`HaltBootOnSPDMFailure`|
-
-### CurrentCipher
-
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|Current cipher in use.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### GlobalComponentIntegrity
-
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`Enabled`|
-|`Disabled`|
-
-### KeyLocation
-
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|Defines where the Keys are stored. This could be locally stored or on Remote. Default is Local|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Hostbased`|Host Based Key configuration|
-|`Local`||
-|`Remote`||
-
-### KeyPolicy
-
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|Configures if keys are Configured Manually or Auto Generated|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Auto`|Keys will be Auto Generated|
-|`Manual`|Keys will be Manually provided|
-
-### LoginSecurityBanner
-
-**LoginSecurityBanner.IsEnabled**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|Login security banner is enabled or not.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**LoginSecurityBanner.SecurityMessage**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|Text message to appear on the iLO login page and iLO SSH pre-authentication banner when login security banner is enabled.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### OpenBMCTransferOfOwnership
-
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|State of iLO-OpenBMC Transfer of Ownership feature.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Supported`|OpenBMC Transfer feature is supported but it is not enabled for transfer.|
-|`Inhibited`|OpenBMC Transfer feature is inhibited for this server.|
-|`Configured`|iLO is configured successfully for OpenBMC transfer.|
-|`UnSupportedSecurityState`|OpenBMC Transfer feature is not supported in FIPS/CNSA security states.|
-|`UnSupportedSecureElement`|OpenBMC Transfer feature is not supported without correct Secure Element.|
-|`Error`|Error state.|
-
-### OpenBMCTransferStatus
-
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|OpenBMC transfer status.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`NotPerformed`|OpenBMC Transfer is not performed|
-|`Performed`|OpenBMC Transfer is performed at least once|
-|`Unknown`|Status unknown|
-
-### PlatformCert
-
-**PlatformCert.Certificates**
-This is a reference to a collection of certificates used for PlatformCert by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### PlatformCertUpdate
-
-**PlatformCertUpdate.Certificates**
-This is a reference to a collection of certificates used for PlatformCert Updates by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### SSHHostKey
-
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|SSH Host Key identifying the service.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### SecurityState
-
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|The operational security level of this Manager.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Wipe`|Manager is currently wiping security related content and returning to a lower security mode.  This state will transition automatically when finished.|
-|`SecureStandard`|Manager is operating in SecureStandard mode, requiring extra authentication on host interface(s), and stronger encryption on network interfaces - Default Security State |
-|`FIPS`|Similar to High Security. This mode is intended to meet the FIPS 140-2 level 1 and Common Criteria security requirements. A reset to defaults is required to exit this mode.|
-|`CNSA`|Same as FIPS. Additionally meets the criteria for NSA Commercial National Security Algorithm suite.  Must be in FIPS mode to transition to CNSA.|
-|`SuiteB`|Same as FIPS. Additionally meets the criteria for NSA SuiteB Top Secret installations.  Must be in FIPS mode to transition to SuiteB.|
-|`SynergySecurityMode`|Synergy Security Mode is the mode supported by the Synergy Composer.|
-
-### SecurityState@Redfish.AllowableValues (array)
-
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-`SecurityState@Redfish.AllowableValues` is an array containing elements of:
-
-**SecurityState@Redfish.AllowableValues[{item}]**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`Wipe`|
-|`SecureStandard`|
-|`FIPS`|
-|`CNSA`|
-|`SuiteB`|
-
-### SystemIAK
-
-**SystemIAK.Certificates**
-This is a reference to a collection of certificates used for System IAK by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### SystemIDevID
-
-**SystemIDevID.Certificates**
-This is a reference to a collection of certificates used for System IDevId by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### SystemLAKCert
-
-**SystemLAKCert.Certificates**
-This is a reference to a collection of certificates used for System LAK by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### SystemLDevID
-
-**SystemLDevID.Certificates**
-This is a reference to a collection of certificates used for System LDevID by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### TLSVersion
-
-**TLSVersion.TLS1_2**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|This Indicate whether the TLS 1.2 is Enabled or disabled.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Enabled`|Enabled TLS 1.2.|
-|`Disabled`|Disabled TLS 1.2.|
-
-**TLSVersion.TLS1_3**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|This Indicate whether the TLS 1.3 is Enabled or disabled.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Enabled`|Enabled TLS 1.3.|
-|`Disabled`|Disabled TLS 1.3.|
-
-### TrustedOSSecurity
-
-**TrustedOSSecurity.EnableBackgroundScan**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|Enables or disables background scan of host OS software.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**TrustedOSSecurity.LastScanResult**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|Health of the host after the last scan done by Trusted OS Security scan engine.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`OK`|The last Trusted OS Security scan completed without finding any issues.|
-|`Critical`|The last Trusted OS Security scan completed finding issue(s). Refer to the SL log for details.|
-|`Unknown`|The health is Unknown because either the scan data is unavailable or scan is not enabled or last scan failed to complete.|
-
-**TrustedOSSecurity.LastScanTime**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|The time stamp of the last Trusted OS Security scan.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-**TrustedOSSecurity.OnIntegrityFailure**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|Sets the policy for how the Trusted OS Security check handles integrity failures.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`NoAction`|No action will be taken when a failure is detected.|
-|`Alert`|Generate an alert when a failure is detected.|
-|`PowerOff`|Gracefully power system off when a failure is detected.|
-|`PowerOffForce`|Force system power off when a failure is detected.|
-|`Reset`|Reset system power off when a failure is detected.|
-|`ColdBoot`|ColdBoot system power off when a failure is detected.|
-|`ForceNMI`|ForceNMI system power off when a failure is detected.|
-
-**TrustedOSSecurity.ScanEverySeconds**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-
-| | |
-|---|---|
-|Description|Sets the interval between Trusted OS Security scans in second increments.|
-|Type|integer or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### iLOLDevID
-
-**iLOLDevID.Certificates**
-This is a reference to a collection of certificates used for iLO LDevId by this manager.
-Certificates is a link (`"@odata.id": URI`) to another resource.
-
-### Actions
-
-
-**HpeSecurityService.RebindHPM**
-Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
-There are no parameters for this action.
-## HpeServerBootSettings
-
-`@odata.type: "#HpeServerBootSettings.v2_0_0.HpeServerBootSettings"`
-
-The schema definition of the server UEFI Boot Order resource.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/bios/boot`|GET |
-|`/redfish/v1/systems/{item}/bios/boot/settings`|GET PATCH |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeServerBootSettings](ilo7_hpe_resourcedefns111/#hpeserverbootsettings)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
-
-### @Redfish.Settings
-
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-See the Redfish standard schema and specification for information on common @Redfish properties.
-
-### BootSources (array)
-
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-`BootSources` is an array containing elements of:
-
-**BootSources[{item}].BootString**
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-| | |
-|---|---|
-|Description|User-readable string that describes the UEFI boot option.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**BootSources[{item}].CorrelatableID**
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-| | |
-|---|---|
-|Description|Contains any CorrelatableIDs that represent this boot option. The correlatableID values can be JSON Pointers or UEFI identifiers.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**BootSources[{item}].StructuredBootString**
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-| | |
-|---|---|
-|Description|Uniquely identifies this boot option within the server.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**BootSources[{item}].UEFIDevicePath**
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-| | |
-|---|---|
-|Description|Standardized text representation of the UEFI device path for this boot option, in UTF-8 format.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DefaultBootOrder (array)
-
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-`DefaultBootOrder` is an array containing elements of:
-
-**DefaultBootOrder[{item}]**
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-| | |
-|---|---|
-|Description|Default UEFI boot order device type. This is used to define the order in which UEFI boot order is reset to when a default configuration is requested.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`UefiShell`|
-|`Floppy`|
-|`Cd`|
-|`Usb`|
-|`EmbeddedStorage`|
-|`PcieSlotStorage`|
-|`EmbeddedFlexLOM`|
-|`PcieSlotNic`|
-
-### DesiredBootDevices (array)
-
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-`DesiredBootDevices` is an array containing elements of:
-
-**DesiredBootDevices[{item}].CorrelatableID**
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-| | |
-|---|---|
-|Description|Standardized text representation of the UEFI device path of the desired boot device, in UTF-8 format. For example 'PciRoot(0x0)/Pci(0x2,0x2)/Pci(0x0,0x0)'|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**DesiredBootDevices[{item}].Lun**
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-| | |
-|---|---|
-|Description|The Logical Unit Number (LUN) of the desired boot device. This value must be a hexadecimal string with an even number of 2 to 16 characters, excluding the first two characters, 0x (for example, '0x01').|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**DesiredBootDevices[{item}].Wwn**
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-| | |
-|---|---|
-|Description|The Fibre Channel World Wide Name (WWN) of the desired boot device. This value must be a hexadecimal string with an even number of 2 to 16 characters, excluding the first two characters, 0x (for example, '0x0001020304050607').|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**DesiredBootDevices[{item}].iScsiTargetName**
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-| | |
-|---|---|
-|Description|The iSCSI node target name of the desired boot device. The value must be a string based on IETF RFC 3270, and can be up to 223 characters in length (for example, 'iqn.1991-05.com.microsoft:iscsitarget-iscsidisk-target').|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### PersistentBootConfigOrder (array)
-
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-`PersistentBootConfigOrder` is an array containing elements of:
-
-**PersistentBootConfigOrder[{item}]**
-Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
-
-| | |
-|---|---|
-|Description|The structured boot string that references a corresponding entry in the BootSources array.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeServerConfigLock
-
-`@odata.type: "#HpeServerConfigLock.v1_0_0.HpeServerConfigLock"`
-
-The schema definition for Server Configuration Lock configuration.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/bios/Serverconfiglock`|GET |
-|`/redfish/v1/systems/{item}/bios/serverconfiglock/settings`|GET PATCH |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeServerConfigLock](ilo7_hpe_resourcedefns111/#hpeserverconfiglock)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
-
-### @Redfish.Settings
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-See the Redfish standard schema and specification for information on common @Redfish properties.
-
-### NewServerConfigLockPassword
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|The new Server Configuration Lock password.  This field is used to update the current Server Configuration Lock password and force the system configuration digital fingerprint to be recalculated.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ServerConfigLockChallenge
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Select this option to enable or disable a Server Configuration Lock password challenge on every boot.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Disabled`|Disable Server Configuration Lock password challenge on every boot.|
-|`Enabled`|Enable Server Configuration Lock password challenge on every boot.|
-|`Null`|A value is temporarily unavailable|
-
-### ServerConfigLockDisable
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Select this option to disable Server Configuration Lock.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`False`|Don't disable Server Configuration Lock.|
-|`True`|Disable Server Configuration Lock.|
-|`Null`|A value is temporarily unavailable|
-
-### ServerConfigLockExcludeCpus
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Select this option to exclude CPU information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`False`|Do not exclude CPU information from the Digital Fingerprint.|
-|`True`|Exclude CPU information from the Digital Fingerprint.|
-|`Null`|A value is temporarily unavailable|
-
-### ServerConfigLockExcludeDimms
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Select this option to exclude DIMM information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`False`|Do not exclude DIMM information from the Digital Fingerprint.|
-|`True`|Exclude DIMM information from the Digital Fingerprint.|
-|`Null`|A value is temporarily unavailable|
-
-### ServerConfigLockExcludeFwRevs
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Select this option to exclude system firmware revisions from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`False`|Do not exclude system firmware revision information from the Digital Fingerprint.|
-|`True`|Exclude system firmware revision information from the Digital Fingerprint.|
-|`Null`|A value is temporarily unavailable|
-
-### ServerConfigLockExcludePciSlots
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Select this option to exclude PCIe slot information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`False`|Do not exclude PCIe slot information from the Digital Fingerprint.|
-|`True`|Exclude PCIe slot information from the Digital Fingerprint.|
-|`Null`|A value is temporarily unavailable|
-
-### ServerConfigLockExcludeSecurity
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Select this option to exclude security configuration information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`False`|Do not exclude security configuration information from the Digital Fingerprint.|
-|`True`|Exclude security configuration information from the Digital Fingerprint.|
-|`Null`|A value is temporarily unavailable|
-
-### ServerConfigLockLogStored
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Has a Server Configuration Lock failure log been stored?|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`True`|A Server Configuration Lock failure has been logged.|
-|`False`| A Server Configuration Lock failure has not been logged.|
-
-### ServerConfigLockPassword
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|The Server Configuration Lock password.  If Server Configuration Lock is currently enabled, this field is used to convey the current Server Configuration Lock password and is required to make any Server Configuration Lock configuration changes.  If Server Configuration Lock is currently disabled, this field is used to set the Server Configuration Lock password, and to digitally fingerprint the system to enable Server Configuration Lock.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ServerConfigLockState
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Enabled/Disabled state of the Server Configuration Lock Feature.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Disabled`|The Server Configuration Lock feature is disabled.|
-|`Enabled`|The Server Configuration Lock feature is enabled.|
-
-### ServerConfigLockTamperHalt
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Select this option to enable or disable the Server Configuration Lock behavior to halt on a configuration change detection.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Disabled`|Disable Server Configuration Lock behavior to halt on configuration changes.|
-|`Enabled`|Enable Server Configuration Lock behavior to halt on configuration changes.|
-|`Null`|A value is temporarily unavailable|
-
-### ServerConfigLockTransport
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Select this option to enable or disable Server Configuration Lock "first-boot" behaviors.  This option is expected to be enabled just prior to shipping the server.  When the server arrives at its destination and is first powered on, Server Configuration Lock will require the Server Configuration Lock password in order to boot.  Server Configuration Lock will also indicate if someone attempted to change the system configuration during the shipment process.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Disabled`|Disable Server Configuration Lock "first-boot" behaviors.|
-|`Enabled`|Enable Server Configuration Lock "first-boot" behaviors.|
-|`Null`|A value is temporarily unavailable|
-
-### ServerConfigLockTransportAudit
-
-Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
-
-| | |
-|---|---|
-|Description|Select this option to enable or disable out-of-band acknowledge of Server Configuration Lock "first-boot" behaviors (see ServerConfigLockTransport).|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Disabled`|Disable Server Configuration Lock out-of-band acknowledge of "first-boot" audit.|
-|`Enabled`|Enable Server Configuration Lock out-of-band acknowledge of "first-boot" audit.|
-|`Null`|A value is temporarily unavailable|
-
-## HpeServerDevice
-
-`@odata.type: "#HpeServerDevice.v2_1_0.HpeServerDevice"`
-
-The HpeServerDevice resource describes the properties of FRU devices.
-
-This resource type was added in iLO 5 1.20
-
-HpeServerDevice represents physical server devices including part information.  This is especially useful for system inventory.
-
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/chassis/{item}/devices/{item}`|GET PATCH |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`DeviceInstances[]`|[HpeServerPciDevice](ilo7_hpe_resourcedefns111/#hpeserverpcidevice)|
-
-### ComponentIntegrityStatus
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Unsupported`|Unsuccessful verification.|
-|`Success`|Successful verification.|
-|`Failure`||
-
-### DeviceInstances (array)
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-`DeviceInstances` is an array containing elements of:
-
-**DeviceInstances[{item}].@odata.id**
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### DeviceType
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|Device type.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`GPU`|GPU|
-|`PLX Controller`|PLX Controller (Bridge)|
-|`Expansion Riser`|Expansion Riser|
-|`Smart Storage`|Smart Storage|
-|`SAS/SATA Storage Controller`|SAS/SATA Storage Controller|
-|`IDE Storage Controller`|IDE Storage Controller|
-|`USB Storage Controller`|USB Storage Controller|
-|`Storage Controller`|Storage Controller|
-|`LOM/NIC`|LOM/NIC|
-|`Converged Network Adapter`|Converged Network Adapter|
-|`Fibre Channel`|Fibre Channel|
-|`Direct Attached NVMe Device`|Direct Attached NVMe Device|
-|`Backplane PIC`|Backplane PIC|
-|`Smart Storage Battery`|Smart Storage Battery|
-|`USB`|Universal Serial Bus|
-|`TPM`|Trusted Platform Module|
-|`Communication Controller`|Communication Controller|
-|`Unknown`|Unknown Device Type|
-|`Embedded SATA Controller`|Embedded SATA Controller|
-
-### FirmwareVersion
-
-**FirmwareVersion.Current**
-**FirmwareVersion.Current.VersionString**
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|This string represents the version of the firmware image.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**FirmwareVersion.FirmwareVersions (array)**
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-`FirmwareVersions` is an array containing elements of:
-
-**FirmwareVersions[{item}].ComponentName**
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|Name of GPU cores|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**FirmwareVersions[{item}].VersionString**
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|Version String of GPU cores|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Location
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|Location of the device.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### MCTPProtocolDisabled
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|Set to true to disable MCTP on this slot. Once disabled, can be enabled only through MCTP factory reset.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### Manufacturer
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|Device manufacturer.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### PartNumber
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|Board part Number which is HPE PCA Assembly Number.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ProductPartNumber
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|Product Part Number.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ProductVersion
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|Product Version.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### SerialNumber
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-
-| | |
-|---|---|
-|Description|Product Serial Number.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Status
-
-Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
-See the Redfish standard schema and specification for information on common Status object.
-
-## HpeServerDeviceCollection
-`@odata.type: "#HpeServerDeviceCollection.HpeServerDeviceCollection"`
-
-A Collection of HpeServerDevice resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/chassis/{item}/devices`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeServerDevice](ilo7_hpe_resourcedefns111/#hpeserverdevice)|
-
-### Members (array)
-
-Member of HpeServerDeviceCollection.HpeServerDeviceCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeServerDeviceCollection.HpeServerDeviceCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeServerDeviceCollection.HpeServerDeviceCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeServerPCISlot
-
-`@odata.type: "#HpeServerPCISlot.v2_2_1.HpeServerPCISlot"`
-
-The HpeServerPCISlot resource describes the properties of PCI slots.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/pcislots/{item}`|GET |
-
-### BusNumber
-
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot bus number.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Characteristics
-
-**Characteristics.Provides3_3Volts**
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Provides 3.3 volts.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Characteristics.Provides5Volts**
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Provides 5.0 volts.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Characteristics.SlotIsShared**
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|The slot shares its opening with another slot.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Characteristics.SupportsCardBus**
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PC Card slot supports Card Bus.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Characteristics.SupportsHotPlugDevices**
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Slot supports hot-plug devices.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Characteristics.SupportsModemRingResume**
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PC Card slot supports Modem Ring Resume.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Characteristics.SupportsPCCard16**
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PC Card slot supports PC Card-16.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Characteristics.SupportsPowerManagementEventSignal**
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot supports Power Management Event signal.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Characteristics.SupportsSMBusSignal**
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot supports SMBUS signal.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Characteristics.SupportsZoomVideo**
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PC Card slot supports Zoom Video.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceNumber
-
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot device number.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### FunctionNumber
-
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot function number.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Length
-
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot length|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Short`||
-|`Long`||
-|`Drive2_5`|A 2.5 inch drive.|
-|`Drive3_5`|A 3.5 inch drive.|
-|`Other`||
-
-### LinkLanes
-
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Bandwidth capacity of the slot, measured by the number of PCI Express Lanes present. Also known as the slot width.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`8 bit`|
-|`16 bit`|
-|`32 bit`|
-|`64 bit`|
-|`128 bit`|
-|`x1`|
-|`x2`|
-|`x4`|
-|`x8`|
-|`x16`|
-|`x32`|
-|`Other`|
-
-### SegmentNumber
-
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI slot segment group number value.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Status
-
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-See the Redfish standard schema and specification for information on common Status object.
-
-### SupportsHotPlug
-
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Specifies whether the slot supports hot-plug devices.|
-|Type|boolean|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Technology
-
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|PCI technology|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`Proprietary`|
-|`OCP NIC 3.0`|
-|`PCIExpressGen5`|
-|`PCIExpressGen4`|
-|`PCIExpressGen3`|
-|`PCIExpressGen2`|
-|`PCIExpress`|
-
-### UEFIDevicePath
-
-Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
-
-| | |
-|---|---|
-|Description|Standardized text representation of the UEFI device path, in UTF-8 format|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeServerPCISlotCollection
-`@odata.type: "#HpeServerPCISlotCollection.HpeServerPCISlotCollection"`
-
-A Collection of HpeServerPCISlot resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/pcislots`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeServerPCISlot](ilo7_hpe_resourcedefns111/#hpeserverpcislot)|
-
-### Members (array)
-
-Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeServerPciDevice
-
-`@odata.type: "#HpeServerPciDevice.v2_1_0.HpeServerPciDevice"`
-
-The HpeServerPciDevice resource describes the properties of PCI devices.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/pcidevices/{item}`|GET |
-
-### BayNumber
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|Bay number value.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Bifurcated
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|Indicates if the PCIe device support bifurcation.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`BifurcationNotSupported`|This device does not support Bifurcation.|
-|`BifurcationSupportedPrimaryDevice`|This device does support Bifurcation.|
-|`BifurcationSupportedSecondaryDevice`|This is second bifurcated device.|
-
-### BifurcatedSecondaryDeviceLink
-
-The link to the next bifurcated devices.
-BifurcatedSecondaryDeviceLink is a link (`"@odata.id": URI`) to another resource.
-
-### BusNumber
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI device bus number value.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ClassCode
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI class code of the endpoint.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceID
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI device ID of the device.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceInstance
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI device instance value.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceLocation
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI device location.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceNumber
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI device number value.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceResourceId
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI device resource id or hash id.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceSubInstance
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI device sub-instance value.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceType
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|Device type value.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Flexible LOM`|Flexible LAN-On-Motherboard|
-|`Embedded LOM`|Embedded LAN-On-Motherboard|
-|`NIC`|Network Interface Controller|
-|`HDD Not attached to a SA Controller`|Hard Disk Drive|
-|`HDD Attached to a SA Controller`|Hard Disk Drive attached to an array controller|
-|`Other PCI Device`|Other PCI Device|
-|`Unknown`|Unknown PCI Device|
-|`Other`|Other PCI Device|
-|`Video`|Video Controller|
-|`SCSI Controller`|SCSI Controller|
-|`Ethernet`|Ethernet Controller|
-|`Token Ring`|Token Ring Controller|
-|`Sound`|Sound Controller|
-|`PATA Controller`|Parallel ATA Controller|
-|`SATA Controller`|Serial ATA Controller|
-|`SAS Controller`|Serial Attached SCSI Controller|
-|`Storage Controller`|Storage Controller (not Smart Array)|
-|`Storage Array Controller`|Smart Array Storage Controller|
-|`USB Hard Disk Drive`|USB Hard Disk Drive|
-|`Firmware Volume`|Firmware Volume|
-|`UEFI Shell`|UEFI Shell|
-|`Generic UEFI USB Boot Entry`|Generic UEFI USB Boot Entry|
-|`Dynamic Storage Array Controller`|Dynamic Smart Array Controller|
-|`File`|File|
-|`NVMe Hard Drive`|NVMe Hard Drive|
-|`NVDIMM`|NVDIMM|
-
-### EnclosureNumber
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|Enclosure number value.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### FunctionNumber
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI device function number value.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### LocationString
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|Text representation of the UEFI device location, in UTF-8 format|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### SegmentNumber
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI segment group number value.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### StructuredName
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI device structured name in UTF-8 format.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### SubclassCode
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI sub class code of the endpoint.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### SubsystemDeviceID
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI subsystem device ID of the device.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### SubsystemVendorID
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI subsystem vendor ID of the device.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### UEFIDevicePath
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|Standardized text representation of the UEFI device path, in UTF-8 format.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### VendorID
-
-Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
-
-| | |
-|---|---|
-|Description|PCI vendor ID of the device.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeServerPciDeviceCollection
-`@odata.type: "#HpeServerPciDeviceCollection.HpeServerPciDeviceCollection"`
-
-A Collection of HpeServerPciDevice resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/pcidevices`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeServerPciDevice](ilo7_hpe_resourcedefns111/#hpeserverpcidevice)|
-
-### Members (array)
-
-Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeTlsConfig
-
-`@odata.type: "#HpeTlsConfig.v1_0_0.HpeTlsConfig"`
-
-The schema definition for TLS configuration.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig`|GET |
-|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig/settings`|GET PATCH |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`@Redfish.Settings/SettingsObject`|[HpeTlsConfig](ilo7_hpe_resourcedefns111/#hpetlsconfig)|
-|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
-
-### @Redfish.Settings
-
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-See the Redfish standard schema and specification for information on common @Redfish properties.
-
-### Certificates (array)
-
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-`Certificates` is an array containing elements of:
-
-**Certificates[{item}].FingerPrint**
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|The fingerprint of the certificate. It is the sha256 (SHA2) of the Der format of the certificate|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Certificates[{item}].Issuer**
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|The Issuer of the certificate|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Certificates[{item}].SerialNumber**
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|The Serial Number of the certificate.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Certificates[{item}].Subject**
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|The Subject of the certificate.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Certificates[{item}].ValidNotAfter**
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|The expiration date of the certificate.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**Certificates[{item}].ValidNotBefore**
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|The date when the certificate becomes valid.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Ciphers
-
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|The encryption used. It can have more than one type of encryption, example: "AES128-SHA:AES256-SHA:AES128-SHA256:AES256-SHA256"|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### DeleteCertificates (array)
-
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-`DeleteCertificates` is an array containing elements of:
-
-**DeleteCertificates[{item}].FingerPrint**
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|To delete a certificate, the user should place its fingerprint here. The fingerprint would be found as a property under the single certificate object in the "Certificates" array |
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### HostnameCheck
-
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|Use this option to enable or disable verification of the connected server's hostname with the hostname in the certificate supplied by the server|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Disabled`|Disable verification of the connected server's hostname.|
-|`Enabled`|enable verification of the connected server's hostname.|
-
-### NewCertificates (array)
-
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-`NewCertificates` is an array containing elements of:
-
-**NewCertificates[{item}].X509Certificate**
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|the body (PEM format) of the Certificate to be added|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### ProtocolVersion
-
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`AUTO`|
-|`1.0`|
-|`1.1`|
-|`1.2`|
-|`1.3`|
-
-### TlsCaCertificateCount
-
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|The certificates count.|
-|Type|integer|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### VerifyMode
-
-Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
-
-| | |
-|---|---|
-|Description|It determines if/how the certificates are validated.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|
-|---|
-|`NONE`|
-|`PEER`|
-
-## HpeUSBDevice
-
-`@odata.type: "#HpeUSBDevice.v2_0_0.HpeUSBDevice"`
-
-The HpeUSBDevice resource describes the properties of USB devices.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/usbdevices/{item}`|GET |
-
-### DeviceCapacityMB
-
-Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
-
-| | |
-|---|---|
-|Description|USB device usable capacity (if applicable) in Mbytes|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceClass
-
-Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
-
-| | |
-|---|---|
-|Description|USB device Class code as defined by the USB HID device specification.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceName
-
-Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
-
-| | |
-|---|---|
-|Description|USB device name in UTF-8 format.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceProtocol
-
-Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
-
-| | |
-|---|---|
-|Description|Protocol code as defined by the USB HID specification.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### DeviceSubClass
-
-Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
-
-| | |
-|---|---|
-|Description|USB device SubClass code as defined by the USB HID device specification.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Location
-
-Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
-
-| | |
-|---|---|
-|Description|Location of the USB device on the server|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ProductID
-
-Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
-
-| | |
-|---|---|
-|Description|USB product ID as defined by manufacturer.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### StructuredName
-
-Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
-
-| | |
-|---|---|
-|Description|USB device structured name in UTF-8 format.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### UEFIDevicePath
-
-Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
-
-| | |
-|---|---|
-|Description|UEFI device path of USB device. Standardized text representation of the UEFI device path, in UTF-8 format|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### VendorID
-
-Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
-
-| | |
-|---|---|
-|Description|Vendor ID of detected USB device.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeUSBDevicesCollection
-`@odata.type: "#HpeUSBDevicesCollection.HpeUSBDevicesCollection"`
-
-A Collection of HpeUSBDevices resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/usbdevices`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeUSBDevice](ilo7_hpe_resourcedefns111/#hpeusbdevice)|
-
-### Members (array)
-
-Member of HpeUSBDevicesCollection.HpeUSBDevicesCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeUSBDevicesCollection.HpeUSBDevicesCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeUSBDevicesCollection.HpeUSBDevicesCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeUSBPort
-
-`@odata.type: "#HpeUSBPort.v2_0_0.HpeUSBPort"`
-
-The HpeUSBPort resource describes the properties of USB ports.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/usbports/{item}`|GET |
-
-### InstanceNumber
-
-Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
-
-| | |
-|---|---|
-|Description|Instance number of the USB Port|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Location
-
-Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
-
-| | |
-|---|---|
-|Description|Location of the USB Device on the server|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Null`|A value is temporarily unavailable|
-|`Back`|Located on the rear panel of the server.|
-|`Front`|Located on the front bezel of the server.|
-|`Internal`|Located internally within the server chassis.|
-|`InternalManagement`|Internal management media.|
-|`InternalSDCard`|The internal SD-Card slot.|
-|`iLOManagement`|iLO virtual USB devices.|
-
-### PCIBusNumber
-
-Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
-
-| | |
-|---|---|
-|Description|PCI Bus number of the USB controller that controls this USB port |
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### PCIDeviceNumber
-
-Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
-
-| | |
-|---|---|
-|Description|PCI Device Number of the USB Controller that controls this USB Port.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### PCIFunctionNumber
-
-Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
-
-| | |
-|---|---|
-|Description|PCI Function Number of the USB Controller that controls this USB Port.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### ParentHubInstance
-
-Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
-
-| | |
-|---|---|
-|Description|Parent Hub Instance that provides an instance number of the internal hub this USB Port is connected to.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### SharedCapability
-
-Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
-
-| | |
-|---|---|
-|Description|Shared Capability of the USB Port|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Null`|A value is temporarily unavailable|
-|`UnsharedManagement`|Not shared as a Management Port.|
-|`SharedManagementPhysicalSwitch`|Shared management port w/ physical switch to control whether muxed to iLO or host.|
-|`SharedManagementPortAutomaticControl`||
-
-### SpeedCapability
-
-Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
-
-| | |
-|---|---|
-|Description|USB speed capability of the USB port as configured by the BIOS during POST.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Null`|A value is temporarily unavailable|
-|`USB1FullSpeed`|USB 1.0 Full Speed|
-|`USB2HighSpeed`|USB 2.0 High Speed|
-|`USB3SuperSpeed`|USB 3.x SuperSpeed|
-
-### UEFIDevicePath
-
-Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
-
-| | |
-|---|---|
-|Description|UEFI Device Path of USB Endpoint. Standardized text representation of the UEFI device path, in UTF-8 format|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeUSBPortsCollection
-`@odata.type: "#HpeUSBPortsCollection.HpeUSBPortsCollection"`
-
-A Collection of HpeUSBPorts resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/usbports`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeUSBPort](ilo7_hpe_resourcedefns111/#hpeusbport)|
-
-### Members (array)
-
-Member of HpeUSBPortsCollection.HpeUSBPortsCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeUSBPortsCollection.HpeUSBPortsCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeUSBPortsCollection.HpeUSBPortsCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-## HpeWorkloadPerformanceAdvisor
-
-`@odata.type: "#HpeWorkloadPerformanceAdvisor.v1_0_0.HpeWorkloadPerformanceAdvisor"`
-
-The HpeWorkloadPerformanceAdvisor resource describes the properties for managing the HPE Workload Performance Advisor.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/workloadperformanceadvisor/{item}`|GET |
-
-### Duration
-
-Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
-
-| | |
-|---|---|
-|Description|Specifies the duration over which the workload performance advisor is computed.|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### PerformanceTuningOption (array)
-
-Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
-
-`PerformanceTuningOption` is an array containing elements of:
-
-**PerformanceTuningOption[{item}].BIOSAttributeName**
-Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
-
-| | |
-|---|---|
-|Description|The attribute name of the BIOS settings.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**PerformanceTuningOption[{item}].RecommendedValue**
-Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
-
-| | |
-|---|---|
-|Description|Recommended value for the corresponding BIOS attribute. Please refer to BIOS attribute registry schema for more information.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### WorkloadCharacteristics (array)
-
-Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
-
-`WorkloadCharacteristics` is an array containing elements of:
-
-**WorkloadCharacteristics[{item}].MetricId**
-Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
-
-| | |
-|---|---|
-|Description|The id of the metric.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**WorkloadCharacteristics[{item}].MetricValue**
-Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
-
-| | |
-|---|---|
-|Description|The workload utilization of the metric.|
-|Type|string or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Low`|Utilization is low.|
-|`Medium`|Utilization is medium.|
-|`High`|Utilization is high.|
-
-## HpeWorkloadPerformanceAdvisorCollection
-`@odata.type: "#HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection"`
-
-A Collection of HpeWorkloadPerformanceAdvisor resource instances.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/systems/{item}/workloadperformanceadvisor`|GET |
-
-### Links to other Resources
-
-|Link Name|Destination type
-|---|---|
-|`Members[]`|[HpeWorkloadPerformanceAdvisor](ilo7_hpe_resourcedefns111/#hpeworkloadperformanceadvisor)|
-
-### Members (array)
-
-Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection
-
-`Members` is an array containing elements of:
-
-**Members[{item}].@odata.id**
-Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-### Members@odata.count
-
-Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection
-
-| | |
-|---|---|
-|Description|The total number of collection members.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
 ## HpeiLOAccountCertificateMap
 
 `@odata.type: "#HpeiLOAccountCertificateMap.v1_0_1.HpeiLOAccountCertificateMap"`
@@ -7353,511 +3406,6 @@ Member of HpeiLORunningSoftwareInventoryCollection.HpeiLORunningSoftwareInventor
 |Read Only|True|
 |Added|iLO7 1.11|
 
-## HpeiLOSSO
-
-`@odata.type: "#HpeiLOSSO.v2_0_0.HpeiLOSSO"`
-
-The HpeiLOSSO resource describes the configuration of the HPE BMC single-sign-on trusted server feature.
-
-### Resource Instances
-
-|Uri|HTTP Allow|
-|---|---|
-|`/redfish/v1/managers/{item}/securityservice/sso`|GET PATCH |
-
-### ManagerTrustedCertificates (array)
-
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-`ManagerTrustedCertificates` is an array containing elements of:
-
-**ManagerTrustedCertificates[{item}].@odata.id**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|uri-reference|
-
-**ManagerTrustedCertificates[{item}].@odata.type**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**ManagerTrustedCertificates[{item}].Certificate**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Contains PEM formatted X509 certificate (Base64 encoded).|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**ManagerTrustedCertificates[{item}].CertificateDetails**
-**ManagerTrustedCertificates[{item}].CertificateDetails.Issuer**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|The Certificate Authority that issued the certificate.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**ManagerTrustedCertificates[{item}].CertificateDetails.Subject**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|The entity to which the certificate was issued.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**ManagerTrustedCertificates[{item}].CertificateDetails.ValidNotAfter**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|The date on which the certificate validity period ends.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-**ManagerTrustedCertificates[{item}].CertificateDetails.ValidNotBefore**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|The date on which the certificate validity period begins.|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-|Format|date-time|
-
-**ManagerTrustedCertificates[{item}].RecordType**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Specifies the type of SSO record imported.|
-|Type|string|
-|Read Only|true|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`Certificate`|It is a PEM formatted X509 certificate (Base64 encoded).|
-|`DNSName`|It is a DNS name or an IP address of the HPE SSO-compliant application.|
-
-**ManagerTrustedCertificates[{item}].SerialNumber**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Contains the Serial number for the SSO records.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**ManagerTrustedCertificates[{item}].ServerName**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|The Server name (or certificate subject).|
-|Type|string or null|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-**ManagerTrustedCertificates[{item}].Status**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-See the Redfish standard schema and specification for information on common Status object.
-
-### SSOsettings
-
-**SSOsettings.AdminPrivilege**
-**SSOsettings.AdminPrivilege.HostBIOSConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host BIOS Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.AdminPrivilege.HostNICConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host NIC Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.AdminPrivilege.HostStorageConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host Storage Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.AdminPrivilege.LoginPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Login Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.AdminPrivilege.RemoteConsolePriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Remote Console Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.AdminPrivilege.SystemRecoveryConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|System Recovery Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.AdminPrivilege.UserConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|User Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.AdminPrivilege.VirtualMediaPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Virtual Media Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.AdminPrivilege.VirtualPowerAndResetPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Power and Reset Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.AdminPrivilege.iLOConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|iLO Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.OperatorPrivilege**
-**SSOsettings.OperatorPrivilege.HostBIOSConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host BIOS Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.OperatorPrivilege.HostNICConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host NIC Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.OperatorPrivilege.HostStorageConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host Storage Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.OperatorPrivilege.LoginPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Login Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.OperatorPrivilege.RemoteConsolePriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Remote Console Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.OperatorPrivilege.SystemRecoveryConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|System Recovery Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.OperatorPrivilege.UserConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|User Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.OperatorPrivilege.VirtualMediaPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Virtual Media Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.OperatorPrivilege.VirtualPowerAndResetPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Power and Reset Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.OperatorPrivilege.iLOConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|iLO Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.SSOTrustMode**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Represents the SSO Trust Mode.|
-|Type|string|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-The following are the supported values:
-
-|Value|Description|
-|---|---|
-|`TrustNone`|Rejects all SSO connection request.|
-|`TrustAll`|Accepts any SSO connection initiated from any HPE SSO compliant application.|
-|`TrustbyName`|Enables SSO connections from an HPE SSO compliant application by matching a directly imported IP address or DNS name.|
-|`TrustbyCert`|Enables SSO connections from an HPE SSO compliant application by matching a certificate previously imported to iLO.|
-
-**SSOsettings.UserPrivilege**
-**SSOsettings.UserPrivilege.HostBIOSConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host BIOS Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.UserPrivilege.HostNICConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host NIC Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.UserPrivilege.HostStorageConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Host Storage Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.UserPrivilege.LoginPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Login Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.UserPrivilege.RemoteConsolePriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Remote Console Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.UserPrivilege.SystemRecoveryConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|System Recovery Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.UserPrivilege.UserConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|User Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.UserPrivilege.VirtualMediaPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Virtual Media Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.UserPrivilege.VirtualPowerAndResetPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|Power and Reset Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-**SSOsettings.UserPrivilege.iLOConfigPriv**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-
-| | |
-|---|---|
-|Description|iLO Configuration Privileges.|
-|Type|boolean|
-|Read Only|False|
-|Added|iLO7 1.11|
-
-### Actions
-
-
-**HpeiLOSSO.ImportDNSName**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-Add DNS Name to the record list.
-
-
-**Parameters:**
-
-**DNSName (string)**
-
-DNS Name of the HPE SSO Trusted Server.
-
-**HpeiLOSSO.ImportCertificate**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-Import the HPE SSO Certificate.
-
-
-**Parameters:**
-
-**CertInput (string)**
-
-PEM formatted X509 certificate (Base64 encoded)/DNS name or IP address to import the certificate.
-
-**CertType (string)**
-
-Specifies the type of certificate imported.
-
-|Value|Description|
-|---|---|
-|ImportCertUri|iLO imports the certificate from the HPE SSO compliant application over the network.|
-|DirectImportCert|iLO directly imports the Certificate.|
-
-**HpeiLOSSO.DeleteSSORecordbyNumber**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-Delete SSO record by record number.
-
-
-**Parameters:**
-
-**RecordNumber (integer)**
-
-Index of the SSO record to be deleted.
-
-**HpeiLOSSO.DeleteAllSSORecords**
-Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
-Delete all the SSO records.
-
-There are no parameters for this action.
 ## HpeiLOSecurityDashboard
 
 `@odata.type: "#HpeiLOSecurityDashboard.v1_0_0.HpeiLOSecurityDashboard"`
@@ -8465,6 +4013,635 @@ Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
 **HpeiLOSnmpService.SendSNMPTestAlert**
 Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
 There are no parameters for this action.
+## HpeiLOSSO
+
+`@odata.type: "#HpeiLOSSO.v2_0_0.HpeiLOSSO"`
+
+The HpeiLOSSO resource describes the configuration of the HPE BMC single-sign-on trusted server feature.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/securityservice/sso`|GET PATCH |
+
+### ManagerTrustedCertificates (array)
+
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+`ManagerTrustedCertificates` is an array containing elements of:
+
+**ManagerTrustedCertificates[{item}].@odata.id**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+**ManagerTrustedCertificates[{item}].@odata.type**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**ManagerTrustedCertificates[{item}].Certificate**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Contains PEM formatted X509 certificate (Base64 encoded).|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**ManagerTrustedCertificates[{item}].CertificateDetails**
+**ManagerTrustedCertificates[{item}].CertificateDetails.Issuer**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|The Certificate Authority that issued the certificate.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**ManagerTrustedCertificates[{item}].CertificateDetails.Subject**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|The entity to which the certificate was issued.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**ManagerTrustedCertificates[{item}].CertificateDetails.ValidNotAfter**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|The date on which the certificate validity period ends.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+**ManagerTrustedCertificates[{item}].CertificateDetails.ValidNotBefore**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|The date on which the certificate validity period begins.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+**ManagerTrustedCertificates[{item}].RecordType**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Specifies the type of SSO record imported.|
+|Type|string|
+|Read Only|true|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Certificate`|It is a PEM formatted X509 certificate (Base64 encoded).|
+|`DNSName`|It is a DNS name or an IP address of the HPE SSO-compliant application.|
+
+**ManagerTrustedCertificates[{item}].SerialNumber**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Contains the Serial number for the SSO records.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**ManagerTrustedCertificates[{item}].ServerName**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|The Server name (or certificate subject).|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**ManagerTrustedCertificates[{item}].Status**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+See the Redfish standard schema and specification for information on common Status object.
+
+### SSOsettings
+
+**SSOsettings.AdminPrivilege**
+**SSOsettings.AdminPrivilege.HostBIOSConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host BIOS Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.AdminPrivilege.HostNICConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host NIC Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.AdminPrivilege.HostStorageConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host Storage Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.AdminPrivilege.LoginPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Login Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.AdminPrivilege.RemoteConsolePriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Remote Console Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.AdminPrivilege.SystemRecoveryConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|System Recovery Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.AdminPrivilege.UserConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|User Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.AdminPrivilege.VirtualMediaPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Virtual Media Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.AdminPrivilege.VirtualPowerAndResetPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Power and Reset Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.AdminPrivilege.iLOConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|iLO Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.OperatorPrivilege**
+**SSOsettings.OperatorPrivilege.HostBIOSConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host BIOS Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.OperatorPrivilege.HostNICConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host NIC Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.OperatorPrivilege.HostStorageConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host Storage Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.OperatorPrivilege.LoginPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Login Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.OperatorPrivilege.RemoteConsolePriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Remote Console Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.OperatorPrivilege.SystemRecoveryConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|System Recovery Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.OperatorPrivilege.UserConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|User Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.OperatorPrivilege.VirtualMediaPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Virtual Media Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.OperatorPrivilege.VirtualPowerAndResetPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Power and Reset Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.OperatorPrivilege.iLOConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|iLO Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.SSOTrustMode**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Represents the SSO Trust Mode.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`TrustNone`|Rejects all SSO connection request.|
+|`TrustAll`|Accepts any SSO connection initiated from any HPE SSO compliant application.|
+|`TrustbyName`|Enables SSO connections from an HPE SSO compliant application by matching a directly imported IP address or DNS name.|
+|`TrustbyCert`|Enables SSO connections from an HPE SSO compliant application by matching a certificate previously imported to iLO.|
+
+**SSOsettings.UserPrivilege**
+**SSOsettings.UserPrivilege.HostBIOSConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host BIOS Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.UserPrivilege.HostNICConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host NIC Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.UserPrivilege.HostStorageConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Host Storage Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.UserPrivilege.LoginPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Login Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.UserPrivilege.RemoteConsolePriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Remote Console Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.UserPrivilege.SystemRecoveryConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|System Recovery Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.UserPrivilege.UserConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|User Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.UserPrivilege.VirtualMediaPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Virtual Media Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.UserPrivilege.VirtualPowerAndResetPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|Power and Reset Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**SSOsettings.UserPrivilege.iLOConfigPriv**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+
+| | |
+|---|---|
+|Description|iLO Configuration Privileges.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Actions
+
+
+**HpeiLOSSO.ImportDNSName**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+Add DNS Name to the record list.
+
+
+**Parameters:**
+
+**DNSName (string)**
+
+DNS Name of the HPE SSO Trusted Server.
+
+**HpeiLOSSO.ImportCertificate**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+Import the HPE SSO Certificate.
+
+
+**Parameters:**
+
+**CertInput (string)**
+
+PEM formatted X509 certificate (Base64 encoded)/DNS name or IP address to import the certificate.
+
+**CertType (string)**
+
+Specifies the type of certificate imported.
+
+|Value|Description|
+|---|---|
+|ImportCertUri|iLO imports the certificate from the HPE SSO compliant application over the network.|
+|DirectImportCert|iLO directly imports the Certificate.|
+
+**HpeiLOSSO.DeleteSSORecordbyNumber**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+Delete SSO record by record number.
+
+
+**Parameters:**
+
+**RecordNumber (integer)**
+
+Index of the SSO record to be deleted.
+
+**HpeiLOSSO.DeleteAllSSORecords**
+Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
+Delete all the SSO records.
+
+There are no parameters for this action.
+## HpeInvalidImage
+
+`@odata.type: "#HpeInvalidImage.v1_0_0.HpeInvalidImage"`
+
+The HpeInvalidImage resource describes the properties of an invalid firmware image detected and preserved from a computer system.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/updateservice/invalidimagerepository/{item}`|GET PATCH DELETE |
+
+### Created
+
+Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
+
+| | |
+|---|---|
+|Description|ISO 8601 time string indicating when this image was added to the NAND.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+### DeviceClass
+
+Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
+
+| | |
+|---|---|
+|Description|Device type GUID from iLO secure flash header|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Filename
+
+Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
+
+| | |
+|---|---|
+|Description|The unique filename of the image.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Filepath
+
+Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
+
+| | |
+|---|---|
+|Description|Path of file on the USB LUN if the repo is mounted as USB.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ImageUri
+
+Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
+
+| | |
+|---|---|
+|Description|URI of the image binary.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### SizeBytes
+
+Member of [HpeInvalidImage.v1\_0\_0.HpeInvalidImage](#hpeinvalidimage)
+
+| | |
+|---|---|
+|Description|Size of the image file in bytes.|
+|Type|integer or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeInvalidImageCollection
+`@odata.type: "#HpeInvalidImageCollection.HpeInvalidImageCollection"`
+
+A Collection of HpeInvalidImage resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/updateservice/invalidimagerepository`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeInvalidImage](ilo7_hpe_resourcedefns111/#hpeinvalidimage)|
+
+### Members (array)
+
+Member of HpeInvalidImageCollection.HpeInvalidImageCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeInvalidImageCollection.HpeInvalidImageCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeInvalidImageCollection.HpeInvalidImageCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
 ## HpeiSCSISoftwareInitiator
 
 `@odata.type: "#HpeiSCSISoftwareInitiator.v2_0_0.HpeiSCSISoftwareInitiator"`
@@ -8787,6 +4964,3668 @@ Member of [HpeiSCSISoftwareInitiator.v2\_0\_0.HpeiSCSISoftwareInitiator](#hpeisc
 | | |
 |---|---|
 |Description|The iSCSI Target TCP Port number, if not obtained from DHCP.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeKmsConfig
+
+`@odata.type: "#HpeKmsConfig.v1_0_0.HpeKmsConfig"`
+
+The schema definition for Key Management Service configuration.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/bios/kmsconfig`|GET |
+|`/redfish/v1/systems/{item}/bios/kmsconfig/settings`|GET PATCH |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`settings`|[HpeKmsConfig](ilo7_hpe_resourcedefns111/#hpekmsconfig)|
+|`Oem/Hpe/Links/baseconfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
+
+### @Redfish.Settings
+
+Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
+See the Redfish standard schema and specification for information on common @Redfish properties.
+
+### DeleteUnusedEncryptionKeys
+
+Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
+
+| | |
+|---|---|
+|Description|Removes unused encryption keys.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Disabled`|Do not removed unused encryption keys.|
+|`Enabled`|Remove unused encryption keys.|
+
+### EncryptableDevices (array)
+
+Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
+
+`EncryptableDevices` is an array containing elements of:
+
+**EncryptableDevices[{item}].DeviceName**
+Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
+
+| | |
+|---|---|
+|Description|Name of the encryptable device.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**EncryptableDevices[{item}].EncryptionAction**
+Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
+
+| | |
+|---|---|
+|Description|Devices can take two types of action for encrypting namely, enable and disable. If user would like to modify the Passphrase, then User can opt to change encryption|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Enable`|Enable Encryption for the device.|
+|`Disable`|Disable Encryption for the device.|
+|`Change`|Modify the Encryption Passphrase.|
+|`Unlock`|Unlock the Encrypted device.|
+|`Undefined`|Encryption action is Undefined.|
+
+**EncryptableDevices[{item}].EncryptionPhrase**
+Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
+
+| | |
+|---|---|
+|Description|Encryption Passphrase would show up if the device is encrypted and be modified as well.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**EncryptableDevices[{item}].EncryptionStatus**
+Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
+
+| | |
+|---|---|
+|Description|Encryption status of the device.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`EncryptionStatusUnknown`|Device is encrypted, but Passphrase is unknown.|
+|`Encrypted`|Device is Encrypted.|
+|`Decrypted`|Device is Unencrypted.|
+
+**EncryptableDevices[{item}].PassphraseType**
+Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
+
+| | |
+|---|---|
+|Description|Passphrase can be either entered manually or auto generated|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Auto`|Passphrase is generated from the system.|
+|`Manual`|Passphrase is entered manually.|
+
+### KeyManagementType
+
+Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
+
+| | |
+|---|---|
+|Description|Key Management Type.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Disabled`|Key Management is Disabled|
+|`Local`|Key Management Type is Local|
+|`Remote`|Key Management Type is Remote|
+
+### OpalBlockSid
+
+Member of [HpeKmsConfig.v1\_0\_0.HpeKmsConfig](#hpekmsconfig)
+
+| | |
+|---|---|
+|Description|TCG Block SID.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Disabled`|Disable TCG Block SID feature.|
+|`Enabled`|Enable TCG Block SID feature.|
+
+## HpeMaintenanceWindow
+
+`@odata.type: "#HpeMaintenanceWindow.v1_0_1.HpeMaintenanceWindow"`
+
+The HpeMaintenanceWindow resource describes the properties for managing the time window for a software or firmware update task or install set.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/updateservice/maintenancewindows/{item}`|GET PATCH DELETE |
+
+### Created
+
+Member of [HpeMaintenanceWindow.v1\_0\_1.HpeMaintenanceWindow](#hpemaintenancewindow)
+
+| | |
+|---|---|
+|Description|ISO-time of maintenance window creation (by whomever created this thing)|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+### Expire
+
+Member of [HpeMaintenanceWindow.v1\_0\_1.HpeMaintenanceWindow](#hpemaintenancewindow)
+
+| | |
+|---|---|
+|Description|ISO 8601 Redfish-style time string after which we will automatically change state to Expired - null for no expire time|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+### Modified
+
+Member of [HpeMaintenanceWindow.v1\_0\_1.HpeMaintenanceWindow](#hpemaintenancewindow)
+
+| | |
+|---|---|
+|Description|ISO-time of last maintenance window item update by updater (not client)|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+### StartAfter
+
+Member of [HpeMaintenanceWindow.v1\_0\_1.HpeMaintenanceWindow](#hpemaintenancewindow)
+
+| | |
+|---|---|
+|Description|ISO 8601 Redfish-style time string of earliest execution.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+## HpeMaintenanceWindowCollection
+`@odata.type: "#HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection"`
+
+A Collection of HpeMaintenanceWindow resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/updateservice/maintenancewindows`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeMaintenanceWindow](ilo7_hpe_resourcedefns111/#hpemaintenancewindow)|
+
+### Members (array)
+
+Member of HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeMaintenanceWindowCollection.HpeMaintenanceWindowCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpePowerMeter
+
+`@odata.type: "#HpePowerMeter.v2_1_0.HpePowerMeter"`
+
+The HpePowerMeter resource contains the computer system power history logged by the BMC.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/chassis/{item}/power/fastpowermeter`|GET |
+|`/redfish/v1/chassis/{item}/power/powermeter`|GET |
+
+### Average
+
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Average power across all samples, over the last 24 hours.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Maximum
+
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Maximum power across all samples, taken from the 24 hour history.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Minimum
+
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Minimum power across all samples, taken from the 24 hour history.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### PowerDetail (array)
+
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+`PowerDetail` is an array containing elements of:
+
+**PowerDetail[{item}].AmbTemp**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Ambient temperature, in degrees Celsius.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].Average**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Average power in Watts over the sample time.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].Cap**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|The applicable power cap in Watts at the time of this power sample.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].CpuAvgFreq**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|CPU average frequency in MHz.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].CpuCapLim**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Measures the effect of the power cap on performance in percent.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].CpuMax**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|The percentage of time the CPU spent in its maximum power mode.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].CpuPwrSavLim**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Measures the effect of CPU Power Regulator state switching on performance in percent.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].CpuUtil**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|CPU utilization in percent.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].CpuWatts**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|The power consumed by the system CPUs in Watts.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].DimmWatts**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|The power consumed by the system memory DIMMs in Watts.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].FanWatts**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|The power consumed by the system fan(s) in Watts.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].GpuWatts**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|The power consumed by the GPU(s) in Watts. This will be 0 if no GPUs are installed or if the drivers are not loaded.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].Minimum**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Minimum power in Watts over the sample time.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].Peak**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Peak power in Watts over the sample time.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].PrMode**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Power Regulator mode, which can be OS Control, Static High, Static Low or Dynamic.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Null`|A value is temporarily unavailable|
+|`dyn`|Dynamic Mode - CPU power regulation is managed dynamically by the firmware.|
+|`min`|Minimum Mode - CPU power regulation is configured to save as much power as possible at the possible expense of performance.|
+|`max`|Maximum Mode - CPU power regulation is configured for maximum performance at the possible expense of power efficiency.|
+|`osc`|OS Control Mode - CPU power regulation is managed by the Operating System.|
+
+**PowerDetail[{item}].PunCap**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|If true, CPU performance is being penalized by the current power cap.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**PowerDetail[{item}].Time**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Time at which the power sample detail was captured.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+**PowerDetail[{item}].UnachCap**
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|If true, the configured power cap could not be achieved due to system power requirements.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Samples
+
+Member of [HpePowerMeter.v2\_1\_0.HpePowerMeter](#hpepowermeter)
+
+| | |
+|---|---|
+|Description|Number of samples in the array.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeRemoteSupport
+
+`@odata.type: "#HpeRemoteSupport.v2_6_0.HpeRemoteSupport"`
+
+The HpeRemoteSupport resource describes the properties for management of HPE Embedded Report Support.
+
+This resource type was added in iLO 5 1.20
+
+HpeRemoteSupport enables management of HPE Remote Support configuration on iLO 5.
+
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/remotesupportservice`|GET PATCH |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`ServiceEventLogs`|Collection of [LogEntry](ilo7_other_resourcedefns111/#logentrycollection)|
+
+### ConnectModel
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|The Remote Support connect model type.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`DirectConnect`|
+|`CentralConnect`|
+
+### DataCollectionFrequencyInDays
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|The frequency of data collection in days. This is applicable only when the server is registered using Direct Connect.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DestinationPort
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|The port number of the Insight Remote Support server. This is applicable for Central Connect only. |
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DestinationURL
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|The host name or IP address of the Remote Support server. This is applicable for Central Connect only.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DirectConnectRegistrationIsCompleted
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|Step 2 of Direct Connect Registration completion status.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ExternalAgentName
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|This indicates the name of external Remote Support agent.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### HpePassportPassword
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|HPE Passport Account Password.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### HpePassportUserId
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|HPE Passport Account Id.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### LastTransmissionDate
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|The last transmission date.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+### LastTransmissionError
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|The last transmission error.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### LastTransmissionType
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|The last transmission type. |
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`ActiveHealthSystemData`|
+|`L2DataCollection`|
+|`Registration`|
+|`Deregistration`|
+|`ServiceEvent`|
+|`NoTransmission`|
+|`Null`|
+
+### MaintenanceModeEnabled
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|This indicates if the server is in Maintenance Mode or not.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### MaintenanceTimeLeftInMinutes
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|This indicates the time remaining in minutes for the server to be in the maintenance mode.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ProxySettings
+
+**ProxySettings.Password**
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|Password for web proxy server authentication. |
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**ProxySettings.Port**
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|Port number on which to communicate with the web proxy server. |
+|Type|integer or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**ProxySettings.Url**
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|Web proxy server host name or IP address.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+|Format|url|
+
+**ProxySettings.Username**
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|Username for web proxy server authentication. |
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### RemoteSupportEnabled
+
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+| | |
+|---|---|
+|Description|This indicates if the Remote Support Service is available or not. |
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ServiceEventLogs
+
+A reference to the collection of service event logs.
+ServiceEventLogs is a link (`"@odata.id": URI`) to another resource.
+
+### Actions
+
+
+**HpeRemoteSupport.RegisterDeviceToRemoteSupport**
+Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
+
+**Parameters:**
+
+**WebProxyUrl (string)**
+
+Web proxy server host name or IP address when connecting using Direct Connect. 
+
+**DestinationUrl (string)**
+
+The host name or IP address of the Remote Support server. This is applicable for Central Connect only.
+## HpeSecureEraseReport
+
+`@odata.type: "#HpeSecureEraseReport.v1_1_0.HpeSecureEraseReport"`
+
+The HpeSecureEraseReport resource describes the secure erase status and the other details of the devices during the secure system erase operation.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/secureerasereportservice/secureerasereportentries/{item}`|GET |
+
+### DeviceIdentifier
+
+Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
+
+| | |
+|---|---|
+|Description|This represents the unique identifier for the device in the system like it's physical location or the exact device path etc.,|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceType
+
+Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
+
+| | |
+|---|---|
+|Description|This indicates the device type being securely erased.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`SATADrives`|This indicates the device type is SATA drive|
+|`NVMeDrives`|This indicates the device type is NVMe drive|
+|`NVDIMM`|This indicates the device type is NVDIMM/Persistent Memory|
+|`TPM`|This indicates the device type is TPM (Trusted Platform Module)|
+|`UEFIStore`|This indicates the device type is UEFI Store|
+|`NAND`|This indicates the device type is Embedded NAND Flash|
+|`NVRAM`|This indicates the device type is NVRAM (Battery backed SRAM)|
+|`PCIControllers`|This indicates the device type is PCI Controllers|
+
+### EraseEndTime
+
+Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
+
+| | |
+|---|---|
+|Description|The date and time of the end of secure erase operation, ISO8601 Redfish-style time|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+### EraseStartTime
+
+Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
+
+| | |
+|---|---|
+|Description|The date and time of the start of secure erase operation, ISO8601 Redfish-style time|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+### EraseStatus
+
+Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
+
+| | |
+|---|---|
+|Description|Indicates the secure erase status of the individual components|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Idle`|Indicates Secure System Erase is not started|
+|`Initiated`|Indicates Secure System Erase process is started|
+|`InProgress`|Indicates Secure System Erase process is under progress|
+|`CompletedWithSuccess`|Indicates Secure System Erase process has been completed with no errors|
+|`CompletedWithErrors`|Indicates Secure System Erase process has been completed with some errors|
+|`Failed`|Indicates Secure System Erase process has failed|
+
+### EraseType
+
+Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
+
+| | |
+|---|---|
+|Description|This indicates the NIST SP800-88 Rev.1 (National Institute of Standards and Technology) approved techniques to sanitize a particular media or device.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Purge`|This indicates that Purge technique is used to sanitize the device.|
+|`Clear`|This indicates that Clear technique is used to sanitize the device.|
+
+### SerialNumber
+
+Member of [HpeSecureEraseReport.v1\_1\_0.HpeSecureEraseReport](#hpesecureerasereport)
+
+| | |
+|---|---|
+|Description|This represents the serial number of the device being erased.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeSecureEraseReportCollection
+`@odata.type: "#HpeSecureEraseReportCollection.HpeSecureEraseReportCollection"`
+
+A Collection of HpeSecureEraseReport resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/secureerasereportservice/secureerasereportentries`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeSecureEraseReport](ilo7_hpe_resourcedefns111/#hpesecureerasereport)|
+
+### Members (array)
+
+Member of HpeSecureEraseReportCollection.HpeSecureEraseReportCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeSecureEraseReportCollection.HpeSecureEraseReportCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeSecureEraseReportCollection.HpeSecureEraseReportCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeSecureEraseReportService
+
+`@odata.type: "#HpeSecureEraseReportService.v1_0_0.HpeSecureEraseReportService"`
+
+The HpeSecureEraseReportService resource describes the properties of the Secure Erase Report feature.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/secureerasereportservice`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Links/SecureEraseReportEntries`|Collection of [HpeSecureEraseReport](ilo7_hpe_resourcedefns111/#hpesecureerasereportcollection)|
+
+### EraseInitiatedBy
+
+Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hpesecureerasereportservice)
+
+| | |
+|---|---|
+|Description|This indicates the user name who initiated the secure system erase process.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ServerSerialNumber
+
+Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hpesecureerasereportservice)
+
+| | |
+|---|---|
+|Description|This represents the server serial number.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Actions
+
+
+**HpeSecureEraseReportService.DeleteSecureEraseReport**
+Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hpesecureerasereportservice)
+There are no parameters for this action.
+## HpeSecurityService
+
+`@odata.type: "#HpeSecurityService.v2_7_0.HpeSecurityService"`
+
+The HpeSecurityService resource describes the properties for management of the security configuration of the BMC.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/securityservice`|GET POST PATCH |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`SystemLDevID`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`Links/HttpsCert`|[HpeHttpsCert](ilo7_hpe_resourcedefns111/#hpehttpscert)|
+|`BMCHPELDevID`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`Links/SSO`|[HpeiLOSSO](ilo7_hpe_resourcedefns111/#hpeilosso)|
+|`BMCIDevIDPCA`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`BMCLAK`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`Links/SecurityParams`|Collection of [HpeiLOSecurityParam](ilo7_hpe_resourcedefns111/#hpeilosecurityparamcollection)|
+|`BMCIAK`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`SystemLAK`|Collection of [Certificate](ilo7_other_resourcedefns111/#certificatecollection)|
+|`Links/CertAuth`|[HpeCertAuth](ilo7_hpe_resourcedefns111/#hpecertauth)|
+|`Links/ESKM`|[HpeESKM](ilo7_hpe_resourcedefns111/#hpeeskm)|
+|`Links/SecurityDashboard`|[HpeiLOSecurityDashboard](ilo7_hpe_resourcedefns111/#hpeilosecuritydashboard)|
+
+### BMCHPELDevID
+
+**BMCHPELDevID.Certificates**
+This is a reference to a collection of certificates used for BMC LDevId HPE by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### BMCIAK
+
+**BMCIAK.Certificates**
+This is a reference to a collection of certificates used for BMC IAK by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### BMCIDevIDPca
+
+**BMCIDevIDPca.Certificates**
+This is a reference to a collection of certificates used for BMC IDevId PCA by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### BMCLAK
+
+**BMCLAK.Certificates**
+This is a reference to a collection of certificates used for BMC LAK by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### ComponentIntegrityPolicy
+
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`NoPolicy`|
+|`HaltBootOnSPDMFailure`|
+
+### CurrentCipher
+
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|Current cipher in use.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### GlobalComponentIntegrity
+
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Enabled`|
+|`Disabled`|
+
+### KeyLocation
+
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|Defines where the Keys are stored. This could be locally stored or on Remote. Default is Local|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Hostbased`|Host Based Key configuration|
+|`Local`||
+|`Remote`||
+
+### KeyPolicy
+
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|Configures if keys are Configured Manually or Auto Generated|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Auto`|Keys will be Auto Generated|
+|`Manual`|Keys will be Manually provided|
+
+### LoginSecurityBanner
+
+**LoginSecurityBanner.IsEnabled**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|Login security banner is enabled or not.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**LoginSecurityBanner.SecurityMessage**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|Text message to appear on the iLO login page and iLO SSH pre-authentication banner when login security banner is enabled.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### OpenBMCTransferOfOwnership
+
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|State of iLO-OpenBMC Transfer of Ownership feature.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Supported`|OpenBMC Transfer feature is supported but it is not enabled for transfer.|
+|`Inhibited`|OpenBMC Transfer feature is inhibited for this server.|
+|`Configured`|iLO is configured successfully for OpenBMC transfer.|
+|`UnSupportedSecurityState`|OpenBMC Transfer feature is not supported in FIPS/CNSA security states.|
+|`UnSupportedSecureElement`|OpenBMC Transfer feature is not supported without correct Secure Element.|
+|`Error`|Error state.|
+
+### OpenBMCTransferStatus
+
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|OpenBMC transfer status.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`NotPerformed`|OpenBMC Transfer is not performed|
+|`Performed`|OpenBMC Transfer is performed at least once|
+|`Unknown`|Status unknown|
+
+### PlatformCert
+
+**PlatformCert.Certificates**
+This is a reference to a collection of certificates used for PlatformCert by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### PlatformCertUpdate
+
+**PlatformCertUpdate.Certificates**
+This is a reference to a collection of certificates used for PlatformCert Updates by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### SSHHostKey
+
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|SSH Host Key identifying the service.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### SecurityState
+
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|The operational security level of this Manager.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Wipe`|Manager is currently wiping security related content and returning to a lower security mode.  This state will transition automatically when finished.|
+|`SecureStandard`|Manager is operating in SecureStandard mode, requiring extra authentication on host interface(s), and stronger encryption on network interfaces - Default Security State |
+|`FIPS`|Similar to High Security. This mode is intended to meet the FIPS 140-2 level 1 and Common Criteria security requirements. A reset to defaults is required to exit this mode.|
+|`CNSA`|Same as FIPS. Additionally meets the criteria for NSA Commercial National Security Algorithm suite.  Must be in FIPS mode to transition to CNSA.|
+|`SuiteB`|Same as FIPS. Additionally meets the criteria for NSA SuiteB Top Secret installations.  Must be in FIPS mode to transition to SuiteB.|
+|`SynergySecurityMode`|Synergy Security Mode is the mode supported by the Synergy Composer.|
+
+### SecurityState@Redfish.AllowableValues (array)
+
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+`SecurityState@Redfish.AllowableValues` is an array containing elements of:
+
+**SecurityState@Redfish.AllowableValues[{item}]**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Wipe`|
+|`SecureStandard`|
+|`FIPS`|
+|`CNSA`|
+|`SuiteB`|
+
+### SystemIAK
+
+**SystemIAK.Certificates**
+This is a reference to a collection of certificates used for System IAK by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### SystemIDevID
+
+**SystemIDevID.Certificates**
+This is a reference to a collection of certificates used for System IDevId by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### SystemLAKCert
+
+**SystemLAKCert.Certificates**
+This is a reference to a collection of certificates used for System LAK by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### SystemLDevID
+
+**SystemLDevID.Certificates**
+This is a reference to a collection of certificates used for System LDevID by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### TLSVersion
+
+**TLSVersion.TLS1_2**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|This Indicate whether the TLS 1.2 is Enabled or disabled.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Enabled`|Enabled TLS 1.2.|
+|`Disabled`|Disabled TLS 1.2.|
+
+**TLSVersion.TLS1_3**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|This Indicate whether the TLS 1.3 is Enabled or disabled.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Enabled`|Enabled TLS 1.3.|
+|`Disabled`|Disabled TLS 1.3.|
+
+### TrustedOSSecurity
+
+**TrustedOSSecurity.EnableBackgroundScan**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|Enables or disables background scan of host OS software.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**TrustedOSSecurity.LastScanResult**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|Health of the host after the last scan done by Trusted OS Security scan engine.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`OK`|The last Trusted OS Security scan completed without finding any issues.|
+|`Critical`|The last Trusted OS Security scan completed finding issue(s). Refer to the SL log for details.|
+|`Unknown`|The health is Unknown because either the scan data is unavailable or scan is not enabled or last scan failed to complete.|
+
+**TrustedOSSecurity.LastScanTime**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|The time stamp of the last Trusted OS Security scan.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|date-time|
+
+**TrustedOSSecurity.OnIntegrityFailure**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|Sets the policy for how the Trusted OS Security check handles integrity failures.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`NoAction`|No action will be taken when a failure is detected.|
+|`Alert`|Generate an alert when a failure is detected.|
+|`PowerOff`|Gracefully power system off when a failure is detected.|
+|`PowerOffForce`|Force system power off when a failure is detected.|
+|`Reset`|Reset system power off when a failure is detected.|
+|`ColdBoot`|ColdBoot system power off when a failure is detected.|
+|`ForceNMI`|ForceNMI system power off when a failure is detected.|
+
+**TrustedOSSecurity.ScanEverySeconds**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+
+| | |
+|---|---|
+|Description|Sets the interval between Trusted OS Security scans in second increments.|
+|Type|integer or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### iLOLDevID
+
+**iLOLDevID.Certificates**
+This is a reference to a collection of certificates used for iLO LDevId by this manager.
+Certificates is a link (`"@odata.id": URI`) to another resource.
+
+### Actions
+
+
+**HpeSecurityService.RebindHPM**
+Member of [HpeSecurityService.v2\_7\_0.HpeSecurityService](#hpesecurityservice)
+There are no parameters for this action.
+## HpeServerBootSettings
+
+`@odata.type: "#HpeServerBootSettings.v2_0_0.HpeServerBootSettings"`
+
+The schema definition of the server UEFI Boot Order resource.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/bios/boot`|GET |
+|`/redfish/v1/systems/{item}/bios/boot/settings`|GET PATCH |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`@Redfish.Settings/SettingsObject`|[HpeServerBootSettings](ilo7_hpe_resourcedefns111/#hpeserverbootsettings)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
+
+### @Redfish.Settings
+
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+See the Redfish standard schema and specification for information on common @Redfish properties.
+
+### BootSources (array)
+
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+`BootSources` is an array containing elements of:
+
+**BootSources[{item}].BootString**
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+| | |
+|---|---|
+|Description|User-readable string that describes the UEFI boot option.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**BootSources[{item}].CorrelatableID**
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+| | |
+|---|---|
+|Description|Contains any CorrelatableIDs that represent this boot option. The correlatableID values can be JSON Pointers or UEFI identifiers.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**BootSources[{item}].StructuredBootString**
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+| | |
+|---|---|
+|Description|Uniquely identifies this boot option within the server.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**BootSources[{item}].UEFIDevicePath**
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+| | |
+|---|---|
+|Description|Standardized text representation of the UEFI device path for this boot option, in UTF-8 format.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DefaultBootOrder (array)
+
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+`DefaultBootOrder` is an array containing elements of:
+
+**DefaultBootOrder[{item}]**
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+| | |
+|---|---|
+|Description|Default UEFI boot order device type. This is used to define the order in which UEFI boot order is reset to when a default configuration is requested.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`UefiShell`|
+|`Floppy`|
+|`Cd`|
+|`Usb`|
+|`EmbeddedStorage`|
+|`PcieSlotStorage`|
+|`EmbeddedFlexLOM`|
+|`PcieSlotNic`|
+
+### DesiredBootDevices (array)
+
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+`DesiredBootDevices` is an array containing elements of:
+
+**DesiredBootDevices[{item}].CorrelatableID**
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+| | |
+|---|---|
+|Description|Standardized text representation of the UEFI device path of the desired boot device, in UTF-8 format. For example 'PciRoot(0x0)/Pci(0x2,0x2)/Pci(0x0,0x0)'|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**DesiredBootDevices[{item}].Lun**
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+| | |
+|---|---|
+|Description|The Logical Unit Number (LUN) of the desired boot device. This value must be a hexadecimal string with an even number of 2 to 16 characters, excluding the first two characters, 0x (for example, '0x01').|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**DesiredBootDevices[{item}].Wwn**
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+| | |
+|---|---|
+|Description|The Fibre Channel World Wide Name (WWN) of the desired boot device. This value must be a hexadecimal string with an even number of 2 to 16 characters, excluding the first two characters, 0x (for example, '0x0001020304050607').|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**DesiredBootDevices[{item}].iScsiTargetName**
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+| | |
+|---|---|
+|Description|The iSCSI node target name of the desired boot device. The value must be a string based on IETF RFC 3270, and can be up to 223 characters in length (for example, 'iqn.1991-05.com.microsoft:iscsitarget-iscsidisk-target').|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### PersistentBootConfigOrder (array)
+
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+`PersistentBootConfigOrder` is an array containing elements of:
+
+**PersistentBootConfigOrder[{item}]**
+Member of [HpeServerBootSettings.v2\_0\_0.HpeServerBootSettings](#hpeserverbootsettings)
+
+| | |
+|---|---|
+|Description|The structured boot string that references a corresponding entry in the BootSources array.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeServerConfigLock
+
+`@odata.type: "#HpeServerConfigLock.v1_0_0.HpeServerConfigLock"`
+
+The schema definition for Server Configuration Lock configuration.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/bios/Serverconfiglock`|GET |
+|`/redfish/v1/systems/{item}/bios/serverconfiglock/settings`|GET PATCH |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`@Redfish.Settings/SettingsObject`|[HpeServerConfigLock](ilo7_hpe_resourcedefns111/#hpeserverconfiglock)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
+
+### @Redfish.Settings
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+See the Redfish standard schema and specification for information on common @Redfish properties.
+
+### NewServerConfigLockPassword
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|The new Server Configuration Lock password.  This field is used to update the current Server Configuration Lock password and force the system configuration digital fingerprint to be recalculated.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ServerConfigLockChallenge
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Select this option to enable or disable a Server Configuration Lock password challenge on every boot.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Disabled`|Disable Server Configuration Lock password challenge on every boot.|
+|`Enabled`|Enable Server Configuration Lock password challenge on every boot.|
+|`Null`|A value is temporarily unavailable|
+
+### ServerConfigLockDisable
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Select this option to disable Server Configuration Lock.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`False`|Don't disable Server Configuration Lock.|
+|`True`|Disable Server Configuration Lock.|
+|`Null`|A value is temporarily unavailable|
+
+### ServerConfigLockExcludeCpus
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Select this option to exclude CPU information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`False`|Do not exclude CPU information from the Digital Fingerprint.|
+|`True`|Exclude CPU information from the Digital Fingerprint.|
+|`Null`|A value is temporarily unavailable|
+
+### ServerConfigLockExcludeDimms
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Select this option to exclude DIMM information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`False`|Do not exclude DIMM information from the Digital Fingerprint.|
+|`True`|Exclude DIMM information from the Digital Fingerprint.|
+|`Null`|A value is temporarily unavailable|
+
+### ServerConfigLockExcludeFwRevs
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Select this option to exclude system firmware revisions from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`False`|Do not exclude system firmware revision information from the Digital Fingerprint.|
+|`True`|Exclude system firmware revision information from the Digital Fingerprint.|
+|`Null`|A value is temporarily unavailable|
+
+### ServerConfigLockExcludePciSlots
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Select this option to exclude PCIe slot information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`False`|Do not exclude PCIe slot information from the Digital Fingerprint.|
+|`True`|Exclude PCIe slot information from the Digital Fingerprint.|
+|`Null`|A value is temporarily unavailable|
+
+### ServerConfigLockExcludeSecurity
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Select this option to exclude security configuration information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`False`|Do not exclude security configuration information from the Digital Fingerprint.|
+|`True`|Exclude security configuration information from the Digital Fingerprint.|
+|`Null`|A value is temporarily unavailable|
+
+### ServerConfigLockLogStored
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Has a Server Configuration Lock failure log been stored?|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`True`|A Server Configuration Lock failure has been logged.|
+|`False`| A Server Configuration Lock failure has not been logged.|
+
+### ServerConfigLockPassword
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|The Server Configuration Lock password.  If Server Configuration Lock is currently enabled, this field is used to convey the current Server Configuration Lock password and is required to make any Server Configuration Lock configuration changes.  If Server Configuration Lock is currently disabled, this field is used to set the Server Configuration Lock password, and to digitally fingerprint the system to enable Server Configuration Lock.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ServerConfigLockState
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Enabled/Disabled state of the Server Configuration Lock Feature.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Disabled`|The Server Configuration Lock feature is disabled.|
+|`Enabled`|The Server Configuration Lock feature is enabled.|
+
+### ServerConfigLockTamperHalt
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Select this option to enable or disable the Server Configuration Lock behavior to halt on a configuration change detection.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Disabled`|Disable Server Configuration Lock behavior to halt on configuration changes.|
+|`Enabled`|Enable Server Configuration Lock behavior to halt on configuration changes.|
+|`Null`|A value is temporarily unavailable|
+
+### ServerConfigLockTransport
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Select this option to enable or disable Server Configuration Lock "first-boot" behaviors.  This option is expected to be enabled just prior to shipping the server.  When the server arrives at its destination and is first powered on, Server Configuration Lock will require the Server Configuration Lock password in order to boot.  Server Configuration Lock will also indicate if someone attempted to change the system configuration during the shipment process.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Disabled`|Disable Server Configuration Lock "first-boot" behaviors.|
+|`Enabled`|Enable Server Configuration Lock "first-boot" behaviors.|
+|`Null`|A value is temporarily unavailable|
+
+### ServerConfigLockTransportAudit
+
+Member of [HpeServerConfigLock.v1\_0\_0.HpeServerConfigLock](#hpeserverconfiglock)
+
+| | |
+|---|---|
+|Description|Select this option to enable or disable out-of-band acknowledge of Server Configuration Lock "first-boot" behaviors (see ServerConfigLockTransport).|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Disabled`|Disable Server Configuration Lock out-of-band acknowledge of "first-boot" audit.|
+|`Enabled`|Enable Server Configuration Lock out-of-band acknowledge of "first-boot" audit.|
+|`Null`|A value is temporarily unavailable|
+
+## HpeServerDevice
+
+`@odata.type: "#HpeServerDevice.v2_1_0.HpeServerDevice"`
+
+The HpeServerDevice resource describes the properties of FRU devices.
+
+This resource type was added in iLO 5 1.20
+
+HpeServerDevice represents physical server devices including part information.  This is especially useful for system inventory.
+
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/chassis/{item}/devices/{item}`|GET PATCH |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`DeviceInstances[]`|[HpeServerPciDevice](ilo7_hpe_resourcedefns111/#hpeserverpcidevice)|
+
+### ComponentIntegrityStatus
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Unsupported`|Unsuccessful verification.|
+|`Success`|Successful verification.|
+|`Failure`||
+
+### DeviceInstances (array)
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+`DeviceInstances` is an array containing elements of:
+
+**DeviceInstances[{item}].@odata.id**
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### DeviceType
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|Device type.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`GPU`|GPU|
+|`PLX Controller`|PLX Controller (Bridge)|
+|`Expansion Riser`|Expansion Riser|
+|`Smart Storage`|Smart Storage|
+|`SAS/SATA Storage Controller`|SAS/SATA Storage Controller|
+|`IDE Storage Controller`|IDE Storage Controller|
+|`USB Storage Controller`|USB Storage Controller|
+|`Storage Controller`|Storage Controller|
+|`LOM/NIC`|LOM/NIC|
+|`Converged Network Adapter`|Converged Network Adapter|
+|`Fibre Channel`|Fibre Channel|
+|`Direct Attached NVMe Device`|Direct Attached NVMe Device|
+|`Backplane PIC`|Backplane PIC|
+|`Smart Storage Battery`|Smart Storage Battery|
+|`USB`|Universal Serial Bus|
+|`TPM`|Trusted Platform Module|
+|`Communication Controller`|Communication Controller|
+|`Unknown`|Unknown Device Type|
+|`Embedded SATA Controller`|Embedded SATA Controller|
+
+### FirmwareVersion
+
+**FirmwareVersion.Current**
+**FirmwareVersion.Current.VersionString**
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|This string represents the version of the firmware image.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**FirmwareVersion.FirmwareVersions (array)**
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+`FirmwareVersions` is an array containing elements of:
+
+**FirmwareVersions[{item}].ComponentName**
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|Name of GPU cores|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**FirmwareVersions[{item}].VersionString**
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|Version String of GPU cores|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Location
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|Location of the device.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### MCTPProtocolDisabled
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|Set to true to disable MCTP on this slot. Once disabled, can be enabled only through MCTP factory reset.|
+|Type|boolean|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### Manufacturer
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|Device manufacturer.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### PartNumber
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|Board part Number which is HPE PCA Assembly Number.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ProductPartNumber
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|Product Part Number.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ProductVersion
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|Product Version.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### SerialNumber
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+
+| | |
+|---|---|
+|Description|Product Serial Number.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Status
+
+Member of [HpeServerDevice.v2\_1\_0.HpeServerDevice](#hpeserverdevice)
+See the Redfish standard schema and specification for information on common Status object.
+
+## HpeServerDeviceCollection
+`@odata.type: "#HpeServerDeviceCollection.HpeServerDeviceCollection"`
+
+A Collection of HpeServerDevice resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/chassis/{item}/devices`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeServerDevice](ilo7_hpe_resourcedefns111/#hpeserverdevice)|
+
+### Members (array)
+
+Member of HpeServerDeviceCollection.HpeServerDeviceCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeServerDeviceCollection.HpeServerDeviceCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeServerDeviceCollection.HpeServerDeviceCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeServerPciDevice
+
+`@odata.type: "#HpeServerPciDevice.v2_1_0.HpeServerPciDevice"`
+
+The HpeServerPciDevice resource describes the properties of PCI devices.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/pcidevices/{item}`|GET |
+
+### BayNumber
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|Bay number value.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Bifurcated
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|Indicates if the PCIe device support bifurcation.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`BifurcationNotSupported`|This device does not support Bifurcation.|
+|`BifurcationSupportedPrimaryDevice`|This device does support Bifurcation.|
+|`BifurcationSupportedSecondaryDevice`|This is second bifurcated device.|
+
+### BifurcatedSecondaryDeviceLink
+
+The link to the next bifurcated devices.
+BifurcatedSecondaryDeviceLink is a link (`"@odata.id": URI`) to another resource.
+
+### BusNumber
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI device bus number value.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ClassCode
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI class code of the endpoint.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceID
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI device ID of the device.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceInstance
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI device instance value.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceLocation
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI device location.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceNumber
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI device number value.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceResourceId
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI device resource id or hash id.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceSubInstance
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI device sub-instance value.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceType
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|Device type value.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Flexible LOM`|Flexible LAN-On-Motherboard|
+|`Embedded LOM`|Embedded LAN-On-Motherboard|
+|`NIC`|Network Interface Controller|
+|`HDD Not attached to a SA Controller`|Hard Disk Drive|
+|`HDD Attached to a SA Controller`|Hard Disk Drive attached to an array controller|
+|`Other PCI Device`|Other PCI Device|
+|`Unknown`|Unknown PCI Device|
+|`Other`|Other PCI Device|
+|`Video`|Video Controller|
+|`SCSI Controller`|SCSI Controller|
+|`Ethernet`|Ethernet Controller|
+|`Token Ring`|Token Ring Controller|
+|`Sound`|Sound Controller|
+|`PATA Controller`|Parallel ATA Controller|
+|`SATA Controller`|Serial ATA Controller|
+|`SAS Controller`|Serial Attached SCSI Controller|
+|`Storage Controller`|Storage Controller (not Smart Array)|
+|`Storage Array Controller`|Smart Array Storage Controller|
+|`USB Hard Disk Drive`|USB Hard Disk Drive|
+|`Firmware Volume`|Firmware Volume|
+|`UEFI Shell`|UEFI Shell|
+|`Generic UEFI USB Boot Entry`|Generic UEFI USB Boot Entry|
+|`Dynamic Storage Array Controller`|Dynamic Smart Array Controller|
+|`File`|File|
+|`NVMe Hard Drive`|NVMe Hard Drive|
+|`NVDIMM`|NVDIMM|
+
+### EnclosureNumber
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|Enclosure number value.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### FunctionNumber
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI device function number value.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### LocationString
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|Text representation of the UEFI device location, in UTF-8 format|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### SegmentNumber
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI segment group number value.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### StructuredName
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI device structured name in UTF-8 format.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### SubclassCode
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI sub class code of the endpoint.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### SubsystemDeviceID
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI subsystem device ID of the device.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### SubsystemVendorID
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI subsystem vendor ID of the device.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### UEFIDevicePath
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|Standardized text representation of the UEFI device path, in UTF-8 format.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### VendorID
+
+Member of [HpeServerPciDevice.v2\_1\_0.HpeServerPciDevice](#hpeserverpcidevice)
+
+| | |
+|---|---|
+|Description|PCI vendor ID of the device.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeServerPciDeviceCollection
+`@odata.type: "#HpeServerPciDeviceCollection.HpeServerPciDeviceCollection"`
+
+A Collection of HpeServerPciDevice resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/pcidevices`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeServerPciDevice](ilo7_hpe_resourcedefns111/#hpeserverpcidevice)|
+
+### Members (array)
+
+Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeServerPciDeviceCollection.HpeServerPciDeviceCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeServerPCISlot
+
+`@odata.type: "#HpeServerPCISlot.v2_2_1.HpeServerPCISlot"`
+
+The HpeServerPCISlot resource describes the properties of PCI slots.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/pcislots/{item}`|GET |
+
+### BusNumber
+
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot bus number.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Characteristics
+
+**Characteristics.Provides3_3Volts**
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Provides 3.3 volts.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Characteristics.Provides5Volts**
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Provides 5.0 volts.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Characteristics.SlotIsShared**
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|The slot shares its opening with another slot.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Characteristics.SupportsCardBus**
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PC Card slot supports Card Bus.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Characteristics.SupportsHotPlugDevices**
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Slot supports hot-plug devices.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Characteristics.SupportsModemRingResume**
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PC Card slot supports Modem Ring Resume.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Characteristics.SupportsPCCard16**
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PC Card slot supports PC Card-16.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Characteristics.SupportsPowerManagementEventSignal**
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot supports Power Management Event signal.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Characteristics.SupportsSMBusSignal**
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot supports SMBUS signal.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Characteristics.SupportsZoomVideo**
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PC Card slot supports Zoom Video.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceNumber
+
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot device number.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### FunctionNumber
+
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot function number.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Length
+
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot length|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Short`||
+|`Long`||
+|`Drive2_5`|A 2.5 inch drive.|
+|`Drive3_5`|A 3.5 inch drive.|
+|`Other`||
+
+### LinkLanes
+
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Bandwidth capacity of the slot, measured by the number of PCI Express Lanes present. Also known as the slot width.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`8 bit`|
+|`16 bit`|
+|`32 bit`|
+|`64 bit`|
+|`128 bit`|
+|`x1`|
+|`x2`|
+|`x4`|
+|`x8`|
+|`x16`|
+|`x32`|
+|`Other`|
+
+### SegmentNumber
+
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI slot segment group number value.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Status
+
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+See the Redfish standard schema and specification for information on common Status object.
+
+### SupportsHotPlug
+
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Specifies whether the slot supports hot-plug devices.|
+|Type|boolean|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Technology
+
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|PCI technology|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`Proprietary`|
+|`OCP NIC 3.0`|
+|`PCIExpressGen5`|
+|`PCIExpressGen4`|
+|`PCIExpressGen3`|
+|`PCIExpressGen2`|
+|`PCIExpress`|
+
+### UEFIDevicePath
+
+Member of [HpeServerPCISlot.v2\_2\_1.HpeServerPCISlot](#hpeserverpcislot)
+
+| | |
+|---|---|
+|Description|Standardized text representation of the UEFI device path, in UTF-8 format|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeServerPCISlotCollection
+`@odata.type: "#HpeServerPCISlotCollection.HpeServerPCISlotCollection"`
+
+A Collection of HpeServerPCISlot resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/pcislots`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeServerPCISlot](ilo7_hpe_resourcedefns111/#hpeserverpcislot)|
+
+### Members (array)
+
+Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeServerPCISlotCollection.HpeServerPCISlotCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeSNMPAlertDestination
+
+`@odata.type: "#HpeSNMPAlertDestination.v2_0_0.HpeSNMPAlertDestination"`
+
+The HpeSNMPAlertDestination resource describes the properties for SNMP Alert Destinations.  The alert destination configuration up to 8 remote management systems that receive SNMP alerts from the BMC.
+
+This resource type was added in iLO 5 1.20
+
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/snmpservice/snmpalertdestinations/{item}`|GET PATCH DELETE |
+
+### AlertDestination
+
+Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
+
+| | |
+|---|---|
+|Description|The IP address or FQDN of remote management system that receive SNMP alerts.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### SNMPAlertProtocol
+
+Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
+
+| | |
+|---|---|
+|Description|Indicate the SNMP protocol associated with the AlertDestination.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`SNMPv1Trap`|Indicate SNMPv1 trap is enabled for the destination.|
+|`SNMPv3Trap`|Indicate SNMPv3 trap is enabled for the destination. Needs to fill the SecurityName as well.|
+|`SNMPv3Inform`|Indicate SNMPv3 Inform is enabled for the destination. Needs to fill the SecurityName as well.|
+|`Null`|A value is temporarily unavailable|
+
+### SNMPv3User
+
+SNMPv3 User associated with the destination when SNMP alert protocol is SNMPv3trap.
+SNMPv3User is a link (`"@odata.id": URI`) to another resource.
+
+### SecurityName
+
+Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
+
+| | |
+|---|---|
+|Description|Provides the SNMPv3 security name associated with SNMPv3trap or SNMPv3Inform set on SNMPAlertProtocol.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### TrapCommunity
+
+Member of [HpeSNMPAlertDestination.v2\_0\_0.HpeSNMPAlertDestination](#hpesnmpalertdestination)
+
+| | |
+|---|---|
+|Description|The configured SNMPv1 trap community string.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+## HpeSNMPAlertDestinationCollection
+`@odata.type: "#HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection"`
+
+A Collection of HpeSNMPAlertDestination resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/snmpservice/snmpalertdestinations`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeSNMPAlertDestination](ilo7_hpe_resourcedefns111/#hpesnmpalertdestination)|
+
+### Members (array)
+
+Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeSNMPUser
+
+`@odata.type: "#HpeSNMPUser.v2_1_1.HpeSNMPUser"`
+
+The HpeSNMPUser resource describes the properties for SNMP support.  SNMPv3 supports the User-based Security Model (USM). With this model,security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.
+
+This resource type was added in iLO 5 1.20
+
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/snmpservice/snmpusers/{item}`|GET PATCH DELETE |
+
+### AuthPassphrase
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|Sets the passphrase to use for sign operations. Enter a value of 8 to 49 characters.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### AuthProtocol
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|Sets the message digest algorithm to use for encoding the authorization passphrase. The message digest is calculated over an appropriate portion of an SNMP message, and is included as part of the message sent to the recipient.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`MD5`|Indicate Message Digest Algorithm.|
+|`SHA`|Indicate Secure Hash Algorithm.|
+|`SHA256`|Indicate SHA256 Algorithm.|
+
+### PrivacyPassphrase
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|Sets the passphrase to use for encrypt operations. Enter a value of 8 to 49 characters.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### PrivacyProtocol
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|Sets the encryption algorithm to use for encoding the privacy passphrase. A portion of an SNMP message is encrypted before transmission.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`AES`|Indicate Advanced Encryption Standard Algorithm.|
+
+### SecurityName
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|The user profile name. Enter an alphanumeric string of 1 to 32 characters.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### UserEngineID
+
+Member of [HpeSNMPUser.v2\_1\_1.HpeSNMPUser](#hpesnmpuser)
+
+| | |
+|---|---|
+|Description|The UserEngineID is combined with the SecurityName to create a SNMPv3 user for each manager. It is only used for creating remote accounts used with INFORM messages. If this property is not set then INFORM message will be sent with default or iLO configured engine ID. This value must be a hexadecimal string with an even number of 10 to 64 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+## HpeSNMPUsersCollection
+`@odata.type: "#HpeSNMPUsersCollection.HpeSNMPUsersCollection"`
+
+A Collection of HpeSNMPUsers resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/managers/{item}/snmpservice/snmpusers`|GET POST |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeSNMPUser](ilo7_hpe_resourcedefns111/#hpesnmpuser)|
+
+### Members (array)
+
+Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeSNMPUsersCollection.HpeSNMPUsersCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeTlsConfig
+
+`@odata.type: "#HpeTlsConfig.v1_0_0.HpeTlsConfig"`
+
+The schema definition for TLS configuration.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig`|GET |
+|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig/settings`|GET PATCH |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`@Redfish.Settings/SettingsObject`|[HpeTlsConfig](ilo7_hpe_resourcedefns111/#hpetlsconfig)|
+|`Oem/Hpe/Links/BaseConfigs`|[HpeBaseConfigs](ilo7_hpe_resourcedefns111/#hpebaseconfigs)|
+
+### @Redfish.Settings
+
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+See the Redfish standard schema and specification for information on common @Redfish properties.
+
+### Certificates (array)
+
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+`Certificates` is an array containing elements of:
+
+**Certificates[{item}].FingerPrint**
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|The fingerprint of the certificate. It is the sha256 (SHA2) of the Der format of the certificate|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Certificates[{item}].Issuer**
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|The Issuer of the certificate|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Certificates[{item}].SerialNumber**
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|The Serial Number of the certificate.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Certificates[{item}].Subject**
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|The Subject of the certificate.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Certificates[{item}].ValidNotAfter**
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|The expiration date of the certificate.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+**Certificates[{item}].ValidNotBefore**
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|The date when the certificate becomes valid.|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Ciphers
+
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|The encryption used. It can have more than one type of encryption, example: "AES128-SHA:AES256-SHA:AES128-SHA256:AES256-SHA256"|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### DeleteCertificates (array)
+
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+`DeleteCertificates` is an array containing elements of:
+
+**DeleteCertificates[{item}].FingerPrint**
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|To delete a certificate, the user should place its fingerprint here. The fingerprint would be found as a property under the single certificate object in the "Certificates" array |
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### HostnameCheck
+
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|Use this option to enable or disable verification of the connected server's hostname with the hostname in the certificate supplied by the server|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Disabled`|Disable verification of the connected server's hostname.|
+|`Enabled`|enable verification of the connected server's hostname.|
+
+### NewCertificates (array)
+
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+`NewCertificates` is an array containing elements of:
+
+**NewCertificates[{item}].X509Certificate**
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|the body (PEM format) of the Certificate to be added|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### ProtocolVersion
+
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`AUTO`|
+|`1.0`|
+|`1.1`|
+|`1.2`|
+|`1.3`|
+
+### TlsCaCertificateCount
+
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|The certificates count.|
+|Type|integer|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### VerifyMode
+
+Member of [HpeTlsConfig.v1\_0\_0.HpeTlsConfig](#hpetlsconfig)
+
+| | |
+|---|---|
+|Description|It determines if/how the certificates are validated.|
+|Type|string|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|
+|---|
+|`NONE`|
+|`PEER`|
+
+## HpeUSBDevice
+
+`@odata.type: "#HpeUSBDevice.v2_0_0.HpeUSBDevice"`
+
+The HpeUSBDevice resource describes the properties of USB devices.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/usbdevices/{item}`|GET |
+
+### DeviceCapacityMB
+
+Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
+
+| | |
+|---|---|
+|Description|USB device usable capacity (if applicable) in Mbytes|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceClass
+
+Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
+
+| | |
+|---|---|
+|Description|USB device Class code as defined by the USB HID device specification.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceName
+
+Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
+
+| | |
+|---|---|
+|Description|USB device name in UTF-8 format.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceProtocol
+
+Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
+
+| | |
+|---|---|
+|Description|Protocol code as defined by the USB HID specification.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### DeviceSubClass
+
+Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
+
+| | |
+|---|---|
+|Description|USB device SubClass code as defined by the USB HID device specification.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Location
+
+Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
+
+| | |
+|---|---|
+|Description|Location of the USB device on the server|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ProductID
+
+Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
+
+| | |
+|---|---|
+|Description|USB product ID as defined by manufacturer.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### StructuredName
+
+Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
+
+| | |
+|---|---|
+|Description|USB device structured name in UTF-8 format.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### UEFIDevicePath
+
+Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
+
+| | |
+|---|---|
+|Description|UEFI device path of USB device. Standardized text representation of the UEFI device path, in UTF-8 format|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### VendorID
+
+Member of [HpeUSBDevice.v2\_0\_0.HpeUSBDevice](#hpeusbdevice)
+
+| | |
+|---|---|
+|Description|Vendor ID of detected USB device.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeUSBDevicesCollection
+`@odata.type: "#HpeUSBDevicesCollection.HpeUSBDevicesCollection"`
+
+A Collection of HpeUSBDevices resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/usbdevices`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeUSBDevice](ilo7_hpe_resourcedefns111/#hpeusbdevice)|
+
+### Members (array)
+
+Member of HpeUSBDevicesCollection.HpeUSBDevicesCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeUSBDevicesCollection.HpeUSBDevicesCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeUSBDevicesCollection.HpeUSBDevicesCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeUSBPort
+
+`@odata.type: "#HpeUSBPort.v2_0_0.HpeUSBPort"`
+
+The HpeUSBPort resource describes the properties of USB ports.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/usbports/{item}`|GET |
+
+### InstanceNumber
+
+Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
+
+| | |
+|---|---|
+|Description|Instance number of the USB Port|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### Location
+
+Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
+
+| | |
+|---|---|
+|Description|Location of the USB Device on the server|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Null`|A value is temporarily unavailable|
+|`Back`|Located on the rear panel of the server.|
+|`Front`|Located on the front bezel of the server.|
+|`Internal`|Located internally within the server chassis.|
+|`InternalManagement`|Internal management media.|
+|`InternalSDCard`|The internal SD-Card slot.|
+|`iLOManagement`|iLO virtual USB devices.|
+
+### PCIBusNumber
+
+Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
+
+| | |
+|---|---|
+|Description|PCI Bus number of the USB controller that controls this USB port |
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### PCIDeviceNumber
+
+Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
+
+| | |
+|---|---|
+|Description|PCI Device Number of the USB Controller that controls this USB Port.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### PCIFunctionNumber
+
+Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
+
+| | |
+|---|---|
+|Description|PCI Function Number of the USB Controller that controls this USB Port.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### ParentHubInstance
+
+Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
+
+| | |
+|---|---|
+|Description|Parent Hub Instance that provides an instance number of the internal hub this USB Port is connected to.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### SharedCapability
+
+Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
+
+| | |
+|---|---|
+|Description|Shared Capability of the USB Port|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Null`|A value is temporarily unavailable|
+|`UnsharedManagement`|Not shared as a Management Port.|
+|`SharedManagementPhysicalSwitch`|Shared management port w/ physical switch to control whether muxed to iLO or host.|
+|`SharedManagementPortAutomaticControl`||
+
+### SpeedCapability
+
+Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
+
+| | |
+|---|---|
+|Description|USB speed capability of the USB port as configured by the BIOS during POST.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Null`|A value is temporarily unavailable|
+|`USB1FullSpeed`|USB 1.0 Full Speed|
+|`USB2HighSpeed`|USB 2.0 High Speed|
+|`USB3SuperSpeed`|USB 3.x SuperSpeed|
+
+### UEFIDevicePath
+
+Member of [HpeUSBPort.v2\_0\_0.HpeUSBPort](#hpeusbport)
+
+| | |
+|---|---|
+|Description|UEFI Device Path of USB Endpoint. Standardized text representation of the UEFI device path, in UTF-8 format|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeUSBPortsCollection
+`@odata.type: "#HpeUSBPortsCollection.HpeUSBPortsCollection"`
+
+A Collection of HpeUSBPorts resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/usbports`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeUSBPort](ilo7_hpe_resourcedefns111/#hpeusbport)|
+
+### Members (array)
+
+Member of HpeUSBPortsCollection.HpeUSBPortsCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeUSBPortsCollection.HpeUSBPortsCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeUSBPortsCollection.HpeUSBPortsCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
+|Type|integer|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+## HpeWorkloadPerformanceAdvisor
+
+`@odata.type: "#HpeWorkloadPerformanceAdvisor.v1_0_0.HpeWorkloadPerformanceAdvisor"`
+
+The HpeWorkloadPerformanceAdvisor resource describes the properties for managing the HPE Workload Performance Advisor.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/workloadperformanceadvisor/{item}`|GET |
+
+### Duration
+
+Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
+
+| | |
+|---|---|
+|Description|Specifies the duration over which the workload performance advisor is computed.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.11|
+
+### PerformanceTuningOption (array)
+
+Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
+
+`PerformanceTuningOption` is an array containing elements of:
+
+**PerformanceTuningOption[{item}].BIOSAttributeName**
+Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
+
+| | |
+|---|---|
+|Description|The attribute name of the BIOS settings.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**PerformanceTuningOption[{item}].RecommendedValue**
+Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
+
+| | |
+|---|---|
+|Description|Recommended value for the corresponding BIOS attribute. Please refer to BIOS attribute registry schema for more information.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+### WorkloadCharacteristics (array)
+
+Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
+
+`WorkloadCharacteristics` is an array containing elements of:
+
+**WorkloadCharacteristics[{item}].MetricId**
+Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
+
+| | |
+|---|---|
+|Description|The id of the metric.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+**WorkloadCharacteristics[{item}].MetricValue**
+Member of [HpeWorkloadPerformanceAdvisor.v1\_0\_0.HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor)
+
+| | |
+|---|---|
+|Description|The workload utilization of the metric.|
+|Type|string or null|
+|Read Only|False|
+|Added|iLO7 1.11|
+
+The following are the supported values:
+
+|Value|Description|
+|---|---|
+|`Low`|Utilization is low.|
+|`Medium`|Utilization is medium.|
+|`High`|Utilization is high.|
+
+## HpeWorkloadPerformanceAdvisorCollection
+`@odata.type: "#HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection"`
+
+A Collection of HpeWorkloadPerformanceAdvisor resource instances.
+
+### Resource Instances
+
+|Uri|HTTP Allow|
+|---|---|
+|`/redfish/v1/systems/{item}/workloadperformanceadvisor`|GET |
+
+### Links to other Resources
+
+|Link Name|Destination type
+|---|---|
+|`Members[]`|[HpeWorkloadPerformanceAdvisor](ilo7_hpe_resourcedefns111/#hpeworkloadperformanceadvisor)|
+
+### Members (array)
+
+Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection
+
+`Members` is an array containing elements of:
+
+**Members[{item}].@odata.id**
+Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection
+
+| | |
+|---|---|
+|Type|string|
+|Read Only|True|
+|Added|iLO7 1.11|
+|Format|uri-reference|
+
+### Members@odata.count
+
+Member of HpeWorkloadPerformanceAdvisorCollection.HpeWorkloadPerformanceAdvisorCollection
+
+| | |
+|---|---|
+|Description|The total number of collection members.|
 |Type|integer|
 |Read Only|True|
 |Added|iLO7 1.11|

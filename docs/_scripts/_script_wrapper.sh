@@ -43,8 +43,8 @@ required_executables="dos2unix sed awk"
 
 # Don't forget to update the following variables to process the right iLO version !
 
-export ilogen="iLO 6"
-export iLOFwVersion=1.66
+export ilogen="iLO 7"
+export iLOFwVersion=1.11
 
 export iLOGen=$(echo ${ilogen,,} | tr -d ' ')
 export iLOVersion=$(echo $iLOFwVersion | tr -d '.')

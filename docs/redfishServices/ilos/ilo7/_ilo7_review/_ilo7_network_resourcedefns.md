@@ -1,24 +1,21 @@
 ---
+excludeFromSearch: true
 seo:
   title: Network resource definitions
-markdown:
-  toc:
-    hide: false
-    depth: 2
-  lastUpdateBlock:
-    hide: false
-breadcrumbs:
-  hide: false
+toc:
+  enable: true
+  maxDepth: 2
+disableLastModified: false
 ---
 
 # Network resource definitions of iLO 7 v1.11
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## NetworkAdapterCollection
+
 `@odata.type: "#NetworkAdapterCollection.NetworkAdapterCollection"`
 
 A Collection of NetworkAdapter resource instances.
@@ -31,9 +28,9 @@ A Collection of NetworkAdapter resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[NetworkAdapter](ilo7_network_resourcedefns111/#networkadapter)|
+|`Members[]`|[NetworkAdapter](../ilo7_network_resourcedefns111/#networkadapter)|
 
 ### Members (array)
 
@@ -89,7 +86,6 @@ A NetworkAdapter represents the physical network adapter capable of connecting t
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -99,9 +95,9 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`ports`|Collection of [Port](ilo7_other_resourcedefns111/#portcollection)|
+|`ports`|Collection of [Port](../ilo7_other_resourcedefns111/#portcollection)|
 
 ### @Redfish.Settings
 
@@ -1281,7 +1277,6 @@ See the Redfish standard schema and specification for information on common Stat
 
 ### Actions
 
-
 **NetworkAdapter.ResetSettingsToDefault**
 Member of [NetworkAdapter.v1\_9\_0.NetworkAdapter](#networkadapter)
 There are no parameters for this action.
@@ -1311,7 +1306,9 @@ There are no parameters for this action.
 **HpeNetworkAdapter.FlushConfigurationToNVM**
 Member of [NetworkAdapter.v1\_9\_0.NetworkAdapter](#networkadapter)
 There are no parameters for this action.
+
 ## NetworkDeviceFunctionCollection
+
 `@odata.type: "#NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection"`
 
 A Collection of NetworkDeviceFunction resource instances.
@@ -1325,9 +1322,9 @@ A Collection of NetworkDeviceFunction resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[NetworkDeviceFunction](ilo7_network_resourcedefns111/#networkdevicefunction)|
+|`Members[]`|[NetworkDeviceFunction](../ilo7_network_resourcedefns111/#networkdevicefunction)|
 
 ### Members (array)
 
@@ -1364,7 +1361,6 @@ A Network Device Function represents a logical interface exposed by the network 
 
 The Data Source is either DCi or RDE. HPE OEM section shall be present only for DCi Data Source.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -1376,9 +1372,9 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`settings`|[NetworkDeviceFunction](ilo7_network_resourcedefns111/#networkdevicefunction)|
+|`settings`|[NetworkDeviceFunction](../ilo7_network_resourcedefns111/#networkdevicefunction)|
 
 ### @Redfish.Settings
 
@@ -2093,6 +2089,7 @@ Member of [NetworkDeviceFunction.v1\_9\_2.NetworkDeviceFunction](#networkdevicef
 |Added|iLO7 1.11|
 
 ## NetworkInterfaceCollection
+
 `@odata.type: "#NetworkInterfaceCollection.NetworkInterfaceCollection"`
 
 A Collection of NetworkInterface resource instances.
@@ -2105,9 +2102,9 @@ A Collection of NetworkInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[NetworkInterface](ilo7_network_resourcedefns111/#networkinterface)|
+|`Members[]`|[NetworkInterface](../ilo7_network_resourcedefns111/#networkinterface)|
 
 ### Members (array)
 
@@ -2169,9 +2166,9 @@ A NetworkInterface contains references linking NetworkAdapter, Port, and Network
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](ilo7_network_resourcedefns111/#networkdevicefunctioncollection)|
+|`NetworkDeviceFunctions`|Collection of [NetworkDeviceFunction](../ilo7_network_resourcedefns111/#networkdevicefunctioncollection)|
 
 ### NetworkDeviceFunctions
 
@@ -2189,6 +2186,7 @@ Member of [NetworkInterface.v1\_2\_0.NetworkInterface](#networkinterface)
 See the Redfish standard schema and specification for information on common Status object.
 
 ## EthernetInterfaceCollection
+
 `@odata.type: "#EthernetInterfaceCollection.EthernetInterfaceCollection"`
 
 A Collection of EthernetInterface resource instances.
@@ -2202,9 +2200,9 @@ A Collection of EthernetInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
-|`Members[]`|[EthernetInterface](ilo7_network_resourcedefns111/#ethernetinterface)|
+|`Members[]`|[EthernetInterface](../ilo7_network_resourcedefns111/#ethernetinterface)|
 
 ### Members (array)
 
@@ -2239,9 +2237,9 @@ Member of EthernetInterfaceCollection.EthernetInterfaceCollection
 
 The EthernetInterface resource describes a single, logical ethernet interface or network interface controller (NIC).
 
-{% admonition type="info" name="Note" %}
+:::info Note
 
-The URI of the members of the computer system `EthernetInterface` collection can be represented with this notation: 
+The URI of the members of the computer system `EthernetInterface` collection can be represented with this notation:
 `/redfish/v1/Systems/{@systemId}/EthernetInterfaces/{@nicId}`.
 
 Starting with iLO 6 firmware version 1.58, the `{@nicId}` naming schema is consistent across device types.
@@ -2258,8 +2256,7 @@ It is a string containing one or more characters in the range: [0-9], with the f
   Their corresponding `{@nicId}` is represented:
   - at slot 1 in the range: 13-76
   - at slot 2 in the range: 77-140
-{% /admonition %}
-
+:::
 
 ### Resource Instances
 
