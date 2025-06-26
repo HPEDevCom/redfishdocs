@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# Version 0.99
+# Version 0.991
 
 # Script name: _script_wrapper.sh 
 # This script is a wrapper to the other scripts contained in this folder, except
@@ -29,7 +29,6 @@
 
 # ToDo:
 #       * Include `events.md` when possible
-#       * Remove the oldest version of firmware to keep only the last 5 versions
 #        
 
 #
@@ -43,8 +42,8 @@ required_executables="dos2unix sed awk"
 
 # Don't forget to update the following variables to process the right iLO version !
 
-export ilogen="iLO 7"
-export iLOFwVersion=1.11
+export ilogen="iLO 6"
+export iLOFwVersion=1.68
 
 export iLOGen=$(echo ${ilogen,,} | tr -d ' ')
 export iLOVersion=$(echo $iLOFwVersion | tr -d '.')
@@ -250,12 +249,13 @@ while [ $i -le $index ] ; do
   i=$((i + 1))
 done
 
+# Uncomment the following line in case of broken links in the Changelog file.
 # Removal of the internal links Changelog file to avoid broken links.
 # Note: awk is used to search for lines between @startPattern and 
-# the next "## iLO n new"
-startPattern="## ${ilogen} v${iLOFwVersion} new"
-endPattern="$(awk -v sp="$startPattern" -v ig="## $ilogen new" '$0 ~ sp {found=1; next} found && $0 ~ ig {print; found=0}' ${iLOGen}_changelog.md)"
-sed -i "/$startPattern/,/$endPattern/ s/\[\(.*\)\](.*)/\1/g" ${iLOGen}_changelog.md
+# the next "## iLO n new".
+#startPattern="## ${ilogen} v${iLOFwVersion} new"
+#endPattern="$(awk -v sp="$startPattern" -v ig="## $ilogen new" '$0 ~ sp {found=1; next} found && $0 ~ ig {print; found=0}' ${iLOGen}_changelog.md)"
+#sed -i "/$startPattern/,/$endPattern/ s/\[\(.*\)\](.*)/\1/g" ${iLOGen}_changelog.md
 
 
 exit 0

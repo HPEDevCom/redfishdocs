@@ -13,8 +13,9 @@
 # ToDo:
 #        * Test that the $InputFiles variable is not empty !
 #        * Convert the outputs into Reunite/Realm/Markdoc format
+#        * Remove empty line before header2 and header3 lines when there are two empty lines.
 
-# version 0.11
+# version 0.12
 
 # Local Variables
 InputFiles=$(ls ${WorkingDirectory}/_${iLOGen}_resourcedefns${iLOVersion}.*)
@@ -77,9 +78,9 @@ breadcrumbs:
   Header1Title="# ${ResourceType^} resource definitions of ${ilogen} v${iLOFwVersion}\n\n"
   FileDescription="For each data type provided by the HPE ilO Redfish service, \
 find below its description including the list of possible instances (URIs), \
-links to related other resources, described properties and many other details. \
+links to related other resources, described properties and many other details.\
 \n\n\
-Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.\n\n"
+Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.\n"
 
   # Output file creation with seo, title and description.
   echo -e "${SEO}${Header1Title}${FileDescription}" > $OutputFile
@@ -94,14 +95,18 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
   #    7. Insert a blank line before "Resource Instances"
   #    8. Insert a blank line before "is an array containing elements of:"
   #    9. Fix fragment in tables like "Links to Other Resources" tables: "|`.*`|Collection of [.*](#.*)|"
-  sed -e 's/```/`/g'                                                                    \
-      -e 's/^\(### .*\)$/\1\n/'                                                         \
-      -e 's/^\(## .*\)\.v.*\..*$/\1\n/'                                                 \
-      -e 's/\[\(.*\.v.\)_\(.*\)_\(.*\..*\)\]\(.*\)$/\[\1\\_\2\\_\3\]\4/'                \
-      -e 's/(\(#.*\)-v.*-.*)/(\1)/'                                                     \
-      -e 's/^\(## .*Collection\)\..*Collection$/\1/'                                    \
-      -e '/### Resource Instances/i\\'                                                  \
-      -e '/is an array containing elements of:/i\\'                                     \
+  #   10. Append "|" to `Links to Other Resources` tables
+  #   11. Insert a blank line after "## .*Collection" header2 lines
+  sed -e 's/```/`/g'                                                       \
+      -e 's/^\(### .*\)$/\1\n/'                                            \
+      -e 's/^\(## .*\)\.v.*\..*$/\1\n/'                                    \
+      -e 's/\[\(.*\.v.\)_\(.*\)_\(.*\..*\)\]\(.*\)$/\[\1\\_\2\\_\3\]\4/'   \
+      -e 's/(\(#.*\)-v.*-.*)/(\1)/'                                        \
+      -e 's/^\(## .*Collection\)\..*Collection$/\1/'                       \
+      -e '/### Resource Instances/i\\'                                     \
+      -e '/is an array containing elements of:/i\\'                        \
+      -e '/Link Name|Destination type/s/$/|/'                              \
+      -e '/^## .*Collection/a\\'                                           \
       $file >> $OutputFile
   echo "Done."
 done
