@@ -13,10 +13,9 @@ breadcrumbs:
 
 # Bios resource definitions of iLO 6 v1.68
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service,find below its description including the list of possible instances (URIs),links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## Bios
 
@@ -33,7 +32,7 @@ The Bios schema contains properties related to the BIOS Attribute Registry.  The
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](ilo6_hpe_resourcedefns168/#hpeserverbootsettings)|
 |`@Redfish.Settings/SettingsObject`|[Bios](ilo6_bios_resourcedefns168/#bios)|

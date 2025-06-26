@@ -13,12 +13,12 @@ breadcrumbs:
 
 # Storage resource definitions of iLO 6 v1.68
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service,find below its description including the list of possible instances (URIs),links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## StorageCollection
+
 `@odata.type: "#StorageCollection.StorageCollection"`
 
 A Collection of Storage resource instances.
@@ -31,7 +31,7 @@ A Collection of Storage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Storage](ilo6_storage_resourcedefns168/#storage)|
 
@@ -76,7 +76,7 @@ Storage defines a storage subsystem and its respective properties.  A storage su
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Volumes`|Collection of [Volume](ilo6_storage_resourcedefns168/#volumecollection)|
 |`Controllers`|Collection of [StorageController](ilo6_storage_resourcedefns168/#storagecontrollercollection)|
@@ -631,6 +631,7 @@ Link to invoke action
 
 Friendly action name
 ## StorageControllerCollection
+
 `@odata.type: "#StorageControllerCollection.StorageControllerCollection"`
 
 A Collection of Storage resource instances.
@@ -643,7 +644,7 @@ A Collection of Storage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[StorageController](ilo6_storage_resourcedefns168/#storagecontroller)|
 
@@ -688,7 +689,7 @@ The StorageController schema describes a storage controller and its properties. 
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`certificates`|Collection of [Certificate](ilo6_other_resourcedefns168/#certificatecollection)|
 |`ports`|Collection of [Port](ilo6_other_resourcedefns168/#portcollection)|
@@ -1185,6 +1186,7 @@ The following are the supported values:
 |`None`|A placement policy with no redundancy at the device level.|
 
 ## VolumeCollection
+
 `@odata.type: "#VolumeCollection.VolumeCollection"`
 
 A Collection of Volume resource instances.
@@ -1197,7 +1199,7 @@ A Collection of Volume resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Volume](ilo6_storage_resourcedefns168/#volume)|
 
@@ -1241,7 +1243,7 @@ The Volume resource describes a volume, virtual disk, LUN, or other logical stor
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/Drives[]`|[Drive](ilo6_storage_resourcedefns168/#drive)|
 

@@ -13,10 +13,9 @@ breadcrumbs:
 
 # Other resource definitions of iLO 6 v1.68
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service,find below its description including the list of possible instances (URIs),links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## AccountService
 
@@ -47,7 +46,7 @@ The destination of this link is a collection of user accounts (see ManagerAccoun
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Accounts`|Collection of [ManagerAccount](ilo6_manager_resourcedefns168/#manageraccountcollection)|
 
@@ -812,6 +811,7 @@ Member of [BootOption.v1\_0\_1.BootOption](#bootoption)
 
 
 ## BootOptionCollection
+
 `@odata.type: "#BootOptionCollection.BootOptionCollection"`
 
 A Collection of BootOption resource instances.
@@ -824,7 +824,7 @@ A Collection of BootOption resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[BootOption](ilo6_other_resourcedefns168/#bootoption)|
 
@@ -1133,6 +1133,7 @@ Member of [Certificate.v1\_6\_0.Certificate](#certificate)
 
 
 ## CertificateCollection
+
 `@odata.type: "#CertificateCollection.CertificateCollection"`
 
 A Collection of Certificate resource instances.
@@ -1169,7 +1170,7 @@ A Collection of Certificate resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Certificate](ilo6_other_resourcedefns168/#certificate)|
 
@@ -1228,7 +1229,7 @@ The CertificateService schema describes a certificate service that represents th
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/CertificateLocations`|[CertificateLocations](ilo6_other_resourcedefns168/#certificatelocations)|
 
@@ -1700,6 +1701,7 @@ The slot identifier for the certificate containing the private key to generate t
 An array of indices that identify the measurement blocks to sign.
 
 ## ComponentIntegrityCollection
+
 `@odata.type: "#ComponentIntegrityCollection.ComponentIntegrityCollection"`
 
 A Collection of ComponentIntegrity resource instances.
@@ -1712,7 +1714,7 @@ A Collection of ComponentIntegrity resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ComponentIntegrity](ilo6_other_resourcedefns168/#componentintegrity)|
 
@@ -2029,6 +2031,7 @@ The following are the supported values:
 
 
 ## EventDestinationCollection
+
 `@odata.type: "#EventDestinationCollection.EventDestinationCollection"`
 
 A Collection of EventDestination resource instances.
@@ -2041,7 +2044,7 @@ A Collection of EventDestination resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[EventDestination](ilo6_other_resourcedefns168/#eventdestination)|
 
@@ -2087,7 +2090,7 @@ The EventService resource describes the Event Service.  It represents the proper
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Subscriptions`|Collection of [EventDestination](ilo6_other_resourcedefns168/#eventdestinationcollection)|
 |`Oem/Hpe/CACertificates`|Collection of [HpeCertificate](ilo6_hpe_resourcedefns168/#hpecertificatecollection)|
@@ -2295,7 +2298,7 @@ The Fabric schema represents a simple fabric consisting of one or more switches,
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`switches`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
 
@@ -2359,6 +2362,7 @@ Switches is a link (`"@odata.id": URI`) to another resource.
 
 
 ## FabricCollection
+
 `@odata.type: "#FabricCollection.FabricCollection"`
 
 A Collection of Fabric Resource instances.
@@ -2371,7 +2375,7 @@ A Collection of Fabric Resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Fabric](ilo6_other_resourcedefns168/#fabric)|
 
@@ -2417,7 +2421,7 @@ The Fan schema describes a cooling fan unit for a computer system or similar dev
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`assembly`|[Assembly](ilo6_other_resourcedefns168/#assembly)|
 
@@ -2513,6 +2517,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 
 ## FanCollection
+
 `@odata.type: "#FanCollection.FanCollection"`
 
 The Collection of Fan resource instances.
@@ -2525,7 +2530,7 @@ The Collection of Fan resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Fan](ilo6_other_resourcedefns168/#fan)|
 
@@ -2703,6 +2708,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 
 ## HostInterfaceCollection
+
 `@odata.type: "#HostInterfaceCollection.HostInterfaceCollection"`
 
 A Collection of HostInterface resource instances.
@@ -2715,7 +2721,7 @@ A Collection of HostInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[HostInterface](ilo6_other_resourcedefns168/#hostinterface)|
 
@@ -2814,6 +2820,7 @@ Member of [JsonSchemaFile.v1\_0\_4.JsonSchemaFile](#jsonschemafile)
 
 
 ## JsonSchemaFileCollection
+
 `@odata.type: "#JsonSchemaFileCollection.JsonSchemaFileCollection"`
 
 A Collection of JsonSchemaFile resource instances.
@@ -2826,7 +2833,7 @@ A Collection of JsonSchemaFile resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[JsonSchemaFile](ilo6_other_resourcedefns168/#jsonschemafile)|
 
@@ -2922,6 +2929,7 @@ Member of [Key.v1\_4\_1.Key](#key)
 
 
 ## KeyCollection
+
 `@odata.type: "#KeyCollection.KeyCollection"`
 
 The collection of `Key` resource instances.
@@ -2934,7 +2942,7 @@ The collection of `Key` resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Key](ilo6_other_resourcedefns168/#key)|
 
@@ -3339,6 +3347,7 @@ The following are the supported values:
 
 
 ## LogEntryCollection
+
 `@odata.type: "#LogEntryCollection.LogEntryCollection"`
 
 A Collection of LogEntry resource instances.
@@ -3356,7 +3365,7 @@ A Collection of LogEntry resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[LogEntry](ilo6_other_resourcedefns168/#logentry)|
 
@@ -3767,7 +3776,7 @@ This resource contains properties for monitoring and configuring an event log se
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Entries`|Collection of [LogEntry](ilo6_other_resourcedefns168/#logentrycollection)|
 
@@ -3853,6 +3862,7 @@ Member of [LogService.v1\_1\_0.LogService](#logservice)
 There are no parameters for this action.
 
 ## LogServiceCollection
+
 `@odata.type: "#LogServiceCollection.LogServiceCollection"`
 
 A Collection of LogService resource instances.
@@ -3866,7 +3876,7 @@ A Collection of LogService resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[LogService](ilo6_other_resourcedefns168/#logservice)|
 
@@ -3912,7 +3922,7 @@ The Memory resource describes a memory module.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`memorymetrics`|[MemoryMetrics](ilo6_other_resourcedefns168/#memorymetrics)|
 
@@ -4981,6 +4991,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 
 ## MemoryChunksCollection
+
 `@odata.type: "#MemoryChunksCollection.MemoryChunksCollection"`
 
 A Collection of MemoryChunks resource instances.
@@ -4993,7 +5004,7 @@ A Collection of MemoryChunks resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MemoryChunks](ilo6_other_resourcedefns168/#memorychunks)|
 
@@ -5026,6 +5037,7 @@ Member of MemoryChunksCollection.MemoryChunksCollection
 
 
 ## MemoryCollection
+
 `@odata.type: "#MemoryCollection.MemoryCollection"`
 
 A Collection of Memory resource instances.
@@ -5038,7 +5050,7 @@ A Collection of Memory resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Memory](ilo6_other_resourcedefns168/#memory)|
 
@@ -5322,6 +5334,7 @@ MemoryChunks is a link (`"@odata.id": URI`) to another resource.
 
 
 ## MemoryDomainCollection
+
 `@odata.type: "#MemoryDomainCollection.MemoryDomainCollection"`
 
 A Collection of MemoryDomain resource instances.
@@ -5334,7 +5347,7 @@ A Collection of MemoryDomain resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MemoryDomain](ilo6_other_resourcedefns168/#memorydomain)|
 
@@ -5468,6 +5481,7 @@ Member of [MessageRegistryFile.v1\_0\_4.MessageRegistryFile](#messageregistryfil
 
 
 ## MessageRegistryFileCollection
+
 `@odata.type: "#MessageRegistryFileCollection.MessageRegistryFileCollection"`
 
 A Collection of MessageRegistryFile resource instances.
@@ -5480,7 +5494,7 @@ A Collection of MessageRegistryFile resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MessageRegistryFile](ilo6_other_resourcedefns168/#messageregistryfile)|
 
@@ -5686,6 +5700,7 @@ Member of [MetricDefinition.v1\_0\_0.MetricDefinition](#metricdefinition)
 
 
 ## MetricDefinitionCollection
+
 `@odata.type: "#MetricDefinitionCollection.MetricDefinitionCollection"`
 
 A Collection of MetricDefinition resource instances.
@@ -5698,7 +5713,7 @@ A Collection of MetricDefinition resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MetricDefinition](ilo6_other_resourcedefns168/#metricdefinition)|
 
@@ -5790,6 +5805,7 @@ Member of [MetricReport.v1\_0\_0.MetricReport](#metricreport)
 
 
 ## MetricReportCollection
+
 `@odata.type: "#MetricReportCollection.MetricReportCollection"`
 
 A Collection of MetricReport resource instances.
@@ -5802,7 +5818,7 @@ A Collection of MetricReport resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MetricReport](ilo6_other_resourcedefns168/#metricreport)|
 
@@ -6006,6 +6022,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 
 ## MetricReportDefinitionCollection
+
 `@odata.type: "#MetricReportDefinitionCollection.MetricReportDefinitionCollection"`
 
 A Collection of MetricReportDefinition resource instances.
@@ -6018,7 +6035,7 @@ A Collection of MetricReportDefinition resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[MetricReportDefinition](ilo6_other_resourcedefns168/#metricreportdefinition)|
 
@@ -6064,7 +6081,7 @@ This is the schema definition for the PCIeDevice resource.  It represents the pr
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`PCIeFunctions`|[PCIeFunction](ilo6_other_resourcedefns168/#pciefunction)|
 
@@ -6264,6 +6281,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 
 ## PCIeDeviceCollection
+
 `@odata.type: "#PCIeDeviceCollection.PCIeDeviceCollection"`
 
 The collection of PCIeDevice Resource instances.
@@ -6276,7 +6294,7 @@ The collection of PCIeDevice Resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[PCIeDevice](ilo6_other_resourcedefns168/#pciedevice)|
 
@@ -6461,6 +6479,7 @@ Member of [PCIeFunction.v1\_2\_3.PCIeFunction](#pciefunction)
 
 
 ## PCIeFunctionCollection
+
 `@odata.type: "#PCIeFunctionCollection.PCIeFunctionCollection"`
 
 The collection of PCIeFunction Resource instances.
@@ -6473,7 +6492,7 @@ The collection of PCIeFunction Resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[PCIeFunction](ilo6_other_resourcedefns168/#pciefunction)|
 
@@ -6764,7 +6783,7 @@ The Data Source is either DCi or RDE. HPE OEM section shall be present only for 
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`settings`|[Port](ilo6_other_resourcedefns168/#port)|
 |`portmetrics`|[PortMetrics](ilo6_other_resourcedefns168/#portmetrics)|
@@ -9014,6 +9033,7 @@ Reset Port
 |Nmi|Generate a diagnostic interrupt, which is usually an NMI on x86 systems, to stop normal operations, complete diagnostic actions, and, typically, halt the system.|
 
 ## PortCollection
+
 `@odata.type: "#PortCollection.PortCollection"`
 
 A Collection of Port resource instances.
@@ -9032,7 +9052,7 @@ A Collection of Port resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Port](ilo6_other_resourcedefns168/#port)|
 
@@ -9103,7 +9123,7 @@ The Power resource describes the Power Metrics.  It represents the properties fo
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/FederatedGroupCapping`|[HpeiLOFederatedGroupCapping](ilo6_hpe_resourcedefns168/#hpeilofederatedgroupcapping)|
 |`Oem/Hpe/Links/PowerMeter`|[HpePowerMeter](ilo6_hpe_resourcedefns168/#hpepowermeter)|
@@ -10472,7 +10492,7 @@ The Processor resource describes the Processor resource.  It represents the prop
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`environmentmetrics`|[EnvironmentMetrics](ilo6_other_resourcedefns168/#environmentmetrics)|
 |`processormetrics`|[ProcessorMetrics](ilo6_other_resourcedefns168/#processormetrics)|
@@ -11119,6 +11139,7 @@ Member of [Processor.v1\_8\_2.Processor](#processor)
 
 
 ## ProcessorCollection
+
 `@odata.type: "#ProcessorCollection.ProcessorCollection"`
 
 A Collection of Processor resource instances.
@@ -11131,7 +11152,7 @@ A Collection of Processor resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Processor](ilo6_other_resourcedefns168/#processor)|
 
@@ -11290,7 +11311,7 @@ The Pump schema describes a pump unit for a cooling system or similar device.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Assembly`|[Assembly](ilo6_other_resourcedefns168/#assembly)|
 
@@ -11375,6 +11396,7 @@ See the Redfish standard schema and specification for information on common Stat
 
 
 ## PumpCollection
+
 `@odata.type: "#PumpCollection.PumpCollection"`
 
 The collection of Pump resource instances.
@@ -11387,7 +11409,7 @@ The collection of Pump resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Pump](ilo6_other_resourcedefns168/#pump)|
 
@@ -11529,6 +11551,7 @@ Member of [Role.v1\_2\_1.Role](#role)
 
 
 ## RoleCollection
+
 `@odata.type: "#RoleCollection.RoleCollection"`
 
 A Collection of Role resource instances.
@@ -11541,7 +11564,7 @@ A Collection of Role resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Role](ilo6_other_resourcedefns168/#role)|
 
@@ -11587,7 +11610,7 @@ This resource contains UEFI Secure Boot information. It represents properties fo
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`securebootdatabases`|Collection of [SecureBootDatabase](ilo6_other_resourcedefns168/#securebootdatabasecollection)|
 
@@ -11690,7 +11713,7 @@ The SecureBootDatabase schema describes a UEFI Secure Boot database used to stor
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Certificates`|Collection of [Certificate](ilo6_other_resourcedefns168/#certificatecollection)|
 |`Signatures`|Collection of [Signature](ilo6_other_resourcedefns168/#signaturecollection)|
@@ -11736,6 +11759,7 @@ This parameter specifies what type of reset action to perform.
 |DeleteAllKeys|Delete all Secure Boot Database keys on next boot.|
 
 ## SecureBootDatabaseCollection
+
 `@odata.type: "#SecureBootDatabaseCollection.SecureBootDatabaseCollection"`
 
 The collection of SecureBootDatabase resource instances.
@@ -11748,7 +11772,7 @@ The collection of SecureBootDatabase resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[SecureBootDatabase](ilo6_other_resourcedefns168/#securebootdatabase)|
 
@@ -12139,6 +12163,7 @@ Member of [Sensor.v1\_10\_0.Sensor](#sensor)
 
 
 ## SensorCollection
+
 `@odata.type: "#SensorCollection.SensorCollection"`
 
 The collection of Sensor resource instances.
@@ -12151,7 +12176,7 @@ The collection of Sensor resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Sensor](ilo6_other_resourcedefns168/#sensor)|
 
@@ -12229,6 +12254,7 @@ Member of [SerialInterface.v1\_1\_7.SerialInterface](#serialinterface)
 
 
 ## SerialInterfaceCollection
+
 `@odata.type: "#SerialInterfaceCollection.SerialInterfaceCollection"`
 
 A Collection of SerialInterface resource instances.
@@ -12241,7 +12267,7 @@ A Collection of SerialInterface resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[SerialInterface](ilo6_other_resourcedefns168/#serialinterface)|
 
@@ -12535,6 +12561,7 @@ Member of [Session.v1\_0\_0.Session](#session)
 
 
 ## SessionCollection
+
 `@odata.type: "#SessionCollection.SessionCollection"`
 
 A Collection of Session resource instances.
@@ -12547,7 +12574,7 @@ A Collection of Session resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/MySession`|[Session](ilo6_other_resourcedefns168/#session)|
 |`Members[]`|[Session](ilo6_other_resourcedefns168/#session)|
@@ -12594,7 +12621,7 @@ The SessionService resource describes the BMC Redfish Session Service.  It repre
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Sessions`|Collection of [Session](ilo6_other_resourcedefns168/#sessioncollection)|
 
@@ -12701,6 +12728,7 @@ Member of [Signature.v1\_0\_2.Signature](#signature)
 
 
 ## SignatureCollection
+
 `@odata.type: "#SignatureCollection.SignatureCollection"`
 
 The collection of Signature resource instances.
@@ -12720,7 +12748,7 @@ The collection of Signature resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Signature](ilo6_other_resourcedefns168/#signature)|
 
@@ -12914,6 +12942,7 @@ Member of [SoftwareInventory.v1\_2\_0.SoftwareInventory](#softwareinventory)
 
 
 ## SoftwareInventoryCollection
+
 `@odata.type: "#SoftwareInventoryCollection.SoftwareInventoryCollection"`
 
 A Collection of SoftwareInventory resource instances.
@@ -12927,7 +12956,7 @@ A Collection of SoftwareInventory resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[SoftwareInventory](ilo6_other_resourcedefns168/#softwareinventory)|
 
@@ -12973,7 +13002,7 @@ The Switch schema contains properties that describe a fabric switch.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`ports`|Collection of [Port](ilo6_other_resourcedefns168/#portcollection)|
 
@@ -13108,6 +13137,7 @@ Member of [Switch.v1\_9\_1.Switch](#switch)
 
 
 ## SwitchCollection
+
 `@odata.type: "#SwitchCollection.SwitchCollection"`
 
 A Collection of Switch Resource instances.
@@ -13120,7 +13150,7 @@ A Collection of Switch Resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
 
@@ -13377,6 +13407,7 @@ The following are the supported values:
 
 
 ## TaskCollection
+
 `@odata.type: "#TaskCollection.TaskCollection"`
 
 A Collection of Task resource instances.
@@ -13389,7 +13420,7 @@ A Collection of Task resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Task](ilo6_other_resourcedefns168/#task)|
 
@@ -13435,7 +13466,7 @@ The TaskService resource describes the Task service. It represents the propertie
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Tasks`|Collection of [Task](ilo6_other_resourcedefns168/#taskcollection)|
 
@@ -13521,7 +13552,7 @@ Telemetry Service is supported only on Intel platform. On AMD systems, performin
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`MetricReports`|Collection of [MetricReport](ilo6_other_resourcedefns168/#metricreportcollection)|
 |`MetricReportDefinitions`|Collection of [MetricDefinition](ilo6_other_resourcedefns168/#metricdefinitioncollection)|
@@ -14335,7 +14366,7 @@ This ThermalSubsystem schema contains the definition for the thermal subsystem o
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Fans`|Collection of [Fan](ilo6_other_resourcedefns168/#fancollection)|
 
@@ -14641,6 +14672,7 @@ The following are the supported values:
 
 
 ## TriggersCollection
+
 `@odata.type: "#TriggersCollection.TriggersCollection"`
 
 A Collection of Triggers resource instances.
@@ -14653,7 +14685,7 @@ A Collection of Triggers resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Triggers](ilo6_other_resourcedefns168/#triggers)|
 
@@ -14699,7 +14731,7 @@ The UpdateService resource describes the Update Service. It represents the prope
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/InstallSets`|Collection of [HpeComponentInstallSet](ilo6_hpe_resourcedefns168/#hpecomponentinstallsetcollection)|
 |`Oem/Hpe/ComponentRepository`|Collection of [HpeComponent](ilo6_hpe_resourcedefns168/#hpecomponentcollection)|
@@ -15320,6 +15352,7 @@ A text description of the reason for this action invocation.
 A RSA2048 SHA-256 signature validating the provided Intent (Base64 encoded).
 
 ## VirtualMediaCollection
+
 `@odata.type: "#VirtualMediaCollection.VirtualMediaCollection"`
 
 A Collection of VirtualMedia resource instances.
@@ -15332,7 +15365,7 @@ A Collection of VirtualMedia resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[VirtualMedia](ilo6_other_resourcedefns168/#virtualmedia)|
 

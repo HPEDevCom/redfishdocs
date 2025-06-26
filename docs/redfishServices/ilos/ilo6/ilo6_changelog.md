@@ -57,7 +57,7 @@ read the _Redfish versioning_ paragraph of this
     Added `DNSOverRA` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_network_resourcedefns168/#ethernetinterface).
 - `EnvironmentMetrics.v1_3_2.EnvironmentMetrics`:
     Added `PowerWatts` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#powerwatts).
-- `EventDestination.v1_13_0.EventDestination` updated to [version v1\_14\_0](/docs/redfishservices/ilos/ilo6/ilo6_168/       ilo6_other_resourcedefns168/#subscriptiontype).
+- `EventDestination.v1_13_0.EventDestination` updated to [version v1\_14\_0](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#subscriptiontype).
     Added the following properties: `SyslogTLS`, `SyslogUDP`.
     For more information, see [Syslog subscription](/docs/redfishservices/ilos/supplementdocuments/iloeventservices/#syslog-subscription).
 - `HpeEventService.v2_2_0.HpeEventService`:

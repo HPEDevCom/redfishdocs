@@ -13,12 +13,12 @@ breadcrumbs:
 
 # Manager resource definitions of iLO 6 v1.68
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service,find below its description including the list of possible instances (URIs),links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ManagerCollection
+
 `@odata.type: "#ManagerCollection.ManagerCollection"`
 
 A Collection of Manager resource instances.
@@ -31,7 +31,7 @@ A Collection of Manager resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Manager](ilo6_manager_resourcedefns168/#manager)|
 
@@ -93,7 +93,7 @@ iLO `GracefulRestart` works in the same way as `ForceRestart`.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`SharedNetworkPorts`|Collection of [Port](ilo6_other_resourcedefns168/#portcollection)|
 |`DedicatedNetworkPorts`|Collection of [Port](ilo6_other_resourcedefns168/#portcollection)|
@@ -1942,6 +1942,7 @@ Days remaining for Air Filter change Early warning.
 
 Days remaining for Air Filter change Critical warning.
 ## ManagerAccountCollection
+
 `@odata.type: "#ManagerAccountCollection.ManagerAccountCollection"`
 
 A Collection of ManagerAccount resource instances.
@@ -1954,7 +1955,7 @@ A Collection of ManagerAccount resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ManagerAccount](ilo6_manager_resourcedefns168/#manageraccount)|
 
@@ -1999,7 +2000,7 @@ The user accounts, owned by a Manager, are defined in this resource.  Changes to
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Keys`|Collection of [Key](ilo6_other_resourcedefns168/#keycollection)|
 
@@ -2276,7 +2277,7 @@ iLO reset is required after the PATCH for the change to come into effect.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](ilo6_hpe_resourcedefns168/#hpeilosnmpservice)|
 |`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo6_network_resourcedefns168/#ethernetinterfacecollection)|
