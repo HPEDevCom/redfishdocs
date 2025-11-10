@@ -77,3 +77,166 @@
       page: ilo5_307/ilo5_msgregs307.md
         #- label: OpenAPI reference documentation
         #  page: openapi/ilo5_307/ilo5307-openapi.yaml  
+- group: iLO 5 v3.06 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents overview
+      page: ilo5_306/index.md
+    - label: Resource map
+      page: ilo5_306/ilo5_resmap306.md        
+    - group: Resource definitions
+      expanded: false
+      items:
+            - label: ServiceRoot
+              page: ilo5_306/ilo5_serviceroot_resourcedefns306.md
+            - label: Bios
+              page: ilo5_306/ilo5_bios_resourcedefns306.md
+            - label: Manager
+              page: ilo5_306/ilo5_manager_resourcedefns306.md
+            - label: ComputerSystem
+              page: ilo5_306/ilo5_computersystem_resourcedefns306.md
+            - label: Chassis
+              page: ilo5_306/ilo5_chassis_resourcedefns306.md
+            - label: Network
+              page: ilo5_306/ilo5_network_resourcedefns306.md
+            - label: Storage
+              page: ilo5_306/ilo5_storage_resourcedefns306.md
+            - label: HPE Oem extensions
+              page: ilo5_306/ilo5_hpe_resourcedefns306.md
+            - label: Other resource definitions 
+              page: ilo5_306/ilo5_other_resourcedefns306.md        
+    - label: Error messages
+      page: ilo5_306/ilo5_msgregs306.md
+        #- label: OpenAPI reference documentation
+        #  page: openapi/ilo5_306/ilo5307-openapi.yaml  
+- group: iLO 5 v3.04 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents overview
+      page: ilo5_304/index.md
+    - label: Resource map
+      page: ilo5_304/ilo5_resmap304.md        
+    - group: Resource definitions
+      expanded: false
+      items:
+            - label: ServiceRoot
+              page: ilo5_304/ilo5_serviceroot_resourcedefns304.md
+            - label: Bios
+              page: ilo5_304/ilo5_bios_resourcedefns304.md
+            - label: Manager
+              page: ilo5_304/ilo5_manager_resourcedefns304.md
+            - label: ComputerSystem
+              page: ilo5_304/ilo5_computersystem_resourcedefns304.md
+            - label: Chassis
+              page: ilo5_304/ilo5_chassis_resourcedefns304.md
+            - label: Network
+              page: ilo5_304/ilo5_network_resourcedefns304.md
+            - label: Storage
+              page: ilo5_304/ilo5_storage_resourcedefns304.md
+            - label: HPE Oem extensions
+              page: ilo5_304/ilo5_hpe_resourcedefns304.md
+            - label: Other resource definitions 
+              page: ilo5_304/ilo5_other_resourcedefns304.md        
+    - label: Error messages
+      page: ilo5_304/ilo5_msgregs304.md
+        #- label: OpenAPI reference documentation
+        #  page: openapi/ilo5_302/ilo5307-openapi.yaml  
+- group: iLO 5 v3.03 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents overview
+      page: ilo5_303/index.md
+    - label: Resource map
+      page: ilo5_303/ilo5_resmap303.md        
+    - group: Resource definitions
+      expanded: false
+      items:
+            - label: ServiceRoot
+              page: ilo5_303/ilo5_serviceroot_resourcedefns303.md
+            - label: Bios
+              page: ilo5_303/ilo5_bios_resourcedefns303.md
+            - label: Manager
+              page: ilo5_303/ilo5_manager_resourcedefns303.md
+            - label: ComputerSystem
+              page: ilo5_303/ilo5_computersystem_resourcedefns303.md
+            - label: Chassis
+              page: ilo5_303/ilo5_chassis_resourcedefns303.md
+            - label: Network
+              page: ilo5_303/ilo5_network_resourcedefns303.md
+            - label: Storage
+              page: ilo5_303/ilo5_storage_resourcedefns303.md
+            - label: HPE Oem extensions
+              page: ilo5_303/ilo5_hpe_resourcedefns303.md
+            - label: Other resource definitions 
+              page: ilo5_303/ilo5_other_resourcedefns303.md        
+    - label: Error messages
+      page: ilo5_303/ilo5_msgregs303.md
+        #- label: OpenAPI reference documentation
+        #  page: openapi/ilo5_302/ilo5307-openapi.yaml  
+- group: iLO 5 v3.02 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents Overview
+      page: ilo5_302/index.md
+    - label: Resource map
+      page: ilo5_302/ilo5_resmap302.md
+    - group: Resource definitions
+      expanded: false
+      items:
+        - label: ServiceRoot
+          page: ilo5_302/ilo5_serviceroot_resourcedefns302.md
+        - label: Bios
+          page: ilo5_302/ilo5_bios_resourcedefns302.md
+        - label: Manager
+          page: ilo5_302/ilo5_manager_resourcedefns302.md
+        - label: ComputerSystem
+          page: ilo5_302/ilo5_computersystem_resourcedefns302.md
+        - label: Chassis
+          page: ilo5_302/ilo5_chassis_resourcedefns302.md
+        - label: Network
+          page: ilo5_302/ilo5_network_resourcedefns302.md
+        - label: Storage
+          page: ilo5_302/ilo5_storage_resourcedefns302.md
+        - label: HPE Oem extensions
+          page: ilo5_302/ilo5_hpe_resourcedefns302.md
+        - label: Other resource definitions
+          page: ilo5_302/ilo5_other_resourcedefns302.md
+        #- label: Event definitions
+        #  page: docs/ilos/ilo5302/ilo5_events302.md
+    - label: Error messages
+      page: ilo5_302/ilo5_msgregs302.md
+
+#AppendAbove
+
+- group: iLO 5 v2.73 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents overview
+      page: ilo5_273/index.md
+    - label: Resource map
+      page: ilo5_273/ilo5_resmap273.md        
+    - group: Resource definitions
+      expanded: false
+      items:
+            - label: ServiceRoot
+              page: ilo5_273/ilo5_serviceroot_resourcedefns273.md
+            - label: Bios
+              page: ilo5_273/ilo5_bios_resourcedefns273.md
+            - label: Manager
+              page: ilo5_273/ilo5_manager_resourcedefns273.md
+            - label: ComputerSystem
+              page: ilo5_273/ilo5_computersystem_resourcedefns273.md
+            - label: Chassis
+              page: ilo5_273/ilo5_chassis_resourcedefns273.md
+            - label: Network
+              page: ilo5_273/ilo5_network_resourcedefns273.md
+            - label: Storage
+              page: ilo5_273/ilo5_storage_resourcedefns273.md
+            - label: HPE Oem extensions
+              page: ilo5_273/ilo5_hpe_resourcedefns273.md
+            - label: Other resource definitions 
+              page: ilo5_273/ilo5_other_resourcedefns273.md        
+    - label: Error messages
+      page: ilo5_273/ilo5_msgregs273.md
+        #- label: OpenAPI reference documentation
+        #  page: openapi/ilo5_302/ilo5307-openapi.yaml  

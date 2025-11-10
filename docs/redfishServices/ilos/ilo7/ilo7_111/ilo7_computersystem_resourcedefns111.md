@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Computersystem resource definitions
 markdown:
@@ -13,12 +14,12 @@ breadcrumbs:
 
 # Computersystem resource definitions of iLO 7 v1.11
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ComputerSystemCollection
+
 `@odata.type: "#ComputerSystemCollection.ComputerSystemCollection"`
 
 A Collection of ComputerSystem resource instances.
@@ -31,7 +32,7 @@ A Collection of ComputerSystem resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ComputerSystem](ilo7_computersystem_resourcedefns111/#computersystem)|
 
@@ -76,7 +77,7 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`EthernetInterfaces`|Collection of [EthernetInterface](ilo7_network_resourcedefns111/#ethernetinterfacecollection)|
 |`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice)|
@@ -2116,11 +2117,9 @@ Member of [ComputerSystem.v1\_18\_0.ComputerSystem](#computersystem)
 
 ### Actions
 
-
 **ComputerSystem.Reset**
 Member of [ComputerSystem.v1\_18\_0.ComputerSystem](#computersystem)
 This action resets the system.
-
 
 **Parameters:**
 

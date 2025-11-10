@@ -22,6 +22,26 @@ For a better understanding of the conformance to the DMTF Redfish,
 read the _Redfish versioning_ paragraph of this
 <a href="https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/" target="_blank">article</a>.
 
+This changelog file describes the iLO 5 new feature and changes
+since firmware version 1.40.
+
+{% admonition type="info"  name="Note"  %}
+Only a few firmware versions are fully documented in this portal.
+{% /admonition %}
+
+{% admonition type="success" name="Tip" %}
+HPE iLO 5
+[version 2.73](/docs/redfishservices/ilos/ilo5/ilo5_273)
+is officially certified by the Common Criteria Certification program.
+The report of this certification is
+<a href="https://commoncriteriaportal.org/nfs/ccpfiles/files/epfiles/641-LSS%20CR%20v1.0.pdf" target="_blank">publicly available</a>
+on the Common Criteria Portal.
+{% /admonition %}
+
+## iLO 5 3.14 new features and changes
+
+- No features are introduced or modified in this release.
+
 ## iLO 5 3.13 new features and changes
 
 - No features are introduced or modified in this release.
@@ -263,11 +283,14 @@ Their corresponding `{@nicId}` is represented:
 
 ### HTTP Methods - Additions and Deprecations
 
-- Deprecated PATCH,DELETE for `redfish/v1/Fabrics/{@fabricId}`
+- Deprecated PATCH and DELETE for the `redfish/v1/Fabrics/{@fabricId}`
+  schema.
 
-- Deprecated PATCH,DELETE for `redfish/v1/Fabrics/{@fabricId}/Switches/{@switchId}`
+- Deprecated PATCH and DELETE for `redfish/v1/Fabrics/{@fabricId}/Switches/{@switchId}`
+  schema.
 
-- Deprecated PATCH,DELETE for `redfish/v1/Fabrics/{@fabricId}/Switches/{@switchId}/Ports/{@PortId}`
+- Deprecated PATCH and DELETE for `redfish/v1/Fabrics/{@fabricId}/Switches/{@switchId}/Ports/{@PortId}`
+  schema.
 
 ### Deprecated URIs
 
@@ -312,6 +335,7 @@ The following new URIs are subjective to Storage Enclosures being present on the
 - `redfish/v1/Chassis/{@ChassisId}`
 
 {% admonition type="info" name="NOTE" %}
+
 - `@ChassisId` can be of the format `DE******` or a number ranging from 2-10 depending on if the Enclosure supports Redfish-Device-Enablement or Direct Attached respectively.
 - `Chassis/1` represents RackMount chassis.
 
@@ -614,6 +638,18 @@ Added `Oem.Hpe.ChassisACPowerWatts` : The total AC input power consumed by the c
 - `#SoftwareInventory.v1_2_0.SoftwareInventory`
   - Added `Oem.Hpe.Version`: NVIDIA CEC Firmware version
 
+## iLO 5 2.73 new features and changes
+
+{% admonition type="info" name="Note" %}
+This iLO 5 firmware version is identical to
+the previous version (2.72), but has received
+the Common Criteria Certification.
+
+The report of this certification is
+<a href="https://commoncriteriaportal.org/nfs/ccpfiles/files/epfiles/641-LSS%20CR%20v1.0.pdf" target="_blank">publicly available</a>
+on the Common Criteria Portal.
+{% /admonition %}
+
 ## iLO 5 2.72 new features and changes
 
 ### New URIs
@@ -637,7 +673,7 @@ iLO 5 v2.72 supports enabling and disabling of HTTP and HTTPS ports separately u
 
 No URIs deprecated for this release.
 
-{% admonition type="info" name="NOTE" %}
+{% admonition type="info" name="Note" %}
  From iLO 5 2.72 release, HPE `Insight Online direct connect` is deprecated. HPE supports only `Insight Remote Support central connect`. If you are using HPE `Insight Online direct connect`, HPE recommends to unregister `Insight Online direct connect` and register with `Insight Remote Support central connect`. For more information, refer to the `HPE embedded remote support section` of the <a href="https://www.hpe.com/support/ilo5-ug-en" target="_blank">HPE iLO 5 2.72 User Guide</a>.
 {% /admonition %}
 
@@ -748,10 +784,10 @@ No changes have been made to supported Redfish Actions for this release.
   - From iLO 5 v2.72, the `Links` to the `PCIDevices` is an array and no longer
     an object.
 
-  {% tabs %}
-  {% tab label="Before iLO 5 v2" %}
+{% tabs %}
+{% tab label="Before iLO 5 v2" %}
 
-  ```json Before iLO 5 v2.72
+```json Before iLO 5 v2.72
     "Oem": {
             "Hpe": {
               "Links": {
@@ -763,10 +799,10 @@ No changes have been made to supported Redfish Actions for this release.
           },
   ```
   
-  {% /tab %}
-  {% tab label="From iLO 5 v2" %}
+{% /tab %}
+{% tab label="From iLO 5 v2" %}
 
-  ```json From iLO 5 v2.72 onwards
+```json From iLO 5 v2.72 onwards
       "Oem": {
               "Hpe": {
                 "Links": {
@@ -780,8 +816,9 @@ No changes have been made to supported Redfish Actions for this release.
       }, 
   ```
 
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### RDE support changes
 
 Added Redfish Device Enablement

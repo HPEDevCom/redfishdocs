@@ -27,34 +27,34 @@ can enroll certificates/signatures under each secure boot database.
 
 Following databases are defined by UEFI:
 
-* Platform Key (PK): The platform key establishes a trust relationship
+- Platform Key (PK): The platform key establishes a trust relationship
     between the platform owner and the platform firmware.
 
-* Key Exchange Key (KEK): Key exchange keys establish a trust relationship
+- Key Exchange Key (KEK): Key exchange keys establish a trust relationship
     between the operating system and the platform firmware. Protects the
     signature database from unauthorized modifications. No changes can be
     made to the signature database without the private portion of this key.
 
-* Authorized Signature Database (db): Maintains a secure boot allowed
+- Authorized Signature Database (db): Maintains a secure boot allowed
     signature database of signatures that are authorized to run
     on the platform.
 
-* Forbidden Signature Database (dbx): Maintains a secure boot blacklist
+- Forbidden Signature Database (dbx): Maintains a secure boot blacklist
     signature database of signatures that are not authorized
     to run on the platform.
 
-* Timestamp Signature Database (dbt): Maintains signatures of
+- Timestamp Signature Database (dbt): Maintains signatures of
     codes in the timestamp signatures database.
 
 Each of these databases have default secure boot databases
 associated which are `read-only`:
 
-* `PKDefault`: Default Platform Key
-* `KEKDefault`: Default Key Exchange Key Database
-* `dbDefault`: Default Authorized Signature Database
-* `dbxDefault`: Default Forbidden Signature Database
-* `dbtDefault`: Default Authorized Timestamp Signature Database
-* `dbrDefault`: Default Authorized Recovery Signature Database
+- `PKDefault`: Default Platform Key
+- `KEKDefault`: Default Key Exchange Key Database
+- `dbDefault`: Default Authorized Signature Database
+- `dbxDefault`: Default Forbidden Signature Database
+- `dbtDefault`: Default Authorized Timestamp Signature Database
+- `dbrDefault`: Default Authorized Recovery Signature Database
 
 Defaults contain OEM's or platform defined default keys
 (certificates/signatures). Defaults are not used at runtime but is provided
@@ -65,38 +65,52 @@ User can view certificates and signatures present in UEFI Secure Boot
 databases. And user is allowed to add or one or more certificate/signature
 to non-default UEFI Secure Boot databases.
 
-| Database Name | Description | Notes
+The following table contains generic information from DMTF, and published in the
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP2059_1.1.0.pdf" target="_blank">DSP2059 1.1.0 document</a>. Refer to the
+[Managing HPE BIOS resources](/docs/redfishservices/ilos/supplementdocuments/biosdoc/#synchronize-data-with-hpe-ilo-and-bios)
+section for the HPE iLO implementation.
+
+| Database Name | Description | Notes |
 |:---|:---|:---|
 | PK | Platform Key | Must contain a max of 1 certificate, and no signatures. When no certificate is enrolled, SecureBoot cannot be enabled.|
-| KEK | Key Exchange Key Database |	Can contain any number of Certificates (no signatures) |
-| Db | Authorized Signature Database | Can contain any number of Certificates and/or signatures |
-| Dbx | Forbidden Signature Database | Can contain any number of Certificates and/or signatures |
-| Dbt | Authorized Timestamp Signature Database | Can contain any number of Certificates and/or signatures |
-| Dbr | Authorized Recovery Signature Database | Can contain any number of Certificates and/or signatures |
+| KEK | Key Exchange Key Database | Can contain any number of certificates (no signatures)  |
+| Db | Authorized Signature Database | Can contain any number of certificates and/or signatures |
+| Dbx | Forbidden Signature Database | Can contain any number of certificates and/or signatures |
+| Dbt | Authorized Timestamp Signature Database | Can contain any number of certificates and/or signatures |
+| Dbr | Authorized Recovery Signature Database | Can contain any number of certificates and/or signatures |
 | PKDefault | Default Platform Key | Read Only. Must contain a max of 1 certificate, and no signatures |
-| KEKDefault | Default Key Exchange Key Database | Read Only. Can contain any number of Certificates (no signatures) |
-| dbDefault | Default Authorized Signature Database | Read Only. Can contain any number of Certificates and/or signatures |
-| dbxDefault | Default Forbidden Signature Database | Read Only. Can contain any number of Certificates and/or signatures |
-| dbtDefault | Default Authorized Timestamp Signature Database | Read Only. Can contain any number of Certificates and/or signatures |
-| dbrDefault | Default Authorized Recovery Signature Database | Read Only. Can contain any number of Certificates and/or signatures |
+| KEKDefault | Default Key Exchange Key Database | Read Only. Can contain any number of certificates (no signatures) |
+| dbDefault | Default Authorized Signature Database | Read Only. Can contain any number of certificates and/or signatures |
+| dbxDefault | Default Forbidden Signature Database | Read Only. Can contain any number of certificates and/or signatures |
+| dbtDefault | Default Authorized Timestamp Signature Database | Read Only. Can contain any number of certificates and/or signatures |
+| dbrDefault | Default Authorized Recovery Signature Database | Read Only. Can contain any number of certificates and/or signatures |
 
-For information related to Secure Databases in HPE iLO, see
-[Managing HPE BIOS resources](/docs/redfishservices/ilos/supplementdocuments/biosdoc/)
+## Accessing Secure Boot databases from Redfish
 
-## Accessing Secure Boot Databases from Redfish
+{% admonition type="success" name="Tip" %}
+
+The Secure Boot databases contains certificates. Several other Redfish subsystems use certificates to secure their use.
+Refer to the following documentation sections for their management:
+
+- [iLO TLS certificates](/docs/redfishservices/ilos/supplementdocuments/securityservice#ilo-tls-certificates)
+- [Server management identities](/docs/redfishservices/ilos/supplementdocuments/securityservice#server-management-identities)
+- [Directory administration](/docs/redfishservices/ilos/supplementdocuments/managingusers#directory-administration)
+- [UEFI/BIOS TLS subsystem](/docs/redfishservices/ilos/supplementdocuments/biostlsconf#installing-certificates-in-the-hpe-tls-boot-subsystem)
+
+{% /admonition %}
 
 To access Secure Boot database resource from Redfish, perform a `GET` of the
 `SecureBootDatabaseCollection` URI. This resource includes links to the members
 of the collection, default & non-default as shown in the following example.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/Systems/{item}/SecureBoot/SecureBootDatabases/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -148,23 +162,24 @@ GET /redfish/v1/Systems/{item}/SecureBoot/SecureBootDatabases/
     "Members@odata.count": 12
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 Individual databases can be accessed using `GET` of their respective URIs.
 A `GET` on
 `/redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId}`
 lists the certificates and signatures present under the respective
 database as shown in the next example:
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/dbDefault/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -185,9 +200,10 @@ GET /redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/dbDefault/
         },
 
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 Individual certificates and signatures can be accessed by performing `GET`
 respectively of
 `/redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId}/Certificates/{@CertificateId}`
@@ -207,14 +223,14 @@ Refer to this
 to convert a CRLF terminated file into a string.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic POST request" %}
 
 ```text Generic POST request
 POST /redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId}/Certificates/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Example" %}
 
 ```json Example
@@ -223,9 +239,10 @@ POST /redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId
 "CertificateType": "PEM"
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 To REMOVE a certificate/signature in the non-default database,
 perform `DELETE` on the particular member from
 Certificate/Signature collection URI –

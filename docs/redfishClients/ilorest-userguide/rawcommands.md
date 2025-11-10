@@ -118,6 +118,7 @@ The account was removed successfully.
   
   {% /tab %}
   {% /tabs %}
+
 ## RawGet Command
 
 ### Syntax
@@ -141,11 +142,16 @@ Including the help flag will display help for the command.
 
 - **--response**
 
-Use this flag to return the iLO response body.
+Use this flag to return the iLO response body. By default, the body
+is returned on STDOUT. Use the `--stderr_flag` to get it on STDERR.
 
 - **--getheaders**
 
 Use this flag to return the iLO response headers.
+
+- **--stderr_flag**
+
+Use this flag to force the output of `--response` to be printed on STDERR.
 
 - **--headers=HEADERS**
 
@@ -157,6 +163,7 @@ Usage: --headers=HEADER:VALUE,HEADER:VALUE
 
 Use this flag to silence responses by discarding non-JSON formatted output.
 This is helpful when you want to parse the output with a tool like `jq`.
+This flag overrides the effect of `--response`.
 
 - **-f FILENAME, --filename=FILENAME**
 
@@ -542,6 +549,7 @@ ilorest --nologo rawget /redfish/v1/Systems/1/Bios/Serverconfiglock
   
   {% /tab %}
   {% /tabs %}
+
 ## RawHead Command
 
 ### Syntax
@@ -639,6 +647,7 @@ iLOrest > rawhead /redfish/v1/Systems/1/
   
   {% /tab %}
   {% /tabs %}
+
 ## RawPatch Command
 
 ### Syntax
@@ -858,6 +867,7 @@ cat StaticIPv4.json
   
   {% /tab %}
   {% /tabs %}
+
 ## RawPost Command
 
 ### Syntax
@@ -980,6 +990,7 @@ ilorest rawpost rawpost.json
   
   {% /tab %}
   {% /tabs %}
+
 ## RawPut Command
 
 ### Syntax

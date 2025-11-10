@@ -86,8 +86,9 @@ These removals include the following URIs:
 
 ### SerialInterface
 
-The `SerialInterface` schema and associated collection has been
-removed from iLO 7 1.11.00, including the following URI:
+Items in the  `SerialInterface` schema are read-only in iLO 7 1.11.0 and later versions until new notification
+in the iLO 7 [Changelog](/docs/redfishservices/ilos/ilo7/ilo7_changelog);
+As a consequence, affected versions of iLO 7 refuse PATCH requests on the following URIs:
 
 - `/redfish/v1/managers/{@managerid}/SerialInterfaces/{@sinterfaceid}`  
 

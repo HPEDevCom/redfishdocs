@@ -1,15 +1,15 @@
 ---
 excludeFromSearch: true
+seo:
+  title: iLO 5 version 3.07 Resource map
 markdown:
   toc:
     hide: true
-    depth: 3
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: iLO 5 version 3.07 Resource map
 ---
 
 # Resource map of iLO 5 v3.07
@@ -257,7 +257,7 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/UpdateService/UpdateTaskQueue/{item}`|[HpeComponentUpdateTask](ilo5_hpe_resourcedefns307/#hpecomponentupdatetask)|
 |`/redfish/v1/fabrics`|Collection of [Fabric](ilo5_other_resourcedefns307/#fabriccollection)|
 |`/redfish/v1/fabrics/{item}`|[Fabric](ilo5_other_resourcedefns307/#fabric)|
-|`/redfish/v1/fabrics/{item}/switches`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
+|`/redfish/v1/fabrics/{item}/switches`|Collection of [Switch](ilo5_other_resourcedefns307/#switchcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}`|[Switch](ilo5_other_resourcedefns307/#switch)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/Ports`|Collection of [Port](ilo5_other_resourcedefns307/#portcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/Ports/{item}`|[Port](ilo5_other_resourcedefns307/#port)|

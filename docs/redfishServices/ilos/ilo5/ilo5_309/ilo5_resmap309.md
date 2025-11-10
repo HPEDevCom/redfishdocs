@@ -1,14 +1,14 @@
 ---
+seo:
+  title: iLO 5 version 3.09 Resource map
 markdown:
   toc:
     hide: true
-    depth: 3
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: iLO 5 version 3.09 Resource map
 ---
 
 # Resource map of iLO 5 v3.09
@@ -253,7 +253,7 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/UpdateService/UpdateTaskQueue/{item}`|[HpeComponentUpdateTask](ilo5_hpe_resourcedefns309/#hpecomponentupdatetask)|
 |`/redfish/v1/fabrics`|Collection of [Fabric](ilo5_other_resourcedefns309/#fabriccollection)|
 |`/redfish/v1/fabrics/{item}`|[Fabric](ilo5_other_resourcedefns309/#fabric)|
-|`/redfish/v1/fabrics/{item}/switches`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
+|`/redfish/v1/fabrics/{item}/switches`|Collection of [Switch](ilo5_other_resourcedefns309/#switchcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}`|[Switch](ilo5_other_resourcedefns309/#switch)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/Ports`|Collection of [Port](ilo5_other_resourcedefns309/#portcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/Ports/{item}`|[Port](ilo5_other_resourcedefns309/#port)|

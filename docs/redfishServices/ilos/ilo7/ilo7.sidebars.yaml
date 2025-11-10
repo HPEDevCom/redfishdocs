@@ -9,7 +9,70 @@
   page: ilo7_adaptation.md
 - label: Changelog
   page: ilo7_changelog.md
-- group: iLO 7 v1.11 Reference documents
+
+- group: iLO 7 v1.14.00 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents Overview
+      page: ilo7_114/index.md
+    - label: Resource map
+      page: ilo7_114/ilo7_resmap114.md
+    - group: Resource definitions
+      expanded: false
+      items:
+        - label: ServiceRoot
+          page: ilo7_114/ilo7_serviceroot_resourcedefns114.md
+        - label: Bios
+          page: ilo7_114/ilo7_bios_resourcedefns114.md
+        - label: Manager
+          page: ilo7_114/ilo7_manager_resourcedefns114.md
+        - label: ComputerSystem
+          page: ilo7_114/ilo7_computersystem_resourcedefns114.md
+        - label: Chassis
+          page: ilo7_114/ilo7_chassis_resourcedefns114.md
+        - label: Network
+          page: ilo7_114/ilo7_network_resourcedefns114.md
+        - label: Storage
+          page: ilo7_114/ilo7_storage_resourcedefns114.md
+        - label: HPE Oem extensions
+          page: ilo7_114/ilo7_hpe_resourcedefns114.md
+        - label: Other resource definitions 
+          page: ilo7_114/ilo7_other_resourcedefns114.md
+    - label: Error messages
+      page: ilo7_114/ilo7_msgregs114.md
+
+- group: iLO 7 v1.13.00 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents Overview
+      page: ilo7_113/index.md
+    - label: Resource map
+      page: ilo7_113/ilo7_resmap113.md
+    - group: Resource definitions
+      expanded: false
+      items:
+        - label: ServiceRoot
+          page: ilo7_113/ilo7_serviceroot_resourcedefns113.md
+        - label: Bios
+          page: ilo7_113/ilo7_bios_resourcedefns113.md
+        - label: Manager
+          page: ilo7_113/ilo7_manager_resourcedefns113.md
+        - label: ComputerSystem
+          page: ilo7_113/ilo7_computersystem_resourcedefns113.md
+        - label: Chassis
+          page: ilo7_113/ilo7_chassis_resourcedefns113.md
+        - label: Network
+          page: ilo7_113/ilo7_network_resourcedefns113.md
+        - label: Storage
+          page: ilo7_113/ilo7_storage_resourcedefns113.md
+        - label: HPE Oem extensions
+          page: ilo7_113/ilo7_hpe_resourcedefns113.md
+        - label: Other resource definitions 
+          page: ilo7_113/ilo7_other_resourcedefns113.md
+    - label: Error messages
+      page: ilo7_113/ilo7_msgregs113.md
+
+- group: iLO 7 v1.11.00 Reference documents
   expanded: false
   items:
     - label: Reference documents Overview

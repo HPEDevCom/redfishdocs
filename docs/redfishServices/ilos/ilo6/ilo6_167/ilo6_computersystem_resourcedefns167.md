@@ -1,13 +1,15 @@
 ---
 excludeFromSearch: true
+seo:
+  title: Computersystem resource definitions
 markdown:
   toc:
     hide: false
     depth: 2
   lastUpdateBlock:
     hide: false
-seo:
-  title: Computersystem resource definitions
+breadcrumbs:
+  hide: false
 ---
 
 # Computersystem resource definitions of iLO 6 v1.67

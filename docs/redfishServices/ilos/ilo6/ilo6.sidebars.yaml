@@ -9,6 +9,72 @@
   page: ilo6_adaptation.md
 - label: Changelog
   page: ilo6_changelog.md
+
+- group: iLO 6 v1.70 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents Overview
+      page: ilo6_170/index.md
+    - label: Resource map
+      page: ilo6_170/ilo6_resmap170.md
+    - group: Resource definitions
+      expanded: false
+      items:
+        - label: ServiceRoot
+          page: ilo6_170/ilo6_serviceroot_resourcedefns170.md
+        - label: Bios
+          page: ilo6_170/ilo6_bios_resourcedefns170.md
+        - label: Manager
+          page: ilo6_170/ilo6_manager_resourcedefns170.md
+        - label: ComputerSystem
+          page: ilo6_170/ilo6_computersystem_resourcedefns170.md
+        - label: Chassis
+          page: ilo6_170/ilo6_chassis_resourcedefns170.md
+        - label: Network
+          page: ilo6_170/ilo6_network_resourcedefns170.md
+        - label: Storage
+          page: ilo6_170/ilo6_storage_resourcedefns170.md
+        - label: HPE Oem extensions
+          page: ilo6_170/ilo6_hpe_resourcedefns170.md
+        - label: Other resource definitions 
+          page: ilo6_170/ilo6_other_resourcedefns170.md        
+        #- label: Event definitions
+        #  page: docs/ilos/ilo6170/ilo6_events170.md
+    - label: Error messages
+      page: ilo6_170/ilo6_msgregs170.md
+
+- group: iLO 6 v1.69 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents Overview
+      page: ilo6_169/index.md
+    - label: Resource map
+      page: ilo6_169/ilo6_resmap169.md
+    - group: Resource definitions
+      expanded: false
+      items:
+        - label: ServiceRoot
+          page: ilo6_169/ilo6_serviceroot_resourcedefns169.md
+        - label: Bios
+          page: ilo6_169/ilo6_bios_resourcedefns169.md
+        - label: Manager
+          page: ilo6_169/ilo6_manager_resourcedefns169.md
+        - label: ComputerSystem
+          page: ilo6_169/ilo6_computersystem_resourcedefns169.md
+        - label: Chassis
+          page: ilo6_169/ilo6_chassis_resourcedefns169.md
+        - label: Network
+          page: ilo6_169/ilo6_network_resourcedefns169.md
+        - label: Storage
+          page: ilo6_169/ilo6_storage_resourcedefns169.md
+        - label: HPE Oem extensions
+          page: ilo6_169/ilo6_hpe_resourcedefns169.md
+        - label: Other resource definitions 
+          page: ilo6_169/ilo6_other_resourcedefns169.md        
+        #- label: Event definitions
+        #  page: docs/ilos/ilo6169/ilo6_events169.md
+    - label: Error messages
+      page: ilo6_169/ilo6_msgregs169.md
 - group: iLO 6 v1.68 Reference documents
   expanded: false
   items:
@@ -41,7 +107,6 @@
         #  page: docs/ilos/ilo6168/ilo6_events168.md
     - label: Error messages
       page: ilo6_168/ilo6_msgregs168.md
-
 - group: iLO 6 v1.67 Reference documents
   expanded: false
   items:
@@ -106,6 +171,7 @@
         #  page: docs/ilos/ilo6166/ilo6_events166.md
     - label: Error messages
       page: ilo6_166/ilo6_msgregs166.md
+
 - group: iLO 6 v1.64 Reference documents
   expanded: false
   items:
@@ -132,9 +198,44 @@
           page: ilo6_164/ilo6_storage_resourcedefns164.md
         - label: HPE Oem extensions
           page: ilo6_164/ilo6_hpe_resourcedefns164.md
-        - label: Other resource definitions 
-          page: ilo6_164/ilo6_other_resourcedefns164.md        
+        - label: Other resource definitions
+          page: ilo6_164/ilo6_other_resourcedefns164.md
         #- label: Event definitions
         #  page: docs/ilos/ilo6164/ilo6_events164.md
     - label: Error messages
       page: ilo6_164/ilo6_msgregs164.md
+
+#AppendAbove
+
+- group: iLO 6 v1.11 Reference documents
+  expanded: false
+  items:
+    - label: Reference documents Overview
+      page: ilo6_111/index.md
+    - label: Resource map
+      page: ilo6_111/ilo6_resmap111.md
+    - group: Resource definitions
+      expanded: false
+      items:
+        - label: ServiceRoot
+          page: ilo6_111/ilo6_serviceroot_resourcedefns111.md
+        - label: Bios
+          page: ilo6_111/ilo6_bios_resourcedefns111.md
+        - label: Manager
+          page: ilo6_111/ilo6_manager_resourcedefns111.md
+        - label: ComputerSystem
+          page: ilo6_111/ilo6_computersystem_resourcedefns111.md
+        - label: Chassis
+          page: ilo6_111/ilo6_chassis_resourcedefns111.md
+        - label: Network
+          page: ilo6_111/ilo6_network_resourcedefns111.md
+        - label: Storage
+          page: ilo6_111/ilo6_storage_resourcedefns111.md
+        - label: HPE Oem extensions
+          page: ilo6_111/ilo6_hpe_resourcedefns111.md
+        - label: Other resource definitions 
+          page: ilo6_111/ilo6_other_resourcedefns111.md        
+        #- label: Event definitions
+        #  page: docs/ilos/ilo6111/ilo6_events111.md
+    - label: Error messages
+      page: ilo6_111/ilo6_msgregs111.md

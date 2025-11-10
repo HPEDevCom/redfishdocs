@@ -1,5 +1,5 @@
 {
-    "name": "HPE server Management with Redfish",
+    "name": "hpe-server-management-with-redfish",
     "version": "0.0.1",
     "description": "Redfish is a standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC)",
     "main": "index.page.tsx",
@@ -9,7 +9,7 @@
       "start": "npx @redocly/cli preview"
     },
     "dependencies": {
-      "@redocly/realm": "*"
+      "@redocly/realm": "latest"
     }
   }
 

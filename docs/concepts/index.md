@@ -11,6 +11,18 @@ seo:
   title: Redfish concepts
 ---
 
+# Redfish concepts
+
+This section explains Redfish generic concepts (i.e. authentication mechanisms), terminology and best practices.
+It provides as well numerous generic [examples](/docs/examples/redfishExamples.md).
+
+{% admonition type="info" name="Notes" %}
+
+Information and examples provided in this section are generic and not tight to a specific
+Redfish service or client implementation, unless clearly mentioned.
+
+{% /admonition %}
+
 ## Redfish at a glance
 
 As per the
@@ -20,7 +32,7 @@ target="_blank">Distributed Management Task Force</a>
 management for converged, hybrid IT and the
 Software Defined Data Center (SDDC).*
 
-## Key benefits of the Redfish RESTful API
+### Key benefits of the Redfish RESTful API
 
 The Redfish RESTful API is the main management interface for
 Hewlett Packard Enterprise servers. Its feature set is larger than the

@@ -8,16 +8,17 @@ markdown:
 breadcrumbs:
   hide: true
 seo:
-  title: Error Codes
+  title: iLOrest return codes
 ---
 
-# Error Codes
+# iLOrest return codes
 
-The error codes listed below are returned by the HPE iLOrest tool.
+The error codes (also known as return codes) listed below are returned by the HPE iLOrest tool.
 They are coming from the Redfish(r) service implemented in the iLO firmware.
-The verbose (`-v`) flag provides verbose output of HTTP, CHIF
-(CHannel InterFace) and iLO response messages.
-The error codes listed below are related to the Redfish client
+The verbose (`-v` or `-vv`) flags provide verbose output of HTTP,
+[CHIF](/docs/etc/glossaryterms)
+and iLO response messages.
+The return/error codes listed below are related to the Redfish client
 side errors or specifically translated from errors received
 through iLO response messages.
 

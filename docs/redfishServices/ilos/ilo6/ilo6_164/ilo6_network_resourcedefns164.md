@@ -1,5 +1,7 @@
 ---
 excludeFromSearch: true
+seo:
+  title: Network resource definitions
 markdown:
   toc:
     hide: false
@@ -8,8 +10,6 @@ markdown:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Network resource definitions
 ---
 
 # Network resource definitions of iLO 6 v1.64

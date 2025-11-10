@@ -1,5 +1,7 @@
 ---
 excludeFromSearch: true
+seo:
+  title: Manager resource definitions
 markdown:
   toc:
     hide: false
@@ -8,8 +10,6 @@ markdown:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Manager resource definitions
 ---
 
 # Manager resource definitions of iLO 5 v3.07
@@ -86,7 +86,7 @@ POST /redfish/v1/Managers/1/Actions/Manager.Reset/
 - Depending on the operating system and other factors, `GracefulShutdown`
   may not perform a graceful shutdown. Hewlett Packard Enterprise
   recommends using operating system commands to complete a graceful shutdown.
-  
+
 {% /admonition %}
 
 ### Resource Instances

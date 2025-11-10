@@ -1,4 +1,6 @@
 ---
+seo:
+  title: Chassis resource definitions
 markdown:
   toc:
     hide: false
@@ -7,18 +9,16 @@ markdown:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Chassis resource definitions
 ---
 
 # Chassis resource definitions of iLO 5 v3.09
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ChassisCollection
+
 `@odata.type: "#ChassisCollection.ChassisCollection"`
 
 A Collection of Chassis resource instances.
@@ -31,7 +31,7 @@ A Collection of Chassis resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Chassis](ilo5_chassis_resourcedefns309/#chassis)|
 
@@ -74,7 +74,7 @@ The Chassis resource describes the physical components for a system. This object
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/ComputerSystems[]`|[ComputerSystem](ilo5_computersystem_resourcedefns309/#computersystem)|
 |`Links/ManagedBy[]`|[Manager](ilo5_manager_resourcedefns309/#manager)|

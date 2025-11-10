@@ -15,7 +15,7 @@
 # ToDo:
 #     * test return codes of important commands (i.e. sed)
 
-# version: 0.51
+# version: 0.55
 
 # Local Variables
 ResourceFiles=$(ls ${WorkingDirectory}/${iLOGen}_*_resourcedef*.md)
@@ -64,6 +64,13 @@ ExcludeTypeList="JsonSchemaFile"
 echo -e "${SEO}${Header1Title}${FileDescription}" > $OutputFile
 cat $InputFile >> $OutputFile
 
+# Fix the SwitchCollection entry:
+# Replace: Collection of [SwitchCollection](#switchcollection-switchcollection)
+# with: Collection of [Switch](#switch-v1_9_1-switch)
+# Extract Switch schema version first
+switchVersion="$(grep '\[Switch\](#switch-v.*-switch)' $OutputFile  |  grep -o 'v[1-9]*_[0-9]*_[0-9]*')"
+sed -i -e "s?Collection of \[SwitchCollection\](#switchcollection-switchcollection)?Collection of [Switch](#switch-${switchVersion}-switch)?g" $OutputFile
+
 # For each resource type, find its resource definitions file:
 for type in $TypeList ; do
   echo -e "  Processing $type"
@@ -108,12 +115,57 @@ fi
 done
 
 # Fix Oem/Hpe collections that don't follow the schema/schemacollection paradigm.
+# NOTES: 
+#       * The Sensor substitution may be removed when the FallBackSensor collection is correctly implemented.
 sed -i -e '1,$s?/#hpeusbportcollection)|$?/#hpeusbportscollection)|?g ;
            1,$s?/#hpecomponentupdatetaskcollection)|$?/#hpecomponentupdatetaskqueuecollection)|?g ;
            1,$s?/#hpeusbdevicecollection)|$?/#hpeusbdevicescollection)|?g ;
-           1,$s?/#hpesnmpusercollection)|?/#hpesnmpuserscollection)|?g' $OutputFile
+           1,$s?/#hpesnmpusercollection)|?/#hpesnmpuserscollection)|?g ;
+           1,$s?Sensor](ilo\(.\)_other_resourcedefns\(...\)/#sensorcollection?FallBackSensor](ilo\1_hpe_resourcedefns\2/#hpefallbacksensorcollection?g' $OutputFile
+
+# To be consistent with other entries in this resmap file:
+# * Need to cleanup wrong FallBackSensorCollection that points badly to the sensor collection.
+sed -i -e '/{item}\/sensors`|Collection of \[FallBackSensor\]/d' $OutputFile
+
+# * Need to double check that the "FallBack" string is only present once in the Collection line.
+#   If it is present several times, then we need to print a warning.
+if [[ $(grep -i -c 'FallBackSensor'  $OutputFile) -gt 1  ]] ; then
+  echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+  echo -e "Warning: The string \`FallBackSensor\` is present more than once in the file $OutputFile.\n\
+  Please check the file and remove the duplicates.\n"
+  echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+fi 
+
+# * if `Collection of FallBackSensor` is present, then insert a line pointing to its members.
+if grep -q 'fallbacksensors`|Collection of \[FallBackSensor' $OutputFile ; then
+  echo -e "\nInserting a line pointing to the [FallBack]Sensor members."
+  sed -i -e '/Collection of \[FallBackSensor/a\|`/redfish/v1/chassis/{item}/sensors/{item}`|[FallBackSensor]('${iLOGen}'_other_resourcedefns'${iLOVersion}'/#sensor)|' $OutputFile
+fi
+
+# Fixing AppAccounts
+# For some reasons, final ilo7+_resmapXYZ.md files contain bad AppAccounts entries.
+echo -e "\nFixing AppAccounts if needed..."
+
+# /accounts`|Collection of [HpeiLOAppAccount](ilo7_hpe_resourcedefns113/#hpeiloappaccount)|
+# should be:
+# /accounts`|Collection of [ManagerAccount](ilo7_manager_resourcedefns113/#manageraccountcollection)|
+sed -i -e 's?/accounts`|Collection of \[HpeiLOAppAccount\](\(.*\)_hpe_resourcedefns\(.*\)/#hpeiloappaccountcollection)|?/accounts`|Collection of [ManagerAccount](\1_manager_resourcedefns\2/#manageraccountcollection)?g' $OutputFile
+
+# The following must be re-worked.
+# May be just add an `HpeiLOAppaccountCollection` in the hpe_resourcredefns file?
+# |`/redfish/v1/accountservice/Oem/Hpe/appaccounts`|Collection of [HpeiLOAppAccount](ilo7_hpe_resourcedefns113/#hpeiloappaccountcollection)|
+# should be:
+# |`/redfish/v1/accountservice/Oem/Hpe/appaccounts`|Collection of [HpeAppAccount](ilo7_hpe_resourcedefns113/#hpeappaccountcollection)|
+#sed -i -e 's?/appaccounts`|Collection of \[HpeiLOAppAccount\](\(.*\)_hpe_resourcedefns\(.*\)/#hpeiloappaccountcollection)?/appaccounts`|Collection of [HpeAppAccount](\1_hpe_resourcedefns\2/#hpeappaccountcollection)?g' $OutputFile
+
+# The following must be re-worked.
+# This may not be needed anymore...
+# |`/redfish/v1/accountservice/Oem/Hpe/appaccounts/{item}`|[HpeiLOAppAccount](ilo7_hpe_resourcedefns113/#hpeiloappaccount)|
+# should be:
+#|`/redfish/v1/accountservice/Oem/Hpe/appaccounts/{item}`|[HpeAppAccount](#hpeappaccount)|
+#sed -i -e 's?/appaccounts/{item}`|\[HpeiLOAppAccount\](\(.*\)_hpe_resourcedefns\(.*\)/#hpeiloappaccount)?/appaccounts/{item}`|[HpeAppAccount](\1_hpe_resourcedefns\2/#hpeappaccount)?g' $OutputFile
 
 echo -e "Cleanup: Removing:\n"
 echo -e "\t$ResourcesFile"
-rm $ResourcesFile #&> /dev/null
+rm $ResourcesFile &> /dev/null
 

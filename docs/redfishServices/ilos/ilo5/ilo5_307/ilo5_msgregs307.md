@@ -1,20 +1,22 @@
 ---
 excludeFromSearch: true
+seo:
+  title: iLO 5 v307 Error messages
 markdown:
   toc:
-    hide: true
-    depth: 3
+    hide: false
+    depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: iLO 5 v307 Error messages
 ---
 
 # Response message definitions of iLO 5 v3.07
 
 This section is a reference for the defined message registry entries in HPE iLO 5 version 3.07. Redfish responses are discussed in the [error responses](/docs/concepts/errorresponses.md) section.
+
+## Base
 
 ### Base.1.18.AccessDenied
 
@@ -538,7 +540,7 @@ Indicates that the operation expected a resource identifier that corresponds to 
 
 ### Base.1.18.ResourceTypeIncompatible
 
-Indicates that the resource type of the operation does not match that for the operation destination.  Examples of when this can happen include during a POST to a collection using the wrong resource type, an update where the @odata.types do not match or on a major version incompatability.
+Indicates that the resource type of the operation does not match that for the operation destination.  Examples of when this can happen include during a POST to a collection using the wrong resource type, an update where the @odata.types do not match or on a major version incompatibility.
 
 | | |
 |:---|:---|
@@ -604,7 +606,7 @@ While attempting to access, connect to, or transfer from another location, the o
 |:---|:---|
 |Message Format|"The other end of the connection at %1 does not support the specified protocol %2."|
 |Severity|Critical|
-|Resolution|Change protocols or URIs.|
+|Resolution|Change protocols or URIs. |
 
 ### Base.1.18.StringValueTooLong
 
@@ -635,6 +637,8 @@ The service detected a request body with malformed JSON.
 |Message Format|"The service detected a request body with malformed JSON."|
 |Severity|Warning|
 |Resolution|If the operation did not complete, correct the request body and resubmit the request.|
+
+## HpeCommon
 
 ### HpeCommon.2.1.ArrayPropertyOutOfBound
 
@@ -765,6 +769,8 @@ A previously requested property value change was reverted because the current ha
 |Message Format|"The value %1 for property %2 was reverted because the current hardware configuration does not support it."|
 |Severity|Warning|
 |Resolution|Ensure that the system's hardware configuration supports the property value.|
+
+## iLO
 
 ### iLO.2.24.AHSDisabled
 
@@ -1788,7 +1794,7 @@ Telemetry service and Workload Performance advisor will be not available with MC
 
 ### iLO.2.24.MailNotConfigured
 
-E-mail not configured for two factor authentication to recieve token.
+E-mail not configured for two factor authentication to receive token.
 
 | | |
 |:---|:---|
@@ -1884,7 +1890,7 @@ There are no event subscriptions registered.
 |:---|:---|
 |Message Format|"The operation cannot be completed because there are no event subscribers."|
 |Severity|Warning|
-|Resolution|
+|Resolution||
 
 ### iLO.2.24.NoPowerMetering
 
@@ -2272,7 +2278,7 @@ Indicates that a required property is not specified.
 
 | | |
 |:---|:---|
-|Message Format|"Required Property %1 needs to be specifed."|
+|Message Format|"Required Property %1 needs to be specified."|
 |Severity|Warning|
 |Resolution|Include the required property in the request body and then retry the operation.|
 
@@ -2682,7 +2688,7 @@ This operation is not supported when certificate enrollment service is enabled.
 
 | | |
 |:---|:---|
-|Message Format|"This operation is not supported when certificte enrollment service is enabled."|
+|Message Format|"This operation is not supported when certificate enrollment service is enabled."|
 |Severity|OK|
 |Resolution|Disable certificate enrollment Service to initiate import, delete or generate CSR of SSL certificate.|
 
@@ -2965,6 +2971,8 @@ The Virtual NIC is disabled.
 |Message Format|"The Virtual NIC is disabled."|
 |Severity|Warning|
 |Resolution|Enable iLO Virtual NIC to perform this operation.|
+
+## iLOeRS
 
 ### iLOeRS.1.1.AuthenticationError
 
@@ -3776,6 +3784,8 @@ XML Parser Allocation Error.
 |Severity|Warning|
 |Resolution|None.|
 
+## iLOSecurityEvents
+
 ### iLOSecurityEvents.1.1.AccessPanelStatusAtIgnore
 
 The chassis intrusion detection connector reports intrusion to the access panel. Check the access panel status and use the UEFI System Utilities to enable the Server Configuration Lock feature. The parameter risk is ignored.
@@ -4216,6 +4226,8 @@ Weak Ciphers are Enabled
 |Severity|OK|
 |Resolution|None|
 
+## NetworkDevice
+
 ### NetworkDevice.1.0.CableInserted
 
 Indicates that a network cable has been inserted.
@@ -4275,6 +4287,8 @@ Indicates that a network connection is highly unstable.
 |Message Format|"The network connection for network adapter '%1' port '%2' function '%3' has been established and dropped '%4' times in the last '%5' minutes."|
 |Severity|Warning|
 |Resolution|Contact the network administrator for problem resolution.|
+
+## StorageDevice
 
 ### StorageDevice.1.1.BatteryCharging
 
@@ -4374,7 +4388,7 @@ A controller port degraded condition has been detected.
 |:---|:---|
 |Message Format|"A degraded condition for the controller port located in '%1' has been detected due to reason '%2'."|
 |Severity|Warning|
-|Resolution|Ensure all cables are properly and securly connected.  Replace faulty cables.|
+|Resolution|Ensure all cables are properly and securely connected.  Replace faulty cables.|
 
 ### StorageDevice.1.1.ControllerPortFailure
 
@@ -4384,7 +4398,7 @@ A controller port failure condition has been detected.
 |:---|:---|
 |Message Format|"A failure condition for the controller port located in '%1' has been detected."|
 |Severity|Critical|
-|Resolution|Ensure all cables are properly and securly connected.  Replace faulty cables.|
+|Resolution|Ensure all cables are properly and securely connected.  Replace faulty cables.|
 
 ### StorageDevice.1.1.ControllerPortOK
 
@@ -4554,7 +4568,7 @@ The storage controller has detected an offline volume condition.
 |:---|:---|
 |Message Format|"The volume '%1' attached to the storage controller located in '%2' is offline."|
 |Severity|Critical|
-|Resolution|Use storage sofware to enable, repair, or import the volume.  You may also delete or move volume back to the original controller.|
+|Resolution|Use storage software to enable, repair, or import the volume.  You may also delete or move volume back to the original controller.|
 
 ### StorageDevice.1.1.VolumeOfflineCleared
 
@@ -4605,6 +4619,8 @@ The write cache state is temporarily degraded.
 |Message Format|"The write cache state on the storage controller located in '%1' is temporarily degraded."|
 |Severity|Warning|
 |Resolution|Check the controller to determine the cause of write cache temporarily degraded state, such as a battery is charging or a data recovery rebuild operation is pending.|
+
+## TaskEvent
 
 ### TaskEvent.1.1.TaskAborted
 

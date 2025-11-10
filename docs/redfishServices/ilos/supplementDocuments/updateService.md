@@ -11,7 +11,7 @@ seo:
   title: Software/Firmware update service
 ---
 
-## iLO Software/Firmware update service
+# iLO Software/Firmware update service
 
 {% admonition type="info" name="NOTE" %}
 
@@ -34,17 +34,17 @@ repository, an update queue, and install sets.
 
 |Term|Definition|
 |---|---|
-|Inventory|The installed or running versions of software or firmware.
-|Target|The object of a firmware or software update (e.g. BIOS, iLO, Network Adapter, software package).
-|Update|The process of applying updated firmware or software to applicable targets.
-|Update Agent|The software or firmware agent that applies an update to one or more targets. Update Agents include Smart Update Manager (SUM), Smart Update Tools (SUT), UEFI BIOS, and iLO. Different types of updates might be supported by specific update agents.
-|Activate|The process of making updated firmware of software active (for example, a BIOS update is activated when the server reboots).
-|Component|A package containing one or more software or firmware update images (also known as a `Smart Component`). Components are typically delivered with the Support Pack for ProLiant (SPP) in EXE, RPM, or ZIP files.
-|Component Signature File (`.compsig`)|A file containing information about a component, including a digital signature. This enables iLO to verify the integrity and authenticity of a variety of component formats. The `.compsig` files are also available with the SPP and must be uploaded with the component. SUM automatically uploads the right `.compsig` file with components.
-|iLO Repository|A persistent storage location on the server that can hold software or firmware update components.
-|Update Task Queue|An iLO managed queue of update operations. iLO might not be the actual update agent. Other update agents include SUM, SUT and the UEFI BIOS.
-|Install Set|A pre-defined sequence of update tasks managed using the iLO Redfish API that can be added to the Update Task Queue with an `Invoke` action.
-|Maintenance Window|A defined time window that may be used with an Update Task create or Install Set Invoke commands to associate a time with the operation.
+|Inventory|The installed or running versions of software or firmware.|
+|Target|The object of a firmware or software update (e.g. BIOS, iLO, Network Adapter, software package).|
+|Update|The process of applying updated firmware or software to applicable targets.|
+|Update Agent|The software or firmware agent that applies an update to one or more targets. Update Agents include Smart Update Manager (SUM), Smart Update Tools (SUT), UEFI BIOS, and iLO. Different types of updates might be supported by specific update agents.|
+|Activate|The process of making updated firmware of software active (for example, a BIOS update is activated when the server reboots).|
+|Component|A package containing one or more software or firmware update images (also known as a `Smart Component`). Components are typically delivered with the Support Pack for ProLiant (SPP) in EXE, RPM, or ZIP files.|
+|Component Signature File (`.compsig`)|A file containing information about a component, including a digital signature. This enables iLO to verify the integrity and authenticity of a variety of component formats. The `.compsig` files are also available with the SPP and must be uploaded with the component. SUM automatically uploads the right `.compsig` file with components.|
+|iLO Repository|A persistent storage location on the server that can hold software or firmware update components.|
+|Update Task Queue|An iLO managed queue of update operations. iLO might not be the actual update agent. Other update agents include SUM, SUT and the UEFI BIOS.|
+|Install Set|A pre-defined sequence of update tasks managed using the iLO Redfish API that can be added to the Update Task Queue with an `Invoke` action.|
+|Maintenance Window|A defined time window that may be used with an Update Task create or Install Set Invoke commands to associate a time with the operation.|
 
 ## Redfish Update Service Operations
 
@@ -81,7 +81,7 @@ and `/redfish/v1/UpdateService/SoftwareInventory/{item}`.
 GET /redfish/v1/UpdateService/?$expand=.
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -91,7 +91,7 @@ ilorest get --json
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest response body (truncated)" %}
 
 ```json iLOrest response body (truncated)
@@ -149,8 +149,9 @@ ilorest logout
 
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### SimpleUpdate Action
 
 The `SimpleUpdate` action with the `ImageURI` parameter causes iLO
@@ -158,14 +159,14 @@ to fetch an image from a web server and flash it directly. Only certain
 types of images may be supplied, including iLO firmware binaries and UEFI
 firmware binaries. Smart Components are not supported.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="POST action" %}
 
 ```text POST action
 POST /redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body" %}
 
 ```json Body
@@ -174,40 +175,257 @@ POST /redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate/
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### HttpPushUri
 
-The `HttpPushUri` property indicates the URI to POST a firmware component
-that iLO can flash. Only certain types of images may be supplied including
-iLO firmware binaries and UEFI firmware binaries. Smart Components
-are not supported.
+The `HttpPushUri` {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_other_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#httppushuri") %} property {% /link-internal %} contains the URI to POST a firmware component
+that iLO can flash.
 
-The POST must be of Content-Type: "multipart/form-data"
+The following examples uses cURL and Python to push a new firmware component toward an iLO.
+Parameters to store and flash the target device are passed in the code.
 
-  {% tabs %}
-{% tab label="Example" %}
+{% tabs %}
+{% tab label="HttpPush with cURL (no compsig)" %}
 
-```text Example
+```bash Http Push with cURL
 
------------------------------64062213329524
-Content-Disposition: form-data; name="sessionKey"
+#!/usr/bin/bash
 
-<value of X-Auth-Token here>
+# NOTE: This script is only meant for learning and demonstration purposes.
+# It is not meant for production use.
+# Use at your own risk. No warranties, real or implied, are given. 
 
------------------------------64062213329524
-Content-Disposition: form-data; name="<component-filename>";
-filename="<component-filename>"
-Content-Type: application/octet-stream
+# This script uses cURL to push a stand alone (no associated .compsig file)
+# firmware component to an HPE iLO device.
+# First, it creates a session token, then it retrieves the `HttpPushUri` location
+# and sets the `Accept3rdPartyFirmware` to `True`.
+# Finally, it pushes the component to the `HttpPushUri` location.
 
-<binary image>
+# Depending on the parameters in the `parameters` form field, it can either
+# update the repository only, or update the repository and the target.
+
+# After the push, it deletes the session.
+
+#  version: O.2
+
+# Variables:
+BMC_IP="ilo-fdz360g12-hst"
+#BMC_IP="ilo-fdz365g11-1"
+#COMPONENT="/usr/kits/Kioxia_CM7_KACM7ALFHPK3.fwpkg"
+COMPONENT="/usr/kits/U68_1.46_08_08_2025.signed.flash"
+#COMPONENT="/usr/kits/A55_2.70_08_07_2025.fwpkg"
+#COMPONENT="/usr/kits/HPE_E810_XXVDA2_SD_OCP_4p60_NCSIwPLDMoMCTP_8001E8B0.fwpkg" 
+UPDATEREPOSITORY=true
+UPDATETARGET=false
+USER="ilo-user"
+PASSWORD="password"
+
+# Create Session Token. Save it with the SessionLocation URL in an array.:
+echo "Session Token creation"
+TokenAndUrl=($(curl --silent --insecure --include \
+            --request POST \
+            --header 'Content-Type: application/json' \
+            --data "{\"UserName\":\"$USER\", \"Password\": \"$PASSWORD\"}" \
+            "https://${BMC_IP}/redfish/v1/SessionService/Sessions/" | \
+            awk  '/^Location/ || /^X-Auth-Token/ {print $NF}' | \
+            sort | tr '\r' ' '))
+
+SESSION_KEY="${TokenAndUrl[0]}"
+SESSION_LOCATION="${TokenAndUrl[1]}"
+
+# Retrieving and setting `Accept3rdPartyFirmware` value to `true` if not already set:
+echo "Retrieving Accept3rdPartyFirmware value"
+ACCEPT_3RD_PARTY_FIRMWARE=$(curl --silent --insecure \
+              --header "X-Auth-Token: ${SESSION_KEY}"     \
+              https://${BMC_IP}/redfish/v1/UpdateService/ | \
+              jq -r '.Oem.Hpe.Accept3rdPartyFirmware')
+echo -e "Accept3rdPartyFirmware: ${ACCEPT_3RD_PARTY_FIRMWARE}"
+if [ "${ACCEPT_3RD_PARTY_FIRMWARE}" != "true" ]; then
+  echo -e "\tSetting Accept3rdPartyFirmware to true."
+  curl --silent --insecure -X PATCH \
+        --header "Content-Type: application/json" \
+        --header "X-Auth-Token: ${SESSION_KEY}"     \
+        --data '{"Oem": {"Hpe": {"Accept3rdPartyFirmware": true}}}' \
+        https://${BMC_IP}/redfish/v1/UpdateService/
+fi
+
+# Retrieve the `HttpPushUri` value and build the upload URL:
+echo -e '\nRetrieving `HttpPushUri` value and building upload URL.'
+UPLOAD_URL="https://${BMC_IP}$(curl --silent --insecure \
+          --header "X-Auth-Token: ${SESSION_KEY}"     \
+          https://${BMC_IP}/redfish/v1/UpdateService/ | \
+          jq -r '.HttpPushUri')"
+
+#echo -e "UPLOAD_URL: ${UPLOAD_URL}\n"
+
+echo -n "Firmware Upload...."
+# Use `curl --verbose` to see the HTTP return code of the POST operation.
+curl --insecure "$UPLOAD_URL" \
+     --header 'Accept: application/json' \
+     --header 'Expect: ' \
+     --header 'OData-Version: 4.0' \
+     --header "X-Auth-Token: ${SESSION_KEY}"     \
+     --header "Cookie: sessionKey=${SESSION_KEY}" \
+     --form "sessionKey=${SESSION_KEY}" \
+     --form "parameters={\"UpdateRepository\":${UPDATEREPOSITORY},\"UpdateTarget\":${UPDATETARGET},\"ETag\":\"atag\",\"Section\":0}" \
+     --form "file=@${COMPONENT};type=application/octet-stream"
+echo "Done"
+
+# Delete Session
+echo -e "\nSession deletion"
+curl --silent --location --insecure \
+     --header "X-Auth-Token: ${SESSION_KEY}"     \
+     -X DELETE \
+     "${SESSION_LOCATION}" 
+
 ```
   
-  {% /tab %}
-  {% /tabs %}
-iLO validates the uploaded binary image and flashes any applicable targets
-immediately. If the update is for iLO itself, iLO automatically resets at
-the end of the flash process and activates the new firmware upon restart.
+{% /tab %}
+{% tab label="HttpPush with Python (no compsig)" %}
+
+```python HttpPush with Python (no compsig)
+# Copyright 2020 Hewlett Packard Enterprise Development LP
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License. You may obtain
+# a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations
+# under the License.
+
+# version 0.1
+
+# -*- coding: utf-8 -*-
+"""
+An example of uploading firmware to the iLO Repository for flashing.
+
+NOTE: Make sure the DMTF Python Redfish library is not installed when loading
+      the HPE Redfish Python library:
+
+      pip uninstall redfish
+      pip install python-ilorest-library
+
+"""
+
+import os
+import sys
+import json
+from redfish import RedfishClient
+from redfish.rest.v1 import ServerDownOrUnreachableError
+
+from get_resource_directory import get_resource_directory
+
+def upload_firmware(_redfishobj, firmware_loc, update_repo=True, update_target=False):
+    resource_instances = get_resource_directory(_redfishobj)
+
+    if DISABLE_RESOURCE_DIR or not resource_instances:
+        #resource directory is not available so we will navigate through paths manually
+        update_service_uri = _redfishobj.root.obj['UpdateService']['@odata.id']
+    else:
+        #obtain all account instances from resource directory
+        for instance in resource_instances:
+            if '#UpdateService.' in instance['@odata.type']:
+                update_service_uri = instance['@odata.id']
+
+    update_service_response = _redfishobj.get(update_service_uri)
+
+    path = update_service_response.obj.HttpPushUri
+
+    body = []
+    json_data = {'UpdateRepository': update_repo, 'UpdateTarget': update_target, 'ETag': 'atag', 'Section': 0}
+    session_key = _redfishobj.session_key
+
+    filename = os.path.basename(firmware_loc)
+    with open(firmware_loc, 'rb') as fle:
+        output = fle.read()
+
+    session_tuple = ('sessionKey', session_key)
+    parameters_tuple = ('parameters', json.dumps(json_data))
+    file_tuple = ('file', (filename, output, 'application/octet-stream'))
+
+    #Build the payload from each multipart-form data tuple
+    body.append(session_tuple)
+    body.append(parameters_tuple)
+    body.append(file_tuple)
+
+    #Create our header dictionary
+    header = {'Cookie': 'sessionKey=' + session_key}
+
+    #We pass the whole list payload to post
+    resp = _redfishobj.post(path, body, headers=header)
+
+    if resp.status == 400:
+        sys.stderr.write("Failed to upload firmware...")
+    elif not resp.status in [200, 201]:
+        sys.stderr.write("An http response of '%s' was returned.\n" % resp.status)
+    else:
+        print("Upload complete!\n")
+
+if __name__ == "__main__":
+    # When running on the server locally use the following commented values
+    #SYSTEM_URL = None
+    #LOGIN_ACCOUNT = None
+    #LOGIN_PASSWORD = None
+
+    # When running remotely connect using the secured (https://) address,
+    # account name, and password to send https requests
+    # SYSTEM_URL acceptable examples:
+    # "https://10.0.0.0"
+    # "https://ilo.hostname"
+    # "blobstore://." with LOGIN_ACCOUNT and LOGIN_PASSWORD set to None
+    #            NOTE: blobstore://. is not supported on iLO 7 and later
+    SYSTEM_URL = "https://ilo-fdz360g12-hst"
+    LOGIN_ACCOUNT = "ilo-user"
+    LOGIN_PASSWORD = "password"
+
+    # The path to the firmware file to upload
+    FIRMWARE_PATH="/usr/kits/U68_1.46_08_08_2025.signed.flash"
+    # Upload the firmware file to the iLO Repository
+    UPDATE_REPO = True
+    # Flash the system with the firmware file
+    UPDATE_TARGET = False
+
+    # flag to force disable resource directory. Resource directory and associated operations are
+    # intended for HPE servers.
+    DISABLE_RESOURCE_DIR = True
+    
+    # Populate the following variables if you want to use certificate authentication.
+    #ca_cert_data = {}
+    #ca_cert_data["cert_file"] = "c:\\test\\ppcacuser.crt"
+    #ca_cert_data["key_file"] = "c:\\test\\ppcacuserpriv.key"
+    #ca_cert_data["key_password"] = "password"
+    #LOGIN_ACCOUNT = None
+    #LOGIN_PASSWORD = None
+    ca_cert_data = None
+
+    try:
+        # Create a Redfish client object
+        REDFISHOBJ = RedfishClient(base_url=SYSTEM_URL, \
+            username=LOGIN_ACCOUNT, password=LOGIN_PASSWORD, \
+            ca_cert_data=ca_cert_data)
+        # Login with the Redfish client
+        if ca_cert_data is None:
+            REDFISHOBJ.login()
+        else:
+            REDFISHOBJ.login(auth='certificate')
+    except ServerDownOrUnreachableError as excp:
+        sys.stderr.write("ERROR: server not reachable or does not support RedFish.\n")
+        sys.exit()
+    
+    upload_firmware(REDFISHOBJ, FIRMWARE_PATH, UPDATE_REPO, UPDATE_TARGET)
+
+    REDFISHOBJ.logout()
+```
+
+{% /tab %}
+{% /tabs %}
 
 ## Software and Firmware Management Flow
 
@@ -219,7 +437,7 @@ Repository to updatable items from the inventory.
 1. Use the FirmwareInventory and SoftwareInventory data to evaluate the
     current software and firmware running on the server.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="pseudo" %}
 
 ```text pseudo-code
@@ -239,8 +457,9 @@ for component in /redfish/v1/updateservice/componentrepository:
 
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 iLO can render a "DeviceClass" string in cases where iLO knows specifically
 about the firmware item. Most other inventory entries omit DeviceClass.
@@ -285,7 +504,7 @@ See details on the HttpPushUri in the Update Service resource first.
 The upload process can alternatively be used to add components to the
 iLO Repository. As with update, the POST must be a multipart/form-data.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Required HTTP headers" %}
 
 ```python Required HTTP headers
@@ -298,7 +517,7 @@ iLO Repository. As with update, the POST must be a multipart/form-data.
                'Cookie': 'sessionKey=' + sessionkey}
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="POST Body" %}
 
 ```json POST Body
@@ -328,8 +547,9 @@ Content-Type: application/octet-stream
 <binary content of component file>
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The new `compsig` part enables the client to push the component signature
 file with the payload.
 
@@ -395,21 +615,21 @@ repository. The client may track this progress by polling on
 |State|Detail|
 |---|---|
 |Idle|The update service is idle|
-|Uploading|The update service is receiving a new component. - Clients likely won't see this State.
-|Verifying|The Update Service verifying the integrity and authenticity of the upload.
-|Writing|The update service is writing a new component to the iLO Repository.
-|Updating|The update service is updating (flashing) firmware.
-|Complete|The update service has completed up upload or update operation.
-|Error|The upload service encountered an error. See Result for detail.
+|Uploading|The update service is receiving a new component. - Clients likely won't see this State.|
+|Verifying|The Update Service verifying the integrity and authenticity of the upload.|
+|Writing|The update service is writing a new component to the iLO Repository.|
+|Updating|The update service is updating (flashing) firmware.|
+|Complete|The update service has completed up upload or update operation.|
+|Error|The upload service encountered an error. See Result for detail.|
 
 The client should wait for `Complete` before progressing.
 
 {% admonition type="info" name="NOTES" %}
 
-* Components referenced in a task or install set are locked and cannot
+- Components referenced in a task or install set are locked and cannot
   be replaced or deleted.
 
-* If iLO is updating firmware components, the `UpdateService` indicates
+- If iLO is updating firmware components, the `UpdateService` indicates
   `Busy`, and uploads are not possible during this time.
 {% /admonition %}
 
@@ -429,11 +649,11 @@ Available data for each member includes:
 |SizeBytes|No|Size in Bytes.|
 |Criticality|Yes|Recommended, optional, critical.|
 |Created|No|Time the component was added to the repository.|
-|Locked|No|True if the component is referenced by a task or install set.
-|ComponentUri|No|URI of the component binary.
-|Activates|No|A hint of when a component activates (for example, after reboot).
+|Locked|No|True if the component is referenced by a task or install set.|
+|ComponentUri|No|URI of the component binary.|
+|Activates|No|A hint of when a component activates (for example, after reboot).|
 |Configuration|Yes|For Smart Update Manager use only.|
-|ExecutionParameters|Yes|The command line passed to the component when launched.
+|ExecutionParameters|Yes|The command line passed to the component when launched.|
 
 #### Remove Components
 
@@ -451,14 +671,14 @@ tasks that refer to it must first be deleted.
 The free and total space of the iLO Repository in bytes is available
 as part of the Repository Collection.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="GET Component Repository information" %}
 
 ```text GET Component Repository information
 GET /redfish/v1/UpdateService/ComponentRepository/?$select=Oem/Hpe/FreeSizeBytes, Oem/Hpe/TotalSizeBytes
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -476,8 +696,9 @@ GET /redfish/v1/UpdateService/ComponentRepository/?$select=Oem/Hpe/FreeSizeBytes
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 #### Correlating Components with Current Software and Firmware Version Inventory
 
 There is not a one-to-one correspondence between installed firmware or
@@ -487,7 +708,7 @@ firmware for several network controllers.
 This algorithm shows how to correlate current version inventory with
 available components:
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```python Example
@@ -506,17 +727,18 @@ for component in componentrepository:
                 return inventory_item, component # return correlated
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+ {% /tabs %}
+
 ### Tasks
 
 #### Update Agents and Strong Queue Order
 
 Different updates must be performed in different ways:
 
-* Using iLO over the management network
-* Using UEFI BIOS when the server power is ON
-* Using SUM when under an Operating System
+- Using iLO over the management network
+- Using UEFI BIOS when the server power is ON
+- Using SUM when under an Operating System
 
 The `UpdateableBy` property indicates which "update agent" may
 perform the update.
@@ -543,12 +765,12 @@ Updaters process the queue in order, looking at the task state:
 
 |Task `State`|Updater Behavior|
 |------------|--------|
-|Pending|Mark as `InProgress` and begin task.
-|InProgress|Do nothing and stop processing the queue - a task item is in progress by another updater (assuming this task is not yours).
-|Expired|Do nothing and stop processing the queue - the task item has expired, and because of strong queue ordering, all following tasks are not processed.
-|Exception|Do nothing and stop processing the queue - the task item has failed, and because of strong queue ordering, all following tasks are not processed.
-|Complete|Iterate to next task and examine its `State`.
-|Canceled|Iterate to next task and examine its `State`.
+|Pending|Mark as `InProgress` and begin task.|
+|InProgress|Do nothing and stop processing the queue - a task item is in progress by another updater (assuming this task is not yours).|
+|Expired|Do nothing and stop processing the queue - the task item has expired, and because of strong queue ordering, all following tasks are not processed.|
+|Exception|Do nothing and stop processing the queue - the task item has failed, and because of strong queue ordering, all following tasks are not processed.|
+|Complete|Iterate to next task and examine its `State`.|
+|Canceled|Iterate to next task and examine its `State`.|
 
 #### Creating Update Tasks
 
@@ -558,12 +780,12 @@ object to the tasks collection pointed to by
 
 {% admonition type="info" name="NOTES" %}
 
-* Each task in the task queue must have a unique `Name` property.
-* The name of each task MUST be unique because this makes the task
+- Each task in the task queue must have a unique `Name` property.
+ The name of each task MUST be unique because this makes the task
   queue easier to use with iLO Federation Management. The URI of the
   task is based upon Name information. If the same task is created
   on multiple iLO's, they have the same REST URI.
-* HPE components update all applicable targets within a system.
+- HPE components update all applicable targets within a system.
   For that reason, there is no ability to indicate a specific target.
 {% /admonition %}
 
@@ -583,7 +805,7 @@ object to the tasks collection pointed to by
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Enables binary component to be updated by iLO" %}
 
 ```json Enables binary component to be updated by iLO
@@ -597,13 +819,13 @@ object to the tasks collection pointed to by
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 This creates a new task in the `Pending` state at the end of the queue.
 If it assigned to the `Bmc` and is at the top of the queue, iLO starts
 operating on it immediately. Otherwise, the new task is operated on as
 soon as an updater runs and finds the new task.
-
 {% admonition type="warning" name="Warning" %}
 If a TPM is installed and in use on the system, the `"TPMOverride": true`
 property must be set on the task.
@@ -638,7 +860,7 @@ If a client creates a Maintenance Window, this window may be specified
 
 Maintenance Window example
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```json Example
@@ -653,8 +875,9 @@ Maintenance Window example
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 #### Creating Wait Tasks
 
 Wait tasks can be used to insert time between two other tasks. The
@@ -663,7 +886,7 @@ based upon the updater that needs the time.
 
 Example that causes UEFI to Wait for 30 seconds:
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```json Example
@@ -677,8 +900,9 @@ Example that causes UEFI to Wait for 30 seconds:
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 `WaitTimeSeconds` can be in the range 0-3600 seconds.s
 
 #### Retiring and Removing Tasks
@@ -707,15 +931,15 @@ Tasks can be added to the task queue that cannot execute to completion.
 In this case, the task queue might stall waiting for attention or the
 appropriate updater to execute. Examples may include the following:
 
-* A task requires the UEFI BIOS to execute it (`Uefi`). In this case the task
+- A task requires the UEFI BIOS to execute it (`Uefi`). In this case the task
   does not execute until the server is rebooted.
-* A task requires SUM or SUT to execute it (`RuntimeAgent`). In this case the
+- A task requires SUM or SUT to execute it (`RuntimeAgent`). In this case the
   task does not execute until either SUM or SUT is executed on the server.
   If neither is installed, the task waits forever.
-* A task might result in an exception state. In this case, the task will
+- A task might result in an exception state. In this case, the task will
   remain in the queue and no further tasks will be executed until the Task
   Queue is cleared and reset.
-* A task may be scheduled to execute during a time range in the
+- A task may be scheduled to execute during a time range in the
   past or in the future.
 
 ### Maintenance Windows
@@ -983,6 +1207,7 @@ HpeiLOUpdateServiceExt.AddFromUri/
   
   {% /tab %}
   {% /tabs %}
+
 #### Install Sets
 
 `Targets` is introduced while creating install sets under the URI
@@ -1026,6 +1251,7 @@ POST /redfish/v1/UpdateService/InstallSets
   
   {% /tab %}
   {% /tabs %}
+
 #### Tasks
 
 `Targets` are introduced while creating update tasks under
@@ -1088,6 +1314,7 @@ POST /redfish/v1/UpdateService/UpdateTaskQueue
   
   {% /tab %}
   {% /tabs %}
+
 ## Firmware Verification
 
 Firmware Verification, available with the
@@ -1103,11 +1330,11 @@ Health System Log and the Integrated Management Log.
 
 The following firmware items are verified:
 
-* iLO 6
-* System UEFI BIOS
-* System Programmable Logic Device (CPLD)
-* Server Platform Services (SPS) Firmware
-* Innovation Engine (IE) Firmware
+- iLO 6
+- System UEFI BIOS
+- System Programmable Logic Device (CPLD)
+- Server Platform Services (SPS) Firmware
+- Innovation Engine (IE) Firmware
 
 When a firmware verification scan is in progress, you cannot install
 firmware updates or upload firmware to the iLO Repository.
@@ -1118,13 +1345,13 @@ Available with _iLO Advanced Premium Security Edition_
 
 Firmware Verification scan options:
 
-* Enable Background Scan (`EnableBackgroundScan`) enables or disables
+- Enable Background Scan (`EnableBackgroundScan`) enables or disables
   Firmware Verification scanning. When enabled, iLO scans the supported
   installed firmware for file corruption.
-* Integrity Failure Action (`OnIntegrityFailure`) determines the action
+- Integrity Failure Action (`OnIntegrityFailure`) determines the action
   iLO takes when a problem is found during a Firmware Verification scan.
-  * To log the results, patch `LogOnly`.
-  * To log the results and initiate a repair action,
+  - To log the results, patch `LogOnly`.
+  - To log the results and initiate a repair action,
     patch `LogAndRepairAutomatically`.
 
 If a problem is detected for a supported firmware item, iLO checks
@@ -1132,7 +1359,7 @@ for the affected firmware type in a protected install set. By default,
 this set is the System recovery set. If a firmware image is available,
 iLO flashes that firmware image to complete the repair.
 
-* Scan Interval ("`ScanEveryDays`") sets the background scan frequency
+- Scan Interval ("`ScanEveryDays`") sets the background scan frequency
   in days. Valid values are from 1 to 365.
 
 {% tabs %}
@@ -1161,8 +1388,8 @@ GET /redfish/v1/UpdateService/
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ### Initiating a Firmware Verification Scan
 

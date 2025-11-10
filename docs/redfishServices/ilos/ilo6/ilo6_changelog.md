@@ -18,13 +18,234 @@ markdown:
 # Changelog
 
 The HPE iLO 6 Redfish service implements the DMTF Redfish specification
-<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.20.1.pdf" target="_blank">version 1.20.1</a>
+<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.20.0.pdf" target="_blank">version 1.20.0</a>
 and the schemas implemented by iLO 6 adhere to the DMTF Redfish schema bundle
 <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP8010_2024.1.zip" target="_blank">8010_2024.1</a>.
 
 For a better understanding of the conformance to the DMTF Redfish,
 read the _Redfish versioning_ paragraph of this
 <a href="https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/" target="_blank">article</a>.
+
+This changelog file describes the iLO 6 new feature and changes
+since firmware version 1.10.
+
+{% admonition type="info"  name="Note"  %}
+Only a few firmware versions are fully documented in this portal.
+{% /admonition %}
+
+{% admonition type="success" name="Tips" %}
+
+- HPE iLO 6
+[version 1.11](/docs/redfishservices/ilos/ilo6/ilo6_111)
+is officially certified by the Common Criteria Certification program.
+The report of this certification is
+<a href="https://commoncriteriaportal.org/nfs/ccpfiles/files/epfiles/642-LSS%20CT%20v1.0.pdf" target="_blank">publicly available</a>
+on the Common Criteria Portal.
+- The Release Notes of the different iLO 6 firmware versions is available from the
+  <a href="https://support.hpe.com/hpesc/public/docDisplay?docId=sd00006650en_us" target="_blank">HPE Support Center</a>.
+
+{% /admonition %}
+
+## iLO 6 v1.70 new features and changes
+
+### New URIs
+
+- [PortMetrics schema](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#portmetrics)
+  - `/redfish/v1/Chassis/{@ChassisId}/NetworkAdapters/{@nicId}/Ports/{@portId}/Metrics`(GET)-#PortMetrics.v1\_7\_0.PortMetrics
+- [HpeiLOCloudConnect schema](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_hpe_resourcedefns170/#hpeilocloudconnect)
+  - `/redfish/v1/Managers/{@managerId}/Oem/Hpe/CloudConnect`(GET,POST)- #HpeiLOCloudConnect.v1\_0\_0.HpeiLOCloudConnect
+
+### Deprecated URIs
+
+- `PortMetrics` deprecated
+  - `/redfish/v1/Chassis/{@ChassisId}/NetworkAdapters/{@nicId}/Ports/{@portId}/PortMetrics`
+
+### HTTP methods - additions and deprecations
+
+- Added `PATCH` in
+  [HpeHttpsCert schema](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_hpe_resourcedefns170/#resource-instances-15):
+  `/redfish/v1/Managers/{@managerId}/SecurityService/HttpsCert`
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to the supported Redfish Actions for this release.
+  
+### Schema updates
+
+- `Certificate.v1_6_0.Certificate` updated to
+  [version v1\_8\_0](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#certificate):
+  - Added **CertificateUsageTypes** [property](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#certificateusagetypes-array)-The types or purposes for this certificate.
+- `Chassis.v1_25_1.Chassis`- Added the following properties:
+  - [UUID](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_chassis_resourcedefns170/#uuid)-The UUID for this chassis.
+- `EventService.v1_7_2.EventService`-Added the following properties:
+  - [EventFormatTypes](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#eventformattypes-array)
+     -Indicates the content types of the message that this
+      service can send to the event destination.
+  - [IncludeOriginOfConditionSupported](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#includeoriginofconditionsupported)
+      -An indication of whether the service
+      supports including the resource payload of the origin of condition in
+      the event payload.
+  - [SubordinateResourcesSupported](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#subordinateresourcessupported)
+     -An indication of whether the service
+      supports the SubordinateResources property on both event subscriptions
+      and generated events.
+- `HpeComponentUpdateTask.v1_5_0.HpeComponentUpdateTask` updated to
+  [version v1\_6\_0](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_hpe_resourcedefns170/#hpecomponentupdatetask): 
+  - Added **AdditionalErrorDetails** [property](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_hpe_resourcedefns170/#additionalerrordetails)
+    -An array of detailed result messages providing additional context for the
+      operation result.
+- `HpeHttpsCert.v2_0_0.HpeHttpsCert` updated to
+  [version v2\_1\_1](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_hpe_resourcedefns170/#hpehttpscert)-
+  Added the following properties:
+  - [KeyType](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_hpe_resourcedefns170/#keytype)-
+    Indicates the algorithm used for iLO's SSL certificate such as RSA or ECDSA.
+  - [<KeyType@Redfish.AllowableValues>](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_hpe_resourcedefns170/#keytyperedfishallowablevalues-array)-The supported values for the KeyType parameter.
+- `LogService.v1_1_0.LogService` updated to
+  [version v1\_5\_0](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#logservice):
+  - Added **LogEntryType** [property](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#logentrytype)
+    -The log contains multiple log entry types.
+- `ManagerAccount.v1_12_1.ManagerAccount`:
+  - Added **PasswordExpiration** [property](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_manager_resourcedefns170/#passwordexpiration)
+    -Indicates the date and time when this account password expires.  If
+    `null`, the account password never expires.
+- `Memory.v1_14_0.Memory`:
+  - Added **AllowedSpeedsMHz** [property](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#allowedspeedsmhz-array)
+    -Speed bins supported by this memory.
+- `MetricReportDefinition.v1_4_2.MetricReportDefinition`:
+  - Added **ReportUpdates** [property](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#reportupdates)
+    -Handling of subsequent metric reports when a metric report exists.
+- `PortMetrics.v1_7_0.PortMetrics`:
+  - Modified **Transceivers (array)** [property](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#transceivers-array) information.
+- `ServiceRoot.v1_13_0.ServiceRoot` updated to
+  [version v1\_14\_0](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_serviceroot_resourcedefns170/#serviceroot):
+  - Added **MultipleHTTPRequests** [property](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_serviceroot_resourcedefns170/#multiplehttprequests)- An indication of whether the service supports multiple outstanding
+    HTTP requests.
+- `SoftwareInventory.v1_2_0.SoftwareInventory` updated to
+  [version v1\_10\_0](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#softwareinventory):
+  Added the following properties:
+  - [VersionScheme](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#versionscheme)-
+    This property shall describe the scheme used to format the value of the
+    version property.
+  - [ReleaseType](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#releasetype)-
+    This value shall indicate that the Redfish service cannot determine if
+    this release is validated or prototype.
+- `UpdateService.v1_2_1.UpdateService` updated to
+  [version v1\_11\_0](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#updateservice):
+  - Added the **HttpPushUriOptions**
+    [property](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#httppushurioptions)-
+    It contains the settings and requirements of the service for
+    `HttpPushUri`-provided software updates.
+- `ComputerSystem.v1_18_0.ComputerSystem`- Added the following Oem.Hpe.AggregateHealthStatus
+  [properties](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_computersystem_resourcedefns170/#oemhpeaggregatehealthstatus):
+    **Oem.Hpe.AggregateHealthStatus.AirFilter** and **Oem.Hpe.AggregateHealthStatus.AirFilter.Status**.
+- `LogEntry.v1_15_0.LogEntry`:
+  - Added **LogEntryType** [property](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#logentrytype)
+    -The log contains multiple log entry types.
+- `Power.v1_7_1.Power`- Added the following
+  [properties](/docs/redfishservices/ilos/ilo6/ilo6_170/ilo6_other_resourcedefns170/#powersupplies-array):
+  - **PowerSupplies[{item}].HotPluggable**-An indication of whether this device can be inserted
+    or removed while the equipment is in operation.
+  - **PowerSupplies[{item}].Oem.Hpe.Version**- The hardware version of this power supply.
+  - **PowerSupplies[{item}].Version**-The hardware version of this power supply.
+
+## iLO 6 v1.69 new features and changes
+
+### New URIs
+
+- [HpeFallBackSensorCollection](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_hpe_resourcedefns169/#hpefallbacksensorcollection)
+  `/redfish/v1/chassis/{@chassisId}/fallbacksensors` (GET):
+  - Temperature fallback sensors are activated when main sensor fails. This
+    activation ensures that HPE iLO can still drive fans using the fallback
+    sensor input, at least in a degraded mode. In some cases
+    (i.e. when the main sensor of a third party OCP or optional card is
+    not recognized by HPE iLO), there could be a need to disable fallback
+    sensor(s).
+    When a fallback sensor is disabled, it does not send any temperature
+    input to HPE iLO. Read the note below to be informed of the consequences
+    of disabling fallback sensors properties.
+    Fall back sensors can be enabled/disabled with a `PATCH` request of
+    [Oem.Hpe.FallBackDisabled](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_other_resourcedefns169/#oemhpefallbackdisabled) and
+    [Oem.Hpe.FallbackOverride](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_other_resourcedefns169/#oemhpefallbackoverride).
+    Refer to the [example section](/docs/examples/redfishexamples/#fallback-sensors) for more detail.
+
+  {% admonition type="info" name="NOTES" %}
+
+    Legal statement:
+
+      HPE recommends that fallback sensors are not disabled. In the event, that you
+      elect to disable the sensor, you acknowledge that such action will result in
+      loss of thermal protection of the part or component and could result in failure
+      and damage to the system. Disabling the sensor may also lead to an abrupt
+      system shutdown and potential loss of data. Customer agrees and acknowledges
+      that HPE will not be responsible for any related loss of data. Furthermore,
+      parts or components that HPE determines failed due to customer disabling
+      the fallback sensor will not be provided, repaired, or replaced.
+
+      Below are the potential consequences of each sensor when fallback sensor
+      is disabled:
+
+      - `PCIe option card`: System performance degradation due to thermal throttling
+        will be triggered. Data loss and/or transmission slow down and/or shutdown
+        due to transceiver is overheated. Potential component damage could happened.
+
+      - `OCP option card`: System performance degradation due to thermal throttling
+          will be triggered. OCP NIC card is capable of shutting the system down
+          when temperature reading reaches `Fatal High Threshold` as physical
+          shutdown signal is routed to CPLD. Potential component damage could
+          happen.
+  
+  {% /admonition %}
+
+### Deprecated URIs
+
+- No URIs deprecated in this release.
+
+### HTTP methods - additions and deprecations
+
+- No HTTP methods changed across these releases.
+
+### Redfish actions - additions and deprecations
+
+- No changes have been made to the supported Redfish Actions for this release.
+  
+### Schema updates
+
+- `LogEntry.v1_11_0.LogEntry` updated to
+  [version v1\_15\_0](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_other_resourcedefns169/#logentry):
+  Introduced [AdditionalDataURI](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_other_resourcedefns169/#additionaldatauri). It is a Redfish property
+  that potentially provides an URI to download [CPER](/docs/etc/glossaryterms/)
+  records related to the log entry. This allows users to retrieve platform
+  diagnostic data from HPE iLO. Refer to the
+  [log services](/docs/redfishservices/ilos/supplementdocuments/logservices/#common-platform-error-records) documentation section of more details
+  and examples.
+- `Sensor.v1_10_0.Sensor` updated to
+  [version v1\_10\_1](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_other_resourcedefns169/#sensor).
+  Added the following properties:
+  [Oem.Hpe.FallBackDisabled](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_other_resourcedefns169/#oemhpefallbackdisabled) and
+  [Oem.Hpe.FallbackOverride](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_other_resourcedefns169/#oemhpefallbackoverride).
+- `SoftwareInventory.v1_2_0.SoftwareInventory`:
+  Added **Oem.Hpe.DeviceSlotLocation**
+  [property](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_other_resourcedefns169/#oemhpedeviceslotlocation)
+  - It is a friendly text string.
+  It is same as the `Location` in the firmware inventory that indicates the
+  slot ID - omitted if not available.
+- `UpdateService.v1_2_1.UpdateService`:
+  Added following
+  [properties](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_other_resourcedefns169/#oemhpeaddtionalerrordetails):
+  **Oem.Hpe.AddtionalErrorDetails.MessageArgs (array)**,
+  **Oem.Hpe.AddtionalErrorDetails.MessageId**, and **MessageArgs[{item}]**.
+  Added following
+  [Registries](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_msgregs169/):
+  **UpdateSignatureValidationFailed**, **UpdateBadHeader**,
+  **UpdateRepositoryUnavailableDueToBMCReset**, **SystemSecurityRestriction**,
+  **FirmwareFileLocked**, and **MinimumFirmwareVersionRequirementNotMet**.
+- `Manager.v1_19_1.Manager`:
+  Added **Oem.Hpe.VSPEnabled**
+  [property](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_manager_resourcedefns169/#oemhpevspenabled):
+  This property enables or disables Virtual Serial Port (VSP).
+- `ServiceRoot.v1_13_0.ServiceRoot`:
+  Removed **Oem.Hpe.Moniker.WWWINFOSIGHT**
+  [property](/docs/redfishservices/ilos/ilo6/ilo6_169/ilo6_serviceroot_resourcedefns169/#serviceroot).
 
 ## iLO 6 v1.68 new features and changes
 
@@ -54,18 +275,24 @@ read the _Redfish versioning_ paragraph of this
     Added `Oem.Hpe.HardwareData` and `Oem.Hpe.TcgEventLog`
     [properties](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#componentintegrity).
 - `EthernetInterface.v1_12_1.EthernetInterface`:
-    Added `DNSOverRA` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_network_resourcedefns168/#ethernetinterface).
+    Added `DNSOverRA`
+    [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_network_resourcedefns168/#ethernetinterface).
 - `EnvironmentMetrics.v1_3_2.EnvironmentMetrics`:
     Added `PowerWatts` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#powerwatts).
-- `EventDestination.v1_13_0.EventDestination` updated to [version v1\_14\_0](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#subscriptiontype).
+- `EventDestination.v1_13_0.EventDestination` updated to
+   [version v1\_14\_0](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#subscriptiontype).
     Added the following properties: `SyslogTLS`, `SyslogUDP`.
-    For more information, see [Syslog subscription](/docs/redfishservices/ilos/supplementdocuments/iloeventservices/#syslog-subscription).
+    For more information, see
+    [Syslog subscription](/docs/redfishservices/ilos/supplementdocuments/iloeventservices/#syslog-subscription).
 - `HpeEventService.v2_2_0.HpeEventService`:
-    Added `SubscriptionType` [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#subscriptiontype).
+    Added `SubscriptionType`
+    [property](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#subscriptiontype).
 - `HpeNetworkAdapter.v1_10_1.HpeNetworkAdapter`:
-    Added `PrimaryBootLoaderVersion` and `ChipVersion` [objects](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_network_resourcedefns168/#networkadapter).
+    Added `PrimaryBootLoaderVersion` and `ChipVersion`
+    [objects](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_network_resourcedefns168/#networkadapter).
 - `HpeiLOSnmpService.v2_4_1.HpeiLOSnmpService`:
-    Removed DES (Data Encryption Standard) from the [definition](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_hpe_resourcedefns168/#privacyprotocol).
+    Removed DES (Data Encryption Standard) from the
+    [definition](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_hpe_resourcedefns168/#privacyprotocol).
 - `Port.v1_12_0.Port`:
     Added few SFP [properties](/docs/redfishservices/ilos/ilo6/ilo6_168/ilo6_other_resourcedefns168/#sfp).
 
@@ -94,7 +321,7 @@ read the _Redfish versioning_ paragraph of this
 
 - `ComponentIntegrity.v1_2_3.ComponentIntegrity` updated to
   [version v1\_3\_0](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_other_resourcedefns167/#componentintegrity).
-- [ComputerSystem.v1_18_0.ComputerSystem](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_computersystem_resourcedefns167/#bootprogress): The`Read Only` for
+- [ComputerSystem.v1\_18\_0.ComputerSystem](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_computersystem_resourcedefns167/#bootprogress): The`Read Only` for
   `BootProgress.LastState` and `BootProgress.LastBootTimeSeconds` property is updated to `TRUE`.
 - `HpeiLOLicense.v2_3_0.HpeiLOLicense` updated to
   [version v2\_5\_0](/docs/redfishservices/ilos/ilo6/ilo6_167/ilo6_hpe_resourcedefns167/#hpeilolicense).
@@ -160,47 +387,47 @@ read the _Redfish versioning_ paragraph of this
 ### New URIs
 
 <!-- Chirag's file -->
-- [ThermalSubsystem schema](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#thermalsubsystem):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#thermalsubsystem") %} ThermalSubsystem schema {% /link-internal %}:
   `/redfish/v1/chassis/{@chassisId}/thermalsubsystem` (GET)
-- [ThermalMetrics](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#thermalmetrics):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#thermalmetrics") %} ThermalMetrics {% /link-internal %}:
   `/redfish/v1/chassis/{@chassisId}/thermalsubsystem/thermalmetrics` (GET)
 
 <!-- 1.64 URIs -->
-- [Key Collection](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#keycollection):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#keycollection") %} Key Collection {% /link-internal %}:
   `/redfish/v1/accountservice/accounts/{@accountId}/keys/` (GET,POST)
-- [Key schema](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#key):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#key") %} Key schema {% /link-internal %}:
   `/redfish/v1/accountservice/accounts/{@accountId}/keys/{@keyId}` (DELETE,GET,PATCH)
 
 <!-- Dummy comment to insert blank line -->  
-- [Port Collection](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#portcollection):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#portcollection") %} Port Collection {% /link-internal %}:
   `/redfish/v1/managers/{@managerId}/dedicatednetworkports` (GET)
-- [Port schema](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#port):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#port") %} Port schema {% /link-internal %}:
   `/redfish/v1/managers/{@managerId}/dedicatednetworkports/{@portId}` (GET,PATCH)
-- [Port Collection](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#portcollection):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#portcollection") %} Port Collection {% /link-internal %}:
   `/redfish/v1/managers/{@managerId}/sharednetworkports` (GET)
-- [Port schema](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#port):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#port") %} Port schema {% /link-internal %}:
   `/redfish/v1/managers/{@managerId}/sharednetworkports/{@portId}` (GET,PATCH)
   
 <!-- 159-160 URIs -->
-- [Sensor Collection](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#sensorcollection):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#sensorcollection") %} Sensor Collection {% /link-internal %}:
   `/redfish/v1/chassis/{@ChassisId}/sensors` (GET)
-- [Sensor schema](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#sensor):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#sensor") %} Sensor schema {% /link-internal %}:
   `/redfish/v1/chassis/{@ChassisId}/sensors/{@SensorId}` (GET)
 
 <!-- 161-162 URIs -->
-- [Assembly schema](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#assembly):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#assembly") %} Assembly schema {% /link-internal %}:
   `/redfish/v1/chassis/{@chassisId}/thermalsubsystem/fans/{@fanId}/assembly` (GET)
-- [Fan Collection](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#fancollection):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#fancollection") %} Fan Collection {% /link-internal %}:
   `/redfish/v1/chassis/{@chassisId}/thermalsubsystem/fans` (GET)
-- [Fan schema](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#fan):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#fan") %} Fan schema {% /link-internal %}:
   `/redfish/v1/chassis/{@chassisId}/thermalsubsystem/fans/{@fanId}` (GET)
 
 <!-- Dummy comment to insert blank line -->
-- [Assembly schema](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#assembly):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#assembly") %} Assembly schema {% /link-internal %}:
   `/redfish/v1/chassis/{@chassisId}/thermalsubsystem/pumps/{@pumpId}/assembly` (GET)
-- [Pump Collection](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#pumpcollection):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#pumpcollection") %} Pump Collection {% /link-internal %}:
   `/redfish/v1/chassis/{@chassisId}/thermalsubsystem/pumps` (GET)
-- [Pump schema](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#pump):
+- {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#pump") %} Pump schema {% /link-internal %}:
   `/redfish/v1/chassis/{@chassisId}/thermalsubsystem/pumps/{@pumpId}` (GET)
 
 ### Deprecated URIs
@@ -210,9 +437,9 @@ read the _Redfish versioning_ paragraph of this
 ### HTTP methods - additions and deprecations
 
 - Added `PATCH` for the following URIs:
-  - [Sensor resource](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#sensor):
+  - {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#sensor") %} Sensor resource {% /link-internal %}:
     `/redfish/v1/Chassis/{@ChassisId}/Sensors/{@SensorId}`
-  - [ThermalSubsystem](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#thermalsubsystem):
+  - {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#thermalsubsystem") %} ThermalSubsystem {% /link-internal %}:
     `/redfish/v1/Chassis/{@ChassisId}/ThermalSubsystem`
 
 ### Redfish actions - additions and deprecations
@@ -222,11 +449,11 @@ read the _Redfish versioning_ paragraph of this
 ### Schema updates
 
 - `Port.v1_9_0.Port` updated to
-  [version 1\_12\_0](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#port)
+  {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#port") %} version 1_12_0 {% /link-internal %}
   - Added resources: `Ethernet.LLDPEnabled`, `Ethernet.LLDPReceive{}`, `Ethernet.LLDPTransmit{}`
 - `ComputerSystem.v1_18_0.ComputerSystem`
   - Added `Oem.Hpe.DeviceDiscoveryComplete.ServerFirmwareInventoryComplete`
-    [property](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_computersystem_resourcedefns164/#oemhpedevicediscoverycomplete)
+    {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_computersystem_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#oemhpedevicediscoverycomplete") %} property {% /link-internal %}
   - `BootProgress.LastState`: The last boot progress state. Supported
     values: `None`, `PrimaryProcessorInitializationStarted`,
     `BusInitializationStarted`, `MemoryInitializationStarted`,
@@ -234,24 +461,24 @@ read the _Redfish versioning_ paragraph of this
     `SystemHardwareInitializationComplete`, `SetupEntered`, `OSBootStarted`,
     `OSRunning`, `OEM`.
 - `Manager.v1_5_1.Manager` updated to
-  [version 1\_19\_1](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_manager_resourcedefns164/#manager)
-  - Added the `DedicatedNetworkPorts` [link](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_manager_resourcedefns164/#dedicatednetworkports)
+  {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#manager") %} version 1_19_1 {% /link-internal %}
+  - Added the `DedicatedNetworkPorts` {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#dedicatednetworkports") %} link {% /link-internal %}
     pointing to the collection of ports of the Dedicated Network Interface (i.e. `/redfish/v1/Managers/1/DedicatedNetworkPorts/1/`).
-  - Added the `SharedNetworkPorts` [link](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_manager_resourcedefns164/#sharednetworkports)
+  - Added the `SharedNetworkPorts` {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#sharednetworkports") %} link {% /link-internal %}
     pointing to the collection of ports of the Shared Network Interface (i.e. `/redfish/v1/Managers/1/SharedNetworkPorts/1/`).
 - `ManagerAccount.v1_3_0.ManagerAccount` updated to
-  [version 1\_12\_1](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_manager_resourcedefns164/#manageraccount)
-  - Added `AccountTypes (array)` [resource](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_manager_resourcedefns164/#accounttypes-array)
+  {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#manageraccount") %} version 1_12_1 {% /link-internal %}
+  - Added `AccountTypes (array)` {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_manager_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#accounttypes-array") %} resource {% /link-internal %}
 - `HpeComponentUpdateTask.v1_4_0.HpeComponentUpdateTask` updated to
-  [version 1\_5\_0](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_hpe_resourcedefns164/#hpecomponentupdatetask)
-  - Added `TaskPlacementMode` [property](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_hpe_resourcedefns164/#taskplacementmode)
+  {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_hpe_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#hpecomponentupdatetask") %} version 1_5_0 {% /link-internal %}
+  - Added `TaskPlacementMode` {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_hpe_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#taskplacementmode") %} property {% /link-internal %}
 
 <!-- Dummy comment to insert blank line -->
 - `Power.v1_7_1.Power`:
   - Added `Oem.Hpe.HasFanPowerMetering`
-    [property](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_other_resourcedefns164/#oemhpehasfanpowermetering)
+    {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_other_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#oemhpehasfanpowermetering") %} property {% /link-internal %}
 - `HpePowerMeter.v2_0_1.HpePowermeter` updated to
-  [version 2\_1\_0](/docs/redfishservices/ilos/ilo6/ilo6_164/ilo6_hpe_resourcedefns164/#hpepowermeter)
+  {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_hpe_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "#hpepowermeter") %} version 2_1_0 {% /link-internal %}
   - Added property: `PowerDetail[{item}].FanWatts`
 
 ## iLO 6 v1.63 new features and changes
@@ -367,8 +594,8 @@ GET /redfish/v1/resourcedirectory
     ...
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ### Deprecated URIs
 
@@ -637,18 +864,18 @@ HPE iLO supports connecting to HPE Compute Ops Management (COM) using the `Activ
 - Onboarding HPE iLO to COM is possible with both the COM `ActivationKey` or HPE GreenLake Workspace ID.
   Refer to the following example:
   
-  {% tabs %}
-  {% tab label="Action to onboard HPE iLO to COM" %}
+{% tabs %}
+{% tab label="Action to onboard HPE iLO to COM" %}
 
   ```text Action to onboard HPE iLO to COM
       POST: /redfish/v1/Managers/1/Actions/Oem/Hpe/EnableCloudConnect
   ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
   
-  {% tabs %}
-  {% tab label="Body 1" %}
+{% tabs %}
+{% tab label="Body 1" %}
 
   ```json Body 1
     {
@@ -666,9 +893,10 @@ HPE iLO supports connecting to HPE Compute Ops Management (COM) using the `Activ
       "OverrideManager" : true
     }
   ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 - Rename of property:
   To view the HPE GreenLake account ID to which an HPE iLO is connected to the
   COM, the property `ActivationKey` under URI-`/redfish/v1/Managers/1/` is
@@ -1207,6 +1435,18 @@ No changes have been made to supported Redfish Actions for this release.
 - `#Thermal.v1_7_1.Thermal`
   - Added `Oem.Hpe.MainSensorName` to `Temperatures`: Sensor name of main temperature sensor that has at least one sub sensor.
 
+## iLO 6 v1.11 new features and changes
+
+{% admonition type="info" name="Note" %}
+This iLO 6 firmware version is identical to
+the previous version (1.10), but has received
+the Common Criteria Certification.
+
+The report of this certification is
+<a href="https://commoncriteriaportal.org/nfs/ccpfiles/files/epfiles/642-LSS%20CT%20v1.0.pdf" target="_blank">publicly available</a>
+on the Common Criteria Portal.
+{% /admonition %}
+
 ## iLO 6 v1.10 new features and changes
 
 ### New URIs
@@ -1290,19 +1530,19 @@ The following resource instances are added in this schema:
   </ul></br>
 The following resource instances are added in this schema:
 
-  - `/redfish/v1/Systems/{@systemsId}/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId}` (GET, DELETE)
-  - `/redfish/v1/Systems/{item}/SecureBoot/SecureBootDatabases/PK`(GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/db` (GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbdefault`(GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbr`(GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbrdefault`(GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbt`(GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbtdefault`(GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbx`(GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbxdefault`(GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/kek`(GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/kekdefault`(GET)
-  - `/redfish/v1/systems/{item}/secureboot/securebootdatabases/pkdefault`(GET)
+- `/redfish/v1/Systems/{@systemsId}/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId}` (GET, DELETE)
+- `/redfish/v1/Systems/{item}/SecureBoot/SecureBootDatabases/PK`(GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/db` (GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbdefault`(GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbr`(GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbrdefault`(GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbt`(GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbtdefault`(GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbx`(GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbxdefault`(GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/kek`(GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/kekdefault`(GET)
+- `/redfish/v1/systems/{item}/secureboot/securebootdatabases/pkdefault`(GET)
 
 - `/redfish/v1/Systems/{@systemId}/LogServices/DPU/Entries` (GET, POST) `#LogEntryCollection.LogEntryCollection` - A Collection of LogEntry resource instances.
 
@@ -1492,7 +1732,7 @@ No changes have been made to supported Redfish Actions for this release.
     - `StructuredName`: PCI device structured name in UTF-8 format (e.g. 'NIC.LOM.1.1' - see PCIDevices in `/rest/v1/Systems/x/PCIDevices`)
     - `Team`: If a port is configured for NIC teaming, the name of the configured link between the physical ports that form a logical network adapter. This value is displayed for system NICs only (embedded and stand-up).
     - `UEFIDevicePath`: UEFIDevice Path for correlation purposes.
-  
+
 - `#NetworkDeviceFunction.v1_5_0.NetworkDeviceFunction` updated to `#NetworkDeviceFunction.v1_8_0.NetworkDeviceFunction`
 
 - `#PCIeDevice.v1_4_0.PCIeDevice` updated to `#PCIeDevice.v1_5_0.PCIeDevice`

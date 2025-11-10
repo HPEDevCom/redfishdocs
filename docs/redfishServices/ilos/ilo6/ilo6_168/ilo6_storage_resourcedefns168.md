@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Storage resource definitions
 markdown:
@@ -13,7 +14,7 @@ breadcrumbs:
 
 # Storage resource definitions of iLO 6 v1.68
 
-For each data type provided by the HPE ilO Redfish service,find below its description including the list of possible instances (URIs),links to related other resources, described properties and many other details.
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
@@ -608,11 +609,9 @@ Volumes is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **Storage.ResetToDefaults**
 Member of [Storage.v1\_12\_0.Storage](#storage)
 This action resets the system.
-
 
 **Parameters:**
 
@@ -630,6 +629,7 @@ Link to invoke action
 **title (string)**
 
 Friendly action name
+
 ## StorageControllerCollection
 
 `@odata.type: "#StorageControllerCollection.StorageControllerCollection"`
@@ -1229,6 +1229,7 @@ Member of VolumeCollection.VolumeCollection
 |Type|integer|
 |Read Only|True|
 |Added|iLO6 1.05|
+
 ## Volume
 
 `@odata.type: "#Volume.v1_0_0.Volume"`
@@ -2306,7 +2307,6 @@ Member of [Drive.v1\_16\_0.Drive](#drive)
 |Added|iLO6 1.05|
 
 ### Actions
-
 
 **Drive.Reset**
 Member of [Drive.v1\_16\_0.Drive](#drive)

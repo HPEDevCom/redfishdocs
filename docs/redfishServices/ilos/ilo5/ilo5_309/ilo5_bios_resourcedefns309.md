@@ -1,22 +1,21 @@
 ---
+seo:
+  title: Bios resource definitions
 markdown:
   toc:
-    hide: false
+    hide: 
     depth: 3
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Bios resource definitions
 ---
 
 # Bios resource definitions of iLO 5 v3.09
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
-
 
 ## Bios
 
@@ -33,7 +32,7 @@ Bios contains properties surrounding a BIOS Attribute Registry (where the system
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/Boot`|[HpeServerBootSettings](ilo5_hpe_resourcedefns309/#hpeserverbootsettings)|
 |`Oem/Hpe/Links/ScalablePmem`|[HpeScalablePmem](#hpescalablepmem)|

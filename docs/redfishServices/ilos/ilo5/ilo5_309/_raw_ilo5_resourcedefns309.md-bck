@@ -6255,6 +6255,15 @@ Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
 |Type|string or null|
 |Read Only|True|
 
+### BootOptionEnabled
+Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
+
+| | |
+|---|---|
+|Description|A flag that shows if the Boot Option is enabled.|
+|Type|boolean or null|
+|Read Only|False|
+
 ### BootOptionReference
 Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
 
@@ -9774,7 +9783,7 @@ The type of reset.
 
 |Value|Description|
 |---|---|
-|GracefulRestart|Shut down gracefully and restart the system.|
+|GracefulRestart|Instead of doing the graceful restart, the server does a force restart.|
 |GracefulShutdown|Shut down gracefully and power off.|
 |PowerCycle|Power cycle the unit.|
 |On|Turn on the unit.|
@@ -25090,12 +25099,7 @@ POST /redfish/v1/Managers/1/Actions/Manager.Reset/
 ```
 
 :::info NOTE
-
-- iLO `GracefulRestart` works in the same way as `ForceRestart`.
-- Depending on the operating system and other factors, `GracefulShutdown`
-  may not perform a graceful shutdown. Hewlett Packard Enterprise
-  recommends using operating system commands to complete a graceful shutdown.
-
+iLO `GracefulRestart` works in the same way as `ForceRestart`.
 :::
 
 ### Resource Instances

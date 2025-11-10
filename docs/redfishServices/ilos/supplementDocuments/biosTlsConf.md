@@ -19,10 +19,16 @@ of the UEFI/BIOS
 This configuration is required if you want to boot an operating system from
 remote using the HTTPS protocol.
 
-{% admonition type="info" name="NOTE" %}
-The iLO TLS configuration is presented in the
-[Security Service](/docs/redfishservices/ilos/supplementdocuments/securityservice/)
-section.
+{% admonition type="success" name="Tip" %}
+
+Several other Redfish subsystems use certificates to secure their use.
+Refer to the following documentation sections for their management:
+
+- [iLO TLS certificates](/docs/redfishservices/ilos/supplementdocuments/securityservice#ilo-tls-certificates)
+- [Server management identities](/docs/redfishservices/ilos/supplementdocuments/securityservice#server-management-identities)
+- [Secure boot databases](/docs/concepts/securebootdatabases#accessing-secure-boot-databases-from-redfish)
+- [Directory administration](/docs/redfishservices/ilos/supplementdocuments/managingusers#directory-administration)
+
 {% /admonition %}
 
  In iLO 6, the HPE OEM `#HpeTlsConfig` extension
@@ -58,15 +64,15 @@ reading and setting properties. It has three resources:
     [example below](#resetting-the-tls-resource-to-its-default-settings)
     to perform the reset.
 
-## Installing Certificates
+## Installing Certificates in the HPE TLS Boot subsystem
 
-The certificates are X509 keys. In PEM format, the certificates are encoded
+The HPE TLS Boot subsystem accepts X509 keys. In PEM format, the certificates are encoded
 in a series of strings with LF or CR-LF invisible characters in their
-ASCII representation (\n or \r\n):
+ASCII representation (`\n` or `\r\n`):
 
 The following is an example of a CR-LF certificate in a PEM format:
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Text Example
@@ -78,23 +84,25 @@ The following is an example of a CR-LF certificate in a PEM format:
     -----END CERTIFICATE-----
 ```
   
-  {% /tab %}
-  {% /tabs %}
-It should be modified to replace the CR-LF characters with their ASCII
-representation:
+{% /tab %}
+{% /tabs %}
 
-  {% tabs %}
+In order to upload such a common PEM certificate to the HPE TLS Boot subsystem, you need to replace the CR-LF characters with their ASCII
+representation as shown in the next example.
+
+{% tabs %}
 {% tab label="Example" %}
 
 ```Text Example
-    -----BEGIN CERTIFICATE-----\r\nMIIGxDCCBaygAwIBAgIQUkL9757013wOQ2heZMCLizANBgkqhkiG9w0BAQsFADCB\r\nkTELMAkGA1UEBhMCVVMxKzApBgNVBAo
-    TIkhld2xldHQgUGFja2FyZCBFbnRlcnBy\r\naXNlIENvbXBhbnkxIDAeBgNVBAsTF0luZnJhc3RydWN0dXJlIFNlcnZpY2VzMTMw\r\n
-    ...\r\n
+    -----BEGIN CERTIFICATE-----\nMIIGxDCCBaygAwIBAgIQUkL9757013wOQ2heZMCLizANBgkqhkiG9w0BAQsFADCB\nkTELMAkGA1UEBhMCVVMxKzApBgNVBAo
+    TIkhld2xldHQgUGFja2FyZCBFbnRlcnBy\naXNlIENvbXBhbnkxIDAeBgNVBAsTF0luZnJhc3RydWN0dXJlIFNlcnZpY2VzMTMw\n
+    ...\n
     -----END CERTIFICATE-----
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="success" name="Tip" %}
 On Linux systems, you can use the following `sed` or `awk` commands to
 replace the CR-LF or LF invisible characters in a `file` with their
@@ -112,27 +120,30 @@ or
 Finally, the certificate needs to be PUT (only a PUT request will
 be successful) through the API:
 
-  {% tabs %}
+{% tabs %}
 {% tab label="PUT request" %}
 
 ```text PUT request
 PUT /redfish/v1/Systems/{item}/bios/oem/hpe/tlsconfig/settings/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body" %}
 
 ```json Body
 {
   "NewCertificates": [
     {
-      "X509Certificate":"-----BEGIN CERTIFICATE-----\r\nMIIGxDCCBaygAwIBAgIQUkL9757013wOQ2heZMCLizANBg......kSH4nvx8CQ==\r\n-----END CERTIFICATE-----\r\n"
+      "X509Certificate":"-----BEGIN CERTIFICATE-----
+      \nMIIGxDCCBaygAwIBAgIQUkL9757013wOQ2heZMCLizANBg......kSH4nvx8CQ==
+      \n-----END CERTIFICATE-----
+      \n"
     }
   ]
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Current Settings after SystemReset" %}
 
 ```json Current Settings after SystemReset
@@ -176,8 +187,8 @@ PUT /redfish/v1/Systems/{item}/bios/oem/hpe/tlsconfig/settings/
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ## Deleting Certificates
 
@@ -185,14 +196,14 @@ When a certificate is installed, a new field is created with the Fingerprint
 of that certificate (SHA256). To remove a certificate, PUT the fingerprint
 to remove in the settings environment.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="PUT request" %}
 
 ```text PUT request
 PUT /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body" %}
 
 ```json Body
@@ -205,8 +216,8 @@ PUT /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 {% admonition type="success" name="Tip:" %}
 You can delete more than one certificate at a time.
@@ -252,8 +263,8 @@ PUT /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ## Examples of other changes
 
@@ -276,7 +287,7 @@ PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 ```
   
 {% /tab %}
- {% /tabs %}
+{% /tabs %}
 
 - **Modifying VerifyMode**
 Possible values: PEER or NONE.
@@ -297,8 +308,8 @@ PATCH /redfish/v1/Systems/1/bios/oem/hpe/tlsconfig/settings/
 }    
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 - **Modifying HostnameCheck**
 Cannot be changed if `VerifyMode` is set to NONE.

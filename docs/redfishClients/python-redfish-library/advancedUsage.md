@@ -37,53 +37,57 @@ For a full list of arguments possible, refer to urllib3's <a href="https://urlli
 
 The following example sets a `RedfishClient` with a timeout of 30 seconds and five retries.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
 >>> REST_OBJ = redfish.RedfishClient(base_url=iLO_host, username=login_account, password=login_password, timeout=30, retries=5)
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### Proxy Support
 
 The python-ilorest-library **version 2.5.0 and greater** supports both HTTP and SOCKS proxies. If you are using a socks proxy, you must `install the [socks] add-on <Installation-Guide.html#with-socks-proxy-support>`_.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
 >>> REST_OBJ = redfish.RedfishClient(base_url="https://10.0.0.100", username="username", password="password", proxy='http://proxy.proxy.com:8080')
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 SOCKS proxies must start with `socks`
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
 >>> REST_OBJ = redfish.RedfishClient(base_url="https://10.0.0.100", username="username", password="password", proxy='socks5://proxy.proxy.com:8080')
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### HTTPS verification
 
 By default the python-ilorest-library creates an unverified context for HTTPS connections.
 To verify the HTTPS certificate, pass an optional argument to urllib3 through a Client object, `ca_certs`.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
 >>> REST_OBJ = redfish.RedfishClient(base_url="https://hostname", username="username", password="password", ca_certs='C:\<pathto>\CA.crt')
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 For a full description of possible arguments in `ca_certs`, refer to urllib3's <a href="https://urllib3.readthedocs.io/en/latest/user-guide.html#certificate-verification" target="_blank">documentation</a> for more information.
 
 ## A deeper dive into the Response Class
@@ -100,22 +104,24 @@ You can use the `getheader()` function to search for a specific header in a resp
 '</redfish/v1/SchemaStore/en/ComputerSystem.json>; rel=describedby'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The `ori` property returns the response body in its original form, and it is useful for binary responses.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
 >>> response.ori
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The `obj` property returns the response body in dot notation.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
@@ -124,11 +130,12 @@ The `obj` property returns the response body in dot notation.
 u'assettag'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 For keys with special characters, the dictionary notation still works.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
@@ -136,8 +143,9 @@ For keys with special characters, the dictionary notation still works.
 u'/redfish/v1/systems/1/bios'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### Response Object
 
 A class has been implemented within the library to handle HTTP response codes from iLO for patch, post and put type requests. HTTP response data is parsed and then combined with the relevant error response resource as associated with the applied properties (categorized by type and MessageId).
@@ -151,17 +159,17 @@ Error response data is guided by HTTP status codes. Refer to <a href="https://en
 Response codes outside of 200 and 400 have not been extensively tested or witnessed. Responses for HTTP response codes under 300 redirects or 500 server errors might be observed; please feel free to note and share the results of such encounters by opening a GitHub issue.
 {% /admonition %}
 
-
 Generally 400 error response codes result in a full error response. A response might include the following data; however, the entries are not guaranteed for every response:
 
-*	An error response message ID ("MessageId"), iLO response error message code identification.
-*	An error response message description ("Description"), essentially a quick synopsis of the issue.
-*	An error response message ("Message") describing the reason for the error in greater detail. The offending properties are noted as per the relevant error response resource.
-*	An error response resolution ("Resolution") describing steps to correct the error.
+- An error response message ID ("MessageId"), iLO response error message code identification.
+- An error response message description ("Description"), essentially a quick synopsis of the issue.
+- An error response message ("Message") describing the reason for the error in greater detail.
+  The offending properties are noted as per the relevant error response resource.
+- An error response resolution ("Resolution") describing steps to correct the error.
 
 The following is an example response message for an error in the iLODateTime type regarding the property "NTPServers":
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Text Example
@@ -172,8 +180,9 @@ Message: The property "NTPServers" is a read-only property and cannot be assigne
 Resolution: If the operation did not complete, remove the property from the request body and resubmit the request.
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 The response data is also available when utilizing the iLO Channel Interface Driver (Chif).
 {% /admonition %}
@@ -190,11 +199,12 @@ The `response` property of the Response object returns a `Request` object, which
 <redfish.rest.containers.RestRequest object at 0x00000000070C7E80>
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The `url` property shows the actual system the call was made against.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
@@ -202,11 +212,12 @@ The `url` property shows the actual system the call was made against.
 'https://10.0.0.100'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The `method` property shows the method applied.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
@@ -214,11 +225,12 @@ The `method` property shows the method applied.
 'PATCH'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The `path` property shows what path the method was made against.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
@@ -226,11 +238,12 @@ The `path` property shows what path the method was made against.
 '/redfish/v1/systems/1'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The `body` property shows what body (if any) was passed along with the request.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
@@ -238,21 +251,23 @@ The `body` property shows what body (if any) was passed along with the request.
 '{"AssetTag": "new tag"}'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## Certificate Based Authentication (HPE iLO Supported Authentication Only)
 
 The python-ilorest-library (**version 3.2.0 and greater**) supports the use of certificate based authentication when accessing an HPE iLO based BMC. Certificate based authentication utilizes Urllib3 TLS certificates passed to the PoolManager when an http client is initialized.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
 >>> REST_OBJ = redfish.RedfishClient(base_url="https://10.0.0.100", username="username", ca_cert_data=<dictionary of certificate data>)
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 Upon successful login, a session key is provided in return, by iLO, which can be used for all subsequent transactions.
 
 {% tabs %}
@@ -264,6 +279,7 @@ Upon successful login, a session key is provided in return, by iLO, which can be
   
 {% /tab %}
 {% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 This feature requires iLO 5 version 2.40 or greater. In addition to the version requirement the iLO internal RTC clock must have the correct date and time (NTP must be configured), have a valid "iLO Advanced Premium Security Edition" license key, have CAC/Smartcard Authentication enabled, incorporate a valid SSL certificate, as well as certificate thumbprint mappings for the relevant iLO management users which can be authenticated by the client certificate(s). Multiple users can share the same certificate, if so configured.
 {% /admonition %}
@@ -305,7 +321,7 @@ Multi-part form data is sent as a list of tuples.
 
 Standard fields are a tuple of `(field, value)`
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
@@ -317,7 +333,7 @@ Standard fields are a tuple of `(field, value)`
 
 Json data is just another value
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
@@ -359,7 +375,7 @@ For an example of Multi-part form data in action, see the <a href="https://githu
 
 Logging of all request and responses is available through the redfish_logger function. First, import the logging and redfish_logger functions.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
@@ -367,11 +383,12 @@ Logging of all request and responses is available through the redfish_logger fun
 >>> from redfish import redfish_logger
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 Then, specify the logger file name, format of the logger, and the logging level. See the `logging` python documentation for more information on these arguments.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```Python Example
@@ -380,13 +397,15 @@ Then, specify the logger file name, format of the logger, and the logging level.
 >>> LOGGER = redfish_logger(LOGGERFILE, LOGGERFORMAT, logging.DEBUG)
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 After running some commands, your log file should be populated in the file specified at creation.
 
 ## Execution of parallel in-band commands
 
-Starting with version 5.1.0.0, the HPE Python Redfish library supports the execution of at most 8 parallel processes in <a href="https://developer.hpe.com/blog/chif-driver-not-found/#quick-reminder-of-ilorest-in-band-management" target="_blank">local / in-band</a> mode.
+Starting with version 5.1.0.0, the HPE Python Redfish library supports the execution of at most 8 parallel processes in
+<a href="/docs/references_and_material/blogposts/etc/chif/chif-driver-not-found" target="_blank">local / in-band</a> mode.
 
 Any method of parallel scripting is supported as long as no more than eight local connections are started simultaneously.
 
@@ -396,14 +415,14 @@ HPE iLOs in `HighSecurity`, `SecureStandard`, FIPS or CNSA security states have 
 
 The following example launches in parallel three threads of a Python script.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Command" %}
 
 ```shell Command
 seq 1 3 | xargs -I -P3 python get_temp.py inband
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Script source" %}
 
 ```python Script source
@@ -460,5 +479,5 @@ else:
 
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}

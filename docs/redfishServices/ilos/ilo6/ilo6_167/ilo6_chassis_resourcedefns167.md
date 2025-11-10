@@ -1,13 +1,15 @@
 ---
 excludeFromSearch: true
+seo:
+  title: Chassis resource definitions
 markdown:
   toc:
     hide: false
     depth: 2
   lastUpdateBlock:
     hide: false
-seo:
-  title: Chassis resource definitions
+breadcrumbs:
+  hide: false
 ---
 
 # Chassis resource definitions of iLO 6 v1.67

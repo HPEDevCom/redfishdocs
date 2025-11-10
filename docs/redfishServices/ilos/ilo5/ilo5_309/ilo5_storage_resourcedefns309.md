@@ -1,4 +1,6 @@
 ---
+seo:
+  title: Storage resource definitions
 markdown:
   toc:
     hide: false
@@ -7,18 +9,16 @@ markdown:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Storage resource definitions
 ---
 
 # Storage resource definitions of iLO 5 v3.09
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## StorageCollection
+
 `@odata.type: "#StorageCollection.StorageCollection"`
 
 A Collection of Storage resource instances.
@@ -31,7 +31,7 @@ A Collection of Storage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Storage](ilo5_storage_resourcedefns309/#storage)|
 
@@ -74,7 +74,7 @@ Storage defines a storage subsystem and its respective properties.  A storage su
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Volumes`|Collection of [Volume](ilo5_storage_resourcedefns309/#volumecollection)|
 |`StorageControllers`|Collection of [StorageController](ilo5_storage_resourcedefns309/#storagecontrollercollection)|
@@ -559,6 +559,7 @@ A reference to the Volumes associated with this storage system.
 Volumes is a link (`"@odata.id": URI`) to another resource.
 
 ## StorageControllerCollection
+
 `@odata.type: "#StorageControllerCollection.StorageControllerCollection"`
 
 A Collection of Storage resource instances.
@@ -571,7 +572,7 @@ A Collection of Storage resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[StorageController](ilo5_storage_resourcedefns309/#storagecontroller)|
 
@@ -1066,6 +1067,7 @@ The following are the supported values:
 |`None`|A placement policy with no redundancy at the device level.|
 
 ## VolumeCollection
+
 `@odata.type: "#VolumeCollection.VolumeCollection"`
 
 A Collection of Volume resource instances.
@@ -1078,7 +1080,7 @@ A Collection of Volume resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Volume](ilo5_storage_resourcedefns309/#volume)|
 
@@ -1120,7 +1122,7 @@ The Volume resource describes a volume, virtual disk, LUN, or other logical stor
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Links/Drives[]`|[Drive](ilo5_storage_resourcedefns309/#drive)|
 

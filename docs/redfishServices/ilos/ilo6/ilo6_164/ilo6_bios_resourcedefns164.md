@@ -1,15 +1,15 @@
 ---
 excludeFromSearch: true
+seo:
+  title: Bios resource definitions
 markdown:
   toc:
-    hide: false
+    hide:
     depth: 3
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Bios resource definitions
 ---
 
 # Bios resource definitions of iLO 6 v1.64

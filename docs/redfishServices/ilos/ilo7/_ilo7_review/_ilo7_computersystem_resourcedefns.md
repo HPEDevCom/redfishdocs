@@ -65,6 +65,34 @@ Member of ComputerSystemCollection.ComputerSystemCollection
 
 The ComputerSystem resource describes the compute node and its properties. A ComputerSystem represents a physical or virtual machine and the local resources, such as memory, CPU, and other devices that can be accessed from that machine.
 
+### ComputerSystem.Reset
+
+
+There are two possible ways for ComputerSystem Reset. These are defined as `ForceRestart` and `GracefulRestart`.
+
+`POST /redfish/v1/computersystem/1/actions/computersystem.reset/`
+
+`json Response Body
+{
+    "ResetType": "GracefulRestart"
+}
+`
+
+`json Response Body
+{
+    "ResetType": "GracefulShutdown"
+}
+`
+
+:::info NOTE
+
+The system behavior upon a `GracefulShutdown` and `GracefulRestart`
+operations are OS-dependent. As HPE iLO does not differentiate these
+operations at the OS level, Hewlett Packard Enterprise recommends
+using OS commands to complete the operations.
+:::
+
+
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -962,6 +990,28 @@ The following are the supported values:
 |`OSCrash`|a reset after a crash by ESXio|
 |`HWWatchdog`|a reset due to hardware watchdog|
 |`Thermal`|a reset due to thermal shutdown|
+
+### Oem.Hpe.CPUMEZZPartNumber
+
+Member of [ComputerSystem.v1\_18\_0.ComputerSystem](#computersystem)
+
+| | |
+|---|---|
+|Description|The Mezzanaine board part number on MHS configuration.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.14|
+
+### Oem.Hpe.CPUMEZZSerialNumber
+
+Member of [ComputerSystem.v1\_18\_0.ComputerSystem](#computersystem)
+
+| | |
+|---|---|
+|Description|The Mezzanaine board Serial Number on MHS configuration.|
+|Type|string or null|
+|Read Only|True|
+|Added|iLO7 1.14|
 
 ### Oem.Hpe.CriticalTempRemainOff
 

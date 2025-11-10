@@ -1,0 +1,326 @@
+# Resource Map
+|URI|Type|
+|:---|:---|
+|`/redfish/v1/`|[ServiceRoot](#serviceroot-v1_14_0-serviceroot)|
+|`/redfish/v1/accountservice`|[AccountService](#accountservice-v1_15_0-accountservice)|
+|`/redfish/v1/accountservice/accounts`|Collection of [ManagerAccount](#manageraccount-v1_12_1-manageraccount)|
+|`/redfish/v1/accountservice/accounts/{item}`|[ManagerAccount](#manageraccount-v1_12_1-manageraccount)|
+|`/redfish/v1/accountservice/accounts/{item}/keys`|Collection of [Key](#key-v1_4_1-key)|
+|`/redfish/v1/accountservice/accounts/{item}/keys/{item}`|[Key](#key-v1_4_1-key)|
+|`/redfish/v1/accountservice/directorytest`|[HpeDirectoryTest](#hpedirectorytest-v1_0_0-hpedirectorytest)|
+|`/redfish/v1/accountservice/externalaccountproviders/ldap/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/accountservice/externalaccountproviders/ldap/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/accountservice/roles`|Collection of [Role](#role-v1_2_1-role)|
+|`/redfish/v1/accountservice/roles/{item}`|[Role](#role-v1_2_1-role)|
+|`/redfish/v1/accountservice/usercertificatemapping`|Collection of [HpeiLOAccountCertificateMap](#hpeiloaccountcertificatemap-v1_0_1-hpeiloaccountcertificatemap)|
+|`/redfish/v1/accountservice/usercertificatemapping/{item}`|[HpeiLOAccountCertificateMap](#hpeiloaccountcertificatemap-v1_0_1-hpeiloaccountcertificatemap)|
+|`/redfish/v1/certificateservice`|[CertificateService](#certificateservice-v1_0_3-certificateservice)|
+|`/redfish/v1/certificateservice/certificatelocations`|[CertificateLocations](#certificatelocations-v1_0_2-certificatelocations)|
+|`/redfish/v1/chassis`|Collection of [Chassis](#chassis-v1_25_1-chassis)|
+|`/redfish/v1/chassis/{item}`|[Chassis](#chassis-v1_25_1-chassis)|
+|`/redfish/v1/chassis/{item}/acchddservice`|[HpeServerAccHddService](#hpeserveracchddservice-v1_0_0-hpeserveracchddservice)|
+|`/redfish/v1/chassis/{item}/acchddservice/zone`|[HpeServerAccHddZone](#hpeserveracchddzone-v1_0_0-hpeserveracchddzone)|
+|`/redfish/v1/chassis/{item}/basefrus`|Collection of [HpeiLOFrus](#hpeilofrus-v2_0_0-hpeilofrus)|
+|`/redfish/v1/chassis/{item}/basefrus/{item}`|[HpeiLOFrus](#hpeilofrus-v2_0_0-hpeilofrus)|
+|`/redfish/v1/chassis/{item}/basefrus/{item}/details`|[HpeiLOFrus](#hpeilofrus-v2_0_0-hpeilofrus)|
+|`/redfish/v1/chassis/{item}/devices`|Collection of [HpeServerDevice](#hpeserverdevice-v2_1_0-hpeserverdevice)|
+|`/redfish/v1/chassis/{item}/devices/{item}`|[HpeServerDevice](#hpeserverdevice-v2_1_0-hpeserverdevice)|
+|`/redfish/v1/chassis/{item}/environmentmetrics`|[EnvironmentMetrics](#environmentmetrics-v1_3_2-environmentmetrics)|
+|`/redfish/v1/chassis/{item}/fallbacksensors`|Collection of [Sensor](#sensor-v1_10_1-sensor)|
+|`/redfish/v1/chassis/{item}/mezzfrus`|Collection of [HpeiLOFrus](#hpeilofrus-v2_0_0-hpeilofrus)|
+|`/redfish/v1/chassis/{item}/mezzfrus/{item}`|[HpeiLOFrus](#hpeilofrus-v2_0_0-hpeilofrus)|
+|`/redfish/v1/chassis/{item}/mezzfrus/{item}/details`|[HpeiLOFrus](#hpeilofrus-v2_0_0-hpeilofrus)|
+|`/redfish/v1/chassis/{item}/networkadapters`|Collection of [NetworkAdapter](#networkadapter-v1_11_0-networkadapter)|
+|`/redfish/v1/chassis/{item}/networkadapters/{item}`|[NetworkAdapter](#networkadapter-v1_11_0-networkadapter)|
+|`/redfish/v1/chassis/{item}/networkadapters/{item}/assembly`|[Assembly](#assembly-v1_5_0-assembly)|
+|`/redfish/v1/chassis/{item}/networkadapters/{item}/networkdevicefunctions`|Collection of [NetworkDeviceFunction](#networkdevicefunction-v1_8_0-networkdevicefunction)|
+|`/redfish/v1/chassis/{item}/networkadapters/{item}/networkdevicefunctions/{item}`|[NetworkDeviceFunction](#networkdevicefunction-v1_8_0-networkdevicefunction)|
+|`/redfish/v1/chassis/{item}/networkadapters/{item}/networkdevicefunctions/{item}/settings`|[NetworkDeviceFunction](#networkdevicefunction-v1_8_0-networkdevicefunction)|
+|`/redfish/v1/chassis/{item}/networkadapters/{item}/ports`|Collection of [Port](#port-v1_12_0-port)|
+|`/redfish/v1/chassis/{item}/networkadapters/{item}/ports/{item}`|[Port](#port-v1_12_0-port)|
+|`/redfish/v1/chassis/{item}/networkadapters/{item}/ports/{item}/metrics`|[PortMetrics](#portmetrics-v1_7_0-portmetrics)|
+|`/redfish/v1/chassis/{item}/networkadapters/{item}/ports/{item}/settings`|[Port](#port-v1_12_0-port)|
+|`/redfish/v1/chassis/{item}/networkadapters/{item}/settings`|[NetworkAdapter](#networkadapter-v1_11_0-networkadapter)|
+|`/redfish/v1/chassis/{item}/pciedevices`|Collection of [PCIeDevice](#pciedevice-v1_5_0-pciedevice)|
+|`/redfish/v1/chassis/{item}/pciedevices/{item}`|[PCIeDevice](#pciedevice-v1_5_0-pciedevice)|
+|`/redfish/v1/chassis/{item}/pciedevices/{item}/pciefunctions`|Collection of [PCIeFunction](#pciefunction-v1_2_3-pciefunction)|
+|`/redfish/v1/chassis/{item}/pciedevices/{item}/pciefunctions/{item}`|[PCIeFunction](#pciefunction-v1_2_3-pciefunction)|
+|`/redfish/v1/chassis/{item}/pcieslots`|[PCIeSlots](#pcieslots-v1_3_0-pcieslots)|
+|`/redfish/v1/chassis/{item}/power`|[Power](#power-v1_7_1-power)|
+|`/redfish/v1/chassis/{item}/power/accpowerservice`|[HpeServerAccPowerService](#hpeserveraccpowerservice-v1_0_0-hpeserveraccpowerservice)|
+|`/redfish/v1/chassis/{item}/power/accpowerservice/calibration`|[HpeServerAccPowerCalibration](#hpeserveraccpowercalibration-v1_0_0-hpeserveraccpowercalibration)|
+|`/redfish/v1/chassis/{item}/power/accpowerservice/nodesinfo`|[HpeServerAccPowerNodesInfo](#hpeserveraccpowernodesinfo-v1_0_0-hpeserveraccpowernodesinfo)|
+|`/redfish/v1/chassis/{item}/power/accpowerservice/powerlimit`|[HpeServerAccPowerLimit](#hpeserveraccpowerlimit-v1_0_0-hpeserveraccpowerlimit)|
+|`/redfish/v1/chassis/{item}/power/accpowerservice/zone`|[HpeServerAccPowerZone](#hpeserveraccpowerzone-v1_0_0-hpeserveraccpowerzone)|
+|`/redfish/v1/chassis/{item}/power/fastpowermeter`|[HpePowerMeter](#hpepowermeter-v2_1_0-hpepowermeter)|
+|`/redfish/v1/chassis/{item}/power/federatedgroupcapping`|[HpeiLOFederatedGroupCapping](#hpeilofederatedgroupcapping-v2_0_0-hpeilofederatedgroupcapping)|
+|`/redfish/v1/chassis/{item}/power/powermeter`|[HpePowerMeter](#hpepowermeter-v2_1_0-hpepowermeter)|
+|`/redfish/v1/chassis/{item}/sensors`|Collection of [Sensor](#sensor-v1_10_1-sensor)|
+|`/redfish/v1/chassis/{item}/sensors/{item}`|[Sensor](#sensor-v1_10_1-sensor)|
+|`/redfish/v1/chassis/{item}/thermal`|[Thermal](#thermal-v1_7_1-thermal)|
+|`/redfish/v1/chassis/{item}/thermalsubsystem`|[ThermalSubsystem](#thermalsubsystem-v1_3_2-thermalsubsystem)|
+|`/redfish/v1/chassis/{item}/thermalsubsystem/fans`|Collection of [Fan](#fan-v1_5_1-fan)|
+|`/redfish/v1/chassis/{item}/thermalsubsystem/fans/{item}`|[Fan](#fan-v1_5_1-fan)|
+|`/redfish/v1/chassis/{item}/thermalsubsystem/fans/{item}/assembly`|[Assembly](#assembly-v1_5_0-assembly)|
+|`/redfish/v1/chassis/{item}/thermalsubsystem/pumps`|Collection of [Pump](#pump-v1_1_0-pump)|
+|`/redfish/v1/chassis/{item}/thermalsubsystem/pumps/{item}`|[Pump](#pump-v1_1_0-pump)|
+|`/redfish/v1/chassis/{item}/thermalsubsystem/pumps/{item}/assembly`|[Assembly](#assembly-v1_5_0-assembly)|
+|`/redfish/v1/chassis/{item}/thermalsubsystem/thermalmetrics`|[ThermalMetrics](#thermalmetrics-v1_3_1-thermalmetrics)|
+|`/redfish/v1/componentintegrity`|Collection of [ComponentIntegrity](#componentintegrity-v1_3_0-componentintegrity)|
+|`/redfish/v1/componentintegrity/{item}`|[ComponentIntegrity](#componentintegrity-v1_3_0-componentintegrity)|
+|`/redfish/v1/eventservice`|[EventService](#eventservice-v1_7_2-eventservice)|
+|`/redfish/v1/eventservice/cacertificates`|Collection of [HpeCertificate](#hpecertificate-v1_0_0-hpecertificate)|
+|`/redfish/v1/eventservice/cacertificates/{item}`|[HpeCertificate](#hpecertificate-v1_0_0-hpecertificate)|
+|`/redfish/v1/eventservice/subscriptions`|Collection of [EventDestination](#eventdestination-v1_14_0-eventdestination)|
+|`/redfish/v1/eventservice/subscriptions/{item}`|[EventDestination](#eventdestination-v1_14_0-eventdestination)|
+|`/redfish/v1/fabrics`|Collection of [Fabric](#fabric-v1_3_0-fabric)|
+|`/redfish/v1/fabrics/{item}`|[Fabric](#fabric-v1_3_0-fabric)|
+|`/redfish/v1/fabrics/{item}/switches`|Collection of [Switch](#switch-v1_9_1-switch)|
+|`/redfish/v1/fabrics/{item}/switches/{item}`|[Switch](#switch-v1_9_1-switch)|
+|`/redfish/v1/fabrics/{item}/switches/{item}/ports`|Collection of [Port](#port-v1_12_0-port)|
+|`/redfish/v1/fabrics/{item}/switches/{item}/ports/{item}`|[Port](#port-v1_12_0-port)|
+|`/redfish/v1/jsonschemas`|Collection of [JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)|
+|`/redfish/v1/jsonschemas/{item}`|[JsonSchemaFile](#jsonschemafile-v1_0_4-jsonschemafile)|
+|`/redfish/v1/managers`|Collection of [Manager](#manager-v1_19_1-manager)|
+|`/redfish/v1/managers/{item}`|[Manager](#manager-v1_19_1-manager)|
+|`/redfish/v1/managers/{item}/Oem/Hpe/cloudconnect`|[HpeiLOCloudConnect](#hpeilocloudconnect-v1_0_0-hpeilocloudconnect)|
+|`/redfish/v1/managers/{item}/activehealthsystem`|[HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem-v2_6_0-hpeiloactivehealthsystem)|
+|`/redfish/v1/managers/{item}/backuprestoreservice`|[HpeiLOBackupRestoreService](#hpeilobackuprestoreservice-v2_2_0-hpeilobackuprestoreservice)|
+|`/redfish/v1/managers/{item}/backuprestoreservice/backupfiles`|Collection of [HpeiLOBackupFile](#hpeilobackupfile-v1_0_0-hpeilobackupfile)|
+|`/redfish/v1/managers/{item}/backuprestoreservice/backupfiles/{item}`|[HpeiLOBackupFile](#hpeilobackupfile-v1_0_0-hpeilobackupfile)|
+|`/redfish/v1/managers/{item}/datetime`|[HpeiLODateTime](#hpeilodatetime-v2_0_1-hpeilodatetime)|
+|`/redfish/v1/managers/{item}/dedicatednetworkports`|Collection of [Port](#port-v1_12_0-port)|
+|`/redfish/v1/managers/{item}/dedicatednetworkports/{item}`|[Port](#port-v1_12_0-port)|
+|`/redfish/v1/managers/{item}/embeddedmedia`|[HpeiLOEmbeddedMedia](#hpeiloembeddedmedia-v2_0_0-hpeiloembeddedmedia)|
+|`/redfish/v1/managers/{item}/ethernetinterfaces`|Collection of [EthernetInterface](#ethernetinterface-v1_12_1-ethernetinterface)|
+|`/redfish/v1/managers/{item}/ethernetinterfaces/{item}`|[EthernetInterface](#ethernetinterface-v1_12_1-ethernetinterface)|
+|`/redfish/v1/managers/{item}/federationgroups`|Collection of [HpeiLOFederationGroup](#hpeilofederationgroup-v2_0_0-hpeilofederationgroup)|
+|`/redfish/v1/managers/{item}/federationgroups/{item}`|[HpeiLOFederationGroup](#hpeilofederationgroup-v2_0_0-hpeilofederationgroup)|
+|`/redfish/v1/managers/{item}/federationpeers`|Collection of [HpeiLOFederationPeers](#hpeilofederationpeers-v2_0_0-hpeilofederationpeers)|
+|`/redfish/v1/managers/{item}/federationpeers/{item}`|[HpeiLOFederationPeers](#hpeilofederationpeers-v2_0_0-hpeilofederationpeers)|
+|`/redfish/v1/managers/{item}/hostinterfaces`|Collection of [HostInterface](#hostinterface-v1_1_1-hostinterface)|
+|`/redfish/v1/managers/{item}/hostinterfaces/{item}`|[HostInterface](#hostinterface-v1_1_1-hostinterface)|
+|`/redfish/v1/managers/{item}/licenseservice`|Collection of [HpeiLOLicense](#hpeilolicense-v2_5_0-hpeilolicense)|
+|`/redfish/v1/managers/{item}/licenseservice/{item}`|[HpeiLOLicense](#hpeilolicense-v2_5_0-hpeilolicense)|
+|`/redfish/v1/managers/{item}/logservices`|Collection of [LogService](#logservice-v1_5_0-logservice)|
+|`/redfish/v1/managers/{item}/logservices/iel`|[LogService](#logservice-v1_5_0-logservice)|
+|`/redfish/v1/managers/{item}/logservices/iel/entries`|Collection of [LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/managers/{item}/logservices/iel/entries/{item}`|[LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/managers/{item}/networkprotocol`|[ManagerNetworkProtocol](#managernetworkprotocol-v1_0_0-managernetworkprotocol)|
+|`/redfish/v1/managers/{item}/remotesupportservice`|[HpeRemoteSupport](#hperemotesupport-v2_6_0-hperemotesupport)|
+|`/redfish/v1/managers/{item}/remotesupportservice/serviceeventlogs`|Collection of [LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/managers/{item}/remotesupportservice/serviceeventlogs/{item}`|[LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/managers/{item}/securityservice`|[HpeSecurityService](#hpesecurityservice-v2_6_0-hpesecurityservice)|
+|`/redfish/v1/managers/{item}/securityservice/automaticcertificateenrollment`|[HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment-v1_0_0-hpeautomaticcertenrollment)|
+|`/redfish/v1/managers/{item}/securityservice/bmchpeldevid/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/bmchpeldevid/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/bmciak/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/bmciak/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/bmcidevidpca/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/bmcidevidpca/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/bmclak/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/bmclak/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/certificateauthentication`|[HpeCertAuth](#hpecertauth-v1_1_0-hpecertauth)|
+|`/redfish/v1/managers/{item}/securityservice/certificateauthentication/cacertificates`|Collection of [HpeCertificate](#hpecertificate-v1_0_0-hpecertificate)|
+|`/redfish/v1/managers/{item}/securityservice/certificateauthentication/cacertificates/{item}`|[HpeCertificate](#hpecertificate-v1_0_0-hpecertificate)|
+|`/redfish/v1/managers/{item}/securityservice/eskm`|[HpeESKM](#hpeeskm-v2_1_0-hpeeskm)|
+|`/redfish/v1/managers/{item}/securityservice/httpscert`|[HpeHttpsCert](#hpehttpscert-v2_1_1-hpehttpscert)|
+|`/redfish/v1/managers/{item}/securityservice/iloidevid/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/iloidevid/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/iloldevid/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/iloldevid/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/platformcert/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/platformcert/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/securitydashboard`|[HpeiLOSecurityDashboard](#hpeilosecuritydashboard-v1_0_0-hpeilosecuritydashboard)|
+|`/redfish/v1/managers/{item}/securityservice/securitydashboard/securityparams`|Collection of [HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)|
+|`/redfish/v1/managers/{item}/securityservice/securitydashboard/securityparams/{item}`|[HpeiLOSecurityParam](#hpeilosecurityparam-v1_1_0-hpeilosecurityparam)|
+|`/redfish/v1/managers/{item}/securityservice/sso`|[HpeiLOSSO](#hpeilosso-v2_0_0-hpeilosso)|
+|`/redfish/v1/managers/{item}/securityservice/systemiak/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/systemiak/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/systemidevid/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/systemidevid/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/systemlak/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/systemlak/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/systemldevid/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/securityservice/systemldevid/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/managers/{item}/serialinterfaces`|Collection of [SerialInterface](#serialinterface-v1_1_7-serialinterface)|
+|`/redfish/v1/managers/{item}/serialinterfaces/{item}`|[SerialInterface](#serialinterface-v1_1_7-serialinterface)|
+|`/redfish/v1/managers/{item}/sharednetworkports`|Collection of [Port](#port-v1_12_0-port)|
+|`/redfish/v1/managers/{item}/sharednetworkports/{item}`|[Port](#port-v1_12_0-port)|
+|`/redfish/v1/managers/{item}/snmpservice`|[HpeiLOSnmpService](#hpeilosnmpservice-v2_4_1-hpeilosnmpservice)|
+|`/redfish/v1/managers/{item}/snmpservice/snmpalertdestinations`|Collection of [HpeSNMPAlertDestination](#hpesnmpalertdestination-v2_0_0-hpesnmpalertdestination)|
+|`/redfish/v1/managers/{item}/snmpservice/snmpalertdestinations/{item}`|[HpeSNMPAlertDestination](#hpesnmpalertdestination-v2_0_0-hpesnmpalertdestination)|
+|`/redfish/v1/managers/{item}/snmpservice/snmpusers`|Collection of [HpeSNMPUser](#hpesnmpuser-v2_1_1-hpesnmpuser)|
+|`/redfish/v1/managers/{item}/snmpservice/snmpusers/{item}`|[HpeSNMPUser](#hpesnmpuser-v2_1_1-hpesnmpuser)|
+|`/redfish/v1/managers/{item}/virtualmedia`|Collection of [VirtualMedia](#virtualmedia-v1_3_0-virtualmedia)|
+|`/redfish/v1/managers/{item}/virtualmedia/{item}`|[VirtualMedia](#virtualmedia-v1_3_0-virtualmedia)|
+|`/redfish/v1/registries`|Collection of [MessageRegistryFile](#messageregistryfile-v1_0_4-messageregistryfile)|
+|`/redfish/v1/registries/{item}`|[MessageRegistryFile](#messageregistryfile-v1_0_4-messageregistryfile)|
+|`/redfish/v1/resourcedirectory`|[HpeiLOResourceDirectory](#hpeiloresourcedirectory-v2_0_0-hpeiloresourcedirectory)|
+|`/redfish/v1/sessionservice`|[SessionService](#sessionservice-v1_0_0-sessionservice)|
+|`/redfish/v1/sessionservice/sessions`|Collection of [Session](#session-v1_0_0-session)|
+|`/redfish/v1/sessionservice/sessions/{item}`|[Session](#session-v1_0_0-session)|
+|`/redfish/v1/systems`|Collection of [ComputerSystem](#computersystem-v1_18_0-computersystem)|
+|`/redfish/v1/systems/{item}`|[ComputerSystem](#computersystem-v1_18_0-computersystem)|
+|`/redfish/v1/systems/{item}/bios`|[Bios](#bios-v1_0_5-bios)|
+|`/redfish/v1/systems/{item}/bios/baseconfigs`|[HpeBaseConfigs](#hpebaseconfigs-v2_0_0-hpebaseconfigs)|
+|`/redfish/v1/systems/{item}/bios/boot`|[HpeServerBootSettings](#hpeserverbootsettings-v2_0_0-hpeserverbootsettings)|
+|`/redfish/v1/systems/{item}/bios/boot/baseconfigs`|[HpeBaseConfigs](#hpebaseconfigs-v2_0_0-hpebaseconfigs)|
+|`/redfish/v1/systems/{item}/bios/boot/settings`|[HpeServerBootSettings](#hpeserverbootsettings-v2_0_0-hpeserverbootsettings)|
+|`/redfish/v1/systems/{item}/bios/iscsi`|[HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator-v2_0_0-hpeiscsisoftwareinitiator)|
+|`/redfish/v1/systems/{item}/bios/iscsi/baseconfigs`|[HpeBaseConfigs](#hpebaseconfigs-v2_0_0-hpebaseconfigs)|
+|`/redfish/v1/systems/{item}/bios/iscsi/settings`|[HpeiSCSISoftwareInitiator](#hpeiscsisoftwareinitiator-v2_0_0-hpeiscsisoftwareinitiator)|
+|`/redfish/v1/systems/{item}/bios/kmsconfig`|[HpeKmsConfig](#hpekmsconfig-v1_0_0-hpekmsconfig)|
+|`/redfish/v1/systems/{item}/bios/kmsconfig/baseconfigs`|[HpeBaseConfigs](#hpebaseconfigs-v2_0_0-hpebaseconfigs)|
+|`/redfish/v1/systems/{item}/bios/kmsconfig/settings`|[HpeKmsConfig](#hpekmsconfig-v1_0_0-hpekmsconfig)|
+|`/redfish/v1/systems/{item}/bios/mappings`|[HpeBiosMapping](#hpebiosmapping-v2_0_0-hpebiosmapping)|
+|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig`|[HpeTlsConfig](#hpetlsconfig-v1_0_0-hpetlsconfig)|
+|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig/baseconfigs`|[HpeBaseConfigs](#hpebaseconfigs-v2_0_0-hpebaseconfigs)|
+|`/redfish/v1/systems/{item}/bios/oem/hpe/tlsconfig/settings`|[HpeTlsConfig](#hpetlsconfig-v1_0_0-hpetlsconfig)|
+|`/redfish/v1/systems/{item}/bios/serverconfiglock`|[HpeServerConfigLock](#hpeserverconfiglock-v1_0_0-hpeserverconfiglock)|
+|`/redfish/v1/systems/{item}/bios/serverconfiglock/baseconfigs`|[HpeBaseConfigs](#hpebaseconfigs-v2_0_0-hpebaseconfigs)|
+|`/redfish/v1/systems/{item}/bios/serverconfiglock/settings`|[HpeServerConfigLock](#hpeserverconfiglock-v1_0_0-hpeserverconfiglock)|
+|`/redfish/v1/systems/{item}/bios/settings`|[Bios](#bios-v1_0_5-bios)|
+|`/redfish/v1/systems/{item}/bootoptions`|Collection of [BootOption](#bootoption-v1_0_1-bootoption)|
+|`/redfish/v1/systems/{item}/bootoptions/{item}`|[BootOption](#bootoption-v1_0_1-bootoption)|
+|`/redfish/v1/systems/{item}/ethernetinterfaces`|Collection of [EthernetInterface](#ethernetinterface-v1_12_1-ethernetinterface)|
+|`/redfish/v1/systems/{item}/ethernetinterfaces/{item}`|[EthernetInterface](#ethernetinterface-v1_12_1-ethernetinterface)|
+|`/redfish/v1/systems/{item}/logservices`|Collection of [LogService](#logservice-v1_5_0-logservice)|
+|`/redfish/v1/systems/{item}/logservices/dpu`|[LogService](#logservice-v1_5_0-logservice)|
+|`/redfish/v1/systems/{item}/logservices/dpu/entries`|Collection of [LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/systems/{item}/logservices/dpu/entries/{item}`|[LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/systems/{item}/logservices/event`|[LogService](#logservice-v1_5_0-logservice)|
+|`/redfish/v1/systems/{item}/logservices/event/entries`|Collection of [LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/systems/{item}/logservices/event/entries/{item}`|[LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/systems/{item}/logservices/iml`|[LogService](#logservice-v1_5_0-logservice)|
+|`/redfish/v1/systems/{item}/logservices/iml/entries`|Collection of [LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/systems/{item}/logservices/iml/entries/{item}`|[LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/systems/{item}/logservices/sl`|[LogService](#logservice-v1_5_0-logservice)|
+|`/redfish/v1/systems/{item}/logservices/sl/entries`|Collection of [LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/systems/{item}/logservices/sl/entries/{item}`|[LogEntry](#logentry-v1_15_0-logentry)|
+|`/redfish/v1/systems/{item}/memory`|Collection of [Memory](#memory-v1_14_0-memory)|
+|`/redfish/v1/systems/{item}/memory/{item}`|[Memory](#memory-v1_14_0-memory)|
+|`/redfish/v1/systems/{item}/memory/{item}/memorymetrics`|[MemoryMetrics](#memorymetrics-v1_7_3-memorymetrics)|
+|`/redfish/v1/systems/{item}/memorydomains`|Collection of [MemoryDomain](#memorydomain-v1_2_1-memorydomain)|
+|`/redfish/v1/systems/{item}/memorydomains/{item}`|[MemoryDomain](#memorydomain-v1_2_1-memorydomain)|
+|`/redfish/v1/systems/{item}/memorydomains/{item}/memorychunks`|Collection of [MemoryChunks](#memorychunks-v1_2_3-memorychunks)|
+|`/redfish/v1/systems/{item}/memorydomains/{item}/memorychunks/{item}`|[MemoryChunks](#memorychunks-v1_2_3-memorychunks)|
+|`/redfish/v1/systems/{item}/networkinterfaces`|Collection of [NetworkInterface](#networkinterface-v1_2_0-networkinterface)|
+|`/redfish/v1/systems/{item}/networkinterfaces/{item}`|[NetworkInterface](#networkinterface-v1_2_0-networkinterface)|
+|`/redfish/v1/systems/{item}/networkinterfaces/{item}/networkdevicefunctions`|Collection of [NetworkDeviceFunction](#networkdevicefunction-v1_8_0-networkdevicefunction)|
+|`/redfish/v1/systems/{item}/networkinterfaces/{item}/networkdevicefunctions/{item}`|[NetworkDeviceFunction](#networkdevicefunction-v1_8_0-networkdevicefunction)|
+|`/redfish/v1/systems/{item}/networkinterfaces/{item}/networkdevicefunctions/{item}/settings`|[NetworkDeviceFunction](#networkdevicefunction-v1_8_0-networkdevicefunction)|
+|`/redfish/v1/systems/{item}/networkinterfaces/{item}/ports`|Collection of [Port](#port-v1_12_0-port)|
+|`/redfish/v1/systems/{item}/networkinterfaces/{item}/ports/{item}`|[Port](#port-v1_12_0-port)|
+|`/redfish/v1/systems/{item}/networkinterfaces/{item}/ports/{item}/settings`|[Port](#port-v1_12_0-port)|
+|`/redfish/v1/systems/{item}/pcidevices`|Collection of [HpeServerPciDevice](#hpeserverpcidevice-v2_1_0-hpeserverpcidevice)|
+|`/redfish/v1/systems/{item}/pcidevices/{item}`|[HpeServerPciDevice](#hpeserverpcidevice-v2_1_0-hpeserverpcidevice)|
+|`/redfish/v1/systems/{item}/pcislots`|Collection of [HpeServerPCISlot](#hpeserverpcislot-v2_2_1-hpeserverpcislot)|
+|`/redfish/v1/systems/{item}/pcislots/{item}`|[HpeServerPCISlot](#hpeserverpcislot-v2_2_1-hpeserverpcislot)|
+|`/redfish/v1/systems/{item}/processors`|Collection of [Processor](#processor-v1_8_2-processor)|
+|`/redfish/v1/systems/{item}/processors/{item}`|[Processor](#processor-v1_8_2-processor)|
+|`/redfish/v1/systems/{item}/processors/{item}/environmentmetrics`|[EnvironmentMetrics](#environmentmetrics-v1_3_2-environmentmetrics)|
+|`/redfish/v1/systems/{item}/processors/{item}/processormetrics`|[ProcessorMetrics](#processormetrics-v1_6_4-processormetrics)|
+|`/redfish/v1/systems/{item}/secureboot`|[SecureBoot](#secureboot-v1_1_0-secureboot)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases`|Collection of [SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/db`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/db/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/db/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/db/signatures`|Collection of [Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/db/signatures/{item}`|[Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbdefault`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbdefault/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbdefault/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbdefault/signatures`|Collection of [Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbdefault/signatures/{item}`|[Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbr`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbr/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbr/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbr/signatures`|Collection of [Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbr/signatures/{item}`|[Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbrdefault`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbrdefault/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbrdefault/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbrdefault/signatures`|Collection of [Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbrdefault/signatures/{item}`|[Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbt`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbt/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbt/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbt/signatures`|Collection of [Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbt/signatures/{item}`|[Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbtdefault`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbtdefault/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbtdefault/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbtdefault/signatures`|Collection of [Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbtdefault/signatures/{item}`|[Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbx`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbx/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbx/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbx/signatures`|Collection of [Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbx/signatures/{item}`|[Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbxdefault`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbxdefault/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbxdefault/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbxdefault/signatures`|Collection of [Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/dbxdefault/signatures/{item}`|[Signature](#signature-v1_0_2-signature)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/kek`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/kek/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/kek/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/kekdefault`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/kekdefault/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/kekdefault/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/pk`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/pk/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/pk/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/pkdefault`|[SecureBootDatabase](#securebootdatabase-v1_0_0-securebootdatabase)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/pkdefault/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureboot/securebootdatabases/pkdefault/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/secureerasereportservice`|[HpeSecureEraseReportService](#hpesecureerasereportservice-v1_0_0-hpesecureerasereportservice)|
+|`/redfish/v1/systems/{item}/secureerasereportservice/secureerasereportentries`|Collection of [HpeSecureEraseReport](#hpesecureerasereport-v1_1_0-hpesecureerasereport)|
+|`/redfish/v1/systems/{item}/secureerasereportservice/secureerasereportentries/{item}`|[HpeSecureEraseReport](#hpesecureerasereport-v1_1_0-hpesecureerasereport)|
+|`/redfish/v1/systems/{item}/storage`|Collection of [Storage](#storage-v1_12_0-storage)|
+|`/redfish/v1/systems/{item}/storage/{item}`|[Storage](#storage-v1_12_0-storage)|
+|`/redfish/v1/systems/{item}/storage/{item}/controllers/`|Collection of [StorageController](#storagecontroller-v1_9_0-storagecontroller)|
+|`/redfish/v1/systems/{item}/storage/{item}/controllers/{item}`|[StorageController](#storagecontroller-v1_9_0-storagecontroller)|
+|`/redfish/v1/systems/{item}/storage/{item}/controllers/{item}/certificates`|Collection of [Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/storage/{item}/controllers/{item}/certificates/{item}`|[Certificate](#certificate-v1_8_0-certificate)|
+|`/redfish/v1/systems/{item}/storage/{item}/controllers/{item}/ports`|Collection of [Port](#port-v1_12_0-port)|
+|`/redfish/v1/systems/{item}/storage/{item}/controllers/{item}/ports/{item}`|[Port](#port-v1_12_0-port)|
+|`/redfish/v1/systems/{item}/storage/{item}/drives/{item}`|[Drive](#drive-v1_16_0-drive)|
+|`/redfish/v1/systems/{item}/storage/{item}/storagecontrollers/{item}/ports`|Collection of [Port](#port-v1_12_0-port)|
+|`/redfish/v1/systems/{item}/storage/{item}/storagecontrollers/{item}/ports/{item}`|[Port](#port-v1_12_0-port)|
+|`/redfish/v1/systems/{item}/storage/{item}/volumes`|Collection of [Volume](#volume-v1_0_0-volume)|
+|`/redfish/v1/systems/{item}/storage/{item}/volumes/{item}`|[Volume](#volume-v1_0_0-volume)|
+|`/redfish/v1/systems/{item}/usbdevices`|Collection of [HpeUSBDevice](#hpeusbdevice-v2_0_0-hpeusbdevice)|
+|`/redfish/v1/systems/{item}/usbdevices/{item}`|[HpeUSBDevice](#hpeusbdevice-v2_0_0-hpeusbdevice)|
+|`/redfish/v1/systems/{item}/usbports`|Collection of [HpeUSBPort](#hpeusbport-v2_0_0-hpeusbport)|
+|`/redfish/v1/systems/{item}/usbports/{item}`|[HpeUSBPort](#hpeusbport-v2_0_0-hpeusbport)|
+|`/redfish/v1/systems/{item}/workloadperformanceadvisor`|Collection of [HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor-v1_0_0-hpeworkloadperformanceadvisor)|
+|`/redfish/v1/systems/{item}/workloadperformanceadvisor/{item}`|[HpeWorkloadPerformanceAdvisor](#hpeworkloadperformanceadvisor-v1_0_0-hpeworkloadperformanceadvisor)|
+|`/redfish/v1/taskservice`|[TaskService](#taskservice-v1_1_1-taskservice)|
+|`/redfish/v1/taskservice/tasks`|Collection of [Task](#task-v1_3_0-task)|
+|`/redfish/v1/taskservice/tasks/{item}`|[Task](#task-v1_3_0-task)|
+|`/redfish/v1/telemetryservice`|[TelemetryService](#telemetryservice-v1_0_0-telemetryservice)|
+|`/redfish/v1/telemetryservice/metricdefinitions`|Collection of [MetricDefinition](#metricdefinition-v1_0_0-metricdefinition)|
+|`/redfish/v1/telemetryservice/metricdefinitions/{item}`|[MetricDefinition](#metricdefinition-v1_0_0-metricdefinition)|
+|`/redfish/v1/telemetryservice/metricreportdefinitions`|Collection of [MetricReportDefinition](#metricreportdefinition-v1_4_2-metricreportdefinition)|
+|`/redfish/v1/telemetryservice/metricreportdefinitions/{item}`|[MetricReportDefinition](#metricreportdefinition-v1_4_2-metricreportdefinition)|
+|`/redfish/v1/telemetryservice/metricreports`|Collection of [MetricReport](#metricreport-v1_0_0-metricreport)|
+|`/redfish/v1/telemetryservice/metricreports/{item}`|[MetricReport](#metricreport-v1_0_0-metricreport)|
+|`/redfish/v1/telemetryservice/triggers`|Collection of [Triggers](#triggers-v1_0_0-triggers)|
+|`/redfish/v1/telemetryservice/triggers/{item}`|[Triggers](#triggers-v1_0_0-triggers)|
+|`/redfish/v1/updateservice`|[UpdateService](#updateservice-v1_11_0-updateservice)|
+|`/redfish/v1/updateservice/componentrepository`|Collection of [HpeComponent](#hpecomponent-v1_0_1-hpecomponent)|
+|`/redfish/v1/updateservice/componentrepository/{item}`|[HpeComponent](#hpecomponent-v1_0_1-hpecomponent)|
+|`/redfish/v1/updateservice/firmwareinventory`|Collection of [SoftwareInventory](#softwareinventory-v1_10_0-softwareinventory)|
+|`/redfish/v1/updateservice/firmwareinventory/{item}`|[SoftwareInventory](#softwareinventory-v1_10_0-softwareinventory)|
+|`/redfish/v1/updateservice/installsets`|Collection of [HpeComponentInstallSet](#hpecomponentinstallset-v1_5_0-hpecomponentinstallset)|
+|`/redfish/v1/updateservice/installsets/{item}`|[HpeComponentInstallSet](#hpecomponentinstallset-v1_5_0-hpecomponentinstallset)|
+|`/redfish/v1/updateservice/invalidimagerepository`|Collection of [HpeInvalidImage](#hpeinvalidimage-v1_0_0-hpeinvalidimage)|
+|`/redfish/v1/updateservice/invalidimagerepository/{item}`|[HpeInvalidImage](#hpeinvalidimage-v1_0_0-hpeinvalidimage)|
+|`/redfish/v1/updateservice/maintenancewindows`|Collection of [HpeMaintenanceWindow](#hpemaintenancewindow-v1_0_1-hpemaintenancewindow)|
+|`/redfish/v1/updateservice/maintenancewindows/{item}`|[HpeMaintenanceWindow](#hpemaintenancewindow-v1_0_1-hpemaintenancewindow)|
+|`/redfish/v1/updateservice/softwareinventory`|Collection of [SoftwareInventory](#softwareinventory-v1_10_0-softwareinventory)|
+|`/redfish/v1/updateservice/softwareinventory/{item}`|[SoftwareInventory](#softwareinventory-v1_10_0-softwareinventory)|
+|`/redfish/v1/updateservice/updatetaskqueue`|Collection of [HpeComponentUpdateTask](#hpecomponentupdatetask-v1_6_0-hpecomponentupdatetask)|
+|`/redfish/v1/updateservice/updatetaskqueue/{item}`|[HpeComponentUpdateTask](#hpecomponentupdatetask-v1_6_0-hpecomponentupdatetask)|

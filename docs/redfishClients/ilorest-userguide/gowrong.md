@@ -11,7 +11,7 @@ seo:
   title: When things go wrong
 ---
 
-# When Things Go Wrong
+# When things go wrong
 
 This section provides debug information to help when things go wrong.
 If this section does not solve your issue please contact support or
@@ -24,7 +24,7 @@ to our open source project.
 
 You can see return codes and other information with the verbose flag.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -38,8 +38,8 @@ Monolith build process time: 0.259999990463
 iLOrest return code: 0
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ### Symptom
 
@@ -58,7 +58,7 @@ information including return codes.
 
 You can see full payloads with debug mode. The response is truncated for space.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -91,8 +91,8 @@ Headers:
 Body Response of /redfish/v1/: {"@odata.con...
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ### Symptom
 
@@ -118,7 +118,7 @@ type. Modifying the selector to limit the selection solves this problem.
 The easiest way to do that is to add a period to ensure you
 are only selecting one type.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -130,8 +130,8 @@ Selected option(s): #ComputerSystem.v1_4_0.ComputerSystem
 iLOrest return code: 0
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ### Symptom
 
@@ -155,7 +155,7 @@ are available for that type. We only want to modify or view 1 instance! We can
 use the [--filter](advancedusage/#filter-option) option to limit to 1instance
 only.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -182,8 +182,8 @@ Selected option(s): #EthernetInterface.v1_4_1.EthernetInterface
 iLOrest return code: 0
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ## I can set a property, but the commit is failing
 
@@ -215,7 +215,7 @@ commits when the property is initially set, but not all possible issues can be c
 It's hard to tell where the array is in this output until you print the response
 in json format.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -262,8 +262,8 @@ Selected option(s): #ComputerSystem.v1_4_0.ComputerSystem
 iLOrest return code: 0
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ### Symptom
 
@@ -283,7 +283,7 @@ Use the -j/--json flag to distinguish between arrays and nested JSON objects.
 
 In this example we are only flipping the first two boot order items in the array, but we need to send the whole array, not just the modified section. You can see with the [status command](globalcommands/#status-command) that we are changing specific array values.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```shell Example
@@ -298,8 +298,8 @@ Committing changes...
 The operation completed successfully.
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 #### Symptom
 
 I am unable to change a property for an array.
@@ -403,13 +403,23 @@ The virtual NIC is not enabled on the server you are attempting to log in to.
 Use `-vv login` to get the exact [error return code](/docs/redfishclients/ilorest-userguide/errors/).
 Refer to the *Virtual NIC* section in the <a href="https://www.hpe.com/info/ilo/docs" target="_blank">iLO User Guide</a>
 
-## iLOrest application account creation fails
+## Application account creation fails
 
-This section is related to iLO 7 (or later) based servers and
+This issue is also known as "**orphaned application account**".
+It is related to iLO 7 (or later) based servers and
 [in-band](/docs/redfishservices/ilos/supplementdocuments/vnic#in-band-management)
-management. It outlines the steps to take when the iLOrest
-[application account](/docs/redfishservices/ilos/supplementdocuments/securityservice#installing-hpe-host-applications)
-cannot be created during its installation (i.e. `rpm -ivh`) or during a
+management.
+
+You may encounter this problem when the
+[DC-SCM](/docs/etc/glossaryterms.md) has been replaced, or the
+[TPM](/docs/etc/glossaryterms.md) has been cleared using the
+[BIOS/RBSU](/docs/etc/glossaryterms.md) menus
+or the `Tpm2Operation`
+{% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_ILO7_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_bios_resourcedefns", $env.PUBLIC_LATEST_ILO7_FW_VERSION, "#attributes") %} BIOS attribute {% /link-internal %}.
+
+This paragraph outlines the steps to take when the iLOrest
+[application account](/docs/redfishservices/ilos/supplementdocuments/securityservice#application-accounts)
+cannot be created during installation (i.e. `rpm -ivh`) or during a
 [manual creation](/docs/redfishservices/ilos/supplementdocuments/securityservice#managing-application-accounts).
 
 {% admonition type="info" name="NOTES" %}
@@ -499,7 +509,9 @@ iLORest return code: 143
 ### Cause
 
 The iLOrest application account is present in the Redfish tree but the
-associated application token is not present in the TPM (iLOrest
+associated application token is not present in the
+[TPM](/docs/etc/glossaryterms.md)
+(iLOrest
 [error](http://localhost:4000/docs/redfishclients/ilorest-userguide/errors) 143).
 This can be verified with iLOrest in-band or out-of-band, or with cURL,
 as shown in the following examples.

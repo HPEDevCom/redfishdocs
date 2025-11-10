@@ -20,9 +20,10 @@ service is presented in the
 
 {% admonition type="info" name="NOTE" %}
 
-- HPE ilO 5 and iLO 6 implements the Redfish Telemetry service on **Intel**
-    based servers **only**. AMD (Gen10, Gen11), and ARM Gen11 servers don't
-    provide this service.
+- HPE ilO 5 and iLO 6 implement the Redfish Telemetry service on **Intel**
+    based servers **only**, except in HPE ProLiant DL20, HPE ProLiant ML30, and Micro
+    server (Gen10/Gen10+/Gen11). AMD (Gen10 or Gen11), and ARM Gen11 servers
+    don't provide this service.
 - Upgrading the iLO firmware to iLO 5 2.96/iLO 6 1.51 and above
     retains the subscriptions created prior to the upgrade.
 
@@ -86,7 +87,7 @@ reports are sent every hour to the event listener.
 The body request to subscribe for Metric Reports of an HPE iLO 5 must
 contain `MetricReport` in the `EventTypes` array property.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLO 5 Subscription request body" %}
 
 ```json iLO 5 Subscription request body
@@ -120,7 +121,7 @@ contain `MetricReport` in the `EventTypes` array property.
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLO 5 Subscription detail" %}
 
 ```json iLO 5 Subscription detail
@@ -202,15 +203,16 @@ contain `MetricReport` in the `EventTypes` array property.
     "SubscriptionType": "RedfishEvent"
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ### Subscribing to iLO 6 metric reports
 
 The body request to subscribe for Metric Reports of an HPE iLO 6 must
 contain `MetricReport` in the `EventFormatType` property.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLO 6 Subscription request body" %}
 
 ```json iLO 6 Subscription request body
@@ -314,9 +316,10 @@ contain `MetricReport` in the `EventFormatType` property.
 }
 
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ## Metric report definitions
 
 The streaming frequency of each metric report, is decided by the
@@ -327,14 +330,14 @@ The following example specifies that metric report `CPUUtil` has to
 be sent once a day, starting on the first of June 2023
 at one o'clock GMT.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="PATCH event" %}
 
 ```json PATCH event
 PATCH /redfish/v1/TelemetryService/MetricReportDefinitions/CPUUtil/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="PATCH Payload" %}
 
 ```json PATCH Payload
@@ -346,9 +349,9 @@ PATCH /redfish/v1/TelemetryService/MetricReportDefinitions/CPUUtil/
     }
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
 `MetricReportDefinitionType` is set as `Periodic` when streaming is enabled.
 You can stop streaming specific metric reports either by not subscribing to
 it during the creation of the subscription or by configuring the

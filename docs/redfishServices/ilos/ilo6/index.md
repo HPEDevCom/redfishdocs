@@ -23,12 +23,17 @@ The [adapting from iLO 5](ilo6_adaptation) section is a guide to help Redfish cl
 ## Changelog
 
 The [Changelog](/docs/redfishservices/ilos/ilo6/ilo6_changelog/) section contains the list of changes between the different versions of the HPE iLO Redfish service.
+This section contains the complete history of modifications starting with firmware version 1.10.
 
 ## Reference documents
 
 HPE iLO Redfish
 {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION) %} reference documents {% /link-internal %}
 contains all the needed API information related to published iLO firmware versions, for writing efficient Redfish clients.
+
+{% admonition type="info" name="INFO" %}
+Only reference documents of the **last five** firmware versions are present in this section.
+{% /admonition %}
 
 ## Supplement documents
 
