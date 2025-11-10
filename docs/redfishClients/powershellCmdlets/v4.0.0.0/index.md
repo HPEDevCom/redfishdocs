@@ -15,14 +15,14 @@ The iLO cmdlets include help support similar to other PowerShell Cmdlets help. T
 help *hpeilo*
 ```
 
-:::success TIP
+{% admonition type="success" name="Tip" %}
 You can also use the following command to display the iLO cmdlets list:
 
 ```PowerShell
 Get-Command -Module HPEiLOCmdlets
 ```
 
-:::
+{% /admonition %}
 
 To display complete help for a specific cmdlet, type:
 

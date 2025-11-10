@@ -1324,11 +1324,12 @@ The following are the supported values:
 
 |Value|Description|
 |---|---|
-|`NotValidated`|Host Processor Moduleis not validated yet, HPM is in factory Mode/HPM auth key slot not yet populated|
+|`NotValidated`|Host Processor Module is not validated yet, HPM is in factory Mode/HPM auth key slot not yet populated|
 |`Success`|Host Processor Module authentication successful.|
 |`Failed`|Host Processor Module authentication Failed.|
 |`Error`|Host Processor Module authentication internal error occured. Please retry.|
 |`CertificateCheckFailed`|Host Processor Module authentication Certificate check failed.|
+|`BindNotPerformed`|Host Processor Module authentication failed, HPM Binding not performed.|
 
 ### SPDM
 
@@ -2138,7 +2139,7 @@ The Fabric schema represents a simple fabric consisting of one or more switches,
 
 |Link Name|Destination type|
 |---|---|
-|`switches`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
+|`switches`|Collection of [Switch](../ilo7_other_resourcedefns114/#switchcollection)|
 
 ### FabricType
 
@@ -8955,7 +8956,7 @@ Member of [Power.v1\_7\_1.Power](#power)
 | | |
 |---|---|
 |Description|Power Supply Domain Name.|
-|Type|string|
+|Type|string or null|
 |Read Only|True|
 |Added|iLO7 1.11|
 
@@ -8964,9 +8965,10 @@ The following are the supported values:
 |Value|
 |---|
 |`System`|
-|`GPU`|
 |`GPU1`|
 |`GPU2`|
+|`System1`|
+|`System2`|
 
 **Domains[{item}].HighEfficiencyMode**
 Member of [Power.v1\_7\_1.Power](#power)
@@ -9630,7 +9632,10 @@ The following are the supported values:
 |Value|
 |---|
 |`System`|
-|`GPU`|
+|`GPU1`|
+|`GPU2`|
+|`System1`|
+|`System2`|
 
 **PowerSupplies[{item}].Oem.Hpe.HotplugCapable**
 Member of [Power.v1\_7\_1.Power](#power)
@@ -12619,7 +12624,7 @@ A Collection of Switch Resource instances.
 
 |Link Name|Destination type|
 |---|---|
-|`Members[]`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
+|`Members[]`|[Switch](../ilo7_other_resourcedefns114/#switch)|
 
 ### Members (array)
 
@@ -13914,11 +13919,7 @@ Alert type thrown when user defined temperature threshold is exceeded.
 
 **SensorNumber (integer)**
 
-Sensor number of the sensor to be monitored.
 
-**ThresholdValue (integer)**
-
-Temperature thershold that once passed will issue an alert.
 
 ## Triggers
 

@@ -1,5 +1,7 @@
 ---
 excludeFromSearch: true
+seo:
+  title: Storage resource definitions
 markdown:
   toc:
     hide: false
@@ -8,8 +10,6 @@ markdown:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Storage resource definitions
 ---
 
 # Storage resource definitions of iLO 5 v3.07

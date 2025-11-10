@@ -12,9 +12,9 @@
 # suitable configuration variables.
 # 
 # ToDo
-#     * Adapt to Reunite/Realm/Markdoc
+#     * TBD
 
-# version 0.11
+# version 0.13
 
 # Local Variables
 InputFile=$MsgRegistryFile
@@ -36,7 +36,7 @@ seo:
   title: ${ilogen} v${iLOVersion} Error messages
 markdown:
   toc:
-    hide: true
+    hide: false
     depth: 2
   lastUpdateBlock:
     hide: false
@@ -50,10 +50,43 @@ fi
 Header1Title="# Response message definitions of ${ilogen} v${iLOFwVersion}\n\n"
 
 FileDescription="This section is a reference for the defined message registry entries in HPE ${ilogen} version ${iLOFwVersion}. \
-Redfish responses are discussed in the [error responses](/docs/concepts/errorresponses.md) section.\n" 
+Redfish responses are discussed in the [error responses](/docs/concepts/errorresponses.md) section." 
 
 # OutputFile creation with seo, title and description strings.
 echo -e "${SEO}${Header1Title}${FileDescription}" > $OutputFile
 cat $InputFile >> $OutputFile
 
+# The following sed commands perform:
+#   1. Insert an empty line after header 3 lines
+#   2. Append "|" to `Message Format` tables
+#   3. Append "|" to `Severity` tables
+#   4. Append "|" to `Resolution` tables
+#   5-17. Replace some common typos
+sed -i -e 's/^\(### .*\)$/\1\n/'                                \
+    -e '/^|Message Format|.*/s/$/|/'                            \
+    -e '/^|Severity|.*/s/$/|/'                                  \
+    -e '/^|Resolution|.*/s/$/|/'                                \
+    -e 's/incompatability/incompatibility/g'                    \
+    -e 's/neccessary to retore/necessary to restore/g'          \
+    -e 's/supprted/supported/g'                                 \
+    -e 's/authetication/authentication/g'                       \
+    -e 's/recieve/receive/g'                                    \
+    -e 's/exisiting/existing/g'                                 \
+    -e 's/specifed/specified/g'                                 \
+    -e 's/virual/virtual/g'                                     \
+    -e 's/inseration/insertion/g'                               \
+    -e 's/certificte/certificate/g'                             \
+    -e 's/subsytems/subsystems/g'                               \
+    -e 's/securly/securely/g'                                   \
+    -e 's/sofware/software/g'                                   \
+    $OutputFile
 
+# Insert Header 2 before each new section
+#   Gather all section names
+SectionNames=$(awk -F. '/^###/ {print $1}' $OutputFile | sort -u| tr -d '#')
+
+# Insert Section Name as Header 2 before first occurence of each section
+for SectionName in $SectionNames ; do
+    sed -i -e '0,/^### '"$SectionName"'/{//i\## '"$SectionName"'\n
+    }' $OutputFile
+done

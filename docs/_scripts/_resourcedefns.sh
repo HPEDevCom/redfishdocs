@@ -15,7 +15,7 @@
 #        * Convert the outputs into Reunite/Realm/Markdoc format
 #        * Remove empty line before header2 and header3 lines when there are two empty lines.
 
-# version 0.12
+# version 0.14
 
 # Local Variables
 InputFiles=$(ls ${WorkingDirectory}/_${iLOGen}_resourcedefns${iLOVersion}.*)
@@ -172,6 +172,12 @@ for file in $OutputFiles ; do
   echo  "Done"
   echo -e "*******************************************\n\n"                   
 done
+
+# Fix various issues in the OutputFiles
+# |`Accounts`|Collection of [HpeiLOAppAccount](ilo7_hpe_resourcedefns113/#hpeiloappaccountcollection)|
+# should be:
+# |`Accounts`|Collection of [ManagerAccount](ilo7_manager_resourcedefns/#manageraccountcollection)|
+sed -i -e 's?Accounts`|Collection of \[HpeiLOAppAccount\](\(.*\)_hpe_resourcedefns\(.*\)/#hpeiloappaccountcollection)|?Accounts`|Collection of [ManagerAccount](\1_manager_resourcedefns\2/#manageraccountcollection)?g' $OutputFiles
 
 echo "Cleanup temp files" 
 rm $TmpFile $TmpFile2 &> /dev/null

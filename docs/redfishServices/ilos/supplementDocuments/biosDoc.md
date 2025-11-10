@@ -44,14 +44,14 @@ Refer to the following example for a generic method to retrieve them,
 regardless the server generation.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 GET /redfish/v1/systems/1/bios/?$select=Oem/Hpe/Links
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -66,7 +66,7 @@ ilorest rawget --silent \
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -80,7 +80,7 @@ curl --silent --insecure -u <ilo-user>:password \
      | grep -v null
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Gen10 response body" %}
 
 ```text Gen10 response body
@@ -94,7 +94,7 @@ curl --silent --insecure -u <ilo-user>:password \
 /redfish/v1/systems/1/bios/iscsi/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Gen10 Plus and Gen11 response body" %}
 
 ```text Gen10 Plus and Gen11 response body
@@ -108,8 +108,9 @@ curl --silent --insecure -u <ilo-user>:password \
 /redfish/v1/systems/1/bios/oem/hpe/iscsi/
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 The **HPE service Bios** extension is dedicated to HPE field service
 employees, and should not be accessed programmatically by
@@ -154,7 +155,6 @@ These are static files and meant as references. They are not meant to be
    <a href="https://github.com/DMTF/Redfish-Mockup-Creator" target="_blank">DMTF provides</a>.
 
 {% admonition type="warning" name="NOTE" %}
-
 HPE RESTful API BIOS Schemas/Registries **are not** intended to
 be installed anywhere in servers, iLOs or iLOrest configuration file.They are **NOT**
 ROM Flash Universal Firmware Packages.
@@ -162,7 +162,6 @@ ROM Flash Universal Firmware Packages.
 ROM Flash Universal Firmware Packages should be installed from Software Support Packs
 (<a href="https://spp.hpe.com" target="_blank">SPP</a>)
 or downloaded as `.fwpkg` files from the HPE Support Center.
-
 {% /admonition %}
 
 ## Reinitializing secure boot databases
@@ -191,10 +190,9 @@ The maximum length of certificates is 3 KiB.
 The BIOS or UEFI variable stores the secure boot databases. The OS, ROM-Based
 Setup Utility setting (RBSU), or Redfish API can modify the databases. To
 maintain consistency, the BIOS synchronizes the data with HPE iLO. The BIOS
-can identify the certificate or signature that must synchronize with HPE iLO.
-When a certificate or signature is not added to Redfish API or deleted from
-Redfish API, BIOS provides a POST or DELETE method to add or remove a
-certificate or signature from HPE iLO.
+can identify the certificates or signatures that must synchronize with HPE iLO.
+
+When a certificate or signature is added or deleted using RBSU (and not using the Redfish API), the BIOS provides a POST or a DELETE Redfish method to manage such certificate or signature.
 
 The following table lists the maximum number of certificates and signatures
 allowed for each of the secure boot database types:
@@ -203,13 +201,119 @@ allowed for each of the secure boot database types:
 |:--------------------------------------------:|:--------------------------:|:------------------------:|
 | Platform Key (PK)                            |              1             |            N/A           |
 | PKDefault                                    |              1             |            N/A           |
-| Key Exchange Key (KEK)                       |              16            |            10            |
-| KEKDefault                                   |              10            |            10            |
-| db/dbx/dbt/dbr                               |              16            |            N/A           |
+| Key Exchange Key (KEK)                       |              16            |            N/A           |
+| KEKDefault                                   |              10            |            N/A           |
+| db/dbx/dbt/dbr                               |              16            |            10            |
 | dbDefault/dbxDefault /dbtDefault /dbrDefault |              10            |            10            |
 
 For more information about secure boot databases,
 refer [Secure Databases](/docs/concepts/securebootdatabases/) paragraph.
+
+## SecureBoot certificates management
+
+HPE iLO does not allow enrollment or deletion of certificates
+from the default databases.
+Refer to the [Secure Boot databases](/docs/concepts/securebootdatabases/)
+generic section for an introduction on this subject. Among other things,
+it contains allowed operations on the different databases.
+Refer to the
+<a href="https://uefi.org/specs/UEFI/2.10/32_Secure_Boot_and_Driver_Signing.html" target="_blank">Secure Boot and Driver Signing</a>
+for more information about the UEFI specifications of SecureBoot authentication.
+
+{% admonition type="info" name="Notes" %}
+
+- When Platform Key (PK) is enrolled, `SecureBootMode` is set to the `User` Mode.
+- A PK can be deleted. When it's deleted, `SecureBootMode`
+changes to `Setup` mode. The mechanism of `SecureBoot` gets disabled. This
+means the system could boot to any image not allowed by the `SecureBoot`
+databases.
+Refer to the [Secure Boot databases](/docs/concepts/securebootdatabases/)
+section for more information on that subject.
+
+{% /admonition %}
+
+### Enrolling SecureBoot keys
+
+To enroll certificates or signatures in a non-default SecureBoot database,
+perform the following steps:
+
+1) Perform a `POST` on the API using the following URIs:
+   - `/redfish/v1/systems/1/secureboot/securebootdatabases/{@securebootdatabaseId}/certificates/`
+   - `/redfish/v1/systems/1/secureboot/securebootdatabases/{@securebootdatabaseId}/signatures/`
+2) Reboot HPE iLO.
+3) Perform a `GET` on the SecureBoot databases.
+      You can see the certificate under the database where it was enrolled.
+
+Sample payload:
+
+The following example enrolls a certificate in the authorized certificate
+signature database of an HPE iLO server.
+
+{% admonition type="success" name="Tip" %}
+Refer to this
+[TIP](/docs/redfishservices/ilos/supplementdocuments/securityservice/#importing-a-signed-certificate-into-ilo)
+to convert a CRLF-terminated file into a string.
+{% /admonition %}
+
+{% tabs %}
+{% tab label="Generic POST request" %}
+
+```text Generic POST request
+
+POST /redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId}/Certificates/
+
+```
+
+{% /tab %}
+{% tab label="Body" %}
+
+```json Body
+
+{
+
+    "CertificateString": "-----BEGIN CERTIFICATE-----\nMIIEXTCCA0WgAwIBAgIUILNZIX8LjJ/AMdsrsUl5eiGWY5kwDQYJKoZIhvcNAQEL\nBQAwgb0xCzAJBgNVBAYTAkZSMSMwIQYDVQQIDBpQcm92ZW5jZS1BbHBlcy1Db3Rl\nFooIs\n HappyjEZMBcGA1UEBwwQU29waGlhLUFudGlwb2xpczEMMAoGA1UECgwDSFBF\nMRAwDgYDVQQLDAdDb21wdXRlMScwJQYDVQQDDB50b3lib3guZXRjLmZyLmNvbW0u\naHBlY29ycC5uZXQxJTAjBgkqhkiG9w0BCQEWFmZyYW5jb2lzLmRvbnplQGhwZS5j\nb20wHhcNMjEwNDE0MTQxMzQxWhcNMzEwNDEyMTQxMzQxWjCBvTELMAkGA1UEBhMC\nRlIxIzAhBgNVBAgMGlByb3ZlbmNlLUFscGVzLUNvdGUgZCdBenVyMRkwFwYDVQQH\nDBBTb3BoaWEtQW50aXBvbGlzMQwwCgYDVQQKDANIUEUxEDAOBgNVBAsMB0NvbXB1\ndGUxJzAlBgNVBAMMHnRveWJveC5ldGMuZnIuY29tbS5ocGVjb3JwLm5ldDElMCMG\nCSqGSIb3DQEJARYWZnJhbmNvaXMuZG9uemVAaHBlLmNvbTCCASIwDQYJKoZIhvcN\nAQEBBQADggEPADCCAQoCggEBAMhZynGPIBE4VhIqjka9RoGJ1gSrYMceHOcj7Qzz\nGqbBoPwD3H0QZYgVczrAkwrLM229oRzpPfjc4OAZXP8ZE6mgkFAtqEPyf1V8G2/L\nKqIIIWoW8Pk158FgN/+IJAgTx3HkKg3Fg8r/7gaFItCuf9isvOqvcX7F3jur+g52\njKVqWGNlfKWVHZ5EEUQm6Yubt0kmflZ1FAgFMYYWZDVfTY63yrndgHIXDhGeqI00\nTz4KLIXltWEjXQHICzl14GOv1flTAJsjaH+Psryd0hFinJMyu6qtF8NCzVhbJCVn\nFtrIDOzU1cjTXrNt4sVyzRImYjAdB3nIEnY1DBS+pFbuTQ8CAwEAAaNTMFEwHQYD\nVR0OBBYEFB98Krx8h49jHuNMb5NNQTgRfwfZMB8GA1UdIwQYMBaAFB98Krx8h49j\nHuNMb5NNQTgRfwfZMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEB\nAE1YqMXR1VemcmFSsYWzjQEo37Os1YtkpJcuEQALAYeRWCpyWjiDnId7ThxP8GJ+\nryTbv1AtHf32QKXvNr/h6zGpKfvGb45ukMJeSDOH4ftI+f9bgRMbTuS5what3Db6\nYCH0/iAyelL3wA+sT86jsp+AqMoxgdOeCEM093sLtFTBvymm+yoqH6aFmz1l7ZwT\nJci63n1K9flpt9qlHifdlJkdZ2TVAbspoULvmlA1yeqG9j6OgPLBvB/fr+cz4p/b\nB6ct0HDuXtSoWPAiRALXF5S50Zvp5Y4Z8H+6Z02akGE68xYCE1WeNC85LuqflifD\nSXPaDWGLb9dFM2VkSjo9P7c=\n-----END CERTIFICATE-----\n",
+
+"CertificateType": "PEM"
+
+}
+
+```
+
+{% /tab %}
+{% /tabs %}
+
+### Deleting SecureBoot keys
+
+To remove a certificate/signature in the non-default database,
+perform `DELETE` on the particular member from either the `Certificate` or
+`Signature` collection URI:
+
+- `/redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId}/Certificates/{@CertificateId}`
+- `/redfish/v1/Systems/1/SecureBoot/SecureBootDatabases/{@SecureBootDatabaseId}/Signatures/{@SignatureId}`
+
+### Asynchronous task creation for the SecureBoot keys
+
+To perform either the enroll or delete operations, HPE iLO creates
+asynchronous task and a process flow as described in the following steps:
+
+  1) A user sends a Redfish request to enroll or delete a security key.
+  2) HPE iLO responds with HTTPS `202` `Accepted` status code.
+  3) The system creates a task under the following URI:
+    `/redfish/v1/taskservice/tasks/<taskid>`
+    The task contains the following attributes:
+      - `Payload`-  Provided by the user.
+      - `TargetUri`- The resource to be created or deleted after reboot.
+      - `TaskState`- Initially set to `New`.
+  4) On the next reboot, HPE BIOS picks up this task and performs one of the
+      requested operations:
+      - Enroll the key
+      - Delete the key
+  5) Monitor the task status at the following URI:
+      - `/redfish/v1/taskservice/taskmonitors/<taskid>`
+  6) After processing the request, the `TaskState` changes to the following
+    values:
+      - `Completed` - Operation succeeded
+      - `Exception` - Operation failed
 
 ## Bios defaults
 
@@ -247,13 +351,11 @@ The following example retrieves factory Bios attributes from
 a live system using a generic GET request or iLOrest.
 
 {% admonition type="info" name="NOTE" %}
-
 The `BaseConfig[]` URI is different in Gen10, Gen10 Plus and Gen11 servers.
 Refer to the following example for detail.
-
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic requests" %}
 
 ```shell Generic requests
@@ -264,7 +366,7 @@ Gen10 Plus and Gen11
 GET /redfish/v1/Systems/1/Bios/Oem/Hpe/BaseConfigs | jq '.BaseConfigs[] | .default'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -273,8 +375,9 @@ ilorest get BaseConfigs/default --json --selector=HpeBaseConfigs
 ilorest logout
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 #### Saving and retrieving user defined Bios attributes
 
 The following example sets various Bios attributes (Gen10, Gen10 Plus or Gen11)
@@ -292,14 +395,14 @@ Look for string "Service Bios" in this documentation section
 for more info concerning this HPE Bios extension.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```shell Generic request
 PATCH /redfish/v1/Systems/1/Bios/Settings/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body request" %}
 
 ```json Body request
@@ -314,7 +417,7 @@ PATCH /redfish/v1/Systems/1/Bios/Settings/
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -332,7 +435,7 @@ curl --insecure --silent --location -u <ilo-user>:passsword \
 }'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -348,7 +451,7 @@ ilorest reboot ForceRestart
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -365,8 +468,9 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example reads the Bios attributes `BaseConfigs[]`
 array members from Gen10, Gen10 Plus or Gen11 systems,
 that has been modified with the payload of the previous example.
@@ -375,7 +479,7 @@ It contains two members: `default` and `default.user`.
 Refer to the [Bios resets](#bios-resets) paragraph below to apply
 user defined attributes.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -386,7 +490,7 @@ GET /redfish/v1/Systems/{item}/Bios/BasConfigs
 GET /redfish/v1/Systems/{item}/Bios/Oem/Hpe/BaseConfigs
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -399,7 +503,7 @@ curl --include --insecure -u username:password --location \
       https://{iLO-ip}/redfish/v1/systems/1/bios/Oem/Hpe/BaseConfigs/ 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -414,7 +518,7 @@ ilorest rawget --silent /redfish/v1/systems/1/bios/Oem/Hpe/BaseConfigs/
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response (truncated)" %}
 
 ```json Response (truncated)
@@ -482,16 +586,15 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 #### Retrieving default Bios attributes from a registry file
 
 {% admonition type="info" name="NOTE" %}
-
 The method described in this paragraph for
 retrieving factory default Bios attribute values
 is only valid for Gen10 Plus and Gen11 servers.
-
 {% /admonition %}
 
 Bios attribute registries can be downloaded from the
@@ -510,7 +613,7 @@ The following example retrieves the Bios default values (and other properties)
 from a DL385 Gen11 server (A55) Bios registry file downloaded from the
 <a href="https://support.hpe.com" target="_blank">HPE Support site</a>.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="bash" %}
 
 ```shell bash
@@ -519,7 +622,7 @@ jq '.RegistryEntries.Attributes[] | {AttributeName, ReadOnly, Type, MenuPath, De
 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Output (truncated)" %}
 
 ```json Output (truncated)
@@ -568,8 +671,9 @@ jq '.RegistryEntries.Attributes[] | {AttributeName, ReadOnly, Type, MenuPath, De
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### Default HPE Bios resources
 
 In addition to the HPE Bios attributes and their defaults described
@@ -590,7 +694,7 @@ Bios configuration attributes and resources,
 except HPE Service Bios attributes for the reason mentioned earlier
 in this section.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest script" %}
 
 ```bash iLOrest script
@@ -621,7 +725,7 @@ done
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLO 5 output" %}
 
 ```text iLO 5 output
@@ -635,7 +739,7 @@ Resource type of /redfish/v1/systems/1/bios/iscsi/:              HpeiSCSISoftwar
 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label=" iLO 6 Output" %}
 
 ```text  iLO 6 Output
@@ -648,8 +752,9 @@ Resource type of /redfish/v1/systems/1/bios/oem/hpe/tlsconfig/:         HpeTlsCo
 Resource type of /redfish/v1/systems/1/bios/oem/hpe/iscsi/:             HpeiSCSISoftwareInitiator
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 HPE OEM Bios resources
 (except `HpeMappings`, but including the Service Bios extension)
 contain a link to a `BaseConfigs` URI. This URI contains the factory
@@ -661,7 +766,7 @@ configuration
 {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_hpe_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#hpetlsconfig") %} URI {% /link-internal %}
 from an iLO 6.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -677,7 +782,7 @@ ilorest rawget --silent "/redfish/v1/Systems/1/bios/oem/hpe/tlsconfig" | \
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -686,7 +791,7 @@ curl --silent --insecure -u <ilo-user>:password \
      jq '.Oem.Hpe.Links.BaseConfigs'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -695,8 +800,9 @@ curl --silent --insecure -u <ilo-user>:password \
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## BIOS resets
 
 This paragraph explains how to reset Bios attributes and
@@ -726,7 +832,7 @@ Refer to the
 [iLOrest user guide](/docs/redfishclients/ilorest-userguide/bioscommands/#biosdefaults-command)
 for performing the same action with iLOrest.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -736,7 +842,7 @@ Payload:
 {}
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL/iLO 6
@@ -747,15 +853,16 @@ curl --insecure --silent --location -u <ilo-user>:password \
      --data '{}'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example resets Bios attributes to factory defaults
 using the `Bios.ResetBios` action and cURL against an **HPE iLO 5**
 based server. Refer to the
 [iLOrest user guide](/docs/redfishclients/ilorest-userguide/bioscommands/#biosdefaults-command)
 for performing the same action with iLOrest.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -767,7 +874,7 @@ Payload:
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL/iLO 5
@@ -780,8 +887,9 @@ curl --insecure --silent --location  -u <ilo-user>:password \
              }'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 A Python example using the `Bios.ResetBios` action and
 the
@@ -796,7 +904,7 @@ defaults using a PUT request against the
 Bios attributes settings location. This example is valid for both
 HPE iLO 5 and iLO 6 based servers.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -811,7 +919,7 @@ Payload:
 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -825,8 +933,9 @@ curl --insecure --silent -u <ilo-user>:password --location \
 }'
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="success" name="TIP" %}
 You can easily view the attribute values that will be restored with
 iLOrest and its `pending`
@@ -857,14 +966,14 @@ customized as mentioned earlier in this documentation section.
 The following example retrieves the default user defined Bios attributes
 from an HPE iLO 6.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 GET /redfish/v1/systems/1/bios/Oem/Hpe/BaseConfigs/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -873,7 +982,7 @@ curl --insecure --silent --location -u <ilo-user>:password \
      jq '.BaseConfigs[] | ."default.user"'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -883,7 +992,7 @@ ilorest rawget --silent /redfish/v1/systems/1/bios/Oem/Hpe/BaseConfigs | \
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Output (truncated)" %}
 
 ```json Output (truncated)
@@ -907,15 +1016,15 @@ null
   "iSCSISoftwareInitiator": "Enabled"
 }
 
-
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example resets the Bios attributes to the user default settings.
 This PUT request is valid against iLO 5 and iLO 6 based servers.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -929,7 +1038,7 @@ Payload:
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -939,7 +1048,7 @@ curl --insecure --silent --location -u <ilo-user>:password \
      https://<ilo-ip>/redfish/v1/Systems/1/bios/settings/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -949,8 +1058,9 @@ ilorest reboot ForceRestart
 ilorest logout
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 To reset the Service Bios extension attributes to the `default.user` values,
 send a PUT request
@@ -982,7 +1092,7 @@ to perform this operation, and then reboot the server.
 <!-- The following example fails against DL365 / iLO 6 1.55 with ROM 2.10:
 Bios attributes are not reset ! -->
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -996,7 +1106,7 @@ Payload:
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -1006,7 +1116,7 @@ curl --insecure --silent --location -u <ilo-user>:password \
      https://<ilo-ip>/redfish/v1/Systems/1/bios/settings/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -1016,8 +1126,9 @@ ilorest reboot ForceRestart
 ilorest logout
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 If you just need to reset a single Bios resource set,
 send a PUT request to its settings URI and then restart the server.
 The following example resets the `TlsConfig` Bios resources using cURL
@@ -1026,7 +1137,7 @@ and iLOrest against an HPE iLO 6 based system.
 <!-- The following example needs to be verified with Boot settings,
      KMS config, iSCCI config and Mappings, on Gen10 and Gen11  -->
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -1039,7 +1150,7 @@ Workload:
 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -1052,7 +1163,7 @@ curl --insecure --silent --location \
      }'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -1070,8 +1181,9 @@ cat TlsDefault.json
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="success" name="TIP" %}
 The reset to the default `BaseConfig` configuration can be
 combined with other property values changes.
@@ -1079,13 +1191,13 @@ This allows to first reset everything to
 default and then apply some specific settings with
 only one system reboot.
 
- The following example resets to defaults the
- Bios TLS configuration and configures
- the `VerifyMode` to a specific value (different from the default),
- on an HPE iLO 5 based system.
+The following example resets to defaults the
+Bios TLS configuration and configures
+the `VerifyMode` to a specific value (different from the default),
+on an HPE iLO 5 based system.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -1098,7 +1210,7 @@ Workload:
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -1108,7 +1220,7 @@ curl --insecure --silent --location -u username:password  \
      https://{iLO}/redfish/v1/systems/1/bios/tlsconfig/settings 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -1127,8 +1239,9 @@ cat TLSdata.json
 
 ```
   
-  {% /tab %}
-  {% /tabs %}
+ {% /tab %}
+{% /tabs %}
+
 {% admonition type="success" name="TIP" %}
 Use the Action specified in the Service Bios extension URI to
 reset these attributes to
@@ -1136,12 +1249,14 @@ their factory defaults.
 {% /admonition %}
 
 <!-- TBD Need to get help from R&D to understand the
-     BaseConfigs/Capabilities !>
-::: info NOTE
+     BaseConfigs/Capabilities
+
+{% admonition type="info" name="Note" %}
 To determine if the BIOS resource supports reverting the
 settings to default, `GET` the BIOS `BaseConfigs` resource,
 and view the `Capabilities` property.
 {% /admonition %}
+
 -->
 
 <!--

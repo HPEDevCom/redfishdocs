@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Computersystem resource definitions
 markdown:
@@ -13,7 +14,7 @@ breadcrumbs:
 
 # Computersystem resource definitions of iLO 6 v1.68
 
-For each data type provided by the HPE ilO Redfish service,find below its description including the list of possible instances (URIs),links to related other resources, described properties and many other details.
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
@@ -2087,11 +2088,9 @@ Member of [ComputerSystem.v1\_18\_0.ComputerSystem](#computersystem)
 
 ### Actions
 
-
 **ComputerSystem.Reset**
 Member of [ComputerSystem.v1\_18\_0.ComputerSystem](#computersystem)
 This action resets the system.
-
 
 **Parameters:**
 

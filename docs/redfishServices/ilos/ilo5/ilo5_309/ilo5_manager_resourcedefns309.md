@@ -1,4 +1,6 @@
 ---
+seo:
+  title: Manager resource definitions
 markdown:
   toc:
     hide: false
@@ -7,18 +9,16 @@ markdown:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Manager resource definitions
 ---
 
 # Manager resource definitions of iLO 5 v3.09
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ManagerCollection
+
 `@odata.type: "#ManagerCollection.ManagerCollection"`
 
 A Collection of Manager resource instances.
@@ -31,7 +31,7 @@ A Collection of Manager resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[Manager](ilo5_manager_resourcedefns309/#manager)|
 
@@ -68,6 +68,7 @@ The Manager resource describes a manager.  Examples of managers are BMCs, Enclos
 
 ### Manager.Reset
 
+
 There are two possible ways for Manager Reset. These are defined as `ForceRestart` and `GracefulRestart`.
 
 `text POST request
@@ -80,13 +81,9 @@ POST /redfish/v1/Managers/1/Actions/Manager.Reset/
 `
 
 {% admonition type="info" name="NOTE" %}
-
-- iLO `GracefulRestart` works in the same way as `ForceRestart`.
-- Depending on the operating system and other factors, `GracefulShutdown`
-  may not perform a graceful shutdown. Hewlett Packard Enterprise
-  recommends using operating system commands to complete a graceful shutdown.
-
+iLO `GracefulRestart` works in the same way as `ForceRestart`.
 {% /admonition %}
+
 
 ### Resource Instances
 
@@ -96,7 +93,7 @@ POST /redfish/v1/Managers/1/Actions/Manager.Reset/
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/DateTimeService`|[HpeiLODateTime](ilo5_hpe_resourcedefns309/#hpeilodatetime)|
 |`Oem/Hpe/Links/RemoteSupport`|[HpeRemoteSupport](ilo5_hpe_resourcedefns309/#hperemotesupport)|
@@ -1642,6 +1639,7 @@ Indicates the reason for cloud connection failure. This property is set when clo
 
 Indicates the extended reason for cloud connection failure. This property is set when cloud connect is disabled by Compute Ops Management.
 ## ManagerAccountCollection
+
 `@odata.type: "#ManagerAccountCollection.ManagerAccountCollection"`
 
 A Collection of ManagerAccount resource instances.
@@ -1654,7 +1652,7 @@ A Collection of ManagerAccount resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ManagerAccount](ilo5_manager_resourcedefns309/#manageraccount)|
 
@@ -1916,7 +1914,7 @@ iLO reset is required after the PATCH for the change to come into effect.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Oem/Hpe/Links/SNMPService`|[HpeiLOSnmpService](ilo5_hpe_resourcedefns309/#hpeilosnmpservice)|
 |`Oem/Hpe/Links/EthernetInterfaces`|Collection of [EthernetInterface](ilo5_network_resourcedefns309/#ethernetinterfacecollection)|

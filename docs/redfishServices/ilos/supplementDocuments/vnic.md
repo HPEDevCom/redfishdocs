@@ -69,7 +69,7 @@ specification for in-band management.
 This host interface is also known as Virtual NIC or vNIC within HPE documents.
 
 The HPE Virtual NIC communication path between the OS and iLO is the DMTF standard alternative to the legacy HPE Channel Interface
-(<a href="https://developer.hpe.com/blog/chif-driver-not-found/" target="_blank">CHIF</a>).
+(<a href="/docs/references_and_material/blogposts/etc/chif/chif-driver-not-found" target="_blank">CHIF</a>).
 
 {% admonition type="info" name="NOTES" %}
 
@@ -94,7 +94,7 @@ privileged user `root`. The second tabulation forces the opening of a
 Redfish session via the Virtual NIC.
 
 {% tabs %}
-{% tab label="in" %}
+{% tab label="in-band CHIF session" %}
 
 ```shell in-band CHIF session
 ssh root@fdz365g11-1
@@ -108,10 +108,9 @@ exit
 ```
   
 {% /tab %}
-{% tab label="in" %}
+{% tab label="in-band vNIC session" %}
 
 ```shell in-band vNIC session
-ilorest login --force_vnic -u $u -p $p
 ssh root@fdz365g11-1
 
 ilorest login --force_vnic -u $u -p $p
@@ -130,9 +129,10 @@ ilorest logout
 
 - Generic Redfish clients like cURL, PowerShell, Postman don't have the ability
   to open an in-band Redfish session via CHIF.
-- Python scripts can create in-band Redfish sessions via CHIf, using
-  the `blobstore://.` base URL as mentioned in the
-  [quick start](https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/quickstart_redfish.py)
+- Python scripts can create in-band Redfish sessions via CHIF
+  ([iLO 5 and iLO 6 only](/docs/redfishservices/ilos/supplementdocuments/securityservice/#transitioning-to-hpe-ilo-7)),
+  using the `blobstore://.` base URL as mentioned in the
+  <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/quickstart_redfish.py" target="_blank">quick start</a>
   example of the HPE Python ilorest library.
 
 {% /admonition %}

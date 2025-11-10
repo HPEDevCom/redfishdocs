@@ -21,6 +21,36 @@ The latest iLOrest packages can be freely downloaded from
 
 A <a href="https://pypi.org/project/ilorest" target="_blank">PyPI</a> project is also available.
 
+## Version 6.3.0.0
+
+**Fixes:**
+
+- Fixed an issue with `IscsiConfig`[command](/docs/redfishclients/ilorest-userguide/bioscommands/#iscsiconfig-command) where response showed duplicate entries.
+- Fixed an issue with `Serverlogs`[command](/docs/redfishclients/ilorest-userguide/ilocommands/#serverlogs-command) where `--mpfile` option did not load the configurations.
+- Fixed an issue with `Uploadcomp`[command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#uploadcomp-command) where uploading a component which is connected behind the controller of the server was failing.
+
+**Enhancements:**
+
+- Enhanced `rawget`[command](/docs/redfishclients/ilorest-userguide/rawcommands/#rawget-command) to provide the response in `stderr` if the option `--response` is given. 
+- Enhanced `appaccount` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#appaccount-command) to give an exception if `non-root` user tries to perform `appaccount` functionalities.
+- New global iLOrest [optional argument](https://servermanagementportal.ext.hpe.com/docs/redfishclients/ilorest-userguide/globalcommands/#global-optional-arguments) to omit the creation of an info log file (iLORest.log).
+
+## Version 6.2.0.0
+
+**Fixes:**
+
+- Fixed an issue with the `save` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#save-command), when `selector` is not given along with the `save` command the command response was NULL.
+- Fixed an issue with `appaccount` [command](/docs/redfishclients/ilorest-userguide/ilocommands/#appaccount-command) where the `apptoken` was getting deleted while product upgrade.
+- Fixed an issue with signing project for RPM products, to reflect new GPG key which is signed by SHA-256.
+- Fixed an issue with the `get` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#get-command) & `list` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#list-command) where `NetworkAdapter` property was returning missing data in response for `Ids` and displaying only `settings` data. 
+- Fixed an issue with  `flashfwpkg` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#flashfwpkg-command) where warning was being thrown while NVMe and SATA drive components flashing.
+- Fixed an issue with the `list` [command](/docs/redfishclients/ilorest-userguide/globalcommands/#list-command) where `Bios` property was returning NULL in response for `@odata.*`
+
+**Enhancements:**
+
+- Enhanced  `flashfwpkg` [command](/docs/redfishclients/ilorest-userguide/ilorepositorycommands/#flashfwpkg-command) to support NVMe DA drive components flashing.
+- Enabled support for RHEL 9 minimal OS install.
+
 ## Version 6.1.0.0
 
 **Fixes:**

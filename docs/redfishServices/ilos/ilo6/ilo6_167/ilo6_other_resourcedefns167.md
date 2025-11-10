@@ -1,15 +1,15 @@
 ---
 excludeFromSearch: true
+seo:
+  title: Other resource definitions
 markdown:
   toc:
     hide: false
     depth: 2
   lastUpdateBlock:
     hide: false
-  breadcrumbs:
-    hide: true
-seo:
-  title: Other resource definitions
+breadcrumbs:
+  hide: false
 ---
 
 # Other resource definitions of iLO 6 v1.67
@@ -13586,7 +13586,6 @@ The following are the supported values:
 |`IncreasedCooling`|Operates fans at a higher speed.|
 |`MaximumCooling`|Provides the maximum cooling available for the system.|
 |`EnhancedCooling`|Provides additional cooling to the processors, which can improve performance.|
-|`AcousticMode`|Edgeline-only option. Prioritizes minimizing noise from the enclosure.|
 |`SmoothCooling`|Provides a smoother fan response with less aggressive parameter settings to reduce fan speed variations.|
 
 ### Status
@@ -14074,7 +14073,6 @@ The following are the supported values:
 |`IncreasedCooling`|Operates fans at a higher speed.|
 |`MaximumCooling`|Provides the maximum cooling available for the system.|
 |`EnhancedCooling`|Provides additional cooling to the processors, which can improve performance.|
-|`AcousticMode`|Edgeline-only option. Prioritizes minimizing noise from the enclosure.|
 |`SmoothCooling`|Provides a smoother fan response with less aggressive parameter settings to reduce fan speed variations.|
 
 ### Pumps

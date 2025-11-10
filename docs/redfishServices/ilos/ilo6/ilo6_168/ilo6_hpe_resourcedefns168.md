@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: Hpe resource definitions
 markdown:
@@ -13,7 +14,7 @@ breadcrumbs:
 
 # Hpe resource definitions of iLO 6 v1.68
 
-For each data type provided by the HPE ilO Redfish service,find below its description including the list of possible instances (URIs),links to related other resources, described properties and many other details.
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
@@ -166,17 +167,16 @@ Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpea
 
 ### Actions
 
-
 **HpeAutomaticCertEnrollment.ImportCACertificate**
 Member of [HpeAutomaticCertEnrollment.v1\_0\_0.HpeAutomaticCertEnrollment](#hpeautomaticcertenrollment)
 Imports a CA Certificate.
-
 
 **Parameters:**
 
 **Certificate (string)**
 
 Contains PEM formatted X509 certificate (Base64 encoded).
+
 ## HpeBaseConfigs
 
 `@odata.type: "#HpeBaseConfigs.v2_0_0.HpeBaseConfigs"`
@@ -199,6 +199,7 @@ Member of [HpeBaseConfigs.v2\_0\_0.HpeBaseConfigs](#hpebaseconfigs)
 `BaseConfigs` is an array containing elements of:
 
 **BaseConfigs[{item}]**
+
 ### Capabilities
 
 **Capabilities.BaseConfig**
@@ -415,7 +416,6 @@ Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 
 ### Actions
 
-
 **HpeCertAuth.DeleteCRL**
 Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 Remove an installed Certificate Revocation List (CRL).
@@ -425,7 +425,6 @@ There are no parameters for this action.
 **HpeCertAuth.ImportCRL**
 Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 Imports a Certificate Revocation List (CRL).
-
 
 **Parameters:**
 
@@ -437,12 +436,12 @@ Contains URI of PEM formatted certificate revocation list (CRL) (Base64 encoded)
 Member of [HpeCertAuth.v1\_1\_0.HpeCertAuth](#hpecertauth)
 Imports a Trusted Certificate
 
-
 **Parameters:**
 
 **Certificate (string)**
 
 Contains PEM formatted X509 certificate or PKCS7 certificate chain (Base64 encoded).
+
 ## HpeCertificate
 
 `@odata.type: "#HpeCertificate.v1_0_0.HpeCertificate"`
@@ -450,7 +449,6 @@ Contains PEM formatted X509 certificate or PKCS7 certificate chain (Base64 encod
 The HpeCertificate resource describes an X509 certificate.
 
 This resource type was added in iLO 5 1.20
-
 
 ### Resource Instances
 
@@ -643,9 +641,11 @@ Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
 ### Criticality
 
 Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
+
 ### Criticality
 
 Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
+
 ### Criticality
 
 Member of [HpeComponent.v1\_0\_1.HpeComponent](#hpecomponent)
@@ -1022,7 +1022,6 @@ Member of [HpeComponentInstallSet.v1\_5\_0.HpeComponentInstallSet](#hpecomponent
 
 ### Actions
 
-
 **HpeComponentInstallSet.Invoke**
 Member of [HpeComponentInstallSet.v1\_5\_0.HpeComponentInstallSet](#hpecomponentinstallset)
 
@@ -1031,6 +1030,7 @@ Member of [HpeComponentInstallSet.v1\_5\_0.HpeComponentInstallSet](#hpecomponent
 **ClearTaskQueue (boolean)**
 
 Previous items in the task queue can be cleared before the Install Set is invoked
+
 ## HpeComponentInstallSetCollection
 
 `@odata.type: "#HpeComponentInstallSetCollection.HpeComponentInstallSetCollection"`
@@ -1470,13 +1470,12 @@ Member of [HpeDirectoryTest.v1\_0\_0.HpeDirectoryTest](#hpedirectorytest)
 
 ### Actions
 
-
 **HpeDirectoryTest.StartTest**
 Member of [HpeDirectoryTest.v1\_0\_0.HpeDirectoryTest](#hpedirectorytest)
 Start the directory test.
 
-
 **Parameters:**
+
 ## HpeESKM
 
 `@odata.type: "#HpeESKM.v2_1_0.HpeESKM"`
@@ -1655,7 +1654,6 @@ Member of [HpeESKM.v2\_1\_0.HpeESKM](#hpeeskm)
 
 ### Actions
 
-
 **HpeESKM.ClearESKMLog**
 Member of [HpeESKM.v2\_1\_0.HpeESKM](#hpeeskm)
 Clears ESKM log.
@@ -1667,6 +1665,7 @@ Member of [HpeESKM.v2\_1\_0.HpeESKM](#hpeeskm)
 Test ESKM connections.
 
 There are no parameters for this action.
+
 ## HpeHttpsCert
 
 `@odata.type: "#HpeHttpsCert.v2_0_0.HpeHttpsCert"`
@@ -1746,11 +1745,9 @@ Member of [HpeHttpsCert.v2\_0\_0.HpeHttpsCert](#hpehttpscert)
 
 ### Actions
 
-
 **HpeHttpsCert.ImportCertificate**
 Member of [HpeHttpsCert.v2\_0\_0.HpeHttpsCert](#hpehttpscert)
 Imports a Trusted Certificate and iLO is reset.
-
 
 **Parameters:**
 
@@ -1790,6 +1787,7 @@ The unit within the company or organization that owns this iLO subsystem.
 **State (string)**
 
 The state where the company or organization that owns this iLO subsystem is located.
+
 ## HpeiLOAccountCertificateMap
 
 `@odata.type: "#HpeiLOAccountCertificateMap.v1_0_1.HpeiLOAccountCertificateMap"`
@@ -1797,7 +1795,6 @@ The state where the company or organization that owns this iLO subsystem is loca
 The HpeiLOAccountCertificateMap resource describes mapping X509 certificates to user accounts.
 
 This resource type was added in iLO 5 1.20
-
 
 ### Resource Instances
 
@@ -2056,7 +2053,6 @@ Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloac
 
 ### Actions
 
-
 **HpeiLOActiveHealthSystem.LogAmplifierData**
 Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
 
@@ -2090,6 +2086,7 @@ Origin of milestone.
 **HpeiLOActiveHealthSystem.ClearLog**
 Member of [HpeiLOActiveHealthSystem.v2\_5\_0.HpeiLOActiveHealthSystem](#hpeiloactivehealthsystem)
 There are no parameters for this action.
+
 ## HpeiLOBackupFile
 
 `@odata.type: "#HpeiLOBackupFile.v1_0_0.HpeiLOBackupFile"`
@@ -2138,10 +2135,10 @@ Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
 
 ### Actions
 
-
 **HpeiLOBackupFile.Restore**
 Member of [HpeiLOBackupFile.v1\_0\_0.HpeiLOBackupFile](#hpeilobackupfile)
 There are no parameters for this action.
+
 ## HpeiLOBackupFileCollection
 
 `@odata.type: "#HpeiLOBackupFileCollection.HpeiLOBackupFileCollection"`
@@ -4316,10 +4313,10 @@ Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
 
 ### Actions
 
-
 **HpeiLOSnmpService.SendSNMPTestAlert**
 Member of [HpeiLOSnmpService.v2\_4\_1.HpeiLOSnmpService](#hpeilosnmpservice)
 There are no parameters for this action.
+
 ## HpeiLOSSO
 
 `@odata.type: "#HpeiLOSSO.v2_0_0.HpeiLOSSO"`
@@ -4777,11 +4774,9 @@ Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 
 ### Actions
 
-
 **HpeiLOSSO.ImportDNSName**
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Add DNS Name to the record list.
-
 
 **Parameters:**
 
@@ -4792,7 +4787,6 @@ DNS Name of the HPE SSO Trusted Server.
 **HpeiLOSSO.ImportCertificate**
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Import the HPE SSO Certificate.
-
 
 **Parameters:**
 
@@ -4813,7 +4807,6 @@ Specifies the type of certificate imported.
 Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Delete SSO record by record number.
 
-
 **Parameters:**
 
 **RecordNumber (integer)**
@@ -4825,6 +4818,7 @@ Member of [HpeiLOSSO.v2\_0\_0.HpeiLOSSO](#hpeilosso)
 Delete all the SSO records.
 
 There are no parameters for this action.
+
 ## HpeInvalidImage
 
 `@odata.type: "#HpeInvalidImage.v1_0_0.HpeInvalidImage"`
@@ -5806,7 +5800,6 @@ This resource type was added in iLO 5 1.20
 
 HpeRemoteSupport enables management of HPE Remote Support configuration on iLO 5.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -6020,7 +6013,6 @@ ServiceEventLogs is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **HpeRemoteSupport.RegisterDeviceToRemoteSupport**
 Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
 
@@ -6029,6 +6021,7 @@ Member of [HpeRemoteSupport.v2\_6\_0.HpeRemoteSupport](#hperemotesupport)
 **DestinationUrl (string)**
 
 The host name or IP address of the Remote Support server. This is applicable for Central Connect only.
+
 ## HpeSecureEraseReport
 
 `@odata.type: "#HpeSecureEraseReport.v1_1_0.HpeSecureEraseReport"`
@@ -6238,10 +6231,10 @@ Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hp
 
 ### Actions
 
-
 **HpeSecureEraseReportService.DeleteSecureEraseReport**
 Member of [HpeSecureEraseReportService.v1\_0\_0.HpeSecureEraseReportService](#hpesecureerasereportservice)
 There are no parameters for this action.
+
 ## HpeSecurityService
 
 `@odata.type: "#HpeSecurityService.v2_6_0.HpeSecurityService"`
@@ -6668,10 +6661,10 @@ Certificates is a link (`"@odata.id": URI`) to another resource.
 
 ### Actions
 
-
 **HpeSecurityService.RebindHPM**
 Member of [HpeSecurityService.v2\_6\_0.HpeSecurityService](#hpesecurityservice)
 There are no parameters for this action.
+
 ## HpeServerAccHddService
 
 `@odata.type: "#HpeServerAccHddService.v1_0_0.HpeServerAccHddService"`
@@ -6679,7 +6672,6 @@ There are no parameters for this action.
 The HpeServerAccHddService resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -6812,7 +6804,6 @@ The HpeServerAccHddZone resource describes the properties for management of shar
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -6936,7 +6927,6 @@ Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzon
 
 ### Actions
 
-
 **HpeServerAccHddZone.BackupConfigurationToBmc**
 Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzone)
 Backup Apollo Chassis Controller Hdd zone configuration to BMC.
@@ -6953,10 +6943,10 @@ There are no parameters for this action.
 Member of [HpeServerAccHddZone.v1\_0\_0.HpeServerAccHddZone](#hpeserveracchddzone)
 Execute Apollo Chassis Controller Hdd zone configuration.
 
-
 **Parameters:**
 
 **HostPort (array)**
+
 ## HpeServerAccPowerCalibration
 
 `@odata.type: "#HpeServerAccPowerCalibration.v1_0_0.HpeServerAccPowerCalibration"`
@@ -6964,7 +6954,6 @@ Execute Apollo Chassis Controller Hdd zone configuration.
 The HpeServerAccPowerCalibration resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -7238,11 +7227,9 @@ Member of [HpeServerAccPowerCalibration.v1\_0\_0.HpeServerAccPowerCalibration](#
 
 ### Actions
 
-
 **HpeServerAccPowerCalibration.Calibrate**
 Member of [HpeServerAccPowerCalibration.v1\_0\_0.HpeServerAccPowerCalibration](#hpeserveraccpowercalibration)
 Execute the Apollo Chassis Controller power calibration configuration.
-
 
 **Parameters:**
 
@@ -7260,6 +7247,7 @@ Execute the Apollo Chassis Controller power calibration configuration.
 |---|---|
 |Start|
 |Stop|
+
 ## HpeServerAccPowerLimit
 
 `@odata.type: "#HpeServerAccPowerLimit.v1_0_0.HpeServerAccPowerLimit"`
@@ -7267,7 +7255,6 @@ Execute the Apollo Chassis Controller power calibration configuration.
 The HpeServerAccPowerLimit resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -7365,15 +7352,14 @@ Member of [HpeServerAccPowerLimit.v1\_0\_0.HpeServerAccPowerLimit](#hpeserveracc
 
 ### Actions
 
-
 **HpeServerAccPowerLimit.ConfigurePowerLimit**
 Member of [HpeServerAccPowerLimit.v1\_0\_0.HpeServerAccPowerLimit](#hpeserveraccpowerlimit)
 Deploy the Apollo Chassis Controller power limit configuration.
 
-
 **Parameters:**
 
 **PowerLimits (array)**
+
 ## HpeServerAccPowerNodesInfo
 
 `@odata.type: "#HpeServerAccPowerNodesInfo.v1_0_0.HpeServerAccPowerNodesInfo"`
@@ -7381,7 +7367,6 @@ Deploy the Apollo Chassis Controller power limit configuration.
 The HpeServerAccPowerNodesInfo resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -7444,7 +7429,6 @@ The HpeServerAccPowerService resource describes the properties for management of
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -7499,7 +7483,6 @@ The following are the supported values:
 The HpeServerAccPowerZone resource describes the properties for management of shared power in an enclosure.
 
 This resource type was added in iLO 5 1.20 and is available on **HPE ProLiant Apollo XL** systems.
-
 
 ### Resource Instances
 
@@ -7561,15 +7544,14 @@ Member of [HpeServerAccPowerZone.v1\_0\_0.HpeServerAccPowerZone](#hpeserveraccpo
 
 ### Actions
 
-
 **HpeServerAccPowerZone.ConfigureZone**
 Member of [HpeServerAccPowerZone.v1\_0\_0.HpeServerAccPowerZone](#hpeserveraccpowerzone)
 Execute the Apollo Chassis Controller power regulation zone configuration.
 
-
 **Parameters:**
 
 **Zone (array)**
+
 ## HpeServerBootSettings
 
 `@odata.type: "#HpeServerBootSettings.v2_0_0.HpeServerBootSettings"`
@@ -8014,7 +7996,6 @@ The HpeServerDevice resource describes the properties of FRU devices.
 This resource type was added in iLO 5 1.20
 
 HpeServerDevice represents physical server devices including part information.  This is especially useful for system inventory.
-
 
 ### Resource Instances
 
@@ -8904,7 +8885,6 @@ The HpeSNMPAlertDestination resource describes the properties for SNMP Alert Des
 
 This resource type was added in iLO 5 1.20
 
-
 ### Resource Instances
 
 |Uri|HTTP Allow|
@@ -9021,7 +9001,6 @@ Member of HpeSNMPAlertDestinationCollection.HpeSNMPAlertDestinationCollection
 The HpeSNMPUser resource describes the properties for SNMP support.  SNMPv3 supports the User-based Security Model (USM). With this model,security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.
 
 This resource type was added in iLO 5 1.20
-
 
 ### Resource Instances
 

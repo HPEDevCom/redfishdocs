@@ -4,45 +4,39 @@
   href: '/'
 - separatorLine: true
 
-- group: Guides
+- group: Introduction
   expanded: false
   selectFirstItemOnExpand: true
   items:
-    - label: Introduction
+    - label: The HPE management portal
       page: docs/index.md
-    - group: Redfish concepts
-      expanded: false
-      selectFirstItemOnExpand: true
-      items:
-        - label: Redfish at a glance
-          page:  docs/concepts/index.md
-        - label: Conformance
-          page: docs/concepts/redfishConformance.md
-        - label: Getting started
-          page: docs/concepts/gettingStarted.md
-        - label: Authentication and sessions
-          page: docs/concepts/redfishAuthentication.md
-        - label: Data types and collections
-          page: docs/concepts/dataTypesAndCollections.md
-        - label: Error responses
-          page: docs/concepts/errorresponses.md
-        - label: Performing actions
-          page: docs/concepts/performing_actions.md
-        - label: BIOS data model
-          page: docs/concepts/biosdatamodel.md
-      
-      #- label: Navigating the Data Model
-      #  page: docs/concepts/navigating.md
-      
-      #- label: Client best practices
-      #  page: docs/concepts/client_bestpractices.md
 
-        - label: Secureboot Databases
-          page:  docs/concepts/securebootdatabases.md
-        - label: Event service
-          page: docs/concepts/redfishEvents.md
-        - label: Telemetry service
-          page: docs/concepts/redfishTelemetry.md
+- group: Redfish concepts
+  expanded: false
+  selectFirstItemOnExpand: true
+  items:
+    - label: Overview
+      page:  docs/concepts/index.md
+    - label: Conformance
+      page: docs/concepts/redfishConformance.md
+    - label: Getting started
+      page: docs/concepts/gettingStarted.md
+    - label: Authentication and sessions
+      page: docs/concepts/redfishAuthentication.md
+    - label: Data types and collections
+      page: docs/concepts/dataTypesAndCollections.md
+    - label: Error responses
+      page: docs/concepts/errorresponses.md
+    - label: Performing actions
+      page: docs/concepts/performing_actions.md
+    - label: BIOS data model
+      page: docs/concepts/biosdatamodel.md
+    - label: Secureboot Databases
+      page:  docs/concepts/securebootdatabases.md
+    - label: Event service
+      page: docs/concepts/redfishEvents.md
+    - label: Telemetry service
+      page: docs/concepts/redfishTelemetry.md
     - label: Examples
       page: docs/examples/redfishExamples.md
     - label: Glossary
@@ -84,28 +78,63 @@
   items:
     - label: Overview
       page: docs/references_and_material/index.md
-    - label: Why is Redfish different...
-      href: 'https://developer.hpe.com/blog/why-is-redfish%C2%AE-different-from-other-rest-apis-part-1/'
+    # Internal links
+    - group: Why is Redfish different
+      expanded: false
+      selectFirstItemOnExpand: false
+      items:
+      - label: Part 1
+        page: docs/references_and_material/blogposts/why_is_redfish_different/why_is_redfish_different_part1.md
+        external: true
+      - label: Part 2
+        page: docs/references_and_material/blogposts/why_is_redfish_different/why_is_redfish_different_part2.md
+        external: true
+    - group: Firmware updates
+      expanded: false
+      selectFirstItemOnExpand: false
+      items:
+      - label: 1-File types and Smart Components
+        page: docs/references_and_material/blogposts/firmware_updates/part1/firmware_update_part1.md
+        external: true
+      - label: 2-Interaction in operating modes
+        page: docs/references_and_material/blogposts/firmware_updates/part2/firmware_update_part2.md
+        external: true
+      - label: 3-The Redfish update service
+        page: docs/references_and_material/blogposts/firmware_updates/part3/firmware_update_part3.md
+        external: true
+      - label: PLDM for Firmware Update
+        page: docs/references_and_material/blogposts/pldm/pldm_fwupd/pldm_fwupd.md
+        external: true
+    - group: Platform Level Data Model (PLDM)
+      expanded: false
+      selectFirstItemOnExpand: false
+      items:
+      - label: Overview of PLDM for RDE
+        page: docs/references_and_material/blogposts/pldm/pldm_rde/pldm_rde.md
+        external: true
+      - label: PLDM for Firmware Update
+        page: docs/references_and_material/blogposts/pldm/pldm_fwupd/pldm_fwupd.md
+        external: true
+    - label: Chif driver not found
+      page: docs/references_and_material/blogposts/etc/chif/chif-driver-not-found.md
       external: true
-    - label: Overview of PLDM for RDE
-      href: 'https://developer.hpe.com/blog/overview-of-the-platform-level-data-model-for-redfish%C2%AE-device-enablement-standard/'
+    - label: The Redfish event service
+      page: docs/references_and_material/blogposts/etc/eventservice/redfisheventservice.md
       external: true
-    - label: Benefits of PLDM for Firmware Update
-      href: 'https://developer.hpe.com/blog/benefits-of-the-platform-level-data-model-for-firmware-update-standard/'
+    - label: Redfish server states
+      page: docs/references_and_material/blogposts/etc/masterserverstates/masterserverstates.md
       external: true
-    - label: Master the Redfish Server States
-      href: 'https://developer.hpe.com/blog/master-the-redfish-server-states-to-improve-your-monitoring-and-manageme/'
+    - label: Managing iLO sessions
+      page: docs/references_and_material/blogposts/etc/managingilosessions/managingilosessionswithredfish.md
       external: true
-    - label: HPE firmware updates
-      href: 'https://developer.hpe.com/blog/hpe-firmware-updates-part-1-file-types-and-smart-components/'
+    - label: Setting Bios and Storage Controller Properties with Redfish
+      page: docs/references_and_material/blogposts/etc/biosandstorageprops/biosandstorageprops.md
       external: true
+
+    # External links
     - label: Massive parallel management
       href: 'https://developer.hpe.com/blog/massive-parallel-management-with-ilorest-on-linux/'
       external: true
-    - label: Managing iLO sessions
-      href: 'https://developer.hpe.com/blog/managing-ilo-sessions-with-redfish/'
-      external: true
-
     - label: Developer guide part 1
       href: 'https://developer.hpe.com/blog/getting-started-with-ilo-restful-api-redfish-api-conformance/'
       external: true

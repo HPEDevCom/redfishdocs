@@ -1,0 +1,15 @@
+
+Network Adapters/HBA:
+=====================
+DA Network Adapter: (BCM 5719 OCP): ilo-lio365g11-1
+DC Network Adapter: (631FLR-SFP 28): ilo-fdzg360g10-2
+DC HBA: FC HBA SN1610E: ilo-lio365g11-1
+DE Network Adapter: (Intel E810-XXVDA2): ilo-fdz360g10-2
+
+Storage adapters:
+================
+DA: NVMe Drive with embedded controller (SN controller=SN drive) ilo-rd560g11-62
+DE: P408i Gen10 - ilo-fdz360g10-2
+
+
+

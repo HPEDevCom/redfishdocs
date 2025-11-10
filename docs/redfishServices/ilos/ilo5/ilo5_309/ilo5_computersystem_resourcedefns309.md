@@ -1,4 +1,6 @@
 ---
+seo:
+  title: Computersystem resource definitions
 markdown:
   toc:
     hide: false
@@ -7,18 +9,16 @@ markdown:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Computersystem resource definitions
 ---
 
 # Computersystem resource definitions of iLO 5 v3.09
 
-For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details. 
+For each data type provided by the HPE ilO Redfish service, find below its description including the list of possible instances (URIs), links to related other resources, described properties and many other details.
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 ## ComputerSystemCollection
+
 `@odata.type: "#ComputerSystemCollection.ComputerSystemCollection"`
 
 A Collection of ComputerSystem resource instances.
@@ -31,7 +31,7 @@ A Collection of ComputerSystem resource instances.
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`Members[]`|[ComputerSystem](ilo5_computersystem_resourcedefns309/#computersystem)|
 
@@ -74,7 +74,7 @@ The ComputerSystem resource describes the compute node and its properties. A Com
 
 ### Links to other Resources
 
-|Link Name|Destination type
+|Link Name|Destination type|
 |---|---|
 |`EthernetInterfaces`|Collection of [EthernetInterface](ilo5_network_resourcedefns309/#ethernetinterfacecollection)|
 |`Oem/Hpe/Links/USBDevices`|Collection of [HpeUSBDevice](#hpeusbdevice)|
@@ -2024,7 +2024,7 @@ The type of reset.
 
 |Value|Description|
 |---|---|
-|GracefulRestart|Shut down gracefully and restart the system.|
+|GracefulRestart|Instead of doing the graceful restart, the server does a force restart.|
 |GracefulShutdown|Shut down gracefully and power off.|
 |PowerCycle|Power cycle the unit.|
 |On|Turn on the unit.|

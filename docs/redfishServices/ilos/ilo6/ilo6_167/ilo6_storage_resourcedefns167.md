@@ -1,15 +1,15 @@
 ---
 excludeFromSearch: true
+seo:
+  title: Storage resource definitions
 markdown:
   toc:
     hide: false
     depth: 2
   lastUpdateBlock:
     hide: false
-  breadcrumbs:
-    hide: true
-seo:
-  title: Storage resource definitions
+breadcrumbs:
+  hide: false
 ---
 
 # Storage resource definitions of iLO 6 v1.67

@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: iLO 6 version 1.68 Resource map
 markdown:
@@ -17,8 +18,8 @@ The following table lists HPE iLO Redfish resource types and their associated UR
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 # Resource Map
+
 |URI|Type|
 |:---|:---|
 |`/redfish/v1/`|[ServiceRoot](ilo6_serviceroot_resourcedefns168/#serviceroot)|
@@ -74,7 +75,6 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/chassis/{item}/power/fastpowermeter`|[HpePowerMeter](ilo6_hpe_resourcedefns168/#hpepowermeter)|
 |`/redfish/v1/chassis/{item}/power/federatedgroupcapping`|[HpeiLOFederatedGroupCapping](ilo6_hpe_resourcedefns168/#hpeilofederatedgroupcapping)|
 |`/redfish/v1/chassis/{item}/power/powermeter`|[HpePowerMeter](ilo6_hpe_resourcedefns168/#hpepowermeter)|
-|`/redfish/v1/chassis/{item}/sensors`|Collection of [Sensor](ilo6_other_resourcedefns168/#sensorcollection)|
 |`/redfish/v1/chassis/{item}/sensors/{item}`|[Sensor](ilo6_other_resourcedefns168/#sensor)|
 |`/redfish/v1/chassis/{item}/thermal`|[Thermal](ilo6_other_resourcedefns168/#thermal)|
 |`/redfish/v1/chassis/{item}/thermalsubsystem`|[ThermalSubsystem](ilo6_other_resourcedefns168/#thermalsubsystem)|
@@ -94,7 +94,7 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/eventservice/subscriptions/{item}`|[EventDestination](ilo6_other_resourcedefns168/#eventdestination)|
 |`/redfish/v1/fabrics`|Collection of [Fabric](ilo6_other_resourcedefns168/#fabriccollection)|
 |`/redfish/v1/fabrics/{item}`|[Fabric](ilo6_other_resourcedefns168/#fabric)|
-|`/redfish/v1/fabrics/{item}/switches`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
+|`/redfish/v1/fabrics/{item}/switches`|Collection of [Switch](ilo6_other_resourcedefns168/#switchcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}`|[Switch](ilo6_other_resourcedefns168/#switch)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/ports`|Collection of [Port](ilo6_other_resourcedefns168/#portcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/ports/{item}`|[Port](ilo6_other_resourcedefns168/#port)|

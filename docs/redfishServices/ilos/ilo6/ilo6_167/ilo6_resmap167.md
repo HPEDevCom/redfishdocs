@@ -1,15 +1,15 @@
 ---
 excludeFromSearch: true
+seo:
+  title: iLO 6 version 1.67 Resource map
 markdown:
   toc:
     hide: true
-    depth:
+    depth: 2
   lastUpdateBlock:
     hide: false
-  breadcrumbs:
-    hide: true
-seo:
-  title: iLO 6 version 1.67 Resource map
+breadcrumbs:
+  hide: false
 ---
 
 # Resource map of iLO 6 v1.67
@@ -74,7 +74,6 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/chassis/{item}/power/fastpowermeter`|[HpePowerMeter](ilo6_hpe_resourcedefns167/#hpepowermeter)|
 |`/redfish/v1/chassis/{item}/power/federatedgroupcapping`|[HpeiLOFederatedGroupCapping](ilo6_hpe_resourcedefns167/#hpeilofederatedgroupcapping)|
 |`/redfish/v1/chassis/{item}/power/powermeter`|[HpePowerMeter](ilo6_hpe_resourcedefns167/#hpepowermeter)|
-|`/redfish/v1/chassis/{item}/sensors`|Collection of [Sensor](ilo6_other_resourcedefns167/#sensorcollection)|
 |`/redfish/v1/chassis/{item}/sensors/{item}`|[Sensor](ilo6_other_resourcedefns167/#sensor)|
 |`/redfish/v1/chassis/{item}/thermal`|[Thermal](ilo6_other_resourcedefns167/#thermal)|
 |`/redfish/v1/chassis/{item}/thermalsubsystem`|[ThermalSubsystem](ilo6_other_resourcedefns167/#thermalsubsystem)|
@@ -94,7 +93,7 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/eventservice/subscriptions/{item}`|[EventDestination](ilo6_other_resourcedefns167/#eventdestination)|
 |`/redfish/v1/fabrics`|Collection of [Fabric](ilo6_other_resourcedefns167/#fabriccollection)|
 |`/redfish/v1/fabrics/{item}`|[Fabric](ilo6_other_resourcedefns167/#fabric)|
-|`/redfish/v1/fabrics/{item}/switches`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
+|`/redfish/v1/fabrics/{item}/switches`|Collection of [Switch](ilo6_other_resourcedefns167/#switchcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}`|[Switch](ilo6_other_resourcedefns167/#switch)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/ports`|Collection of [Port](ilo6_other_resourcedefns167/#portcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/ports/{item}`|[Port](ilo6_other_resourcedefns167/#port)|

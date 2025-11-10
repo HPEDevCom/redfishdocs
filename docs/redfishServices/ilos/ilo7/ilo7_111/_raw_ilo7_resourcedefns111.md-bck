@@ -8498,16 +8498,6 @@ Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
 |Read Only|True|
 |Added|iLO7 1.11|
 
-### BootOptionEnabled
-Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
-
-| | |
-|---|---|
-|Description|A flag that shows if the Boot Option is enabled.|
-|Type|boolean or null|
-|Read Only|False|
-|Added|iLO7 1.11|
-
 ### BootOptionReference
 Member of [BootOption.v1_0_1.BootOption](#bootoption-v1_0_1-bootoption)
 
@@ -36783,16 +36773,6 @@ The Sensor schema describes a sensor and its properties.
 |---|---|
 |```/redfish/v1/chassis/{item}/sensors/{item}```|GET PATCH |
 
-### Oem.Hpe.CriticalTempUserThreshold
-Member of [Sensor.v1_10_0.Sensor](#sensor-v1_10_0-sensor)
-
-| | |
-|---|---|
-|Description|User provided temperature threshold value for the sensor that results in a critical alert.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
 ### Oem.Hpe.LocationXmm
 Member of [Sensor.v1_10_0.Sensor](#sensor-v1_10_0-sensor)
 
@@ -36809,36 +36789,6 @@ Member of [Sensor.v1_10_0.Sensor](#sensor-v1_10_0-sensor)
 | | |
 |---|---|
 |Description|The location of the sensor, in millimeters, along the Y axis from the logical reference point.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Oem.Hpe.LocationZmm
-Member of [Sensor.v1_10_0.Sensor](#sensor-v1_10_0-sensor)
-
-| | |
-|---|---|
-|Description|The location of the sensor, in millimeters, along the Z axis from the logical reference point.|
-|Type|integer|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Oem.Hpe.MainSensorName
-Member of [Sensor.v1_10_0.Sensor](#sensor-v1_10_0-sensor)
-
-| | |
-|---|---|
-|Description|Sensor name of main temperature sensor that has atleast one sub sensor|
-|Type|string|
-|Read Only|True|
-|Added|iLO7 1.11|
-
-### Oem.Hpe.WarningTempUserThreshold
-Member of [Sensor.v1_10_0.Sensor](#sensor-v1_10_0-sensor)
-
-| | |
-|---|---|
-|Description|User provided temperature threshold value for the sensor that results in a warning alert.|
 |Type|integer|
 |Read Only|True|
 |Added|iLO7 1.11|
@@ -40904,7 +40854,6 @@ The following are the supported values:
 |```Backplane```|A backplane within the chassis.|
 |```SystemBoard```|The system board (PCB).|
 |```PowerSupply```|A power supply.|
-|```PowerSubsystem```|The entire power subsystem.|
 |```VoltageRegulator```|A voltage regulator device.|
 |```Rectifier```|A rectifier device.|
 |```StorageDevice```|A storage device.|
@@ -41201,29 +41150,6 @@ ThermalMetrics is a link (```"@odata.id": URI```) to another resource.
 
 ### Actions
 
-**HpeThermalExt.SetUserTempThreshold**
-Member of [ThermalSubsystem.v1_3_2.ThermalSubsystem](#thermalsubsystem-v1_3_2-thermalsubsystem)
-The action to set a user defined threshold for a PCIe slot temperature sensor.
-
-
-**Parameters:**
-
-**AlertType (string)**
-
-Alert type thrown when user defined temperature threshold is exceeded.
-
-|Value|Description|
-|---|---|
-|Critical|Generate a critical alert when user threshold exceeded.|
-|Warning|Generate a warning alert when user threshold exceeded.|
-
-**SensorNumber (integer)**
-
-Sensor number of the sensor to be monitored.
-
-**ThresholdValue (integer)**
-
-Temperature thershold that once passed will issue an alert.
 ## Triggers.v1_0_0.Triggers
 ```@odata.type: "#Triggers.v1_0_0.Triggers"```
 

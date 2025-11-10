@@ -11,15 +11,15 @@ seo:
   title: Redfish data types and collections
 ---
 
-## Redfish data types and collections
+# Redfish data types and collections
 
 The Redfish RESTful API introduces, among other things two important concept
- discussed in this section: **Data types** and **Collections**.
+discussed in this section: **Data types** and **Collections**.
 
 ## Data types
 
 Each Resource resource and property of the Redfish API belong to a
-**data type** also called **resource type** or just **type**, that is
+**data type** also called **resource type**, **type** or **schema**, that is
 mentioned in the mandatory `@odata.type` property returned in HTTP responses.
 Refer to the
 <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.6.0.pdf" target="_blank">
@@ -44,7 +44,7 @@ as documented in the
 {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_network_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#ethernetinterface") %} Resource Definitions {% /link-internal %}
 section.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Standard EthernetInterface URIs" %}
 
 ```text Standard EthernetInterface URIs
@@ -57,16 +57,17 @@ section.
 /redfish/v1/Systems/{ComputerSystemId}/EthernetInterfaces/{EthernetInterfaceId}
 ```
   
-  {% /tab %}
-{% tab label="iLO 6 documented EthernetInteface URIs" %}
+{% /tab %}
+{% tab label="iLO 6 documented EthernetInterface URIs" %}
 
 ```text iLO 6 documented EthernetInteface URIs
 /redfish/v1/managers/{item}/ethernetinterfaces/{item}
 /redfish/v1/systems/{item}/ethernetinterfaces/{item}
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example uses the HPE
 <a href="https://www.hpe.com/info/resttool/" target="_blank">iLOrest</a>
 tool to selects all the `EthernetInterface` data types implemented
@@ -78,7 +79,7 @@ You should note in the following example that both
 the `Managers` and `Systems` Redfish subtrees hold Ethernet interfaces.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest query" %}
 
 ```shell iLOrest query
@@ -89,7 +90,7 @@ ilorest  get "@odata.type" "@odata.id"
 ilorest logout 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest response output" %}
 
 ```shell iLOrest response output
@@ -118,8 +119,9 @@ Current selection: EthernetInterface.v1_4_1, EthernetInterface.v1_6_3
 
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The Redfish specification allows Redfish service providers to
 implement their specific and added values OEM data types. The list
 of HPE OEM data types implemented in iLO are described in the
@@ -130,7 +132,7 @@ HPE iLO based servers prepend the "Hpe" string to the
 HPE OEM resource types. See next example.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Retrieve Oem" %}
 
 ```text Retrieve Oem/Hpe data types with iLOrest
@@ -139,7 +141,7 @@ ilorest  types | awk '/Hpe/ && !/Collection/ {print $NF}'
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest output" %}
 
 ```text iLOrest output
@@ -184,8 +186,9 @@ HpeiLOSnmpService.v2_3_0
 HpeiSCSISoftwareInitiator.v2_0_0
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## Resource Collections
 
 The <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.3.pdf" target="_blank">
@@ -236,14 +239,14 @@ key containing the number of elements of the `Members` array.
 The the elements of the `Members`  array consists of URI links
 (`@odata.id`) to the members of the collection.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="GET request" %}
 
 ```text GET request
 GET https://{iLO}/redfish/v1/Systems/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="response body" %}
 
 ```json response body
@@ -260,15 +263,16 @@ GET https://{iLO}/redfish/v1/Systems/
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Allow response header" %}
 
 ```text Allow response header
 Allow: GET, HEAD
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The exhaustive list of standard resource collections is present in the
 <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0268_2021.3.pdf" target="_blank">
 Redfish data Model specification</a>.
@@ -281,7 +285,7 @@ The following example retrieves HPE Oem extensions of an iLO 6 based
 server using the
 <a href="https://www.hpe.com/info/resttool" target="_blank">iLOrest tool</a>.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest request" %}
 
 ```bash iLOrest request
@@ -290,7 +294,7 @@ ilorest types | grep 'Hpe.*Collection'
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Output" %}
 
 ```text Output
@@ -317,5 +321,5 @@ HpeiLOLicenseCollection
 HpeiLOSecurityParamCollection
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}

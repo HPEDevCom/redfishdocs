@@ -58,14 +58,14 @@ The following example follows the different steps to retrieve the
 BIOS Attribute Registry of an HPE Gen11 server. The first step
 retrieves the value of the `AttributeRegistry` filename property.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="GET AttributeRegistry" %}
 
 ```text GET AttributeRegistry
 GET /redfish/v1/systems/1/bios/?$select=AttributeRegistry
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -74,20 +74,21 @@ GET /redfish/v1/systems/1/bios/?$select=AttributeRegistry
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The second step retrieves the corresponding link provided by the
 `MessageRegistryFileCollection`. The response body provides the list
 of available languages for this file as well as their location.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="GET request" %}
 
 ```text GET request
 GET /redfish/v1/Registries/BiosAttributeRegistryA56.v1_1_10
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -122,21 +123,22 @@ GET /redfish/v1/Registries/BiosAttributeRegistryA56.v1_1_10
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The last step consists of following the link to the desired language.
 The following example retrieves the English version of the Bios Attribute
 registry and prints the response headers including the `Content-Encoding`
 header. The response body of this example is in the next paragraph.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="GET english attribute registry" %}
 
 ```text GET english attribute registry
 GET /redfish/v1/registrystore/registries/en/biosattributeregistrya56.v1_1_10
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response header" %}
 
 ```text Response header
@@ -154,8 +156,9 @@ X-Frame-Options: sameorigin
 X-XSS-Protection: 1; mode=block
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ### BIOS attribute registry structure
 
 The BIOS attribute registry contains four top-level arrays
@@ -196,7 +199,7 @@ Each BIOS attribute in the attribute registry includes:
 {% admonition type="info" name="NOTE" %}
 Attribute names/enum values cannot start with digits, per OData requirements.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Example" %}
 
 ```json Example
@@ -206,21 +209,22 @@ Attribute names/enum values cannot start with digits, per OData requirements.
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% /admonition %}
 
 The following example retrieves the English version of the BIOS
 registry of an HPE ProLiant Gen11 system (response body truncated).
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 GET /redfish/v1/registrystore/registries/en/biosattributeregistrya56.v1_1_20
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response (truncated)" %}
 
 ```json Response (truncated)
@@ -300,8 +304,9 @@ GET /redfish/v1/registrystore/registries/en/biosattributeregistrya56.v1_1_20
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## BIOS current and pending areas
 
 BIOS resources are located under the
@@ -312,7 +317,7 @@ part of the `ComputerSystem` data type as per the
 The following example retrieves the BIOS end point using cURL and iLOrest
 from an HPE iLO 6 management controller.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="cURL request" %}
 
 ```text cURL request
@@ -322,7 +327,7 @@ curl --insecure --location --silent \
      jq .
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```bash iLOrest
@@ -331,7 +336,7 @@ ilorest get --json Bios --select ComputerSystem.
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -346,8 +351,9 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 This BIOS entry point is also called the _current settings area_ or just
 the _current area_ because it contains the BIOS attribute values in the
 running system. All BIOS attributes name/value pairs that are referenced
@@ -357,14 +363,14 @@ an `Attributes` Redfish object under the BIOS end point.
 The next example retrieves the current `AdminName` BIOS attribute
 of an HPE Gen11 server.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 GET /redfish/v1/systems/1/bios/?$select=Attributes/AdminName
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -379,8 +385,9 @@ GET /redfish/v1/systems/1/bios/?$select=Attributes/AdminName
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The BIOS entry point contains a `SettingsObject}{}` resource containing a
 link to a location called the **BIOS _Pending settings area_** or
 just **_pending area_**. In an HPE Gen11 server, this link points
@@ -420,14 +427,14 @@ This single `MessageId` element means that the global transfer process
 succeeded.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/systems/1/bios/?$select=@Redfish.Settings/Messages
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -446,8 +453,9 @@ GET /redfish/v1/systems/1/bios/?$select=@Redfish.Settings/Messages
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 The following example retrieves the `@Redfish.Settings` object after an
 **unsuccessful** transfer of the BIOS settings area to the current area.
 
@@ -462,14 +470,14 @@ that the global transfer went through although errors
 occurred for some attributes.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 GET /redfish/v1/systems/1/bios/?$select=@Redfish.Settings/Messages
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -497,8 +505,9 @@ GET /redfish/v1/systems/1/bios/?$select=@Redfish.Settings/Messages
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 There are benefits to handling BIOS settings in this way:
 
 - Enables offline components (for example, BIOS) to process
@@ -538,21 +547,21 @@ HPE Superdome Flex 280 and an HPE iLO based server using the
 `Bios.ResetBios` standard
 [Redfish action](/docs/concepts/performing_actions.md).
 
-  {% tabs %}
+{% tabs %}
 {% tab label="HPE Superdome Flex 280 BIOS reset" %}
 
 ```text HPE Superdome Flex 280 BIOS reset
 POST /redfish/v1/Systems/Partition0/Bios/Actions/Bios.ResetBios
 ````
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLO 6 based server BIOS reset" %}
 
 ```text iLO 6 based server BIOS reset
 POST /redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Request body" %}
 
 ```json Request body
@@ -560,8 +569,9 @@ POST /redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios/
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="info" name="NOTE" %}
 The above example does not reset attributes and properties of
 HPE OEM BIOS related resources (i.e. `TlsConfig`, `iScsi`, `Boot`, etc.).
@@ -576,21 +586,21 @@ including HPE OEM BIOS properties.
 The following example shows how to modify the UEFI/BIOS password on
 systems implementing this action.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic BIOS password change" %}
 
 ```text Generic BIOS password change
 POST {Base URI of Bios resource}/Actions/Bios.ChangePassword
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLO 6 BIOS password change" %}
 
 ```json iLO 6 BIOS password change
 POST /redfish/v1/Systems/1/Bios/Actions/Bios.ChangePassword
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Request body" %}
 
 ```json Request body
@@ -601,8 +611,9 @@ POST /redfish/v1/Systems/1/Bios/Actions/Bios.ChangePassword
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 ## UEFI / BIOS Boot Settings
 
 <!-- Need an introduction to Boot Settings to better
@@ -645,49 +656,49 @@ separated by ‘.’ characters, using the following format:
 <!-- Need to explain how the following table can be leveraged -->
 Table 1 Examples
 
-Name | Description
------------- | -------------
-**HD.Emb.4.2** | The second instance of a hard drive in embedded SA controller bay 4
-**NIC.Slot.7.2.IPv4** | Port 2 of a NIC in PCIe slot 7, which is enabled for PXE IPv4
-**NIC.FlexLOM.1.1.IPv6** | Port 1 of an embedded NIC FlexLOM, which is enabled for PXE IPv6
-**PCI.Slot.6.1** | PCIe card in slot 6
-**HD.FrontUSB.2.2** | Second partition of a flash drive in front USB port 2
+| Name | Description |
+|------------ | -------------|
+| **HD.Emb.4.2** | The second instance of a hard drive in embedded SA controller bay 4 |
+| **NIC.Slot.7.2.IPv4** | Port 2 of a NIC in PCIe slot 7, which is enabled for PXE IPv4 |
+| **NIC.FlexLOM.1.1.IPv6** | Port 1 of an embedded NIC FlexLOM, which is enabled for PXE IPv6 |
+| **PCI.Slot.6.1** | PCIe card in slot 6 |
+|**HD.FrontUSB.2.2** | Second partition of a flash drive in front USB port 2 |
 
 Table 2 Examples of currently supported Structured Boot Strings
 
-Device Type | Location | Instance | Sub instance | Qualifier | Structure Boot String Examples
------------- | ------------- | ------------- | ------------- | ------------- | -------------
-Smart Array Hard Drive | Embedded | Bay number | Incremental by LUN |  | HD.Emb.1.1
-| Slot | Slot number | 1 |  | RAID.Slot.1.1
-Dynamic Smart Array Controller (Software RAID) | Embedded | 1 | 1 |  | Storage.Emb.1.1
-| | Slot | Controller Instance | 1 |  | Storage.Slot.1.1
-SATA Hard Drive | Embedded | SATA port # 1 |  |  | HD.Emb.1.1
-SATA Controller | Embedded | Controller Instance | 1 |  | SATA.Emb.1.1
-All other storage controllers (FC, SAS, etc.) | Embedded | 1 | 1 |  | Storage.Emb.1.1
-| | Slot | Slot # | 1 |  | Storage.Slot.1.1
-Network Adapter | LOM | NIC number, 1 for 1st NIC, 2 for 2nd NIC | Port number | IPv4 or IPv6 or iSCSI or FCoE | NIC.LOM.1.2.IPv4, NIC.LOM.1.2.IPv6
-| | FlexibleLOM | FlexibleLOM number, 1 for 1st FlexLOM, 2 for 2nd FlexLOM | Port Number | IPv4 or IPv6 or iSCSI or FCoE | NIC.FlexLOM.2.1.IPv4, NIC.FlexLOM.2.1.IPv6
-| | Slot | Slot Number | Port number | IPv4 or IPv6 or iSCSI or FCoE | NIC.Slot.3.2.Ipv4
-Fiber Channel Adapter | Slot | Slot number | Port number | IPv4 or IPv6 or iSCSI or FCoE | PCI.Slot.3.1
-OS Boot entry (such as Embedded HD.Slot.1.2 “Windows Boot Manager”) | Slot  | Embedded |  | Incremental | HD.Emb.1.2, HD.Slot.1.2
-USB Key | Front USB | USB Port # | Incremental by LUN |  | HD.FrontUSB.1.1
-| | Rear USB | USB Port # | Incremental by LUN |  | HD.RearUSB.1.1
-| | Internal USB | USB Port # |  |  | HD.InternalUSB.1.1
-| | iLO virtual media |  |  |  | HD.Virtual.1.1
-ISO image | iLO virtual media |  |  |  | CD.Virtual.2.1
-Virtual Install Disk (VID) | Embedded store | USB Port # |  |  | HD.VirtualUSB.1.1
-Embedded User Partition | Embedded store | USB Port # |  |  | HD.VirtualUSB.2.1
-USB CD/DVD | Front USB | USB Port # |  |  | CD.FrontUSB.1.1
-| | Rear USB | USB Port # |  |  | CD.RearUSB.1.1
-| | Internal USB | USB Port # |  |  | xxxxxxxx
-SD card | SD slot | USB Port # |  |  | HD.SD.1.1
-Floppy | Front USB, Rear USB | USB Port # |  |  | FD.FrontUSB.1.1, FD.RearUSB.1.1
-Embedded UEFI Shell | Embedded | 1 | 1 |  | Shell.Emb.1.1
-UEFI applications (embedded in the ROM firmware) (Diag, System Utility, etc..) | Embedded | 1 | Incremental |  | App.Emb.1.1, App.Emb.1.2, App.Emb.1.3
-File | URL | Different URL Increased by 1 | 1 |  | File.URL.1.1
-HPE RAM Disk Device | RAM Memory | 1 | Port number |  | RAMDisk.Emb.1.1
-Special USB device class with Device Path: UsbClass(0xFFFF, 0xFFFF, 0xFF, 0xFF, 0xFF) | Any USB device in the system | 1 |  |  | Generic.USB.1.1
-Empty slot, no device | Slot | Slot number | 1 |  | PCI.Slot.2.1
-Unknown device | Embedded Slot Unknown location | Slot number or 1 | Incremental |  | Unknown.Slot.1.1, Unknown.Unknown.1.1
-NVMe | Slot | Slot number | NVMe drive number (the number is based on bus enumeration sequence). |  | NVMe.Slot.1.1
-NVMe | Embedded | Bay number | 1 (Each drive bay has 1 NVMe drive.) |  | NVMe.Emb.1.1
+| Device Type | Location | Instance | Sub instance | Qualifier | Structure Boot String Examples |
+| ------------ | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Smart Array Hard Drive | Embedded | Bay number | Incremental by LUN |  | HD.Emb.1.1 |
+| Slot | Slot number | 1 |  | RAID.Slot.1.1 | |
+| Dynamic Smart Array Controller (Software RAID) | Embedded | 1 | 1 |  | Storage.Emb.1.1|
+| | Slot | Controller Instance | 1 |  | Storage.Slot.1.1 |
+| SATA Hard Drive | Embedded | SATA port # 1 |  |  | HD.Emb.1.1 |
+| SATA Controller | Embedded | Controller Instance | 1 |  | SATA.Emb.1.1 |
+| All other storage controllers (FC, SAS, etc.) | Embedded | 1 | 1 |  | Storage.Emb.1.1 |
+| | Slot | Slot # | 1 |  | Storage.Slot.1.1 |
+| Network Adapter | LOM | NIC number, 1 for 1st NIC, 2 for 2nd NIC | Port number | IPv4 or IPv6 or iSCSI or FCoE | NIC.LOM.1.2.IPv4, NIC.LOM.1.2.IPv6 |
+| | FlexibleLOM | FlexibleLOM number, 1 for 1st FlexLOM, 2 for 2nd FlexLOM | Port Number | IPv4 or IPv6 or iSCSI or FCoE | NIC.FlexLOM.2.1.IPv4, NIC.FlexLOM.2.1.IPv6 |
+| | Slot | Slot Number | Port number | IPv4 or IPv6 or iSCSI or FCoE | NIC.Slot.3.2.Ipv4 |
+| Fiber Channel Adapter | Slot | Slot number | Port number | IPv4 or IPv6 or iSCSI or FCoE | PCI.Slot.3.1 |
+| OS Boot entry (such as Embedded HD.Slot.1.2 “Windows Boot Manager”) | Slot  | Embedded |  | Incremental | HD.Emb.1.2, HD.Slot.1.2 |
+| USB Key | Front USB | USB Port # | Incremental by LUN |  | HD.FrontUSB.1.1 |
+| | Rear USB | USB Port # | Incremental by LUN |  | HD.RearUSB.1.1 |
+| | Internal USB | USB Port # |  |  | HD.InternalUSB.1.1 |
+| | iLO virtual media |  |  |  | HD.Virtual.1.1 |
+| ISO image | iLO virtual media |  |  |  | CD.Virtual.2.1|
+| Virtual Install Disk (VID) | Embedded store | USB Port # |  |  | HD.VirtualUSB.1.1 |
+| Embedded User Partition | Embedded store | USB Port # |  |  | HD.VirtualUSB.2.1 |
+| USB CD/DVD | Front USB | USB Port # |  |  | CD.FrontUSB.1.1 |
+| | Rear USB | USB Port # |  |  | CD.RearUSB.1.1 |
+| | Internal USB | USB Port # |  |  | xxxxxxxx |
+| SD card | SD slot | USB Port # |  |  | HD.SD.1.1 |
+| Floppy | Front USB, Rear USB | USB Port # |  |  | FD.FrontUSB.1.1, FD.RearUSB.1.1 |
+| Embedded UEFI Shell | Embedded | 1 | 1 |  | Shell.Emb.1.1 |
+| UEFI applications (embedded in the ROM firmware) (Diag, System Utility, etc..) | Embedded | 1 | Incremental |  | App.Emb.1.1, App.Emb.1.2, App.Emb.1.3 |
+| File | URL | Different URL Increased by 1 | 1 |  | File.URL.1.1 |
+| HPE RAM Disk Device | RAM Memory | 1 | Port number |  | RAMDisk.Emb.1.1 |
+| Special USB device class with Device Path: UsbClass(0xFFFF, 0xFFFF, 0xFF, 0xFF, 0xFF) | Any USB device in the system | 1 |  |  |Generic.USB.1.1 |
+| Empty slot, no device | Slot | Slot number | 1 |  | PCI.Slot.2.1 |
+| Unknown device | Embedded Slot Unknown location | Slot number or 1 | Incremental |  | Unknown.Slot.1.1, Unknown.Unknown.1.1 |
+| NVMe | Slot | Slot number | NVMe drive number (the number is based on bus enumeration sequence). |  | NVMe.Slot.1.1 |
+| NVMe | Embedded | Bay number | 1 (Each drive bay has 1 NVMe drive.) |  | NVMe.Emb.1.1 |

@@ -15,12 +15,13 @@ seo:
 
 Hewlett Packard Enterprise implements a Redfish RESTful API service in most of
 its compute nodes and servers (ProLiant, Synergy compute nodes, Edgeline,
-Superdome Flex 280....). Concerning HPE iLO based servers, customers can use
+Superdome Flex 280, Compute Scale UP Server, etc.) and Power Distribution Units (PDUs).
+Concerning HPE iLO based servers, customers benefit of
 this service with the iLO Standard license, although some features or data
 might not be available without an Advanced license. Features and data requiring
 Advanced license are listed in the
-<a href="https://www.hpe.com/support/ilo6"
-target="_blank">HPE iLO User Guide</a>.
+<a href="https://support.hpe.com/hpesc/public/docDisplay?docId=sd00004310en_us&docLocale=en_US"
+target="_blank">HPE iLO User Guides</a>.
 
 Prior to the first Redfish standard publication (August 2015) and the HPE
 <a href="https://en.wikipedia.org/wiki/Hewlett_Packard_Enterprise"
@@ -35,7 +36,7 @@ paragraph for detail.
 ## Tips for Using the Redfish RESTful API
 
 To access the Redfish RESTful API service, you need an HTTPS-capable client,
-such the <a href="https://www.postman.com/" target="_blank"> Postman</a>
+such as the <a href="https://www.postman.com/" target="_blank"> Postman</a>
 development platform, <a href="https://curl.se" target="_blank">cURL</a>
 (a popular command line HTTP utility), PowerShell or a web browser with a REST
 client extension. This
@@ -43,17 +44,17 @@ client extension. This
 presents several Redfish clients, including script languages like `Ansible`.
 
 The Redfish data model introduces a level of abstraction that may not exists
-in other RESTful APIs: _Data types_ also called _resource types_ or
-just _types_. Each data type contains a set of resources and properties.
-Each resource or property belongs to a single data type mentioned
-in a `@odata.type` key.
+in other RESTful APIs: _Data types_ also called _resource types_,
+_types_ or _schemas_. Each data type contains a set of resources and properties.
+Each resource and property belongs to a single data type mentioned
+in the `@odata.type` key part of all Redfish responses.
 
-Dats types are divided in two classes:
+Data types are divided in two classes:
 
-- Collections: Contain a `Members` array with links to the URI of each
-  member URI.
-- Regular data types: contain resources, property values and links
-  to other data resources.
+- Collections: Contain a `Members[]` array with links to the URI of each
+  members.
+- "Regular" data types: contain resources, property key/values and links
+  to other resources.
 
 {% admonition type="info" name="INFO" %}
 Data types prefixed with `Hpe` are HPE added value extensions to the DMTF
@@ -62,9 +63,9 @@ Redfish specification.
 
 The following example retrieves the
 {% link-internal href=concat("/docs/redfishservices/ilos/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_", $env.PUBLIC_LATEST_FW_VERSION, "/", $env.PUBLIC_LATEST_ILO_GEN_VERSION, "_chassis_resourcedefns", $env.PUBLIC_LATEST_FW_VERSION, "#chassiscollection") %} ChassisCollection {% /link-internal %}
-data type of an HPE Synergy computer node. Among other properties,
-the response body contains an `@odata.type` key and a `Members` array with
-two items pointing to the URI of the members. It contains as well a `@odata.id`
+of an HPE Synergy computer node. Among other properties,
+the response body contains the mandatory `@odata.type` key and a `Members[]` array with
+two items providing the URI of the members. It contains as well a `@odata.id` key
 with the URI of the resource.
 
 {% tabs %}
@@ -104,7 +105,7 @@ The following example retrieves the properties of the _enclosurechassis_
 URI found in the previous example. From the response body, we learn that
 this resource belongs to the
 {% link-internal href=concat("/docs/redfishservices/ilos/ilo6/ilo6_", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/", "ilo6_chassis_resourcedefns", $env.PUBLIC_LATEST_ILO6_FW_VERSION, "/#chassis") %} Chassis {% /link-internal %}
-data type.
+schema.
 
 We learn as well that it contains an `Oem.Hpe` object of type
 `HpeServerChassis` containing HPE specific properties not part
@@ -160,8 +161,8 @@ GET /redfish/v1/Chassis/enclosurechassis
 {% admonition type="success" name="TIP" %}
 The data type list of HPE iLO based servers can be easily obtained with the
 `types` command of the
-<a href="https://www.hpe.com/info/resttool" target="_blank">iLOrest</a>
-free command line tool.ss
+<a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest" target="_blank">iLOrest</a>
+free command line tool.
 
 {% tabs %}
 {% tab label="GET data types with iLOrest" %}
@@ -174,6 +175,13 @@ ilorest logout
   
 {% /tab %}
 {% /tabs %}
+
+{% /admonition %}
+
+{% admonition type="info" name="Note" %}
+
+Refer to the [Why is Redfish different from other REST APIs](/docs/references_and_material/blogposts/why_is_redfish_different/why_is_redfish_different_part1)
+blog post series for other Redfish singularities.
 
 {% /admonition %}
 
@@ -554,7 +562,7 @@ against iLO based servers, can be freely downloaded from the
 Although very similar in usage and features, the HPE Python Redfish library
 provides some specificities like the possibility to access the local
 iLO Redfish service via the
-<a href="https://developer.hpe.com/blog/chif-driver-not-found/"
+<a href="/docs/references_and_material/blogposts/etc/chif/chif-driver-not-found"
 target="_blank">HPE CHIF Driver</a>
 or [authenticate](/docs/concepts/redfishauthentication/) with
 user certificates.

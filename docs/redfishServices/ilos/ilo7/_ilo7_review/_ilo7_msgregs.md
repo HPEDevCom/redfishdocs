@@ -361,6 +361,15 @@ An unknown property is in the request body.
 |Severity|Warning|
 |Resolution|If the operation did not complete, remove the unknown property from the request body and resubmit the request.|
 
+### Base.1.18.PropertyValueConflict
+Indicates that the requested write of a property value could not be completed because of a conflict with another property value.
+
+| | |
+|:---|:---|
+|Message Format|"The property '%1' could not be written because its value would conflict with the value of the '%2' property."
+|Severity|Warning
+|Resolution|None.
+
 ### Base.1.18.PropertyValueFormatError
 
 The value type is correct, but the format is not supported or the size/length is exceeded.

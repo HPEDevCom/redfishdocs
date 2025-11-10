@@ -39,7 +39,7 @@ cannot co-exist in the same Python environment. You should uninstall
 one before installing the other one.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -47,7 +47,7 @@ curl --insecure -u username:password --location \
      https://{iLO}/redfish/v1/systems/1/bios/
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="HPE python" %}
 
 ```python HPE python-ilorest-library
@@ -79,7 +79,7 @@ response = REDFISHOBJ.get("/redfish/v1/systems/1/bios/")
 print('Response: '+json.dumps(response.dict, indent=4, sort_keys=True))
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="DMTF redfish library" %}
 
 ```python DMTF redfish library
@@ -110,7 +110,7 @@ response = REDFISHOBJ.get("/redfish/v1/systems/1/bios/")
 print('Response: '+json.dumps(response.dict, indent=4, sort_keys=True))
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response (truncated)" %}
 
 ```json Response (truncated)
@@ -184,9 +184,10 @@ print('Response: '+json.dumps(response.dict, indent=4, sort_keys=True))
     }
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ### Update of a BIOS attribute
 
 On an iLO based server, the minimum required session ID privileges
@@ -200,7 +201,7 @@ When using iLOrest to set properties, you can include special characters
 quotes.  
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -212,7 +213,7 @@ ilorest reboot ColdBoot
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -222,7 +223,7 @@ curl --insecure -u username:password  \
      https://{iLO}/redfish/v1/Systems/1/bios/settings/ 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Content of data" %}
 
 ```json Content of data.json file
@@ -234,9 +235,10 @@ curl --insecure -u username:password  \
     }
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 Python <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/change_bios_setting.py" target="_blank">Redfish example</a>
 
 ### BIOS UEFI Secure Boot enablement
@@ -248,7 +250,7 @@ required to enable this property.
 The following example enables Secure Boot on an iLO based server.
 The minimum required session privilege is `Configure.`
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -259,7 +261,7 @@ ilorest reboot ColdBoot
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -269,15 +271,15 @@ curl --insecure -u username:password  \
      https://{iLO}/redfish/v1/Systems/1/SecureBoot/ 
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Content of the data" %}
 
 ```json Content of the data.json file
     {"SecureBootEnable":true}
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
 For a full Python example click here:
 <a href="https://github.com/HewlettPackard/python-ilorest-library/blob/master/examples/Redfish/enable_secure_boot.py" target="_blank">enable\_secure\_boot.py</a>
 
@@ -289,22 +291,23 @@ HPE provides
 [alternate methods](/docs/redfishservices/ilos/supplementdocuments/biosdoc/)
 with added value to achieve a similar goal.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic POST request" %}
 
 ```text Generic POST request
 POST /redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Request body" %}
 
 ```json Request body
 {}
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ## Server reset
 
 Server power control belongs to the global `ComputerSystem` resource.
@@ -326,14 +329,14 @@ The following example resets an HPE iLO 6 based server
 using the standard Redfish method.
 The Minimum required session privilege is `Configure`.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET server reset actions" %}
 
 ```text Generic GET server reset actions
 GET /redfish/v1/Systems/1/?$select=Actions
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -359,7 +362,7 @@ GET /redfish/v1/Systems/1/?$select=Actions
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL ForceRestart" %}
 
 ```shell cURL ForceRestart
@@ -369,7 +372,7 @@ curl  --insecure -u username:password  \
       https://{iLO}/redfish/v1/Systems/1/Actions/ComputerSystem.Reset
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest GracefulRestart" %}
 
 ```shell iLOrest GracefulRestart
@@ -377,9 +380,10 @@ ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest boot GracefulRestart
 ilorest logout
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ## Management Controller reset
 
 The following example lists the
@@ -394,14 +398,14 @@ Operating System running in the server. You can safely restart
  Operating System is up and running.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
 GET https://ilo-ip/redfish/v1/Managers/1/?$select=Actions
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -409,7 +413,7 @@ curl --insecure --silent --user ilo-user:password  \
      --request GET 'https://ilo-ip/redfish/v1/Managers/1/?$select=Actions' | jq
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -418,7 +422,7 @@ ilorest get --json Actions --select Manager.
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Body response" %}
 
 ```json Body response
@@ -434,9 +438,10 @@ ilorest logout
   }
 }
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 The above example returns `ForceRestart` and `GracefulRestart`
 for possible Manager Controller reset parameters,
 as mentioned in the resource definition
@@ -463,7 +468,7 @@ to learn how to create a session token like the one used by cURL
 in the next example.
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic request" %}
 
 ```text Generic request
@@ -475,7 +480,7 @@ Body:
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -485,7 +490,7 @@ curl --location --request POST 'ilo-ip/redfish/v1/Managers/1/Actions/Manager.Res
      --data-raw '{"ResetType": "ForceRestart"}'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -493,9 +498,10 @@ ilorest login <ilo-ip> -u <ilo-user> -p password
 ilorest iloreset
 ilorest logout 
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
+
 ## GET MAC address of a Management Controller
 
 The goal of this example is to explain the workflow to retrieve
@@ -543,14 +549,14 @@ GET operation toward the `ManagerCollection` URI.
 The following example provides portable methods to retrieve
 controller manager Identifiers.
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Generic GET request" %}
 
 ```text Generic GET request
 GET /redfish/v1/Managers
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -559,7 +565,7 @@ ilorest get Members --json --selector ManagerCollection |\
         jq -r '[.Members][][]["@odata.id"]'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="cURL" %}
 
 ```shell cURL
@@ -568,7 +574,7 @@ curl --insecure --silent --user ilo-user:password \
      jq -r '[.Members][][]["@odata.id"]'
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="HPE iLO response" %}
 
 ```json HPE iLO response
@@ -577,7 +583,7 @@ curl --insecure --silent --user ilo-user:password \
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="OpenBMC response" %}
 
 ```json OpenBMC response
@@ -586,7 +592,7 @@ curl --insecure --silent --user ilo-user:password \
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="HPE Superdome Flex response" %}
 
 ```json HPE Superdome Flex response
@@ -595,8 +601,8 @@ curl --insecure --silent --user ilo-user:password \
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 Once the Manager identifier URI is discovered,
 you can list the collection of Ethernet Interfaces
@@ -707,7 +713,7 @@ This property could belong to the OEM extension.
 Need to work on following solution with iLOrest and jq.
 The trick would be to find a suitable way to test LinkStatus with jq !
 
-  {% tabs %}
+{% tabs %}
 {% tab label="iLOrest" %}
 
 ```shell iLOrest
@@ -716,9 +722,9 @@ ManagerEtherInterfaces="$(ilorest get "@odata.id" --json --select EthernetInterf
 ilorest get --json Name "@odata.id"  LinkStatus MacAddress --filter "@odata.id"="/redfish/v1/Managers/*" | jq '.[]'
 ilorest logout
 ```
-  
-  {% /tab %}
-  {% /tabs %}
+
+{% /tab %}
+{% /tabs %}
 -->
 
 For a full Redfish example click here:
@@ -770,7 +776,7 @@ POST /redfish/v1/Chassis/1/Thermal/Actions/Oem/Hpe/HpeThermalExt.SetUserTempThre
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body" %}
 
 ```json Response body
@@ -826,8 +832,8 @@ GET /redfish/v1/Chassis/1/Thermal/?$select=Temperatures/Oem/Hpe/
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
 
 ## Server Thermal Configuration
 
@@ -969,8 +975,9 @@ ilorest logout
 }
 ```
   
-  {% /tab %}
-  {% /tabs %}
+{% /tab %}
+{% /tabs %}
+
 {% admonition type="success" name="TIP" %}
 
 The possible values for the `ThermalConfiguration` property are listed in the
@@ -981,12 +988,10 @@ section:
 - `IncreasedCooling`
 - `MaximumCooling`
 - `EnhancedCooling`
-- `AcousticMode` (Edgeline-only option.
-  Prioritizes minimizing noise from the enclosure.)
 
 {% /admonition %}
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Set ThermalConfiguration with iLOrest" %}
 
 ```shell Set ThermalConfiguration with iLOrest
@@ -995,7 +1000,7 @@ ilorest set Oem/Hpe/ThermalConfiguration="EnhancedCooling" --commit
 ilorest logout
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="Response body and return code" %}
 
 ```json Response body and return code
@@ -1003,11 +1008,78 @@ payload {'/redfish/v1/Chassis/1/Thermal/': {'Oem': {'Hpe': {'ThermalConfiguratio
 }}}}
 [200] The operation completed successfully.
 ```
-  
+
 {% /tab %}
 {% /tabs %}
 
-## Redfish iscsi configuration example
+## Fallback sensors
+
+Temperature fallback sensors are activated when main sensor fails. This
+activation ensures that HPE iLO can still drive fans using the fallback
+sensor input, at least in a degraded mode. In some cases
+(i.e. when the main sensor of a third party OCP or optional card is
+not recognized by HPE iLO), there could be a need to disable fallback
+sensor(s).
+
+When a fallback sensor is disabled, it does not send any temperature
+input to HPE iLO. Read the note in the
+[changelog file](/docs/redfishservices/ilos/ilo6/ilo6_changelog#ilo-6-v1.69-new-features-and-changes)
+be informed of the consequences of disabling fallback sensors.
+
+{% admonition type="info" name="NOTE" %}
+Fall back sensor management requires a minimal ROM version. Check
+for its support in the ROM release notes.
+
+Check as well the HPE iLO Changelog documentation section to verify which firmware version supports this feature.
+{% /admonition %}
+
+The following example disables a specific fallback sensor using a PATCH request.
+The `Oem.Hpe.FallbackOverride` property serves as a prerequisite condition
+that allows modification to the `HpeFallbackSensorCollection` schema.
+
+{% tabs %}
+{% tab label="Generic PATCH" %}
+
+```text Generic PATCH request
+PATCH /redfish/v1/Chassis/1/Sensors/25
+
+Body:
+{
+    "Oem": {
+      "Hpe": {
+        "FallbackOverride": true,
+        "FallBackDisabled": true
+      }
+    }
+}
+```
+
+{% /tab %}
+{% tab label="Response" %}
+
+```json Response
+
+{
+    "error": {
+        "code": "iLO.0.10.ExtendedInfo",
+        "Message": "See @Message.ExtendedInfo for more information.",
+        "@Message.ExtendedInfo": [
+            {
+                "MessageArgs": [
+                    "CAUTION: Disabling the fallback sensor will result in loss of thermal protection of the part or component and could result in failure and damage to the system leading to an abrupt system shutdown and potential loss of data. Refer to the iLO API documentation guide for more details."
+                ],
+                "MessageId": "iLO.2.32.FallBackSensorDisabled"
+            }
+        ]
+    }
+}
+
+```
+
+{% /tab %}
+{% /tabs %}
+
+## Redfish iSCSI configuration example
 
 {% admonition type="info" name="NOTE" %}
 Some examples in this section use a pseudo-code syntax for clarity.
@@ -1129,7 +1201,7 @@ and you would like to edit some existing settings, and add a third source.
 
     - `PATCH {ilo-address}/redfish/v1/Systems/1/BIOS/iSCSI/Settings/`
 
-  {% tabs %}
+{% tabs %}
 {% tab label="Existing example resource (truncated)" %}
 
 ```json Existing example resource (truncated)
@@ -1156,7 +1228,7 @@ and you would like to edit some existing settings, and add a third source.
 }
 ```
   
-  {% /tab %}
+{% /tab %}
 {% tab label="PATCH workload (truncated)" %}
 
 ```json PATCH workload (truncated)

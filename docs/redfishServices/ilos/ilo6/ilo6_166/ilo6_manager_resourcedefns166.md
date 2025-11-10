@@ -1,5 +1,7 @@
 ---
 excludeFromSearch: true
+seo:
+  title: Manager resource definitions
 markdown:
   toc:
     hide: false
@@ -8,8 +10,6 @@ markdown:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Manager resource definitions
 ---
 
 # Manager resource definitions of iLO 6 v1.66

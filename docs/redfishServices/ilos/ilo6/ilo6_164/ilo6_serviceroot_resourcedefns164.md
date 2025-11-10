@@ -1,15 +1,15 @@
 ---
 excludeFromSearch: true
+seo:
+  title: Serviceroot resource definitions
 markdown:
   toc:
-    hide: false
+    hide: true
     depth: 2
   lastUpdateBlock:
     hide: false
 breadcrumbs:
   hide: false
-seo:
-  title: Serviceroot resource definitions
 ---
 
 # Serviceroot resource definitions of iLO 6 v1.64

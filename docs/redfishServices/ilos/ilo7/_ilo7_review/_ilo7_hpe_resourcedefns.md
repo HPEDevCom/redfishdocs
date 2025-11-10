@@ -6986,6 +6986,17 @@ Member of [HpeiLOLicense.v2\_4\_1.HpeiLOLicense](#hpeilolicense)
 
 Name of the subject (confirmee) to whom this license is issued.
 
+### Actions
+
+
+**HpeiLOLicense.ConfirmLicense**
+Member of [HpeiLOLicense.v2\_5\_0.HpeiLOLicense](#hpeilolicense)
+
+**Parameters:**
+
+**IssuedTo (string)**
+
+Name of the subject (confirmee) to whom this license is issued.
 ## HpeiLOLicenseCollection
 
 `@odata.type: "#HpeiLOLicenseCollection.HpeiLOLicenseCollection"`

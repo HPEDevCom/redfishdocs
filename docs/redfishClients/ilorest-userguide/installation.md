@@ -15,24 +15,38 @@ seo:
 
 ## Requirements
 
-<!-- This paragraph needs complete and deep review -->
+Read the following requirements before installing iLOrest on an operating system:
 
-The requirements for the managed server are as follows:
-
-- Local/[in-band](/docs/redfishservices/ilos/supplementdocuments/vnic#in-band-management)
-  management: Gen9 or greater server with a Windows OS or
-  Linux OS installed.
+- iLOrest is supported when deployed for
+  [local/in-band](/docs/redfishservices/ilos/supplementdocuments/vnic#in-band-management)
+  management on the following servers :
+  - HPE Gen9 or greater servers with an x86 or ARM64 architecture and
+    a supported Operating System.
   
-<!-- What about RHEL 9 and ARM based servers ? -->
-- Supported Operating Systems for local management:
-  Windows 2022, 2019, 2016, RHEL 8.x, 9.x, 9.x ARM64,
-  SUSE 15SPx, 12SP3, MAC, Debian 9, 10, 10 ARM64.
-- Remote/[out-of-band](/docs/redfishservices/ilos/supplementdocuments/vnic#out-of-band-management)
-  management: HPE Gen9 or later servers with
-  or without an OS installed.
-- HPE iLO 7: 1.11 or later.
-- HPE iLO 6: 1.05 or later.
-- HPE iLO 5: 1.20 or later.
+- Supported Operating Systems for
+  [local/in-band](/docs/redfishservices/ilos/supplementdocuments/vnic#in-band-management)
+  management:
+  - Microsoft Windows Server 2016
+  - Microsoft Windows Server 2019
+  - Microsoft Windows Server 2022
+  - Microsoft Windows Server 2025
+  - macOS: 14, 15
+  - Ubuntu x64/Arm64: 22.xx, 24.xx
+  - Debian x64/Arm64: 11, 10, 9
+  - RHEL x64/Arm64: 10.x, 9.x, 8.x
+  - SUSE x64/Arm64: 15SPx, 12SPx
+
+- For [remote/out-of-band](/docs/redfishservices/ilos/supplementdocuments/vnic#out-of-band-management)
+  management, iLOrest can be installed on any computer, including servers and personal computers,
+  and running Microsoft Windows, MacOS or Linux.
+
+- HPE Gen9 or later servers with or without an OS installed can be managed by iLOrest from remote.
+
+- The following iLO firmware versions can be managed locally or from remote:
+  - HPE iLO 7: 1.11.00 or later.
+  - HPE iLO 6: 1.05 or later.
+  - HPE iLO 5: 1.20 or later.
+
 - On a Linux systems, the `/tmp` folder must be configured
   with execute permission. If the `/tmp` folder does not allow code execution,
   HPE iLOrest will not start. It is possible to work around this
@@ -54,10 +68,13 @@ or install the PyPI package as instructed in the next paragraph.
 server's OS. For remote management (out-of-band), install the
 package on a laptop or server that has network access
 to the managed server network.
+
 {% admonition type="success" name="Tip" %}
 Follow these
 [instructions](/docs/redfishservices/ilos/supplementdocuments/securityservice#installing-hpe-host-applications)
-to install iLOrest in Gen12/iLO 7 systems.
+to install iLOrest in Gen12/iLO 7 operating systems for
+[in-band](/docs/redfishservices/ilos/supplementdocuments/vnic#in-band-management)
+management.
 {%/admonition %}
 
 - Linux only: Most Linux operating systems have `/tmp`
@@ -70,99 +87,226 @@ Use `mount -o remount,exec /tmp` to remount `/tmp` in `exec` mode.
 
 ### New installation
 
-Download the component bundle from <a href="https://vibsdepot.hpe.com" target="_blank">vibsdepot</a>
+To install for the first time iLOrest on supported ESXi versions,
+download the component bundle from
+<a href="https://vibsdepot.hpe.com/hpe" target="_blank">vibsdepot</a>.
+iLOrest component bundles are located in folders similar to
+`monthYear/esxi-XYZ-bundles` and packaged in a `.zip` file like
+`ilorest-component_ABC.<ilo.rest.ver.sion>-*.zip`.
 
-    1. Copy the component bundle from "vibsdepot" to the ESX server.  Technically, you can
-           place the file anywhere that is accessible to the ESX console shell, 
-           but for these instructions, we'll assume the location is in '/tmp'.
+Perform the following steps to install the component bundle:
 
-           Here's an example of using the Linux 'scp' utility to copy the file
-           from a local system to an ESX server located at 10.10.10.10:
-             scp ilorest-component_800.6.0.0.44-1OEM.802.0.0.22380479_24626604.zip root@10.10.10.10:/tmp
+1. Copy the component bundle from the
+  <a href="https://vibsdepot.hpe.com/hpe" target="_blank">vibsdepot</a>
+   to the ESX server.
+   Place the file in a location accessible via the ESX console shell.
+   In this example, we use `/tmp` as the target location.
 
-    2. Issue the following command (full path to the file must be specified):
-              esxcli software component apply -d {Component_File}
-       
-           In the example above, this would be:
-              esxcli software component apply -d /tmp/ilorest-component_800.6.0.0.44-1OEM.802.0.0.22380479_24626604.zip
+   The following command copies an iLOrest component bundle
+   from a local system to an ESX server located with `10.10.10.10`:
+
+   `scp ilorest-component_800.6.0.0.44-1OEM.802.0.0.22380479_24626604.zip root@10.10.10.10:/tmp`
+
+1. Log into the ESX server as a privileged user
+   and issue the following command with the full path to the file:
+
+   `esxcli software component apply -d {Component_File}`
+
+   With the above component name, this would be:
+
+   `esxcli software component apply -d /tmp/ilorest-component_800.6.0.0.44-1OEM.802.0.0.22380479_24626604.zip`
 
 {% admonition type="info" name="Note" %}
-Depending on the certificate used to sign the VIB, you may need to
-change the host acceptance level. To do this, use the following command:
-`esxcli software acceptance set --level=<level>`.
 
-Also, depending on the type of VIB being installed, you may have to put
-ESX into maintenance mode.  This can be done through the VI Client, or by
-adding the `--maintenance-mode` option to the above `esxcli` command.
+- Depending on the certificate used to sign the component bundle, you may need to
+  change the host acceptance level. To do this, use the following command:
+
+  `esxcli software acceptance set --level=<level>`.
+
+- Also, depending on the type of component bundle being installed, you may have to put
+  ESX into maintenance mode.  This can be done through the VI Client, or by
+  adding the `--maintenance-mode` option to the above `esxcli` command.
+
 {% /admonition %}
 
 ### Upgrade installation
 
-You can use the same command as for an initial installation:
+You can use the same command as for an initial installation to upgrade
+iLOrest on ESXi:
 
-  {% tabs %}
-{% tab label="Example" %}
+`esxcli software component apply -d /full/path/to/ilorest-component`
 
-```shell Example
-esxcli software component apply -d /full/path/to/ilorest-component
-```
-  
-  {% /tab %}
-  {% /tabs %}
 ### Uninstalling the iLOrest ESXi package
 
 Use the following command to completely uninstall the package:
 
-  {% tabs %}
-{% tab label="Example" %}
-
-```shell Example
-esxcli software component remove -n ilorest-component
-```
-  
-  {% /tab %}
-  {% /tabs %}
+`esxcli software component remove -n ilorest-component`
   
 ## Installing the iLOrest PyPI package
 
-PyPI package can be used on distros like MAC, Ubuntu.
-
 The iLOrest PyPI package is an official
-<a href="https://pypi.org/project/ilorest" target="_blank">PyPI project</a>.
+<a href="https://pypi.org/project/ilorest" target="_blank">PyPI project</a>. You can use this
+package in operating systems like MacOS or Ubuntu that don't have dedicated packages in the
+<a href="https://github.com/HewlettPackard/python-redfish-utility/releases/latest" target="_blank">GitHub release location</a>.
 
 ### Requirements
 
 - Python3 is required prior to the installation.
-- ARM based servers: Verify in the iLOrest [Changelog](changelog/) section
-that the iLOrest PyPI package is supported on this architecture.
+- ARM based servers: Verify in the [Changelog](changelog/) section
+if/when the iLOrest PyPI package is supported on this architecture.
 - Absence of the
-  [DMTF's Python Redfish Library](/docs/redfishclients/python-redfish-library/installationguide/#pip-install)
+  [DMTF's Python Redfish Library](/docs/redfishclients/python-redfish-library/installationguide/#pip-install).
+  This restriction is needed because DMTF's Python Redfish library cannot co-exist with the
+  HPE Python iLOrest library, part of this PyPI package.
 
 ### Installation methods
 
-1. Remote installation<br>
+The following two methods install the following Python packages: `ilorest` and `python-ilorest-library`.
+
+1. Installation from remote:<br>
      `pip install ilorest`
-2. Local installation
+2. Local installation. Refer the to the
+   [offline installation](#installing-ilorest-pypi-offline):
+   pargraph for more detail:
    1. Download the package(s) from the <a href="https://pypi.org/project/ilorest/#files" target="_blank">PyPI site</a>
    2. Deploy<br>
       `pip install ilorest-x.x.x.x.tar.gz`<br>
       or<br>
       `pip install ilorest-x.x.x.x.whl`<br>
 
-{% admonition type="info" name="NOTE" %}
+{% admonition type="success" name="Tip" %}
 
-The above commands install two packages:
+If you install the iLOrest PyPI package on an HPE iLO 7 based server (or later), and want to
+[in-band manage](/docs/redfishservices/ilos/supplementdocuments/vnic#in-band-management)
+seamlessly the underlying local iLO, you have to create an
+[iLOrest application account](/docs/redfishservices/ilos/supplementdocuments/securityservice#application-accounts).
 
-- `ilorest`
-- `python-ilorest-library`
+The following example performs this task, using an already created user with the minimum
+[required privileges](/docs/redfishservices/ilos/supplementdocuments/securityservice#application-account-privileges).
+
+Refer to this paragraph for more information about
+[application account management](/docs/redfishservices/ilos/supplementdocuments/securityservice#managing-application-accounts).
+
+{% tabs %}
+{% tab label="iLOrest App Account creation" %}
+
+```shell
+ilorest login --no_app_account -u admin_user -p password
+ilorest appaccount create --self -u ilorest-appuser -p password
+
+# Verify account has been created
+ilorest appaccount exists --self
+Application account exists for this host application.
+```
+
+{% /tab %}
+{% /tabs %}
+
+For more details on using iLOrest as a PyPI package, refer to the blog <a href="https://developer.hpe.com/blog/ilorest-as-a-pypi-package/" target="_blank">iLOrest as a PyPI Package</a>.
 
 {% /admonition %}
 
 ### Uninstalling the iLOrest PyPI package
 
-Use the following command to completely uninstall the package:
+Before un-stalling the iLOrest PyPI package, you may want
+to remove its associated
+[application account](/docs/redfishservices/ilos/supplementdocuments/securityservice#application-accounts).
+This is optional and can omitted
+if you want to re-install it later, and beneficiate again of in-band management.
+
+The following example extracts the `ApplicationID` of the `iLORest`
+host application. Then, it deletes the corresponding application account.
+
+```shell
+
+ilorest appaccount details --hostappid all --json | \
+        jq '.[] | select(.ApplicationName == "iLORest") | .ApplicationID'
+"**00b5"
+
+ilorest appaccount delete --hostappid 00b5
+ilorest logout
+
+```
+
+Use the following command to completely uninstall the iLOrest PyPI package:
 
 `pip uninstall ilorest python-ilorest-library`
+
+## Installing or upgrading to iLOrest 5.2.x / 6.x.x on Debian-based Systems
+
+The `.deb` package for iLOrest was last released as a standalone version (v4.9.0) in March 2024. However, significant enhancements and bug fixes have been introduced in versions 5.2.x and 6.0.x, which are currently distributed via PyPI (Python Package Index).
+
+Perform the following steps to install or upgrade iLOrest as PyPI package using pip3.
+
+### Steps to Install or Upgrade iLOrest using PyPI
+
+- Uninstall any existing `.deb` version:  
+`sudo dpkg -r ilorest`  
+
+- Ensure pip3 is installed:  
+`sudo apt update`  
+`sudo apt install python3-pip`  
+
+- (Optional) Set HTTP/HTTPS Proxy:
+If the system is behind a proxy, set the environment variables before proceeding:  
+`export http_proxy=http://<HTTP_PROXY_URL>:<PORT>`  
+`export https_proxy=http://<HTTPS_PROXY_URL>:<PORT>`
+
+- Install the latest iLOrest from PyPI:  
+`sudo pip3 install ilorest`  
+
+## Installing iLOrest PyPI offline
+
+For environments without internet access (Air-Gapped environments),
+iLOrest PyPI can be installed offline using pre-downloaded `.whl` (wheel)
+and `.tar.gz` source distribution files from PyPI.
+
+### iLOrest PyPI offline installation steps
+
+- On a system with internet access:  
+  - Create a clean directory:  
+    `mkdir ilorest_offline`  
+    `cd ilorest_offline`
+
+  - Download iLOrest and its dependencies using `pip`:  
+`pip3 download ilorest`  
+
+    The above command downloads
+    `ilorest-\<version\>.whl` or `.tar.gz`
+    as well as required dependencies (e.g., `requests`, `jsonpath_rw`, `six`, etc.)  
+
+  - Transfer the entire `ilorest_offline` directory to the target offline system using USB,
+    `scp` or other secure methods.
+
+- On the target offline system:
+
+  - Ensure Python 3.6 or later is installed:
+    `python --version`
+
+  - Ensure `pip3` is installed:  
+    `sudo apt install python3-pip`  
+
+  - Change into the transferred directory:  
+    `cd /path/to/ilorest_offline`
+
+  - Install iLOrest and dependencies:  
+    `sudo pip3 install --no-index --find-links=. ilorest`  
+
+    with:
+
+    `--no-index` disables PyPI access.  
+    `--find-links=.` tells pip to look for dependencies in the current directory.
+
+{% admonition type="info" name="NOTES" %}
+
+- If proxy settings were used on the online system, they are not required for offline installation.  
+
+- You may use a Python virtual environment 
+to install iLOrest in an isolated Python environment:
+`sudo python -m venv ilorestVenv`
+`source ilorestVenv/bin/activate`
+
+{% /admonition %}
 
 ## Starting the RESTful Interface Tool
 

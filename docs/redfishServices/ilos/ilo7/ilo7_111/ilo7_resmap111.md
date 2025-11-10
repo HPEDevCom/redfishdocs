@@ -1,4 +1,5 @@
 ---
+excludeFromSearch: true
 seo:
   title: iLO 7 version 1.11 Resource map
 markdown:
@@ -17,15 +18,15 @@ The following table lists HPE iLO Redfish resource types and their associated UR
 
 Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.md) section for more information on Redfish data types and collections.
 
-
 # Resource Map
+
 |URI|Type|
 |:---|:---|
 |`/redfish/v1/`|[ServiceRoot](ilo7_serviceroot_resourcedefns111/#serviceroot)|
 |`/redfish/v1/accountservice`|[AccountService](ilo7_other_resourcedefns111/#accountservice)|
 |`/redfish/v1/accountservice/Oem/Hpe/appaccounts`|Collection of [HpeiLOAppAccount](ilo7_hpe_resourcedefns111/#hpeiloappaccountcollection)|
 |`/redfish/v1/accountservice/Oem/Hpe/appaccounts/{item}`|[HpeiLOAppAccount](ilo7_hpe_resourcedefns111/#hpeiloappaccount)|
-|`/redfish/v1/accountservice/accounts`|Collection of [HpeiLOAppAccount](ilo7_hpe_resourcedefns111/#hpeiloappaccountcollection)|
+|`/redfish/v1/accountservice/accounts`|Collection of [ManagerAccount](ilo7_manager_resourcedefns111/#manageraccountcollection)|
 |`/redfish/v1/accountservice/accounts/{item}`|[ManagerAccount](ilo7_manager_resourcedefns111/#manageraccount)|
 |`/redfish/v1/accountservice/accounts/{item}/keys`|Collection of [Key](ilo7_other_resourcedefns111/#keycollection)|
 |`/redfish/v1/accountservice/accounts/{item}/keys/{item}`|[Key](ilo7_other_resourcedefns111/#key)|
@@ -66,7 +67,6 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/chassis/{item}/power`|[Power](ilo7_other_resourcedefns111/#power)|
 |`/redfish/v1/chassis/{item}/power/fastpowermeter`|[HpePowerMeter](ilo7_hpe_resourcedefns111/#hpepowermeter)|
 |`/redfish/v1/chassis/{item}/power/powermeter`|[HpePowerMeter](ilo7_hpe_resourcedefns111/#hpepowermeter)|
-|`/redfish/v1/chassis/{item}/sensors`|Collection of [Sensor](ilo7_other_resourcedefns111/#sensorcollection)|
 |`/redfish/v1/chassis/{item}/sensors/{item}`|[Sensor](ilo7_other_resourcedefns111/#sensor)|
 |`/redfish/v1/chassis/{item}/thermal`|[Thermal](ilo7_other_resourcedefns111/#thermal)|
 |`/redfish/v1/chassis/{item}/thermalsubsystem`|[ThermalSubsystem](ilo7_other_resourcedefns111/#thermalsubsystem)|
@@ -86,7 +86,7 @@ Refer to the [data types and collection](/docs/concepts/dataTypesAndCollections.
 |`/redfish/v1/eventservice/subscriptions/{item}`|[EventDestination](ilo7_other_resourcedefns111/#eventdestination)|
 |`/redfish/v1/fabrics`|Collection of [Fabric](ilo7_other_resourcedefns111/#fabriccollection)|
 |`/redfish/v1/fabrics/{item}`|[Fabric](ilo7_other_resourcedefns111/#fabric)|
-|`/redfish/v1/fabrics/{item}/switches`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
+|`/redfish/v1/fabrics/{item}/switches`|Collection of [Switch](ilo7_other_resourcedefns111/#switchcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}`|[Switch](ilo7_other_resourcedefns111/#switch)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/ports`|Collection of [Port](ilo7_other_resourcedefns111/#portcollection)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/ports/{item}`|[Port](ilo7_other_resourcedefns111/#port)|

@@ -66,7 +66,7 @@
 |`/redfish/v1/eventservice/subscriptions/{item}`|[EventDestination](#eventdestination-v1_13_0-eventdestination)|
 |`/redfish/v1/fabrics`|Collection of [Fabric](#fabric-v1_3_0-fabric)|
 |`/redfish/v1/fabrics/{item}`|[Fabric](#fabric-v1_3_0-fabric)|
-|`/redfish/v1/fabrics/{item}/switches`|Collection of [SwitchCollection](#switchcollection-switchcollection)|
+|`/redfish/v1/fabrics/{item}/switches`|Collection of [Switch](#switch-v1_9_1-switch)|
 |`/redfish/v1/fabrics/{item}/switches/{item}`|[Switch](#switch-v1_9_1-switch)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/ports`|Collection of [Port](#port-v1_12_0-port)|
 |`/redfish/v1/fabrics/{item}/switches/{item}/ports/{item}`|[Port](#port-v1_12_0-port)|

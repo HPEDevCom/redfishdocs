@@ -1,0 +1,89 @@
+cd /home/project-web/redfish-lab/htdocs/media/redfish-wiki/FirmwareUpdates-Part3-TheRedfishUpdateService
+put 1_RootUpdateService.png
+put 10_SuccessfulSimpleUpdate.png
+put 11_TaskMonitorDetails.png
+put 12_TaskStates.png
+put 13_aiLOEventLog.png
+put 14_SimpleUpdateInvalidFormat.png
+put 15_IlorestFirmwareUpdate.png
+put 16_HttpPushUriPayload.png
+put 17_OemHpeActions.png
+put 18_AllowHeader.png
+put 19_ComponentRepoLocation.png
+put 2_iLOGUI-SoftwareInventory.png
+put 20_iLORepoExpanded.png
+put 21_PostWebComponentAndCompsig.png
+put 22_SplitBigComponent.png
+put 23_UploadPartsBigComp.png
+put 24_HeaderTaskMonitor.png
+put 25_TaskMonitor2.png
+put 26_AddScToQueue.png
+put 27_CommandValues.png
+put 28_ResponseToAddScToQueue.png
+put 29_AddBinaryToQueueAndFlash.png
+put 3_SoftwareInventoryCollection.png
+put 30_DeleteItemInQueue.png
+put 31_DeleteAllItemsInQueue.png
+put 32_MaintenanceWindowCreationBody.png
+put 33_MaintenanceWindowCreationResponse.png
+put 34_AddComponentInMaintenanceWindow.png
+put 35_AddComponentResponse.png
+put 36_DeleteMaintenanceWindow.png
+put 37_DeleteMaintenanceWindows.png
+put 38_InstallSetSchemaLocation.png
+put 39_InstallSetCreation.png
+put 4_ExpandedSoftwareInventory.png
+put 40_InstallSetModification.png
+put 41_PatchedInstallSetNewId.png
+put 42_InvokeTargetInstallSet.png
+put 43_BodyOfInvokeInstallSet.png
+put 5_ExpandedFirmwareCollection.png
+put 6_SimpleUpdateAction.png
+put 7_SimpleUpdateActionWithTransferProtocol.png
+put 8_SimpleUpdateFlashPercent.png
+put 9_OemHpeStates.png
+
+
+chmod 644 1_RootUpdateService.png
+chmod 644 10_SuccessfulSimpleUpdate.png
+chmod 644 11_TaskMonitorDetails.png
+chmod 644 12_TaskStates.png
+chmod 644 13_aiLOEventLog.png
+chmod 644 14_SimpleUpdateInvalidFormat.png
+chmod 644 15_IlorestFirmwareUpdate.png
+chmod 644 16_HttpPushUriPayload.png
+chmod 644 17_OemHpeActions.png
+chmod 644 18_AllowHeader.png
+chmod 644 19_ComponentRepoLocation.png
+chmod 644 2_iLOGUI-SoftwareInventory.png
+chmod 644 20_iLORepoExpanded.png
+chmod 644 21_PostWebComponentAndCompsig.png
+chmod 644 22_SplitBigComponent.png
+chmod 644 23_UploadPartsBigComp.png
+chmod 644 24_HeaderTaskMonitor.png
+chmod 644 25_TaskMonitor2.png
+chmod 644 26_AddScToQueue.png
+chmod 644 27_CommandValues.png
+chmod 644 28_ResponseToAddScToQueue.png
+chmod 644 29_AddBinaryToQueueAndFlash.png
+chmod 644 3_SoftwareInventoryCollection.png
+chmod 644 30_DeleteItemInQueue.png
+chmod 644 31_DeleteAllItemsInQueue.png
+chmod 644 32_MaintenanceWindowCreationBody.png
+chmod 644 33_MaintenanceWindowCreationResponse.png
+chmod 644 34_AddComponentInMaintenanceWindow.png
+chmod 644 35_AddComponentResponse.png
+chmod 644 36_DeleteMaintenanceWindow.png
+chmod 644 37_DeleteMaintenanceWindows.png
+chmod 644 38_InstallSetSchemaLocation.png
+chmod 644 39_InstallSetCreation.png
+chmod 644 4_ExpandedSoftwareInventory.png
+chmod 644 40_InstallSetModification.png
+chmod 644 41_PatchedInstallSetNewId.png
+chmod 644 42_InvokeTargetInstallSet.png
+chmod 644 43_BodyOfInvokeInstallSet.png
+chmod 644 5_ExpandedFirmwareCollection.png
+chmod 644 6_SimpleUpdateAction.png
+chmod 644 7_SimpleUpdateActionWithTransferProtocol.png
+chmod 644 8_SimpleUpdateFlashPercent.png
+chmod 644 9_OemHpeStates.png

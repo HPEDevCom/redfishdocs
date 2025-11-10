@@ -1,6 +1,3 @@
-# REDFISH-PROTO redocly.yaml
-
-
 # This file contains the project global settings as explained
 # the Reunite documentation:
 #  https://redocly.com/docs/realm/author/concepts/reunite#project-settings
@@ -11,24 +8,23 @@
 #     https://redocly.com/docs/realm/config/sso#sso
 sso: []
 
+
 # RBAC doc entry point:
 # https://redocly.com/docs/realm/setup/how-to/rbac#configure-role-based-access-control-rbac
 # RBAC project roles:
 # https://redocly.com/docs/realm/setup/concepts/roles#project-roles
+
 rbac:
   reunite:
     anonymous: read
     authenticated: read
     redocly-owners: admin
     reunite-admins: admin
-    redfishproto-admins: admin
-    redfishproto-maintainers: maintain
-    redfishproto-triage: triage
-    redfish-admins: maintain
-    redfish-react-markdoc: admin
-    redfish-maintainers: read
-    redfish-writers: read
-    redfish-triage: read
+    redfish-admins: admin
+    redfish-react-markdoc: maintain
+    redfish-maintainers: maintain
+    redfish-writers: maintain
+    redfish-triage: maintain
   content:
     '**':
       anonymous: read
@@ -40,95 +36,73 @@ rbac:
       redfish-admins: admin
     './@theme/**':
       redfish-react-markdoc-dev: admin
-      redfishproto-admins: admin
-      redfish-admins: read
+      redfish-admins: admin
     'scripts/**':
       redfish-react-markdoc-dev: admin
-      redfishproto-admins: admin
-      redfish-admins: read
+      redfish-admins: admin
     'images/**':
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: write
       redfish-react-markdoc-dev: admin
-      redfish-admins: read
+      redfish-admins: admin
     package.json:
       anonymous: none
       authenticated: none
       redfish-writers: none
       redfish-maintainers: none
       redfish-react-markdoc-dev: admin
-      redfishproto-admins: admin
-      redfish-admins: read
+      redfish-admins: admin
     README.md:
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
-      redfish-admins: read
+      redfish-admins: admin
     index.page.tsx:
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
-      redfish-admins: read
+      redfish-admins: admin
     sidebars.yaml:
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
-      redfish-admins: read
+      redfish-admins: admin
     .env.preview:
       anonymous: none
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
-      redfish-admins: read
+      redfish-admins: admin
     .env.production:
       anonymous: none
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
-      redfish-admins: read
+      redfish-admins: admin
     docs/index.md:
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
-      redfish-admins: read
+      redfish-admins: admin
     docs/README.md:
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
       redfish-admins: admin
     'docs/_scripts/**':
       anonymous: none
-      authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
       redfish-writers: read
       redfish-maintainers: read
       redfish-react-markdoc-dev: read
@@ -136,57 +110,45 @@ rbac:
     'docs/etc/**':
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
-      redfish-admins: read
+      redfish-admins: admin
     'docs/redfishClients/**':
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc-dev: admin
-      redfish-admins: read
+      redfish-admins: admin
     'docs/redfishServices/**':
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc: admin
-      redfish-admins: read
+      redfish-admins: admin
     'docs/concepts/**':
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc: admin
-      redfish-admins: read
+      redfish-admins: admin
     'docs/references_and_material/**':
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc: admin
-      redfish-admins: read
+      redfish-admins: admin
     'docs/examples/**':
       anonymous: read
       authenticated: read
-      redfishproto-admins: admin
-      redfishproto-maintainers: maintain
-      redfish-writers: read
-      redfish-maintainers: read
+      redfish-writers: write
+      redfish-maintainers: maintain
       redfish-react-markdoc: admin
-      redfish-admins: read
+      redfish-admins: admin
 
 
 # Search engine alternative: typesense
@@ -194,10 +156,19 @@ rbac:
 search:
   engine: flexsearch
   hide: false
-  shortcuts:
+  shortcuts: 
     - /
-  ai:
-    hide: true
+
+aiAssistant:
+  hide: true
+  prompt: Speak only in rhymes
+  trigger:
+    hide: false
+    inputType: button
+    inputIcon: sparkles
+  suggestions:
+    - What is Redfish?
+
 
 # Apply metadata to specific files
 # See https://redocly.com/docs/realm/config/metadata#metadata-globs for more details
@@ -239,21 +210,48 @@ scripts:
 
 extends:
   - minimal
+# Commenting out Google fonts, as not permitted in HPE web sites.
+# Last item has been taken from hpe.com. Not sure it is relevant.
 links:
-  - href: https://fonts.googleapis.com/css2?family=VT323&display=swap
-  - href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
+  #- href: https://fonts.googleapis.com/css2?family=VT323&display=swap
+  #- href: https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap
+  - href: https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Regular-Web.woff2
+    rel: stylesheet
+    as: font
+    type: font/woff2
 
 # Search engine optimization (SEO) settings
+# NOTE: The meta array is required for HPE Digital Compliance
 seo:
   title: HPE server management with Redfish
   description: Redfish is a standard RESTful API designed to deliver simple and secure management for converged, hybridIT and the Software Defined Data Center (SDDC)
+  meta:
+    - name: 'company_code'
+      content: 'hpe'
+    - name: 'hp_design_version'
+      content: 'hpe.1.0'
+    - name: 'lifecycle'
+      content: 'support.docs'
+    - name: 'robots'
+      content: 'index, follow'
+    - name: 'segment'
+      content: 'Segment Neutral'
+    - name: 'simple_title'
+      content: 'HPE server management with Redfish'
+    - name: ' target_country'
+      content: 'ww'
+    - name: 'user_profile'
+      content: 'Commercial.Technical End User'
+    - name: 'web_section_id'
+      content: 'R12305'
+    
 
 navbar:
   items:
     - label: Home
       page: /
-    - label: Guides
-      page: docs/index.md
+    - label: Redfish concepts
+      page: docs/concepts/index.md
     - label: Services
       page: docs/redfishServices/index.md
     - label: Clients
@@ -263,7 +261,7 @@ navbar:
       external: true
 
 # Commenting out the product section. It introduces
-# a difficult to detect filter, in the search bar.
+# a difficult to detect filter, in the search bar. 
 #products:
   #iLORedfishServices:
     #name: HPE iLO RedfishServices
@@ -279,10 +277,6 @@ markdown:
   lastUpdatedBlock:
     hide: true
 
-logo:
-  image: images/hpe.svg
-  link: /
-  altText: 'HPE server Management with Redfish'
 
 sidebar:
   hide: false
