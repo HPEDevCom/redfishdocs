@@ -160,7 +160,7 @@ search:
     - /
 
 aiAssistant:
-  hide: true
+  hide: false
   prompt: Speak only in rhymes
   trigger:
     hide: false
