@@ -34,28 +34,41 @@ The concept of deferred / pending settings in the <a href="https://servermanagem
 
 - The latest versions of iLO 5 firmware support both the HPE `SmartStorageConfig` and the DMTF standard storage models. Volume management with controllers implementing the DMTF storage model is described in the <a href="https://servermanagementportal.ext.hpe.com/docs/redfishservices/ilos/supplementdocuments/storage/" target="_blank">HPE server management portal</a>.
 
-We assume that the reader is familiar with REST APIs in general and Redfish in particular. A good entry point for developers to grasp the power of Redfish is the <a href="https://www.hpe.com/us/en/servers/restful-api.html#" target="_blank">iLO RESTful API Ecosystem</a>.
+This blog post assumes that the reader is familiar with REST APIs in general and Redfish in particular.
+A good entry point for developers to grasp the power of Redfish is the
+<a href="https://www.hpe.com/us/en/servers/restful-api.html#" target="_blank">iLO RESTful API Ecosystem</a>.
 {% /admonition %}
 
 ## Foreword
 
-For didactic purposes, we use direct URIs to targets instead of crawling  the Redfish tree to discover the target URIs, as explained in the <a href="https://developer.hpe.com/blog/getting-started-with-the-redfish-api-part-2/" target="_blank">Getting Started with the Redfish® API Part 2</a> blog post.
+For didactic purposes, direct URIs to targets are used instead of relying on crawling the
+Redfish tree to discover the target URIs, as explained in the
+<a href="https://developer.hpe.com/blog/getting-started-with-the-redfish-api-part-2/" target="_blank">Getting Started with the Redfish® API Part 2</a>
+blog post.
 
-In the following paragraphs, `{{Subsystem-URI}}` refers to an URI like `https://<ilo-IP>/redfish/v1/<subsystem>/` where `<subsystem>` represents either `Bios` or `SmartStorageConfig`. These subsystems contains the currently used properties.
+Note that in the following paragraphs, `{{Subsystem-URI}}` refers to an URI like
+`https://<ilo-IP>/redfish/v1/<subsystem>/` where `<subsystem>` represents either `Bios`
+or `SmartStorageConfig`. These subsystems contain the currently used properties.
 
-Each of them has a pending sub-zone called `Settings/` and explained in the next paragraph.
+Each of them has a pending sub-zone called `Settings/` and are explained in the next paragraph.
 
-## Deferred / pending high level concept description
+## Deferred / pending high-level concept description
 
-1. Modifications in these subsystems are performed using HTTP `PATCH` or HTTP `PUT` against `{{Subsystem-URI}}/`**`Settings/`**.
-2. Upon a successful transaction, the HTTP return code is `200 OK` with the associated message: `One or more properties were changed and will not take effect until the system is reset`.
-3. During the next system reset, the content of `{{Subsystem-URI}}/Settings/` is transferred one level up, in `{{Subsystem-URI}}/`. The return status of this transfer is present in `{{Subsystem-URI}}` with an associated message.
+1. Modifications in these subsystems are performed using HTTP `PATCH` or HTTP `PUT` against
+   `{{Subsystem-URI}}/`**`Settings/`**.
+2. Upon a successful transaction, the HTTP return code is `200 OK` with the associated message:
+   `One or more properties were changed and will not take effect until the system is reset`.
+3. During the next system reset, the content of `{{Subsystem-URI}}/Settings/` is transferred one level up,
+   in `{{Subsystem-URI}}/`. The return status of this transfer is present in `{{Subsystem-URI}}`
+   with an associated message.
 
 The important thing to note in this flow is that the final status code and associated message of a property setting is visible **after the system reset**.
 
 ## Successful example
 
-In this example, we create a Raid1 storage array of two physical disks using Postman. To achieve this goal, we have to issue a `PUT` to `{{iloURI}}/redfish/v1/Systems/1/SmartStorageConfig/Settings/` with a body (aka payload) similar to the example shown below:
+In this example, a Raid1 storage array of two physical disks has been created using Postman. To achieve this goal, one
+needs to issue a `PUT` to `{{iloURI}}/redfish/v1/Systems/1/SmartStorageConfig/Settings/` with a body
+(aka payload) similar to the example shown below:
 
 ![Figure 1: Body to PUT to .../SmartStorageConfig/Settings/](figures/1-putbody.png "Figure 1: Body to PUT to .../SmartStorageConfig/Settings/")
 
@@ -63,17 +76,24 @@ In this example, we create a Raid1 storage array of two physical disks using Pos
 
 <br>
 
-Upon successful completion of this `PUT` request, the HTTP status return code is `200 OK`, which means that the remote Web server understood what to do with this well-formed payload.
+Upon successful completion of this `PUT` request, the HTTP status return code is `200 OK`,
+which means that the remote Web server understood what to do with this well-formed payload.
 
-The Body of the HTTP response contains an `error` property with a `SystemResetRequired` message. This property is a Redfish object sent by the Redfish server. It is there to give details about the next step to perform to finish the modification process.
+The Body of the HTTP response contains an `error` property with a `SystemResetRequired` message.
+This property is a Redfish object sent by the Redfish server.
+It is there to provide details concerning the next step required to complete the modification process.
 
 ![Figure 2: PUT Return Status](figures/2-putseturnstatus.png "Figure 2: PUT Return Status")
 
 <i>Figure 2: PUT Return Status</i>
 
-At this stage of the process, only the staging / "pending zone" of the Smart Array has changed and contains the `PUT` payload. We can verify this assertion by comparing the content of  `{{Subsystem-URI}}/Settings/` with the content of `{{Subsystem-URI/}}`.
+At this stage of the process, only the staging / "pending zone" of the Smart Array has changed and contains
+the `PUT` payload. To verify this assertion, one can compare the content of
+`{{Subsystem-URI}}/Settings/` with the content of `{{Subsystem-URI/}}`.
 
-In the pending zone (`.../SmartStorageConfig/Settings/`) we can see the payload we sent to the Redfish server. However, in the "running zone" (`.../SmartStorageConfig/`) the `LogicalDrives` array is still empty:
+In the pending zone (`.../SmartStorageConfig/Settings/`) note the payload sent to the
+Redfish server. As you can see, however, in the "running zone" (`.../SmartStorageConfig/`)
+the `LogicalDrives` array is still empty:
 
 ![Figure 3: GET Pending and Current LogicalDrives](figures/3-getpendinglogicaldrives.png "Figure 3: GET Pending and Current LogicalDrives")
 
@@ -81,7 +101,10 @@ In the pending zone (`.../SmartStorageConfig/Settings/`) we can see the payload 
 
 <br>
 
-It is now time to reset the server and perform a `GET` of the running zone. In the response body of this operation, the first Redfish object is a `@Redfish.Settings` collection containing a single `MessageID` mentioning `Success`. This single message is synonym of a successful transfer of the "pending zone" in to the "running zone". We will see later in this document what we get in case of an un-successful transfer.
+It is now time to reset the server and perform a `GET` of the running zone. In the response body of this operation,
+the first Redfish object is a `@Redfish.Settings` collection containing a single `MessageID` mentioning `Success`.
+This single message is synonym of a successful transfer of the "pending zone" into the "running zone".
+We will see later in this document what we get in case of an un-successful transfer.
 
 ![Figure 5: GET Running zone after server reset](figures/5-getafterreset.png "Figure 5: GET Running zone after server reset")
 
@@ -89,13 +112,15 @@ It is now time to reset the server and perform a `GET` of the running zone. In t
 
 <br>
 
-Further down in this response we find the `LogicalDrives` array containing the Raid1 disk array:
+Further down in this response you will find the `LogicalDrives` array containing the Raid1 disk array:
 
 ![Figure 6: GET LogicalDrives from running zone](figures/6-getafterreset-2.png "Figure 6: GET LogicalDrives from running zone")
 
 ## Unsuccessful example
 
-In order to emphasize the fact that the modification status of properties in the `Bios` and `SmartStorage` subsystems must be done after a system reset, we will study a case where the JSON `PUT` payload is syntactically correct but embedding a value typo (`Raid` instead of `Raid1`) and missing a required key-value (`DataGuard=Disabled`):
+In order to emphasize the fact that the modification status of properties in the `Bios` and `SmartStorage`
+subsystems must be done after a system reset, note the case study below where the JSON `PUT` payload is syntactically
+correct but embeds a value typo (`Raid` instead of `Raid1`) and is missing a required key-value (`DataGuard=Disabled`):
 
 ![Figures 7: PUT of a bad payload](figures/7-badpayload.png "Figures 7: PUT of a bad payload")
 
@@ -117,9 +142,10 @@ The pending zone contains the faulty payload:
 
 <br>
 
-After the server reset, a `GET` of the running zone responds with a `MessageArgs=[DataGuard]` object and two `MessageID`keys. The first one mentions `DataGuard` as a missing property and the second one (`Success`) means that the analysis of the transfer from the pending zone to the running zone has successfully ended. This `Success` message does not means that the transfer has occurred.
+After the server reset, a `GET` of the running zone responds with a `MessageArgs=[DataGuard]` object and two `MessageID`keys. The first one mentions `DataGuard` as a missing property and the second one (`Success`) means that the analysis of the transfer from the pending zone to the running zone has successfully ended. This `Success` message does not mean that the transfer has occurred.
 
-Moreover, note that there is nothing mentioning the `Raid` typo. It means that analysis of the payload to transfer stops at the first error found.
+Moreover, note that there is nothing that mentions the `Raid` typo. It means that analysis of
+the payload to transfer stops at the first error found.
 
 ![Figure 10: DataGuard Property Missing](figures/10-dataGuardpropertymissing.png "Figure 10: DataGuard Property Missing")
 
@@ -127,7 +153,7 @@ Moreover, note that there is nothing mentioning the `Raid` typo. It means that a
 
 <br>
 
-If we drill down to the `LogicalDrives` array we notice that it is still empty. Hence the transfer did not occur.
+If you drill down to the `LogicalDrives` array you will notice that it is still empty. Hence the transfer did not occur.
 
 ![Figure 11: Empty LogicalDrives array](figures/11-emptylogicaldrivessrray.png "Figure 11: Empty LogicalDrives array")
 
@@ -135,7 +161,8 @@ If we drill down to the `LogicalDrives` array we notice that it is still empty. 
 
 <br>
 
-If we `PUT` a new payload with the `DataGuard=Disabled` property but still without correct Raid level and reset the server, we notice an `InvalidRAIDLevel` message explaining the problem.
+If you `PUT` a new payload with the `DataGuard=Disabled` property but still without correct Raid level and reset the
+server, you will notice an `InvalidRAIDLevel` message explaining the problem.
 
 ![Figure 12: Wrong Raid Level error](figures/12-wrongraidlevel.png "Figure 12: Wrong Raid Level error")
 
