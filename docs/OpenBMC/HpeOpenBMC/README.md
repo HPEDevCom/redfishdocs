@@ -1,4 +1,0 @@
-# FdzPerso
-Personal material
-
-TBD
