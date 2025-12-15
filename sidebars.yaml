@@ -79,6 +79,14 @@
     - label: Overview
       page: docs/references_and_material/index.md
     # Internal links
+    - group: OpenBMC
+      expanded: false
+      selectFirstItemOnExpand: false
+      items:
+      - label: Overview
+        page: docs/OpenBMC/index.md
+      - label: What is the HPE OpenBMC program?
+        page: docs/OpenBMC/whatishpeopenbmc.md
     - group: Why is Redfish different
       expanded: false
       selectFirstItemOnExpand: false
