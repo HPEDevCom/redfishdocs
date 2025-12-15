@@ -84,9 +84,9 @@
       selectFirstItemOnExpand: false
       items:
       - label: Overview
-        page: docs/OpenBMC/index.md
+        page: docs/openbmc/index.md
       - label: What is the HPE OpenBMC program?
-        page: docs/OpenBMC/whatishpeopenbmc.md
+        page: docs/openbmc/whatishpeopenbmc.md
     - group: Why is Redfish different
       expanded: false
       selectFirstItemOnExpand: false
