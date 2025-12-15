@@ -1,7 +1,7 @@
 ---
 markdown:
   toc:
-    hide: true
+    hide: false
     depth: 3
   lastUpdateBlock:
     hide: false
